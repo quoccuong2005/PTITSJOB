@@ -1,0 +1,52 @@
+{
+	"common": {
+
+
+		"login": "Đăng nhập",
+
+		"home": "Trang chủ",
+		"gioi-thieu": "Giới thiệu",
+		"tin-tuc": "Tin tức - sự kiện",
+		"tin-tuyen-sinh": "Tin tuyển sinh",
+		"su-kien": "Sự kiện",
+		"thong-bao": "Thông báo",
+		"tuyen-sinh": "Đào tạo",
+		"dao-tao": "Đào tạo",
+		"so-do": "Sơ đồ",
+		"lien-he": "Liên hệ",
+		"search": "Tìm kiếm",
+		"partner": "Đối tác",
+		"already": "Có sẵn",
+		"more-info": "Xem chi tiết",
+		"empty": "Không có dữ liệu!",
+		"pricing": "Báo giá",
+		"price-table": "Bảng báo giá chung",
+		"search-result": "Kết quả tìm kiếm"
+	},
+	"home": {
+		"customer": "Khách hàng",
+		"satisfaction": "Hài lòng",
+		"customer-say": "Thông tin phản ánh",
+		"customer-feedback": "Các khách hàng, đối tác nói gì khi làm việc với chúng tôi",
+		"introdution": "Giới thiệu chung"
+	},
+	"news": {
+		"edu": "Tin giáo dục"
+	},
+	"gallery": {
+		"image": "Thư viện ảnh",
+		"video": "Thư viện video",
+		"audio": "Thư viện audio"
+	},
+	"event": {
+		"event": "Sự kiện"
+	},
+	"footer": {
+		"address": "Địa chỉ",
+		"phone": "Điện thoại (Tel)",
+		"email": "E-mail",
+		"web": "Website",
+		"time": "Thời gian làm việc",
+		"location": "Bản đồ chỉ dẫn"
+	}
+}

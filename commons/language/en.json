@@ -1,0 +1,56 @@
+{
+	"common": {
+		"ptit": "",
+		"payment": "",
+		"home": "Home",
+		"guide": "Guide",
+		"about": "About us",
+		"control": "Control",
+		"login": "Login",
+		"headline": "",
+		"bank": "Bank and payment channel support",
+		"news": "News",
+		"viewAll": "View all",
+		"download": "",
+		"search": "Search",
+		"inputSearch": {
+			"search-1": "No.",
+			"search-2": "Diploma number",
+			"search-3": "Student's name",
+			"search-4": "Student code",
+			"search-5": "Date of birth"
+		},
+		"searchTitle": "Can look up by registration number, student code, payment code, ...",
+		"communication": "All on 1 platform",
+		"banner": {
+			"title-1": "Look up public diploma information quickly",
+			"title-2": "Make it convenient for students, candidates and employers to check and find information",
+			"title-3": "Ensure the accuracy and legality of the search information"
+		},
+		"cantGetDatabase": "Note: Can't get the information in the database",
+		"dontMatch": "Note: Information on blockchain is not identical to the database",
+		"infoVerified": "The information on the blockchain has been verified!",
+		"schoolCode": "School code",
+		"decision": "Graduation decision",
+		"createdAt": "Created at",
+		"updatedAt": "Updated at",
+		"action": "Actions",
+		"viewDetail": "View detail",
+		"searchResult": "Search result",
+		"detail": "Diploma details",
+		"digitalSigned": "Diploma information has been digitally signed:",
+		"checkSignature": "Digital Signature Check (JWS)",
+		"diplomaFile": "Diploma file:"
+	},
+	"footer": {
+		"payment": "Payment",
+		"title": "We accept Credit Card, Debit Card and Cryptocurrency Payments.",
+		"address": "Address:",
+		"contact": "Contact:",
+		"environment": "Resources:",
+		"headquarters": "Head quarters:",
+		"headquartersHCM": "Branch in Ho Chi Minh City:",
+		"trainingHN": "Campus in Ha Noi:",
+		"trainingHCM": "Campus in Ho Chi Minh:"
+	}
+}
