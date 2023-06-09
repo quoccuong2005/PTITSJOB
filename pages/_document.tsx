@@ -36,30 +36,27 @@ export default class CustomDocument extends Document {
 			<Html>
 				<Head>
 					{/* eslint-disable-next-line @next/next/no-sync-scripts */}
-					<script src='/js/jquery-2.2.1.min.js'></script>
+					<script src="/js/jquery-2.2.1.min.js"></script>
 					{/* eslint-disable-next-line @next/next/no-sync-scripts */}
-					<script src='/js/wow.js'></script>
+					<script src="/js/wow.js"></script>
 					{/* eslint-disable-next-line @next/next/no-sync-scripts */}
-					<script src='/js/script.js'></script>
+					<script src="/js/script.js"></script>
 					<link rel='preconnect' href='https://fonts.googleapis.com' />
 					<link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin={"true"} />
 					<link
 						href='https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'
 						rel='stylesheet'
 					/>
-					<link rel='preconnect' href='https://fonts.googleapis.com' />
-					<link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin={"true"} />
-					<link
-						href='https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap'
-						rel='stylesheet'
-					/>
-					<link rel='preconnect' href='https://fonts.googleapis.com' />
-					<link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin={"true"} />
-					<link
-						href='https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap'
-						rel='stylesheet'
-					/>
-					<script async src='https://www.googletagmanager.com/gtag/js?id=G-8Z1H039CBG'></script>
+					<link rel="preconnect" href="https://fonts.googleapis.com"/>
+						<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={"true"}/>
+							<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap"
+										rel="stylesheet"/>
+					<link rel="preconnect" href="https://fonts.googleapis.com"/>
+						<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin={"true"}/>
+							<link
+								href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap"
+								rel="stylesheet"/>
+					<script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z1H039CBG"></script>
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `

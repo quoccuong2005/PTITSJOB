@@ -1,7 +1,9 @@
 import { Breadcrumb } from "flowbite-react";
 
 import styled from "styled-components";
+import MiniCard from "../components/Event/components/MiniCard";
 import { useEffect, useState } from "react";
+import { TuyenSinh } from "../utils/interface";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { ip } from "../api/ip";
@@ -10,11 +12,14 @@ import {renderImage} from "../utils/util";
 
 
 const All = () => {
-    const [dataTuyenSinh, setDataTuyenSinh] = useState<any[]>([]);
+    const [dataTuyenSinh, setDataTuyenSinh] = useState<TuyenSinh[]>([]);
     const [page, setPage] = useState<number>(1);
     const [total, setTotal] = useState<number>(0);
     const router = useRouter();
 
+    useEffect(() => {
+
+    }, [page,router]);
     return (
         <TinTucWraper>
             <div className='container mx-auto bg-white px-6 pt-2 pb-14 mb-2'>
@@ -44,18 +49,18 @@ const All = () => {
                                     router.push(`/tin-tuc/${val?.id}`);
                                 }}
                             >
-                                {/*<MiniCard*/}
-                                {/*    data={{*/}
-                                {/*        id: val?.id,*/}
-                                {/*        imageUrl: renderImage(val?.thumbnail),*/}
-                                {/*        content: val?.name,*/}
-                                {/*        dateTime: val?.created,*/}
-                                {/*        description: val?.summary,*/}
-                                {/*        // link:`/tin-tuc/${val?.id}?type=TUYENSINH_DAIHOC`*/}
-                                {/*    }}*/}
-                                {/*    size={"large"}*/}
-                                {/*    key={i}*/}
-                                {/*/>*/}
+                                <MiniCard
+                                    data={{
+                                        id: val?.id,
+                                        imageUrl: renderImage(val?.thumbnail),
+                                        content: val?.name,
+                                        dateTime: val?.created,
+                                        description: val?.summary,
+                                        // link:`/tin-tuc/${val?.id}?type=TUYENSINH_DAIHOC`
+                                    }}
+                                    size={"large"}
+                                    key={i}
+                                />
                             </div>
                         );
                     })}
@@ -70,18 +75,18 @@ const All = () => {
                                     router.push(`/tin-tuc/${val?.id}`);
                                 }}
                             >
-                                {/*<MiniCard*/}
-                                {/*    data={{*/}
-                                {/*        id: val?.id,*/}
-                                {/*        imageUrl: renderImage(val?.thumbnail),*/}
-                                {/*        content: val?.name,*/}
-                                {/*        dateTime: val?.created,*/}
-                                {/*        description: val?.summary,*/}
-                                {/*        // link:`/tin-tuc/${val?.id}?type=TUYENSINH_DAIHOC`*/}
-                                {/*    }}*/}
-                                {/*    size={"small"}*/}
-                                {/*    key={i}*/}
-                                {/*/>*/}
+                                <MiniCard
+                                    data={{
+                                        id: val?.id,
+                                        imageUrl: renderImage(val?.thumbnail),
+                                        content: val?.name,
+                                        dateTime: val?.created,
+                                        description: val?.summary,
+                                        // link:`/tin-tuc/${val?.id}?type=TUYENSINH_DAIHOC`
+                                    }}
+                                    size={"small"}
+                                    key={i}
+                                />
                             </div>
                         );
                     })}

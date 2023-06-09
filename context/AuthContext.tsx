@@ -8,7 +8,7 @@ import i18n from "../i18n";
 import { USER_ROLE } from "../utils/constant";
 import { getRequest } from "../api";
 import { Auth } from "../api/auth/type";
-import { MainMenu} from "../utils/interface";
+import {DataConfig, MainMenu} from "../utils/interface";
 
 const defaultValue: Auth.AuthContextType = {
 	isAuthenticated: false,
@@ -39,7 +39,7 @@ export const AuthProvider = (props: { children: React.ReactNode }) => {
 	const [user, setUser] = useState<User.IRoot | undefined>(undefined);
 	const [langCode, setLangCode] = useState<string>(i18n.language);
 	const [menu, setMenu] = useState<MainMenu[]>([]);
-	const [dataConfig, setDataConfig] = useState<any[]>([]);
+	const [dataConfig, setDataConfig] = useState<DataConfig[]>([]);
 	const [userLoading, setUserLoading] = useState(true);
 	const [showAuthModal, setShowAuthModal] = useState("");
 	const [allBookmark, setAllBookmark] = useState<string[]>([]);
@@ -89,26 +89,26 @@ export const AuthProvider = (props: { children: React.ReactNode }) => {
 		if (accessToken) {
 			localStorage.setItem("token", accessToken);
 			axios.defaults.headers.Authorization = `Bearer ${accessToken}`;
-			if (user) {
-				setUserLoading(true);
-				getUserProfile()
-					.then((response) => {
-						if (user.systemRole === USER_ROLE.USER) user.profileUser = response.data;
-						else user.profileDoanhNghiep = response.data;
-						setUser(user);
-
-						if (user?.systemRole === USER_ROLE.USER) {
-							getAllBookmark().then((res) =>
-								setAllBookmark(res.data?.map((item: { idTinDang: string }) => item?.idTinDang))
-							);
-							getAllApply().then((res) => setAllApply(res.data?.map((item: { idTinDang: string }) => item?.idTinDang)));
-							getAllFollow().then((res) =>
-								setAllFollow(res.data?.map((item: { idTheoDoi: string }) => item?.idTheoDoi))
-							);
-						}
-					})
-					.finally(() => setUserLoading(false));
-			}
+			// if (user) {
+			// 	setUserLoading(true);
+			// 	getUserProfile()
+			// 		.then((response) => {
+			// 			if (user.systemRole === USER_ROLE.USER) user.profileUser = response.data;
+			// 			else user.profileDoanhNghiep = response.data;
+			// 			setUser(user);
+			//
+			// 			if (user?.systemRole === USER_ROLE.USER) {
+			// 				getAllBookmark().then((res) =>
+			// 					setAllBookmark(res.data?.map((item: { idTinDang: string }) => item?.idTinDang))
+			// 				);
+			// 				getAllApply().then((res) => setAllApply(res.data?.map((item: { idTinDang: string }) => item?.idTinDang)));
+			// 				getAllFollow().then((res) =>
+			// 					setAllFollow(res.data?.map((item: { idTheoDoi: string }) => item?.idTheoDoi))
+			// 				);
+			// 			}
+			// 		})
+			// 		.finally(() => setUserLoading(false));
+			// }
 			return user as User.IRoot;
 		}
 	};

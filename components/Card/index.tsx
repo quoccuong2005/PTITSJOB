@@ -1,186 +1,85 @@
 import React from "react";
 import styled, { CSSProperties } from "styled-components";
 import moment from "moment/moment";
-import { da } from "date-fns/locale";
 
 interface IProps {
-	data: { imageUrl: string; title: string; description?: string; dateTime?: string; link?: string };
+	data: { imageUrl: string; content: string; description?: string; dateTime?: string; link?: string };
 	style?: CSSProperties;
-	type?: "big1" | "big2" | "small1" | "small2";
+	type?: "big" | "small";
 }
 const Card = (props: IProps) => {
-	const { data } = props;
-	const renderContent = () => {
-		switch (props.type) {
-			case "big1":
-				return (
-					<CardWrapper>
-						<a href={data?.link ? data?.link : "#"} className="overflow-hidden wow fadeInUp">
-							<div className='mb-[16px] h-[350px] overflow-hidden'>
-								<img className="h-full w-full " src={data.imageUrl} alt={"image"} />
+	return (
+		<CardWrapper>
+			<div className='flex '>
+				<div className='w-1/2 max-h-[337px]'>
+					<img
+						src={props.data?.imageUrl}
+						alt={"image"}
+						className='w-full h-full'
+						onError={({ currentTarget }) => {
+							currentTarget.onerror = null; // prevents looping
+							currentTarget.src = "/images/default/tin2.png";
+						}}
+					/>
+				</div>
+				<div className='px-[40px] py-[60px] w-1/2 bg-[#1421410A]'>
+					<div className='border-l-2 pl-[12px] border-primary mb-[24px]'>
+						<div className='flex text-primary items-center mb-[10px]'>
+							<div className='mr-[16px] '>
+								<svg width='15' height='14' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<path d='M0 7H13M13 7L7.7381 1.5M13 7L7.7381 12.5' stroke='#DE221A' strokeWidth='2' />
+								</svg>
 							</div>
-							<div className='title hover:text-primary'>{data?.title}</div>
-							<div className='description hover:text-primary' >{data?.description}</div>
-						</a>
-					</CardWrapper>
-				);
-				break;
-			case "big2":
-				return (
-					<CardWrapper2>
-						<a href={data?.link ? data?.link : "#"} className="overflow-hidden wow fadeInUp">
-							<div className='mb-[16px] w-[400px] h-[260px] overflow-hidden'>
-								<img className='rounded w-full h-full' src={data.imageUrl} alt={"image"} />
-							</div>
-							<div className='date-time mb-[5px]'>
-								{data?.dateTime ? moment(data?.dateTime).format("DD/MM/YYYY") : ""}
-							</div>
-							<div className='title hover:text-primary'>{data?.title}</div>
-						</a>
-					</CardWrapper2>
-				);
-				break;
-			case "small1":
-				return (
-					<CardWrapper3>
-						<a href={data?.link ? data?.link : "#"} className='flex py-[16px] border-b border-[#ccc] wow fadeInUp'>
-							<div className='mr-[20px] shrink-0'>
-								<img className='rounded w-[90px]' src={data.imageUrl} alt={"image"} />
-							</div>
-							<div className='title hover:text-primary'>{data?.title}</div>
-						</a>
-					</CardWrapper3>
-				);
-				break;
-			case "small2":
-				return (
-					<CardWrapper4>
-						<a href={data?.link ? data?.link : "#"} className='flex py-[16px] border-b border-[#ccc] wow fadeInUp'>
-							<div className='mr-[20px] shrink-0'>
-								<img className='rounded w-[125px] ' src={data.imageUrl} alt={"image"} />
-							</div>
-							<div>
-								<div className='title hover:text-primary'>{data?.title}</div>
-								<div className='date-time'>{data?.dateTime ? moment(data?.dateTime).format("DD/MM/YYYY") : ""}</div>
-							</div>
-						</a>
-					</CardWrapper4>
-				);
-				break;
-			default:
-				return <CardWrapper></CardWrapper>;
-				break;
-		}
-	};
-	return renderContent();
+							{moment(props.data?.dateTime).format("DD/MM/YYYY HH:mm")}
+						</div>
+						<div className='text-content'>{props.data?.content}</div>
+					</div>
+
+					<div className='description ' dangerouslySetInnerHTML={{ __html: props.data?.description as string }}></div>
+				</div>
+			</div>
+		</CardWrapper>
+	);
 };
 const CardWrapper = styled.div`
-	img {
-		transition: 0.3s;
-		&:hover {
-			transform: scale(1.1);
-		}
-	}
-	.title {
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		color: #031739;
-		display: block;
-		display: -webkit-box;
-		font-size: 1.2rem;
-		font-weight: 500;
-		margin-bottom: 8px;
-		overflow: hidden;
-		transition: all 0.3s ease;
-		&:hover{
-			color: #b70b00;
-		}
-	}
+	max-height: 337px;
+	background-color: #ffffff;
 	.description {
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		-webkit-box-orient: vertical;
-		
-		color: #031739;
-		display: block;
-		display: -webkit-box;
-		font-size: 1rem;
+		font-family: "Inter";
+		font-style: normal;
 		font-weight: 400;
-		margin-bottom: 8px;
-		transition: all 0.3s ease;
-	}
-`;
-const CardWrapper2 = styled.div`
-	img {
-		transition: 0.3s;
-		&:hover {
-			transform: scale(1.1);
-		}
-	}
-	.date-time {
-		font-size: 13px;
-	}
-	.title {
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		color: #031739;
-		display: block;
-		display: -webkit-box;
-		font-size: 1.2rem;
-		font-weight: 500;
-		margin-bottom: 8px;
-		overflow: hidden;
-		transition: all 0.3s ease;
-		&:hover{
-			color: #b70b00;
-		}
-	}
-`;
-const CardWrapper3 = styled.div`
-	.title {
-		color: #031739;
-		display: block;
-		display: -webkit-box;
 		font-size: 16px;
-		font-weight: 500;
-		margin-bottom: 8px;
-		transition: all 0.3s ease;
+		line-height: 28px;
+		color: #212529;
 
 		overflow: hidden;
 		text-overflow: ellipsis;
 		display: -webkit-box;
-		-webkit-line-clamp: 3;
+		-webkit-line-clamp: 4;
 		-webkit-box-orient: vertical;
-
-		&:hover{
-			color: #b70b00;
-		}
 	}
-`;
-const CardWrapper4 = styled.div`
-	.date-time {
-		font-size: 13px;
-	}
-	.title {
-		color: #031739;
-		display: block;
-		font-size: 16px;
-		font-weight: 500;
-		margin-bottom: 8px;
+	.text-content {
+		font-family: "Inter";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 28px;
+		color: #212529;
 
-		transition: all 0.3s ease;
-		
 		overflow: hidden;
 		text-overflow: ellipsis;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
+	}
+	.text-primary {
+		font-family: "Inter";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 17px;
 
-		&:hover{
-			color: #b70b00;
-		}
+		color: #DE221A;
 	}
 `;
 export default Card;

@@ -5,7 +5,6 @@ module.exports = {
 		"./layouts/**/*.{js,ts,jsx,tsx}",
 		"./node_modules/flowbite-react/**/*.js",
 	],
-	plugins: [require("flowbite/plugin")],
 	theme: {
 		darkMode: 'class',
 		extend: {
@@ -64,6 +63,24 @@ module.exports = {
 						on: "#641717", //800
 					},
 				},
+				// gray: {
+				// 	50: "#fbf4f4",
+				// 	100: "#f6e9e9",
+				// 	200: "#e9c9c9",
+				// 	300: "#a8c6db",
+				// 	400: "#6799c1",
+				// 	500: "#FFFFFF",
+				// 	600: "#a5b0b2",
+				// 	700: "#a7b0b6",
+				// 	800: "#174164",
+				// 	900: "#9ca1a4",
+				// 	DEFAULT: "#C3C7CC", //500
+				// 	on: "#f4fbfa", //50
+				// 	dark: {
+				// 		DEFAULT: "#dba8a8", //300
+				// 		on: "#641717", //800
+				// 	},
+				// },
 			},
 			keyframes: {
 				fadeOpacity: {
@@ -76,5 +93,5 @@ module.exports = {
 			}
 		},
 	},
-
+	plugins: [require("flowbite/plugin")],
 };

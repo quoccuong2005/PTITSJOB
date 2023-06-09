@@ -6,39 +6,127 @@ import { useTranslation } from "react-i18next";
 import { Controller, useForm } from "react-hook-form";
 import DatePickerFake from "../components/DatePicker";
 import DropdownFake from "../components/Dropdown";
-
+import MiniCard from "../components/Event/components/MiniCard";
+import axios from "axios";
 import { ip, ip3 } from "../api/ip";
 import moment from "moment";
-import {renderImage, toRegex} from "../utils/util";
-import CardSearch from "../components/CardSearch";
-import Title from "../components/Title";
-import { dataChucNang } from "../data";
-import {DataSearch} from "../utils/interface";
-import { axios } from "../api";
+import { renderImage } from "../utils/util";
 const TimKiem = () => {
 	const [startDate, setStartDate] = useState(new Date());
 	const [common] = useTranslation("common");
 	const router = useRouter();
-	const [dataSearch, setDataSearch] = useState<DataSearch[]>([]);
-const [total,setTotal]=useState<number>(0)
-	const getDataSearch = async () => {
+	const [dataSearch, setDataSearch] = useState<any[]>();
+	const getData = async (payload: { keyword?: string; type?: string; startDate?: string; endDate?: string }) => {
 		try {
-			const res = await axios.get(`${ip}/tin-tuc/v2/public/search-tin-tuc`, {
-				params: {
+			const fillter = [];
+			if (payload.keyword) {
+				fillter.push({
+					filters: [
+						{
+							filters: [],
+							field: "name",
+							operator: "contains",
+							value: JSON.stringify(payload.keyword),
+						},
+						{
+							filters: [],
+							field: "summary",
+							operator: "contains",
+							value: JSON.stringify(payload.keyword),
+						},
+					],
+					logic: "or",
+				});
+			}
+			if (payload.type) {
+				fillter.push({
+					filters: [],
+					field: "type",
+					operator: "eq",
+					value: JSON.stringify(payload.type),
+				});
+			}
+			if (payload.startDate) {
+				fillter.push({
+					filters: [],
+					field: "releaseDate",
+					operator: "gte",
+					value: JSON.stringify(payload.startDate),
+				});
+			}
+			if (payload.endDate) {
+				fillter.push({
+					filters: [],
+					field: "releaseDate",
+					operator: "gte",
+					value: JSON.stringify(payload.endDate),
+				});
+			}
+			fillter?.push({
+				filters: [],
+				field: "statusView",
+				operator: "eq",
+				value: "2",
+			});
+			// [
+			// 	{
+			// 		filters: [
+			// 			{
+			// 				filters: [],
+			// 				field: "name",
+			// 				operator: "contains",
+			// 				value: JSON.stringify(router?.query?.keyword),
+			// 			},
+			// 			{
+			// 				filters: [],
+			// 				field: "summary",
+			// 				operator: "contains",
+			// 				value: JSON.stringify(router?.query?.keyword),
+			// 			},
+			// 		],
+			// 		logic: "or",
+			// 	},
+			// 	{
+			// 		filters: [],
+			// 		field: "type",
+			// 		operator: "eq",
+			// 		value: '"NEWS"',
+			// 	},
+			// 	{
+			// 		filters: [],
+			// 		field: "releaseDate",
+			// 		operator: "gte",
+			// 		value: '"2022-04-28T02:15:37.919Z"',
+			// 	},
+			// 	{
+			// 		filters: [],
+			// 		field: "releaseDate",
+			// 		operator: "lte",
+			// 		value: '"2023-04-28T02:15:37.919Z"',
+			// 	},
+			// 	// {
+			// 	// 	filters: [],
+			// 	// 	field: "statusView",
+			// 	// 	operator: "eq",
+			// 	// 	value: "2",
+			// 	// },
+			// ]
+			const res = await axios.post(`${ip}/cmscore/v5/Article/GetData`, {
+				filters: fillter,
+				sorts: [
+					{
+						field: "releaseDate",
+						dir: -1,
+					},
+				],
+				pageInfo: {
 					page: 1,
-					limit: 10,
-					condition: JSON.stringify({
-						tieuDe:toRegex(router?.query?.keyword),
-						ngayDang:(router?.query?.startDate||router?.query?.endDate)?{
-							"$gte":router?.query?.startDate?router?.query?.startDate:undefined,
-							"$lte":router?.query?.endDate?router?.query?.endDate:undefined
-						}:undefined
-					}),
+					pageSize: 10,
 				},
 			});
 			if (res) {
-				setDataSearch(res?.data?.data?.result??[]);
-				setTotal(res?.data?.data?.total??0)
+				console.log("res", res);
+				setDataSearch(res?.data?.data);
 			}
 		} catch (e) {
 			console.log(e);
@@ -47,7 +135,12 @@ const [total,setTotal]=useState<number>(0)
 	useEffect(() => {
 		console.log("router", router);
 		if (router) {
-			getDataSearch()
+			getData({
+				keyword: router?.query?.keyword as string,
+				type: router?.query?.type as string,
+				startDate: router?.query?.startDate as string,
+				endDate: router?.query?.endDate as string,
+			});
 		}
 	}, [router]);
 	const {
@@ -65,9 +158,9 @@ const [total,setTotal]=useState<number>(0)
 		// 	endDate: moment(data?.endDate).toISOString(),
 		// });
 		router.push(
-			`/tim-kiem?keyword=${data?.keyword?data?.keyword:router?.query?.keyword}${data?.type ? `&type=${data?.type}` : ""}${
+			`/tim-kiem?keyword=${data?.keyword}${data?.type ? `&type=${data?.type}` : ""}${
 				data?.dateStart ? `&startDate=${moment(data?.dateStart).toISOString()}` : ""
-			}${data?.dateEnd ? `&endDate=${moment(data?.dateEnd).toISOString()}` : ""}`
+			}${data?.endDdateEndate ? `&endDate=${moment(data?.dateEnd).toISOString()}` : ""}`
 		);
 	};
 	const option = [
@@ -77,7 +170,7 @@ const [total,setTotal]=useState<number>(0)
 	];
 	return (
 		<SearchWrapper>
-			<div className='container mx-auto bg-white  pt-2 pb-6 mb-2'>
+			<div className='container mx-auto bg-white px-6 pt-2 pb-6 mb-2'>
 				<BreadcrumbPage
 					data={[
 						{
@@ -90,16 +183,16 @@ const [total,setTotal]=useState<number>(0)
 						},
 					]}
 				/>
+				<h2 className='mt-[24px]'>{common("common.search-result")}</h2>
+				<p className='search-result'>
+					Có <b>{dataSearch?.length}</b> kết quả cho từ khóa <b>&quot;{router?.query?.keyword}&quot;</b>
+				</p>
 			</div>
 			<div className='container mx-auto mb-[8px]'>
-				<div className='grid sm:grid-cols-8 grid-cols-1 gap-[20px]'>
-					<div className='sm:col-span-6 '>
-						<div className='filter-box mb-4'>
-							<div className='filter-box-header '>
-								<span>Lọc tin tức</span>
-								<span>Kết quả tìm Kiếm: 10 tin tức</span>
-							</div>
-							<div className='filter-box-content'>
+				<div className={"grid grid-flow-row-dense  lg:grid-cols-4 bg-white px-6 pt-6"}>
+					<div className='col-span-4'>
+						<div className='result'>
+							<div className='form-result mb-[40px]'>
 								<form onSubmit={handleSubmit(onSubmit)}>
 									<div className='mb-4'>
 										<div className='search flex item-center'>
@@ -119,7 +212,24 @@ const [total,setTotal]=useState<number>(0)
 										</div>
 										{errors.keyword && <p className='error-text'>Bắt buộc</p>}
 									</div>
-									<div className='grid grid-flow-row-dense  lg:grid-cols-2 gap-[24px]'>
+									<div className='grid grid-flow-row-dense  lg:grid-cols-3 gap-[24px]'>
+										<div className='dropdown'>
+											<Controller
+												name={"type"}
+												control={control}
+												render={({ field: { onChange, value } }) => (
+													<DropdownFake
+														option={option}
+														onChange={(val) => {
+															console.log("val", val);
+															onChange(val.value);
+														}}
+														value={value}
+														placeholder={"Chọn"}
+													/>
+												)}
+											/>
+										</div>
 										<div className='date-picker'>
 											<Controller
 												name={"dateStart"}
@@ -153,56 +263,42 @@ const [total,setTotal]=useState<number>(0)
 									</div>
 								</form>
 							</div>
-						</div>
-						<div className='data-result hidden lg:block'>
-							{dataSearch?.map((val, i) => {
-								return (
-									<div className='mb-[30px]' key={i}>
-										<CardSearch
-											data={{
-												title: val?.tieuDe,
-												imageUrl: val?.anhDaiDien,
-												dateTime: val?.ngayDang,
-												link:`/tin-tuc/${val?._id}?type=${val?.idTopic?.name}`
-											}}
-										/>
-									</div>
-								);
-							})}
-						</div>
-						<div className='data-result block lg:hidden'>
-							{dataSearch?.map((val, i) => {
-								return (
-									<div className='mb-[30px]' key={i}>
-										<CardSearch
-											data={{
-												title: val?.tieuDe,
-												imageUrl: val?.anhDaiDien,
-												dateTime: val?.ngayDang,
-												link:`/tin-tuc/${val?._id}?type=${val?.idTopic?.name}`
-											}}
-										/>
-									</div>
-								);
-							})}
-						</div>
-					</div>
-					<div className='sm:col-span-2 hidden sm:block'>
-						<Title title={"Chức năng"} uppercase={true} />
-						<div className='listcn'>
-							{dataChucNang?.map((val, i) => {
-								return (
-									<a
-										href={val?.link ? val?.link : "#"}
-										target={"_blank"}
-										rel={"noreferrer"}
-										className='item-cn py-[4px] bg-[#f6f8fa] mb-[4px] cursor-pointer block'
-										key={i}
-									>
-										<div className='border-l-2 border-primary px-[8px]'>{val?.title}</div>
-									</a>
-								);
-							})}
+							<div className='data-result hidden lg:block'>
+								{dataSearch?.map((val, i) => {
+									return (
+										<div className='mb-[30px]' key={i}>
+											<MiniCard
+												data={{
+													id: val?.id,
+													imageUrl: renderImage(val?.thumbnail),
+													content: val?.name,
+													dateTime: val?.created,
+													description: val?.description,
+												}}
+												size={"large"}
+											/>
+										</div>
+									);
+								})}
+							</div>
+							<div className='data-result block lg:hidden'>
+								{dataSearch?.map((val, i) => {
+									return (
+										<div className='mb-[30px]' key={i}>
+											<MiniCard
+												data={{
+													id: val?.id,
+													imageUrl: renderImage(val?.thumbnail),
+													content: val?.name,
+													dateTime: val?.created,
+													description: val?.description,
+												}}
+												size={"small"}
+											/>
+										</div>
+									);
+								})}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -250,23 +346,6 @@ const SearchWrapper = styled.div`
 			align-items: center;
 			color: #ffffff;
 		}
-	}
-	.filter-box {
-		border: 1px solid #d6261a;
-		border-radius: 5px;
-	}
-	.filter-box-header {
-		align-items: center;
-		background-color: #d6261a;
-		color: #fff;
-		display: flex;
-		font-size: 1.1rem;
-		font-weight: 600;
-		justify-content: space-between;
-		padding: 4px 20px;
-	}
-	.filter-box-content {
-		padding: 12px 20px;
 	}
 `;
 export default TimKiem;

@@ -15,3 +15,4 @@ module.exports = withBundleAnalyzer({
 	reactStrictMode: true,
 	swcMinify: true,
 });
+

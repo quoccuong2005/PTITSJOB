@@ -1,17 +1,3 @@
-import { ReactNode } from "react";
-
-export interface IDataNavBar {
-	icon?: ReactNode;
-	linkTo: string;
-	name: string;
-	isBlank?: boolean;
-	childrenRouter: {
-		linkTo: string;
-		name: string;
-		isBlank?: boolean;
-		childrenRouter?: { linkTo: string; name: string; isBlank?: boolean }[];
-	}[];
-}
 export interface MainMenu {
 	expanded: false;
 	data: {
@@ -218,101 +204,884 @@ export interface MainMenu {
 	];
 }
 
+export interface GioiThieu {
+	id: number;
+	title: string;
+	htmlContent: string;
+	description: string;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+	type: string;
+	imageUrl: string;
+}
+[];
+export interface GioiThieuNC {
+	id: 1;
+	attributes: {
+		createdAt: "2023-06-03T02:12:48.619Z";
+		updatedAt: "2023-06-03T02:59:49.277Z";
+		publishedAt: "2023-06-03T02:13:34.263Z";
+		tieuDe: string;
+		moTa: string;
+		so: string;
+	};
+}
+[];
+export interface IDataHome {
+	createdAt: "2023-06-01T03:05:50.137Z";
+	updatedAt: "2023-06-01T17:13:11.560Z";
+	publishedAt: "2023-06-01T17:13:11.558Z";
+	banner: [
+		{
+			id: 1;
+			title: "banner1";
+			linkTo: "https://slink.ptit.edu.vn/user/login";
+			images: {
+				data: {
+					id: 3;
+					attributes: {
+						name: "image 81.png";
+						alternativeText: null;
+						caption: null;
+						width: 1440;
+						height: 777;
+						formats: {
+							thumbnail: {
+								name: "thumbnail_image 81.png";
+								hash: "thumbnail_image_81_cba33cde3a";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 245;
+								height: 132;
+								size: 85.46;
+								url: "/uploads/thumbnail_image_81_cba33cde3a.png";
+							};
+							small: {
+								name: "small_image 81.png";
+								hash: "small_image_81_cba33cde3a";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 500;
+								height: 270;
+								size: 346.22;
+								url: "/uploads/small_image_81_cba33cde3a.png";
+							};
+							medium: {
+								name: "medium_image 81.png";
+								hash: "medium_image_81_cba33cde3a";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 750;
+								height: 405;
+								size: 766.96;
+								url: "/uploads/medium_image_81_cba33cde3a.png";
+							};
+							large: {
+								name: "large_image 81.png";
+								hash: "large_image_81_cba33cde3a";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 1000;
+								height: 540;
+								size: 1347.2;
+								url: "/uploads/large_image_81_cba33cde3a.png";
+							};
+						};
+						hash: "image_81_cba33cde3a";
+						ext: ".png";
+						mime: "image/png";
+						size: 674.62;
+						url: "/uploads/image_81_cba33cde3a.png";
+						previewUrl: null;
+						provider: "local";
+						provider_metadata: null;
+						createdAt: "2023-06-01T03:03:07.246Z";
+						updatedAt: "2023-06-01T03:03:07.246Z";
+					};
+				};
+			};
+		},
+		{
+			id: 2;
+			title: "banner 2";
+			linkTo: "https://slink.ptit.edu.vn/user/login";
+			images: {
+				data: {
+					id: 4;
+					attributes: {
+						name: "banner-home-1.jpg";
+						alternativeText: null;
+						caption: null;
+						width: 3539;
+						height: 2353;
+						formats: {
+							thumbnail: {
+								name: "thumbnail_banner-home-1.jpg";
+								hash: "thumbnail_banner_home_1_106abe48ac";
+								ext: ".jpg";
+								mime: "image/jpeg";
+								path: null;
+								width: 235;
+								height: 156;
+								size: 10.46;
+								url: "/uploads/thumbnail_banner_home_1_106abe48ac.jpg";
+							};
+							small: {
+								name: "small_banner-home-1.jpg";
+								hash: "small_banner_home_1_106abe48ac";
+								ext: ".jpg";
+								mime: "image/jpeg";
+								path: null;
+								width: 500;
+								height: 333;
+								size: 37.92;
+								url: "/uploads/small_banner_home_1_106abe48ac.jpg";
+							};
+							large: {
+								name: "large_banner-home-1.jpg";
+								hash: "large_banner_home_1_106abe48ac";
+								ext: ".jpg";
+								mime: "image/jpeg";
+								path: null;
+								width: 1000;
+								height: 665;
+								size: 131.06;
+								url: "/uploads/large_banner_home_1_106abe48ac.jpg";
+							};
+							medium: {
+								name: "medium_banner-home-1.jpg";
+								hash: "medium_banner_home_1_106abe48ac";
+								ext: ".jpg";
+								mime: "image/jpeg";
+								path: null;
+								width: 750;
+								height: 499;
+								size: 78.72;
+								url: "/uploads/medium_banner_home_1_106abe48ac.jpg";
+							};
+						};
+						hash: "banner_home_1_106abe48ac";
+						ext: ".jpg";
+						mime: "image/jpeg";
+						size: 803.61;
+						url: "/uploads/banner_home_1_106abe48ac.jpg";
+						previewUrl: null;
+						provider: "local";
+						provider_metadata: null;
+						createdAt: "2023-06-01T03:05:16.245Z";
+						updatedAt: "2023-06-01T03:05:16.245Z";
+					};
+				};
+			};
+		},
+		{
+			id: 3;
+			title: "banner 3";
+			linkTo: "https://slink.ptit.edu.vn/user/login";
+			images: {
+				data: {
+					id: 5;
+					attributes: {
+						name: "banner-home-2.jpg";
+						alternativeText: null;
+						caption: null;
+						width: 4095;
+						height: 2730;
+						formats: {
+							thumbnail: {
+								name: "thumbnail_banner-home-2.jpg";
+								hash: "thumbnail_banner_home_2_6fcad97917";
+								ext: ".jpg";
+								mime: "image/jpeg";
+								path: null;
+								width: 234;
+								height: 156;
+								size: 10.98;
+								url: "/uploads/thumbnail_banner_home_2_6fcad97917.jpg";
+							};
+							small: {
+								name: "small_banner-home-2.jpg";
+								hash: "small_banner_home_2_6fcad97917";
+								ext: ".jpg";
+								mime: "image/jpeg";
+								path: null;
+								width: 500;
+								height: 333;
+								size: 41.16;
+								url: "/uploads/small_banner_home_2_6fcad97917.jpg";
+							};
+							medium: {
+								name: "medium_banner-home-2.jpg";
+								hash: "medium_banner_home_2_6fcad97917";
+								ext: ".jpg";
+								mime: "image/jpeg";
+								path: null;
+								width: 750;
+								height: 500;
+								size: 82.08;
+								url: "/uploads/medium_banner_home_2_6fcad97917.jpg";
+							};
+							large: {
+								name: "large_banner-home-2.jpg";
+								hash: "large_banner_home_2_6fcad97917";
+								ext: ".jpg";
+								mime: "image/jpeg";
+								path: null;
+								width: 1000;
+								height: 667;
+								size: 137.13;
+								url: "/uploads/large_banner_home_2_6fcad97917.jpg";
+							};
+						};
+						hash: "banner_home_2_6fcad97917";
+						ext: ".jpg";
+						mime: "image/jpeg";
+						size: 1404.9;
+						url: "/uploads/banner_home_2_6fcad97917.jpg";
+						previewUrl: null;
+						provider: "local";
+						provider_metadata: null;
+						createdAt: "2023-06-01T03:05:16.337Z";
+						updatedAt: "2023-06-01T07:05:21.895Z";
+					};
+				};
+			};
+		}
+	];
+	about: {
+		id: 1;
+		chienluoc: "<p>Đến năm 2022, hoạt động KHCN đóng vai trò nòng cốt trong sự phát triển của Học viện và hỗ trợ cho việc đổi mới chương trình đào tạo để đáp ứng các yêu cầu của cuộc cách mạng công nghiệp 4.0...</p>";
+		dinhhuong: "<p>Đến năm 2022, hoạt động KHCN đóng vai trò nòng cốt trong sự phát triển của Học viện và hỗ trợ cho việc đổi mới chương trình đào tạo để đáp ứng các yêu cầu của cuộc cách mạng công nghiệp 4.0...</p>";
+		lienhe: "<p>Đến năm 2022, hoạt động KHCN đóng vai trò nòng cốt trong sự phát triển của Học viện và hỗ trợ cho việc đổi mới chương trình đào tạo để đáp ứng các yêu cầu của cuộc cách mạng công nghiệp 4.0...</p>";
+		images: {
+			data: [
+				{
+					id: 7;
+					attributes: {
+						name: "about-3.png";
+						alternativeText: null;
+						caption: null;
+						width: 287;
+						height: 229;
+						formats: {
+							thumbnail: {
+								name: "thumbnail_about-3.png";
+								hash: "thumbnail_about_3_a0303d7e90";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 196;
+								height: 156;
+								size: 87.93;
+								url: "/uploads/thumbnail_about_3_a0303d7e90.png";
+							};
+						};
+						hash: "about_3_a0303d7e90";
+						ext: ".png";
+						mime: "image/png";
+						size: 50.37;
+						url: "/uploads/about_3_a0303d7e90.png";
+						previewUrl: null;
+						provider: "local";
+						provider_metadata: null;
+						createdAt: "2023-06-01T07:23:41.210Z";
+						updatedAt: "2023-06-01T07:23:41.210Z";
+					};
+				},
+				{
+					id: 8;
+					attributes: {
+						name: "about-2.png";
+						alternativeText: null;
+						caption: null;
+						width: 287;
+						height: 229;
+						formats: {
+							thumbnail: {
+								name: "thumbnail_about-2.png";
+								hash: "thumbnail_about_2_3be62a41b2";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 196;
+								height: 156;
+								size: 64.92;
+								url: "/uploads/thumbnail_about_2_3be62a41b2.png";
+							};
+						};
+						hash: "about_2_3be62a41b2";
+						ext: ".png";
+						mime: "image/png";
+						size: 36.44;
+						url: "/uploads/about_2_3be62a41b2.png";
+						previewUrl: null;
+						provider: "local";
+						provider_metadata: null;
+						createdAt: "2023-06-01T07:23:41.228Z";
+						updatedAt: "2023-06-01T07:23:41.228Z";
+					};
+				},
+				{
+					id: 9;
+					attributes: {
+						name: "about-1.png";
+						alternativeText: null;
+						caption: null;
+						width: 894;
+						height: 471;
+						formats: {
+							thumbnail: {
+								name: "thumbnail_about-1.png";
+								hash: "thumbnail_about_1_101b9b8e08";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 245;
+								height: 129;
+								size: 94.9;
+								url: "/uploads/thumbnail_about_1_101b9b8e08.png";
+							};
+							small: {
+								name: "small_about-1.png";
+								hash: "small_about_1_101b9b8e08";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 500;
+								height: 263;
+								size: 362.95;
+								url: "/uploads/small_about_1_101b9b8e08.png";
+							};
+							medium: {
+								name: "medium_about-1.png";
+								hash: "medium_about_1_101b9b8e08";
+								ext: ".png";
+								mime: "image/png";
+								path: null;
+								width: 750;
+								height: 395;
+								size: 776.46;
+								url: "/uploads/medium_about_1_101b9b8e08.png";
+							};
+						};
+						hash: "about_1_101b9b8e08";
+						ext: ".png";
+						mime: "image/png";
+						size: 254.21;
+						url: "/uploads/about_1_101b9b8e08.png";
+						previewUrl: null;
+						provider: "local";
+						provider_metadata: null;
+						createdAt: "2023-06-01T07:23:41.716Z";
+						updatedAt: "2023-06-01T07:23:41.716Z";
+					};
+				}
+			];
+		};
+	};
+	khamPha: {
+		id: 1;
+		title: "Khám phá cột mốc";
+		duLieu: [
+			{
+				id: 1;
+				title: "Đề tài KHCN";
+				soLuong: "100";
+			},
+			{
+				id: 2;
+				title: "Công bố khoa học";
+				soLuong: "200";
+			}
+		];
+	};
+	qlkh_tin_tucs: {
+		data: [
+			{
+				id: 1;
+				attributes: {
+					createdAt: "2023-06-01T07:41:40.875Z";
+					updatedAt: "2023-06-05T07:06:12.301Z";
+					publishedAt: "2023-06-01T07:41:41.704Z";
+					tieuDe: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ";
+					noiDung: null;
+					moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
+					kieu: "news";
+					hinhAnh: {
+						data: {
+							id: 17;
+							attributes: {
+								name: "cn3.png";
+								alternativeText: null;
+								caption: null;
+								width: 600;
+								height: 337;
+								formats: {
+									thumbnail: {
+										name: "thumbnail_cn3.png";
+										hash: "thumbnail_cn3_963e5a5334";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 245;
+										height: 138;
+										size: 70.65;
+										url: "/uploads/thumbnail_cn3_963e5a5334.png";
+									};
+									small: {
+										name: "small_cn3.png";
+										hash: "small_cn3_963e5a5334";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 500;
+										height: 281;
+										size: 253.54;
+										url: "/uploads/small_cn3_963e5a5334.png";
+									};
+								};
+								hash: "cn3_963e5a5334";
+								ext: ".png";
+								mime: "image/png";
+								size: 95.74;
+								url: "/uploads/cn3_963e5a5334.png";
+								previewUrl: null;
+								provider: "local";
+								provider_metadata: null;
+								createdAt: "2023-06-01T17:10:02.517Z";
+								updatedAt: "2023-06-01T17:10:02.517Z";
+							};
+						};
+					};
+				};
+			},
+			{
+				id: 2;
+				attributes: {
+					createdAt: "2023-06-02T17:04:08.727Z";
+					updatedAt: "2023-06-05T07:06:29.351Z";
+					publishedAt: "2023-06-02T17:04:14.725Z";
+					tieuDe: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ";
+					noiDung: null;
+					moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
+					kieu: "event";
+					hinhAnh: {
+						data: {
+							id: 17;
+							attributes: {
+								name: "cn3.png";
+								alternativeText: null;
+								caption: null;
+								width: 600;
+								height: 337;
+								formats: {
+									thumbnail: {
+										name: "thumbnail_cn3.png";
+										hash: "thumbnail_cn3_963e5a5334";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 245;
+										height: 138;
+										size: 70.65;
+										url: "/uploads/thumbnail_cn3_963e5a5334.png";
+									};
+									small: {
+										name: "small_cn3.png";
+										hash: "small_cn3_963e5a5334";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 500;
+										height: 281;
+										size: 253.54;
+										url: "/uploads/small_cn3_963e5a5334.png";
+									};
+								};
+								hash: "cn3_963e5a5334";
+								ext: ".png";
+								mime: "image/png";
+								size: 95.74;
+								url: "/uploads/cn3_963e5a5334.png";
+								previewUrl: null;
+								provider: "local";
+								provider_metadata: null;
+								createdAt: "2023-06-01T17:10:02.517Z";
+								updatedAt: "2023-06-01T17:10:02.517Z";
+							};
+						};
+					};
+				};
+			}
+		];
+	};
+	hoat_dong_khoa_hocs: {
+		data: [
+			{
+				id: 1;
+				attributes: {
+					createdAt: "2023-06-01T17:10:07.029Z";
+					updatedAt: "2023-06-05T04:48:19.629Z";
+					publishedAt: "2023-06-01T17:10:08.506Z";
+					tieuDe: "Bồi dưỡng cho lãnh đạo cấp phòng; lĩnh vực Nội chính, Tài chính – kế toán, Văn hóa – Xã hội";
+					noiDung: null;
+					moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
+					kieu: "Đề tài";
+					hinhAnh: {
+						data: {
+							id: 18;
+							attributes: {
+								name: "cn1.png";
+								alternativeText: null;
+								caption: null;
+								width: 600;
+								height: 337;
+								formats: {
+									thumbnail: {
+										name: "thumbnail_cn1.png";
+										hash: "thumbnail_cn1_9376e208ae";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 245;
+										height: 138;
+										size: 80.62;
+										url: "/uploads/thumbnail_cn1_9376e208ae.png";
+									};
+									small: {
+										name: "small_cn1.png";
+										hash: "small_cn1_9376e208ae";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 500;
+										height: 281;
+										size: 300.26;
+										url: "/uploads/small_cn1_9376e208ae.png";
+									};
+								};
+								hash: "cn1_9376e208ae";
+								ext: ".png";
+								mime: "image/png";
+								size: 108;
+								url: "/uploads/cn1_9376e208ae.png";
+								previewUrl: null;
+								provider: "local";
+								provider_metadata: null;
+								createdAt: "2023-06-01T17:10:02.544Z";
+								updatedAt: "2023-06-01T17:10:02.544Z";
+							};
+						};
+					};
+					chiTiet: [];
+				};
+			},
+			{
+				id: 2;
+				attributes: {
+					createdAt: "2023-06-02T10:34:59.816Z";
+					updatedAt: "2023-06-05T04:49:06.623Z";
+					publishedAt: "2023-06-02T10:35:08.712Z";
+					tieuDe: "Bồi dưỡng nâng cao kiến thức quản lý Nhà nước về báo chí";
+					noiDung: null;
+					moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
+					kieu: "Công bố";
+					hinhAnh: {
+						data: {
+							id: 17;
+							attributes: {
+								name: "cn3.png";
+								alternativeText: null;
+								caption: null;
+								width: 600;
+								height: 337;
+								formats: {
+									thumbnail: {
+										name: "thumbnail_cn3.png";
+										hash: "thumbnail_cn3_963e5a5334";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 245;
+										height: 138;
+										size: 70.65;
+										url: "/uploads/thumbnail_cn3_963e5a5334.png";
+									};
+									small: {
+										name: "small_cn3.png";
+										hash: "small_cn3_963e5a5334";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 500;
+										height: 281;
+										size: 253.54;
+										url: "/uploads/small_cn3_963e5a5334.png";
+									};
+								};
+								hash: "cn3_963e5a5334";
+								ext: ".png";
+								mime: "image/png";
+								size: 95.74;
+								url: "/uploads/cn3_963e5a5334.png";
+								previewUrl: null;
+								provider: "local";
+								provider_metadata: null;
+								createdAt: "2023-06-01T17:10:02.517Z";
+								updatedAt: "2023-06-01T17:10:02.517Z";
+							};
+						};
+					};
+					chiTiet: [];
+				};
+			},
+			{
+				id: 3;
+				attributes: {
+					createdAt: "2023-06-02T10:35:48.279Z";
+					updatedAt: "2023-06-05T04:48:45.962Z";
+					publishedAt: "2023-06-02T10:35:48.995Z";
+					tieuDe: "Bồi dưỡng nâng cao kiến thức quản lý Nhà nước về báo chí";
+					noiDung: null;
+					moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
+					kieu: "Sản phẩm";
+					hinhAnh: {
+						data: {
+							id: 19;
+							attributes: {
+								name: "cn2.png";
+								alternativeText: null;
+								caption: null;
+								width: 600;
+								height: 337;
+								formats: {
+									thumbnail: {
+										name: "thumbnail_cn2.png";
+										hash: "thumbnail_cn2_25ec7a2f19";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 245;
+										height: 138;
+										size: 85.6;
+										url: "/uploads/thumbnail_cn2_25ec7a2f19.png";
+									};
+									small: {
+										name: "small_cn2.png";
+										hash: "small_cn2_25ec7a2f19";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 500;
+										height: 281;
+										size: 322.27;
+										url: "/uploads/small_cn2_25ec7a2f19.png";
+									};
+								};
+								hash: "cn2_25ec7a2f19";
+								ext: ".png";
+								mime: "image/png";
+								size: 109.19;
+								url: "/uploads/cn2_25ec7a2f19.png";
+								previewUrl: null;
+								provider: "local";
+								provider_metadata: null;
+								createdAt: "2023-06-01T17:10:02.697Z";
+								updatedAt: "2023-06-01T17:10:02.697Z";
+							};
+						};
+					};
+					chiTiet: [];
+				};
+			}
+		];
+	};
+	tap_chi_khoa_hocs: {
+		data: [
+			{
+				id: 1;
+				attributes: {
+					createdAt: "2023-06-01T17:10:37.779Z";
+					updatedAt: "2023-06-05T07:50:34.048Z";
+					publishedAt: "2023-06-01T17:10:40.112Z";
+					tieuDe: "CÔNG BỐ KHOA HỌC";
+					noiDung: null;
+					moTa: "Ngày 3/3/2023, tại Sơn La, Công đoàn TT&TT Việt Nam tổ chức Hội nghị sơ kết phong trào thi ...";
+					hinhAnh: {
+						data: {
+							id: 20;
+							attributes: {
+								name: "tc-4.png";
+								alternativeText: null;
+								caption: null;
+								width: 277;
+								height: 277;
+								formats: {
+									thumbnail: {
+										name: "thumbnail_tc-4.png";
+										hash: "thumbnail_tc_4_f6c98bb24b";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 156;
+										height: 156;
+										size: 45.87;
+										url: "/uploads/thumbnail_tc_4_f6c98bb24b.png";
+									};
+								};
+								hash: "tc_4_f6c98bb24b";
+								ext: ".png";
+								mime: "image/png";
+								size: 32.02;
+								url: "/uploads/tc_4_f6c98bb24b.png";
+								previewUrl: null;
+								provider: "local";
+								provider_metadata: null;
+								createdAt: "2023-06-01T17:10:34.249Z";
+								updatedAt: "2023-06-01T17:10:34.249Z";
+							};
+						};
+					};
+				};
+			}
+		];
+	};
+	don_vi_nghien_cuus: {
+		data: [
+			{
+				id: 1;
+				attributes: {
+					createdAt: "2023-06-01T17:09:15.763Z";
+					updatedAt: "2023-06-05T07:51:34.994Z";
+					publishedAt: "2023-06-01T17:09:16.674Z";
+					tieuDe: "Viện CNTT và truyền thông - CDIT";
+					noiDung: null;
+					kieu: "Phòng thí nghiệm";
+					moTa: null;
+					hinhAnh: {
+						data: {
+							id: 12;
+							attributes: {
+								name: "sk5.png";
+								alternativeText: null;
+								caption: null;
+								width: 279;
+								height: 139;
+								formats: {
+									thumbnail: {
+										name: "thumbnail_sk5.png";
+										hash: "thumbnail_sk5_76a80539b6";
+										ext: ".png";
+										mime: "image/png";
+										path: null;
+										width: 245;
+										height: 122;
+										size: 77.47;
+										url: "/uploads/thumbnail_sk5_76a80539b6.png";
+									};
+								};
+								hash: "sk5_76a80539b6";
+								ext: ".png";
+								mime: "image/png";
+								size: 23.89;
+								url: "/uploads/sk5_76a80539b6.png";
+								previewUrl: null;
+								provider: "local";
+								provider_metadata: null;
+								createdAt: "2023-06-01T07:33:49.586Z";
+								updatedAt: "2023-06-01T07:33:49.586Z";
+							};
+						};
+					};
+				};
+			}
+		];
+	};
+}
+export interface DataNewList {
+	"id": 1,
+	"tieuDe": "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ",
+	"noiDung": null,
+	"moTa": "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....",
+	"kieu": "news",
+	"createdAt": "2023-06-05T07:33:09.942Z",
+	"updatedAt": "2023-06-05T07:35:42.398Z",
+	"publishedAt": "2023-06-05T07:34:43.304Z",
+	"imageUrl": "/uploads/thumbnail_sk2_bc548df3a9.png"
+}
+[];
+
 export interface DataNew {
-	"loaiChiBo": [],
-	"_id": "647bfd84ad986aea9b24ac63",
-	"ngayDang": "2023-06-04T02:57:08.590Z",
-	"idCoSoDang": "608bea5ab56a58bc82accbab",
-	"tieuDe": "CẢI TẠO CHUNG CƯ CŨ PHẢI GẮN VỚI TÁI THIẾT ĐÔ THỊ, QUY ĐỊNH THỜI HẠN SỞ HỮU CHUNG CƯ MỚI",
-	"idTopic": "6422d2234608ac66adaf6d13",
-	"anhDaiDien": "https://apidev.sotaydangvien.com/v2.2/file/648147d93782318e7cbefa23/anh%20dai%20dien%20tin.jpeg",
-	"moTa": "Phát biểu thảo luận tại tổ sáng 5-6, trong chương trình kỳ họp thứ năm, Quốc hội khóa XV, Ủy viên Bộ Chính trị, Bí thư Thành ủy Hà Nội, Trưởng đoàn đại biểu Quốc hội thành phố Hà Nội Đinh Tiến Dũng nêu quan điểm, cải tạo chung cư cũ phải gắn với tái thiết đô thị và quy định thời hạn sở hữu chung cư mới giải quyết được vấn đề.",
-	"loaiNoiDungTinTuc": "Văn bản",
-	"noiDung": "<div>\n<div>\n<div><span>Ph&aacute;t biểu thảo luận tại tổ s&aacute;ng 5-6, trong chương tr&igrave;nh kỳ họp thứ năm, Quốc hội kh&oacute;a XV, Ủy vi&ecirc;n Bộ Ch&iacute;nh trị, B&iacute; thư Th&agrave;nh ủy H&agrave; Nội, Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Đinh Tiến Dũng n&ecirc;u quan điểm, cải tạo chung cư cũ phải gắn với t&aacute;i thiết đ&ocirc; thị v&agrave; quy định thời hạn sở hữu chung cư mới giải quyết được vấn đề.</span></div>\n</div>\n</div>\n<div>\n<div>\n<p><em><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/Ha%20Noi%204_b65f8241-80a6-40f2-afa7-8580467d493e.jpeg\" alt /></em></p>\n<p><em>Đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội thảo luận tại tổ s&aacute;ng 5-6.</em></p>\n<p><strong>Đề nghị t&iacute;nh to&aacute;n lại việc sở hữu chung cư kh&ocirc;ng c&oacute; thời hạn</strong></p>\n<p>Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Đinh Tiến Dũng nhận định, nh&agrave; t&aacute;i định cư ở H&agrave; Nội &ldquo;thừa vẫn thừa, thiếu vẫn thiếu&rdquo;. Thừa theo nhu cầu v&igrave; vừa qua một loạt dự &aacute;n người d&acirc;n chỉ nhận tiền, kh&ocirc;ng nhận nh&agrave;, c&ograve;n thiếu v&igrave; theo Luật Đất đai phải c&oacute; nh&agrave; t&aacute;i định cư mới được triển khai dự &aacute;n. Do đ&oacute;, B&iacute; thư Th&agrave;nh ủy Đinh Tiến Dũng cho rằng, dự thảo Luật Nh&agrave; ở (sửa đổi) n&ecirc;n c&oacute; hướng mở hơn, ho&agrave;n to&agrave;n giao cấp tỉnh c&oacute; thể bố tr&iacute; từ nh&agrave; t&aacute;i định cư sang nh&agrave; ở x&atilde; hội v&agrave; ngược lại để linh hoạt hơn.</p>\n<p>&ldquo;Chả lẽ bố tr&iacute; d&acirc;n ở ph&iacute;a T&acirc;y H&agrave; Nội sang Long Bi&ecirc;n nhận nh&agrave; t&aacute;i định cư? V&ocirc; l&yacute; lắm!&rdquo;, đồng ch&iacute; Đinh Tiến Dũng n&oacute;i, đồng thời nhấn mạnh, t&igrave;nh trạng tr&ecirc;n dẫn đến hệ quả l&agrave; thừa vẫn thừa, thiếu vẫn thiếu v&agrave; rất &aacute;ch tắc trong triển khai c&aacute;c dự &aacute;n giao th&ocirc;ng, dự &aacute;n trọng điểm của th&agrave;nh phố.</p>\n<p><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/HN5_f1a2eeb1-2a2b-44be-8c3a-2c1604868b25.jpeg\" alt /></p>\n<p><em>B&iacute; thư Th&agrave;nh ủy H&agrave; Nội, Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Đinh Tiến Dũng ph&aacute;t biểu thảo luận.</em></p>\n<p>Về tr&aacute;ch nhiệm nh&agrave; đầu tư dự &aacute;n nh&agrave; ở thương mại, B&iacute; thư Th&agrave;nh ủy H&agrave; Nội đề nghị bổ sung chế t&agrave;i bắt buộc trong luật về việc c&aacute;c chủ đầu tư n&agrave;y phải đảm bảo việc đầu tư hạ tầng x&atilde; hội. &ldquo;Thực tiễn c&oacute; chuyện l&agrave;m nh&agrave; b&aacute;n xong nhưng quay đi quay lại rất thiếu hạ tầng x&atilde; hội trong c&aacute;c dự &aacute;n, như thiếu trường học, bệnh viện. Ngay ở Thủ đ&ocirc;, c&oacute; dự &aacute;n nh&agrave; ở 20 năm nay rồi chưa x&acirc;y được trường học, d&acirc;n v&agrave;o ở k&iacute;n m&iacute;t&rdquo;, đồng ch&iacute; Đinh Tiến Dũng n&ecirc;u r&otilde; v&agrave; cho biết, th&agrave;nh phố y&ecirc;u cầu những dự &aacute;n kh&ocirc;ng đầu tư hạ tầng x&atilde; hội sẽ thu hồi lại, đề nghị tiếp tục đầu tư, c&oacute; thể bằng ng&acirc;n s&aacute;ch hoặc k&ecirc;u gọi nh&agrave; đầu tư thứ ph&aacute;t.</p>\n<p>Li&ecirc;n quan cải tạo chung cư cũ, B&iacute; thư Th&agrave;nh ủy H&agrave; Nội n&ecirc;u nhiều bất cập khi chung cư l&agrave; sở hữu của người d&acirc;n nhưng lại quy định cải tạo bằng đầu tư c&ocirc;ng, hoặc việc người d&acirc;n đ&oacute;ng g&oacute;p kinh ph&iacute; kiểm định nh&agrave; chung cư.</p>\n<p>B&iacute; thư Th&agrave;nh ủy Đinh Tiến Dũng cho rằng: &ldquo;Chỗ n&agrave;y kh&ocirc;ng cần thiết m&agrave; Nh&agrave; nước n&ecirc;n đứng ra l&agrave;m. B&acirc;y giờ đang muốn cải tạo chung cư, thỏa thuận với người d&acirc;n vui vẻ rời đi, lại bảo g&oacute;p tiền để kiểm định th&igrave; v&ocirc; l&yacute;&rdquo;. Theo B&iacute; thư Th&agrave;nh ủy, quy định cứng như vậy sẽ kh&ocirc;ng thể l&agrave;m được khi vận h&agrave;nh. Muốn an to&agrave;n cho người d&acirc;n th&igrave; Nh&agrave; nước phải c&oacute; tr&aacute;ch nhiệm, nguồn vốn d&agrave;nh cho việc cần thiết th&igrave; Nh&agrave; nước bỏ ra.</p>\n<p>B&ecirc;n cạnh đ&oacute;, cải tạo chung cư cũ phải gắn với t&aacute;i thiết đ&ocirc; thị v&agrave; quy định thời hạn sở hữu chung cư mới giải quyết được vấn đề. Thay v&igrave; c&aacute;ch l&agrave;m cải tạo từng t&ograve;a n&ecirc;n cải tạo chung cư theo từng khu. V&iacute; dụ nơi n&agrave;o c&oacute; 4-5 t&ograve;a chung cư cũ, mỗi t&ograve;a 4-5 tầng th&igrave; khi đầu tư x&acirc;y dựng lại, chỉ l&agrave;m 1-2 t&ograve;a v&agrave; l&agrave;m cao tầng hơn, c&ograve;n b&ecirc;n dưới để l&agrave;m kh&ocirc;ng gian thương mại v&agrave; dịch vụ, tầng hầm, b&atilde;i đỗ xe&hellip; Theo Trưởng đo&agrave;n Đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội, l&agrave;m như vậy người d&acirc;n sẽ c&oacute; kh&ocirc;ng gian sống đảm bảo hơn v&agrave; nh&agrave; đầu tư cũng c&oacute; lợi &iacute;ch.</p>\n<p><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/DOan%20HN%203_639f6c35-d71c-4532-8629-45e4f1e347a8.jpeg\" alt /></p>\n<p><em>C&aacute;c th&agrave;nh vi&ecirc;n Đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội thảo luận tại tổ s&aacute;ng 5-6.</em></p>\n<p>B&iacute; thư Th&agrave;nh ủy H&agrave; Nội khẳng định, khi quy định chung cư c&oacute; thời hạn, Nh&agrave; nước c&oacute; tr&aacute;ch nhiệm bảo vệ cuộc sống người d&acirc;n, cưỡng chế di dời khi chung cư xuống cấp, nguy hiểm cũng l&agrave; b&igrave;nh thường, v&igrave; lợi &iacute;ch của người d&acirc;n. Hoặc khi chưa đến thời hạn hoặc s&aacute;t đến thời hạn rồi m&agrave; chung cư xuống cấp, người d&acirc;n tự nguyện đồng t&igrave;nh th&igrave; Nh&agrave; nước cũng đứng ra l&agrave;m.</p>\n<p>&ldquo;Vừa qua, H&agrave; Nội lo v&igrave; sợ rủi ro ch&aacute;y nổ, động đất th&igrave; kh&ocirc;ng biết hậu quả thế n&agrave;o. B&ecirc;n cạnh đ&oacute; c&ograve;n thực tế nhiều nh&agrave; lắp gh&eacute;p, cơi nới n&ecirc;n rất &aacute;p lực&rdquo;, đồng ch&iacute; Đinh Tiến Dũng n&ecirc;u thực tế v&agrave; đề nghị t&iacute;nh to&aacute;n lại việc sở hữu chung cư kh&ocirc;ng c&oacute; thời hạn.</p>\n<p><strong>Thẩm quyền HĐND cấp tỉnh quyết định vấn đề về nh&agrave; ở l&agrave; ph&ugrave; hợp</strong></p>\n<p>Nhấn mạnh Luật Nh&agrave; ở rất quan trọng với H&agrave; Nội, Ph&oacute; B&iacute; thư Th&agrave;nh ủy, Chủ tịch HĐND th&agrave;nh phố, Ph&oacute; Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Nguyễn Ngọc Tuấn cho hay, vấn đề cần quan t&acirc;m khi triển khai x&acirc;y dựng c&aacute;c dự &aacute;n, đ&oacute; l&agrave; phải đảm bảo đủ điều kiện an to&agrave;n ph&ograve;ng ch&aacute;y, chữa ch&aacute;y. Vấn đề sở hữu chung - ri&ecirc;ng giữa chủ đầu tư - cư d&acirc;n - quản l&yacute; chung cư cũng cần phải quan t&acirc;m, kể cả khu vực để xe đạp cho người khuyết tật cũng c&oacute; tranh chấp phức tạp. Sau n&agrave;y n&ecirc;n chăng trong bản vẽ thiết kế của Sở X&acirc;y dựng nghi&ecirc;n cứu cả vấn đề n&agrave;y.</p>\n<p><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/HN6_28e5c943-45cf-46f4-a477-4fdbf981dd24.jpeg\" alt /></p>\n<p><em>Chủ tịch HĐND th&agrave;nh phố, Ph&oacute; Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Nguyễn Ngọc Tuấn thảo luận tại tổ.</em></p>\n<p>&ldquo;Li&ecirc;n quan cải tạo, x&acirc;y dựng lại chung cư cũ, Ch&iacute;nh phủ đ&atilde; c&oacute; Nghị định 69/2021/NĐ-CP, nhưng ngo&agrave;i r&agrave; so&aacute;t, cần t&iacute;nh to&aacute;n h&agrave;i h&ograve;a lợi &iacute;ch của người d&acirc;n, doanh nghiệp, Nh&agrave; nước. Đồng thời, khi x&acirc;y dựng, cải tạo cần gắn với vấn đề quy hoạch để đảm bảo đồng bộ&rdquo;, Ph&oacute; Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Nguyễn Ngọc Tuấn nhấn mạnh.</p>\n<p>T&aacute;n th&agrave;nh việc sửa đổi Luật Nh&agrave; ở, đại biểu Ho&agrave;ng Văn Cường (Đo&agrave;n H&agrave; Nội) cho rằng, nội dung thỏa thuận với nh&agrave; đầu tư trong việc lấy đất l&agrave;m dự &aacute;n dễ dẫn đến mất b&igrave;nh đẳng giữa c&aacute;c gi&aacute; đền b&ugrave;, v&igrave; thế n&ecirc;n c&oacute; sự can thiệp của Nh&agrave; nước. Đại biểu cũng cho rằng, thẩm quyền HĐND cấp tỉnh quyết định vấn đề về nh&agrave; ở l&agrave; ph&ugrave; hợp.</p>\n<p><em><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/HN7_c2fbcf68-fd1f-4aaf-81a7-5177892c6366.jpeg\" alt /></em></p>\n<p><em>Đại biểu Ho&agrave;ng Văn Cường (Đo&agrave;n H&agrave; Nội) thảo luận tại tổ.</em></p>\n<p>Theo đại biểu Ho&agrave;ng Văn Cường, Nh&agrave; nước thu hồi đất sẽ đảm bảo lợi &iacute;ch cho người d&acirc;n. Nếu để cho người d&acirc;n tự thỏa thuận, kh&ocirc;ng phải người d&acirc;n n&agrave;o cũng c&oacute; đủ năng lực để thỏa thuận với nh&agrave; đầu tư. Khi đ&oacute; lại xảy ra t&igrave;nh trạng c&ugrave;ng một dự &aacute;n, chỗ n&agrave;y đền b&ugrave; gi&aacute; cao, chỗ kia gi&aacute; thấp, trong khi c&oacute; c&aacute;c dự &aacute;n Nh&agrave; nước thu hồi đất v&igrave; lợi &iacute;ch c&ocirc;ng cộng lại thực hiện đền b&ugrave; theo gi&aacute; Nh&agrave; nước, sẽ nảy sinh khiếu kiện. Do đ&oacute;, Nh&agrave; nước đ&atilde; thu hồi đất l&agrave; phải đền b&ugrave; thỏa đ&aacute;ng.</p>\n<p><strong>Nguồn: B&aacute;o H&agrave;nộimới điện tử</strong></p>\n<p>Link:<a href=\"http://www.hanoimoi.com.vn/tin-tuc/Bat-dong-san/1066220/cai-tao-chung-cu-cu-phai-gan-voi-tai-thiet-do-thi-quy-dinh-thoi-han-so-huu-chung-cu-moi\">http://www.hanoimoi.com.vn/tin-tuc/Bat-dong-san/1066220/cai-tao-chung-cu-cu-phai-gan-voi-tai-thiet-do-thi-quy-dinh-thoi-han-so-huu-chung-cu-moi</a></p>\n</div>\n</div>\n<div><span>Đơn vị/Người đăng:&nbsp;Ban Tuy&ecirc;n gi&aacute;o Th&agrave;nh ủy</span></div>",
-	"canCreateMaleSpeakVoiceAt": "2023-06-08T03:17:42.164Z",
-	"canCreateFemaleSpeakVoiceAt": "2023-06-08T03:17:42.164Z",
-	"trangThaiDuyetTin": "Đã phát hành",
-	"doiTuong": "Đơn vị",
-	"version": "2",
-	"noiDungBaoNoi": "ha ha ha ha",
-	"searchDate": "2023-06-04T02:57:08.590Z",
-	"idNguoiDang": "644c9ac02b1efa72a0f33414",
-	"vbeeToken": "kCdgq1okOxyQ6wKyjzaum_-nTB64SSB_efUwNa_4u7pHJ2mwuQrCBsWCT6ABB7Kw",
-	"createdAt": "2023-06-04T02:57:08.866Z",
-	"updatedAt": "2023-06-08T03:15:45.308Z",
-	"speakVoiceReady": true,
-	"__v": 0,
-	"public": true,
-	"urlMaleSpeakVoice": "https://apidev.sotaydangvien.com/v2.2/data/647bfd84ad986aea9b24ac63_male-speak-voice.mp3",
-	"urlFemaleSpeakVoice": "https://apidev.sotaydangvien.com/v2.2/data/647bfd84ad986aea9b24ac63_female-speak-voice.mp3"
-}
-export interface DetailData {
-	"loaiChiBo": [],
-	"_id": "647bfd84ad986aea9b24ac63",
-	"ngayDang": "2023-06-04T02:57:08.590Z",
-	"idCoSoDang": "608bea5ab56a58bc82accbab",
-	"tieuDe": "CẢI TẠO CHUNG CƯ CŨ PHẢI GẮN VỚI TÁI THIẾT ĐÔ THỊ, QUY ĐỊNH THỜI HẠN SỞ HỮU CHUNG CƯ MỚI",
-	"idTopic": "6422d2234608ac66adaf6d13",
-	"anhDaiDien": "https://apidev.sotaydangvien.com/v2.2/file/648147d93782318e7cbefa23/anh%20dai%20dien%20tin.jpeg",
-	"moTa": "Phát biểu thảo luận tại tổ sáng 5-6, trong chương trình kỳ họp thứ năm, Quốc hội khóa XV, Ủy viên Bộ Chính trị, Bí thư Thành ủy Hà Nội, Trưởng đoàn đại biểu Quốc hội thành phố Hà Nội Đinh Tiến Dũng nêu quan điểm, cải tạo chung cư cũ phải gắn với tái thiết đô thị và quy định thời hạn sở hữu chung cư mới giải quyết được vấn đề.",
-	"loaiNoiDungTinTuc": "Văn bản",
-	"noiDung": "<div>\n<div>\n<div><span>Ph&aacute;t biểu thảo luận tại tổ s&aacute;ng 5-6, trong chương tr&igrave;nh kỳ họp thứ năm, Quốc hội kh&oacute;a XV, Ủy vi&ecirc;n Bộ Ch&iacute;nh trị, B&iacute; thư Th&agrave;nh ủy H&agrave; Nội, Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Đinh Tiến Dũng n&ecirc;u quan điểm, cải tạo chung cư cũ phải gắn với t&aacute;i thiết đ&ocirc; thị v&agrave; quy định thời hạn sở hữu chung cư mới giải quyết được vấn đề.</span></div>\n</div>\n</div>\n<div>\n<div>\n<p><em><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/Ha%20Noi%204_b65f8241-80a6-40f2-afa7-8580467d493e.jpeg\" alt /></em></p>\n<p><em>Đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội thảo luận tại tổ s&aacute;ng 5-6.</em></p>\n<p><strong>Đề nghị t&iacute;nh to&aacute;n lại việc sở hữu chung cư kh&ocirc;ng c&oacute; thời hạn</strong></p>\n<p>Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Đinh Tiến Dũng nhận định, nh&agrave; t&aacute;i định cư ở H&agrave; Nội &ldquo;thừa vẫn thừa, thiếu vẫn thiếu&rdquo;. Thừa theo nhu cầu v&igrave; vừa qua một loạt dự &aacute;n người d&acirc;n chỉ nhận tiền, kh&ocirc;ng nhận nh&agrave;, c&ograve;n thiếu v&igrave; theo Luật Đất đai phải c&oacute; nh&agrave; t&aacute;i định cư mới được triển khai dự &aacute;n. Do đ&oacute;, B&iacute; thư Th&agrave;nh ủy Đinh Tiến Dũng cho rằng, dự thảo Luật Nh&agrave; ở (sửa đổi) n&ecirc;n c&oacute; hướng mở hơn, ho&agrave;n to&agrave;n giao cấp tỉnh c&oacute; thể bố tr&iacute; từ nh&agrave; t&aacute;i định cư sang nh&agrave; ở x&atilde; hội v&agrave; ngược lại để linh hoạt hơn.</p>\n<p>&ldquo;Chả lẽ bố tr&iacute; d&acirc;n ở ph&iacute;a T&acirc;y H&agrave; Nội sang Long Bi&ecirc;n nhận nh&agrave; t&aacute;i định cư? V&ocirc; l&yacute; lắm!&rdquo;, đồng ch&iacute; Đinh Tiến Dũng n&oacute;i, đồng thời nhấn mạnh, t&igrave;nh trạng tr&ecirc;n dẫn đến hệ quả l&agrave; thừa vẫn thừa, thiếu vẫn thiếu v&agrave; rất &aacute;ch tắc trong triển khai c&aacute;c dự &aacute;n giao th&ocirc;ng, dự &aacute;n trọng điểm của th&agrave;nh phố.</p>\n<p><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/HN5_f1a2eeb1-2a2b-44be-8c3a-2c1604868b25.jpeg\" alt /></p>\n<p><em>B&iacute; thư Th&agrave;nh ủy H&agrave; Nội, Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Đinh Tiến Dũng ph&aacute;t biểu thảo luận.</em></p>\n<p>Về tr&aacute;ch nhiệm nh&agrave; đầu tư dự &aacute;n nh&agrave; ở thương mại, B&iacute; thư Th&agrave;nh ủy H&agrave; Nội đề nghị bổ sung chế t&agrave;i bắt buộc trong luật về việc c&aacute;c chủ đầu tư n&agrave;y phải đảm bảo việc đầu tư hạ tầng x&atilde; hội. &ldquo;Thực tiễn c&oacute; chuyện l&agrave;m nh&agrave; b&aacute;n xong nhưng quay đi quay lại rất thiếu hạ tầng x&atilde; hội trong c&aacute;c dự &aacute;n, như thiếu trường học, bệnh viện. Ngay ở Thủ đ&ocirc;, c&oacute; dự &aacute;n nh&agrave; ở 20 năm nay rồi chưa x&acirc;y được trường học, d&acirc;n v&agrave;o ở k&iacute;n m&iacute;t&rdquo;, đồng ch&iacute; Đinh Tiến Dũng n&ecirc;u r&otilde; v&agrave; cho biết, th&agrave;nh phố y&ecirc;u cầu những dự &aacute;n kh&ocirc;ng đầu tư hạ tầng x&atilde; hội sẽ thu hồi lại, đề nghị tiếp tục đầu tư, c&oacute; thể bằng ng&acirc;n s&aacute;ch hoặc k&ecirc;u gọi nh&agrave; đầu tư thứ ph&aacute;t.</p>\n<p>Li&ecirc;n quan cải tạo chung cư cũ, B&iacute; thư Th&agrave;nh ủy H&agrave; Nội n&ecirc;u nhiều bất cập khi chung cư l&agrave; sở hữu của người d&acirc;n nhưng lại quy định cải tạo bằng đầu tư c&ocirc;ng, hoặc việc người d&acirc;n đ&oacute;ng g&oacute;p kinh ph&iacute; kiểm định nh&agrave; chung cư.</p>\n<p>B&iacute; thư Th&agrave;nh ủy Đinh Tiến Dũng cho rằng: &ldquo;Chỗ n&agrave;y kh&ocirc;ng cần thiết m&agrave; Nh&agrave; nước n&ecirc;n đứng ra l&agrave;m. B&acirc;y giờ đang muốn cải tạo chung cư, thỏa thuận với người d&acirc;n vui vẻ rời đi, lại bảo g&oacute;p tiền để kiểm định th&igrave; v&ocirc; l&yacute;&rdquo;. Theo B&iacute; thư Th&agrave;nh ủy, quy định cứng như vậy sẽ kh&ocirc;ng thể l&agrave;m được khi vận h&agrave;nh. Muốn an to&agrave;n cho người d&acirc;n th&igrave; Nh&agrave; nước phải c&oacute; tr&aacute;ch nhiệm, nguồn vốn d&agrave;nh cho việc cần thiết th&igrave; Nh&agrave; nước bỏ ra.</p>\n<p>B&ecirc;n cạnh đ&oacute;, cải tạo chung cư cũ phải gắn với t&aacute;i thiết đ&ocirc; thị v&agrave; quy định thời hạn sở hữu chung cư mới giải quyết được vấn đề. Thay v&igrave; c&aacute;ch l&agrave;m cải tạo từng t&ograve;a n&ecirc;n cải tạo chung cư theo từng khu. V&iacute; dụ nơi n&agrave;o c&oacute; 4-5 t&ograve;a chung cư cũ, mỗi t&ograve;a 4-5 tầng th&igrave; khi đầu tư x&acirc;y dựng lại, chỉ l&agrave;m 1-2 t&ograve;a v&agrave; l&agrave;m cao tầng hơn, c&ograve;n b&ecirc;n dưới để l&agrave;m kh&ocirc;ng gian thương mại v&agrave; dịch vụ, tầng hầm, b&atilde;i đỗ xe&hellip; Theo Trưởng đo&agrave;n Đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội, l&agrave;m như vậy người d&acirc;n sẽ c&oacute; kh&ocirc;ng gian sống đảm bảo hơn v&agrave; nh&agrave; đầu tư cũng c&oacute; lợi &iacute;ch.</p>\n<p><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/DOan%20HN%203_639f6c35-d71c-4532-8629-45e4f1e347a8.jpeg\" alt /></p>\n<p><em>C&aacute;c th&agrave;nh vi&ecirc;n Đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội thảo luận tại tổ s&aacute;ng 5-6.</em></p>\n<p>B&iacute; thư Th&agrave;nh ủy H&agrave; Nội khẳng định, khi quy định chung cư c&oacute; thời hạn, Nh&agrave; nước c&oacute; tr&aacute;ch nhiệm bảo vệ cuộc sống người d&acirc;n, cưỡng chế di dời khi chung cư xuống cấp, nguy hiểm cũng l&agrave; b&igrave;nh thường, v&igrave; lợi &iacute;ch của người d&acirc;n. Hoặc khi chưa đến thời hạn hoặc s&aacute;t đến thời hạn rồi m&agrave; chung cư xuống cấp, người d&acirc;n tự nguyện đồng t&igrave;nh th&igrave; Nh&agrave; nước cũng đứng ra l&agrave;m.</p>\n<p>&ldquo;Vừa qua, H&agrave; Nội lo v&igrave; sợ rủi ro ch&aacute;y nổ, động đất th&igrave; kh&ocirc;ng biết hậu quả thế n&agrave;o. B&ecirc;n cạnh đ&oacute; c&ograve;n thực tế nhiều nh&agrave; lắp gh&eacute;p, cơi nới n&ecirc;n rất &aacute;p lực&rdquo;, đồng ch&iacute; Đinh Tiến Dũng n&ecirc;u thực tế v&agrave; đề nghị t&iacute;nh to&aacute;n lại việc sở hữu chung cư kh&ocirc;ng c&oacute; thời hạn.</p>\n<p><strong>Thẩm quyền HĐND cấp tỉnh quyết định vấn đề về nh&agrave; ở l&agrave; ph&ugrave; hợp</strong></p>\n<p>Nhấn mạnh Luật Nh&agrave; ở rất quan trọng với H&agrave; Nội, Ph&oacute; B&iacute; thư Th&agrave;nh ủy, Chủ tịch HĐND th&agrave;nh phố, Ph&oacute; Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Nguyễn Ngọc Tuấn cho hay, vấn đề cần quan t&acirc;m khi triển khai x&acirc;y dựng c&aacute;c dự &aacute;n, đ&oacute; l&agrave; phải đảm bảo đủ điều kiện an to&agrave;n ph&ograve;ng ch&aacute;y, chữa ch&aacute;y. Vấn đề sở hữu chung - ri&ecirc;ng giữa chủ đầu tư - cư d&acirc;n - quản l&yacute; chung cư cũng cần phải quan t&acirc;m, kể cả khu vực để xe đạp cho người khuyết tật cũng c&oacute; tranh chấp phức tạp. Sau n&agrave;y n&ecirc;n chăng trong bản vẽ thiết kế của Sở X&acirc;y dựng nghi&ecirc;n cứu cả vấn đề n&agrave;y.</p>\n<p><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/HN6_28e5c943-45cf-46f4-a477-4fdbf981dd24.jpeg\" alt /></p>\n<p><em>Chủ tịch HĐND th&agrave;nh phố, Ph&oacute; Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Nguyễn Ngọc Tuấn thảo luận tại tổ.</em></p>\n<p>&ldquo;Li&ecirc;n quan cải tạo, x&acirc;y dựng lại chung cư cũ, Ch&iacute;nh phủ đ&atilde; c&oacute; Nghị định 69/2021/NĐ-CP, nhưng ngo&agrave;i r&agrave; so&aacute;t, cần t&iacute;nh to&aacute;n h&agrave;i h&ograve;a lợi &iacute;ch của người d&acirc;n, doanh nghiệp, Nh&agrave; nước. Đồng thời, khi x&acirc;y dựng, cải tạo cần gắn với vấn đề quy hoạch để đảm bảo đồng bộ&rdquo;, Ph&oacute; Trưởng đo&agrave;n đại biểu Quốc hội th&agrave;nh phố H&agrave; Nội Nguyễn Ngọc Tuấn nhấn mạnh.</p>\n<p>T&aacute;n th&agrave;nh việc sửa đổi Luật Nh&agrave; ở, đại biểu Ho&agrave;ng Văn Cường (Đo&agrave;n H&agrave; Nội) cho rằng, nội dung thỏa thuận với nh&agrave; đầu tư trong việc lấy đất l&agrave;m dự &aacute;n dễ dẫn đến mất b&igrave;nh đẳng giữa c&aacute;c gi&aacute; đền b&ugrave;, v&igrave; thế n&ecirc;n c&oacute; sự can thiệp của Nh&agrave; nước. Đại biểu cũng cho rằng, thẩm quyền HĐND cấp tỉnh quyết định vấn đề về nh&agrave; ở l&agrave; ph&ugrave; hợp.</p>\n<p><em><img src=\"https://sotaydangvien.hanoi.dcs.vn/TaiLieu/LichCongTac/2023-06/HN7_c2fbcf68-fd1f-4aaf-81a7-5177892c6366.jpeg\" alt /></em></p>\n<p><em>Đại biểu Ho&agrave;ng Văn Cường (Đo&agrave;n H&agrave; Nội) thảo luận tại tổ.</em></p>\n<p>Theo đại biểu Ho&agrave;ng Văn Cường, Nh&agrave; nước thu hồi đất sẽ đảm bảo lợi &iacute;ch cho người d&acirc;n. Nếu để cho người d&acirc;n tự thỏa thuận, kh&ocirc;ng phải người d&acirc;n n&agrave;o cũng c&oacute; đủ năng lực để thỏa thuận với nh&agrave; đầu tư. Khi đ&oacute; lại xảy ra t&igrave;nh trạng c&ugrave;ng một dự &aacute;n, chỗ n&agrave;y đền b&ugrave; gi&aacute; cao, chỗ kia gi&aacute; thấp, trong khi c&oacute; c&aacute;c dự &aacute;n Nh&agrave; nước thu hồi đất v&igrave; lợi &iacute;ch c&ocirc;ng cộng lại thực hiện đền b&ugrave; theo gi&aacute; Nh&agrave; nước, sẽ nảy sinh khiếu kiện. Do đ&oacute;, Nh&agrave; nước đ&atilde; thu hồi đất l&agrave; phải đền b&ugrave; thỏa đ&aacute;ng.</p>\n<p><strong>Nguồn: B&aacute;o H&agrave;nộimới điện tử</strong></p>\n<p>Link:<a href=\"http://www.hanoimoi.com.vn/tin-tuc/Bat-dong-san/1066220/cai-tao-chung-cu-cu-phai-gan-voi-tai-thiet-do-thi-quy-dinh-thoi-han-so-huu-chung-cu-moi\">http://www.hanoimoi.com.vn/tin-tuc/Bat-dong-san/1066220/cai-tao-chung-cu-cu-phai-gan-voi-tai-thiet-do-thi-quy-dinh-thoi-han-so-huu-chung-cu-moi</a></p>\n</div>\n</div>\n<div><span>Đơn vị/Người đăng:&nbsp;Ban Tuy&ecirc;n gi&aacute;o Th&agrave;nh ủy</span></div>",
-	"canCreateMaleSpeakVoiceAt": "2023-06-08T03:17:42.164Z",
-	"canCreateFemaleSpeakVoiceAt": "2023-06-08T03:17:42.164Z",
-	"trangThaiDuyetTin": "Đã phát hành",
-	"doiTuong": "Đơn vị",
-	"version": "2",
-	"noiDungBaoNoi": "ha ha ha ha",
-	"searchDate": "2023-06-04T02:57:08.590Z",
-	"idNguoiDang": "644c9ac02b1efa72a0f33414",
-	"vbeeToken": "kCdgq1okOxyQ6wKyjzaum_-nTB64SSB_efUwNa_4u7pHJ2mwuQrCBsWCT6ABB7Kw",
-	"createdAt": "2023-06-04T02:57:08.866Z",
-	"updatedAt": "2023-06-08T03:15:45.308Z",
-	"speakVoiceReady": true,
-	"__v": 0,
-	"public": true,
-	"urlMaleSpeakVoice": "https://apidev.sotaydangvien.com/v2.2/data/647bfd84ad986aea9b24ac63_male-speak-voice.mp3",
-	"urlFemaleSpeakVoice": "https://apidev.sotaydangvien.com/v2.2/data/647bfd84ad986aea9b24ac63_female-speak-voice.mp3"
-}
-export interface DataSearch {
-	_id: "647028bbe352e2e4502be06c";
-	ngayDang: "2023-05-26T03:32:01.239Z";
-	tieuDe: "bản tin công tác Trang đăng";
-	anhDaiDien: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Flag_of_the_Communist_Party_of_Vietnam.svg/640px-Flag_of_the_Communist_Party_of_Vietnam.svg.png";
-	loaiNoiDungTinTuc: "Văn bản";
-	moTa: "ahiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii";
-	noiDungBaoNoi: "";
-	idNguoiDang: {
-		_id: "644c9ac02b1efa72a0f33414";
-		hoVaTen: "Test Một";
-		username: "dv01";
-		id: "644c9ac02b1efa72a0f33414";
-	};
-	createdAt: "2023-05-26T03:34:19.839Z";
-	updatedAt: "2023-05-26T03:35:54.642Z";
-	idTopic: {
-		_id: "642116504608ac66ada5a94d";
-		name: "Tin tức trong nước";
+	id: 1;
+	attributes: {
+		title: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ";
+		htmlContent: "<p>Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....</p>";
+		createdAt: "2023-06-01T07:41:40.875Z";
+		updatedAt: "2023-06-01T07:41:41.705Z";
+		publishedAt: "2023-06-01T07:41:41.704Z";
+		description: null;
+		image: {
+			data: {
+				id: 14;
+				attributes: {
+					name: "sk1.png";
+					alternativeText: null;
+					caption: null;
+					width: 594;
+					height: 286;
+					formats: {
+						thumbnail: {
+							name: "thumbnail_sk1.png";
+							hash: "thumbnail_sk1_6fffe44092";
+							ext: ".png";
+							mime: "image/png";
+							path: null;
+							width: 245;
+							height: 118;
+							size: 77.35;
+							url: "/uploads/thumbnail_sk1_6fffe44092.png";
+						};
+						small: {
+							name: "small_sk1.png";
+							hash: "small_sk1_6fffe44092";
+							ext: ".png";
+							mime: "image/png";
+							path: null;
+							width: 500;
+							height: 241;
+							size: 279.47;
+							url: "/uploads/small_sk1_6fffe44092.png";
+						};
+					};
+					hash: "sk1_6fffe44092";
+					ext: ".png";
+					mime: "image/png";
+					size: 88.81;
+					url: "/uploads/sk1_6fffe44092.png";
+					previewUrl: null;
+					provider: "local";
+					provider_metadata: null;
+					createdAt: "2023-06-01T07:33:49.812Z";
+					updatedAt: "2023-06-01T07:33:49.812Z";
+				};
+			};
+		};
 	};
 }
-export interface DataDanhMucTin{
-	"_id": "64814a343782318e7cbefac2",
-	"ngayDang": "2023-06-08T03:25:40.206Z",
-	"tieuDe": "PHÁT TRIỂN QUAN HỆ HỮU NGHỊ HỢP TÁC GIỮA HÀ NỘI VÀ LA HABANA (CUBA) LÊN TẦM CAO MỚI",
-	"idTopic": {
-		"_id": "62d537d012ebc452df8aa0e9",
-		"name": "Tin trong nước"
-	},
-	"anhDaiDien": "https://apidev.sotaydangvien.com/v2.2/file/64814a343782318e7cbefabe/anh%20dai%20dien%20tin.jpeg",
-	"moTa": "Chiều 1-6, tại Hà Nội, Ủy viên Trung ương Đảng, Phó Bí thư Thường trực Thành ủy Hà Nội Nguyễn Thị Tuyến đã làm việc với Đại sứ Cuba tại Việt Nam Orlando Nicolas Hernández Guillen để thảo luận về chuyến thăm chính thức Thủ đô Hà Nội của Bí thư thứ nhất Thành ủy La Habana Luis Antonio Torres Iríbar và Đoàn đại biểu cấp cao Thành ủy La Habana dự kiến trong tuần tới và việc Hà Nội tặng La Habana 2.000 tấn gạo đễ hỗ trợ công tác an sinh xã hội.",
-	"loaiNoiDungTinTuc": "Văn bản",
-	"noiDungBaoNoi": "",
-	"idNguoiDang": {
-		"_id": "61e950b4a7469c40a682aeb6",
-		"username": "admin",
-		"hoVaTen": "Trần Văn 54",
-		"id": "61e950b4a7469c40a682aeb6"
-	},
-	"createdAt": "2023-06-08T03:25:40.333Z",
-	"updatedAt": "2023-06-08T03:26:40.930Z"
+export interface DataDonVi {
+	id: 2;
+	createdAt: "2023-06-03T09:06:58.173Z";
+	updatedAt: "2023-06-05T07:51:49.670Z";
+	publishedAt: "2023-06-03T09:06:59.329Z";
+	tieuDe: "Viện Kinh tế Bưu điện - ERIPT";
+	noiDung: null;
+	kieu: "Viện nghiên cứu";
+	moTa: null;
+	imageUrl: "/uploads/thumbnail_tc_2_97a92a3ef9.png";
 }
+[];

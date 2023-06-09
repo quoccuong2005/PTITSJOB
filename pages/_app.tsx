@@ -30,10 +30,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<meta httpEquiv='X-UA-Compatible' content='ie=edge' />
 				<meta httpEquiv='Content-Type' content='text/html; charset=UTF-8' />
-				<meta name='description' content='Trang sổ tay Đảng viên' />
+				<meta name='description' content='Trang quản lý khoa học' />
 				<meta
 					name='keywords'
-					content='Sổ tay Đảng viên'
+					content='Quản lý khoa học'
 				/>
 				<meta name='author' content='ICI' />
 				<link rel='icon' href='/favicon.ico' />
@@ -43,10 +43,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta property='og:type' content='article' />
 				<meta
 					property='og:description'
-					content='so-tay-dang-vien'
+					content='quan-ly-khoa-hoc-ptit'
 					key='ogdesc'
 				/>
-				<meta property='og:image' content='/images/logoo.png' key='ogimg' />
+				<meta property='og:image' content='/images/PTIT_LOGO.png' key='ogimg' />
 			</Head>
 
 			<AuthProvider>

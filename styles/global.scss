@@ -123,7 +123,7 @@
 }
 @media screen and (min-width: 1440px){
 	.container{
-		max-width: 1320px!important;
+		max-width: 1198px!important;
 	}
 }
 .bg-gradient-gray{
@@ -134,13 +134,7 @@
 	background-color: #C3C7CC;
 }
 .text-primary{
-	color: #b70b00;
-}
-.text-gold{
-	color: #ff0!important;
-}
-.text-red{
-	color: #b70b00;
+	color: #DE221A;
 }
 .text-normal{
 	font-family: 'Inter';
@@ -152,22 +146,4 @@
 }
 .text-white{
 	color: #FFFFFF;
-}
-::-webkit-scrollbar {
-	width: 2px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-	background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-	background: #b70b00;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-	background: #555;
 }
