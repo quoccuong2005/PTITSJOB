@@ -10,7 +10,7 @@ import {useTranslation} from "react-i18next";
 import Title from "../Title";
 import CardBanner from "../CardBanner";
 import Button from "../Button";
-import {IDataHome, TuyenSinh} from "../../utils/interface";
+import {IDataHome} from "../../utils/interface";
 import axios from "axios";
 import {ip} from "../../api/ip";
 import {renderImage} from "../../utils/util";
@@ -65,7 +65,6 @@ const News = (props:{dataHome:IDataHome}) => {
 			SliderRef?.current?.slickPrev();
 		}
 	};
-	const [dataSuKien,setDataSuKien]=useState<TuyenSinh[]>([])
 
 
 	const titleCard = (
@@ -93,7 +92,7 @@ const News = (props:{dataHome:IDataHome}) => {
 						{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
 							return (
 								<div onClick={()=>{
-									router.push(`#`)
+									router.push(`/tap-chi-khoa-hoc/${val?.id}`)
 								}} key={i}>
 									<CardBanner
 										imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
@@ -111,7 +110,7 @@ const News = (props:{dataHome:IDataHome}) => {
 						{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
 							return (
 								<div onClick={()=>{
-									router.push(`#`)
+									router.push(`/tap-chi-khoa-hoc/${val?.id}`)
 								}} key={i}>
 									<CardBanner
 										imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
@@ -130,7 +129,7 @@ const News = (props:{dataHome:IDataHome}) => {
 					<Button type={"primary"}
 									classname="lg:w-[279px]"
 									onClick={()=>{
-						router.push('/tin-tuyen-sinh')
+						window.open('https://jstic.ptit.edu.vn/index.html')
 					}}>Xem thêm</Button>
 				</div>
 			</div>

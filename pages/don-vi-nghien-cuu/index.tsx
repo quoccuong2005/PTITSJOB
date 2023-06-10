@@ -39,12 +39,7 @@ const DonViNghienCuu = () => {
       setType(router?.query?.type as string);
     }
   }, [router]);
-  const getDataChiTiet = (id: string) => {
-    let obj = dataGioiThieu?.find((item) => {
-      return item?.id === id;
-    });
-    setDataChiTiet(obj);
-  };
+
   return (
     <DonViNghienCuuWrapper>
       <div className='container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]'>
@@ -61,7 +56,9 @@ const DonViNghienCuu = () => {
                       description: val?.moTa??'',
                       dateTime: val.createdAt,
                       link: ``,
+
                     }}
+                    category={'sach'}
                     key={i}
                   />
                 );

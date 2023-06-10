@@ -3,7 +3,7 @@ import Title from "../Title";
 import { ip } from "../../api/ip";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { TuyenSinh } from "../../utils/interface";
+import {IDataHome} from "../../utils/interface";
 import { renderImage } from "../../utils/util";
 import ReactAudioPlayer from "react-audio-player";
 import ReactPlayer from "react-player";
@@ -13,38 +13,18 @@ import { useRouter } from "next/router";
 import { useAuth } from "../../context/AuthContext";
 import Button from "../Button";
 
-const Discover = (props:{dataHome:any}) => {
-	const [dataTuyenSinh, setDataTuyenSinh] = useState<TuyenSinh[]>([]);
-	const [dataTuyenSinhAnh, setDataTuyenSinhAnh] = useState<TuyenSinh[]>([]);
+const Discover = (props:{dataHome:IDataHome}) => {
 	const [tabs, setTabs] = useState<string>("ALBUMIMAGE");
 	const router = useRouter();
 	const [common] = useTranslation("common");
 	const { dataConfig } = useAuth();
 
-
-	useEffect(() => {
-
-	}, []);
-	const handleChangeTabs = (tabs: "ALBUMIMAGE" | "ALBUMVIDEO" | "AUDIO") => {
-		setTabs(tabs);
-
-	};
-	const getDataConfig = (type: string, valueGet?: string): any => {
-		let obj = dataConfig?.find((item) => {
-			return item.code === type;
-		});
-		if (valueGet) {
-			return obj?.id;
-		} else {
-			return obj?.value;
-		}
-	};
 	return (
 		<DiscoverWrapper className=' md:px-0 md:mt-[50px] mt-[20px]'>
 			{/*<div className={"discover-1 md:pt-[109px] md:pb-[96px] py-[20px] "}>*/}
 			<div className={" h-[555px]"}>
 				{/*<ReactPlayer url='https://youtu.be/XZTaNCfhyzY' width={"100%"} height={"555px"} />*/}
-				<iframe width="100%" height="555" src="https://www.youtube.com/embed/XZTaNCfhyzY" title="YouTube video player"
+				<iframe width="100%" height="555" src={props.dataHome?.duongDanVideo} title="YouTube video player"
 								frameBorder="0"
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 								allowFullScreen></iframe>

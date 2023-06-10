@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import CommentItems from "./components/commentItems";
 import { ip } from "../../api/ip";
 import axios from "axios";
-import {Comment} from "../../utils/interface";
 import {da} from "date-fns/locale";
 interface IProps {
 	onSubmit: (data: any, callback: (status: boolean) => void) => void;
@@ -14,7 +13,7 @@ interface IProps {
 }
 const FormGopY = (props: IProps) => {
 	const { onSubmit, sendSuccess } = props;
-	const [dataComment, setDataComment] = useState<Comment[]>([]);
+	const [dataComment, setDataComment] = useState<any[]>([]);
 	const {
 		register,
 		reset,
@@ -55,7 +54,7 @@ const FormGopY = (props: IProps) => {
 			getDataComment();
 		}
 	}, [props.articleId]);
-	const sortComment = (data:Comment[]) => {
+	const sortComment = (data:any[]) => {
 	  const dataParent=data?.filter((item)=>{
 		  return item?.parentId==='00000000-0000-0000-0000-000000000000'
 	  })

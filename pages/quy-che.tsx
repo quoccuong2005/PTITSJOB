@@ -47,12 +47,7 @@ const QuyChe = () => {
       getData();
     }
   }, [router]);
-  const getDataChiTiet = (id: string) => {
-    let obj = dataGioiThieu?.find((item) => {
-      return item?.id === id;
-    });
-    setDataChiTiet(obj);
-  };
+
   const columns = [
     {
       title: "STT",

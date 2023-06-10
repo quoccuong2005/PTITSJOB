@@ -9,7 +9,7 @@ interface IProps {
 const DropdownFake = (props: IProps) => {
 	return (
 		<DropdownWrapper>
-			<Dropdown options={props.option} onChange={props.onChange} value={props.value} placeholder={props.placeholder} />
+			<Dropdown  options={props.option} onChange={props.onChange} value={props.value} placeholder={props.placeholder} />
 		</DropdownWrapper>
 	);
 };

@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import Title from "../Title";
 import Button from "../Button";
 import CardBanner from "../CardBanner";
-import {TuyenSinh} from "../../utils/interface";
 import {renderImage} from "../../utils/util";
 import {useRouter} from "next/router";
 
@@ -55,7 +54,6 @@ const Event = () => {
 			},
 		],
 	};
-	const [dataSuKien,setDataSuKien]=useState<TuyenSinh[]>([])
 
 	const handleNext = () => {
 		if (SliderRef && SliderRef.current) {
@@ -83,15 +81,15 @@ const Event = () => {
 					/>
 					<div className={"sm:mt-[40px] mt-[20px]"}>
 						<Slider ref={SliderRef} {...settings}>
-							{dataSuKien?.map((val, i) => {
-								return (
-									<div key={i} className={"h-full"} onClick={()=>{
-										router.push(`/tin-tuc/${val?.id}`)
-									}}>
-										<CardBanner imageUrl={renderImage(val?.thumbnail)} title={val.name} dateTime={val.created} key={i}  />
-									</div>
-								);
-							})}
+							{/*{dataSuKien?.map((val, i) => {*/}
+							{/*	return (*/}
+							{/*		<div key={i} className={"h-full"} onClick={()=>{*/}
+							{/*			router.push(`/tin-tuc/${val?.id}`)*/}
+							{/*		}}>*/}
+							{/*			<CardBanner imageUrl={renderImage(val?.thumbnail)} title={val.name} dateTime={val.created} key={i}  />*/}
+							{/*		</div>*/}
+							{/*	);*/}
+							{/*})}*/}
 						</Slider>
 					</div>
 					<div className='flex justify-center md:mt-[70px] mt-[20px] '>

@@ -8,7 +8,6 @@ import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import { rules } from "../utils/rules";
 import { useRouter } from "next/router";
-import TuyenSinh from "./tuyen-sinh";
 import HomePage from "../components/Home";
 import { Router } from "../config";
 

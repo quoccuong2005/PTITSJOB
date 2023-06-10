@@ -8,7 +8,7 @@ import { da, el, tr } from "date-fns/locale";
 import axios from "axios";
 import { ip } from "../../api/ip";
 import { useEffect, useState } from "react";
-import { IDataHome, TuyenSinh } from "../../utils/interface";
+import { IDataHome } from "../../utils/interface";
 import { useRouter } from "next/router";
 import { renderImage } from "../../utils/util";
 interface IProps {
@@ -17,7 +17,7 @@ interface IProps {
 	description: any;
 }
 const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
-	const [dataTuyenSinh, setDataTuyenSinh] = useState<TuyenSinh[]>([]);
+
 	const router = useRouter();
 
 	const settings = {
@@ -174,20 +174,7 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 				</div>
 				<div className='sm:hidden block mt-[20px]'>
 					<Slider {...settings}>
-						{dataTuyenSinh?.map((val, i) => {
-							return (
-								<CardEvent
-									data={{
-										imageUrl: renderImage(val?.thumbnail),
-										content: val?.name,
-										dateTime: val?.created,
-										description: val?.description,
-										link: `/tin-tuc/${val?.id}?type=TUYENSINH_DAIHOC`,
-									}}
-									key={i}
-								></CardEvent>
-							);
-						})}
+
 					</Slider>
 				</div>
 				<div className='flex justify-center sm:mt-[40px] mt-[20px]'>

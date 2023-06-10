@@ -167,6 +167,12 @@ const CardListBannerWrapper = styled.div`
 		line-height: 28px;
 
 		color: #73787e;
+		
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
 	}
 `;
 const CardBigBannerWrapper = styled.div`
@@ -244,8 +250,10 @@ const CardBigBannerWrapper = styled.div`
 		align-items: center;
 		text-align: center;
 
-		color: rgba(120, 120, 120, 0.4);
-		border: 1.5px solid rgba(120, 120, 120, 0.4);
+		//color: rgba(120, 120, 120, 0.4);
+		color: #DE221A;
+		//border: 1.5px solid rgba(120, 120, 120, 0.4);
+		border: 1.5px solid #DE221A;
 		&:hover {
 			color: #fa5252;
 			border: 1.5px solid #fa5252;

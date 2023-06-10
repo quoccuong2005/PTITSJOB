@@ -13,6 +13,24 @@ const CardDeTai = (props: IPorps) => {
 			case "Cấp nhà nước":
 				return <div className='py-[4px] px-[20px] bg-primary inline-block text-white'>{type}</div>;
 				break;
+			case "Cấp bộ":
+				return <div className='py-[4px] px-[20px] bg-[#0B8500] inline-block text-white'>{type}</div>;
+				break;
+			case "Cấp học viện":
+				return <div className='py-[4px] px-[20px] bg-[#012169] inline-block text-white'>{type}</div>;
+				break;
+			case "Trong nước":
+				return <div className='py-[4px] px-[20px] bg-primary inline-block text-white'>{type}</div>;
+				break;
+			case "Quốc tế":
+				return <div className='py-[4px] px-[20px] bg-[#0B8500] inline-block text-white'>{type}</div>;
+				break;
+			case "Hội nghị hội thảo":
+				return <div className='py-[4px] px-[20px] bg-[#FEA805] inline-block text-white'>{type}</div>;
+				break;
+			case "ISI/Scopus":
+				return <div className='py-[4px] px-[20px] bg-[#012169] inline-block text-white'>{type}</div>;
+				break;
 			default:
 				return "";
 		}

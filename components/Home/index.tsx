@@ -9,12 +9,13 @@ import Discover from "../Discover";
 import About from "../About";
 import DonViNghienCuu from "../DonViNghienCuu";
 import axios from "axios";
+import {ip} from "../../api/ip";
 
 const HomePage = () => {
 	const [dataHome,setDataHome]=useState<any>()
 	const getDataHome = async () => {
 	  try {
-			const res=await axios.get(`http://localhost:1337/api/qlkh-home-page?populate=deep`);
+			const res=await axios.get(`${ip}/qlkh-home-page?populate=deep`);
 			if (res){
 				setDataHome(res?.data?.data?.attributes)
 			}

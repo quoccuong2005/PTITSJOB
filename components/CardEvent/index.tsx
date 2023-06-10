@@ -24,7 +24,7 @@ const CardEvent = (props:IProps) => {
 					<p className='date mb-[8px]'>{moment(data?.dateTime).date()}</p>
 					<p className='time-1'>{moment(data?.dateTime).year()}</p>
 				</div>
-				<div className='content'>
+				<div className='content w-full '>
 					<div className='rank-date mb-[16px]'>
             {moment(data?.dateStart).format('HH:mm DD/MM/YYYY')} - {moment(data?.dateEnd).format('HH:mm DD/MM/YYYY')}
           </div>
@@ -35,8 +35,8 @@ const CardEvent = (props:IProps) => {
             {data?.content}
           </div>
 				</div>
-				<div className='image shrink-0 ml-[50px]'>
-          <img src={data.imageUrl} alt={'image'}/>
+				<div className='image shrink-0 ml-[50px] sm:w-[360px] sm:h-[240px]'>
+          <img className="sm:w-full sm:h-full" src={data.imageUrl} alt={'image'}/>
         </div>
 			</div>
 		</CardEventWrapper>

@@ -2,9 +2,9 @@ import { Button, DarkThemeToggle, Navbar, Spinner, Tooltip } from "flowbite-reac
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import { useTranslation } from "react-i18next";
-import { useAuth } from "../../context/AuthContext";
+import {AuthContext, useAuth } from "../../context/AuthContext";
 import LoginPopup from "./components/LoginPopup";
 import SignupPopup from "./components/SignupPopup";
 import UserDropdown from "./components/UserDropdown";
@@ -14,7 +14,7 @@ import { useForm } from "react-hook-form";
 import { Router } from "../../config";
 import axios from "axios";
 import { ip } from "../../api/ip";
-import { MainMenu } from "../../utils/interface";
+import {DataMenu, MainMenu} from "../../utils/interface";
 import { renderImage } from "../../utils/util";
 import { el } from "date-fns/locale";
 import { dataNavBar } from "../../data";
@@ -30,13 +30,14 @@ const Header = (props: IProps) => {
 	const router = useRouter();
 	const [showMenu, setShowMenu] = useState<boolean>(false);
 	const [typeMenu, setTypeMenu] = useState<string>("");
-	const [dataMenu, setDataMenu] = useState<any>();
+	const [dataMenu, setDataMenu] = useState<DataMenu[]>([]);
 	const [linkLogo, setLinkLogo] = useState<string>();
 	const [mainMenu, setMainMenu] = useState<MainMenu[]>([]);
 	const [isScroll, setIsScroll] = useState<boolean>(false);
 	const [isShowSearch, setIsShowSearch] = useState<boolean>(false);
 	const { language, handleChangeLanguage } = props;
 	const searchRef = useRef<HTMLDivElement>(null);
+	const {setDataThongTin,dataThongTin}=useContext(AuthContext)
 	const {
 		isAuthenticated,
 		user,
@@ -57,16 +58,36 @@ const Header = (props: IProps) => {
 		// 		})
 		// 		.catch(console.error);
 	};
-	const getDataConfig = (type: string, valueGet?: string): any => {
-		let obj = dataConfig?.find((item) => {
-			return item.code === type;
-		});
-		if (valueGet) {
-			return obj?.id;
-		} else {
-			return obj?.value;
+	const getThongTinChung = async () => {
+	  try {
+			const res=await axios.get(`${ip}/thong-tin-chung`);
+			if (res){
+				setDataThongTin(res?.data)
+			}
+		}catch (e) {
+			console.log(e)
 		}
-	};
+	}
+	const getDataNav = async () => {
+		try {
+			const res=await axios.get(`${ip}/qlkh-cau-truc-trang-web?populate=deep`);
+			if (res){
+				setDataMenu(res?.data?.data?.attributes?.cauTruc??[])
+			}
+		}catch (e) {
+			console.log(e)
+		}
+	}
+	// const getDataConfig = (type: string, valueGet?: string): any => {
+	// 	let obj = dataConfig?.find((item) => {
+	// 		return item.code === type;
+	// 	});
+	// 	if (valueGet) {
+	// 		return obj?.id;
+	// 	} else {
+	// 		return obj?.value;
+	// 	}
+	// };
 	const {
 		register,
 		handleSubmit,
@@ -83,45 +104,12 @@ const Header = (props: IProps) => {
 		}
 	};
 	useEffect(() => {
-		fetch();
-	}, [isAuthenticated]);
+		getDataNav()
+	}, []);
 	useEffect(() => {
 		console.log("router", router);
 		if (router && router.pathname) {
 			setTypeMenu(router?.pathname);
-			// switch (router.asPath) {
-			// 	case "/tin-tuc":
-			// 		setTypeMenu("tin-tuc");
-			// 		break;
-			// 	case "/gioi-thieu":
-			// 		console.log("vao cmnr");
-			// 		setTypeMenu("gioi-thieu");
-			// 		break;
-			// 	case "/tuyen-sinh":
-			// 		setTypeMenu("tuyen-sinh");
-			// 		break;
-			// 	case "/dao-tao":
-			// 		setTypeMenu("dao-tao");
-			// 		break;
-			// 	case "/lien-he":
-			// 		setTypeMenu("lien-he");
-			// 		break;
-			// 	case "/tin-tuyen-sinh":
-			// 		setTypeMenu("tin-tuyen-sinh");
-			// 		break;
-			// 	case "/su-kien":
-			// 		setTypeMenu("su-kien");
-			// 		break;
-			// 	case "/thong-bao":
-			// 		setTypeMenu("thong-bao");
-			// 		break;
-			// 	case "/so-do":
-			// 		setTypeMenu("so-do");
-			// 		break;
-			// 	case "/":
-			// 		setTypeMenu("");
-			// 		break;
-			// }
 		}
 	}, [router]);
 
@@ -141,16 +129,8 @@ const Header = (props: IProps) => {
 		}
 	};
 	useEffect(() => {
-
+		getThongTinChung()
 	}, [router]);
-	const getLogo = async () => {
-		// const res= await renderImageByFolder(getDataConfig('logo','id'))
-		const res = await axios.post(`${ip}file/v5/FileObject/GetFileInSharedFolder`, {
-			sharedFolderType: 2,
-			entityKey: getDataConfig("logo", "id"),
-		});
-		setLinkLogo(renderImage(res?.data?.data?.id));
-	};
 	const handleClickOutside = (e: any) => {
 		const { target } = e;
 		const node = searchRef?.current;
@@ -168,12 +148,12 @@ const Header = (props: IProps) => {
 		// getLogo();
 	}, []);
 	return (
-		<HeaderWrapper className=''>
+		<HeaderWrapper className=' shadow-header'>
 			<div className='hidden sm:block bg-[#DE221A] px-6 '>
 				<div className='container mx-auto '>
 					<div className='header-branch flex justify-between items-center'>
 						<div className=' flex items-center'>
-							<img src={"/images/header/logo-header.png"} alt={"image"} />
+							<img src={renderImage(dataThongTin?.logoHeader)} alt={"image"} />
 						</div>
 						<div className=' flex item-center' >
 							{/*<img src={"/images/icons/facebook.svg"} />*/}
@@ -228,26 +208,31 @@ const Header = (props: IProps) => {
 					</div>
 				</div>
 			</div>
-			<div className={`label ${isScroll ? "fixed top-0 left-0 w-full bg-primary z-50" : ""}  shadow`}>
-				<div className=' container sm:mx-auto lg:py-[20px] py-0 '>
+			<div className={`label ${isScroll ? "fixed top-0 left-0 w-full bg-primary z-50" : ""} `}>
+				<div className=' container sm:mx-auto lg:py-[20px] py-0  '>
 					{/*<div className='logo'>*/}
 					{/*	<img src={'/images/header/logo-db.png'} alt={"image"} />*/}
 					{/*</div>*/}
-					<div className={`bg-primary ${isScroll ? " bg-primary" : "lg:bg-white"} `}>
+					<div className={` ${isScroll ? " bg-primary" : "lg:bg-white"} `}>
 						<div className={`container mx-auto hidden sm:flex  justify-center items-center `}>
 							<div className='flex items-center justify-center '>
-								{dataNavBar.map((value, index) => {
+								{dataMenu.map((value, index) => {
 									return (
 										<div
 											onClick={() => {
-												if (value?.childrenRouter?.length > 0) {
+												if (value?.trangCon?.length > 0) {
 												} else {
-													router.push(value?.linkTo);
+													if (value?.sangTrangMoi) {
+														window.open(value?.link)
+													}else {
+														router.push(value?.link);
+													}
+
 												}
 											}}
 											// href={value?.children?.length > 0 ? "" : value?.linkTo}
 											className={` mr-[24px] last-of-type:mr-0 text-nav pt-2 cursor-pointer ${
-												value?.linkTo?.localeCompare(typeMenu) === 0
+												value?.link?.split('?')?.[0]?.localeCompare(typeMenu) === 0
 													? `text-white ${
 															isScroll
 																? "text-white md:border-b-2  md:border-white-500"
@@ -257,26 +242,30 @@ const Header = (props: IProps) => {
 											} block  `}
 											key={index}
 										>
-											{value?.childrenRouter?.length > 0 ? (
+											{value?.trangCon?.length > 0 ? (
 												<>
 													<Tooltip
 														className={"tooltip-label"}
 														content={
 															<>
-																{value?.childrenRouter?.map((value2, index2) => {
+																{value?.trangCon?.map((value2, index2) => {
 																	return (
 																		<div
 																			onClick={() => {
-																				router.push(value2?.linkTo);
+																				if (value?.sangTrangMoi) {
+																					window.open(value2?.link)
+																				}else {
+																					router.push(value2?.link);
+																				}
 																			}}
 																			className={`text-children mr-[40px] cursor-pointer pt-2 ${
-																				value2?.linkTo?.localeCompare(typeMenu) === 0
+																				value2?.link?.localeCompare(typeMenu) === 0
 																					? "text-active md:border-b-2  md:border-primary-500"
 																					: "md:border-none"
 																			} block  hover:border-b hover:border-primary mb-[8px]`}
 																			key={index2}
 																		>
-																			{value2.name}
+																			{value2.ten}
 																		</div>
 																	);
 																})}
@@ -285,11 +274,11 @@ const Header = (props: IProps) => {
 														style={"light"}
 														placement='bottom'
 													>
-														{value?.name}
+														{value?.ten}
 													</Tooltip>
 												</>
 											) : (
-												<>{value?.name}</>
+												<>{value?.ten}</>
 											)}
 										</div>
 									);
@@ -325,16 +314,16 @@ const Header = (props: IProps) => {
 								{showMenu && (
 									<div className='menu-mobile absolute w-[180px] top-[50px] right-0 bg-white px-2 py-2 shadow-md rounded z-50'>
 										<ul>
-											{dataNavBar.map((value, index) => {
+											{dataMenu.map((value, index) => {
 												return (
 													<li key={index}>
 														<Link
-															href={value.linkTo}
+															href={value.link}
 															className={`${
-																typeMenu === value.name ? "text-active" : ""
+																typeMenu === value.ten ? "text-active" : ""
 															} uppercase text-nav block md:border-b-2 md:border-primary-500 pb-[8px]`}
 														>
-															{value?.name}
+															{value?.ten}
 														</Link>
 													</li>
 												);
@@ -352,6 +341,8 @@ const Header = (props: IProps) => {
 };
 
 const HeaderWrapper = styled.div`
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+	z-index: 10;
 	.header-branch {
 		padding: 16px 0;
 		.info {
@@ -445,6 +436,9 @@ const HeaderWrapper = styled.div`
 		&:hover {
 			color: #de221a;
 		}
+	}
+	.shadow-header{
+		box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
 	}
 `;
 export default React.memo(Header);

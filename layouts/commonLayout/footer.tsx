@@ -4,26 +4,26 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 import styled from "styled-components";
-import React, { useEffect, useRef, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import { Router } from "../../config";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { ip, ip3 } from "../../api/ip";
 import { DataConfig } from "../../utils/interface";
-import { useAuth } from "../../context/AuthContext";
+import {AuthContext, useAuth} from "../../context/AuthContext";
 import { dataFooterLocation, dataNavBar } from "../../data";
+import {renderImage} from "../../utils/util";
 
 const MainFooter = () => {
 	const [common] = useTranslation("common");
 	const router = useRouter();
 	const [dataConfigFooter, setDataConfigFooter] = useState<DataConfig[]>([]);
 	const { menu, setDataConfig } = useAuth();
+	const {dataThongTin}=useContext(AuthContext);
 
 	const getDataConfig = (type: string): any => {
-		return dataConfigFooter?.find((item) => {
-			return item.code === type;
-		})?.value;
+		return null
 	};
 	return (
 		<FooterWrapper>
@@ -31,7 +31,7 @@ const MainFooter = () => {
 				<div className='container mx-auto lg:pt-[60px] pt-[20px] lg:pb-[60px] pb-[20px] px-[20px] md:px-[20px]'>
 					<div className='lg:flex block justify-between'>
 						<div className='lg:max-w-[596px] wow fadeInUp'>
-							<img className={"w-full"} src={"/images/header/logo-footer.png"} />
+							<img className={"w-full"} src={renderImage(dataThongTin?.logoFooter)} />
 							<div className='lg:flex hidden items-center mt-[20px]'>
 								{/*<img className="mr-[20px] cursor-pointer" src="/images/icons/facebook-2.svg" alt={'image'}/>*/}
 								<div className='mr-[20px] cursor-pointer'>
@@ -51,14 +51,30 @@ const MainFooter = () => {
 							</div>
 						</div>
 						<div className='mt-[20px] lg:mt-0'>
-							{dataFooterLocation?.map((val, i) => {
-								return (
-									<div key={i} className='lg:mb-[32px] mb-[20px]'>
-										<div className='title-footer mb-[8px]'>{val?.title}</div>
-										<div className='content-footer'>{val?.name}</div>
-									</div>
-								);
-							})}
+							{/*{dataFooterLocation?.map((val, i) => {*/}
+							{/*	return (*/}
+							{/*		<div key={i} className='lg:mb-[32px] mb-[20px]'>*/}
+							{/*			<div className='title-footer mb-[8px]'>{val?.title}</div>*/}
+							{/*			<div className='content-footer'>{val?.name}</div>*/}
+							{/*		</div>*/}
+							{/*	);*/}
+							{/*})}*/}
+							<div  className='lg:mb-[32px] mb-[20px]'>
+								<div className='title-footer mb-[8px]'>Trụ sở chính</div>
+								<div className='content-footer'>{dataThongTin?.truSoChinh}</div>
+							</div>
+							<div  className='lg:mb-[32px] mb-[20px]'>
+								<div className='title-footer mb-[8px]'>Cơ sở đào tạo tại Hà Nội</div>
+								<div className='content-footer'>{dataThongTin?.coSo1}</div>
+							</div>
+							<div  className='lg:mb-[32px] mb-[20px]'>
+								<div className='title-footer mb-[8px]'>Học viện cơ sở tại TP. Hồ Chí Minh</div>
+								<div className='content-footer'>{dataThongTin?.hocVienCoSo}</div>
+							</div>
+							<div  className='lg:mb-[32px] mb-[20px]'>
+								<div className='title-footer mb-[8px]'>Cơ sở đào tạo tại TP Hồ Chí Minh</div>
+								<div className='content-footer'>{dataThongTin?.coSo2}</div>
+							</div>
 						</div>
 						<div className='location hidden lg:block wow fadeInUp'>
 							{dataNavBar?.map((value, index) => {

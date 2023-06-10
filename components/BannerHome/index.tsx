@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import Button from "../Button";
-import {Banner, IDataHome, TuyenSinh} from "../../utils/interface";
+import { IDataHome} from "../../utils/interface";
 import axios from "axios";
 import { ip } from "../../api/ip";
 import { renderImage } from "../../utils/util";
@@ -11,7 +11,6 @@ import {dataBannerSlide} from "../../data";
 import {images} from "next/dist/build/webpack/config/blocks/images";
 
 const BannerHome = (props:{dataHome:IDataHome}) => {
-	const [dataSuKien, setDataSuKien] = useState<Banner[]>([]);
 	const SliderRef = useRef(null);
 
 	useEffect(() => {

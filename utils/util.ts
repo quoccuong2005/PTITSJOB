@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ip } from "../api/ip";
+import {ip, ipImage} from "../api/ip";
 
 export const vndFormat = new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND" });
 
@@ -114,10 +114,10 @@ export function removeVietnameseTones(str: string, isXoaKhoangTrang?: boolean) {
 	return str;
 }
 export function renderImage(thumbnail: string) {
-	return `http://localhost:1337${thumbnail}`;
+	return `${ipImage}${thumbnail}`;
 }
 // export async function renderImageByFolder(id: string) {
-// 	const res = await axios.post(`${ip}file/v5/FileObject/GetFileInSharedFolder`, {
+// 	const res = await axios.post(`${ip}file/v5/FileObject/GetFileInSharedFolder`, {c
 // 		sharedFolderType: 2,
 // 		entityKey: id,
 // 	});

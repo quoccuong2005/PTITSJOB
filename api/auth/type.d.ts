@@ -1,5 +1,5 @@
 import { User } from "../user/type";
-import {DataConfig, MainMenu} from "../../utils/interface";
+import {DataConfig, DataThongTin, MainMenu} from "../../utils/interface";
 
 declare module Auth {
 	export interface IClientOAuth {
@@ -50,6 +50,8 @@ declare module Auth {
 		setAllFollow: (data: string[]) => void;
 		setMenu: (data: MainMenu[]) => void;
 		setDataConfig: (data: DataConfig[]) => void;
+		setDataThongTin: (data: DataThongTin) => void;
+		dataThongTin: DataThongTin;
 		menu:MainMenu[];
 		dataConfig:DataConfig[];
 		OAuthData: Auth.IClientOAuth;

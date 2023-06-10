@@ -6,7 +6,7 @@ import CardEvent from "../Event/components/CardEvent";
 import Button from "../Button";
 import Card from "../Card";
 import { useEffect, useState } from "react";
-import {IDataHome, TuyenSinh, TuyenSinhList} from "../../utils/interface";
+import {IDataHome} from "../../utils/interface";
 import axios from "axios";
 import { ip, ip3 } from "../../api/ip";
 import { useRouter } from "next/router";
@@ -15,8 +15,6 @@ import { ro } from "date-fns/locale";
 
 const ChuongTrinhDaoTao = (props:{dataHome:IDataHome}) => {
 	const router = useRouter();
-	const [dataCT, setDataCT] = useState<TuyenSinhList[]>([]);
-	const [dataNN, setDataNN] = useState<TuyenSinh[]>([]);
 
 
 	useEffect(() => {
@@ -34,7 +32,7 @@ const ChuongTrinhDaoTao = (props:{dataHome:IDataHome}) => {
 									className='cursor-pointer'
 									key={i}
 									onClick={() => {
-										router.push(`#`);
+										router.push(`/hoat-dong/${val?.id}`);
 									}}
 								>
 									<Card
@@ -57,7 +55,7 @@ const ChuongTrinhDaoTao = (props:{dataHome:IDataHome}) => {
 									className='cursor-pointer'
 									key={i}
 									onClick={() => {
-										router.push(`#`);
+										router.push(`/hoat-dong/${val?.id}`);
 									}}
 								>
 									<CardEvent

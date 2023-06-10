@@ -89,7 +89,7 @@ const ChiTiet = () => {
   // }
   const getData = async (id: string) => {
     try {
-      const res = await axios.get(`${ip}/qlkh-tin-tucs/${id}`);
+      const res = await axios.get(`${ip}/tap-chi-khoa-hocs/${id}`);
       if (res) {
         setDataChiTiet(res?.data?.data);
       }
@@ -119,11 +119,11 @@ const ChiTiet = () => {
           <BreadcrumbPage
             data={[
               {
-                title: "Tin tức - Sự kiện",
+                title: "Trang chủ",
                 path: "/",
               },
               {
-                title: "Tin tức - Sự kiện chi tiết",
+                title: "Tạp chí khoa học",
                 path: "/#",
               },
             ]}
@@ -190,36 +190,36 @@ const ChiTiet = () => {
           {/*</div>*/}
         </div>
       </div>
-      <div className={"container mx-auto mt-2 mb-2"}>
-        <div className="title-event lg:mb-[40px] flex justify-between">
-          <h2>Tin tức - Sự kiện đã diễn ra</h2>
-          <div className="show-more flex items-center cursor-pointer">
-            <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>
-            <img src="/images/icons/arrow-right-2.svg" alt="image" />
-          </div>
-        </div>
-        <div className={"grid grid-cols-3 gap-[30px]"}>
-          {dataTinTuc?.map((val, i) => {
-            return (
-              <div
-                onClick={() => {
-                  router.push(`/tin-tuc/1`);
-                }}
-                key={i}
-              >
-                <CardBanner
-                  imageUrl={val.imageUrl}
-                  title={val.content}
-                  description={val.description}
-                  dateTime={val.dateTime}
-                  key={i}
-                  type={"list"}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      {/*<div className={"container mx-auto mt-2 mb-2"}>*/}
+      {/*  <div className="title-event lg:mb-[40px] flex justify-between">*/}
+      {/*    <h2>Tin tức - Sự kiện đã diễn ra</h2>*/}
+      {/*    <div className="show-more flex items-center cursor-pointer">*/}
+      {/*      <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>*/}
+      {/*      <img src="/images/icons/arrow-right-2.svg" alt="image" />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*  <div className={"grid grid-cols-3 gap-[30px]"}>*/}
+      {/*    {dataTinTuc?.map((val, i) => {*/}
+      {/*      return (*/}
+      {/*        <div*/}
+      {/*          onClick={() => {*/}
+      {/*            router.push(`/tin-tuc/1`);*/}
+      {/*          }}*/}
+      {/*          key={i}*/}
+      {/*        >*/}
+      {/*          <CardBanner*/}
+      {/*            imageUrl={val.imageUrl}*/}
+      {/*            title={val.content}*/}
+      {/*            description={val.description}*/}
+      {/*            dateTime={val.dateTime}*/}
+      {/*            key={i}*/}
+      {/*            type={"list"}*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*      );*/}
+      {/*    })}*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </ChiTietWrapper>
   );
 };
