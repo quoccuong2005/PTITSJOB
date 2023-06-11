@@ -12,8 +12,9 @@ const CardEvent = (props: IPorps) => {
 		return (
 			<CardBigEventWrapper>
 				<div className='card'>
+					<Link href={props.data.link ? props.data.link : "#"}>
 					<div className='cover item-c'>
-						<Link href={props.data.link ? props.data.link : "#"}>
+
 							<div className='card cursor-pointer relative md:h-[278px] h-full' style={props.style}>
 								{props.category ? (
 									<img
@@ -53,8 +54,8 @@ const CardEvent = (props: IPorps) => {
 									)}
 								</div>
 							</div>
-						</Link>
-						<div className='card-back'>
+
+						<div className='card-back cursor-pointer'>
 							<div className='title-back px-[20px] flex flex-col justify-center py-[50px]  bg-white'>
 								<div className='border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp h-full'>
 									{props.data.dateTime && (
@@ -73,6 +74,7 @@ const CardEvent = (props: IPorps) => {
 							</div>
 						</div>
 					</div>
+					</Link>
 				</div>
 			</CardBigEventWrapper>
 		);
@@ -246,7 +248,7 @@ const CardBigEventWrapper = styled.div`
 		//height: 400px;
 		width: 100%;
 		//margin: 10px 0;
-		transition: ease all 2.3s;
+		transition: ease all 1.3s;
 		perspective: 1200px;
 
 		&:hover {
@@ -282,7 +284,7 @@ const CardBigEventWrapper = styled.div`
 			left: 0;
 			width: 100%;
 			transform-style: preserve-3d;
-			transition: ease all 2.3s;
+			transition: ease all 1.3s;
 			background-size: cover;
 			background-position: center center;
 			background-repeat: no-repeat;
@@ -297,7 +299,7 @@ const CardBigEventWrapper = styled.div`
 			//	right: 20px;
 			//	bottom: 20px;
 			//	z-index: 2;
-			//	transition: ease all 2.3s;
+			//	transition: ease all 1.3s;
 			//	transform-style: preserve-3d;
 			//	transform: translateZ(0px);
 			//}
@@ -321,7 +323,7 @@ const CardBigEventWrapper = styled.div`
 				left: 50px;
 				color: white;
 				transform-style: preserve-3d;
-				transition: ease all 2.3s;
+				transition: ease all 1.3s;
 				z-index: 3;
 				font-size: 3em;
 				transform: translateZ(0px);
@@ -334,7 +336,7 @@ const CardBigEventWrapper = styled.div`
 				right: 50px;
 				color: white;
 				transform-style: preserve-3d;
-				transition: ease all 2.3s;
+				transition: ease all 1.3s;
 				z-index: 4;
 				font-size: 2em;
 				transform: translateZ(0px);
@@ -350,7 +352,7 @@ const CardBigEventWrapper = styled.div`
 			background: #ffffff;
 			border: 1px solid #f0f0f0;
 			transform-style: preserve-3d;
-			transition: ease all 2.3s;
+			transition: ease all 1.3s;
 			transform: translateZ(-1px);
 			//display: flex;
 			//align-items: center;
@@ -358,7 +360,7 @@ const CardBigEventWrapper = styled.div`
 
 			.title-back {
 				transform-style: preserve-3d;
-				transition: ease transform 2.3s, ease background 0.5s;
+				transition: ease transform 1.3s, ease background 0.5s;
 				transform: translateZ(-1px) rotatey(-180deg);
 				background: transparent;
 				border: 1px solid white;

@@ -11,9 +11,10 @@ const CardBanner = (props: IProps) => {
 	if (props.type === "big") {
 		return (
 			<CardBigBannerWrapper className='hover:shadow-xl cursor-pointer bg-[#1421410A]'>
-				<div className={"flex"}>
+				<div className={"flex w-full"}>
 					<div className='relative w-1/2'>
 						<img
+							className="h-full w-full"
 							src={props.imageUrl}
 							onError={({ currentTarget }) => {
 								currentTarget.onerror = null; // prevents looping
@@ -50,7 +51,7 @@ const CardBanner = (props: IProps) => {
 		if (props.type === "list") {
 			return (
 				<CardListBannerWrapper className='hover:shadow-xl cursor-pointer h-full'>
-					<div className={"h-full inline-block"}>
+					<div className={"h-full inline-block overflow-hidden"}>
 						<div className='relative'>
 							<img
 								src={props.imageUrl}
@@ -75,7 +76,7 @@ const CardBanner = (props: IProps) => {
 								</div>
 							</div>
 						</div>
-						<div className={"px-[24px] py-[24px] bg-gradient-gray"}>
+						<div className={"px-[24px] py-[24px] bg-gradient-gray h-full"}>
 							<div className=''>
 								<div className=' title-card    '>{props.title}</div>
 								<div className='w-[64px] mt-[12px] mb-[12px]'>

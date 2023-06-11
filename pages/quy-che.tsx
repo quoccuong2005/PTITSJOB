@@ -3,14 +3,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import TableBase from "../components/tableBase";
-import {dataDanhMuc, dataQuyChe} from "../data";
-import {GioiThieu} from "../utils/interface";
+import { dataDanhMuc, dataQuyChe } from "../data";
+import { GioiThieu } from "../utils/interface";
 import { ip } from "../api/ip";
 import Title from "../components/Title";
-import {Controller, useForm} from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import DropdownFake from "../components/Dropdown";
-import {rules} from "../utils/rules";
+import { rules } from "../utils/rules";
 import moment from "moment";
+import { renderImage } from "../utils/util";
 
 const QuyChe = () => {
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
@@ -28,10 +29,10 @@ const QuyChe = () => {
   } = useForm();
   const getData = async () => {
     try {
-      const res = await axios.get(`${ip}/van-ban/all`,{
-        params:{
-          coQuan:type
-        }
+      const res = await axios.get(`${ip}/van-ban/all`, {
+        params: {
+          coQuan: type,
+        },
       });
       if (res) {
         console.log("resss", res);
@@ -60,21 +61,21 @@ const QuyChe = () => {
     {
       title: "Ngày ban hành",
       dataIndex: "ngayBanHanh",
-      render:(val:any)=>{
-        return val?moment(val).format("DD/MM/YYYY"):'Không có dữ liệu'
-      }
+      render: (val: any) => {
+        return val ? moment(val).format("DD/MM/YYYY") : "Không có dữ liệu";
+      },
     },
     {
       title: "Thời gian bắt đầu hiệu lực",
       dataIndex: "thoiGianHieuLuc",
-      render:(val:any)=>{
-        return val?moment(val).format("DD/MM/YYYY"):'Không có dữ liệu'
-      }
+      render: (val: any) => {
+        return val ? moment(val).format("DD/MM/YYYY") : "Không có dữ liệu";
+      },
     },
     {
       title: "Trích yếu nội dung",
       dataIndex: "trichYeu",
-      width:300
+      width: 300,
     },
     {
       title: "Loại văn bản",
@@ -87,6 +88,9 @@ const QuyChe = () => {
     {
       title: "Tài liệu đính kèm",
       dataIndex: "taiLieuDinhKem",
+      render: (val: any) => {
+        return <a href={renderImage(val?.url)}>{val?.name}</a>;
+      },
     },
   ];
   const onSubmit = (data: any) => {
@@ -98,9 +102,17 @@ const QuyChe = () => {
     // 	endDate: moment(data?.endDate).toISOString(),
     // });
     router.push(
-      `/tim-kiem?keyword=${data?.keyword}${data?.type ? `&type=${data?.type}` : ""}${
-        data?.dateStart ? `&startDate=${moment(data?.dateStart).toISOString()}` : ""
-      }${data?.endDdateEndate ? `&endDate=${moment(data?.dateEnd).toISOString()}` : ""}`
+      `/tim-kiem?keyword=${data?.keyword}${
+        data?.type ? `&type=${data?.type}` : ""
+      }${
+        data?.dateStart
+          ? `&startDate=${moment(data?.dateStart).toISOString()}`
+          : ""
+      }${
+        data?.endDdateEndate
+          ? `&endDate=${moment(data?.dateEnd).toISOString()}`
+          : ""
+      }`
     );
   };
   const option = [
@@ -113,12 +125,15 @@ const QuyChe = () => {
   ];
   return (
     <QuyCheWrapper>
-      <div className='container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]'>
-        <Title title={"CÁC VĂN BẢN QUY ĐỊNH VỀ KH, CN & ĐMST"} uppercase={true} />
+      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]">
+        <Title
+          title={"CÁC VĂN BẢN QUY ĐỊNH VỀ KH, CN & ĐMST"}
+          uppercase={true}
+        />
         <div className="mb-[40px]">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='flex justify-end'>
-              <div className='dropdown mr-[24px]'>
+            <div className="flex justify-end">
+              <div className="dropdown mr-[24px]">
                 <Controller
                   name={"type"}
                   control={control}
@@ -135,30 +150,36 @@ const QuyChe = () => {
                   )}
                 />
               </div>
-              <div className=''>
-                <div className='search flex item-center h-full'>
-                  <div className='relative'>
-                    <input placeholder={"Tìm kiếm"} {...register("keyword", { ...rules.required })} />
+              <div className="">
+                <div className="search flex item-center h-full">
+                  <div className="relative">
+                    <input
+                      placeholder={"Tìm kiếm"}
+                      {...register("keyword", { ...rules.required })}
+                    />
                     {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
                     {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
                     {/*</div>*/}
                   </div>
-                  <button type='submit'>
+                  <button type="submit">
                     <img src={"/images/icons/search-pri.svg"} alt={"image"} />
                   </button>
                 </div>
-                {errors.keyword && <p className='error-text'>Bắt buộc</p>}
+                {errors.keyword && <p className="error-text">Bắt buộc</p>}
               </div>
             </div>
           </form>
         </div>
         <div>
-          <TableBase columns={columns} dataSource={dataGioiThieu?.map((val,i)=>{
-            return{
-              ...val,
-              index:i+1
-            }
-          })} />
+          <TableBase
+            columns={columns}
+            dataSource={dataGioiThieu?.map((val, i) => {
+              return {
+                ...val,
+                index: i + 1,
+              };
+            })}
+          />
         </div>
       </div>
     </QuyCheWrapper>
@@ -196,6 +217,5 @@ const QuyCheWrapper = styled.div`
       color: #ffffff;
     }
   }
-
 `;
 export default QuyChe;

@@ -20,6 +20,7 @@ const ChiTietHoatDong = () => {
     {
       title: "STT",
       dataIndex: "index",
+      width:'80px'
     },
     {
       title: "Tên đề tài",
@@ -121,10 +122,10 @@ const ChiTietHoatDong = () => {
           <div className="title" dangerouslySetInnerHTML={{__html:dataDetail?.noiDung??''}}>
 
           </div>
-          <div className="show-more flex items-center cursor-pointer mt-[26px]">
-            <div className="mr-[24px] shrink-0">Phụ lục đính kèm</div>
-            <img src="/images/icons/arrow-right-2.svg" alt="image" />
-          </div>
+          {/*<div className="show-more flex items-center cursor-pointer mt-[26px]">*/}
+          {/*  <div className="mr-[24px] shrink-0">Phụ lục đính kèm</div>*/}
+          {/*  <img src="/images/icons/arrow-right-2.svg" alt="image" />*/}
+          {/*</div>*/}
           <div className="mt-[26px]">
             <TableBase columns={columns} dataSource={dataDetail?.chiTiet?.map((val,i)=>{
 							return{

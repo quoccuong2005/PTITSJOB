@@ -11,13 +11,14 @@ interface IProps {
 const Pagination = (props: IProps) => {
     const {page,total,limit,handleChangePage}=props
     const [dataPage,setDataPage]=useState<number[]>([])
-    const [currentPage,setCurrentPage]=useState<number>(1)
+    const [totalPage,setTotalPage]=useState<number>(1)
     useEffect(()=>{
         const totalPage=total/limit;
+        setTotalPage(totalPage)
         console.log('total',totalPage)
         let arrPage=[]
         if (totalPage>=1){
-            for (let i=1;i<=totalPage;i++){
+            for (let i=1;i<=Math.ceil(totalPage);i++){
                 arrPage.push(i);
             }
         }else {
@@ -28,20 +29,44 @@ const Pagination = (props: IProps) => {
     },[page,total,limit])
     const changePage = (page:number) => {
         handleChangePage(page)
-        setCurrentPage(page)
+        // setCurrentPage(page)
+    }
+    // useEffect(()=>{
+    //     setCurrentPage(page)
+    // },[page])
+    const handleNextPage = () => {
+        if (page===Math.ceil(total/limit)){
+            handleChangePage(1)
+        }else {
+            let pageNext=page+1
+            handleChangePage(pageNext)
+        }
+
+    }
+    const handlePrevPage = () => {
+
+        if (page===1){
+            let pagePrev=Math.ceil(total/page)
+            handleChangePage(pagePrev)
+        }else {
+            let pageNext=page-1
+            handleChangePage(pageNext)
+        }
     }
     return(
         <PaginationWrapper>
+            {total>0&&
+              <div className="pagination">
+                  {totalPage>1&&    <a href="#" onClick={()=>{handlePrevPage()}}>&laquo;</a>}
 
-            <div className="pagination">
-                <a href="#">&laquo;</a>
-                {dataPage?.map((value,i)=>{
-                    return(
-                        <a onClick={()=>changePage(value)} className={`${currentPage===value?'active':''}`} key={i}>{value}</a>
-                    )
-                })}
-                <a href="#">&raquo;</a>
-            </div>
+                  {dataPage?.map((value,i)=>{
+                      return(
+                        <a onClick={()=>changePage(value)} className={`${page===value?'active':''}`} key={i}>{value}</a>
+                      )
+                  })}
+                  {totalPage>1&& <a href="#"  onClick={()=>{handleNextPage()}}>&raquo;</a>}
+              </div>}
+
         </PaginationWrapper>
     )
 

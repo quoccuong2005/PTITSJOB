@@ -58,7 +58,7 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 	};
 
 	return (
-		<TinTuyenSinhWrapper className='px-[20px] lg:px-0 md:py-[50px] py-[20px] '>
+		<TinTuyenSinhWrapper className='bg-[#1421410A] px-[20px] lg:px-0 md:py-[50px] py-[20px] '>
 			<div className='container mx-auto'>
 				<div>
 					<Title title={"Tin tức - sự kiện"} uppercase={true} description={""} />
@@ -177,23 +177,25 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 
 					</Slider>
 				</div>
-				<div className='flex justify-center sm:mt-[40px] mt-[20px]'>
-					<Button
-						type={"primary"}
-						classname='lg:w-[279px]'
-						onClick={() => {
-							router.push("/tin-tuc");
-						}}
-					>
-						Xem thêm
-					</Button>
-				</div>
+				{props.dataHome?.qlkh_tin_tucs?.data?.length>6&&
+					<div className='flex justify-center sm:mt-[40px] mt-[20px]'>
+						<Button
+							type={"primary"}
+							classname='lg:w-[279px]'
+							onClick={() => {
+								router.push("/tin-tuc");
+							}}
+						>
+							Xem thêm
+						</Button>
+					</div>}
+
 			</div>
 		</TinTuyenSinhWrapper>
 	);
 };
 
 const TinTuyenSinhWrapper = styled.div`
-	background-color: #ffffff;
+
 `;
 export default TinTuyenSinh;

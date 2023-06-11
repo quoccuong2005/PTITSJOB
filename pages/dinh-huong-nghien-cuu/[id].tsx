@@ -16,7 +16,6 @@ import moment from "moment";
 import { renderImage } from "../../utils/util";
 import ReactToPrint from "react-to-print";
 import CardBanner from "../../components/CardBanner";
-import {DataNewList} from "../../utils/interface";
 interface IDataChiTiet {
   id: 3;
   attributes: {
@@ -37,7 +36,6 @@ const ChiTiet = () => {
   // 	formState: { errors },
   // } = useForm();
   const [dataChiTiet, setDataChiTiet] = useState<IDataChiTiet>();
-  const [dataDaDienRa, setDataDaDienRa] = useState<DataNewList[]>([]);
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
   const [content, setContent] = useState<any>(null);
   const router = useRouter();
@@ -89,22 +87,9 @@ const ChiTiet = () => {
   // 		console.log(e)
   // 	}
   // }
-  const handleGetAllDaDienRa = async () => {
-    try {
-      const res = await axios.get(`${ip}/tin-tuc-su-kien/all?type=event`,{
-
-      });
-      if (res) {
-        setDataDaDienRa(res?.data?.data??[]);
-
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
   const getData = async (id: string) => {
     try {
-      const res = await axios.get(`${ip}/qlkh-tin-tucs/${id}`);
+      const res = await axios.get(`${ip}/qlkh-dinh-huong-nghien-cuus/${id}`);
       if (res) {
         setDataChiTiet(res?.data?.data);
       }
@@ -115,7 +100,6 @@ const ChiTiet = () => {
   useEffect(() => {
     if (router?.query?.id) {
       getData(router?.query?.id as string);
-      handleGetAllDaDienRa()
       // getData();
       // getDataLienQuan();
     }
@@ -128,7 +112,7 @@ const ChiTiet = () => {
   return (
     <ChiTietWrapper>
       <div
-        className="container mx-auto bg-white px-6 sm:px-0 pt-6 pb-8"
+        className="container mx-auto bg-white px-6 pt-6 pb-8"
         ref={contentRef}
       >
         <div className="flex justify-between">
@@ -139,7 +123,7 @@ const ChiTiet = () => {
                 path: "/",
               },
               {
-                title: "Tin tức - Sự kiện chi tiết",
+                title: "Định hướng nghiên cứu",
                 path: "/#",
               },
             ]}
@@ -173,7 +157,7 @@ const ChiTiet = () => {
                 </p>
               )}
 
-              <p className="date">Tác giả: NVB</p>
+              {/*<p className="date">Tác giả: NVB</p>*/}
             </div>
 
             {/*<div className=' flex justify-end mt-[20px]'>*/}
@@ -206,43 +190,36 @@ const ChiTiet = () => {
           {/*</div>*/}
         </div>
       </div>
-      <div className={"container mx-auto mt-2 mb-[50px]"}>
-        <div className="title-event lg:mb-[40px] flex justify-between">
-          <h2>Tin tức - Sự kiện đã diễn ra</h2>
-          <div className="show-more flex items-center cursor-pointer">
-            <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>
-            <img src="/images/icons/arrow-right-2.svg" alt="image" />
-          </div>
-        </div>
-        <div className={"grid grid-cols-3 gap-[30px]"}>
-          {dataDaDienRa?.filter((item)=>{
-            return moment(item?.thoiGianBatDau).isBefore(moment())
-          })?.map((val, i) => {
-            if (i<3){
-              return (
-                <div
-                  onClick={() => {
-                    router.push(`/tin-tuc/${val?.id}`);
-                  }}
-                  key={i}
-                >
-                  <CardBanner
-                    imageUrl={renderImage(val?.imageUrl)}
-                    title={val.tieuDe}
-                    description={val.moTa}
-                    dateTime={val.createdAt}
-                    key={i}
-                    type={"list"}
-                  />
-                </div>
-              );
-            }else {
-              return null
-            }
-
-          })}
-        </div>
-      </div>
+      {/*<div className={"container mx-auto mt-2 mb-2"}>*/}
+      {/*  <div className="title-event lg:mb-[40px] flex justify-between">*/}
+      {/*    <h2>Tin tức - Sự kiện đã diễn ra</h2>*/}
+      {/*    <div className="show-more flex items-center cursor-pointer">*/}
+      {/*      <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>*/}
+      {/*      <img src="/images/icons/arrow-right-2.svg" alt="image" />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*  <div className={"grid grid-cols-3 gap-[30px]"}>*/}
+      {/*    {dataTinTuc?.map((val, i) => {*/}
+      {/*      return (*/}
+      {/*        <div*/}
+      {/*          onClick={() => {*/}
+      {/*            router.push(`/tin-tuc/1`);*/}
+      {/*          }}*/}
+      {/*          key={i}*/}
+      {/*        >*/}
+      {/*          <CardBanner*/}
+      {/*            imageUrl={val.imageUrl}*/}
+      {/*            title={val.content}*/}
+      {/*            description={val.description}*/}
+      {/*            dateTime={val.dateTime}*/}
+      {/*            key={i}*/}
+      {/*            type={"list"}*/}
+      {/*          />*/}
+      {/*        </div>*/}
+      {/*      );*/}
+      {/*    })}*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </ChiTietWrapper>
   );
 };

@@ -21,6 +21,7 @@ import CardEvent from "../../components/CardEvent";
 const Tintuc = () => {
   const router = useRouter();
   const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(9);
   const [total, setTotal] = useState<number>(0);
   const [type, setType] = useState<"news" | "event">("news");
   const [dataNew, setDataNew] = useState<DataNewList[]>([]);
@@ -34,10 +35,15 @@ const Tintuc = () => {
   const handleGetAll = async () => {
     try {
       const res = await axios.get(`${ip}/tin-tuc-su-kien/all?type=${type}`,{
-				params:condition
+				params:{
+          ...condition,
+          page:page,
+          limit:limit,
+        }
 			});
       if (res) {
-        setDataNew(res?.data??[]);
+        setDataNew(res?.data?.data??[]);
+        setTotal(res?.data?.metadata?.total??0)
       }
     } catch (e) {
       console.log(e);
@@ -48,7 +54,7 @@ const Tintuc = () => {
   }, [router]);
   useEffect(() => {
     handleGetAll();
-  }, [type, condition]);
+  }, [type, condition,page,limit]);
   const onSubmit = (data: any) => {
     console.log("data", data);
     // getData({
@@ -73,17 +79,18 @@ const Tintuc = () => {
     }
   };
   const handleChangeType = (val: "news" | "event") => {
+    setPage(1)
     setType(val);
   };
   return (
     <TinTucWraper>
-      <div className="container mx-auto bg-white px-6 pt-2 pb-14 mb-2">
+      <div className="container mx-auto bg-white  pt-2 pb-14 mb-2">
         <div className="md:mt-[40px] md:mb-[40px] lg:flex block justify-between">
           {/*<h2 className="">Tin tức sự kiện</h2>*/}
           <div className="flex justify-center lg:justify-start  mb-[20px] lg:mb-0">
             <div
               className={`text-normal px-[24px] py-[8px] ${
-                type === "news" ? "bg-gray" : "bg-gradient-gray"
+                type === "news" ? "bg-white border-t-2 border-primary" : "bg-gradient-gray"
               } cursor-pointer`}
               onClick={() => handleChangeType("news")}
             >
@@ -91,7 +98,7 @@ const Tintuc = () => {
             </div>
             <div
               className={`text-normal px-[24px] py-[8px] ${
-                type === "event" ? "bg-gray" : "bg-gradient-gray"
+                type === "event" ? "bg-white border-t-2 border-primary" : "bg-gradient-gray"
               } cursor-pointer`}
               onClick={() => handleChangeType("event")}
             >
@@ -173,10 +180,10 @@ const Tintuc = () => {
             <div className="lg:mb-[80px] mb-[20px]">
               <div className="title-event lg:mb-[40px] flex justify-between">
                 <h2>Sự kiện sắp tới</h2>
-                <div className="show-more flex items-center cursor-pointer">
-                  <div className="mr-[24px] shrink-0">Xem thêm</div>
-                  <img src="./images/icons/arrow-right-2.svg" alt="image" />
-                </div>
+                {/*<div className="show-more flex items-center cursor-pointer">*/}
+                {/*  <div className="mr-[24px] shrink-0">Xem thêm</div>*/}
+                {/*  <img src="./images/icons/arrow-right-2.svg" alt="image" />*/}
+                {/*</div>*/}
               </div>
               <div className={"hidden lg:grid grid-cols-1 gap-[30px] "}>
                 {dataNew?.filter((item)=>{
@@ -276,11 +283,11 @@ const Tintuc = () => {
             </div>
           </div>
         )}
-        {type === "news" && (
+        {/*{type === "news" && (*/}
           <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
             <Pagination
-              page={1}
-              limit={10}
+              page={page}
+              limit={3}
               total={total}
               handleChangePage={(page) => {
                 console.log("page", page);
@@ -288,7 +295,7 @@ const Tintuc = () => {
               }}
             />
           </div>
-        )}
+        {/*)}*/}
       </div>
     </TinTucWraper>
   );

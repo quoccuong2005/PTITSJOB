@@ -16,6 +16,7 @@ import { rules } from "../../utils/rules";
 import { renderImage } from "../../utils/util";
 import { ETYPEKHOAHOC } from "../../data/enum";
 import { el } from "date-fns/locale";
+import Pagination from "../../components/pagination";
 
 const HoatDong = () => {
   const [dataSelectDeTai, setDataSelectDeTai] = useState<string>("Tất cả");
@@ -24,6 +25,9 @@ const HoatDong = () => {
   const [dataGioiThieu, setDataGioiThieu] = useState<DataDeTai[]>([]);
   const [condition, setCondition] = useState<any>();
   const router = useRouter();
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(9);
+  const [total, setTotal] = useState<number>(0);
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const [type, setType] = useState<string>();
@@ -36,12 +40,17 @@ const HoatDong = () => {
   const getData = async (type: string) => {
     try {
       const res = await axios.get(`${ip}/khoa-hoc-cong-nghe/all?kieu=${type}`, {
-        params: condition,
+        params: {
+          ...condition,
+          page:page,
+          limit:limit,
+        },
       });
       if (res) {
         console.log("resss", res);
-        setDataGioiThieu(res?.data ?? []);
-        setDataChiTiet(res?.data?.[0]);
+        setDataGioiThieu(res?.data?.data ?? []);
+        // setDataChiTiet(res?.data?.[0]);
+        setTotal(res?.data?.metadata?.total??0)
       }
     } catch (e) {
       console.log(e);
@@ -52,7 +61,7 @@ const HoatDong = () => {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
-  }, [router, condition]);
+  }, [router, condition,page]);
 
   const onSubmit = (data: any) => {
     console.log("data", data);
@@ -273,6 +282,17 @@ const HoatDong = () => {
             </div>
           </>
         )}
+      </div>
+      <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
+        <Pagination
+          page={page}
+          limit={limit}
+          total={total}
+          handleChangePage={(page) => {
+            console.log("page", page);
+            setPage(page);
+          }}
+        />
       </div>
     </HoatDongWrapper>
   );

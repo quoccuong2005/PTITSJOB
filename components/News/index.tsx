@@ -90,38 +90,48 @@ const News = (props:{dataHome:IDataHome}) => {
 					/>
 					<div className='lg:grid hidden lg:grid-cols-2  grid-cols-1 gap-[30px] mt-[40px]'>
 						{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
-							return (
-								<div onClick={()=>{
-									router.push(`/tap-chi-khoa-hoc/${val?.id}`)
-								}} key={i}>
-									<CardBanner
-										imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
-										title={val?.attributes?.tieuDe}
-										description={val?.attributes?.moTa??''}
-										dateTime={val?.attributes?.createdAt}
-										key={i}
-										type={"big"}
-									/>
-								</div>
-							);
+							if (i<=4){
+								return (
+									<div onClick={()=>{
+										router.push(`/tap-chi-khoa-hoc/${val?.id}`)
+									}} key={i}>
+										<CardBanner
+											imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
+											title={val?.attributes?.tieuDe}
+											description={val?.attributes?.moTa??''}
+											dateTime={val?.attributes?.createdAt}
+											key={i}
+											type={"big"}
+										/>
+									</div>
+								);
+							}else {
+								return null;
+							}
+
 						})}
 					</div>
 					<div className='lg:hidden grid lg:grid-cols-2  grid-cols-1 gap-[30px] mt-[40px]'>
 						{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
-							return (
-								<div onClick={()=>{
-									router.push(`/tap-chi-khoa-hoc/${val?.id}`)
-								}} key={i}>
-									<CardBanner
-										imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
-										title={val?.attributes?.tieuDe}
-										description={val?.attributes?.moTa??''}
-										dateTime={val?.attributes?.createdAt}
-										key={i}
-										type={"small"}
-									/>
-								</div>
-							);
+							if (i<4){
+								return (
+									<div onClick={()=>{
+										router.push(`/tap-chi-khoa-hoc/${val?.id}`)
+									}} key={i}>
+										<CardBanner
+											imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
+											title={val?.attributes?.tieuDe}
+											description={val?.attributes?.moTa??''}
+											dateTime={val?.attributes?.createdAt}
+											key={i}
+											type={"small"}
+										/>
+									</div>
+								);
+							}else {
+								return null
+							}
+
 						})}
 					</div>
 				</div>

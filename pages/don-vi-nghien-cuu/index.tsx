@@ -11,10 +11,14 @@ import CardDeTai from "../../components/CardDeTai";
 import CardEvent from "../../components/Event/components/CardEvent";
 import {ETYPEDONVI} from "../../data/enum";
 import {renderImage} from "../../utils/util";
+import Pagination from "../../components/pagination";
 
 const DonViNghienCuu = () => {
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
   const [dataChiTiet, setDataChiTiet] = useState<GioiThieu>();
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(9);
+  const [total, setTotal] = useState<number>(0);
   const [dataGioiThieu, setDataGioiThieu] = useState<DataDonVi[]>([]);
   const router = useRouter();
   const contentRef = useRef<HTMLDivElement>(null);
@@ -23,11 +27,17 @@ const DonViNghienCuu = () => {
 
   const getData = async (type:string) => {
     try {
-      const res = await axios.get(`${ip}/don-vi/all?type=${type}`);
+      const res = await axios.get(`${ip}/don-vi/all?type=${type}`,{
+        params:{
+          page:page,
+          limit:limit
+        }
+      });
       if (res) {
         console.log("resss", res);
-        setDataGioiThieu(res?.data);
-        setDataChiTiet(res?.data?.[0]);
+        setDataGioiThieu(res?.data?.data??[]);
+        // setDataChiTiet(res?.data?.[0]);
+        setTotal(res?.data?.metadata?.total??0)
       }
     } catch (e) {
       console.log(e);
@@ -38,7 +48,7 @@ const DonViNghienCuu = () => {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
-  }, [router]);
+  }, [router,page]);
 
   return (
     <DonViNghienCuuWrapper>
@@ -54,7 +64,7 @@ const DonViNghienCuu = () => {
                       imageUrl: renderImage(val?.imageUrl),
                       content: val?.tieuDe,
                       description: val?.moTa??'',
-                      dateTime: val.createdAt,
+                      // dateTime: val.createdAt,
                       link: ``,
 
                     }}
@@ -76,7 +86,7 @@ const DonViNghienCuu = () => {
                     data={{
                       imageUrl: renderImage(value.imageUrl),
                       content: value.tieuDe,
-                      dateTime: value.createdAt,
+                      // dateTime: value.createdAt,
                       description:value.moTa??''
                     }}
                     key={index}
@@ -86,6 +96,17 @@ const DonViNghienCuu = () => {
             </div>
           </>
         )}
+      </div>
+      <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
+        <Pagination
+          page={page}
+          limit={3}
+          total={total}
+          handleChangePage={(page) => {
+            console.log("page", page);
+            setPage(page);
+          }}
+        />
       </div>
     </DonViNghienCuuWrapper>
   );

@@ -38,7 +38,7 @@ const CommonLayout = ({ children }: any) => {
 			<div className='flex flex-col min-h-screen bg-[#FFFFFF]'>
 				<Header language={language} handleChangeLanguage={handleChangeLanguage} />
 
-				<div className='flex-auto bg-[#FFFFFD]'>{children}</div>
+				<div className='flex-auto '>{children}</div>
 
 				<Footer />
 

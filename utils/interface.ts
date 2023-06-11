@@ -203,26 +203,24 @@ export interface MainMenu {
     }
   ];
 }
-export interface DataConfig{
-
-}
-export interface DataThongTin{
-  "id": 1,
-  "createdAt":string// "2023-06-10T03:44:07.602Z",
-  "updatedAt": string//"2023-06-10T03:44:07.602Z",
-  "publishedAt": string//null,
-  "ten":string// "Khoa học và công nghệ",
-  "truSoChinh":string// "122 Hoàng Quốc Việt, Q.Cầu Giấy, Hà Nội.",
-  "coSo1":string// "Km10, Đường Nguyễn Trãi, Q.Hà Đông, Hà Nội",
-  "coSo2":string// "Đường Man Thiện, P. Hiệp Phú, Q.9 TP Hồ Chí Minh",
-  "hocVienCoSo":string// "11 Nguyễn Đình Chiểu, P. Đa Kao, Q.1 TP Hồ Chí Minh  ",
-  "email":string// " thiennd@ptit.edu.vn",
-  "soDienThoai": string//"024.33524054",
-  "truongPhong":string//"Trưởng phòng: Ông Ngô Đức Thiện ",
-  "googleMap": string//,
-  "logoHeader": string//"/uploads/Header_a717cfa2c0.png",
-  "logoFooter":string// "/uploads/Footer_86dc7d7138.png"
-  "tenPhongTiepNhan":string// "/uploads/Footer_86dc7d7138.png"
+export interface DataConfig {}
+export interface DataThongTin {
+  id: 1;
+  createdAt: string; // "2023-06-10T03:44:07.602Z",
+  updatedAt: string; //"2023-06-10T03:44:07.602Z",
+  publishedAt: string; //null,
+  ten: string; // "Khoa học và công nghệ",
+  truSoChinh: string; // "122 Hoàng Quốc Việt, Q.Cầu Giấy, Hà Nội.",
+  coSo1: string; // "Km10, Đường Nguyễn Trãi, Q.Hà Đông, Hà Nội",
+  coSo2: string; // "Đường Man Thiện, P. Hiệp Phú, Q.9 TP Hồ Chí Minh",
+  hocVienCoSo: string; // "11 Nguyễn Đình Chiểu, P. Đa Kao, Q.1 TP Hồ Chí Minh  ",
+  email: string; // " thiennd@ptit.edu.vn",
+  soDienThoai: string; //"024.33524054",
+  truongPhong: string; //"Trưởng phòng: Ông Ngô Đức Thiện ",
+  googleMap: string; //,
+  logoHeader: string; //"/uploads/Header_a717cfa2c0.png",
+  logoFooter: string; // "/uploads/Footer_86dc7d7138.png"
+  tenPhongTiepNhan: string; // "/uploads/Footer_86dc7d7138.png"
 }
 
 export interface GioiThieu {
@@ -235,6 +233,26 @@ export interface GioiThieu {
   publishedAt: string;
   type: string;
   imageUrl: string;
+  taiLieuDinhKem: {
+    id: 29;
+    name: "Nhập học_Tất cả hồ sơ_060620231958.xlsx";
+    alternativeText: null;
+    caption: null;
+    width: null;
+    height: null;
+    formats: null;
+    hash: "Nhap_hoc_Tat_ca_ho_so_060620231958_2792f4034d";
+    ext: ".xlsx";
+    mime: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    size: 19.99;
+    url: "/uploads/Nhap_hoc_Tat_ca_ho_so_060620231958_2792f4034d.xlsx";
+    previewUrl: null;
+    provider: "local";
+    provider_metadata: null;
+    folderPath: "/";
+    createdAt: "2023-06-11T16:19:16.601Z";
+    updatedAt: "2023-06-11T16:19:16.601Z";
+  };
 }
 [];
 export interface DataDeTai {
@@ -1052,19 +1070,17 @@ export interface DataNewList {
   imageUrl: "/uploads/thumbnail_sk2_bc548df3a9.png";
 }
 [];
-export interface DataMenu{
-  "id": number//4,
-  "ten":string// "Hoạt động KH, CN & ĐMST",
-  "link": string,
-  "sangTrangMoi": boolean,
-  "trangCon":
-    {
-      "id":number// 4,
-      "ten": string//"Đề tài/ Dự án KH, CN & ĐMST",
-      "link":string// "/hoat-dong?type=Đề tài",
-      "sangTrangMoi":boolean// false
-    }[]
-
+export interface DataMenu {
+  id: number; //4,
+  ten: string; // "Hoạt động KH, CN & ĐMST",
+  link: string;
+  sangTrangMoi: boolean;
+  trangCon: {
+    id: number; // 4,
+    ten: string; //"Đề tài/ Dự án KH, CN & ĐMST",
+    link: string; // "/hoat-dong?type=Đề tài",
+    sangTrangMoi: boolean; // false
+  }[];
 }
 export interface DataNew {
   id: 1;

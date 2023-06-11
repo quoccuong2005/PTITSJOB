@@ -73,7 +73,8 @@ const {dataThongTin}=useContext(AuthContext)
 								<CardNghienCuu data={{
 									no:val?.attributes?.so,
 									title:val?.attributes.tieuDe,
-									content:val?.attributes?.moTa
+									content:val?.attributes?.moTa,
+									link:`/dinh-huong-nghien-cuu/${val?.id}`
 								}}
 								key={i}/>
 							)
@@ -86,19 +87,19 @@ const {dataThongTin}=useContext(AuthContext)
 						<div className='flex justify-between items-center'>
 							<div className='info'>
 								<p className='mb-[40px]'>{dataThongTin?.tenPhongTiepNhan}</p>
-								<div className='item-info flex mb-[20px]'>
+								<div className='item-info flex mb-[20px] items-center'>
 									<img className='mr-[16px]' src='/images/icons/user.svg' alt={"icon"} />
-									<div>{dataThongTin?.truongPhong}</div>
+									<div className="font-bold">{dataThongTin?.truongPhong}</div>
 								</div>
-								<div className='item-info flex mb-[20px]'>
+								<div className='item-info flex mb-[20px] items-center'>
 									<img className='mr-[16px]' src='/images/icons/phone.svg' alt={"icon"} />
 									<div>{dataThongTin?.soDienThoai}</div>
 								</div>
-								<div className='item-info flex mb-[20px]'>
+								<div className='item-info flex mb-[20px] items-center'>
 									<img className='mr-[16px]' src='/images/icons/mail.svg' alt={"icon"} />
 									<div>{dataThongTin?.email}</div>
 								</div>
-								<div className='item-info flex '>
+								<div className='item-info flex items-center '>
 									<img className='mr-[16px]' src='/images/icons/location.svg' alt={"icon"} />
 									<div>{dataThongTin?.coSo1}</div>
 								</div>
@@ -170,7 +171,7 @@ const ChiTietWrapper = styled.div`
 	.item-info {
 		font-family: "Inter";
 		font-style: normal;
-		font-weight: 600;
+		font-weight: 400;
 		font-size: 15px;
 		line-height: 18px;
 
