@@ -55,7 +55,7 @@ const Pagination = (props: IProps) => {
     }
     return(
         <PaginationWrapper>
-            {total>0&&
+            {totalPage>1&&
               <div className="pagination">
                   {totalPage>1&&    <a href="#" onClick={()=>{handlePrevPage()}}>&laquo;</a>}
 

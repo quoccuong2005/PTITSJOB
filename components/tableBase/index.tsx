@@ -23,7 +23,7 @@ const  TableBase = (props: IProps) => {
             {props.columns?.map((val, i) => {
               return (
                 <th
-                  className={`${val.align ?? "left"}`}
+                  className={`${val.align ?? "left"} `}
                   key={i}
                   style={{ width: val.width ? val.width : 100 }}
                 >

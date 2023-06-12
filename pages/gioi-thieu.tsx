@@ -24,11 +24,11 @@ const GioiThieu = () => {
 	const contentRef = useRef<HTMLDivElement>(null);
 	let timmer: NodeJS.Timeout | undefined;
 	const [type, setType] = useState<string>();
-const {dataThongTin}=useContext(AuthContext)
+const {dataThongTin,langCode}=useContext(AuthContext)
 	const getData = async (typeStr:string) => {
 		try {
 			if (typeStr==='NC'){
-				const res = await axios.get(`${ip}/qlkh-dinh-huong-nghien-cuus`);
+				const res = await axios.get(`${ip}/qlkh-dinh-huong-nghien-cuus?locale=${langCode}`);
 				if (res) {
 					console.log("resss", res);
 					setDataGioiThieuNC(res?.data?.data);
@@ -36,7 +36,7 @@ const {dataThongTin}=useContext(AuthContext)
 				}
 			}
 			if (typeStr==='KH'){
-				const res = await axios.get(`${ip}/chien-luoc-phat-trien`);
+				const res = await axios.get(`${ip}/chien-luoc-phat-trien?locale=${langCode}`);
 				if (res) {
 					console.log("resss", res);
 					setDataGioiThieu(res?.data?.data);
@@ -53,7 +53,7 @@ const {dataThongTin}=useContext(AuthContext)
 			getData(router?.query?.type as string);
 			setType(router?.query?.type as string);
 		}
-	}, [router]);
+	}, [router,langCode]);
 
 	return (
 		<ChiTietWrapper>

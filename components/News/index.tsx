@@ -80,71 +80,88 @@ const News = (props:{dataHome:IDataHome}) => {
 			</div>
 		</div>
 	);
-	return (
-		<NewsWrapper>
-			<div className=' wow fadeInDown bg-[#1421410A] py-[50px] px-[20px] lg:px-0'>
-				<div className='container mx-auto'>
-					<Title
-						title={"Tạp chí khoa học"}
-						uppercase={true}
-					/>
-					<div className='lg:grid hidden lg:grid-cols-2  grid-cols-1 gap-[30px] mt-[40px]'>
-						{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
-							if (i<=4){
-								return (
-									<div onClick={()=>{
-										router.push(`/tap-chi-khoa-hoc/${val?.id}`)
-									}} key={i}>
-										<CardBanner
-											imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
-											title={val?.attributes?.tieuDe}
-											description={val?.attributes?.moTa??''}
-											dateTime={val?.attributes?.createdAt}
-											key={i}
-											type={"big"}
-										/>
-									</div>
-								);
-							}else {
-								return null;
-							}
+	if (props.dataHome?.tap_chi_khoa_hocs?.data?.length>0){
+		return (
+			<NewsWrapper>
+				<div className=' wow fadeInDown bg-[#1421410A] py-[50px] px-[20px] lg:px-0'>
+					<div className='container mx-auto'>
+						<Title
+							title={"Tạp chí khoa học"}
+							uppercase={true}
+						/>
+						<div className='lg:grid hidden lg:grid-cols-2  grid-cols-1 gap-[30px] mt-[40px]'>
+							{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
+								if (i<4){
+									return (
+										<div onClick={()=>{
+											router.push(`/tap-chi-khoa-hoc/${val?.id}`)
+										}} key={i}>
+											<CardBanner
+												imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
+												title={val?.attributes?.tieuDe}
+												description={val?.attributes?.moTa??''}
+												dateTime={val?.attributes?.createdAt}
+												key={i}
+												type={"big"}
+											/>
+										</div>
+									);
+								}else {
+									return null;
+								}
 
-						})}
+							})}
+						</div>
+						<div className='lg:hidden grid lg:grid-cols-2  grid-cols-1 gap-[30px] mt-[40px]'>
+							{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
+								if (i<4){
+									return (
+										<div onClick={()=>{
+											router.push(`/tap-chi-khoa-hoc/${val?.id}`)
+										}} key={i}>
+											<CardBanner
+												imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
+												title={val?.attributes?.tieuDe}
+												description={val?.attributes?.moTa??''}
+												dateTime={val?.attributes?.createdAt}
+												key={i}
+												type={"small"}
+											/>
+										</div>
+									);
+								}else {
+									return null
+								}
+
+							})}
+						</div>
 					</div>
-					<div className='lg:hidden grid lg:grid-cols-2  grid-cols-1 gap-[30px] mt-[40px]'>
-						{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
-							if (i<4){
-								return (
-									<div onClick={()=>{
-										router.push(`/tap-chi-khoa-hoc/${val?.id}`)
-									}} key={i}>
-										<CardBanner
-											imageUrl={renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url)}
-											title={val?.attributes?.tieuDe}
-											description={val?.attributes?.moTa??''}
-											dateTime={val?.attributes?.createdAt}
-											key={i}
-											type={"small"}
-										/>
-									</div>
-								);
-							}else {
-								return null
-							}
-
-						})}
+					<div className="flex justify-center sm:mt-[40px] mt-[20px]">
+						<Button type={"primary"}
+										classname="lg:w-[279px]"
+										onClick={()=>{
+											window.open('https://jstic.ptit.edu.vn/index.html')
+										}}>Xem thêm</Button>
 					</div>
 				</div>
-				<div className="flex justify-center sm:mt-[40px] mt-[20px]">
-					<Button type={"primary"}
-									classname="lg:w-[279px]"
-									onClick={()=>{
-						window.open('https://jstic.ptit.edu.vn/index.html')
-					}}>Xem thêm</Button>
+			</NewsWrapper>
+		);
+	}else {
+		return (
+			<NewsWrapper>
+				<div className='container mx-auto md:py-[50px] py-[20px]'>
+					<div>
+						<Title title={"TẠP CHÍ KHOA HỌC"} uppercase={true} />
+					</div>
+					<div className="w-full h-full justify-center items-center flex flex-col">
+						<img className="mb-[16px]" src="/images/default/no_data.png" alt="image"/>
+						<p className="text-secondary text-sm">Không có dữ liệu</p>
+					</div>
 				</div>
-			</div>
-		</NewsWrapper>
-	);
+			</NewsWrapper>
+		)
+	}
+
 };
 const NewsWrapper = styled.div``;
 export default News;

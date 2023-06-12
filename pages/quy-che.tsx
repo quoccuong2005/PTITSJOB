@@ -12,6 +12,7 @@ import DropdownFake from "../components/Dropdown";
 import { rules } from "../utils/rules";
 import moment from "moment";
 import { renderImage } from "../utils/util";
+import TableBaseV2 from "../components/TableBaseV2";
 
 const QuyChe = () => {
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
@@ -88,8 +89,11 @@ const QuyChe = () => {
     {
       title: "Tài liệu đính kèm",
       dataIndex: "taiLieuDinhKem",
+      width: '200px',
       render: (val: any) => {
-        return <a href={renderImage(val?.url)}>{val?.name}</a>;
+        return <div className="w-full overflow-hidden break-words ">
+          <a className="block link-download" href={renderImage(val?.url)}>{val?.name}</a>
+        </div>;
       },
     },
   ];
@@ -171,7 +175,16 @@ const QuyChe = () => {
           </form>
         </div>
         <div>
-          <TableBase
+          {/*<TableBase*/}
+          {/*  columns={columns}*/}
+          {/*  dataSource={dataGioiThieu?.map((val, i) => {*/}
+          {/*    return {*/}
+          {/*      ...val,*/}
+          {/*      index: i + 1,*/}
+          {/*    };*/}
+          {/*  })}*/}
+          {/*/>*/}
+          <TableBaseV2
             columns={columns}
             dataSource={dataGioiThieu?.map((val, i) => {
               return {

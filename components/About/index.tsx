@@ -64,7 +64,7 @@ const About = (props: { dataHome: IDataHome }) => {
               alt={"image"}
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // prevents looping
-                currentTarget.src = "/images/default/tintucsukien3.png";
+                currentTarget.src = "/images/default/no_image.png";
               }}
             />
           </div>
@@ -77,7 +77,7 @@ const About = (props: { dataHome: IDataHome }) => {
               alt={"image"}
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // prevents looping
-                currentTarget.src = "/images/default/tintucsukien3.png";
+                currentTarget.src = "/images/default/no_image.png";
               }}
             />
           </div>
@@ -90,7 +90,7 @@ const About = (props: { dataHome: IDataHome }) => {
               alt={"image"}
               onError={({ currentTarget }) => {
                 currentTarget.onerror = null; // prevents looping
-                currentTarget.src = "/images/default/tintucsukien3.png";
+                currentTarget.src = "/images/default/no_image.png";
               }}
             />
           </div>

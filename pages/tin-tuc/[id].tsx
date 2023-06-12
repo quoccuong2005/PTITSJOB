@@ -16,19 +16,8 @@ import moment from "moment";
 import { renderImage } from "../../utils/util";
 import ReactToPrint from "react-to-print";
 import CardBanner from "../../components/CardBanner";
-import {DataNewList} from "../../utils/interface";
-interface IDataChiTiet {
-  id: 3;
-  attributes: {
-    tieuDe: "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
-    noiDung: "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
-    moTa: "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
-    kieu: "news";
-    createdAt: "2023-06-09T09:09:04.636Z";
-    updatedAt: "2023-06-09T09:10:02.657Z";
-    publishedAt: "2023-06-09T09:10:02.656Z";
-  };
-}
+import {DataNewList, IDataChiTiet} from "../../utils/interface";
+
 const ChiTiet = () => {
   // const {
   // 	register,
@@ -173,7 +162,7 @@ const ChiTiet = () => {
                 </p>
               )}
 
-              <p className="date">Tác giả: NVB</p>
+              <p className="date">Tác giả: {dataChiTiet?.attributes?.tacGia??'Không có tác giả'}</p>
             </div>
 
             {/*<div className=' flex justify-end mt-[20px]'>*/}
@@ -206,43 +195,49 @@ const ChiTiet = () => {
           {/*</div>*/}
         </div>
       </div>
-      <div className={"container mx-auto mt-2 mb-[50px]"}>
-        <div className="title-event lg:mb-[40px] flex justify-between">
-          <h2>Tin tức - Sự kiện đã diễn ra</h2>
-          <div className="show-more flex items-center cursor-pointer">
-            <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>
-            <img src="/images/icons/arrow-right-2.svg" alt="image" />
-          </div>
-        </div>
-        <div className={"grid grid-cols-3 gap-[30px]"}>
-          {dataDaDienRa?.filter((item)=>{
-            return moment(item?.thoiGianBatDau).isBefore(moment())
-          })?.map((val, i) => {
-            if (i<3){
-              return (
-                <div
-                  onClick={() => {
-                    router.push(`/tin-tuc/${val?.id}`);
-                  }}
-                  key={i}
-                >
-                  <CardBanner
-                    imageUrl={renderImage(val?.imageUrl)}
-                    title={val.tieuDe}
-                    description={val.moTa}
-                    dateTime={val.createdAt}
-                    key={i}
-                    type={"list"}
-                  />
-                </div>
-              );
-            }else {
-              return null
-            }
+      {dataDaDienRa?.filter((item)=>{
+        return moment(item?.thoiGianBatDau).isBefore(moment())
+      })?.length>0&&
+          <div className={"container mx-auto mt-2 mb-[50px]"}>
+              <div className="title-event lg:mb-[40px] flex justify-between">
+                  <h2>Tin tức - Sự kiện đã diễn ra</h2>
+                  <div className="show-more flex items-center cursor-pointer" onClick={()=>{router.push('/tin-tuc')}}>
+                      <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>
+                      <img src="/images/icons/arrow-right-2.svg" alt="image" />
+                  </div>
+              </div>
+              <div className={"grid grid-cols-3 gap-[30px]"}>
+                {dataDaDienRa?.filter((item)=>{
+                  return moment(item?.thoiGianBatDau).isBefore(moment())
+                })?.map((val, i) => {
+                  if (i<3){
+                    return (
+                      <div
+                        onClick={() => {
+                          router.push(`/tin-tuc/${val?.id}`);
+                        }}
+                        key={i}
+                      >
+                        <CardBanner
+                          imageUrl={renderImage(val?.imageUrl)}
+                          title={val.tieuDe}
+                          description={val.moTa}
+                          dateTime={val.createdAt}
+                          key={i}
+                          type={"list"}
+                        />
+                      </div>
+                    );
+                  }else {
+                    return null
+                  }
 
-          })}
-        </div>
-      </div>
+                })}
+              </div>
+          </div>
+
+      }
+
     </ChiTietWrapper>
   );
 };

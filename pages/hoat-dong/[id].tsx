@@ -10,6 +10,7 @@ import { axios } from "../../api";
 import { ip } from "../../api/ip";
 import {useRouter} from "next/router";
 import {DataDetailKhoaHoc} from "../../utils/interface";
+import TableBaseV2 from "../../components/TableBaseV2";
 
 const ChiTietHoatDong = () => {
 	const router=useRouter();
@@ -75,7 +76,7 @@ const ChiTietHoatDong = () => {
   return (
     <ChiTietHoatDongWrapper>
       <div
-        className="container mx-auto bg-white px-6 pt-6 pb-8"
+        className="container mx-auto bg-white  pt-6 pb-8"
         ref={contentRef}
       >
         <div className="flex justify-between">
@@ -114,7 +115,7 @@ const ChiTietHoatDong = () => {
               <p className="date lg:mr-[40px] mr-[20px]">
                 Ngày đăng: {moment().format("DD/MM/YYYY HH:mm")}
               </p>
-              <p className="date">Tác giả: {dataDetail?.tacGia??'Không có dữ liệu'}</p>
+              <p className="date">Tác giả: {dataDetail?.tacGia??'Không có tác giả'}</p>
             </div>
           </div>
         </div>
@@ -127,7 +128,7 @@ const ChiTietHoatDong = () => {
           {/*  <img src="/images/icons/arrow-right-2.svg" alt="image" />*/}
           {/*</div>*/}
           <div className="mt-[26px]">
-            <TableBase columns={columns} dataSource={dataDetail?.chiTiet?.map((val,i)=>{
+            <TableBaseV2 columns={columns} dataSource={dataDetail?.chiTiet?.map((val,i)=>{
 							return{
 								...val,
 								index:i+1

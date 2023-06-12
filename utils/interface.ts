@@ -285,7 +285,7 @@ export interface IDataHome {
   updatedAt: "2023-06-01T17:13:11.560Z";
   publishedAt: "2023-06-01T17:13:11.558Z";
   duongDanVideo: string;
-  banner: [
+  banner:
     {
       id: 1;
       title: "banner1";
@@ -358,161 +358,16 @@ export interface IDataHome {
           };
         };
       };
-    },
-    {
-      id: 2;
-      title: "banner 2";
-      linkTo: "https://slink.ptit.edu.vn/user/login";
-      images: {
-        data: {
-          id: 4;
-          attributes: {
-            name: "banner-home-1.jpg";
-            alternativeText: null;
-            caption: null;
-            width: 3539;
-            height: 2353;
-            formats: {
-              thumbnail: {
-                name: "thumbnail_banner-home-1.jpg";
-                hash: "thumbnail_banner_home_1_106abe48ac";
-                ext: ".jpg";
-                mime: "image/jpeg";
-                path: null;
-                width: 235;
-                height: 156;
-                size: 10.46;
-                url: "/uploads/thumbnail_banner_home_1_106abe48ac.jpg";
-              };
-              small: {
-                name: "small_banner-home-1.jpg";
-                hash: "small_banner_home_1_106abe48ac";
-                ext: ".jpg";
-                mime: "image/jpeg";
-                path: null;
-                width: 500;
-                height: 333;
-                size: 37.92;
-                url: "/uploads/small_banner_home_1_106abe48ac.jpg";
-              };
-              large: {
-                name: "large_banner-home-1.jpg";
-                hash: "large_banner_home_1_106abe48ac";
-                ext: ".jpg";
-                mime: "image/jpeg";
-                path: null;
-                width: 1000;
-                height: 665;
-                size: 131.06;
-                url: "/uploads/large_banner_home_1_106abe48ac.jpg";
-              };
-              medium: {
-                name: "medium_banner-home-1.jpg";
-                hash: "medium_banner_home_1_106abe48ac";
-                ext: ".jpg";
-                mime: "image/jpeg";
-                path: null;
-                width: 750;
-                height: 499;
-                size: 78.72;
-                url: "/uploads/medium_banner_home_1_106abe48ac.jpg";
-              };
-            };
-            hash: "banner_home_1_106abe48ac";
-            ext: ".jpg";
-            mime: "image/jpeg";
-            size: 803.61;
-            url: "/uploads/banner_home_1_106abe48ac.jpg";
-            previewUrl: null;
-            provider: "local";
-            provider_metadata: null;
-            createdAt: "2023-06-01T03:05:16.245Z";
-            updatedAt: "2023-06-01T03:05:16.245Z";
-          };
-        };
-      };
-    },
-    {
-      id: 3;
-      title: "banner 3";
-      linkTo: "https://slink.ptit.edu.vn/user/login";
-      images: {
-        data: {
-          id: 5;
-          attributes: {
-            name: "banner-home-2.jpg";
-            alternativeText: null;
-            caption: null;
-            width: 4095;
-            height: 2730;
-            formats: {
-              thumbnail: {
-                name: "thumbnail_banner-home-2.jpg";
-                hash: "thumbnail_banner_home_2_6fcad97917";
-                ext: ".jpg";
-                mime: "image/jpeg";
-                path: null;
-                width: 234;
-                height: 156;
-                size: 10.98;
-                url: "/uploads/thumbnail_banner_home_2_6fcad97917.jpg";
-              };
-              small: {
-                name: "small_banner-home-2.jpg";
-                hash: "small_banner_home_2_6fcad97917";
-                ext: ".jpg";
-                mime: "image/jpeg";
-                path: null;
-                width: 500;
-                height: 333;
-                size: 41.16;
-                url: "/uploads/small_banner_home_2_6fcad97917.jpg";
-              };
-              medium: {
-                name: "medium_banner-home-2.jpg";
-                hash: "medium_banner_home_2_6fcad97917";
-                ext: ".jpg";
-                mime: "image/jpeg";
-                path: null;
-                width: 750;
-                height: 500;
-                size: 82.08;
-                url: "/uploads/medium_banner_home_2_6fcad97917.jpg";
-              };
-              large: {
-                name: "large_banner-home-2.jpg";
-                hash: "large_banner_home_2_6fcad97917";
-                ext: ".jpg";
-                mime: "image/jpeg";
-                path: null;
-                width: 1000;
-                height: 667;
-                size: 137.13;
-                url: "/uploads/large_banner_home_2_6fcad97917.jpg";
-              };
-            };
-            hash: "banner_home_2_6fcad97917";
-            ext: ".jpg";
-            mime: "image/jpeg";
-            size: 1404.9;
-            url: "/uploads/banner_home_2_6fcad97917.jpg";
-            previewUrl: null;
-            provider: "local";
-            provider_metadata: null;
-            createdAt: "2023-06-01T03:05:16.337Z";
-            updatedAt: "2023-06-01T07:05:21.895Z";
-          };
-        };
-      };
-    }
-  ];
+    }[],
+
+
   about: {
     id: 1;
     chienluoc: "<p>Đến năm 2022, hoạt động KHCN đóng vai trò nòng cốt trong sự phát triển của Học viện và hỗ trợ cho việc đổi mới chương trình đào tạo để đáp ứng các yêu cầu của cuộc cách mạng công nghiệp 4.0...</p>";
     dinhhuong: "<p>Đến năm 2022, hoạt động KHCN đóng vai trò nòng cốt trong sự phát triển của Học viện và hỗ trợ cho việc đổi mới chương trình đào tạo để đáp ứng các yêu cầu của cuộc cách mạng công nghiệp 4.0...</p>";
     lienhe: "<p>Đến năm 2022, hoạt động KHCN đóng vai trò nòng cốt trong sự phát triển của Học viện và hỗ trợ cho việc đổi mới chương trình đào tạo để đáp ứng các yêu cầu của cuộc cách mạng công nghiệp 4.0...</p>";
     images: {
-      data: [
+      data:
         {
           id: 7;
           attributes: {
@@ -545,116 +400,25 @@ export interface IDataHome {
             createdAt: "2023-06-01T07:23:41.210Z";
             updatedAt: "2023-06-01T07:23:41.210Z";
           };
-        },
-        {
-          id: 8;
-          attributes: {
-            name: "about-2.png";
-            alternativeText: null;
-            caption: null;
-            width: 287;
-            height: 229;
-            formats: {
-              thumbnail: {
-                name: "thumbnail_about-2.png";
-                hash: "thumbnail_about_2_3be62a41b2";
-                ext: ".png";
-                mime: "image/png";
-                path: null;
-                width: 196;
-                height: 156;
-                size: 64.92;
-                url: "/uploads/thumbnail_about_2_3be62a41b2.png";
-              };
-            };
-            hash: "about_2_3be62a41b2";
-            ext: ".png";
-            mime: "image/png";
-            size: 36.44;
-            url: "/uploads/about_2_3be62a41b2.png";
-            previewUrl: null;
-            provider: "local";
-            provider_metadata: null;
-            createdAt: "2023-06-01T07:23:41.228Z";
-            updatedAt: "2023-06-01T07:23:41.228Z";
-          };
-        },
-        {
-          id: 9;
-          attributes: {
-            name: "about-1.png";
-            alternativeText: null;
-            caption: null;
-            width: 894;
-            height: 471;
-            formats: {
-              thumbnail: {
-                name: "thumbnail_about-1.png";
-                hash: "thumbnail_about_1_101b9b8e08";
-                ext: ".png";
-                mime: "image/png";
-                path: null;
-                width: 245;
-                height: 129;
-                size: 94.9;
-                url: "/uploads/thumbnail_about_1_101b9b8e08.png";
-              };
-              small: {
-                name: "small_about-1.png";
-                hash: "small_about_1_101b9b8e08";
-                ext: ".png";
-                mime: "image/png";
-                path: null;
-                width: 500;
-                height: 263;
-                size: 362.95;
-                url: "/uploads/small_about_1_101b9b8e08.png";
-              };
-              medium: {
-                name: "medium_about-1.png";
-                hash: "medium_about_1_101b9b8e08";
-                ext: ".png";
-                mime: "image/png";
-                path: null;
-                width: 750;
-                height: 395;
-                size: 776.46;
-                url: "/uploads/medium_about_1_101b9b8e08.png";
-              };
-            };
-            hash: "about_1_101b9b8e08";
-            ext: ".png";
-            mime: "image/png";
-            size: 254.21;
-            url: "/uploads/about_1_101b9b8e08.png";
-            previewUrl: null;
-            provider: "local";
-            provider_metadata: null;
-            createdAt: "2023-06-01T07:23:41.716Z";
-            updatedAt: "2023-06-01T07:23:41.716Z";
-          };
-        }
-      ];
+        }[],
+
+
     };
   };
   khamPha: {
     id: 1;
     title: "Khám phá cột mốc";
-    duLieu: [
+    duLieu:
       {
         id: 1;
         title: "Đề tài KHCN";
         soLuong: "100";
-      },
-      {
-        id: 2;
-        title: "Công bố khoa học";
-        soLuong: "200";
-      }
-    ];
+      }[],
+
+
   };
   qlkh_tin_tucs: {
-    data: [
+    data:
       {
         id: 1;
         attributes: {
@@ -712,69 +476,12 @@ export interface IDataHome {
             };
           };
         };
-      },
-      {
-        id: 2;
-        attributes: {
-          createdAt: "2023-06-02T17:04:08.727Z";
-          updatedAt: "2023-06-05T07:06:29.351Z";
-          publishedAt: "2023-06-02T17:04:14.725Z";
-          tieuDe: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ";
-          noiDung: null;
-          moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
-          kieu: "event";
-          hinhAnh: {
-            data: {
-              id: 17;
-              attributes: {
-                name: "cn3.png";
-                alternativeText: null;
-                caption: null;
-                width: 600;
-                height: 337;
-                formats: {
-                  thumbnail: {
-                    name: "thumbnail_cn3.png";
-                    hash: "thumbnail_cn3_963e5a5334";
-                    ext: ".png";
-                    mime: "image/png";
-                    path: null;
-                    width: 245;
-                    height: 138;
-                    size: 70.65;
-                    url: "/uploads/thumbnail_cn3_963e5a5334.png";
-                  };
-                  small: {
-                    name: "small_cn3.png";
-                    hash: "small_cn3_963e5a5334";
-                    ext: ".png";
-                    mime: "image/png";
-                    path: null;
-                    width: 500;
-                    height: 281;
-                    size: 253.54;
-                    url: "/uploads/small_cn3_963e5a5334.png";
-                  };
-                };
-                hash: "cn3_963e5a5334";
-                ext: ".png";
-                mime: "image/png";
-                size: 95.74;
-                url: "/uploads/cn3_963e5a5334.png";
-                previewUrl: null;
-                provider: "local";
-                provider_metadata: null;
-                createdAt: "2023-06-01T17:10:02.517Z";
-                updatedAt: "2023-06-01T17:10:02.517Z";
-              };
-            };
-          };
-        };
-      }
-    ];
+      }[]
+
+
   };
   hoat_dong_khoa_hocs: {
-    data: [
+    data:
       {
         id: 1;
         attributes: {
@@ -833,129 +540,11 @@ export interface IDataHome {
           };
           chiTiet: [];
         };
-      },
-      {
-        id: 2;
-        attributes: {
-          createdAt: "2023-06-02T10:34:59.816Z";
-          updatedAt: "2023-06-05T04:49:06.623Z";
-          publishedAt: "2023-06-02T10:35:08.712Z";
-          tieuDe: "Bồi dưỡng nâng cao kiến thức quản lý Nhà nước về báo chí";
-          noiDung: null;
-          moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
-          kieu: "Công bố";
-          hinhAnh: {
-            data: {
-              id: 17;
-              attributes: {
-                name: "cn3.png";
-                alternativeText: null;
-                caption: null;
-                width: 600;
-                height: 337;
-                formats: {
-                  thumbnail: {
-                    name: "thumbnail_cn3.png";
-                    hash: "thumbnail_cn3_963e5a5334";
-                    ext: ".png";
-                    mime: "image/png";
-                    path: null;
-                    width: 245;
-                    height: 138;
-                    size: 70.65;
-                    url: "/uploads/thumbnail_cn3_963e5a5334.png";
-                  };
-                  small: {
-                    name: "small_cn3.png";
-                    hash: "small_cn3_963e5a5334";
-                    ext: ".png";
-                    mime: "image/png";
-                    path: null;
-                    width: 500;
-                    height: 281;
-                    size: 253.54;
-                    url: "/uploads/small_cn3_963e5a5334.png";
-                  };
-                };
-                hash: "cn3_963e5a5334";
-                ext: ".png";
-                mime: "image/png";
-                size: 95.74;
-                url: "/uploads/cn3_963e5a5334.png";
-                previewUrl: null;
-                provider: "local";
-                provider_metadata: null;
-                createdAt: "2023-06-01T17:10:02.517Z";
-                updatedAt: "2023-06-01T17:10:02.517Z";
-              };
-            };
-          };
-          chiTiet: [];
-        };
-      },
-      {
-        id: 3;
-        attributes: {
-          createdAt: "2023-06-02T10:35:48.279Z";
-          updatedAt: "2023-06-05T04:48:45.962Z";
-          publishedAt: "2023-06-02T10:35:48.995Z";
-          tieuDe: "Bồi dưỡng nâng cao kiến thức quản lý Nhà nước về báo chí";
-          noiDung: null;
-          moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
-          kieu: "Sản phẩm";
-          hinhAnh: {
-            data: {
-              id: 19;
-              attributes: {
-                name: "cn2.png";
-                alternativeText: null;
-                caption: null;
-                width: 600;
-                height: 337;
-                formats: {
-                  thumbnail: {
-                    name: "thumbnail_cn2.png";
-                    hash: "thumbnail_cn2_25ec7a2f19";
-                    ext: ".png";
-                    mime: "image/png";
-                    path: null;
-                    width: 245;
-                    height: 138;
-                    size: 85.6;
-                    url: "/uploads/thumbnail_cn2_25ec7a2f19.png";
-                  };
-                  small: {
-                    name: "small_cn2.png";
-                    hash: "small_cn2_25ec7a2f19";
-                    ext: ".png";
-                    mime: "image/png";
-                    path: null;
-                    width: 500;
-                    height: 281;
-                    size: 322.27;
-                    url: "/uploads/small_cn2_25ec7a2f19.png";
-                  };
-                };
-                hash: "cn2_25ec7a2f19";
-                ext: ".png";
-                mime: "image/png";
-                size: 109.19;
-                url: "/uploads/cn2_25ec7a2f19.png";
-                previewUrl: null;
-                provider: "local";
-                provider_metadata: null;
-                createdAt: "2023-06-01T17:10:02.697Z";
-                updatedAt: "2023-06-01T17:10:02.697Z";
-              };
-            };
-          };
-          chiTiet: [];
-        };
-      }
-    ];
+      }[]
+
   };
   tap_chi_khoa_hocs: {
-    data: [
+    data:
       {
         id: 1;
         attributes: {
@@ -1001,11 +590,11 @@ export interface IDataHome {
             };
           };
         };
-      }
-    ];
+      }[]
+
   };
   don_vi_nghien_cuus: {
-    data: [
+    data:
       {
         id: 1;
         attributes: {
@@ -1016,6 +605,7 @@ export interface IDataHome {
           noiDung: null;
           kieu: "Phòng thí nghiệm";
           moTa: null;
+          duongDan:string,
           hinhAnh: {
             data: {
               id: 12;
@@ -1052,8 +642,8 @@ export interface IDataHome {
             };
           };
         };
-      }
-    ];
+      }[]
+
   };
 }
 export interface DataNewList {
@@ -1149,6 +739,7 @@ export interface DataDonVi {
   kieu: "Viện nghiên cứu";
   moTa: null;
   imageUrl: "/uploads/thumbnail_tc_2_97a92a3ef9.png";
+  duongDan: string;
 }
 [];
 export interface DataDetailKhoaHoc {
@@ -1171,4 +762,17 @@ export interface DataDetailKhoaHoc {
     thoiGianThucHienBatDau: "2023-02-08";
     thoiGianThucHienKetThuc: "2023-11-21";
   }[];
+}
+export interface IDataChiTiet {
+  id:number// 3;
+  attributes: {
+    tieuDe:string// "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
+    noiDung: string//"BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
+    moTa:string// "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
+    kieu:string// "news";
+    createdAt:string// "2023-06-09T09:09:04.636Z";
+    updatedAt:string// "2023-06-09T09:10:02.657Z";
+    publishedAt:string// "2023-06-09T09:10:02.656Z";
+    tacGia:string
+  };
 }

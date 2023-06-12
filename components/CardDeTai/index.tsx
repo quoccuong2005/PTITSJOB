@@ -45,7 +45,7 @@ const CardDeTai = (props: IPorps) => {
 						src={props.data.imageUrl}
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null; // prevents looping
-							currentTarget.src = "/images/default/tin2.png";
+							currentTarget.src = "/images/default/no_image.png";
 						}}
 						alt={"image"}
 					/>

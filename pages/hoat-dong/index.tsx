@@ -26,7 +26,7 @@ const HoatDong = () => {
   const [condition, setCondition] = useState<any>();
   const router = useRouter();
   const [page, setPage] = useState<number>(1);
-  const [limit, setLimit] = useState<number>(9);
+  const [limit, setLimit] = useState<number>(6);
   const [total, setTotal] = useState<number>(0);
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
@@ -187,7 +187,7 @@ const HoatDong = () => {
                   <div className="relative">
                     <input
                       placeholder={"Tìm kiếm"}
-                      {...register("keyword", { ...rules.required })}
+                      {...register("keyword")}
                     />
                     {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
                     {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
@@ -203,82 +203,111 @@ const HoatDong = () => {
         </div>
         {type === ETYPEKHOAHOC.DT && (
           <>
-            <div className="grid grid-cols-2 gap-[30px]">
-              {dataGioiThieu?.map((value, index) => {
-                return (
-                  <div
-                    onClick={() => {
-                      router.push(`/hoat-dong/${value?.id}`);
-                    }}
-                    key={index}
-                  >
-                    <CardDeTai
-                      data={{
-                        imageUrl: renderImage(value.imageUrl),
-                        content: value?.tieuDe,
-                        dateTime: value?.createdAt,
-                        type: value?.capDo,
-                        description: value?.moTa,
+
+              {dataGioiThieu?.length>0?<>
+              <div className="grid grid-cols-2 gap-[30px]">
+                {dataGioiThieu?.map((value, index) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        router.push(`/hoat-dong/${value?.id}`);
                       }}
                       key={index}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+                    >
+                      <CardDeTai
+                        data={{
+                          imageUrl: renderImage(value.imageUrl),
+                          content: value?.tieuDe,
+                          dateTime: value?.createdAt,
+                          type: value?.capDo,
+                          description: value?.moTa,
+                        }}
+                        key={index}
+                      />
+                    </div>
+                  );
+                })} </div></>:<><div className="w-full h-full justify-center items-center flex flex-col">
+                <img
+                  className="mb-[16px]"
+                  src="/images/default/no_data.png"
+                  alt="image"
+                />
+                <p className="text-secondary text-sm">Không có dữ liệu</p>
+              </div></>}
+
+
           </>
         )}
         {type === ETYPEKHOAHOC.CB && (
           <>
-            <div className="grid grid-cols-2 gap-[30px]">
-              {dataGioiThieu?.map((value, index) => {
-                return (
-                  <div
-                    onClick={() => {
-                      router.push(`/hoat-dong/${value?.id}`);
-                    }}
-                    key={index}
-                  >
-                    <CardDeTai
-                      data={{
-                        imageUrl: renderImage(value.imageUrl),
-                        content: value?.tieuDe,
-                        dateTime: value?.createdAt,
-                        type: value?.phamVi,
-                        description: value?.moTa,
+
+              {dataGioiThieu?.length>0?<>
+              <div className="grid grid-cols-2 gap-[30px]">
+                {dataGioiThieu?.map((value, index) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        router.push(`/hoat-dong/${value?.id}`);
                       }}
                       key={index}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+                    >
+                      <CardDeTai
+                        data={{
+                          imageUrl: renderImage(value.imageUrl),
+                          content: value?.tieuDe,
+                          dateTime: value?.createdAt,
+                          type: value?.phamVi,
+                          description: value?.moTa,
+                        }}
+                        key={index}
+                      />
+                    </div>
+                  );
+                })}  </div></>:<><div className="w-full h-full justify-center items-center flex flex-col">
+                <img
+                  className="mb-[16px]"
+                  src="/images/default/no_data.png"
+                  alt="image"
+                />
+                <p className="text-secondary text-sm">Không có dữ liệu</p>
+              </div></>}
+
+
           </>
         )}
         {type === ETYPEKHOAHOC.SP && (
           <>
             <div className="grid grid-cols-2 gap-[30px]">
-              {dataGioiThieu?.map((value, index) => {
-                return (
-                  <div
-                    onClick={() => {
-                      router.push(`/hoat-dong/${value?.id}`);
-                    }}
-                    key={index}
-                  >
-                    <CardDeTai
-                      data={{
-                        imageUrl: renderImage(value.imageUrl),
-                        content: value?.tieuDe,
-                        dateTime: value?.createdAt,
-                        type: value?.kieu,
-                        description: value?.moTa,
+              {dataGioiThieu?.length>0?<>
+                {dataGioiThieu?.map((value, index) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        router.push(`/hoat-dong/${value?.id}`);
                       }}
                       key={index}
-                    />
-                  </div>
-                );
-              })}
+                    >
+                      <CardDeTai
+                        data={{
+                          imageUrl: renderImage(value.imageUrl),
+                          content: value?.tieuDe,
+                          dateTime: value?.createdAt,
+                          type: value?.kieu,
+                          description: value?.moTa,
+                        }}
+                        key={index}
+                      />
+                    </div>
+                  );
+                })}</>:<><div className="w-full h-full justify-center items-center flex flex-col">
+                <img
+                  className="mb-[16px]"
+                  src="/images/default/no_data.png"
+                  alt="image"
+                />
+                <p className="text-secondary text-sm">Không có dữ liệu</p>
+              </div></>}
+
             </div>
           </>
         )}

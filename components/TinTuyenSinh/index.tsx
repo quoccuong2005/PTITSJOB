@@ -56,7 +56,7 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 	const handleRedirect = (id: string) => {
 		router.push(`/tin-tuc/${id}`);
 	};
-
+if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
 	return (
 		<TinTuyenSinhWrapper className='bg-[#1421410A] px-[20px] lg:px-0 md:py-[50px] py-[20px] '>
 			<div className='container mx-auto'>
@@ -99,78 +99,6 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 							}
 						}
 					})}
-					{/*<div className='col-span-2 '>*/}
-					{/*	<CardEvent*/}
-					{/*		data={{*/}
-					{/*			imageUrl: "/images/home/sk1.png",*/}
-					{/*			content: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ",*/}
-					{/*			dateTime: "07/02/2023, 11:23",*/}
-					{/*			description:*/}
-					{/*				"Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông thông báo chiêu sinh khóa ”...",*/}
-					{/*		}}*/}
-					{/*		type={"big"}*/}
-					{/*	/>*/}
-					{/*</div>*/}
-					{/*<div>*/}
-					{/*	<CardEvent*/}
-					{/*		data={{*/}
-					{/*			imageUrl: "/images/home/sk2.png",*/}
-					{/*			content: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ",*/}
-					{/*			dateTime: "07/02/2023, 11:23",*/}
-					{/*			description:*/}
-					{/*				"Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông thông báo chiêu sinh khóa ”...",*/}
-					{/*		}}*/}
-					{/*		type={"small"}*/}
-					{/*	/>*/}
-					{/*</div>*/}
-					{/*<div>*/}
-					{/*	<CardEvent*/}
-					{/*		data={{*/}
-					{/*			imageUrl: "/images/home/sk3.png",*/}
-					{/*			content: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ",*/}
-					{/*			dateTime: "07/02/2023, 11:23",*/}
-					{/*			description:*/}
-					{/*				"Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông thông báo chiêu sinh khóa ”...",*/}
-					{/*		}}*/}
-					{/*		type={"small"}*/}
-					{/*	/>*/}
-					{/*</div>*/}
-					{/*<div>*/}
-					{/*	<CardEvent*/}
-					{/*		data={{*/}
-					{/*			imageUrl: "/images/home/sk4.png",*/}
-					{/*			content: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ",*/}
-					{/*			dateTime: "07/02/2023, 11:23",*/}
-					{/*			description:*/}
-					{/*				"Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông thông báo chiêu sinh khóa ”...",*/}
-					{/*		}}*/}
-					{/*		type={"small"}*/}
-					{/*	/>*/}
-					{/*</div>*/}
-					{/*<div>*/}
-					{/*	<CardEvent*/}
-					{/*		data={{*/}
-					{/*			imageUrl: "/images/home/sk5.png",*/}
-					{/*			content: "Thông báo chiêu sinh Khóa ” Bồi dưỡng nghiệp vụ báo chí”",*/}
-					{/*			dateTime: "07/02/2023, 11:23",*/}
-					{/*			description:*/}
-					{/*				"Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông thông báo chiêu sinh khóa ”...",*/}
-					{/*		}}*/}
-					{/*		type={"small"}*/}
-					{/*	/>*/}
-					{/*</div>*/}
-					{/*<div className='col-span-2 '>*/}
-					{/*	<CardEvent*/}
-					{/*		data={{*/}
-					{/*			imageUrl: "/images/home/sk6.png",*/}
-					{/*			content: "Thông báo chiêu sinh Khóa ” Bồi dưỡng nghiệp vụ báo chí”",*/}
-					{/*			dateTime: "07/02/2023, 11:23",*/}
-					{/*			description:*/}
-					{/*				"Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông thông báo chiêu sinh khóa ”...",*/}
-					{/*		}}*/}
-					{/*		type={"big"}*/}
-					{/*	/>*/}
-					{/*</div>*/}
 				</div>
 				<div className='sm:hidden block mt-[20px]'>
 					<Slider {...settings}>
@@ -193,6 +121,22 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 			</div>
 		</TinTuyenSinhWrapper>
 	);
+}else {
+	return (
+		<TinTuyenSinhWrapper>
+			<div className='container mx-auto md:py-[50px] py-[20px]'>
+				<div>
+					<Title title={"Tin tức - sự kiện"} uppercase={true} description={""} />
+				</div>
+			<div className="w-full h-full justify-center items-center flex flex-col">
+				<img className="mb-[16px]" src="/images/default/no_data.png" alt="image"/>
+				<p className="text-secondary text-sm">Không có dữ liệu</p>
+			</div>
+			</div>
+		</TinTuyenSinhWrapper>
+	)
+}
+
 };
 
 const TinTuyenSinhWrapper = styled.div`

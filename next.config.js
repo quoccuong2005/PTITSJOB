@@ -7,6 +7,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withBundleAnalyzer({
 	env: {
 		BASE_URL: process.env.BASE_URL,
+		BASE_URL_IMAGE: process.env.BASE_URL_IMAGE,
 		GA: process.env.GA,
 	},
 	images: {

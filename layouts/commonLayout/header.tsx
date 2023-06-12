@@ -37,7 +37,7 @@ const Header = (props: IProps) => {
 	const [isShowSearch, setIsShowSearch] = useState<boolean>(false);
 	const { language, handleChangeLanguage } = props;
 	const searchRef = useRef<HTMLDivElement>(null);
-	const {setDataThongTin,dataThongTin}=useContext(AuthContext)
+	const {setDataThongTin,dataThongTin,langCode}=useContext(AuthContext)
 	const {
 		isAuthenticated,
 		user,
@@ -60,7 +60,7 @@ const Header = (props: IProps) => {
 	};
 	const getThongTinChung = async () => {
 	  try {
-			const res=await axios.get(`${ip}/thong-tin-chung`);
+			const res=await axios.get(`${ip}/thong-tin-chung?locale=${langCode}`);
 			if (res){
 				setDataThongTin(res?.data)
 			}
@@ -70,7 +70,7 @@ const Header = (props: IProps) => {
 	}
 	const getDataNav = async () => {
 		try {
-			const res=await axios.get(`${ip}/qlkh-cau-truc-trang-web?populate=deep`);
+			const res=await axios.get(`${ip}/qlkh-cau-truc-trang-web?populate=deep&locale=${langCode}`);
 			if (res){
 				setDataMenu(res?.data?.data?.attributes?.cauTruc??[])
 			}
@@ -105,7 +105,7 @@ const Header = (props: IProps) => {
 	};
 	useEffect(() => {
 		getDataNav()
-	}, []);
+	}, [langCode]);
 	useEffect(() => {
 		console.log("router", router);
 		if (router && router.pathname) {
@@ -130,7 +130,7 @@ const Header = (props: IProps) => {
 	};
 	useEffect(() => {
 		getThongTinChung()
-	}, [router]);
+	}, [router,langCode]);
 	const handleClickOutside = (e: any) => {
 		const { target } = e;
 		const node = searchRef?.current;
@@ -188,9 +188,9 @@ const Header = (props: IProps) => {
 								<div className='flex'>
 									<div
 										className={`mr-[8px] cursor-pointer ${
-											language === "vi" ? "border-white border" : ""
+											language === "vi-VN" ? "border-white border" : ""
 										} hover:border-white hover:border`}
-										onClick={() => handleChangeLanguage("vi")}
+										onClick={() => handleChangeLanguage("vi-VN")}
 									>
 										<img className='h-[30px] w-[45px]' src={"/images/icons/vn.svg"} alt={"image"} />
 									</div>

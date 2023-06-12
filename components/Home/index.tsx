@@ -1,7 +1,7 @@
 
 import News from "../News";
 
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import TinTuyenSinh from "../TinTuyenSinh";
 import BannerHome from "../BannerHome";
 import ChuongTrinhDaoTao from "../ChuongTrinhDaoTao";
@@ -10,12 +10,14 @@ import About from "../About";
 import DonViNghienCuu from "../DonViNghienCuu";
 import axios from "axios";
 import {ip} from "../../api/ip";
+import {AuthContext} from "../../context/AuthContext";
 
 const HomePage = () => {
 	const [dataHome,setDataHome]=useState<any>()
+	const {langCode}=useContext(AuthContext)
 	const getDataHome = async () => {
 	  try {
-			const res=await axios.get(`${ip}/qlkh-home-page?populate=deep`);
+			const res=await axios.get(`${ip}/qlkh-home-page?populate=deep&locale=${langCode}`);
 			if (res){
 				setDataHome(res?.data?.data?.attributes)
 			}
@@ -25,7 +27,7 @@ const HomePage = () => {
 	}
 	useEffect(()=>{
 		getDataHome()
-	},[])
+	},[langCode])
 	return (
 		<div className='overflow-hidden'>
 			<BannerHome dataHome={dataHome}/>

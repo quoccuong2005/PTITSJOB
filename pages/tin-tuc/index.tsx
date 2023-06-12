@@ -5,7 +5,7 @@ import styled from "styled-components";
 import BreadcrumbPage from "../../components/Breadcrumb";
 import axios from "axios";
 import { ip } from "../../api/ip";
-import React, { useEffect, useState } from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { useRouter } from "next/router";
 import { renderImage } from "../../utils/util";
 import { Controller, useForm } from "react-hook-form";
@@ -17,6 +17,7 @@ import { DataNew, DataNewList } from "../../utils/interface";
 import Pagination from "../../components/pagination";
 import CardBanner from "../../components/CardBanner";
 import CardEvent from "../../components/CardEvent";
+import {AuthContext} from "../../context/AuthContext";
 
 const Tintuc = () => {
   const router = useRouter();
@@ -26,6 +27,7 @@ const Tintuc = () => {
   const [type, setType] = useState<"news" | "event">("news");
   const [dataNew, setDataNew] = useState<DataNewList[]>([]);
   const [condition, setCondition] = useState<any>();
+  const {langCode}=useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -34,16 +36,16 @@ const Tintuc = () => {
   } = useForm();
   const handleGetAll = async () => {
     try {
-      const res = await axios.get(`${ip}/tin-tuc-su-kien/all?type=${type}`,{
-				params:{
+      const res = await axios.get(`${ip}/tin-tuc-su-kien/all?type=${type}&locale=${langCode}`, {
+        params: {
           ...condition,
-          page:page,
-          limit:limit,
-        }
-			});
+          page: page,
+          limit: limit,
+        },
+      });
       if (res) {
-        setDataNew(res?.data?.data??[]);
-        setTotal(res?.data?.metadata?.total??0)
+        setDataNew(res?.data?.data ?? []);
+        setTotal(res?.data?.metadata?.total ?? 0);
       }
     } catch (e) {
       console.log(e);
@@ -54,7 +56,7 @@ const Tintuc = () => {
   }, [router]);
   useEffect(() => {
     handleGetAll();
-  }, [type, condition,page,limit]);
+  }, [type, condition, page, limit,langCode]);
   const onSubmit = (data: any) => {
     console.log("data", data);
     // getData({
@@ -79,7 +81,7 @@ const Tintuc = () => {
     }
   };
   const handleChangeType = (val: "news" | "event") => {
-    setPage(1)
+    setPage(1);
     setType(val);
   };
   return (
@@ -90,7 +92,9 @@ const Tintuc = () => {
           <div className="flex justify-center lg:justify-start  mb-[20px] lg:mb-0">
             <div
               className={`text-normal px-[24px] py-[8px] ${
-                type === "news" ? "bg-white border-t-2 border-primary" : "bg-gradient-gray"
+                type === "news"
+                  ? "bg-white border-t-2 border-primary"
+                  : "bg-gradient-gray"
               } cursor-pointer`}
               onClick={() => handleChangeType("news")}
             >
@@ -98,7 +102,9 @@ const Tintuc = () => {
             </div>
             <div
               className={`text-normal px-[24px] py-[8px] ${
-                type === "event" ? "bg-white border-t-2 border-primary" : "bg-gradient-gray"
+                type === "event"
+                  ? "bg-white border-t-2 border-primary"
+                  : "bg-gradient-gray"
               } cursor-pointer`}
               onClick={() => handleChangeType("event")}
             >
@@ -121,9 +127,12 @@ const Tintuc = () => {
                         {...register("keyword")}
                       />
                       <div className="icon absolute top-[8px] right-[20px]">
-												<button type="submit">
-													<img src={"/images/icons/search-pri.svg"} alt={"image"} />
-												</button>
+                        <button type="submit">
+                          <img
+                            src={"/images/icons/search-pri.svg"}
+                            alt={"image"}
+                          />
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -136,25 +145,40 @@ const Tintuc = () => {
         {type === "news" && (
           <div>
             <div className={"hidden lg:grid grid-cols-3 gap-[30px] "}>
-              {dataNew?.map((val, i) => {
-                return (
-                  <div
-                    onClick={() => {
-                      router.push(`/tin-tuc/1`);
-                    }}
-                    key={i}
-                  >
-                    <CardBanner
-                      imageUrl={renderImage(val?.imageUrl)}
-                      title={val?.tieuDe}
-                      description={val?.moTa ?? ""}
-                      dateTime={val?.createdAt}
-                      key={i}
-                      type={"list"}
+              {dataNew?.length > 0 ? (
+                <>
+                  {dataNew?.map((val, i) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          router.push(`/tin-tuc/${val?.id}`);
+                        }}
+                        key={i}
+                      >
+                        <CardBanner
+                          imageUrl={renderImage(val?.imageUrl)}
+                          title={val?.tieuDe}
+                          description={val?.moTa ?? ""}
+                          dateTime={val?.createdAt}
+                          key={i}
+                          type={"list"}
+                        />
+                      </div>
+                    );
+                  })}
+                </>
+              ) : (
+                <>
+                  <div className="w-full h-full justify-center items-center flex flex-col">
+                    <img
+                      className="mb-[16px]"
+                      src="/images/default/no_data.png"
+                      alt="image"
                     />
+                    <p className="text-secondary text-sm">Không có dữ liệu</p>
                   </div>
-                );
-              })}
+                </>
+              )}
             </div>
             <div className="block lg:hidden">
               {dataNew.map((val, i) => {
@@ -186,31 +210,51 @@ const Tintuc = () => {
                 {/*</div>*/}
               </div>
               <div className={"hidden lg:grid grid-cols-1 gap-[30px] "}>
-                {dataNew?.filter((item)=>{
-                  return moment(item.thoiGianBatDau).isAfter(moment())
-                })?.map((val, i) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        router.push(`/tin-tuc/${val?.id}`);
-                      }}
-                      key={i}
-                    >
-                      <CardEvent
-                        data={{
-                          imageUrl: renderImage(val.imageUrl),
-                          title: val?.tieuDe,
-                          content: val?.moTa ?? "",
-                          dateTime: val.createdAt,
-                          dateStart: val.thoiGianBatDau,
-                          dateEnd: val.thoiGianKetThuc,
-                          link: ``,
-                        }}
-                        key={i}
+                {dataNew?.length > 0 ? (
+                  <>
+                    {dataNew
+                      ?.filter((item) => {
+                        return moment(item.thoiGianBatDau).isAfter(moment());
+                      })
+                      ?.map((val, i) => {
+                        if (i<2){
+                          return (
+                            <div
+                              onClick={() => {
+                                router.push(`/tin-tuc/${val?.id}`);
+                              }}
+                              key={i}
+                            >
+                              <CardEvent
+                                data={{
+                                  imageUrl: renderImage(val.imageUrl),
+                                  title: val?.tieuDe,
+                                  content: val?.moTa ?? "",
+                                  dateTime: val.thoiGianBatDau,
+                                  dateStart: val.thoiGianBatDau,
+                                  dateEnd: val.thoiGianKetThuc,
+                                  link: ``,
+                                }}
+                                key={i}
+                              />
+                            </div>
+                          );
+                        }
+
+                      })}
+                  </>
+                ) : (
+                  <>
+                    <div className="w-full h-full justify-center items-center flex flex-col">
+                      <img
+                        className="mb-[16px]"
+                        src="/images/default/no_data.png"
+                        alt="image"
                       />
+                      <p className="text-secondary text-sm">Không có dữ liệu</p>
                     </div>
-                  );
-                })}
+                  </>
+                )}
               </div>
               <div className="block lg:hidden">
                 {dataNew.map((val, i) => {
@@ -238,31 +282,48 @@ const Tintuc = () => {
                 </div>
               </div>
               <div className={"hidden lg:grid grid-cols-1 gap-[30px] "}>
-                {dataNew?.filter((item)=>{
-                  return moment(item.thoiGianBatDau).isBefore(moment())
-                })?.map((val, i) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        router.push(`/tin-tuc/${val?.id}`);
-                      }}
-                      key={i}
-                    >
-                      <CardEvent
-                        data={{
-                          imageUrl: renderImage(val?.imageUrl),
-                          title: val?.tieuDe,
-                          content: val?.moTa ?? "",
-                          dateTime: val?.createdAt,
-                          dateStart: val.thoiGianBatDau,
-                          dateEnd: val.thoiGianKetThuc,
-                          link: `/tin-tuc/1`,
-                        }}
-                        key={i}
+                {dataNew?.length > 0 ? (
+                  <>
+                    {dataNew
+                      ?.filter((item) => {
+                        return moment(item.thoiGianBatDau).isBefore(moment());
+                      })
+                      ?.map((val, i) => {
+                        return (
+                          <div
+                            onClick={() => {
+                              router.push(`/tin-tuc/${val?.id}`);
+                            }}
+                            key={i}
+                          >
+                            <CardEvent
+                              data={{
+                                imageUrl: renderImage(val?.imageUrl),
+                                title: val?.tieuDe,
+                                content: val?.moTa ?? "",
+                                dateTime: val?.thoiGianBatDau,
+                                dateStart: val.thoiGianBatDau,
+                                dateEnd: val.thoiGianKetThuc,
+                                link: `/tin-tuc/1`,
+                              }}
+                              key={i}
+                            />
+                          </div>
+                        );
+                      })}
+                  </>
+                ) : (
+                  <>
+                    <div className="w-full h-full justify-center items-center flex flex-col">
+                      <img
+                        className="mb-[16px]"
+                        src="/images/default/no_data.png"
+                        alt="image"
                       />
+                      <p className="text-secondary text-sm">Không có dữ liệu</p>
                     </div>
-                  );
-                })}
+                  </>
+                )}
               </div>
               <div className="block lg:hidden">
                 {dataNew.map((val, i) => {
@@ -284,17 +345,17 @@ const Tintuc = () => {
           </div>
         )}
         {/*{type === "news" && (*/}
-          <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
-            <Pagination
-              page={page}
-              limit={3}
-              total={total}
-              handleChangePage={(page) => {
-                console.log("page", page);
-                setPage(page);
-              }}
-            />
-          </div>
+        <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
+          <Pagination
+            page={page}
+            limit={limit}
+            total={total}
+            handleChangePage={(page) => {
+              console.log("page", page);
+              setPage(page);
+            }}
+          />
+        </div>
         {/*)}*/}
       </div>
     </TinTucWraper>

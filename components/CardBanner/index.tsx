@@ -18,13 +18,13 @@ const CardBanner = (props: IProps) => {
 							src={props.imageUrl}
 							onError={({ currentTarget }) => {
 								currentTarget.onerror = null; // prevents looping
-								currentTarget.src = "/images/default/tintucsukien3.png";
+								currentTarget.src = "/images/default/no_image.png";
 							}}
 							alt={"image"}
 						/>
 						<div className='absolute bottom-0 right-0'>
-							<div className='box-1 w-[85px] py-[12px] text-center'>22</div>
-							<div className='box-2 w-[85px] py-[12px] text-center'>Tháng 3</div>
+							<div className='box-1 w-[85px] py-[12px] text-center'>{moment(props.dateTime).date()}</div>
+							<div className='box-2 w-[85px] py-[12px] text-center'>Tháng {moment(props.dateTime).month() + 1}</div>
 						</div>
 					</div>
 					<div className='ml-[30px] py-[14px]  w-1/2'>
@@ -51,7 +51,7 @@ const CardBanner = (props: IProps) => {
 		if (props.type === "list") {
 			return (
 				<CardListBannerWrapper className='hover:shadow-xl cursor-pointer h-full'>
-					<div className={"h-full inline-block overflow-hidden"}>
+					<div className={"h-full w-full inline-block overflow-hidden"}>
 						<div className='relative'>
 							<img
 								src={props.imageUrl}
@@ -59,7 +59,7 @@ const CardBanner = (props: IProps) => {
 								className="h-[218px]"
 								onError={({ currentTarget }) => {
 									currentTarget.onerror = null; // prevents looping
-									currentTarget.src = "/images/default/tintucsukien3.png";
+									currentTarget.src = "/images/default/no_image.png";
 								}}
 							/>
 							<div className='absolute bottom-0 right-[0px]'>
@@ -99,7 +99,7 @@ const CardBanner = (props: IProps) => {
 								alt={"image"}
 								onError={({ currentTarget }) => {
 									currentTarget.onerror = null; // prevents looping
-									currentTarget.src = "/images/default/tintucsukien3.png";
+									currentTarget.src = "/images/default/no_image.png";
 								}}
 							/>
 							<div

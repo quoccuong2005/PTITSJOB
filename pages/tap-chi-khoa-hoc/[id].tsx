@@ -16,18 +16,8 @@ import moment from "moment";
 import { renderImage } from "../../utils/util";
 import ReactToPrint from "react-to-print";
 import CardBanner from "../../components/CardBanner";
-interface IDataChiTiet {
-  id: 3;
-  attributes: {
-    tieuDe: "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
-    noiDung: "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
-    moTa: "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
-    kieu: "news";
-    createdAt: "2023-06-09T09:09:04.636Z";
-    updatedAt: "2023-06-09T09:10:02.657Z";
-    publishedAt: "2023-06-09T09:10:02.656Z";
-  };
-}
+import { IDataChiTiet } from "../../utils/interface";
+
 const ChiTiet = () => {
   // const {
   // 	register,
@@ -157,7 +147,7 @@ const ChiTiet = () => {
                 </p>
               )}
 
-              <p className="date">Tác giả: NVB</p>
+              <p className="date">Tác giả: {dataChiTiet?.attributes?.tacGia??'Không có tác giả'}</p>
             </div>
 
             {/*<div className=' flex justify-end mt-[20px]'>*/}

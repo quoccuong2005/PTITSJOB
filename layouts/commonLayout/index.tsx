@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
+import React, {useContext, useEffect, useState} from "react";
+import {AuthContext, useAuth} from "../../context/AuthContext";
 import i18n from "../../i18n";
 import ScrollTopButton from "./components/ScrollTopButton";
 import Footer from "./footer";
@@ -9,12 +9,12 @@ import Head from "next/head";
 
 const CommonLayout = ({ children }: any) => {
 	const [language, setLanguage] = useState<string>("");
-	const { setLangCode } = useAuth();
+	const { setLangCode } = useContext(AuthContext);
 	const { pathname } = useRouter();
 
 	useEffect(() => {
 		(async () => {
-			const langCode = localStorage.getItem("langCode") || "vi";
+			const langCode = localStorage.getItem("langCode") || "vi-VN";
 			setLanguage(langCode);
 			i18n.changeLanguage(langCode);
 		})();
