@@ -57,7 +57,7 @@ const {dataThongTin,langCode}=useContext(AuthContext)
 
 	return (
 		<ChiTietWrapper>
-			<div className='container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]'>
+			<div className='container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] lg:px-0'>
 				{type === "KH" && (
 					<>
 						<Title title={"Chiến lược phát triển KH, CN & ĐMST"} uppercase={true} />

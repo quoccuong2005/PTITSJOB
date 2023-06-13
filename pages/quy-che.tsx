@@ -13,12 +13,17 @@ import { rules } from "../utils/rules";
 import moment from "moment";
 import { renderImage } from "../utils/util";
 import TableBaseV2 from "../components/TableBaseV2";
+import Pagination from "../components/pagination";
 
 const QuyChe = () => {
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
   const [dataChiTiet, setDataChiTiet] = useState<GioiThieu>();
   const [dataGioiThieu, setDataGioiThieu] = useState<GioiThieu[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(6);
+  const [total, setTotal] = useState<number>(0);
   const router = useRouter();
+  const [condition, setCondition] = useState<any>();
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const [type, setType] = useState<string>();
@@ -32,13 +37,15 @@ const QuyChe = () => {
     try {
       const res = await axios.get(`${ip}/van-ban/all`, {
         params: {
-          coQuan: type,
+          ...condition,
+          page: page,
+          limit: limit,
         },
       });
       if (res) {
         console.log("resss", res);
-        setDataGioiThieu(res?.data);
-        setDataChiTiet(res?.data?.[0]);
+        setDataGioiThieu(res?.data?.data ?? []);
+        setTotal(res?.data?.metadata?.total ?? 0);
       }
     } catch (e) {
       console.log(e);
@@ -48,7 +55,7 @@ const QuyChe = () => {
     if (router?.query) {
       getData();
     }
-  }, [router]);
+  }, [router,page,condition]);
 
   const columns = [
     {
@@ -89,11 +96,15 @@ const QuyChe = () => {
     {
       title: "Tài liệu đính kèm",
       dataIndex: "taiLieuDinhKem",
-      width: '200px',
+      width: "200px",
       render: (val: any) => {
-        return <div className="w-full overflow-hidden break-words ">
-          <a className="block link-download" href={renderImage(val?.url)}>{val?.name}</a>
-        </div>;
+        return (
+          <div className="w-full overflow-hidden break-words ">
+            <a className="block link-download" href={renderImage(val?.url)}>
+              {val?.name}
+            </a>
+          </div>
+        );
       },
     },
   ];
@@ -105,21 +116,23 @@ const QuyChe = () => {
     // 	startDate: moment(data?.startDate).toISOString(),
     // 	endDate: moment(data?.endDate).toISOString(),
     // });
-    router.push(
-      `/tim-kiem?keyword=${data?.keyword}${
-        data?.type ? `&type=${data?.type}` : ""
-      }${
-        data?.dateStart
-          ? `&startDate=${moment(data?.dateStart).toISOString()}`
-          : ""
-      }${
-        data?.endDdateEndate
-          ? `&endDate=${moment(data?.dateEnd).toISOString()}`
-          : ""
-      }`
-    );
+     if (data && data?.keyword !== "" && data?.keyword) {
+      setCondition(
+        // JSON.stringify({
+        //   tieuDe: { $ne: data?.keyword },
+        // })
+        {
+          ...condition,
+          so: data?.keyword,
+        }
+      );
+    } else {
+      delete condition?.so;
+      setCondition({ ...condition });
+    }
   };
   const option = [
+    { value: "Tất cả", label: "Tất cả" },
     { value: "Quốc hội", label: "Quốc hội" },
     { value: "Chính phủ", label: "Chính phủ" },
     { value: "Bộ KH & CN", label: "Bộ KH & CN" },
@@ -135,31 +148,39 @@ const QuyChe = () => {
           uppercase={true}
         />
         <div className="mb-[40px]">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex justify-end">
-              <div className="dropdown mr-[24px]">
-                <Controller
-                  name={"type"}
-                  control={control}
-                  render={({ field: { onChange, value } }) => (
-                    <DropdownFake
-                      option={option}
-                      onChange={(val) => {
-                        console.log("val", val);
-                        onChange(val.value);
-                      }}
-                      value={value}
-                      placeholder={"Văn bản cấp"}
-                    />
-                  )}
-                />
-              </div>
-              <div className="">
+          <div className="flex justify-end">
+            <div className="dropdown mr-[24px]">
+              <Controller
+                name={"type"}
+                control={control}
+                render={({ field: { onChange, value } }) => (
+                  <DropdownFake
+                    option={option}
+                    onChange={(val) => {
+                      if (val?.value === "Tất cả") {
+                        console.log("cc", condition);
+                        delete condition?.coQuan;
+                        setCondition({ ...condition });
+                      } else {
+                        setCondition({
+                          ...condition,
+                          coQuan: val?.value,
+                        });
+                      }
+                    }}
+                    value={value}
+                    placeholder={"Văn bản cấp"}
+                  />
+                )}
+              />
+            </div>
+            <div className="">
+              <form onSubmit={handleSubmit(onSubmit)} className="h-full">
                 <div className="search flex item-center h-full">
                   <div className="relative">
                     <input
                       placeholder={"Tìm kiếm"}
-                      {...register("keyword", { ...rules.required })}
+                      {...register("keyword", { })}
                     />
                     {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
                     {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
@@ -170,9 +191,9 @@ const QuyChe = () => {
                   </button>
                 </div>
                 {errors.keyword && <p className="error-text">Bắt buộc</p>}
-              </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
         <div>
           {/*<TableBase*/}
@@ -192,6 +213,17 @@ const QuyChe = () => {
                 index: i + 1,
               };
             })}
+          />
+        </div>
+        <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
+          <Pagination
+            page={page}
+            limit={limit}
+            total={total}
+            handleChangePage={(page) => {
+              console.log("page", page);
+              setPage(page);
+            }}
           />
         </div>
       </div>

@@ -76,10 +76,10 @@ const ChiTietHoatDong = () => {
   return (
     <ChiTietHoatDongWrapper>
       <div
-        className="container mx-auto bg-white  pt-6 pb-8"
+        className="container mx-auto bg-white  pt-6 pb-8 px-[20px] lg:px-0"
         ref={contentRef}
       >
-        <div className="flex justify-between">
+        <div className="lg:flex lg:justify-between ">
           <BreadcrumbPage
             data={[
               {

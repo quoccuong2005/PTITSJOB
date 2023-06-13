@@ -10,11 +10,11 @@ interface IProps {
 const CardBanner = (props: IProps) => {
 	if (props.type === "big") {
 		return (
-			<CardBigBannerWrapper className='hover:shadow-xl cursor-pointer bg-[#1421410A]'>
+			<CardBigBannerWrapper className='hover:shadow-xl cursor-pointer bg-[#1421410A] min-h-[277px]'>
 				<div className={"flex w-full"}>
 					<div className='relative w-1/2'>
 						<img
-							className="h-full w-full"
+							className="h-full w-full object-cover"
 							src={props.imageUrl}
 							onError={({ currentTarget }) => {
 								currentTarget.onerror = null; // prevents looping
@@ -28,7 +28,7 @@ const CardBanner = (props: IProps) => {
 						</div>
 					</div>
 					<div className='ml-[30px] py-[14px]  w-1/2'>
-						<div className='title-card'>{props.title}</div>
+						<div className='title-card '>{props.title}</div>
 						<div className='border-t-4 border-primary mb-[8px] w-[64px] mt-[12px]'></div>
 						{/*<div className='border-t-4 border-primary w-[64px] mb-[12px]'></div>*/}
 						{props.description && <div className='title-card-2'>{props.description}</div>}
@@ -56,7 +56,7 @@ const CardBanner = (props: IProps) => {
 							<img
 								src={props.imageUrl}
 								alt={"image"}
-								className="h-[218px]"
+								className="h-[218px] object-cover"
 								onError={({ currentTarget }) => {
 									currentTarget.onerror = null; // prevents looping
 									currentTarget.src = "/images/default/no_image.png";
@@ -78,7 +78,7 @@ const CardBanner = (props: IProps) => {
 						</div>
 						<div className={"px-[24px] py-[24px] bg-gradient-gray h-full"}>
 							<div className=''>
-								<div className=' title-card    '>{props.title}</div>
+								<div className=' title-card  min-h-[56px]  '>{props.title}</div>
 								<div className='w-[64px] mt-[12px] mb-[12px]'>
 									<div className='border-t-2 border-primary'></div>
 								</div>
@@ -90,11 +90,10 @@ const CardBanner = (props: IProps) => {
 			);
 		} else {
 			return (
-				<CardBannerWrapper className='hover:shadow-xl cursor-pointer h-full'>
-					<div className={"h-full"}>
+				<CardBannerWrapper className='hover:shadow-xl cursor-pointer lg:h-full'>
+					<div className={"lg:h-full"}>
 						<div className='relative'>
 							<img
-
 								src={props.imageUrl}
 								alt={"image"}
 								onError={({ currentTarget }) => {

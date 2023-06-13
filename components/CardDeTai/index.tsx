@@ -41,7 +41,7 @@ const CardDeTai = (props: IPorps) => {
 				<div className='card cursor-pointer h-full flex flex-col' style={props.style}>
 				<div>
 					<img
-						className={"image-card wow fadeInUp md:h-[321px] h-full"}
+						className={"image-card wow fadeInUp md:h-[321px] h-full object-cover"}
 						src={props.data.imageUrl}
 						onError={({ currentTarget }) => {
 							currentTarget.onerror = null; // prevents looping
@@ -55,7 +55,7 @@ const CardDeTai = (props: IPorps) => {
 						<div className='border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp h-full'>
 							{props.data.type && <div className='mb-[8px]'>{renderType(props.data.type)}</div>}
 
-							<div>{props.data.content}</div>
+							<div className="min-h-[48px]">{props.data.content}</div>
 						</div>
 						{props.data.dateTime && (
 							<div className='time-content flex items-center mb-[16px]'>

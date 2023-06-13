@@ -208,7 +208,7 @@ const Header = (props: IProps) => {
 					</div>
 				</div>
 			</div>
-			<div className={`label ${isScroll ? "fixed top-0 left-0 w-full bg-primary z-50" : ""} `}>
+			<div className={`label ${isScroll ? "fixed top-0 left-0 w-full bg-primary z-50" : "lg:bg-white bg-primary"} `}>
 				<div className=' container sm:mx-auto lg:py-[20px] py-0  '>
 					{/*<div className='logo'>*/}
 					{/*	<img src={'/images/header/logo-db.png'} alt={"image"} />*/}

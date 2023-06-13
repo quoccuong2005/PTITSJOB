@@ -26,7 +26,7 @@ const CardEvent = (props: IPorps) => {
               >
                 {props.category ? (
                   <img
-                    className={"image-card mb-[8px] wow fadeInUp h-full"}
+                    className={"image-card mb-[8px] wow fadeInUp h-full object-cover"}
                     src={props.data.imageUrl}
                     onError={({ currentTarget }) => {
                       currentTarget.onerror = null; // prevents looping
@@ -40,7 +40,7 @@ const CardEvent = (props: IPorps) => {
                   />
                 ) : (
                   <img
-                    className={"image-card mb-[8px] wow fadeInUp h-full"}
+                    className={"image-card mb-[8px] wow fadeInUp h-full object-cover"}
                     src={props.data.imageUrl}
                     onError={({ currentTarget }) => {
                       currentTarget.onerror = null; // prevents looping
@@ -100,9 +100,11 @@ const CardEvent = (props: IPorps) => {
                         {moment(props.data.dateTime).format("DD/MM/YYYY HH:mm")}
                       </div>
                     )}
-                    {props.data.content}
+                    <div className="card-content">
+                      {props.data.content}
+                    </div>
                   </div>
-                  <div className="mt-[30px] text-gray-500">
+                  <div className="mt-[30px] text-gray-500 card-content">
                     {props.data.description}
                   </div>
                 </div>
@@ -117,13 +119,13 @@ const CardEvent = (props: IPorps) => {
       <CardEventWrapper>
         <Link href={props.data.link ? props.data.link : "#"} className="h-full">
           <div
-            className="card cursor-pointer h-full "
+            className="card cursor-pointer h-full bg-white"
             style={props.style}
           >
             {props.category ? (
               <div className="md:h-[214px]">
                 <img
-                  className={"image-card wow fadeInUp  h-full"}
+                  className={"image-card wow fadeInUp  h-full object-cover"}
                   src={props.data.imageUrl}
                   onError={({ currentTarget }) => {
                     currentTarget.onerror = null; // prevents looping
@@ -138,17 +140,17 @@ const CardEvent = (props: IPorps) => {
               </div>
             ) : (
               <img
-                className={"image-card wow fadeInUp md:h-[139px] h-full"}
+                className={"image-card wow fadeInUp md:h-[139px] object-cover"}
                 src={props.data.imageUrl}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null; // prevents looping
-                  currentTarget.src = "/images/default/tin2.png";
+                  currentTarget.src = "/images/default/no_image.png";
                 }}
                 alt={"image"}
               />
             )}
             <div className="px-[20px]   pb-[26px] pt-[26px] bg-white">
-              <p className="border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp ">
+              <p className="border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp min-h-[48px]">
                 {props.data.content}
               </p>
               {props.data.dateTime && (
@@ -428,6 +430,13 @@ const CardBigEventWrapper = styled.div`
         //}
       }
     }
+  }
+  .card-content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 `;
 

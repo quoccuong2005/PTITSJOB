@@ -36,7 +36,7 @@ const CardEvent = (props:IProps) => {
           </div>
 				</div>
 				<div className='image shrink-0 ml-[50px] sm:w-[360px] sm:h-[240px]'>
-          <img className="sm:w-full sm:h-full" src={data.imageUrl} alt={'image'}/>
+          <img className="sm:w-full sm:h-full object-cover" src={data.imageUrl} alt={'image'}/>
         </div>
 			</div>
 		</CardEventWrapper>

@@ -196,7 +196,7 @@ const ChiTiet = () => {
         </div>
       </div>
       {dataDaDienRa?.filter((item)=>{
-        return moment(item?.thoiGianBatDau).isBefore(moment())
+        return moment(item?.thoiGianBatDau).isBefore(moment()) && item?.id !==+(router?.query?.id as string)
       })?.length>0&&
           <div className={"container mx-auto mt-2 mb-[50px]"}>
               <div className="title-event lg:mb-[40px] flex justify-between">
@@ -208,7 +208,7 @@ const ChiTiet = () => {
               </div>
               <div className={"grid grid-cols-3 gap-[30px]"}>
                 {dataDaDienRa?.filter((item)=>{
-                  return moment(item?.thoiGianBatDau).isBefore(moment())
+                  return moment(item?.thoiGianBatDau).isBefore(moment()) && item?.id !==+(router?.query?.id as string)
                 })?.map((val, i) => {
                   if (i<3){
                     return (

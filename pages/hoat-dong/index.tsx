@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Title from "../../components/Title";
-import React, { useEffect, useRef, useState } from "react";
-import { DataDeTai, GioiThieu } from "../../utils/interface";
+import React, {useContext, useEffect, useRef, useState} from "react";
+import {DataDeTai, DataDeTaiV2, GioiThieu} from "../../utils/interface";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { ip } from "../../api/ip";
@@ -17,12 +17,13 @@ import { renderImage } from "../../utils/util";
 import { ETYPEKHOAHOC } from "../../data/enum";
 import { el } from "date-fns/locale";
 import Pagination from "../../components/pagination";
+import {AuthContext} from "../../context/AuthContext";
 
 const HoatDong = () => {
   const [dataSelectDeTai, setDataSelectDeTai] = useState<string>("Tất cả");
   const [dataYear, setDateYear] = useState<string>("2023");
   const [dataChiTiet, setDataChiTiet] = useState<GioiThieu>();
-  const [dataGioiThieu, setDataGioiThieu] = useState<DataDeTai[]>([]);
+  const [dataGioiThieu, setDataGioiThieu] = useState<DataDeTaiV2[]>([]);
   const [condition, setCondition] = useState<any>();
   const router = useRouter();
   const [page, setPage] = useState<number>(1);
@@ -31,6 +32,7 @@ const HoatDong = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const [type, setType] = useState<string>();
+  const {langCode}=useContext(AuthContext)
   const {
     register,
     handleSubmit,
@@ -39,18 +41,35 @@ const HoatDong = () => {
   } = useForm();
   const getData = async (type: string) => {
     try {
-      const res = await axios.get(`${ip}/khoa-hoc-cong-nghe/all?kieu=${type}`, {
-        params: {
-          ...condition,
-          page:page,
-          limit:limit,
-        },
-      });
+      // const res = await axios.get(`${ip}/khoa-hoc-cong-nghe/all?kieu=${type}`, {
+      //   params: {
+      //     ...condition,
+      //     page:page,
+      //     limit:limit,
+      //   },
+      // });
+      const res = await axios.get(
+        `${ip}/hoat-dong-khoa-hocs?locale=${langCode}&populate=deep`,
+        {
+          params: {
+            filters: {
+              kieu: {
+                $eq: type,
+              },
+              ...condition,
+            },
+            pagination: {
+              page: page,
+              pageSize: limit,
+            },
+          },
+        }
+      );
       if (res) {
         console.log("resss", res);
         setDataGioiThieu(res?.data?.data ?? []);
         // setDataChiTiet(res?.data?.[0]);
-        setTotal(res?.data?.metadata?.total??0)
+        setTotal(res?.data?.meta?.pagination?.total??0)
       }
     } catch (e) {
       console.log(e);
@@ -72,11 +91,11 @@ const HoatDong = () => {
         // })
         {
           ...condition,
-          tieuDeStr: data?.keyword,
+          tieuDe: {'$containsi':data?.keyword},
         }
       );
     } else {
-      delete condition?.tieuDeStr;
+      delete condition?.tieuDe;
       setCondition({ ...condition });
     }
     // getData({
@@ -113,6 +132,7 @@ const HoatDong = () => {
     { value: "Cấp học viện", label: "Cấp học viện" },
   ];
   const optionYear = [
+    { value: "Tất cả", label: "Tất cả" },
     { value: "2023", label: "2023" },
     { value: "2022", label: "2022" },
     { value: "2021", label: "2021" },
@@ -151,7 +171,9 @@ const HoatDong = () => {
                     } else {
                       setCondition({
                         ...condition,
-                        phamVi: val?.value,
+                        phamVi:{
+                          '$eq': val?.value
+                        },
                       });
                     }
                   } else {
@@ -162,7 +184,9 @@ const HoatDong = () => {
                     } else {
                       setCondition({
                         ...condition,
-                        capDo: val?.value,
+                        capDo: {
+                          '$eq':val?.value
+                        },
                       });
                     }
                   }
@@ -175,7 +199,20 @@ const HoatDong = () => {
               <DropdownFake
                 option={optionYear}
                 onChange={(val) => {
-                  console.log("val", val);
+                  console.log('val',val)
+                  if (val?.value === "Tất cả") {
+
+                    delete condition?.ngayDangTai;
+                    setCondition({ ...condition });
+                  } else {
+                    setCondition({
+                      ...condition,
+                      ngayDangTai: {
+                        $gte: moment().set('years',+val?.value).startOf('years').toISOString(),
+                        $lte: moment().set('years',+val?.value).endOf('years').toISOString(),
+                      },
+                    });
+                  }
                 }}
                 value={dataYear}
                 placeholder={"Năm"}
@@ -216,11 +253,11 @@ const HoatDong = () => {
                     >
                       <CardDeTai
                         data={{
-                          imageUrl: renderImage(value.imageUrl),
-                          content: value?.tieuDe,
-                          dateTime: value?.createdAt,
-                          type: value?.capDo,
-                          description: value?.moTa,
+                          imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
+                          content: value?.attributes?.tieuDe,
+                          dateTime: value?.attributes?.ngayDangTai,
+                          type: value?.attributes?.capDo,
+                          description: value?.attributes?.moTa,
                         }}
                         key={index}
                       />
@@ -253,11 +290,11 @@ const HoatDong = () => {
                     >
                       <CardDeTai
                         data={{
-                          imageUrl: renderImage(value.imageUrl),
-                          content: value?.tieuDe,
-                          dateTime: value?.createdAt,
-                          type: value?.phamVi,
-                          description: value?.moTa,
+                          imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
+                          content: value?.attributes?.tieuDe,
+                          dateTime: value?.attributes?.ngayDangTai,
+                          type: value?.attributes?.phamVi,
+                          description: value?.attributes?.moTa,
                         }}
                         key={index}
                       />
@@ -289,11 +326,11 @@ const HoatDong = () => {
                     >
                       <CardDeTai
                         data={{
-                          imageUrl: renderImage(value.imageUrl),
-                          content: value?.tieuDe,
-                          dateTime: value?.createdAt,
-                          type: value?.kieu,
-                          description: value?.moTa,
+                          imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
+                          content: value?.attributes?.tieuDe,
+                          dateTime: value?.attributes?.ngayDangTai,
+                          type: value?.attributes?.kieu,
+                          description: value?.attributes?.moTa,
                         }}
                         key={index}
                       />

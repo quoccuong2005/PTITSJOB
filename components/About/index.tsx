@@ -54,7 +54,7 @@ const About = (props: { dataHome: IDataHome }) => {
         <div>
           <Title title={"Về chúng tôi"} uppercase={true} description={""} />
         </div>
-        <div className=" hidden lg:grid grid-rows-2 grid-flow-col gap-[30px]">
+        <div className=" hidden lg:grid  grid-flow-col height-grid  gap-[30px]">
           <div className="row-span-2 col-span-2">
             <img
               className="h-full w-full"
@@ -278,6 +278,9 @@ const AboutWrapper = styled.div`
         }
       }
     }
+  }
+  .height-grid{
+    grid-template-rows: repeat(2, minmax(0, 235px));
   }
 `;
 export default About;

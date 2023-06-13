@@ -105,7 +105,7 @@ const ChiTiet = () => {
         className="container mx-auto bg-white px-6 pt-6 pb-8"
         ref={contentRef}
       >
-        <div className="flex justify-between">
+        <div className="lg:flex lg:justify-between">
           <BreadcrumbPage
             data={[
               {
@@ -137,7 +137,7 @@ const ChiTiet = () => {
             }
           >
             <h2>{dataChiTiet?.attributes?.tieuDe} </h2>
-            <div className="flex justify-center">
+            <div className="lg:flex lg:justify-center">
               {dataChiTiet?.attributes?.createdAt && (
                 <p className="date lg:mr-[40px] mr-[20px]">
                   Ngày đăng:{" "}
