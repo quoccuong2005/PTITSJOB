@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useEffect, useRef, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import TableBase from "../components/tableBase";
@@ -14,6 +14,7 @@ import moment from "moment";
 import { renderImage } from "../utils/util";
 import TableBaseV2 from "../components/TableBaseV2";
 import Pagination from "../components/pagination";
+import {AuthContext} from "../context/AuthContext";
 
 const QuyChe = () => {
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
@@ -26,6 +27,7 @@ const QuyChe = () => {
   const [condition, setCondition] = useState<any>();
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
+  const {langCode}=useContext(AuthContext)
   const [type, setType] = useState<string>();
   const {
     register,
@@ -51,11 +53,35 @@ const QuyChe = () => {
       console.log(e);
     }
   };
-  useEffect(() => {
-    if (router?.query) {
-      getData();
+  const getDatav2 = async () => {
+    try {
+      const res = await axios.get(`${ip}/van-ban-quy-dinhs?locale=${langCode}`, {
+        params: {
+          filters: {
+            kieu: {
+              $eq: type,
+            },
+            ...condition,
+          },
+          populate: "deep",
+          pagination: {
+            page: page,
+            pageSize: limit,
+          },
+        },
+      });
+      if (res) {
+        console.log("resss", res);
+        setDataGioiThieu(res?.data?.data ?? []);
+        setTotal(res?.data?.meta?.pagination?.total ?? 0);
+      }
+    } catch (e) {
+      console.log(e);
     }
-  }, [router,page,condition]);
+  };
+  useEffect(() => {
+    getDatav2();
+  }, [router, page, condition,langCode]);
 
   const columns = [
     {
@@ -64,44 +90,76 @@ const QuyChe = () => {
     },
     {
       title: "Số văn bản",
-      dataIndex: "so",
+      dataIndex: "attributes",
+      render: (val: any) => {
+        return val?.so;
+      },
     },
     {
       title: "Ngày ban hành",
-      dataIndex: "ngayBanHanh",
+      dataIndex: "attributes",
       render: (val: any) => {
-        return val ? moment(val).format("DD/MM/YYYY") : "Không có dữ liệu";
+        return val
+          ? moment(val?.ngayBanHanh).format("DD/MM/YYYY")
+          : "Không có dữ liệu";
       },
     },
     {
       title: "Thời gian bắt đầu hiệu lực",
-      dataIndex: "thoiGianHieuLuc",
+      dataIndex: "attributes",
       render: (val: any) => {
-        return val ? moment(val).format("DD/MM/YYYY") : "Không có dữ liệu";
+        return val
+          ? moment(val?.thoiGianHieuLuc).format("DD/MM/YYYY")
+          : "Không có dữ liệu";
       },
     },
     {
       title: "Trích yếu nội dung",
-      dataIndex: "trichYeu",
+      dataIndex: "attributes",
       width: 300,
+      render: (val: any) => {
+        return (
+
+          <div className="w-[250px]">
+            {val?.trichYeu}
+          </div>
+        );
+      },
     },
     {
       title: "Loại văn bản",
-      dataIndex: "loaiVanBan",
+      dataIndex: "attributes",
+      render: (val: any) => {
+       return(
+         <div className="w-[80px]">
+           {val?.loaiVanBan}
+         </div>
+       )
+      },
     },
     {
       title: "Cơ quan ban hành",
-      dataIndex: "coQuanBanHanh",
+      dataIndex: "attributes",
+      render: (val: any) => {
+        return (
+          <div className="w-[80px]">
+            {val?.coQuanBanHanh}
+          </div>
+        );
+      },
     },
     {
       title: "Tài liệu đính kèm",
-      dataIndex: "taiLieuDinhKem",
+      dataIndex: "attributes",
       width: "200px",
       render: (val: any) => {
         return (
           <div className="w-full overflow-hidden break-words ">
-            <a className="block link-download" href={renderImage(val?.url)}>
-              {val?.name}
+            <a
+              className="max-w-[100px] block link-download underline"
+              href={renderImage(val?.taiLieuDinhKem?.data?.attributes?.url)}
+            >
+              {val?.taiLieuDinhKem?.data?.attributes?.name}
             </a>
           </div>
         );
@@ -116,18 +174,20 @@ const QuyChe = () => {
     // 	startDate: moment(data?.startDate).toISOString(),
     // 	endDate: moment(data?.endDate).toISOString(),
     // });
-     if (data && data?.keyword !== "" && data?.keyword) {
+    if (data && data?.keyword !== "" && data?.keyword) {
       setCondition(
         // JSON.stringify({
         //   tieuDe: { $ne: data?.keyword },
         // })
         {
           ...condition,
-          so: data?.keyword,
+          trichYeu: {
+            '$containsi': data?.keyword,
+          },
         }
       );
     } else {
-      delete condition?.so;
+      delete condition?.trichYeu;
       setCondition({ ...condition });
     }
   };
@@ -142,14 +202,14 @@ const QuyChe = () => {
   ];
   return (
     <QuyCheWrapper>
-      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]">
+      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] md:px-0">
         <Title
           title={"CÁC VĂN BẢN QUY ĐỊNH VỀ KH, CN & ĐMST"}
           uppercase={true}
         />
         <div className="mb-[40px]">
-          <div className="flex justify-end">
-            <div className="dropdown mr-[24px]">
+          <div className="lg:flex justify-end">
+            <div className="dropdown mr-[24px] mb-[16px] md:mb-0">
               <Controller
                 name={"type"}
                 control={control}
@@ -159,12 +219,14 @@ const QuyChe = () => {
                     onChange={(val) => {
                       if (val?.value === "Tất cả") {
                         console.log("cc", condition);
-                        delete condition?.coQuan;
+                        delete condition?.coQuanBanHanh;
                         setCondition({ ...condition });
                       } else {
                         setCondition({
                           ...condition,
-                          coQuan: val?.value,
+                          coQuanBanHanh: {
+                            $eq: val?.value,
+                          },
                         });
                       }
                     }}
@@ -180,7 +242,7 @@ const QuyChe = () => {
                   <div className="relative">
                     <input
                       placeholder={"Tìm kiếm"}
-                      {...register("keyword", { })}
+                      {...register("keyword", {})}
                     />
                     {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
                     {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}

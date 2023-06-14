@@ -66,6 +66,7 @@ const Tintuc = () => {
               },
               ...condition,
             },
+            sort: ['createdAt:desc'],
             pagination: {
               page: page,
               pageSize: limit,
@@ -172,11 +173,13 @@ const Tintuc = () => {
         </div>
         {type === "news" && (
           <div>
-            <div className={"hidden lg:grid grid-cols-3 gap-[30px] "}>
+
               {dataNew?.length > 0 ? (
                 <>
+                <div className={"hidden lg:grid grid-cols-3 gap-[30px] "}>
                   {dataNew?.map((val, i) => {
                     return (
+
                       <div
                         onClick={() => {
                           router.push(`/tin-tuc/${val?.id}`);
@@ -194,8 +197,10 @@ const Tintuc = () => {
                           type={"list"}
                         />
                       </div>
+
                     );
                   })}
+                </div>
                 </>
               ) : (
                 <>
@@ -209,7 +214,7 @@ const Tintuc = () => {
                   </div>
                 </>
               )}
-            </div>
+
             <div className="block lg:hidden">
               {dataNew.map((val, i) => {
                 return (

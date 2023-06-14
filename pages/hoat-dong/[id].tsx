@@ -3,7 +3,7 @@ import BreadcrumbPage from "../../components/Breadcrumb";
 import Share from "../../components/Share";
 import ReactToPrint from "react-to-print";
 import moment from "moment/moment";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import TableBase from "../../components/tableBase";
 import { dataDanhMuc } from "../../data";
 import { axios } from "../../api";
@@ -11,12 +11,16 @@ import { ip } from "../../api/ip";
 import {useRouter} from "next/router";
 import {DataDetailKhoaHoc} from "../../utils/interface";
 import TableBaseV2 from "../../components/TableBaseV2";
+import {ETYPEKHOAHOC} from "../../data/enum";
+import {AuthContext} from "../../context/AuthContext";
 
 const ChiTietHoatDong = () => {
 	const router=useRouter();
   let contentRef = useRef<HTMLDivElement>(null);
   const [content, setContent] = useState<any>(null);
+  const [type, setType] = useState<string>();
 	const [dataDetail,setDataDetail]=useState<DataDetailKhoaHoc>()
+  const {langCode}=useContext(AuthContext)
   const columns = [
     {
       title: "STT",
@@ -58,9 +62,29 @@ const ChiTietHoatDong = () => {
       }
     },
   ];
+  const columnsCongBo = [
+    {
+      title: "STT",
+      dataIndex: "index",
+      width:'80px'
+    },
+    {
+      title: "Tên bài báo",
+      dataIndex: "tenDeTai",
+    },
+    {
+      title: "Tên tác giả",
+      dataIndex: "chuNhiemDeTai",
+    },
+    {
+      title: "Tạp chí/Hội nghị hội thảo",
+      dataIndex: "tapChiHoiNghi",
+    },
+
+  ];
   const getData = async (id: string) => {
     try {
-      const res = await axios.get(`${ip}/khoa-hoc-cong-nghe/${id}`);
+      const res = await axios.get(`${ip}/khoa-hoc-cong-nghe/${id}?locale=${langCode}`);
 			if (res){
 				setDataDetail(res?.data)
 			}
@@ -71,8 +95,9 @@ const ChiTietHoatDong = () => {
 	useEffect(()=>{
 		if (router){
 			getData(router?.query?.id as string)
+      setType(router?.query?.type as string)
 		}
-	},[router])
+	},[router,langCode])
   return (
     <ChiTietHoatDongWrapper>
       <div
@@ -128,7 +153,7 @@ const ChiTietHoatDong = () => {
           {/*  <img src="/images/icons/arrow-right-2.svg" alt="image" />*/}
           {/*</div>*/}
           <div className="mt-[26px]">
-            <TableBaseV2 columns={columns} dataSource={dataDetail?.chiTiet?.map((val,i)=>{
+            <TableBaseV2 columns={type!==ETYPEKHOAHOC.CB?columns:columnsCongBo} dataSource={dataDetail?.chiTiet?.map((val,i)=>{
 							return{
 								...val,
 								index:i+1

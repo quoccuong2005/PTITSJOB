@@ -40,6 +40,7 @@ const DangDienRa = (props:{type:string,conditionSearch:any}) => {
               ...condition,
               ...props.conditionSearch
             },
+            sort: ['createdAt:desc'],
             pagination: {
               page: page,
               pageSize: limit,

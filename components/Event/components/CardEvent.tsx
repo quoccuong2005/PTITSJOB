@@ -150,7 +150,7 @@ const CardEvent = (props: IPorps) => {
               />
             )}
             <div className="px-[20px]   pb-[26px] pt-[26px] bg-white">
-              <p className="border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp min-h-[48px]">
+              <p className="border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp min-h-[48px] ">
                 {props.data.content}
               </p>
               {props.data.dateTime && (

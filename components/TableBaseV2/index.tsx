@@ -15,7 +15,7 @@ interface IProps {
 const TableBaseV2 = (props: IProps) => {
   return (
     <>
-      <Table className="table-fixed">
+      <Table  hoverable>
         <Table.Head >
           {props.columns?.map((val, i) => {
             return <Table.HeadCell >{val.title}</Table.HeadCell>;
@@ -47,7 +47,7 @@ const TableBaseV2 = (props: IProps) => {
             <Table.Row>
               <Table.Cell colSpan={props.columns && props.columns.length}>
                 <div className="flex justify-center w-full">
-                  <div>
+                  <div className="flex flex-col items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

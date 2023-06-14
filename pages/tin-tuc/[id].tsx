@@ -5,7 +5,7 @@ import Card from "../../components/Card";
 import { dataTinTuc } from "../../data";
 import MiniCard from "../../components/Event/components/MiniCard";
 import BreadcrumbPage from "../../components/Breadcrumb";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Share from "../../components/Share";
 import FormGopY from "../../components/FormGopY";
 import { useRouter } from "next/router";
@@ -16,7 +16,8 @@ import moment from "moment";
 import { renderImage } from "../../utils/util";
 import ReactToPrint from "react-to-print";
 import CardBanner from "../../components/CardBanner";
-import {DataNewList, IDataChiTiet} from "../../utils/interface";
+import {DataNewList, DataNewListV2, IDataChiTiet} from "../../utils/interface";
+import { AuthContext } from "../../context/AuthContext";
 
 const ChiTiet = () => {
   // const {
@@ -26,74 +27,49 @@ const ChiTiet = () => {
   // 	formState: { errors },
   // } = useForm();
   const [dataChiTiet, setDataChiTiet] = useState<IDataChiTiet>();
-  const [dataDaDienRa, setDataDaDienRa] = useState<DataNewList[]>([]);
+  const [dataDaDienRa, setDataDaDienRa] = useState<DataNewListV2[]>([]);
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
   const [content, setContent] = useState<any>(null);
   const router = useRouter();
   let contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
-  const onSubmit = async (data: any, callback: any) => {
-    console.log("data", data);
-    const obj = { ...data, articleId: router?.query?.id };
-    try {
-      const res = await axios.post(`${ip}/cmscore/v5/CommentArticle`, obj);
-      if (res) {
-        setSendSuccess(true);
-        timmer = setTimeout(() => {
-          setSendSuccess(false);
-          callback(true);
-        }, 10000);
-      } else {
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  // const getData = async () => {
-  // 	try {
-  // 		const res = await axios.get(`${ip}/cmscore/v5/Article/GetById/${router?.query?.id}`);
-  // 		if (res) {
-  // 			console.log("resss", res);
-  // 			setDataChiTiet(res?.data?.data);
-  // 		}
-  // 	} catch (e) {
-  // 		console.log(e);
-  // 	}
-  // };
-  // const getDataComment = async () => {
-  // 	try {
-  // 		const res=await axios.post(`${ip}/cmscore/v5/CommentArticle/GetData/Custom/${router?.query?.id}`,{
-  // 			"filters": [],
-  // 			"sorts": [],
-  // 			"pageInfo": {
-  // 				"page": 1,
-  // 				"pageSize": 10
-  // 			}
-  // 		})
-  // 		if (res){
-  // 			console.log('resss',res)
-  // 			setDataComment(res?.data?.data)
-  // 		}
-  // 	}catch (e) {
-  // 		console.log(e)
-  // 	}
-  // }
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(2);
+  const [total, setTotal] = useState<number>(0);
+  const { langCode } = useContext(AuthContext);
   const handleGetAllDaDienRa = async () => {
     try {
-      const res = await axios.get(`${ip}/tin-tuc-su-kien/all?type=event`,{
-
-      });
-      if (res) {
-        setDataDaDienRa(res?.data?.data??[]);
-
-      }
+      const res = await axios.get(
+        `${ip}/qlkh-tin-tucs?locale=${langCode}&populate=deep`,
+        {
+          params: {
+            filters: {
+              // thoiGianBatDau: {
+              //   $lte: moment().endOf("day").toISOString(),
+              //   // $lte: moment().endOf("day").toISOString(),
+              // },
+              thoiGianKetThuc: {
+                $lt: moment().startOf("day").toISOString(),
+                // $lte: moment().endOf("day").toISOString(),
+              },
+            },
+            pagination: {
+              page: page,
+              pageSize: limit,
+            },
+          },
+        }
+      );
+      setDataDaDienRa(res?.data?.data ?? []);
     } catch (e) {
       console.log(e);
     }
   };
   const getData = async (id: string) => {
     try {
-      const res = await axios.get(`${ip}/qlkh-tin-tucs/${id}`);
+      const res = await axios.get(
+        `${ip}/qlkh-tin-tucs/${id}?locale=${langCode}`
+      );
       if (res) {
         setDataChiTiet(res?.data?.data);
       }
@@ -104,11 +80,11 @@ const ChiTiet = () => {
   useEffect(() => {
     if (router?.query?.id) {
       getData(router?.query?.id as string);
-      handleGetAllDaDienRa()
+      handleGetAllDaDienRa();
       // getData();
       // getDataLienQuan();
     }
-  }, [router]);
+  }, [router, langCode]);
   useEffect(() => {
     return () => {
       clearTimeout(timmer);
@@ -162,7 +138,9 @@ const ChiTiet = () => {
                 </p>
               )}
 
-              <p className="date">Tác giả: {dataChiTiet?.attributes?.tacGia??'Không có tác giả'}</p>
+              <p className="date">
+                Tác giả: {dataChiTiet?.attributes?.tacGia ?? "Không có tác giả"}
+              </p>
             </div>
 
             {/*<div className=' flex justify-end mt-[20px]'>*/}
@@ -195,49 +173,49 @@ const ChiTiet = () => {
           {/*</div>*/}
         </div>
       </div>
-      {dataDaDienRa?.filter((item)=>{
-        return moment(item?.thoiGianBatDau).isBefore(moment()) && item?.id !==+(router?.query?.id as string)
-      })?.length>0&&
-          <div className={"container mx-auto mt-2 mb-[50px]"}>
-              <div className="title-event lg:mb-[40px] flex justify-between">
-                  <h2>Tin tức - Sự kiện đã diễn ra</h2>
-                  <div className="show-more flex items-center cursor-pointer" onClick={()=>{router.push('/tin-tuc')}}>
-                      <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>
-                      <img src="/images/icons/arrow-right-2.svg" alt="image" />
-                  </div>
-              </div>
-              <div className={"grid grid-cols-3 gap-[30px]"}>
-                {dataDaDienRa?.filter((item)=>{
-                  return moment(item?.thoiGianBatDau).isBefore(moment()) && item?.id !==+(router?.query?.id as string)
-                })?.map((val, i) => {
-                  if (i<3){
-                    return (
-                      <div
-                        onClick={() => {
-                          router.push(`/tin-tuc/${val?.id}`);
-                        }}
-                        key={i}
-                      >
-                        <CardBanner
-                          imageUrl={renderImage(val?.imageUrl)}
-                          title={val.tieuDe}
-                          description={val.moTa}
-                          dateTime={val.createdAt}
-                          key={i}
-                          type={"list"}
-                        />
-                      </div>
-                    );
-                  }else {
-                    return null
-                  }
-
-                })}
-              </div>
+      {dataDaDienRa?.length > 0 && (
+        <div className={"container mx-auto mt-2 mb-[50px]"}>
+          <div className="title-event lg:mb-[40px] flex justify-between">
+            <h2>Tin tức - Sự kiện đã diễn ra</h2>
+            <div
+              className="show-more flex items-center cursor-pointer"
+              onClick={() => {
+                router.push("/tin-tuc");
+              }}
+            >
+              <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>
+              <img src="/images/icons/arrow-right-2.svg" alt="image" />
+            </div>
           </div>
+          <div className={"grid grid-cols-3 gap-[30px]"}>
+            {dataDaDienRa
 
-      }
-
+              ?.map((val, i) => {
+                if (i < 3) {
+                  return (
+                    <div
+                      onClick={() => {
+                        router.push(`/tin-tuc/${val?.id}`);
+                      }}
+                      key={i}
+                    >
+                      <CardBanner
+                        imageUrl={renderImage( val?.attributes?.hinhAnh?.data?.attributes?.url)}
+                        title={val?.attributes.tieuDe}
+                        description={val?.attributes.moTa}
+                        dateTime={val?.attributes.createdAt}
+                        key={i}
+                        type={"list"}
+                      />
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              })}
+          </div>
+        </div>
+      )}
     </ChiTietWrapper>
   );
 };

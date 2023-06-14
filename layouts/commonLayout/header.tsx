@@ -37,7 +37,10 @@ const Header = (props: IProps) => {
 	const [isShowSearch, setIsShowSearch] = useState<boolean>(false);
 	const { language, handleChangeLanguage } = props;
 	const searchRef = useRef<HTMLDivElement>(null);
+	const langRef = useRef<HTMLDivElement>(null);
 	const {setDataThongTin,dataThongTin,langCode}=useContext(AuthContext)
+
+	const [isChangeLang, setIsChangeLang] = useState<boolean>(false);
 	const {
 		isAuthenticated,
 		user,
@@ -47,6 +50,13 @@ const Header = (props: IProps) => {
 		userLoading,
 		setMenu,
 	} = useAuth();
+	const onClickLanguage = () => {
+		setIsChangeLang(!isChangeLang);
+	};
+	const onChangeLanguage = (e: any, language: string) => {
+		props.handleChangeLanguage(language);
+		setIsChangeLang(false);
+	};
 	const fetch = async () => {
 		// await getAllProjectList()
 		// 	.then((response) => setDanhSach(response.data))
@@ -302,12 +312,12 @@ const Header = (props: IProps) => {
 							{/*	</Navbar.Collapse>*/}
 							{/*</Navbar>*/}
 						</div>
-						<div className={"lg:hidden lg:invisible flex  justify-between lg:mt-[16px] mt-0 px-2 py-[8px] lg:py-0 "}>
+						<div className={"lg:hidden lg:invisible flex  justify-between items-center lg:mt-[16px] mt-0 px-2 py-[8px] lg:py-0 "}>
 							<div className='mr-[8px]'>
 								<img src='./images/header/logo-header.png' alt={"image"} />
 							</div>
 
-							<div className='flex items-center relative shrink-0'>
+							<div className='flex items-center relative shrink-0 mr-[8px]'>
 								<div onClick={() => setShowMenu(!showMenu)}>
 									<img src={"/images/icons/menu.svg"} alt={"image"} />
 								</div>
@@ -328,6 +338,85 @@ const Header = (props: IProps) => {
 													</li>
 												);
 											})}
+										</ul>
+									</div>
+								)}
+							</div>
+							<div className="relative mr-2" ref={langRef}>
+								<div
+									className="language flex items-center "
+									onClick={() => onClickLanguage()}
+								>
+									<img
+										className="w-8"
+										src={
+											props.language === "vi-VN"
+												? "/images/icons/vn.svg"
+												: "/images/icons/us.svg"
+										}
+										alt=""
+									/>
+									{isChangeLang ? (
+										<svg
+											className="w-6 h-6"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth="2"
+												d="M5 15l7-7 7 7"
+											></path>
+										</svg>
+									) : (
+										<svg
+											className="w-6 h-6"
+											fill="none"
+											stroke="currentColor"
+											viewBox="0 0 24 24"
+											xmlns="http://www.w3.org/2000/svg"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												strokeWidth="2"
+												d="M19 9l-7 7-7-7"
+											></path>
+										</svg>
+									)}
+								</div>
+								{isChangeLang && (
+									<div className="language absolute top-9 right-0 shadow-lg py-2.5 w-40 secondary-bg rounded-xl ">
+										<ul>
+											<li className="hover:hover-bg px-2.5 cursor-pointer">
+												<a
+													className="flex items-center"
+													onClick={(e) => onChangeLanguage(e, "en")}
+												>
+													<img
+														className="w-8 mr-2"
+														src="/images/us.png"
+														alt=""
+													/>{" "}
+													<span>English (US)</span>
+												</a>
+											</li>
+											<li className="hover:hover-bg px-2.5 cursor-pointer">
+												<a
+													className="flex items-center"
+													onClick={(e) => onChangeLanguage(e, "vi-VN")}
+												>
+													<img
+														className="w-8 mr-2"
+														src="/images/vi.png"
+														alt=""
+													/>{" "}
+													Tiếng Việt
+												</a>
+											</li>
 										</ul>
 									</div>
 								)}

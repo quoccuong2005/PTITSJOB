@@ -5,7 +5,7 @@ import Card from "../../components/Card";
 import { dataTinTuc } from "../../data";
 import MiniCard from "../../components/Event/components/MiniCard";
 import BreadcrumbPage from "../../components/Breadcrumb";
-import React, { useEffect, useRef, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import Share from "../../components/Share";
 import FormGopY from "../../components/FormGopY";
 import { useRouter } from "next/router";
@@ -17,6 +17,7 @@ import { renderImage } from "../../utils/util";
 import ReactToPrint from "react-to-print";
 import CardBanner from "../../components/CardBanner";
 import { IDataChiTiet } from "../../utils/interface";
+import {AuthContext} from "../../context/AuthContext";
 
 const ChiTiet = () => {
   // const {
@@ -31,6 +32,7 @@ const ChiTiet = () => {
   const router = useRouter();
   let contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
+  const {langCode}=useContext(AuthContext)
   const onSubmit = async (data: any, callback: any) => {
     console.log("data", data);
     const obj = { ...data, articleId: router?.query?.id };
@@ -79,7 +81,7 @@ const ChiTiet = () => {
   // }
   const getData = async (id: string) => {
     try {
-      const res = await axios.get(`${ip}/qlkh-dinh-huong-nghien-cuus/${id}`);
+      const res = await axios.get(`${ip}/qlkh-dinh-huong-nghien-cuus/${id}?locale=${langCode}`);
       if (res) {
         setDataChiTiet(res?.data?.data);
       }
@@ -93,7 +95,7 @@ const ChiTiet = () => {
       // getData();
       // getDataLienQuan();
     }
-  }, [router]);
+  }, [router,langCode]);
   useEffect(() => {
     return () => {
       clearTimeout(timmer);

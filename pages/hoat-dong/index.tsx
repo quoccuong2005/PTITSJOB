@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Title from "../../components/Title";
-import React, {useContext, useEffect, useRef, useState} from "react";
-import {DataDeTai, DataDeTaiV2, GioiThieu} from "../../utils/interface";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { DataDeTai, DataDeTaiV2, GioiThieu } from "../../utils/interface";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { ip } from "../../api/ip";
@@ -17,7 +17,7 @@ import { renderImage } from "../../utils/util";
 import { ETYPEKHOAHOC } from "../../data/enum";
 import { el } from "date-fns/locale";
 import Pagination from "../../components/pagination";
-import {AuthContext} from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 const HoatDong = () => {
   const [dataSelectDeTai, setDataSelectDeTai] = useState<string>("Tất cả");
@@ -32,7 +32,7 @@ const HoatDong = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const [type, setType] = useState<string>();
-  const {langCode}=useContext(AuthContext)
+  const { langCode } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -69,7 +69,7 @@ const HoatDong = () => {
         console.log("resss", res);
         setDataGioiThieu(res?.data?.data ?? []);
         // setDataChiTiet(res?.data?.[0]);
-        setTotal(res?.data?.meta?.pagination?.total??0)
+        setTotal(res?.data?.meta?.pagination?.total ?? 0);
       }
     } catch (e) {
       console.log(e);
@@ -80,7 +80,7 @@ const HoatDong = () => {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
-  }, [router, condition,page]);
+  }, [router, condition, page]);
 
   const onSubmit = (data: any) => {
     console.log("data", data);
@@ -91,7 +91,7 @@ const HoatDong = () => {
         // })
         {
           ...condition,
-          tieuDe: {'$containsi':data?.keyword},
+          tieuDe: { $containsi: data?.keyword },
         }
       );
     } else {
@@ -151,6 +151,11 @@ const HoatDong = () => {
         return "";
     }
   };
+  useEffect(()=>{
+
+    setPage(1)
+
+  },[type])
   return (
     <HoatDongWrapper>
       <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]">
@@ -171,8 +176,8 @@ const HoatDong = () => {
                     } else {
                       setCondition({
                         ...condition,
-                        phamVi:{
-                          '$eq': val?.value
+                        phamVi: {
+                          $eq: val?.value,
                         },
                       });
                     }
@@ -185,7 +190,7 @@ const HoatDong = () => {
                       setCondition({
                         ...condition,
                         capDo: {
-                          '$eq':val?.value
+                          $eq: val?.value,
                         },
                       });
                     }
@@ -199,17 +204,22 @@ const HoatDong = () => {
               <DropdownFake
                 option={optionYear}
                 onChange={(val) => {
-                  console.log('val',val)
+                  console.log("val", val);
                   if (val?.value === "Tất cả") {
-
                     delete condition?.ngayDangTai;
                     setCondition({ ...condition });
                   } else {
                     setCondition({
                       ...condition,
                       ngayDangTai: {
-                        $gte: moment().set('years',+val?.value).startOf('years').toISOString(),
-                        $lte: moment().set('years',+val?.value).endOf('years').toISOString(),
+                        $gte: moment()
+                          .set("years", +val?.value)
+                          .startOf("years")
+                          .toISOString(),
+                        $lte: moment()
+                          .set("years", +val?.value)
+                          .endOf("years")
+                          .toISOString(),
                       },
                     });
                   }
@@ -222,10 +232,7 @@ const HoatDong = () => {
               <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
                 <div className="search flex item-center h-full">
                   <div className="relative">
-                    <input
-                      placeholder={"Tìm kiếm"}
-                      {...register("keyword")}
-                    />
+                    <input placeholder={"Tìm kiếm"} {...register("keyword")} />
                     {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
                     {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
                     {/*</div>*/}
@@ -240,112 +247,142 @@ const HoatDong = () => {
         </div>
         {type === ETYPEKHOAHOC.DT && (
           <>
-
-              {dataGioiThieu?.length>0?<>
-              <div className="grid grid-cols-2 gap-[30px]">
-                {dataGioiThieu?.map((value, index) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        router.push(`/hoat-dong/${value?.id}`);
-                      }}
-                      key={index}
-                    >
-                      <CardDeTai
-                        data={{
-                          imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
-                          content: value?.attributes?.tieuDe,
-                          dateTime: value?.attributes?.ngayDangTai,
-                          type: value?.attributes?.capDo,
-                          description: value?.attributes?.moTa,
+            {dataGioiThieu?.length > 0 ? (
+              <>
+                <div className="grid grid-cols-2 gap-[30px]">
+                  {dataGioiThieu?.map((value, index) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          router.push(
+                            `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.DT}`
+                          );
                         }}
                         key={index}
-                      />
-                    </div>
-                  );
-                })} </div></>:<><div className="w-full h-full justify-center items-center flex flex-col">
-                <img
-                  className="mb-[16px]"
-                  src="/images/default/no_data.png"
-                  alt="image"
-                />
-                <p className="text-secondary text-sm">Không có dữ liệu</p>
-              </div></>}
-
-
+                      >
+                        <CardDeTai
+                          data={{
+                            imageUrl: renderImage(
+                              value?.attributes?.hinhAnh?.data?.attributes?.url
+                            ),
+                            content: value?.attributes?.tieuDe,
+                            dateTime: value?.attributes?.ngayDangTai,
+                            type: value?.attributes?.capDo,
+                            description: value?.attributes?.moTa,
+                          }}
+                          key={index}
+                        />
+                      </div>
+                    );
+                  })}{" "}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="w-full h-full justify-center items-center flex flex-col">
+                  <img
+                    className="mb-[16px]"
+                    src="/images/default/no_data.png"
+                    alt="image"
+                  />
+                  <p className="text-secondary text-sm">Không có dữ liệu</p>
+                </div>
+              </>
+            )}
           </>
         )}
         {type === ETYPEKHOAHOC.CB && (
           <>
-
-              {dataGioiThieu?.length>0?<>
-              <div className="grid grid-cols-2 gap-[30px]">
-                {dataGioiThieu?.map((value, index) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        router.push(`/hoat-dong/${value?.id}`);
-                      }}
-                      key={index}
-                    >
-                      <CardDeTai
-                        data={{
-                          imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
-                          content: value?.attributes?.tieuDe,
-                          dateTime: value?.attributes?.ngayDangTai,
-                          type: value?.attributes?.phamVi,
-                          description: value?.attributes?.moTa,
+            {dataGioiThieu?.length > 0 ? (
+              <>
+                <div className="grid grid-cols-2 gap-[30px]">
+                  {dataGioiThieu?.map((value, index) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          router.push(
+                            `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.CB}`
+                          );
                         }}
                         key={index}
-                      />
-                    </div>
-                  );
-                })}  </div></>:<><div className="w-full h-full justify-center items-center flex flex-col">
-                <img
-                  className="mb-[16px]"
-                  src="/images/default/no_data.png"
-                  alt="image"
-                />
-                <p className="text-secondary text-sm">Không có dữ liệu</p>
-              </div></>}
-
-
+                      >
+                        <CardDeTai
+                          data={{
+                            imageUrl: renderImage(
+                              value?.attributes?.hinhAnh?.data?.attributes?.url
+                            ),
+                            content: value?.attributes?.tieuDe,
+                            dateTime: value?.attributes?.ngayDangTai,
+                            type: value?.attributes?.phamVi,
+                            description: value?.attributes?.moTa,
+                          }}
+                          key={index}
+                        />
+                      </div>
+                    );
+                  })}{" "}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="w-full h-full justify-center items-center flex flex-col">
+                  <img
+                    className="mb-[16px]"
+                    src="/images/default/no_data.png"
+                    alt="image"
+                  />
+                  <p className="text-secondary text-sm">Không có dữ liệu</p>
+                </div>
+              </>
+            )}
           </>
         )}
         {type === ETYPEKHOAHOC.SP && (
           <>
-            <div className="grid grid-cols-2 gap-[30px]">
-              {dataGioiThieu?.length>0?<>
-                {dataGioiThieu?.map((value, index) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        router.push(`/hoat-dong/${value?.id}`);
-                      }}
-                      key={index}
-                    >
-                      <CardDeTai
-                        data={{
-                          imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
-                          content: value?.attributes?.tieuDe,
-                          dateTime: value?.attributes?.ngayDangTai,
-                          type: value?.attributes?.kieu,
-                          description: value?.attributes?.moTa,
+
+              {dataGioiThieu?.length > 0 ? (
+                <>
+                  {dataGioiThieu?.map((value, index) => {
+                    return (
+                      <div className="grid grid-cols-2 gap-[30px]">
+                      <div
+                        onClick={() => {
+                          router.push(
+                            `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.SP}`
+                          );
                         }}
                         key={index}
-                      />
-                    </div>
-                  );
-                })}</>:<><div className="w-full h-full justify-center items-center flex flex-col">
-                <img
-                  className="mb-[16px]"
-                  src="/images/default/no_data.png"
-                  alt="image"
-                />
-                <p className="text-secondary text-sm">Không có dữ liệu</p>
-              </div></>}
+                      >
+                        <CardDeTai
+                          data={{
+                            imageUrl: renderImage(
+                              value?.attributes?.hinhAnh?.data?.attributes?.url
+                            ),
+                            content: value?.attributes?.tieuDe,
+                            dateTime: value?.attributes?.ngayDangTai,
+                            type: value?.attributes?.kieu,
+                            description: value?.attributes?.moTa,
+                          }}
+                          key={index}
+                        />
+                      </div>
+                      </div>
+                    );
+                  })}
+                </>
+              ) : (
+                <>
+                  <div className="w-full h-full justify-center items-center flex flex-col">
+                    <img
+                      className="mb-[16px]"
+                      src="/images/default/no_data.png"
+                      alt="image"
+                    />
+                    <p className="text-secondary text-sm">Không có dữ liệu</p>
+                  </div>
+                </>
+              )}
 
-            </div>
           </>
         )}
       </div>

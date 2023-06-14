@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Title from "../../components/Title";
-import React, { useEffect, useRef, useState } from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import { DataDonVi, GioiThieu } from "../../utils/interface";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -12,22 +12,24 @@ import CardEvent from "../../components/Event/components/CardEvent";
 import { ETYPEDONVI } from "../../data/enum";
 import { renderImage } from "../../utils/util";
 import Pagination from "../../components/pagination";
+import {AuthContext} from "../../context/AuthContext";
 
 const DonViNghienCuu = () => {
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
   const [dataChiTiet, setDataChiTiet] = useState<GioiThieu>();
   const [page, setPage] = useState<number>(1);
-  const [limit, setLimit] = useState<number>(9);
+  const [limit, setLimit] = useState<number>(4);
   const [total, setTotal] = useState<number>(0);
   const [dataGioiThieu, setDataGioiThieu] = useState<DataDonVi[]>([]);
   const router = useRouter();
+  const {langCode}=useContext(AuthContext)
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const [type, setType] = useState<string>();
 
   const getData = async (type: string) => {
     try {
-      const res = await axios.get(`${ip}/don-vi/all?type=${type}`, {
+      const res = await axios.get(`${ip}/don-vi/all?type=${type}&locale=${langCode}`, {
         params: {
           page: page,
           limit: limit,
@@ -48,8 +50,12 @@ const DonViNghienCuu = () => {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
-  }, [router, page]);
+  }, [router, page,langCode]);
+useEffect(()=>{
 
+    setPage(1)
+
+},[type])
   return (
     <DonViNghienCuuWrapper>
       <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]">
@@ -69,7 +75,7 @@ const DonViNghienCuu = () => {
                         // dateTime: val.createdAt,
                         link: val?.duongDan,
                       }}
-                      category={"sach"}
+                      category={"vien"}
                       key={i}
                     />
                   );
