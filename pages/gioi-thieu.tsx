@@ -107,8 +107,8 @@ const GioiThieu = () => {
         {type === "LH" && (
           <div className="lien-he">
             <Title title={"THÔNG TIN LIÊN HỆ"} uppercase={true} />
-            <div className="flex justify-between items-center">
-              <div className="info">
+            <div className="sm:flex sm:justify-between sm:items-center block">
+              <div className="info mb-[40px] sm:mb-0">
                 <p className="mb-[40px]">{dataThongTin?.tenPhongTiepNhan}</p>
                 <div className="item-info flex mb-[20px] items-center">
                   <img
@@ -143,11 +143,11 @@ const GioiThieu = () => {
                   <div>{dataThongTin?.coSo1}</div>
                 </div>
               </div>
-              <div>
+              <div className="sm:w-[600px] sm:h-[450px]">
                 <iframe
                   src={dataThongTin?.googleMap}
-                  width="600"
-                  height="450"
+                  width="100%"
+                  height="100%"
                   // style='border:0;'
                   // allowFullScreen='fa'
                   loading="lazy"

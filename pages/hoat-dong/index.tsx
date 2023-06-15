@@ -161,8 +161,8 @@ const HoatDong = () => {
       <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]">
         <div className="mb-[40px]">
           <Title title={renderDeTaiName(type ?? "")} uppercase={true} />
-          <div className="flex justify-end">
-            <div className="dropdown mr-[24px]">
+          <div className="flex sm:justify-end flex-col sm:flex-row items-center">
+            <div className="dropdown mr-[24px] sm:mb-0 mb-[16px]">
               <DropdownFake
                 option={type === ETYPEKHOAHOC.CB ? optionCB : option}
                 onChange={(val) => {
@@ -200,7 +200,7 @@ const HoatDong = () => {
                 placeholder={"Đề tài cấp"}
               />
             </div>
-            <div className="dropdown mr-[24px]">
+            <div className="dropdown mr-[24px] sm:mb-0 mb-[16px]">
               <DropdownFake
                 option={optionYear}
                 onChange={(val) => {
@@ -249,7 +249,7 @@ const HoatDong = () => {
           <>
             {dataGioiThieu?.length > 0 ? (
               <>
-                <div className="grid grid-cols-2 gap-[30px]">
+                <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
                   {dataGioiThieu?.map((value, index) => {
                     return (
                       <div
@@ -295,7 +295,7 @@ const HoatDong = () => {
           <>
             {dataGioiThieu?.length > 0 ? (
               <>
-                <div className="grid grid-cols-2 gap-[30px]">
+                <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
                   {dataGioiThieu?.map((value, index) => {
                     return (
                       <div
@@ -344,7 +344,7 @@ const HoatDong = () => {
                 <>
                   {dataGioiThieu?.map((value, index) => {
                     return (
-                      <div className="grid grid-cols-2 gap-[30px]">
+                      <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
                       <div
                         onClick={() => {
                           router.push(

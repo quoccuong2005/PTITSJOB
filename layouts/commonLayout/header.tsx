@@ -326,16 +326,69 @@ const Header = (props: IProps) => {
 										<ul>
 											{dataMenu.map((value, index) => {
 												return (
-													<li key={index}>
-														<Link
-															href={value.link}
-															className={`${
-																typeMenu === value.ten ? "text-active" : ""
-															} uppercase text-nav block md:border-b-2 md:border-primary-500 pb-[8px]`}
-														>
-															{value?.ten}
-														</Link>
-													</li>
+													<div
+														onClick={() => {
+															if (value?.trangCon?.length > 0) {
+															} else {
+																if (value?.sangTrangMoi) {
+																	window.open(value?.link)
+																}else {
+																	router.push(value?.link);
+																}
+
+															}
+														}}
+														// href={value?.children?.length > 0 ? "" : value?.linkTo}
+														className={` mr-[24px] last-of-type:mr-0 text-nav pt-2 cursor-pointer ${
+															value?.link?.split('?')?.[0]?.localeCompare(typeMenu) === 0
+																? `text-white ${
+																	isScroll
+																		? "text-white md:border-b-2  md:border-white-500"
+																		: "text-active md:border-b-2  md:border-primary-500"
+																} `
+																: `md:border-none ${isScroll ? "text-white" : "text-black"}`
+														} block  `}
+														key={index}
+													>
+														{value?.trangCon?.length > 0 ? (
+															<>
+																<Tooltip
+																	className={"tooltip-label"}
+																	content={
+																		<>
+																			{value?.trangCon?.map((value2, index2) => {
+																				return (
+																					<div
+																						onClick={() => {
+																							if (value?.sangTrangMoi) {
+																								window.open(value2?.link)
+																							}else {
+																								router.push(value2?.link);
+																							}
+																						}}
+																						className={`text-children mr-[40px] cursor-pointer pt-2 ${
+																							value2?.link?.localeCompare(typeMenu) === 0
+																								? "text-active md:border-b-2  md:border-primary-500"
+																								: "md:border-none"
+																						} block  hover:border-b hover:border-primary mb-[8px]`}
+																						key={index2}
+																					>
+																						{value2.ten}
+																					</div>
+																				);
+																			})}
+																		</>
+																	}
+																	style={"light"}
+																	placement='bottom'
+																>
+																	{value?.ten}
+																</Tooltip>
+															</>
+														) : (
+															<>{value?.ten}</>
+														)}
+													</div>
 												);
 											})}
 										</ul>

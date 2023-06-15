@@ -102,7 +102,23 @@ if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
 				</div>
 				<div className='sm:hidden block mt-[20px]'>
 					<Slider {...settings}>
-
+						{props.dataHome?.qlkh_tin_tucs?.data?.map((value,i)=>{
+							return(
+								<div>
+									<CardEvent
+										data={{
+											imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
+											content: value?.attributes?.tieuDe,
+											dateTime: value?.attributes?.createdAt,
+											description: value?.attributes?.moTa ?? "",
+											link: `/tin-tuc/${value?.id}?type=TUYENSINH_DAIHOC`,
+										}}
+										category={'slide'}
+										type={"small"}
+									/>
+								</div>
+							)
+						})}
 					</Slider>
 				</div>
 				{props.dataHome?.qlkh_tin_tucs?.data?.length>6&&

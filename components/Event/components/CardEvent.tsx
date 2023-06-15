@@ -123,7 +123,7 @@ const CardEvent = (props: IPorps) => {
             style={props.style}
           >
             {props.category ? (
-              <div className="md:h-[214px]">
+              <div className="md:h-[214px] h-full">
                 <img
                   className={"image-card wow fadeInUp  h-full object-cover"}
                   src={props.data.imageUrl}
