@@ -26,20 +26,29 @@ const DonViNghienCuu = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const [type, setType] = useState<string>();
-
+  const [condition, setCondition] = useState<any>();
   const getData = async (type: string) => {
     try {
-      const res = await axios.get(`${ip}/don-vi/all?type=${type}&locale=${langCode}`, {
+      const res = await axios.get(`${ip}/don-vi-nghien-cuus?locale=${langCode}&populate=deep`, {
         params: {
-          page: page,
-          limit: limit,
+          filters: {
+            kieu: {
+              $eq: type,
+            },
+            ...condition,
+          },
+          sort: ['createdAt:desc'],
+          pagination: {
+            page: page,
+            pageSize: limit,
+          },
         },
       });
       if (res) {
         console.log("resss", res);
         setDataGioiThieu(res?.data?.data ?? []);
         // setDataChiTiet(res?.data?.[0]);
-        setTotal(res?.data?.metadata?.total ?? 0);
+        setTotal(res?.data?.meta?.pagination?.total ?? 0);
       }
     } catch (e) {
       console.log(e);
@@ -69,11 +78,11 @@ useEffect(()=>{
                   return (
                     <CardEvent
                       data={{
-                        imageUrl: renderImage(val?.imageUrl),
-                        content: val?.tieuDe,
-                        description: val?.moTa ?? "",
+                        imageUrl: renderImage(val?.attributes?.hinhAnh?.data?.attributes?.url),
+                        content: val?.attributes?.tieuDe,
+                        description: val?.attributes?.moTa ?? "",
                         // dateTime: val.createdAt,
-                        link: val?.duongDan,
+                        link: val?.attributes?.duongDan??'',
                       }}
                       category={"vien"}
                       key={i}
@@ -101,11 +110,11 @@ useEffect(()=>{
                   return (
                     <CardDeTai
                       data={{
-                        imageUrl: renderImage(value.imageUrl),
-                        content: value.tieuDe,
+                        imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
+                        content: value?.attributes.tieuDe,
                         // dateTime: value.createdAt,
-                        description: value.moTa ?? "",
-                        link: value?.duongDan,
+                        description: value?.attributes.moTa ?? "",
+                        link: value?.attributes?.duongDan??'',
                       }}
                       key={index}
                     />

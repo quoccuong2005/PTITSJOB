@@ -53,10 +53,10 @@ const ChiTiet = () => {
                 // $lte: moment().endOf("day").toISOString(),
               },
             },
-            pagination: {
-              page: page,
-              pageSize: limit,
-            },
+            // pagination: {
+            //   page: page,
+            //   pageSize: limit,
+            // },
           },
         }
       );

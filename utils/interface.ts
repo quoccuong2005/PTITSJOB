@@ -865,18 +865,57 @@ export interface DataNew {
   };
 }
 export interface DataDonVi {
-  id: 2;
-  createdAt: "2023-06-03T09:06:58.173Z";
-  updatedAt: "2023-06-05T07:51:49.670Z";
-  publishedAt: "2023-06-03T09:06:59.329Z";
-  tieuDe: "Viện Kinh tế Bưu điện - ERIPT";
-  noiDung: null;
-  kieu: "Viện nghiên cứu";
-  moTa: null;
-  imageUrl: "/uploads/thumbnail_tc_2_97a92a3ef9.png";
-  duongDan: string;
+  "id": 6,
+  "attributes": {
+    "createdAt": "2023-06-14T02:29:17.553Z",
+    "updatedAt": "2023-06-14T02:29:19.529Z",
+    "publishedAt": "2023-06-14T02:29:19.527Z",
+    "tieuDe": "dscfasdf",
+    "noiDung": "<p>ádfasdf</p>",
+    "kieu": "Phòng thí nghiệm",
+    "moTa": "ádfasdf",
+    "duongDan": null,
+    "locale": "vi-VN",
+    "hinhAnh": {
+      "data": {
+        "id": 20,
+        "attributes": {
+          "name": "tc-4.png",
+          "alternativeText": null,
+          "caption": null,
+          "width": 277,
+          "height": 277,
+          "formats": {
+            "thumbnail": {
+              "name": "thumbnail_tc-4.png",
+              "hash": "thumbnail_tc_4_f6c98bb24b",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 156,
+              "height": 156,
+              "size": 45.87,
+              "url": "/uploads/thumbnail_tc_4_f6c98bb24b.png"
+            }
+          },
+          "hash": "tc_4_f6c98bb24b",
+          "ext": ".png",
+          "mime": "image/png",
+          "size": 32.02,
+          "url": "/uploads/tc_4_f6c98bb24b.png",
+          "previewUrl": null,
+          "provider": "local",
+          "provider_metadata": null,
+          "createdAt": "2023-06-01T17:10:34.249Z",
+          "updatedAt": "2023-06-14T02:29:13.703Z"
+        }
+      }
+    },
+    "localizations": {
+      "data": []
+    }
+  }
 }
-[];
 export interface DataDetailKhoaHoc {
   id: 1;
   createdAt: "2023-06-01T17:10:07.029Z";
