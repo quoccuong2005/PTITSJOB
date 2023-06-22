@@ -381,7 +381,7 @@ const Header = (props: IProps) => {
                 <img src="./images/header/logo-header.png" alt={"image"} />
               </div>
 
-              <div className="flex">
+              <div className="flex shrink-0">
                 <div
                   className="flex items-center relative shrink-0 mr-[8px]"
                   ref={menuRef}
@@ -470,7 +470,7 @@ const Header = (props: IProps) => {
                     </div>
                   )}
                 </div>
-                <div className="relative mr-2" ref={langRef}>
+                <div className="relative mr-2 shrink-0" ref={langRef}>
                   <div
                     className="language flex items-center "
                     onClick={() => onClickLanguage()}
