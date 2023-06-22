@@ -91,9 +91,10 @@ const CardBanner = (props: IProps) => {
 		} else {
 			return (
 				<CardBannerWrapper className='hover:shadow-xl cursor-pointer lg:h-full'>
-					<div className={"lg:h-full"}>
+					<div className={"lg:h-full w-full"}>
 						<div className='relative'>
 							<img
+								className="w-full max-h-[350px] object-cover"
 								src={props.imageUrl}
 								alt={"image"}
 								onError={({ currentTarget }) => {

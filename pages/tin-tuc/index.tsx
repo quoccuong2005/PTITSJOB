@@ -113,7 +113,7 @@ const Tintuc = () => {
   };
   return (
     <TinTucWraper>
-      <div className="container mx-auto bg-white  pt-2 pb-14 mb-2">
+      <div className="container mx-auto bg-white  pt-2 pb-14 mb-2 px-[20px] lg:px-0">
         <div className="md:mt-[40px] md:mb-[40px] lg:flex block justify-between">
           {/*<h2 className="">Tin tức sự kiện</h2>*/}
           <div className="flex justify-center lg:justify-start  mb-[20px] lg:mb-0">

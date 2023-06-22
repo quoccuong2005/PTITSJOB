@@ -30,10 +30,11 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 3,
+					slidesToShow: 2,
+					// centerMode: true,
+					slidesToScroll: 2,
 					infinite: true,
-					dots: true,
+					dots: false,
 				},
 			},
 			{
@@ -63,7 +64,7 @@ if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
 				<div>
 					<Title title={"Tin tức - sự kiện"} uppercase={true} description={""} />
 				</div>
-				<div className='sm:grid sm:grid-cols-4 gap-[20px] hidden mt-[40px]'>
+				<div className='lg:grid lg:grid-cols-4 gap-[20px] hidden mt-[40px]'>
 					{props.dataHome?.qlkh_tin_tucs?.data?.map((value, i) => {
 						if (i < 6) {
 							if (i === 0 || i === 5) {
@@ -100,11 +101,11 @@ if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
 						}
 					})}
 				</div>
-				<div className='sm:hidden block mt-[20px]'>
+				<div className='lg:hidden block mt-[20px]'>
 					<Slider {...settings}>
 						{props.dataHome?.qlkh_tin_tucs?.data?.map((value,i)=>{
 							return(
-								<div>
+								<div className="pr-[16px]">
 									<CardEvent
 										data={{
 											imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),
@@ -122,7 +123,7 @@ if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
 					</Slider>
 				</div>
 				{props.dataHome?.qlkh_tin_tucs?.data?.length>6&&
-					<div className='flex justify-center sm:mt-[40px] mt-[20px]'>
+					<div className='flex justify-center lg:mt-[40px] mt-[20px]'>
 						<Button
 							type={"primary"}
 							classname='lg:w-[279px]'

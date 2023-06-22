@@ -158,7 +158,7 @@ const HoatDong = () => {
   },[type])
   return (
     <HoatDongWrapper>
-      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px]">
+      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] lg:px-0">
         <div className="mb-[40px]">
           <Title title={renderDeTaiName(type ?? "")} uppercase={true} />
           <div className="flex sm:justify-end flex-col sm:flex-row items-center">

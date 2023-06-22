@@ -21,7 +21,7 @@ const CardEvent = (props: IPorps) => {
           <Link href={props.data.link ? props.data.link : "#"}>
             <div className="cover item-c">
               <div
-                className="card cursor-pointer relative md:h-[278px] h-full"
+                className="card cursor-pointer relative lg:h-[278px] h-full"
                 style={props.style}
               >
                 {props.category ? (
@@ -50,7 +50,7 @@ const CardEvent = (props: IPorps) => {
                   />
                 )}
                 <div className="absolute top-0 left-0 w-full h-full bg-cover"></div>
-                <div className="text-content absolute sm:bottom-[10px] sm:left-[16px]">
+                <div className="text-content absolute lg:bottom-[10px] lg:left-[16px]">
                   <div className="border-l-4 px-[12px] ">
                     {props.data?.content}
                   </div>
@@ -79,7 +79,7 @@ const CardEvent = (props: IPorps) => {
 
               <div className="card-back cursor-pointer">
                 <div className="title-back px-[20px] flex flex-col justify-center py-[50px]  bg-white">
-                  <div className="border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp h-full">
+                  <div className="border-l-2 pl-[12px] lg:border-primary-500 content wow fadeInUp h-full">
                     {props.data.dateTime && (
                       <div className="text-primary time-content flex items-center">
                         <div className="mr-[16px]">
@@ -123,7 +123,7 @@ const CardEvent = (props: IPorps) => {
             style={props.style}
           >
             {props.category ? (
-              <div className="md:h-[214px] h-full">
+              <div className="h-[214px]">
                 <img
                   className={"image-card wow fadeInUp  h-full object-cover"}
                   src={props.data.imageUrl}
@@ -140,7 +140,7 @@ const CardEvent = (props: IPorps) => {
               </div>
             ) : (
               <img
-                className={"image-card wow fadeInUp md:h-[139px] object-cover"}
+                className={"image-card wow fadeInUp lg:h-[139px] object-cover"}
                 src={props.data.imageUrl}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null; // prevents looping
@@ -150,7 +150,7 @@ const CardEvent = (props: IPorps) => {
               />
             )}
             <div className="px-[20px]   pb-[26px] pt-[26px] bg-white">
-              <p className="border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp min-h-[48px] ">
+              <p className="border-l-2 pl-[12px] lg:border-primary-500 content wow fadeInUp min-h-[48px] ">
                 {props.data.content}
               </p>
               {props.data.dateTime && (
