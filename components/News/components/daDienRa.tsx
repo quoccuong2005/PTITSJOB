@@ -123,7 +123,9 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
         <div className="block lg:hidden">
           {dataNew.map((val, i) => {
             return (
-              <div className={"mb-[24px]"} key={i}>
+              <div className={"mb-[24px]"} key={i}   onClick={() => {
+                router.push(`/tin-tuc/${val?.id}`);
+              }}>
                 <CardBanner
                   imageUrl={renderImage(
                     val?.attributes?.hinhAnh?.data?.attributes?.url

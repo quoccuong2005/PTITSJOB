@@ -1,18 +1,18 @@
-import {useRouter} from "next/router";
-import React, {useContext, useEffect, useState} from "react";
-import {AuthContext} from "../../../context/AuthContext";
-import {DataNewListV2} from "../../../utils/interface";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../context/AuthContext";
+import { DataNewListV2 } from "../../../utils/interface";
 import axios from "axios";
-import {ip} from "../../../api/ip";
+import { ip } from "../../../api/ip";
 import moment from "moment/moment";
 import CardEvent from "../../CardEvent";
-import {renderImage} from "../../../utils/util";
+import { renderImage } from "../../../utils/util";
 import CardBanner from "../../CardBanner";
 import Pagination from "../../pagination";
 
-const DangDienRa = (props:{type:string,conditionSearch:any}) => {
-  const router=useRouter();
-  const {type}=props
+const DangDienRa = (props: { type: string; conditionSearch: any }) => {
+  const router = useRouter();
+  const { type } = props;
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(2);
   const [total, setTotal] = useState<number>(0);
@@ -38,9 +38,9 @@ const DangDienRa = (props:{type:string,conditionSearch:any}) => {
                 // $lte: moment().endOf("day").toISOString(),
               },
               ...condition,
-              ...props.conditionSearch
+              ...props.conditionSearch,
             },
-            sort: ['createdAt:desc'],
+            sort: ["createdAt:desc"],
             pagination: {
               page: page,
               pageSize: limit,
@@ -56,12 +56,12 @@ const DangDienRa = (props:{type:string,conditionSearch:any}) => {
       console.log(e);
     }
   };
-  useEffect(()=>{
-    if (type==='event'){
+  useEffect(() => {
+    if (type === "event") {
       handleGetAllEvent();
     }
-  },[langCode,type,page,condition,props.conditionSearch])
-  return(
+  }, [langCode, type, page, condition, props.conditionSearch]);
+  return (
     <>
       <div>
         <div className="title-event lg:mb-[40px] flex justify-between">
@@ -91,8 +91,7 @@ const DangDienRa = (props:{type:string,conditionSearch:any}) => {
                       <CardEvent
                         data={{
                           imageUrl: renderImage(
-                            val?.attributes?.hinhAnh?.data?.attributes
-                              ?.url
+                            val?.attributes?.hinhAnh?.data?.attributes?.url
                           ),
                           title: val?.attributes?.tieuDe,
                           content: val?.attributes?.moTa ?? "",
@@ -123,7 +122,13 @@ const DangDienRa = (props:{type:string,conditionSearch:any}) => {
         <div className="block lg:hidden">
           {dataNew.map((val, i) => {
             return (
-              <div className={"mb-[24px]"} key={i}>
+              <div
+                className={"mb-[24px]"}
+                key={i}
+                onClick={() => {
+                  router.push(`/tin-tuc/${val?.id}`);
+                }}
+              >
                 <CardBanner
                   imageUrl={renderImage(
                     val?.attributes?.hinhAnh?.data?.attributes?.url
@@ -150,8 +155,7 @@ const DangDienRa = (props:{type:string,conditionSearch:any}) => {
           />
         </div>
       </div>
-
     </>
-  )
-}
+  );
+};
 export default DangDienRa;

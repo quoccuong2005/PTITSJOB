@@ -16,9 +16,15 @@ import moment from "moment";
 import { renderImage } from "../../utils/util";
 import ReactToPrint from "react-to-print";
 import CardBanner from "../../components/CardBanner";
-import {DataNewList, DataNewListV2, IDataChiTiet} from "../../utils/interface";
+import {
+  DataNewList,
+  DataNewListV2,
+  IDataChiTiet,
+} from "../../utils/interface";
 import { AuthContext } from "../../context/AuthContext";
-
+import CardEvent from "../../components/Event/components/CardEvent";
+// @ts-ignore
+import Slider from "react-slick";
 const ChiTiet = () => {
   // const {
   // 	register,
@@ -37,6 +43,40 @@ const ChiTiet = () => {
   const [limit, setLimit] = useState<number>(2);
   const [total, setTotal] = useState<number>(0);
   const { langCode } = useContext(AuthContext);
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          // centerMode: true,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   const handleGetAllDaDienRa = async () => {
     try {
       const res = await axios.get(
@@ -96,7 +136,7 @@ const ChiTiet = () => {
         className="container mx-auto bg-white px-6 sm:px-0 pt-6 pb-8"
         ref={contentRef}
       >
-        <div className="flex justify-between">
+        <div className="lg:flex lg:justify-between">
           <BreadcrumbPage
             data={[
               {
@@ -174,8 +214,8 @@ const ChiTiet = () => {
         </div>
       </div>
       {dataDaDienRa?.length > 0 && (
-        <div className={"container mx-auto mt-2 mb-[50px]"}>
-          <div className="title-event lg:mb-[40px] flex justify-between">
+        <div className={"container mx-auto mt-2 mb-[50px] px-[20px] lg:px-0"}>
+          <div className="title-event lg:mb-[40px] lg:flex lg:justify-between">
             <h2>Tin tức - Sự kiện đã diễn ra</h2>
             <div
               className="show-more flex items-center cursor-pointer"
@@ -187,32 +227,61 @@ const ChiTiet = () => {
               <img src="/images/icons/arrow-right-2.svg" alt="image" />
             </div>
           </div>
-          <div className={"grid grid-cols-3 gap-[30px]"}>
-            {dataDaDienRa
-
-              ?.map((val, i) => {
-                if (i < 3) {
-                  return (
-                    <div
-                      onClick={() => {
-                        router.push(`/tin-tuc/${val?.id}`);
-                      }}
+          <div
+            className={
+              "lg:grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[30px] hidden "
+            }
+          >
+            {dataDaDienRa?.map((val, i) => {
+              if (i < 3) {
+                return (
+                  <div
+                    onClick={() => {
+                      router.push(`/tin-tuc/${val?.id}`);
+                    }}
+                    key={i}
+                  >
+                    <CardBanner
+                      imageUrl={renderImage(
+                        val?.attributes?.hinhAnh?.data?.attributes?.url
+                      )}
+                      title={val?.attributes.tieuDe}
+                      description={val?.attributes.moTa}
+                      dateTime={val?.attributes.createdAt}
                       key={i}
-                    >
-                      <CardBanner
-                        imageUrl={renderImage( val?.attributes?.hinhAnh?.data?.attributes?.url)}
-                        title={val?.attributes.tieuDe}
-                        description={val?.attributes.moTa}
-                        dateTime={val?.attributes.createdAt}
-                        key={i}
-                        type={"list"}
-                      />
-                    </div>
-                  );
-                } else {
-                  return null;
-                }
+                      type={"list"}
+                    />
+                  </div>
+                );
+              } else {
+                return null;
+              }
+            })}
+          </div>
+          <div className="lg:hidden block mt-[20px]">
+            <Slider {...settings}>
+              {dataDaDienRa?.map((value, i) => {
+                return (
+                  <div
+                    className="pr-[16px]"
+                    onClick={() => {
+                      router.push(`/tin-tuc/${value?.id}`);
+                    }}
+                  >
+                    <CardBanner
+                      imageUrl={renderImage(
+                        value?.attributes?.hinhAnh?.data?.attributes?.url
+                      )}
+                      title={value?.attributes.tieuDe}
+                      description={value?.attributes.moTa}
+                      dateTime={value?.attributes.createdAt}
+                      key={i}
+                      type={"list"}
+                    />
+                  </div>
+                );
               })}
+            </Slider>
           </div>
         </div>
       )}

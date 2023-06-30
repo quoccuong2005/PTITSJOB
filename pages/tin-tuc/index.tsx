@@ -66,7 +66,7 @@ const Tintuc = () => {
               },
               ...condition,
             },
-            sort: ['createdAt:desc'],
+            sort: ["createdAt:desc"],
             pagination: {
               page: page,
               pageSize: limit,
@@ -139,47 +139,45 @@ const Tintuc = () => {
             </div>
           </div>
           {/*{type === "news" && (*/}
-            <div className="mb-[20px] lg:mb-0">
-              <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mb-[20px] lg:mb-0">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="">
                 <div className="">
-                  <div className="">
-                    <div className="search flex item-center">
-                      <div className="relative w-full">
-                        <input
-                          className="w-full px-[20px] py-[8px]"
-                          placeholder={
-                            router?.query?.keyword
-                              ? (router?.query?.keyword as string)
-                              : "Tìm kiếm"
-                          }
-                          {...register("keyword")}
-                        />
-                        <div className="icon absolute top-[8px] right-[20px]">
-                          <button type="submit">
-                            <img
-                              src={"/images/icons/search-pri.svg"}
-                              alt={"image"}
-                            />
-                          </button>
-                        </div>
+                  <div className="search flex item-center">
+                    <div className="relative w-full">
+                      <input
+                        className="w-full px-[20px] py-[8px]"
+                        placeholder={
+                          router?.query?.keyword
+                            ? (router?.query?.keyword as string)
+                            : "Tìm kiếm"
+                        }
+                        {...register("keyword")}
+                      />
+                      <div className="icon absolute top-[8px] right-[20px]">
+                        <button type="submit">
+                          <img
+                            src={"/images/icons/search-pri.svg"}
+                            alt={"image"}
+                          />
+                        </button>
                       </div>
                     </div>
-                    {errors.keyword && <p className="error-text">Bắt buộc</p>}
                   </div>
+                  {errors.keyword && <p className="error-text">Bắt buộc</p>}
                 </div>
-              </form>
-            </div>
+              </div>
+            </form>
+          </div>
           {/*)}*/}
         </div>
         {type === "news" && (
           <div>
-
-              {dataNew?.length > 0 ? (
-                <>
+            {dataNew?.length > 0 ? (
+              <>
                 <div className={"hidden lg:grid grid-cols-3 gap-[30px] "}>
                   {dataNew?.map((val, i) => {
                     return (
-
                       <div
                         onClick={() => {
                           router.push(`/tin-tuc/${val?.id}`);
@@ -197,28 +195,33 @@ const Tintuc = () => {
                           type={"list"}
                         />
                       </div>
-
                     );
                   })}
                 </div>
-                </>
-              ) : (
-                <>
-                  <div className="w-full h-full justify-center items-center flex flex-col">
-                    <img
-                      className="mb-[16px]"
-                      src="/images/default/no_data.png"
-                      alt="image"
-                    />
-                    <p className="text-secondary text-sm">Không có dữ liệu</p>
-                  </div>
-                </>
-              )}
+              </>
+            ) : (
+              <>
+                <div className="w-full h-full justify-center items-center flex flex-col">
+                  <img
+                    className="mb-[16px]"
+                    src="/images/default/no_data.png"
+                    alt="image"
+                  />
+                  <p className="text-secondary text-sm">Không có dữ liệu</p>
+                </div>
+              </>
+            )}
 
             <div className="block lg:hidden">
               {dataNew.map((val, i) => {
                 return (
-                  <div className={"mb-[24px]"} key={i}>
+                  <div
+                    className={"mb-[24px]"}
+                    key={i}
+                    onClick={() => {
+                      router.push(`/tin-tuc/${val?.id}`);
+                    }}
+                  >
                     <CardBanner
                       imageUrl={renderImage(
                         val?.attributes?.hinhAnh?.data?.attributes?.url
@@ -239,8 +242,8 @@ const Tintuc = () => {
         {type === "event" && (
           <div className="event">
             <SapToi type={type} conditionSearch={condition} />
-            <DaDienRa type={type} conditionSearch={condition}/>
-            <DangDienRa type={type} conditionSearch={condition}/>
+            <DaDienRa type={type} conditionSearch={condition} />
+            <DangDienRa type={type} conditionSearch={condition} />
             {/*<div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">*/}
             {/*  <Pagination*/}
             {/*    page={page}*/}
