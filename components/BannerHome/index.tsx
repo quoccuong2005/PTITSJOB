@@ -86,7 +86,7 @@ const BannerHome = (props:{dataHome:IDataHome}) => {
 							return(
 								<a href={value.linkTo} target={"_blank"} rel={"noreferrer"} key={index}>
 									<img
-										className='w-full max-h-[620px] wow fadeInUp object-cover object-bottom'
+										className='w-full h-[250px] lg:h-auto lg:max-h-[620px] wow fadeInUp object-cover object-bottom'
 										src={renderImage(value?.images?.data?.attributes?.url)}
 										alt={"image"}
 									/>

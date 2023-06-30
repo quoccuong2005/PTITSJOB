@@ -125,7 +125,7 @@ const CardEvent = (props: IPorps) => {
             {props.category ? (
               <div className="h-[214px]">
                 <img
-                  className={"image-card wow fadeInUp  h-full object-cover"}
+                  className={"image-card wow fadeInUp  h-full  object-cover"}
                   src={props.data.imageUrl}
                   onError={({ currentTarget }) => {
                     currentTarget.onerror = null; // prevents looping
@@ -140,7 +140,7 @@ const CardEvent = (props: IPorps) => {
               </div>
             ) : (
               <img
-                className={"image-card wow fadeInUp lg:h-[139px] object-cover"}
+                className={"image-card wow fadeInUp sm:h-[150px] lg:h-[139px] object-cover"}
                 src={props.data.imageUrl}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null; // prevents looping
@@ -150,9 +150,13 @@ const CardEvent = (props: IPorps) => {
               />
             )}
             <div className="px-[20px]   pb-[26px] pt-[26px] bg-white">
-              <p className="border-l-2 pl-[12px] lg:border-primary-500 content wow fadeInUp min-h-[48px] ">
+              <p className="border-l-2 pl-[12px] lg:border-primary-500 content wow fadeInUp sm:min-h-[48px] ">
                 {props.data.content}
+
               </p>
+              <div className="description block lg:hidden h-[40px]">
+                {props?.data?.description}
+              </div>
               {props.data.dateTime && (
                 <div className="time-content flex items-center">
                   <div className="mr-[16px]">
@@ -216,6 +220,12 @@ const CardEventWrapper = styled.div`
       display: flex;
       align-items: center;
       color: #495057;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
     .time {
       font-family: "Inter";

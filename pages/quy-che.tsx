@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, {useContext, useEffect, useRef, useState} from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import TableBase from "../components/tableBase";
+import TableBase, {IColumns} from "../components/tableBase";
 import { dataDanhMuc, dataQuyChe } from "../data";
 import { GioiThieu } from "../utils/interface";
 import { ip } from "../api/ip";
@@ -91,6 +91,7 @@ const QuyChe = () => {
     {
       title: "Số văn bản",
       dataIndex: "attributes",
+      align:'center',
       render: (val: any) => {
         return val?.so;
       },
@@ -98,6 +99,7 @@ const QuyChe = () => {
     {
       title: "Ngày ban hành",
       dataIndex: "attributes",
+      align:'center',
       render: (val: any) => {
         return val
           ? moment(val?.ngayBanHanh).format("DD/MM/YYYY")
@@ -107,6 +109,7 @@ const QuyChe = () => {
     {
       title: "Thời gian bắt đầu hiệu lực",
       dataIndex: "attributes",
+      align:'center',
       render: (val: any) => {
         return val
           ? moment(val?.thoiGianHieuLuc).format("DD/MM/YYYY")
@@ -129,6 +132,7 @@ const QuyChe = () => {
     {
       title: "Loại văn bản",
       dataIndex: "attributes",
+      align:'center',
       render: (val: any) => {
        return(
          <div className="w-[80px]">
@@ -140,6 +144,7 @@ const QuyChe = () => {
     {
       title: "Cơ quan ban hành",
       dataIndex: "attributes",
+      align:'center',
       render: (val: any) => {
         return (
           <div className="w-[80px]">
@@ -152,6 +157,7 @@ const QuyChe = () => {
       title: "Tài liệu đính kèm",
       dataIndex: "attributes",
       width: "200px",
+      align:'center',
       render: (val: any) => {
         return (
           <div className="w-full overflow-hidden break-words ">
@@ -208,8 +214,8 @@ const QuyChe = () => {
           uppercase={true}
         />
         <div className="mb-[40px]">
-          <div className="lg:flex justify-end">
-            <div className="dropdown mr-[24px] mb-[16px] md:mb-0">
+          <div className="lg:flex justify-end grid sm:grid-cols-2 grid-cols-1">
+            <div className="dropdown lg:mr-[24px] mb-[16px] md:mb-0">
               <Controller
                 name={"type"}
                 control={control}
@@ -238,9 +244,10 @@ const QuyChe = () => {
             </div>
             <div className="">
               <form onSubmit={handleSubmit(onSubmit)} className="h-full">
-                <div className="search flex item-center h-full">
-                  <div className="relative">
+                <div className="search flex item-center lg:h-full h-[36px]">
+                  <div className="relative w-full">
                     <input
+                      className="w-full"
                       placeholder={"Tìm kiếm"}
                       {...register("keyword", {})}
                     />
@@ -258,7 +265,16 @@ const QuyChe = () => {
           </div>
         </div>
         <div>
-          {/*<TableBase*/}
+          <TableBase
+            columns={columns as IColumns[]}
+            dataSource={dataGioiThieu?.map((val, i) => {
+              return {
+                ...val,
+                index: i + 1,
+              };
+            })}
+          />
+          {/*<TableBaseV2*/}
           {/*  columns={columns}*/}
           {/*  dataSource={dataGioiThieu?.map((val, i) => {*/}
           {/*    return {*/}
@@ -267,15 +283,6 @@ const QuyChe = () => {
           {/*    };*/}
           {/*  })}*/}
           {/*/>*/}
-          <TableBaseV2
-            columns={columns}
-            dataSource={dataGioiThieu?.map((val, i) => {
-              return {
-                ...val,
-                index: i + 1,
-              };
-            })}
-          />
         </div>
         <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
           <Pagination

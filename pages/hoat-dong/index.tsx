@@ -161,8 +161,8 @@ const HoatDong = () => {
       <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] lg:px-0">
         <div className="mb-[40px]">
           <Title title={renderDeTaiName(type ?? "")} uppercase={true} />
-          <div className="flex sm:justify-end flex-col sm:flex-row items-center">
-            <div className="dropdown mr-[24px] sm:mb-0 mb-[16px]">
+          <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
+            <div className="dropdown lg:mr-[24px] sm:mb-0 lg:mb-[16px]">
               <DropdownFake
                 option={type === ETYPEKHOAHOC.CB ? optionCB : option}
                 onChange={(val) => {
@@ -200,7 +200,7 @@ const HoatDong = () => {
                 placeholder={"Đề tài cấp"}
               />
             </div>
-            <div className="dropdown mr-[24px] sm:mb-0 mb-[16px]">
+            <div className="dropdown lg:mr-[24px] sm:mb-0 lg:mb-[16px]">
               <DropdownFake
                 option={optionYear}
                 onChange={(val) => {
@@ -230,9 +230,9 @@ const HoatDong = () => {
             </div>
             <div className="">
               <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
-                <div className="search flex item-center h-full">
-                  <div className="relative">
-                    <input placeholder={"Tìm kiếm"} {...register("keyword")} />
+                <div className="search flex item-center lg:h-full h-[36px]">
+                  <div className="relative w-full">
+                    <input className="w-full" placeholder={"Tìm kiếm"} {...register("keyword")} />
                     {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
                     {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
                     {/*</div>*/}

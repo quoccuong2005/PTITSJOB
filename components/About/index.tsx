@@ -99,21 +99,21 @@ const About = (props: { dataHome: IDataHome }) => {
           <Slider {...settings}>
             <a href={"#"} target={"_blank"} rel={"noreferrer"}>
               <img
-                className="h-full w-full"
+                className="h-[260px] sm:h-[360px] w-full object-cover object-bottom"
                 src={"./images/about/about-1.png"}
                 alt={"image"}
               />
             </a>
             <a href={"#"} target={"_blank"} rel={"noreferrer"}>
               <img
-                className="h-full w-full"
+                className="h-[260px] sm:h-[360px] w-full object-cover object-bottom"
                 src={"./images/about/about-2.png"}
                 alt={"image"}
               />
             </a>
             <a href={"#"} target={"_blank"} rel={"noreferrer"}>
               <img
-                className="h-full w-full"
+                className="h-[260px] sm:h-[360px] w-full object-cover object-bottom"
                 src={"./images/about/about-3.png"}
                 alt={"image"}
               />

@@ -94,7 +94,7 @@ const CardBanner = (props: IProps) => {
 					<div className={"lg:h-full w-full"}>
 						<div className='relative'>
 							<img
-								className="w-full max-h-[350px] object-cover"
+								className="w-full h-[250px] lg:h-full lg:max-h-[350px] object-cover"
 								src={props.imageUrl}
 								alt={"image"}
 								onError={({ currentTarget }) => {
@@ -117,7 +117,10 @@ const CardBanner = (props: IProps) => {
 									<div className='border-t-2'></div>
 								</div>
 							</div>
-							<div className='mt-[17px] title-card border-l-4 px-[12px] border-primary-500'>{props.title}</div>
+							<div className='title min-h-[48px] mt-[17px] title-card border-l-4 px-[12px] border-primary-500'>{props.title}</div>
+							<div className="description lg:hidden block min-h-[48px]">
+								{props?.description}
+							</div>
 						</div>
 					</div>
 				</CardBannerWrapper>
@@ -136,6 +139,21 @@ const CardBannerWrapper = styled.div`
 	}
 	.title-card {
 	}
+	.description{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	.title{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	
 `;
 const CardListBannerWrapper = styled.div`
 	width: 100%;

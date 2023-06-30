@@ -52,7 +52,7 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                 }
               })}
             </div>
-            <div className="lg:hidden grid grid-cols-1 gap-[40px]">
+            <div className="lg:hidden grid sm:grid-cols-2 grid-cols-1 gap-[40px]">
               {props.dataHome?.hoat_dong_khoa_hocs?.data?.map((val, i) => {
                 return (
                   <div

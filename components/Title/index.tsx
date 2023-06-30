@@ -11,7 +11,7 @@ const Title = (props: IProps) => {
 		<TitleWrapper>
 			<div className='flex flex-col items-center lg:mb-[40px] mb-[20px]'>
 				<div
-					className={` ${props.uppercase ? "uppercase" : ""} ${props.type === "default" ? "text-white" : "text-black"} text-center`}
+					className={` ${props.uppercase ? "uppercase" : ""} ${props.type === "default" ? "text-white" : "text-black"} text-center text-xl lg:text-3xl`}
 				>
 					{props.title}
 				</div>
@@ -27,7 +27,7 @@ const TitleWrapper = styled.div`
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 32px;
+
 	line-height: 39px;
 	color: #18202A;
 	.description {

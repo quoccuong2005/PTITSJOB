@@ -112,7 +112,7 @@ const News = (props:{dataHome:IDataHome}) => {
 
 							})}
 						</div>
-						<div className='lg:hidden grid lg:grid-cols-2  grid-cols-1 gap-[30px] mt-[40px]'>
+						<div className='lg:hidden grid lg:grid-cols-2  sm:grid-cols-2 grid-cols-1 gap-[30px] mt-[40px]'>
 							{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
 								if (i<4){
 									return (

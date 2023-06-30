@@ -390,84 +390,166 @@ const Header = (props: IProps) => {
                     <img src={"/images/icons/menu.svg"} alt={"image"} />
                   </div>
                   {showMenu && (
-                    <div className="menu-mobile absolute w-[280px] top-[30px] right-0 bg-white px-2 py-2 shadow-md rounded z-50">
-                      <ul>
-                        {dataMenu.map((value, index) => {
-                          return (
-                            <div
-                              onClick={() => {
-                                if (value?.trangCon?.length > 0) {
-                                } else {
-                                  if (value?.sangTrangMoi) {
-                                    window.open(value?.link);
+                    <>
+                      {/*<div className="menu-mobile absolute w-[280px] top-[30px] right-0 bg-white px-2 py-2 shadow-md rounded z-50">*/}
+                      {/*  <ul>*/}
+                      {/*    {dataMenu.map((value, index) => {*/}
+                      {/*      return (*/}
+                      {/*        <div*/}
+                      {/*          onClick={() => {*/}
+                      {/*            if (value?.trangCon?.length > 0) {*/}
+                      {/*            } else {*/}
+                      {/*              if (value?.sangTrangMoi) {*/}
+                      {/*                window.open(value?.link);*/}
+                      {/*              } else {*/}
+                      {/*                router.push(value?.link);*/}
+                      {/*              }*/}
+                      {/*            }*/}
+                      {/*          }}*/}
+                      {/*          // href={value?.children?.length > 0 ? "" : value?.linkTo}*/}
+                      {/*          className={` mr-[24px] last-of-type:mr-0 text-nav pt-2 cursor-pointer ${*/}
+                      {/*            value?.link*/}
+                      {/*              ?.split("?")?.[0]*/}
+                      {/*              ?.localeCompare(typeMenu) === 0*/}
+                      {/*              ? `text-white ${*/}
+                      {/*                isScroll*/}
+                      {/*                  ? "text-active md:border-b-2  md:border-white-500"*/}
+                      {/*                  : "text-active md:border-b-2  md:border-primary-500"*/}
+                      {/*              } `*/}
+                      {/*              : `md:border-none ${*/}
+                      {/*                isScroll ? "text-black" : "text-black"*/}
+                      {/*              }`*/}
+                      {/*          } block  `}*/}
+                      {/*          key={index}*/}
+                      {/*        >*/}
+                      {/*          {value?.trangCon?.length > 0 ? (*/}
+                      {/*            <>*/}
+                      {/*              <Tooltip*/}
+                      {/*                className={"tooltip-label"}*/}
+                      {/*                content={*/}
+                      {/*                  <>*/}
+                      {/*                    {value?.trangCon?.map(*/}
+                      {/*                      (value2, index2) => {*/}
+                      {/*                        return (*/}
+                      {/*                          <div*/}
+                      {/*                            onClick={() => {*/}
+                      {/*                              if (value?.sangTrangMoi) {*/}
+                      {/*                                window.open(value2?.link);*/}
+                      {/*                              } else {*/}
+                      {/*                                router.push(value2?.link);*/}
+                      {/*                              }*/}
+                      {/*                            }}*/}
+                      {/*                            className={`text-children mr-[40px] cursor-pointer pt-2 ${*/}
+                      {/*                              value2?.link?.localeCompare(*/}
+                      {/*                                typeMenu*/}
+                      {/*                              ) === 0*/}
+                      {/*                                ? "text-active md:border-b-2  md:border-primary-500"*/}
+                      {/*                                : "md:border-none"*/}
+                      {/*                            } block  hover:border-b hover:border-primary mb-[8px]`}*/}
+                      {/*                            key={index2}*/}
+                      {/*                          >*/}
+                      {/*                            {value2.ten}*/}
+                      {/*                          </div>*/}
+                      {/*                        );*/}
+                      {/*                      }*/}
+                      {/*                    )}*/}
+                      {/*                  </>*/}
+                      {/*                }*/}
+                      {/*                style={"light"}*/}
+                      {/*                placement="bottom"*/}
+                      {/*              >*/}
+                      {/*                {value?.ten}*/}
+                      {/*              </Tooltip>*/}
+                      {/*            </>*/}
+                      {/*          ) : (*/}
+                      {/*            <>{value?.ten}</>*/}
+                      {/*          )}*/}
+                      {/*        </div>*/}
+                      {/*      );*/}
+                      {/*    })}*/}
+                      {/*  </ul>*/}
+                      {/*</div>*/}
+                      <div className="cover-ham" onClick={()=>{setShowMenu(false)}}></div>
+                      <div className="ham-menu z-50">
+                        <ul>
+                          {dataMenu?.map((value, index) => {
+                            return (
+                              <div
+                                onClick={() => {
+                                  if (value?.trangCon?.length > 0) {
                                   } else {
-                                    router.push(value?.link);
+                                    if (value?.sangTrangMoi) {
+                                      window.open(value?.link);
+                                    } else {
+                                      router.push(value?.link);
+                                    }
                                   }
-                                }
-                              }}
-                              // href={value?.children?.length > 0 ? "" : value?.linkTo}
-                              className={` mr-[24px] last-of-type:mr-0 text-nav pt-2 cursor-pointer ${
-                                value?.link
-                                  ?.split("?")?.[0]
-                                  ?.localeCompare(typeMenu) === 0
-                                  ? `text-white ${
+                                }}
+                                // href={value?.children?.length > 0 ? "" : value?.linkTo}
+                                className={` mr-[24px] mb-[16px] last-of-type:mr-0 text-nav pt-2 cursor-pointer  ${
+                                  value?.link
+                                    ?.split("?")?.[0]
+                                    ?.localeCompare(typeMenu) === 0
+                                    ? `text-primary ${
                                       isScroll
-                                        ? "text-active md:border-b-2  md:border-white-500"
-                                        : "text-active md:border-b-2  md:border-primary-500"
+                                        ? "text-primary lg:border-b-2  lg:border-primary-500"
+                                        : "text-active lg:border-b-2  lg:border-primary-500"
                                     } `
-                                  : `md:border-none ${
+                                    : `lg:border-none ${
                                       isScroll ? "text-black" : "text-black"
                                     }`
-                              } block  `}
-                              key={index}
-                            >
-                              {value?.trangCon?.length > 0 ? (
-                                <>
-                                  <Tooltip
-                                    className={"tooltip-label"}
-                                    content={
-                                      <>
-                                        {value?.trangCon?.map(
-                                          (value2, index2) => {
-                                            return (
-                                              <div
-                                                onClick={() => {
-                                                  if (value?.sangTrangMoi) {
-                                                    window.open(value2?.link);
-                                                  } else {
-                                                    router.push(value2?.link);
-                                                  }
-                                                }}
-                                                className={`text-children mr-[40px] cursor-pointer pt-2 ${
-                                                  value2?.link?.localeCompare(
-                                                    typeMenu
-                                                  ) === 0
-                                                    ? "text-active md:border-b-2  md:border-primary-500"
-                                                    : "md:border-none"
-                                                } block  hover:border-b hover:border-primary mb-[8px]`}
-                                                key={index2}
-                                              >
-                                                {value2.ten}
-                                              </div>
-                                            );
-                                          }
-                                        )}
-                                      </>
-                                    }
-                                    style={"light"}
-                                    placement="bottom"
-                                  >
-                                    {value?.ten}
-                                  </Tooltip>
-                                </>
-                              ) : (
-                                <>{value?.ten}</>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </ul>
-                    </div>
+                                } block  `}
+                                key={index}
+                              >
+                                {value?.trangCon?.length > 0 ? (
+                                  <>
+                                    <Tooltip
+                                      className={"tooltip-label"}
+                                      content={
+                                        <>
+                                          {value?.trangCon?.map(
+                                            (value2, index2) => {
+                                              return (
+                                                <div
+                                                  onClick={() => {
+                                                    if (value?.sangTrangMoi) {
+                                                      window.open(value2?.link);
+                                                    } else {
+                                                      router.push(value2?.link);
+                                                    }
+                                                  }}
+                                                  className={`text-children mr-[40px] cursor-pointer pt-2 ${
+                                                    value2?.link?.localeCompare(
+                                                      typeMenu
+                                                    ) === 0
+                                                      ? "text-active lg:border-b-2  lg:border-primary-500"
+                                                      : "lg:border-none"
+                                                  } block  hover:border-b hover:border-primary mb-[8px]`}
+                                                  key={index2}
+                                                >
+                                                  {value2.ten}
+                                                </div>
+                                              );
+                                            }
+                                          )}
+                                        </>
+                                      }
+                                      style={"light"}
+                                      placement="bottom"
+                                    >
+
+                                      <div className="text-sm md:text-xl">{value?.ten}</div>
+                                    </Tooltip>
+                                  </>
+                                ) : (
+                                  <div className="text-sm md:text-xl">{value?.ten}</div>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </ul>
+                      </div></>
+
                   )}
                 </div>
                 <div className="relative mr-2 shrink-0" ref={langRef}>
@@ -657,6 +739,39 @@ const HeaderWrapper = styled.div`
   }
   .shadow-header {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  }
+  .cover-ham {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffffa1;
+    z-index: 30;
+    opacity: 1;
+    -webkit-transition: 500ms;
+    transition: 500ms;
+  }
+  .ham-menu {
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    //visibility: hidden;
+    //transform: translate(110%);
+    //z-index: 998;
+    background-color: #FFFFFF;
+    animation: slide 0.5s forwards;
+    //transition: 1s;
+    display: flex;
+    //justify-content: center;
+    padding-left: 16px;
+    align-items: center;
+  }
+  @keyframes slide {
+    from {right: -50%}
+    to {right: 0}
   }
 `;
 export default React.memo(Header);

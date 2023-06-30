@@ -16,7 +16,7 @@ const DonViNghienCuu = (props:{dataHome:IDataHome}) => {
 			<DonViWrapper>
 				<div className='container mx-auto px-[20px] lg:px-0 lg:mt-[50px] mt-[20px]'>
 					<Title title={"Đơn vị nghiên cứu"} uppercase={true} />
-					<div className='grid lg:grid-cols-3 grid-cols-1 gap-[30px]'>
+					<div className='grid lg:grid-cols-3 sm:grid-cols-2  grid-cols-1 gap-[30px]'>
 						{props.dataHome?.don_vi_nghien_cuus?.data?.map((val, i) => {
 							if (i<3){
 								return (
