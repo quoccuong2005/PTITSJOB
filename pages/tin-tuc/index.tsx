@@ -114,9 +114,9 @@ const Tintuc = () => {
   return (
     <TinTucWraper>
       <div className="container mx-auto bg-white  pt-2 pb-14 mb-2 px-[20px] lg:px-0">
-        <div className="md:mt-[40px] md:mb-[40px] lg:flex block justify-between">
+        <div className="md:mt-[40px] md:mb-[40px] lg:flex block justify-between lg:justify-end">
           {/*<h2 className="">Tin tức sự kiện</h2>*/}
-          <div className="flex justify-center lg:justify-start  mb-[20px] lg:mb-0">
+          <div className="flex lg:hidden justify-center lg:justify-start  mb-[20px] lg:mb-0">
             <div
               className={`text-normal px-[24px] py-[8px] ${
                 type === "news"
@@ -171,92 +171,146 @@ const Tintuc = () => {
           </div>
           {/*)}*/}
         </div>
-        {type === "news" && (
-          <div>
-            {dataNew?.length > 0 ? (
-              <>
-                <div className={"hidden lg:grid grid-cols-3 gap-[30px] "}>
-                  {dataNew?.map((val, i) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          router.push(`/tin-tuc/${val?.id}`);
-                        }}
-                        key={i}
-                      >
-                        <CardBanner
-                          imageUrl={renderImage(
-                            val?.attributes?.hinhAnh?.data?.attributes?.url
-                          )}
-                          title={val?.attributes?.tieuDe}
-                          description={val?.attributes?.moTa ?? ""}
-                          dateTime={val?.attributes?.createdAt}
-                          key={i}
-                          type={"list"}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="w-full h-full justify-center items-center flex flex-col">
-                  <img
-                    className="mb-[16px]"
-                    src="/images/default/no_data.png"
-                    alt="image"
-                  />
-                  <p className="text-secondary text-sm">Không có dữ liệu</p>
-                </div>
-              </>
-            )}
+        <div className="event hidden lg:block">
+          <div className="title-event lg:mb-[40px] flex justify-between">
+            <h2>Tin tức sự kiện</h2>
 
-            <div className="block lg:hidden">
-              {dataNew.map((val, i) => {
-                return (
-                  <div
-                    className={"mb-[24px]"}
-                    key={i}
-                    onClick={() => {
-                      router.push(`/tin-tuc/${val?.id}`);
-                    }}
-                  >
-                    <CardBanner
-                      imageUrl={renderImage(
-                        val?.attributes?.hinhAnh?.data?.attributes?.url
-                      )}
-                      title={val?.attributes?.tieuDe}
-                      description={val?.attributes?.moTa ?? ""}
-                      dateTime={val?.attributes?.createdAt}
-                      key={i}
-                      type={"small"}
-                    />
-                  </div>
-                );
-              })}
-            </div>
           </div>
-        )}
+          {dataNew?.length > 0 ? (
+            <>
+              <div className={"hidden lg:grid grid-cols-3 gap-[30px] "}>
+                {dataNew?.map((val, i) => {
+                  return (
+                    <div
+                      onClick={() => {
+                        router.push(`/tin-tuc/${val?.id}`);
+                      }}
+                      key={i}
+                    >
+                      <CardBanner
+                        imageUrl={renderImage(
+                          val?.attributes?.hinhAnh?.data?.attributes?.url
+                        )}
+                        title={val?.attributes?.tieuDe}
+                        description={val?.attributes?.moTa ?? ""}
+                        dateTime={val?.attributes?.createdAt}
+                        key={i}
+                        type={"list"}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="w-full h-full justify-center items-center flex flex-col">
+                <img
+                  className="mb-[16px]"
+                  src="/images/default/no_data.png"
+                  alt="image"
+                />
+                <p className="text-secondary text-sm">Không có dữ liệu</p>
+              </div>
+            </>
+          )}
 
-        {type === "event" && (
-          <div className="event">
+          <div className="event lg:mt-[80px]">
             <SapToi type={type} conditionSearch={condition} />
             <DaDienRa type={type} conditionSearch={condition} />
             <DangDienRa type={type} conditionSearch={condition} />
-            {/*<div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">*/}
-            {/*  <Pagination*/}
-            {/*    page={page}*/}
-            {/*    limit={limit}*/}
-            {/*    total={totalEvented}*/}
-            {/*    handleChangePage={(page) => {*/}
-            {/*      console.log("page", page);*/}
-            {/*      setPage(page);*/}
-            {/*    }}*/}
-            {/*  />*/}
-            {/*</div>*/}
+
           </div>
-        )}
+        </div>
+        <div className="block lg:hidden">
+          {type === "news" && (
+            <div>
+              {dataNew?.length > 0 ? (
+                <>
+                  <div className={"hidden lg:grid grid-cols-3 gap-[30px] "}>
+                    {dataNew?.map((val, i) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            router.push(`/tin-tuc/${val?.id}`);
+                          }}
+                          key={i}
+                        >
+                          <CardBanner
+                            imageUrl={renderImage(
+                              val?.attributes?.hinhAnh?.data?.attributes?.url
+                            )}
+                            title={val?.attributes?.tieuDe}
+                            description={val?.attributes?.moTa ?? ""}
+                            dateTime={val?.attributes?.createdAt}
+                            key={i}
+                            type={"list"}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-full h-full justify-center items-center flex flex-col">
+                    <img
+                      className="mb-[16px]"
+                      src="/images/default/no_data.png"
+                      alt="image"
+                    />
+                    <p className="text-secondary text-sm">Không có dữ liệu</p>
+                  </div>
+                </>
+              )}
+
+              <div className="grid lg:hidden grid-cols-1 sm:grid-cols-2 gap-[16px]">
+                {dataNew.map((val, i) => {
+                  return (
+                    <div
+                      className={"mb-[24px]"}
+                      key={i}
+                      onClick={() => {
+                        router.push(`/tin-tuc/${val?.id}`);
+                      }}
+                    >
+                      <CardBanner
+                        imageUrl={renderImage(
+                          val?.attributes?.hinhAnh?.data?.attributes?.url
+                        )}
+                        title={val?.attributes?.tieuDe}
+                        description={val?.attributes?.moTa ?? ""}
+                        dateTime={val?.attributes?.createdAt}
+                        key={i}
+                        type={"small"}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {type === "event" && (
+            <div className="event">
+              <SapToi type={type} conditionSearch={condition} />
+              <DaDienRa type={type} conditionSearch={condition} />
+              <DangDienRa type={type} conditionSearch={condition} />
+              {/*<div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">*/}
+              {/*  <Pagination*/}
+              {/*    page={page}*/}
+              {/*    limit={limit}*/}
+              {/*    total={totalEvented}*/}
+              {/*    handleChangePage={(page) => {*/}
+              {/*      console.log("page", page);*/}
+              {/*      setPage(page);*/}
+              {/*    }}*/}
+              {/*  />*/}
+              {/*</div>*/}
+            </div>
+          )}
+        </div>
+
         {type === "news" && (
           <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
             <Pagination

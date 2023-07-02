@@ -117,7 +117,7 @@ const SapToi = (props: { type: string; conditionSearch: any }) => {
             </>
           )}
         </div>
-        <div className="block lg:hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] lg:hidden">
           {dataNew.map((val, i) => {
             return (
               <div

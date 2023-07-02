@@ -64,7 +64,7 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
   return(
     <>
       <div className="lg:mb-[80px] mb-[20px]">
-        <div className="title-event lg:mb-[40px] flex justify-between">
+        <div className="title-event lg:mb-[40px] mb-[20px] flex justify-between">
           <h2>Tin tức - Sự kiện đã diễn ra</h2>
           {/*<div className="show-more flex items-center cursor-pointer">*/}
           {/*  <div className="mr-[24px] shrink-0">Xem thêm</div>*/}
@@ -120,7 +120,7 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
             </>
           )}
         </div>
-        <div className="block lg:hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] lg:hidden">
           {dataNew.map((val, i) => {
             return (
               <div className={"mb-[24px]"} key={i}   onClick={() => {

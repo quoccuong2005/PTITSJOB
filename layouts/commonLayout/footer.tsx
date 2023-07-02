@@ -28,7 +28,7 @@ const MainFooter = () => {
 	return (
 		<FooterWrapper>
 			<div>
-				<div className='container mx-auto lg:pt-[60px] pt-[20px] lg:pb-[60px] pb-[20px] px-[20px] md:px-[20px]'>
+				<div className='lg:container mx-auto lg:pt-[60px] pt-[20px] lg:pb-[60px] pb-[20px] px-[20px] md:px-[20px]'>
 					<div className='lg:flex block justify-between'>
 						<div className='lg:max-w-[596px] wow fadeInUp'>
 							<img className={"w-full"} src={renderImage(dataThongTin?.logoFooter)} />

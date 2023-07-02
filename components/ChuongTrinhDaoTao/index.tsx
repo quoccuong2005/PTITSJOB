@@ -12,10 +12,43 @@ import { ip, ip3 } from "../../api/ip";
 import { useRouter } from "next/router";
 import { renderImage } from "../../utils/util";
 import { ro } from "date-fns/locale";
-
+// @ts-ignore
+import Slider from "react-slick";
 const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
   const router = useRouter();
-
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          // centerMode: true,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   useEffect(() => {}, []);
   if (props?.dataHome?.hoat_dong_khoa_hocs?.data?.length>0){
     return (
@@ -52,11 +85,12 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                 }
               })}
             </div>
-            <div className="lg:hidden grid sm:grid-cols-2 grid-cols-1 gap-[40px]">
+            <div className="lg:hidden grid grid-cols-1 gap-[40px]">
+              <Slider {...settings}>
               {props.dataHome?.hoat_dong_khoa_hocs?.data?.map((val, i) => {
                 return (
                   <div
-                    className="cursor-pointer"
+                    className="cursor-pointer sm:pr-[16px]"
                     key={i}
                     onClick={() => {
                       router.push(`/hoat-dong/${val?.id}`);
@@ -77,6 +111,7 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                   </div>
                 );
               })}
+              </Slider>
             </div>
             {props.dataHome?.hoat_dong_khoa_hocs?.data?.length > 3 && (
               <div className="flex justify-center md:mt-[40px] mt-[20px]">

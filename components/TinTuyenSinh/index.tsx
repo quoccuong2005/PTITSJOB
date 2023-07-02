@@ -42,7 +42,6 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 				settings: {
 					slidesToShow: 2,
 					slidesToScroll: 2,
-					initialSlide: 2,
 				},
 			},
 			{
@@ -105,7 +104,7 @@ if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
 					<Slider {...settings}>
 						{props.dataHome?.qlkh_tin_tucs?.data?.map((value,i)=>{
 							return(
-								<div className="pr-[16px]">
+								<div className="sm:pr-[16px]">
 									<CardEvent
 										data={{
 											imageUrl: renderImage(value?.attributes?.hinhAnh?.data?.attributes?.url),

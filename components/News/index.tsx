@@ -30,10 +30,10 @@ const News = (props:{dataHome:IDataHome}) => {
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 3,
+					slidesToShow: 2,
+					slidesToScroll: 2,
 					infinite: true,
-					dots: true,
+					dots: false,
 				},
 			},
 			{
@@ -41,7 +41,6 @@ const News = (props:{dataHome:IDataHome}) => {
 				settings: {
 					slidesToShow: 2,
 					slidesToScroll: 2,
-					initialSlide: 2,
 				},
 			},
 			{
@@ -112,11 +111,12 @@ const News = (props:{dataHome:IDataHome}) => {
 
 							})}
 						</div>
-						<div className='lg:hidden grid lg:grid-cols-2  sm:grid-cols-2 grid-cols-1 gap-[30px] mt-[40px]'>
+						<div className='lg:hidden grid  grid-cols-1 gap-[30px] mt-[40px]'>
+							<Slider {...settings}>
 							{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
 								if (i<4){
 									return (
-										<div onClick={()=>{
+										<div className="sm:pr-[16px]" onClick={()=>{
 											router.push(`/tap-chi-khoa-hoc/${val?.id}`)
 										}} key={i}>
 											<CardBanner
@@ -134,6 +134,7 @@ const News = (props:{dataHome:IDataHome}) => {
 								}
 
 							})}
+							</Slider>
 						</div>
 					</div>
 					<div className="flex justify-center sm:mt-[40px] mt-[20px]">
