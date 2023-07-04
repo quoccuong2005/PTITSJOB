@@ -215,7 +215,7 @@ const ChiTiet = () => {
       </div>
       {dataDaDienRa?.length > 0 && (
         <div className={"container mx-auto mt-2 mb-[50px] px-[20px] lg:px-0"}>
-          <div className="title-event lg:mb-[40px] lg:flex lg:justify-between">
+          <div className="title-event lg:mb-[40px] flex justify-between">
             <h2>Tin tức - Sự kiện đã diễn ra</h2>
             <div
               className="show-more flex items-center cursor-pointer"
@@ -223,7 +223,7 @@ const ChiTiet = () => {
                 router.push("/tin-tuc");
               }}
             >
-              <div className="mr-[24px] shrink-0 text-primary">Xem thêm</div>
+              <div className="hidden lg:block mr-[24px] shrink-0 text-primary">Xem thêm</div>
               <img src="/images/icons/arrow-right-2.svg" alt="image" />
             </div>
           </div>

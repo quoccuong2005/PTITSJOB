@@ -94,6 +94,7 @@ const Tintuc = () => {
   }, [type, condition, page, limit, langCode]);
 
   const onSubmit = (data: any) => {
+    setPage(1)
     console.log("data", data);
     if (data && data?.keyword !== "" && data?.keyword) {
       setCondition({
