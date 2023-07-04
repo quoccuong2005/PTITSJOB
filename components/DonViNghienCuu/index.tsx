@@ -80,19 +80,21 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
               {props.dataHome?.don_vi_nghien_cuus?.data?.map((val, i) => {
                 if (i < 3) {
                   return (
-                    <CardEvent
-                      data={{
-                        imageUrl: renderImage(
-                          val?.attributes?.hinhAnh?.data?.attributes?.url
-                        ),
-                        content: val?.attributes?.tieuDe,
-                        description: val?.attributes?.moTa ?? "",
-                        // dateTime: val?.attributes?.createdAt,
-                        link: val?.attributes?.duongDan,
-                      }}
-                      category={"don-vi"}
-                      key={i}
-                    />
+                    <div className="pr-[16px]">
+                      <CardEvent
+                        data={{
+                          imageUrl: renderImage(
+                            val?.attributes?.hinhAnh?.data?.attributes?.url
+                          ),
+                          content: val?.attributes?.tieuDe,
+                          description: val?.attributes?.moTa ?? "",
+                          // dateTime: val?.attributes?.createdAt,
+                          link: val?.attributes?.duongDan,
+                        }}
+                        category={"don-vi"}
+                        key={i}
+                      />
+                    </div>
                   );
                 } else {
                   return null;
