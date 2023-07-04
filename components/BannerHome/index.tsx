@@ -31,7 +31,6 @@ const BannerHome = (props:{dataHome:IDataHome}) => {
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1,
-					infinite: true,
 					dots: true
 				}
 			},
@@ -40,7 +39,7 @@ const BannerHome = (props:{dataHome:IDataHome}) => {
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1,
-					initialSlide: 1,
+					fade: false,
 					dots: false
 				}
 			},
@@ -49,6 +48,7 @@ const BannerHome = (props:{dataHome:IDataHome}) => {
 				settings: {
 					slidesToShow: 1,
 					slidesToScroll: 1,
+					fade: false,
 					dots: false
 				}
 			}

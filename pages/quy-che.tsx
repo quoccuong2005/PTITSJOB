@@ -303,7 +303,7 @@ const QuyCheWrapper = styled.div`
   .search {
     input {
       height: 100%;
-      padding-left: 12px;
+      padding-left: 20px;
       background: #f1f3f5;
       border-radius: 4px 0 0 4px;
 
