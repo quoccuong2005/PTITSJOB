@@ -99,8 +99,6 @@ const CardDeTaiWrapper = styled.div`
 			font-weight: 600;
 			font-size: 15px;
 			line-height: 24px;
-			display: flex;
-			align-items: center;
 			color: #212529;
 
 			overflow: hidden;
