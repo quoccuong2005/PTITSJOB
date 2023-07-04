@@ -167,6 +167,7 @@ const HoatDong = () => {
               <DropdownFake
                 option={type === ETYPEKHOAHOC.CB ? optionCB : option}
                 onChange={(val) => {
+                  setPage(1)
                   console.log("val", val);
                   setDataSelectDeTai(val?.value);
                   if (type === ETYPEKHOAHOC.CB) {
@@ -205,6 +206,7 @@ const HoatDong = () => {
               <DropdownFake
                 option={optionYear}
                 onChange={(val) => {
+                  setPage(1)
                   console.log("val", val);
                   if (val?.value === "Tất cả") {
                     delete condition?.ngayDangTai;
