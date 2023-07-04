@@ -80,7 +80,7 @@ const HoatDong = () => {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
-  }, [router, condition, page]);
+  }, [router, condition, page,langCode]);
 
   const onSubmit = (data: any) => {
     setPage(1)
