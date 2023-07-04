@@ -73,7 +73,7 @@ useEffect(()=>{
             <Title title={"VIỆN NGHIÊN CỨU"} uppercase={true} />
 
               {dataGioiThieu?.length>0?<>
-              <div className="grid lg:grid-cols-3 grid-cols-1 gap-[30px]">
+              <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[30px]">
                 {dataGioiThieu?.map((val, i) => {
                   return (
                     <CardEvent
@@ -105,7 +105,7 @@ useEffect(()=>{
             <Title title={"PHÒNG THÍ NGHIỆM NGHIÊN CỨU"} uppercase={true} />
 
               {dataGioiThieu?.length>0?<>
-              <div className="grid lg:grid-cols-2 grid-cols-1 gap-[30px]">
+              <div className="grid lg:grid-cols-2 sm:grid-cols-2 grid-cols-1 gap-[30px]">
                 {dataGioiThieu?.map((value, index) => {
                   return (
                     <CardDeTai
