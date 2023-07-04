@@ -67,7 +67,7 @@ useEffect(()=>{
 },[type])
   return (
     <DonViNghienCuuWrapper>
-      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] lg:px-0">
+      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] xl:px-0">
         {type === ETYPEDONVI.VIEN_NGHIEN_CUU && (
           <>
             <Title title={"VIỆN NGHIÊN CỨU"} uppercase={true} />

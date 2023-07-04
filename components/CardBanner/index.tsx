@@ -118,7 +118,7 @@ const CardBanner = (props: IProps) => {
 								</div>
 							</div>
 							<div className="text-primary mt-[16px] flex items-center"><img className="w-[20px] h-[20px] mr-[6px]" src="/images/icons/clock.svg"/><span>{moment(props?.dateTime).format('DD/MM/YYYY')}</span></div>
-							<div className='title min-h-[48px] mt-[17px] title-card border-l-4 px-[12px] border-primary-500'>{props.title}</div>
+							<div className='title min-h-[48px] mt-[17px] title-card border-l-4 px-[12px] border-primary-500 font-bold lg:font-medium'>{props.title}</div>
 							<div className="description lg:hidden block min-h-[48px]">
 								{props?.description}
 							</div>

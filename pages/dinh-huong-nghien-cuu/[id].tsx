@@ -102,12 +102,12 @@ const ChiTiet = () => {
     };
   }, []);
   return (
-    <ChiTietWrapper>
+    <ChiTietWrapper className="px-[20px] lg:px-0">
       <div
         className="container mx-auto bg-white  pt-6 pb-8"
         ref={contentRef}
       >
-        <div className="flex justify-between">
+        <div className="lg:flex justify-between">
           <BreadcrumbPage
             data={[
               {

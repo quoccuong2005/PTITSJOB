@@ -120,28 +120,43 @@ const DangDienRa = (props: { type: string; conditionSearch: any }) => {
           )}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] lg:hidden">
-          {dataNew.map((val, i) => {
-            return (
-              <div
-                className={"mb-[24px]"}
-                key={i}
-                onClick={() => {
-                  router.push(`/tin-tuc/${val?.id}`);
-                }}
-              >
-                <CardBanner
-                  imageUrl={renderImage(
-                    val?.attributes?.hinhAnh?.data?.attributes?.url
-                  )}
-                  title={val?.attributes?.tieuDe}
-                  description={val?.attributes?.moTa ?? ""}
-                  dateTime={val?.attributes?.createdAt}
-                  key={i}
-                  type={"small"}
+          {dataNew?.length > 0 ? (
+            <>
+              {dataNew.map((val, i) => {
+                return (
+                  <div
+                    className={"mb-[24px]"}
+                    key={i}
+                    onClick={() => {
+                      router.push(`/tin-tuc/${val?.id}`);
+                    }}
+                  >
+                    <CardBanner
+                      imageUrl={renderImage(
+                        val?.attributes?.hinhAnh?.data?.attributes?.url
+                      )}
+                      title={val?.attributes?.tieuDe}
+                      description={val?.attributes?.moTa ?? ""}
+                      dateTime={val?.attributes?.createdAt}
+                      key={i}
+                      type={"small"}
+                    />
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <div className="w-full h-full justify-center items-center flex flex-col">
+                <img
+                  className="mb-[16px]"
+                  src="/images/default/no_data.png"
+                  alt="image"
                 />
+                <p className="text-secondary text-sm">Không có dữ liệu</p>
               </div>
-            );
-          })}
+            </>
+          )}
         </div>
         <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
           <Pagination

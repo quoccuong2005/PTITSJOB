@@ -154,8 +154,10 @@ const CardEvent = (props: IPorps) => {
                 {props.data.content}
 
               </p>
-              <div className="description block lg:hidden h-[40px]">
-                {props?.data?.description}
+              <div className="block lg:hidden">
+                <div className="description  h-[40px]">
+                  {props?.data?.description}
+                </div>
               </div>
               {props.data.dateTime && (
                 <div className="time-content flex items-center">

@@ -39,7 +39,7 @@ const CardDeTai = (props: IPorps) => {
 		<CardDeTaiWrapper>
 			<Link href={props.data.link ? props.data.link : "#"} className='h-full'>
 				<div className='card cursor-pointer h-full flex flex-col' style={props.style}>
-				<div>
+				<div className="relative">
 					<img
 						className={"image-card wow fadeInUp lg:h-[321px] h-[250px] object-cover"}
 						src={props.data.imageUrl}
@@ -49,11 +49,18 @@ const CardDeTai = (props: IPorps) => {
 						}}
 						alt={"image"}
 					/>
+					<div className="block lg:hidden absolute left-0 bottom-[-10px] w-full">
+						<div className="w-full flex justify-center">
+							{props.data.type && <div className=''>{renderType(props.data.type)}</div>}
+						</div>
+					</div>
 				</div>
 
 					<div className='px-[20px] flex flex-col justify-center  pb-[26px] pt-[26px] bg-white'>
 						<div className='border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp h-full'>
+						<div className="hidden lg:block">
 							{props.data.type && <div className='mb-[8px]'>{renderType(props.data.type)}</div>}
+						</div>
 
 							<div className="lg:min-h-[48px]">{props.data.content}</div>
 						</div>

@@ -158,11 +158,11 @@ const HoatDong = () => {
   },[type])
   return (
     <HoatDongWrapper>
-      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] lg:px-0">
+      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] xl:px-0">
         <div className="mb-[40px]">
           <Title title={renderDeTaiName(type ?? "")} uppercase={true} />
           <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
-            <div className="dropdown lg:mr-[24px] sm:mb-0 lg:mb-[16px]">
+            <div className="dropdown  sm:mb-0 ">
               <DropdownFake
                 option={type === ETYPEKHOAHOC.CB ? optionCB : option}
                 onChange={(val) => {
@@ -200,7 +200,7 @@ const HoatDong = () => {
                 placeholder={"Đề tài cấp"}
               />
             </div>
-            <div className="dropdown lg:mr-[24px] sm:mb-0 lg:mb-[16px]">
+            <div className="dropdown  sm:mb-0 ">
               <DropdownFake
                 option={optionYear}
                 onChange={(val) => {

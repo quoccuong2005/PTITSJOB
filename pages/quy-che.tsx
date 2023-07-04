@@ -162,7 +162,7 @@ const QuyChe = () => {
         return (
           <div className="w-full overflow-hidden break-words ">
             <a
-              className="max-w-[100px] block link-download underline"
+              className=" block link-download underline"
               href={renderImage(val?.taiLieuDinhKem?.data?.attributes?.url)}
             >
               {val?.taiLieuDinhKem?.data?.attributes?.name}
