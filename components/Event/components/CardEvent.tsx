@@ -140,7 +140,7 @@ const CardEvent = (props: IPorps) => {
               </div>
             ) : (
               <img
-                className={"image-card wow fadeInUp sm:h-[150px] lg:h-[139px] object-cover"}
+                className={"image-card wow fadeInUp sm:h-[150px] lg:h-[139px] h-[250px] object-cover"}
                 src={props.data.imageUrl}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null; // prevents looping
