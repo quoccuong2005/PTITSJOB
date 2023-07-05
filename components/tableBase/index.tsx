@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 // @ts-ignore
 import styled from "styled-components";
+import _ from "lodash";
 
 export interface IColumns {
   title?: string;
-  dataIndex?: string;
+  dataIndex?: string|string[];
   width?: number | string;
   render?: (val: any, record: any) => ReactNode;
   align?: "center" | "left" | "right";
@@ -50,10 +51,10 @@ const  TableBase = (props: IProps) => {
                         >
                           {valColumn.render
                             ? valColumn.render(
-                                valData?.[valColumn.dataIndex ?? ""],
+                                _.get(valData,valColumn?.dataIndex??''),
                                 valData
                               )
-                            : valData?.[valColumn.dataIndex ?? ""]}
+                            : _.get(valData,valColumn?.dataIndex??'')}
                         </td>
                       );
                     })}

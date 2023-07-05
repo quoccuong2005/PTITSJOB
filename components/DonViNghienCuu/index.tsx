@@ -18,7 +18,7 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     autoplaySpeed: 2000,
     responsive: [
       {

@@ -214,7 +214,7 @@ const QuyChe = () => {
           uppercase={true}
         />
         <div className="mb-[40px]">
-          <div className="lg:flex justify-end grid sm:grid-cols-2 grid-cols-1">
+          <div className="lg:flex justify-end grid sm:grid-cols-2 grid-cols-1 gap-[16px]">
             <div className="dropdown lg:mr-[24px] mb-[16px] md:mb-0">
               <Controller
                 name={"type"}
@@ -284,7 +284,7 @@ const QuyChe = () => {
           {/*  })}*/}
           {/*/>*/}
         </div>
-        <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
+        <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px] mt-[16px]">
           <Pagination
             page={page}
             limit={limit}

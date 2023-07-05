@@ -1,18 +1,18 @@
-import {useRouter} from "next/router";
-import React, {useContext, useEffect, useState} from "react";
-import {AuthContext} from "../../../context/AuthContext";
-import {DataNewListV2} from "../../../utils/interface";
+import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../context/AuthContext";
+import { DataNewListV2 } from "../../../utils/interface";
 import axios from "axios";
-import {ip} from "../../../api/ip";
+import { ip } from "../../../api/ip";
 import moment from "moment/moment";
 import CardEvent from "../../CardEvent";
-import {renderImage} from "../../../utils/util";
+import { renderImage } from "../../../utils/util";
 import CardBanner from "../../CardBanner";
 import Pagination from "../../pagination";
 
-const DaDienRa = (props:{type:string,conditionSearch:any}) => {
-  const router=useRouter();
-  const {type}=props
+const DaDienRa = (props: { type: string; conditionSearch: any }) => {
+  const router = useRouter();
+  const { type } = props;
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(2);
   const [total, setTotal] = useState<number>(0);
@@ -38,9 +38,9 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
                 // $lte: moment().endOf("day").toISOString(),
               },
               ...condition,
-              ...props.conditionSearch
+              ...props.conditionSearch,
             },
-            sort: ['createdAt:desc'],
+            sort: ["createdAt:desc"],
             pagination: {
               page: page,
               pageSize: limit,
@@ -56,12 +56,12 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
       console.log(e);
     }
   };
-  useEffect(()=>{
-    if (type==='event'){
+  useEffect(() => {
+    if (type === "event") {
       handleGetAllEvent();
     }
-  },[langCode,type,page,condition,props.conditionSearch])
-  return(
+  }, [langCode, type, page, condition, props.conditionSearch]);
+  return (
     <>
       <div className="lg:mb-[80px] mb-[20px]">
         <div className="title-event lg:mb-[40px] mb-[20px] flex justify-between">
@@ -91,8 +91,7 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
                       <CardEvent
                         data={{
                           imageUrl: renderImage(
-                            val?.attributes?.hinhAnh?.data?.attributes
-                              ?.url
+                            val?.attributes?.hinhAnh?.data?.attributes?.url
                           ),
                           title: val?.attributes?.tieuDe,
                           content: val?.attributes?.moTa ?? "",
@@ -120,26 +119,36 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
             </>
           )}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] lg:hidden">
-          {dataNew?.length>0?<>
-            {dataNew.map((val, i) => {
-              return (
-                <div className={"mb-[24px]"} key={i}   onClick={() => {
-                  router.push(`/tin-tuc/${val?.id}`);
-                }}>
-                  <CardBanner
-                    imageUrl={renderImage(
-                      val?.attributes?.hinhAnh?.data?.attributes?.url
-                    )}
-                    title={val?.attributes?.tieuDe}
-                    description={val?.attributes?.moTa ?? ""}
-                    dateTime={val?.attributes?.createdAt}
+
+        {dataNew?.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] lg:hidden">
+              {dataNew.map((val, i) => {
+                return (
+                  <div
+                    className={"mb-[24px]"}
                     key={i}
-                    type={"small"}
-                  />
-                </div>
-              );
-            })}</>: <>
+                    onClick={() => {
+                      router.push(`/tin-tuc/${val?.id}`);
+                    }}
+                  >
+                    <CardBanner
+                      imageUrl={renderImage(
+                        val?.attributes?.hinhAnh?.data?.attributes?.url
+                      )}
+                      title={val?.attributes?.tieuDe}
+                      description={val?.attributes?.moTa ?? ""}
+                      dateTime={val?.attributes?.createdAt}
+                      key={i}
+                      type={"small"}
+                    />
+                  </div>
+                );
+              })}{" "}
+            </div>
+          </>
+        ) : (
+          <>
             <div className="w-full h-full justify-center items-center flex flex-col">
               <img
                 className="mb-[16px]"
@@ -148,9 +157,9 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
               />
               <p className="text-secondary text-sm">Không có dữ liệu</p>
             </div>
-          </>}
+          </>
+        )}
 
-        </div>
         <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
           <Pagination
             page={page}
@@ -163,8 +172,7 @@ const DaDienRa = (props:{type:string,conditionSearch:any}) => {
           />
         </div>
       </div>
-
     </>
-  )
-}
+  );
+};
 export default DaDienRa;

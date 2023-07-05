@@ -15,8 +15,8 @@ const CardNghienCuu = (props: IProps) => {
   return (
     <CardNghienCuuWrapper>
       <Link href={data?.link ?? "#"}>
-        <div className="flex hover:border-none border-b border-primary py-[40px] px-[20px] justify-between cursor-pointer">
-          <div className="sm:grid sm:grid-cols-6 sm:gap-[16px] w-full">
+        <div className="flex hover:border-none border-b border-primary py-[40px] lg:px-[20px] justify-between cursor-pointer">
+          <div className="lg:grid lg:grid-cols-6 lg:gap-[16px] w-full">
             <div className="col-span-1 no-number text-primary shrink-0 flex items-center">
               {data.no}
             </div>

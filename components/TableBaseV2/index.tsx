@@ -15,7 +15,7 @@ interface IProps {
 const TableBaseV2 = (props: IProps) => {
   return (
     <>
-      <Table  hoverable>
+      <Table  hoverable striped>
         <Table.Head >
           {props.columns?.map((val, i) => {
             return <Table.HeadCell >{val.title}</Table.HeadCell>;

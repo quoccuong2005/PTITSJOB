@@ -3,33 +3,37 @@ import BreadcrumbPage from "../../components/Breadcrumb";
 import Share from "../../components/Share";
 import ReactToPrint from "react-to-print";
 import moment from "moment/moment";
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import TableBase from "../../components/tableBase";
 import { dataDanhMuc } from "../../data";
 import { axios } from "../../api";
 import { ip } from "../../api/ip";
-import {useRouter} from "next/router";
-import {DataDetailKhoaHoc} from "../../utils/interface";
+import { useRouter } from "next/router";
+import { DataDetailKhoaHoc } from "../../utils/interface";
 import TableBaseV2 from "../../components/TableBaseV2";
-import {ETYPEKHOAHOC} from "../../data/enum";
-import {AuthContext} from "../../context/AuthContext";
+import { ETYPEKHOAHOC } from "../../data/enum";
+import { AuthContext } from "../../context/AuthContext";
 
 const ChiTietHoatDong = () => {
-	const router=useRouter();
+  const router = useRouter();
   let contentRef = useRef<HTMLDivElement>(null);
   const [content, setContent] = useState<any>(null);
   const [type, setType] = useState<string>();
-	const [dataDetail,setDataDetail]=useState<DataDetailKhoaHoc>()
-  const {langCode}=useContext(AuthContext)
+  const [dataDetail, setDataDetail] = useState<DataDetailKhoaHoc>();
+  const { langCode } = useContext(AuthContext);
   const columns = [
     {
       title: "STT",
       dataIndex: "index",
-      width:'80px'
+      width: "80px",
     },
     {
       title: "Tên đề tài",
       dataIndex: "tenDeTai",
+      width: "300px",
+      render: (val: any) => {
+        return <div className="w-[300px]">{val}</div>;
+      },
     },
     {
       title: "Mã đề tài",
@@ -42,31 +46,28 @@ const ChiTietHoatDong = () => {
     {
       title: "Thời gian thực hiện",
       dataIndex: "thoiGianThucHienBatDau",
-      render:(val:any,record:any)=>{
-        return(
+      render: (val: any, record: any) => {
+        return (
           <>
-            {moment(val).format("DD/MM/YYYY")} -  {moment(record?.thoiGianThucHienKetThuc).format("DD/MM/YYYY")}
+            {moment(val).format("DD/MM/YYYY")} -{" "}
+            {moment(record?.thoiGianThucHienKetThuc).format("DD/MM/YYYY")}
           </>
-        )
-      }
+        );
+      },
     },
     {
       title: "Thời gian nghiệm thu",
       dataIndex: "thoiGianNghiemThu",
-      render:(val:any,record:any)=>{
-        return(
-          <>
-            {moment(val).format("DD/MM/YYYY")}
-          </>
-        )
-      }
+      render: (val: any, record: any) => {
+        return <>{moment(val).format("DD/MM/YYYY")}</>;
+      },
     },
   ];
   const columnsCongBo = [
     {
       title: "STT",
       dataIndex: "index",
-      width:'80px'
+      width: "80px",
     },
     {
       title: "Tên bài báo",
@@ -80,24 +81,25 @@ const ChiTietHoatDong = () => {
       title: "Tạp chí/Hội nghị hội thảo",
       dataIndex: "tapChiHoiNghi",
     },
-
   ];
   const getData = async (id: string) => {
     try {
-      const res = await axios.get(`${ip}/khoa-hoc-cong-nghe/${id}?locale=${langCode}`);
-			if (res){
-				setDataDetail(res?.data)
-			}
+      const res = await axios.get(
+        `${ip}/khoa-hoc-cong-nghe/${id}?locale=${langCode}`
+      );
+      if (res) {
+        setDataDetail(res?.data);
+      }
     } catch (e) {
       console.log(e);
     }
   };
-	useEffect(()=>{
-		if (router){
-			getData(router?.query?.id as string)
-      setType(router?.query?.type as string)
-		}
-	},[router,langCode])
+  useEffect(() => {
+    if (router) {
+      getData(router?.query?.id as string);
+      setType(router?.query?.type as string);
+    }
+  }, [router, langCode]);
   return (
     <ChiTietHoatDongWrapper>
       <div
@@ -140,25 +142,31 @@ const ChiTietHoatDong = () => {
               <p className="date lg:mr-[40px] mr-[20px]">
                 Ngày đăng: {moment().format("DD/MM/YYYY HH:mm")}
               </p>
-              <p className="date">Tác giả: {dataDetail?.tacGia??'Không có tác giả'}</p>
+              <p className="date">
+                Tác giả: {dataDetail?.tacGia ?? "Không có tác giả"}
+              </p>
             </div>
           </div>
         </div>
         <div>
-          <div className="title" dangerouslySetInnerHTML={{__html:dataDetail?.noiDung??''}}>
-
-          </div>
+          <div
+            className="title"
+            dangerouslySetInnerHTML={{ __html: dataDetail?.noiDung ?? "" }}
+          ></div>
           {/*<div className="show-more flex items-center cursor-pointer mt-[26px]">*/}
           {/*  <div className="mr-[24px] shrink-0">Phụ lục đính kèm</div>*/}
           {/*  <img src="/images/icons/arrow-right-2.svg" alt="image" />*/}
           {/*</div>*/}
           <div className="mt-[26px]">
-            <TableBaseV2 columns={type!==ETYPEKHOAHOC.CB?columns:columnsCongBo} dataSource={dataDetail?.chiTiet?.map((val,i)=>{
-							return{
-								...val,
-								index:i+1
-							}
-						})} />
+            <TableBase
+              columns={type !== ETYPEKHOAHOC.CB ? columns : columnsCongBo}
+              dataSource={dataDetail?.chiTiet?.map((val, i) => {
+                return {
+                  ...val,
+                  index: i + 1,
+                };
+              })}
+            />
           </div>
         </div>
       </div>

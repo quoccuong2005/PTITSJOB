@@ -121,7 +121,7 @@ const CardEvent = (props: IPorps) => {
       <CardEventWrapper>
         <Link href={props.data.link ? props.data.link : "#"} className="h-full">
           <div
-            className="card cursor-pointer h-full bg-white"
+            className="card cursor-pointer h-full bg-white lg:shadow"
             style={props.style}
           >
             {props.category ? (
@@ -197,7 +197,7 @@ const CardEventWrapper = styled.div`
   .card {
     //overflow: hidden;
     //max-width: 262px;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+    //box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     img {
       //max-width: 262px;
       width: 100%;
