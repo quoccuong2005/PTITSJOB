@@ -342,7 +342,7 @@ const Header = (props: IProps) => {
                               </>
                             }
                             style={"light"}
-                            placement="bottom"
+                            placement="bottom-start"
                           >
                             {value?.ten}
                           </Tooltip>
