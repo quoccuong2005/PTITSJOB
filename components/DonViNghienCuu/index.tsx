@@ -56,19 +56,25 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
             {props.dataHome?.don_vi_nghien_cuus?.data?.map((val, i) => {
               if (i < 3) {
                 return (
-                  <CardEvent
-                    data={{
-                      imageUrl: renderImage(
-                        val?.attributes?.hinhAnh?.data?.attributes?.url
-                      ),
-                      content: val?.attributes?.tieuDe,
-                      description: val?.attributes?.moTa ?? "",
-                      // dateTime: val?.attributes?.createdAt,
-                      link: val?.attributes?.duongDan,
+                  <div
+                    onClick={() => {
+                      window.open(val?.attributes?.duongDan ?? "#");
                     }}
-                    category={"don-vi"}
-                    key={i}
-                  />
+                  >
+                    <CardEvent
+                      data={{
+                        imageUrl: renderImage(
+                          val?.attributes?.hinhAnh?.data?.attributes?.url
+                        ),
+                        content: val?.attributes?.tieuDe,
+                        description: val?.attributes?.moTa ?? "",
+                        // dateTime: val?.attributes?.createdAt,
+                        link: val?.attributes?.duongDan,
+                      }}
+                      category={"don-vi"}
+                      key={i}
+                    />
+                  </div>
                 );
               } else {
                 return null;
@@ -80,7 +86,12 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
               {props.dataHome?.don_vi_nghien_cuus?.data?.map((val, i) => {
                 if (i < 3) {
                   return (
-                    <div className="pr-[16px]">
+                    <div
+                      className="pr-[16px]"
+                      onClick={() => {
+                        window.open(val?.attributes?.duongDan ?? "#");
+                      }}
+                    >
                       <CardEvent
                         data={{
                           imageUrl: renderImage(
@@ -89,7 +100,7 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
                           content: val?.attributes?.tieuDe,
                           description: val?.attributes?.moTa ?? "",
                           // dateTime: val?.attributes?.createdAt,
-                          link: val?.attributes?.duongDan,
+                          // link: val?.attributes?.duongDan,
                         }}
                         category={"don-vi"}
                         key={i}
