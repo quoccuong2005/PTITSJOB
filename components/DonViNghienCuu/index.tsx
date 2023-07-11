@@ -69,7 +69,7 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
                         content: val?.attributes?.tieuDe,
                         description: val?.attributes?.moTa ?? "",
                         // dateTime: val?.attributes?.createdAt,
-                        link: val?.attributes?.duongDan,
+                        // link: val?.attributes?.duongDan,
                       }}
                       category={"don-vi"}
                       key={i}
