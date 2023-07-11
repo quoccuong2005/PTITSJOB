@@ -87,13 +87,14 @@ const QuyChe = () => {
     {
       title: "STT",
       dataIndex: "index",
+      align:'center',
     },
     {
       title: "Số văn bản",
-      dataIndex: "attributes",
+      dataIndex: ['attributes','so'],
       align:'center',
       render: (val: any) => {
-        return val?.so;
+        return val;
       },
     },
     {
@@ -160,7 +161,7 @@ const QuyChe = () => {
       align:'center',
       render: (val: any) => {
         return (
-          <div className="w-full overflow-hidden break-words ">
+          <div className="w-[200px] overflow-hidden break-words ">
             <a
               className=" block link-download underline"
               href={renderImage(val?.taiLieuDinhKem?.data?.attributes?.url)}

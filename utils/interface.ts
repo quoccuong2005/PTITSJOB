@@ -927,6 +927,26 @@ export interface DataDetailKhoaHoc {
   kieu: "Đề tài";
   hinhAnh: string;
   tacGia: string;
+  taiLieuDinhKem: {
+    "id": 40,
+    "name": "bieu-mau-dv (2).xlsx",
+    "alternativeText": null,
+    "caption": null,
+    "width": null,
+    "height": null,
+    "formats": null,
+    "hash": "bieu_mau_dv_2_b1cbe5b521",
+    "ext": ".xlsx",
+    "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "size": 10.88,
+    "url": "/uploads/bieu_mau_dv_2_b1cbe5b521.xlsx",
+    "previewUrl": null,
+    "provider": "local",
+    "provider_metadata": null,
+    "folderPath": "/",
+    "createdAt": "2023-07-11T00:14:57.060Z",
+    "updatedAt": "2023-07-11T00:14:57.060Z"
+  };
   chiTiet: {
     id: 1;
     tenDeTai: "Nghiên cứu phát triển thử nghiệm hệ thống giám sát giao thông ứng dụng kỹ thuật học sâu cho nhận dạng hình ảnh";
