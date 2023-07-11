@@ -254,7 +254,7 @@ const Tintuc = () => {
                 </>
               ) : (
                 <>
-                  <div className="w-full h-full justify-center items-center flex flex-col">
+                  <div className="w-full h-full  justify-center items-center flex flex-col">
                     <img
                       className="mb-[16px]"
                       src="/images/default/no_data.png"

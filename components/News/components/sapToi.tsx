@@ -118,6 +118,7 @@ const SapToi = (props: { type: string; conditionSearch: any }) => {
           )}
         </div>
 
+      <div className="lg:hidden">
         {dataNew?.length > 0 ? (
           <>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-[16px] lg:hidden">
@@ -157,6 +158,7 @@ const SapToi = (props: { type: string; conditionSearch: any }) => {
             </div>
           </>
         )}
+      </div>
 
         <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
           <Pagination
