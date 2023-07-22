@@ -47,47 +47,20 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
       },
     ],
   };
-  if (props.dataHome?.don_vi_nghien_cuus?.data?.length > 0) {
+  if (props.dataHome?.donVi?.qlkh_don_vi_nghien_cuus?.data?.length > 0) {
     return (
       <DonViWrapper>
         <div className="container mx-auto px-[20px] lg:px-0 lg:mt-[50px] mt-[20px]">
-          <Title title={"Đơn vị nghiên cứu"} uppercase={true} />
+          <Title
+            title={props?.dataHome?.donVi?.title || "Đơn vị nghiên cứu"}
+            uppercase={true}
+          />
           <div className="hidden lg:grid lg:grid-cols-3 sm:grid-cols-2  grid-cols-1 gap-[30px]">
-            {props.dataHome?.don_vi_nghien_cuus?.data?.map((val, i) => {
-              if (i < 3) {
-                return (
-                  <div
-                    onClick={() => {
-                      window.open(val?.attributes?.duongDan ?? "#");
-                    }}
-                  >
-                    <CardEvent
-                      data={{
-                        imageUrl: renderImage(
-                          val?.attributes?.hinhAnh?.data?.attributes?.url
-                        ),
-                        content: val?.attributes?.tieuDe,
-                        description: val?.attributes?.moTa ?? "",
-                        // dateTime: val?.attributes?.createdAt,
-                        // link: val?.attributes?.duongDan,
-                      }}
-                      category={"don-vi"}
-                      key={i}
-                    />
-                  </div>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </div>
-          <div className="lg:hidden">
-            <Slider {...settings}>
-              {props.dataHome?.don_vi_nghien_cuus?.data?.map((val, i) => {
+            {props.dataHome?.donVi?.qlkh_don_vi_nghien_cuus?.data?.map(
+              (val, i) => {
                 if (i < 3) {
                   return (
                     <div
-                      className="pr-[16px]"
                       onClick={() => {
                         window.open(val?.attributes?.duongDan ?? "#");
                       }}
@@ -110,7 +83,41 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
                 } else {
                   return null;
                 }
-              })}
+              }
+            )}
+          </div>
+          <div className="lg:hidden">
+            <Slider {...settings}>
+              {props.dataHome?.donVi?.qlkh_don_vi_nghien_cuus?.data?.map(
+                (val, i) => {
+                  if (i < 3) {
+                    return (
+                      <div
+                        className="pr-[16px]"
+                        onClick={() => {
+                          window.open(val?.attributes?.duongDan ?? "#");
+                        }}
+                      >
+                        <CardEvent
+                          data={{
+                            imageUrl: renderImage(
+                              val?.attributes?.hinhAnh?.data?.attributes?.url
+                            ),
+                            content: val?.attributes?.tieuDe,
+                            description: val?.attributes?.moTa ?? "",
+                            // dateTime: val?.attributes?.createdAt,
+                            // link: val?.attributes?.duongDan,
+                          }}
+                          category={"don-vi"}
+                          key={i}
+                        />
+                      </div>
+                    );
+                  } else {
+                    return null;
+                  }
+                }
+              )}
             </Slider>
           </div>
           <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">

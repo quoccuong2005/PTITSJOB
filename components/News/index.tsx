@@ -81,17 +81,17 @@ const News = (props:{dataHome:IDataHome}) => {
 			</div>
 		</div>
 	);
-	if (props.dataHome?.tap_chi_khoa_hocs?.data?.length>0){
+	if (props.dataHome?.tapChiKhoaHoc?.qlkh_tap_chi_khoa_hocs?.data?.length>0){
 		return (
 			<NewsWrapper>
 				<div className=' wow fadeInDown bg-[#1421410A] py-[50px] px-[20px] lg:px-0'>
 					<div className='container mx-auto'>
 						<Title
-							title={"Tạp chí khoa học"}
+							title={props?.dataHome?.tapChiKhoaHoc?.title||'Tạp chí khoa học'}
 							uppercase={true}
 						/>
 						<div className='lg:grid hidden lg:grid-cols-2  grid-cols-1 gap-[30px] mt-[40px]'>
-							{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
+							{props.dataHome?.tapChiKhoaHoc?.qlkh_tap_chi_khoa_hocs?.data?.map((val, i) => {
 								if (i<4){
 									return (
 										<div onClick={()=>{
@@ -115,7 +115,7 @@ const News = (props:{dataHome:IDataHome}) => {
 						</div>
 						<div className='lg:hidden grid  grid-cols-1 gap-[30px] mt-[40px]'>
 							<Slider {...settings}>
-							{props.dataHome?.tap_chi_khoa_hocs?.data?.map((val, i) => {
+							{props.dataHome?.tapChiKhoaHoc?.qlkh_tap_chi_khoa_hocs?.data?.map((val, i) => {
 								if (i<4){
 									return (
 										<div className="sm:pr-[16px]" onClick={()=>{

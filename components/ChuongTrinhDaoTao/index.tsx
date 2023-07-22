@@ -52,14 +52,14 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
     ],
   };
   useEffect(() => {}, []);
-  if (props?.dataHome?.hoat_dong_khoa_hocs?.data?.length>0){
+  if (props?.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.length>0){
     return (
       <ChuongTrinhDaoTaoWrapper>
         <div className="bg-[#FFFFFF] py-[50px] px-[20px] lg:px-0">
           <div className="container mx-auto ">
-            <Title title={"HOẠT ĐỘNG KH, CN & ĐMST"} uppercase={true} />
+            <Title title={props?.dataHome?.hoatDongKhoaHoc?.title||"HOẠT ĐỘNG KH, CN & ĐMST"} uppercase={true} />
             <div className="hidden lg:grid grid-cols-1 gap-[40px]">
-              {props.dataHome?.hoat_dong_khoa_hocs?.data?.map((val, i) => {
+              {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.map((val, i) => {
                 if (i < 3) {
                   return (
                     <div
@@ -89,7 +89,7 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
             </div>
             <div className="lg:hidden grid grid-cols-1 gap-[40px]">
               <Slider {...settings}>
-              {props.dataHome?.hoat_dong_khoa_hocs?.data?.map((val, i) => {
+              {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.map((val, i) => {
                 return (
                   <div
                     className="cursor-pointer sm:pr-[16px]"
@@ -115,7 +115,7 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
               })}
               </Slider>
             </div>
-            {props.dataHome?.hoat_dong_khoa_hocs?.data?.length > 3 && (
+            {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.length > 3 && (
               <div className="flex justify-center md:mt-[40px] mt-[20px]">
                 <Button
                   type={"primary"}

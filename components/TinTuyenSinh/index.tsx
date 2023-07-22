@@ -59,15 +59,15 @@ const TinTuyenSinh = (props: { dataHome: IDataHome }) => {
 	const handleRedirect = (id: string) => {
 		router.push(`/tin-tuc/${id}`);
 	};
-if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
+if (props.dataHome?.tinTuc?.qlkh_tin_tuc_su_kiens?.data?.length>0){
 	return (
 		<TinTuyenSinhWrapper className='bg-[#1421410A] px-[20px] lg:px-0 md:py-[50px] py-[20px] '>
 			<div className='container mx-auto'>
 				<div>
-					<Title title={"Tin tức - sự kiện"} uppercase={true} description={""} />
+					<Title title={props?.dataHome?.tinTuc?.title||"Tin tức - sự kiện"} uppercase={true} description={""} />
 				</div>
 				<div className='lg:grid lg:grid-cols-4 gap-[20px] hidden mt-[40px]'>
-					{props.dataHome?.qlkh_tin_tucs?.data?.map((value, i) => {
+					{props.dataHome?.tinTuc?.qlkh_tin_tuc_su_kiens?.data?.map((value, i) => {
 						if (i < 6) {
 							if (i === 0 || i === 5) {
 								return (
@@ -105,7 +105,7 @@ if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
 				</div>
 				<div className='lg:hidden block mt-[20px]'>
 					<Slider {...settings}>
-						{props.dataHome?.qlkh_tin_tucs?.data?.map((value,i)=>{
+						{props.dataHome?.tinTuc?.qlkh_tin_tuc_su_kiens?.data?.map((value,i)=>{
 							return(
 								<div className="sm:pr-[16px]">
 									<CardEvent
@@ -124,7 +124,7 @@ if (props.dataHome?.qlkh_tin_tucs?.data?.length>0){
 						})}
 					</Slider>
 				</div>
-				{props.dataHome?.qlkh_tin_tucs?.data?.length>6&&
+				{props.dataHome?.tinTuc?.qlkh_tin_tuc_su_kiens?.data?.length>6&&
 					<div className='flex justify-center lg:mt-[40px] mt-[20px]'>
 						<Button
 							type={"primary"}
