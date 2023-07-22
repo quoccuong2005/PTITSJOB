@@ -1167,3 +1167,278 @@ export interface IDataChiTiet {
     tacGia: string;
   };
 }
+export interface DataNewList {
+  id: number;
+  tieuDe: string//"Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ";
+  noiDung:string// null;
+  moTa:string// "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
+  kieu:string// "news";
+  createdAt:string// "2023-06-05T07:33:09.942Z";
+  thoiGianBatDau:string// "2023-06-05T07:33:09.942Z";
+  thoiGianKetThuc:string// "2023-06-05T07:33:09.942Z";
+  updatedAt:string// "2023-06-05T07:35:42.398Z";
+  publishedAt: string//"2023-06-05T07:34:43.304Z";
+  imageUrl:string// "/uploads/thumbnail_sk2_bc548df3a9.png";
+}
+export interface DataNewListV2 {
+  id: 15;
+  attributes: {
+    tieuDe: "Tieu de453234qaqq";
+    noiDung: "<p>ádfasdf</p>";
+    moTa: "ádfasdfasdf";
+    kieu: "news";
+    createdAt: "2023-06-12T03:20:32.366Z";
+    updatedAt: "2023-06-12T04:16:54.790Z";
+    publishedAt: "2023-06-12T04:16:54.787Z";
+    thoiGianBatDau: "2023-06-04T17:00:00.000Z";
+    thoiGianKetThuc: "2023-06-28T17:00:00.000Z";
+    locale: "vi-VN";
+    hinhAnh: {
+      data: {
+        id: 26;
+        attributes: {
+          name: "5.png";
+          alternativeText: null;
+          caption: null;
+          width: 1170;
+          height: 557;
+          formats: {
+            thumbnail: {
+              name: "thumbnail_5.png";
+              hash: "thumbnail_5_b9a530ea8e";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 245;
+              height: 117;
+              size: 78.76;
+              url: "/uploads/thumbnail_5_b9a530ea8e.png";
+            };
+            small: {
+              name: "small_5.png";
+              hash: "small_5_b9a530ea8e";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 500;
+              height: 238;
+              size: 306.65;
+              url: "/uploads/small_5_b9a530ea8e.png";
+            };
+            medium: {
+              name: "medium_5.png";
+              hash: "medium_5_b9a530ea8e";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 750;
+              height: 357;
+              size: 663.87;
+              url: "/uploads/medium_5_b9a530ea8e.png";
+            };
+            large: {
+              name: "large_5.png";
+              hash: "large_5_b9a530ea8e";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 1000;
+              height: 476;
+              size: 1145.14;
+              url: "/uploads/large_5_b9a530ea8e.png";
+            };
+          };
+          hash: "5_b9a530ea8e";
+          ext: ".png";
+          mime: "image/png";
+          size: 240.46;
+          url: "/uploads/5_b9a530ea8e.png";
+          previewUrl: null;
+          provider: "local";
+          provider_metadata: null;
+          createdAt: "2023-06-10T02:23:09.363Z";
+          updatedAt: "2023-06-10T02:23:09.363Z";
+        };
+      };
+    };
+    localizations: {
+      data: [];
+    };
+  };
+};
+export interface DataMenu {
+  id: number; //4,
+  ten: string; // "Hoạt động KH, CN & ĐMST",
+  link: string;
+  sangTrangMoi: boolean;
+  trangCon: {
+    id: number; // 4,
+    ten: string; //"Đề tài/ Dự án KH, CN & ĐMST",
+    link: string; // "/hoat-dong?type=Đề tài",
+    sangTrangMoi: boolean; // false
+  }[];
+}
+
+export interface DataNew {
+  id: 1;
+  attributes: {
+    title: "Lễ khai mạc cuộc thi “Lập trình Robot năm 2023” ";
+    htmlContent: "<p>Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....</p>";
+    createdAt: "2023-06-01T07:41:40.875Z";
+    updatedAt: "2023-06-01T07:41:41.705Z";
+    publishedAt: "2023-06-01T07:41:41.704Z";
+    description: null;
+    image: {
+      data: {
+        id: 14;
+        attributes: {
+          name: "sk1.png";
+          alternativeText: null;
+          caption: null;
+          width: 594;
+          height: 286;
+          formats: {
+            thumbnail: {
+              name: "thumbnail_sk1.png";
+              hash: "thumbnail_sk1_6fffe44092";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 245;
+              height: 118;
+              size: 77.35;
+              url: "/uploads/thumbnail_sk1_6fffe44092.png";
+            };
+            small: {
+              name: "small_sk1.png";
+              hash: "small_sk1_6fffe44092";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 500;
+              height: 241;
+              size: 279.47;
+              url: "/uploads/small_sk1_6fffe44092.png";
+            };
+          };
+          hash: "sk1_6fffe44092";
+          ext: ".png";
+          mime: "image/png";
+          size: 88.81;
+          url: "/uploads/sk1_6fffe44092.png";
+          previewUrl: null;
+          provider: "local";
+          provider_metadata: null;
+          createdAt: "2023-06-01T07:33:49.812Z";
+          updatedAt: "2023-06-01T07:33:49.812Z";
+        };
+      };
+    };
+  };
+}
+export interface DataDonVi {
+  "id": 6,
+  "attributes": {
+    "createdAt": "2023-06-14T02:29:17.553Z",
+    "updatedAt": "2023-06-14T02:29:19.529Z",
+    "publishedAt": "2023-06-14T02:29:19.527Z",
+    "tieuDe": "dscfasdf",
+    "noiDung": "<p>ádfasdf</p>",
+    "kieu": "Phòng thí nghiệm",
+    "moTa": "ádfasdf",
+    "duongDan": null,
+    "locale": "vi-VN",
+    "hinhAnh": {
+      "data": {
+        "id": 20,
+        "attributes": {
+          "name": "tc-4.png",
+          "alternativeText": null,
+          "caption": null,
+          "width": 277,
+          "height": 277,
+          "formats": {
+            "thumbnail": {
+              "name": "thumbnail_tc-4.png",
+              "hash": "thumbnail_tc_4_f6c98bb24b",
+              "ext": ".png",
+              "mime": "image/png",
+              "path": null,
+              "width": 156,
+              "height": 156,
+              "size": 45.87,
+              "url": "/uploads/thumbnail_tc_4_f6c98bb24b.png"
+            }
+          },
+          "hash": "tc_4_f6c98bb24b",
+          "ext": ".png",
+          "mime": "image/png",
+          "size": 32.02,
+          "url": "/uploads/tc_4_f6c98bb24b.png",
+          "previewUrl": null,
+          "provider": "local",
+          "provider_metadata": null,
+          "createdAt": "2023-06-01T17:10:34.249Z",
+          "updatedAt": "2023-06-14T02:29:13.703Z"
+        }
+      }
+    },
+    "localizations": {
+      "data": []
+    }
+  }
+}
+export interface DataDetailKhoaHoc {
+  id: 1;
+  createdAt: "2023-06-01T17:10:07.029Z";
+  updatedAt: "2023-06-09T04:12:08.140Z";
+  publishedAt: "2023-06-01T17:10:08.506Z";
+  tieuDe: "Bồi dưỡng cho lãnh đạo cấp phòng; lĩnh vực Nội chính, Tài chính – kế toán, Văn hóa – Xã hội";
+  noiDung: null;
+  moTa: "Sáng ngày 22/02/2023 tại trụ sở làm việc, Trường Đào tạo, Bồi dưỡng cán bộ quản lý Thông tin và Truyền thông(Trường) đã tổ chức lễ ký kết thoả thuận hợp tác trong lĩnh vực chuyển đổi số với Viện chiến lược chuyển đổi số (Viện)....";
+  kieu: "Đề tài";
+  hinhAnh: string;
+  tacGia: string;
+  taiLieuDinhKem: {
+    "id": 40,
+    "name": "bieu-mau-dv (2).xlsx",
+    "alternativeText": null,
+    "caption": null,
+    "width": null,
+    "height": null,
+    "formats": null,
+    "hash": "bieu_mau_dv_2_b1cbe5b521",
+    "ext": ".xlsx",
+    "mime": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "size": 10.88,
+    "url": "/uploads/bieu_mau_dv_2_b1cbe5b521.xlsx",
+    "previewUrl": null,
+    "provider": "local",
+    "provider_metadata": null,
+    "folderPath": "/",
+    "createdAt": "2023-07-11T00:14:57.060Z",
+    "updatedAt": "2023-07-11T00:14:57.060Z"
+  };
+  chiTiet: {
+    id: 1;
+    tenDeTai: "Nghiên cứu phát triển thử nghiệm hệ thống giám sát giao thông ứng dụng kỹ thuật học sâu cho nhận dạng hình ảnh";
+    maDeTai: "ĐT.020/18";
+    chuNhiemDeTai: "PGS.TS. Từ Minh Phương";
+    thoiGianNghiemThu: "2023-12-27";
+    thoiGianThucHienBatDau: "2023-02-08";
+    thoiGianThucHienKetThuc: "2023-11-21";
+  }[];
+}
+export interface IDataChiTiet {
+  id: number; // 3;
+  attributes: {
+    tieuDe: string; // "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
+    noiDung: string; //"BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
+    moTa: string; // "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022";
+    kieu: string; // "news";
+    createdAt: string; // "2023-06-09T09:09:04.636Z";
+    updatedAt: string; // "2023-06-09T09:10:02.657Z";
+    publishedAt: string; // "2023-06-09T09:10:02.656Z";
+    tacGia: string;
+  };
+}
