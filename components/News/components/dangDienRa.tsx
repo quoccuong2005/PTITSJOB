@@ -65,7 +65,7 @@ const DangDienRa = (props: { type: string; conditionSearch: any }) => {
     <>
       <div>
         <div className="title-event lg:mb-[40px] flex justify-between">
-          <h2>Tin tức - Sự kiện đang diễn ra</h2>
+          <h2>Sự kiện đang diễn ra</h2>
           {/*<div className="show-more flex items-center cursor-pointer">*/}
           {/*  <div className="mr-[24px] shrink-0">Xem thêm</div>*/}
           {/*  <img src="./images/icons/arrow-right-2.svg" alt="image" />*/}
