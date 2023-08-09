@@ -217,9 +217,10 @@ const Tintuc = () => {
           )}
 
           <div className="event lg:mt-[80px]">
-            <SapToi type={type} conditionSearch={condition} />
-            <DaDienRa type={type} conditionSearch={condition} />
-            <DangDienRa type={type} conditionSearch={condition} />
+            <SapToi type={'event'} conditionSearch={condition} />
+            <DangDienRa type={'event'} conditionSearch={condition} />
+            <DaDienRa type={'event'} conditionSearch={condition} />
+
 
           </div>
         </div>

@@ -9,11 +9,11 @@ import { dataDanhMuc } from "../../data";
 import { axios } from "../../api";
 import { ip } from "../../api/ip";
 import { useRouter } from "next/router";
-import { DataDetailKhoaHoc } from "../../utils/interface";
+import {DataDetailKhoaHoc, DataDetailTableKhoaHoc} from "../../utils/interface";
 import TableBaseV2 from "../../components/TableBaseV2";
 import { ETYPEKHOAHOC } from "../../data/enum";
 import { AuthContext } from "../../context/AuthContext";
-import {renderImage} from "../../utils/util";
+import { renderImage } from "../../utils/util";
 
 const ChiTietHoatDong = () => {
   const router = useRouter();
@@ -21,32 +21,38 @@ const ChiTietHoatDong = () => {
   const [content, setContent] = useState<any>(null);
   const [type, setType] = useState<string>();
   const [dataDetail, setDataDetail] = useState<DataDetailKhoaHoc>();
+  const [dataDetailTable, setDataDetailTable] = useState<DataDetailTableKhoaHoc[]>([]);
   const { langCode } = useContext(AuthContext);
   const columns = [
     {
       title: "STT",
       dataIndex: "index",
+      align:'center',
       width: "80px",
     },
     {
       title: "Tên đề tài",
-      dataIndex: "tenDeTai",
+      dataIndex: ['attributes',"tenDeTai"],
       width: "300px",
+      // align:'center',
       render: (val: any) => {
         return <div className="w-[300px]">{val}</div>;
       },
     },
     {
       title: "Mã đề tài",
-      dataIndex: "maDeTai",
+      dataIndex: ['attributes',"maDeTai"],
+      align:'center',
     },
     {
       title: "Chủ nhiệm đề tài",
-      dataIndex: "chuNhiemDeTai",
+      dataIndex: ['attributes',"chuNhiemDeTai"],
+      align:'center',
     },
     {
       title: "Thời gian thực hiện",
-      dataIndex: "thoiGianThucHienBatDau",
+      align:'center',
+      dataIndex: ['attributes',"thoiGianThucHienBatDau"],
       render: (val: any, record: any) => {
         return (
           <>
@@ -58,7 +64,8 @@ const ChiTietHoatDong = () => {
     },
     {
       title: "Thời gian nghiệm thu",
-      dataIndex: "thoiGianNghiemThu",
+      align:'center',
+      dataIndex: ['attributes',"thoiGianNghiemThu"],
       render: (val: any, record: any) => {
         return <>{moment(val).format("DD/MM/YYYY")}</>;
       },
@@ -68,19 +75,23 @@ const ChiTietHoatDong = () => {
     {
       title: "STT",
       dataIndex: "index",
+      align:'center',
       width: "80px",
     },
     {
       title: "Tên bài báo",
-      dataIndex: "tenDeTai",
+      align:'center',
+      dataIndex: ['attributes',"tenDeTai"],
     },
     {
       title: "Tên tác giả",
-      dataIndex: "chuNhiemDeTai",
+      align:'center',
+      dataIndex: ['attributes',"chuNhiemDeTai"],
     },
     {
       title: "Tạp chí/Hội nghị hội thảo",
-      dataIndex: "tapChiHoiNghi",
+      align:'center',
+      dataIndex: ['attributes',"tapChiHoiNghi"],
     },
   ];
   const getData = async (id: string) => {
@@ -95,9 +106,31 @@ const ChiTietHoatDong = () => {
       console.log(e);
     }
   };
+  const getDataDetail = async (id: string) => {
+    try {
+      const res = await axios.get(
+        `${ip}/qlkh-chi-tiet-hoat-dong-kh-cn-and-dmsts?locale=${langCode}&populate=deep`,
+        {
+          params: {
+            filters: {
+              qlkh_hoat_dong_kh_cn_and_dmst: {
+                id: { $eq: id },
+              },
+            },
+          },
+        }
+      );
+      if (res){
+        setDataDetailTable(res?.data?.data??[])
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  };
   useEffect(() => {
     if (router) {
       getData(router?.query?.id as string);
+      getDataDetail(router?.query?.id as string);
       setType(router?.query?.type as string);
     }
   }, [router, langCode]);
@@ -155,9 +188,10 @@ const ChiTietHoatDong = () => {
             dangerouslySetInnerHTML={{ __html: dataDetail?.noiDung ?? "" }}
           ></div>
           {dataDetail?.taiLieuDinhKem && (
-            <a href={renderImage(dataDetail?.taiLieuDinhKem?.url)} target={"_blank"}
+            <a
+              href={renderImage(dataDetail?.taiLieuDinhKem?.url)}
+              target={"_blank"}
               className="show-more flex items-center cursor-pointer mt-[26px]"
-
             >
               <div className="mr-[24px] shrink-0">Phụ lục đính kèm</div>
               <img src="/images/icons/arrow-right-2.svg" alt="image" />
@@ -166,8 +200,9 @@ const ChiTietHoatDong = () => {
 
           <div className="mt-[26px]">
             <TableBase
+              //@ts-ignore
               columns={type !== ETYPEKHOAHOC.CB ? columns : columnsCongBo}
-              dataSource={dataDetail?.chiTiet?.map((val, i) => {
+              dataSource={dataDetailTable?.map((val, i) => {
                 return {
                   ...val,
                   index: i + 1,

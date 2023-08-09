@@ -1429,6 +1429,483 @@ export interface DataDetailKhoaHoc {
     thoiGianThucHienKetThuc: "2023-11-21";
   }[];
 }
+
+export interface DataDetailTableKhoaHoc{
+  "id": 1,
+  "attributes": {
+    "tenDeTai": "Đề tài 1",
+    "maDeTai": "BGDD-A1",
+    "chuNhiemDeTai": "Thanh Mai",
+    "thoiGianThucHienBatDau": "2023-08-01",
+    "thoiGianNghiemThu": "2023-08-04",
+    "thoiGianThucHienKetThuc": "2023-08-17",
+    "tapChiHoiNghi": "hahahahahah",
+    "createdAt": "2023-08-09T02:30:44.186Z",
+    "updatedAt": "2023-08-09T03:46:36.177Z",
+    "publishedAt": "2023-08-09T02:30:55.787Z",
+    "locale": "vi-VN",
+    "qlkh_hoat_dong_kh_cn_and_dmst": {
+      "data": {
+        "id": 6,
+        "attributes": {
+          "createdAt": "2023-06-10T03:55:30.720Z",
+          "updatedAt": "2023-08-09T03:49:07.004Z",
+          "publishedAt": "2023-06-10T03:55:41.744Z",
+          "tieuDe": "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022",
+          "noiDung": "null",
+          "moTa": "test",
+          "kieu": "Công bố",
+          "capDo": "Cấp bộ",
+          "phamVi": "null",
+          "tacGia": "null",
+          "locale": "vi-VN",
+          "ngayDangTai": "2023-06-13",
+          "hinhAnh": {
+            "data": {
+              "id": 28,
+              "attributes": {
+                "name": "Footer.png",
+                "alternativeText": null,
+                "caption": null,
+                "width": 411,
+                "height": 137,
+                "formats": {
+                  "thumbnail": {
+                    "name": "thumbnail_Footer.png",
+                    "hash": "thumbnail_Footer_86dc7d7138",
+                    "ext": ".png",
+                    "mime": "image/png",
+                    "path": null,
+                    "width": 245,
+                    "height": 82,
+                    "size": 12.15,
+                    "url": "/uploads/thumbnail_Footer_86dc7d7138.png"
+                  }
+                },
+                "hash": "Footer_86dc7d7138",
+                "ext": ".png",
+                "mime": "image/png",
+                "size": 4.23,
+                "url": "/uploads/Footer_86dc7d7138.png",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2023-06-10T03:36:40.706Z",
+                "updatedAt": "2023-06-10T03:36:47.791Z"
+              }
+            }
+          },
+          "taiLieuDinhKem": {
+            "data": null
+          },
+          "qlkh_chi_tiet_hoat_dong_kh_cn_and_dmsts": {
+            "data": [
+              {
+                "id": 2,
+                "attributes": {
+                  "tenDeTai": "Đề tài 2",
+                  "maDeTai": "BCGA2",
+                  "chuNhiemDeTai": "Thanh Mai",
+                  "thoiGianThucHienBatDau": "2023-08-01",
+                  "thoiGianNghiemThu": "2023-08-04",
+                  "thoiGianThucHienKetThuc": "2023-08-17",
+                  "tapChiHoiNghi": "hahahahahah",
+                  "createdAt": "2023-08-09T02:30:44.186Z",
+                  "updatedAt": "2023-08-09T03:46:36.198Z",
+                  "publishedAt": "2023-08-09T02:30:55.787Z",
+                  "locale": "vi-VN",
+                  "qlkh_hoat_dong_kh_cn_and_dmst": {
+                    "data": {
+                      "id": 6,
+                      "attributes": {
+                        "createdAt": "2023-06-10T03:55:30.720Z",
+                        "updatedAt": "2023-08-09T03:49:07.004Z",
+                        "publishedAt": "2023-06-10T03:55:41.744Z",
+                        "tieuDe": "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022",
+                        "noiDung": "null",
+                        "moTa": "test",
+                        "kieu": "Công bố",
+                        "capDo": "Cấp bộ",
+                        "phamVi": "null",
+                        "tacGia": "null",
+                        "locale": "vi-VN",
+                        "ngayDangTai": "2023-06-13",
+                        "hinhAnh": {
+                          "data": {
+                            "id": 28,
+                            "attributes": {
+                              "name": "Footer.png",
+                              "alternativeText": null,
+                              "caption": null,
+                              "width": 411,
+                              "height": 137,
+                              "formats": {
+                                "thumbnail": {
+                                  "name": "thumbnail_Footer.png",
+                                  "hash": "thumbnail_Footer_86dc7d7138",
+                                  "ext": ".png",
+                                  "mime": "image/png",
+                                  "path": null,
+                                  "width": 245,
+                                  "height": 82,
+                                  "size": 12.15,
+                                  "url": "/uploads/thumbnail_Footer_86dc7d7138.png"
+                                }
+                              },
+                              "hash": "Footer_86dc7d7138",
+                              "ext": ".png",
+                              "mime": "image/png",
+                              "size": 4.23,
+                              "url": "/uploads/Footer_86dc7d7138.png",
+                              "previewUrl": null,
+                              "provider": "local",
+                              "provider_metadata": null,
+                              "createdAt": "2023-06-10T03:36:40.706Z",
+                              "updatedAt": "2023-06-10T03:36:47.791Z"
+                            }
+                          }
+                        },
+                        "taiLieuDinhKem": {
+                          "data": null
+                        },
+                        "qlkh_chi_tiet_hoat_dong_kh_cn_and_dmsts": {
+                          "data": [
+                            {
+                              "id": 2,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 2",
+                                "maDeTai": "BCGA2",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.198Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            },
+                            {
+                              "id": 1,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 1",
+                                "maDeTai": "BGDD-A1",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.177Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            },
+                            {
+                              "id": 3,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 3",
+                                "maDeTai": "BGDD-B3",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.202Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            }
+                          ]
+                        },
+                        "localizations": {
+                          "data": []
+                        }
+                      }
+                    }
+                  },
+                  "localizations": {
+                    "data": []
+                  }
+                }
+              },
+              {
+                "id": 1,
+                "attributes": {
+                  "tenDeTai": "Đề tài 1",
+                  "maDeTai": "BGDD-A1",
+                  "chuNhiemDeTai": "Thanh Mai",
+                  "thoiGianThucHienBatDau": "2023-08-01",
+                  "thoiGianNghiemThu": "2023-08-04",
+                  "thoiGianThucHienKetThuc": "2023-08-17",
+                  "tapChiHoiNghi": "hahahahahah",
+                  "createdAt": "2023-08-09T02:30:44.186Z",
+                  "updatedAt": "2023-08-09T03:46:36.177Z",
+                  "publishedAt": "2023-08-09T02:30:55.787Z",
+                  "locale": "vi-VN",
+                  "qlkh_hoat_dong_kh_cn_and_dmst": {
+                    "data": {
+                      "id": 6,
+                      "attributes": {
+                        "createdAt": "2023-06-10T03:55:30.720Z",
+                        "updatedAt": "2023-08-09T03:49:07.004Z",
+                        "publishedAt": "2023-06-10T03:55:41.744Z",
+                        "tieuDe": "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022",
+                        "noiDung": "null",
+                        "moTa": "test",
+                        "kieu": "Công bố",
+                        "capDo": "Cấp bộ",
+                        "phamVi": "null",
+                        "tacGia": "null",
+                        "locale": "vi-VN",
+                        "ngayDangTai": "2023-06-13",
+                        "hinhAnh": {
+                          "data": {
+                            "id": 28,
+                            "attributes": {
+                              "name": "Footer.png",
+                              "alternativeText": null,
+                              "caption": null,
+                              "width": 411,
+                              "height": 137,
+                              "formats": {
+                                "thumbnail": {
+                                  "name": "thumbnail_Footer.png",
+                                  "hash": "thumbnail_Footer_86dc7d7138",
+                                  "ext": ".png",
+                                  "mime": "image/png",
+                                  "path": null,
+                                  "width": 245,
+                                  "height": 82,
+                                  "size": 12.15,
+                                  "url": "/uploads/thumbnail_Footer_86dc7d7138.png"
+                                }
+                              },
+                              "hash": "Footer_86dc7d7138",
+                              "ext": ".png",
+                              "mime": "image/png",
+                              "size": 4.23,
+                              "url": "/uploads/Footer_86dc7d7138.png",
+                              "previewUrl": null,
+                              "provider": "local",
+                              "provider_metadata": null,
+                              "createdAt": "2023-06-10T03:36:40.706Z",
+                              "updatedAt": "2023-06-10T03:36:47.791Z"
+                            }
+                          }
+                        },
+                        "taiLieuDinhKem": {
+                          "data": null
+                        },
+                        "qlkh_chi_tiet_hoat_dong_kh_cn_and_dmsts": {
+                          "data": [
+                            {
+                              "id": 2,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 2",
+                                "maDeTai": "BCGA2",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.198Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            },
+                            {
+                              "id": 1,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 1",
+                                "maDeTai": "BGDD-A1",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.177Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            },
+                            {
+                              "id": 3,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 3",
+                                "maDeTai": "BGDD-B3",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.202Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            }
+                          ]
+                        },
+                        "localizations": {
+                          "data": []
+                        }
+                      }
+                    }
+                  },
+                  "localizations": {
+                    "data": []
+                  }
+                }
+              },
+              {
+                "id": 3,
+                "attributes": {
+                  "tenDeTai": "Đề tài 3",
+                  "maDeTai": "BGDD-B3",
+                  "chuNhiemDeTai": "Thanh Mai",
+                  "thoiGianThucHienBatDau": "2023-08-01",
+                  "thoiGianNghiemThu": "2023-08-04",
+                  "thoiGianThucHienKetThuc": "2023-08-17",
+                  "tapChiHoiNghi": "hahahahahah",
+                  "createdAt": "2023-08-09T02:30:44.186Z",
+                  "updatedAt": "2023-08-09T03:46:36.202Z",
+                  "publishedAt": "2023-08-09T02:30:55.787Z",
+                  "locale": "vi-VN",
+                  "qlkh_hoat_dong_kh_cn_and_dmst": {
+                    "data": {
+                      "id": 6,
+                      "attributes": {
+                        "createdAt": "2023-06-10T03:55:30.720Z",
+                        "updatedAt": "2023-08-09T03:49:07.004Z",
+                        "publishedAt": "2023-06-10T03:55:41.744Z",
+                        "tieuDe": "BẢN TIN CÔNG NGHỆ VÀ CHUYỂN ĐỔI SỐ - THÁNG 2/2022",
+                        "noiDung": "null",
+                        "moTa": "test",
+                        "kieu": "Công bố",
+                        "capDo": "Cấp bộ",
+                        "phamVi": "null",
+                        "tacGia": "null",
+                        "locale": "vi-VN",
+                        "ngayDangTai": "2023-06-13",
+                        "hinhAnh": {
+                          "data": {
+                            "id": 28,
+                            "attributes": {
+                              "name": "Footer.png",
+                              "alternativeText": null,
+                              "caption": null,
+                              "width": 411,
+                              "height": 137,
+                              "formats": {
+                                "thumbnail": {
+                                  "name": "thumbnail_Footer.png",
+                                  "hash": "thumbnail_Footer_86dc7d7138",
+                                  "ext": ".png",
+                                  "mime": "image/png",
+                                  "path": null,
+                                  "width": 245,
+                                  "height": 82,
+                                  "size": 12.15,
+                                  "url": "/uploads/thumbnail_Footer_86dc7d7138.png"
+                                }
+                              },
+                              "hash": "Footer_86dc7d7138",
+                              "ext": ".png",
+                              "mime": "image/png",
+                              "size": 4.23,
+                              "url": "/uploads/Footer_86dc7d7138.png",
+                              "previewUrl": null,
+                              "provider": "local",
+                              "provider_metadata": null,
+                              "createdAt": "2023-06-10T03:36:40.706Z",
+                              "updatedAt": "2023-06-10T03:36:47.791Z"
+                            }
+                          }
+                        },
+                        "taiLieuDinhKem": {
+                          "data": null
+                        },
+                        "qlkh_chi_tiet_hoat_dong_kh_cn_and_dmsts": {
+                          "data": [
+                            {
+                              "id": 2,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 2",
+                                "maDeTai": "BCGA2",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.198Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            },
+                            {
+                              "id": 1,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 1",
+                                "maDeTai": "BGDD-A1",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.177Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            },
+                            {
+                              "id": 3,
+                              "attributes": {
+                                "tenDeTai": "Đề tài 3",
+                                "maDeTai": "BGDD-B3",
+                                "chuNhiemDeTai": "Thanh Mai",
+                                "thoiGianThucHienBatDau": "2023-08-01",
+                                "thoiGianNghiemThu": "2023-08-04",
+                                "thoiGianThucHienKetThuc": "2023-08-17",
+                                "tapChiHoiNghi": "hahahahahah",
+                                "createdAt": "2023-08-09T02:30:44.186Z",
+                                "updatedAt": "2023-08-09T03:46:36.202Z",
+                                "publishedAt": "2023-08-09T02:30:55.787Z",
+                                "locale": "vi-VN"
+                              }
+                            }
+                          ]
+                        },
+                        "localizations": {
+                          "data": []
+                        }
+                      }
+                    }
+                  },
+                  "localizations": {
+                    "data": []
+                  }
+                }
+              }
+            ]
+          },
+          "localizations": {
+            "data": []
+          }
+        }
+      }
+    },
+    "localizations": {
+      "data": []
+    }
+  }
+}
 export interface IDataChiTiet {
   id: number; // 3;
   attributes: {
