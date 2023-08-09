@@ -124,7 +124,7 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                     router.push(`/hoat-dong?type=Đề tài`);
                   }}
                 >
-                  Xem thêm
+                  {props?.dataHome?.tieuDeButton}
                 </Button>
               </div>
             )}

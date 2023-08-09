@@ -351,6 +351,7 @@ export interface IDataHome {
   "createdAt": "2023-06-01T03:05:50.137Z",
   "updatedAt": "2023-07-22T09:27:36.436Z",
   "publishedAt": "2023-06-01T17:13:11.558Z",
+  "tieuDeButton": "2023-06-01T17:13:11.558Z",
   "duongDanVideo": "https://www.youtube.com/embed/XZTaNCfhyzY",
   "locale": "vi-VN",
   "about": {

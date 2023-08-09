@@ -144,7 +144,7 @@ const News = (props:{dataHome:IDataHome}) => {
 										classname="lg:w-[279px]"
 										onClick={()=>{
 											window.open('https://jstic.ptit.edu.vn/index.html')
-										}}>Xem thêm</Button>
+										}}>{props?.dataHome?.tieuDeButton}</Button>
 					</div>
 				</div>
 			</NewsWrapper>

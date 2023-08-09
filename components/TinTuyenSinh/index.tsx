@@ -133,7 +133,7 @@ if (props.dataHome?.tinTuc?.qlkh_tin_tuc_su_kiens?.data?.length>0){
 								router.push("/tin-tuc");
 							}}
 						>
-							Xem thêm
+							{props?.dataHome?.tieuDeButton}
 						</Button>
 					</div>}
 
