@@ -49,7 +49,7 @@ const HoatDong = () => {
       //   },
       // });
       const res = await axios.get(
-        `${ip}/hoat-dong-khoa-hocs?locale=${langCode}&populate=deep`,
+        `${ip}/hoat-dong-khoa-hocs?locale=${langCode}&populate=hinhAnh`,
         {
           params: {
             filters: {

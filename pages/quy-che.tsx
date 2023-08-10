@@ -63,7 +63,7 @@ const QuyChe = () => {
             },
             ...condition,
           },
-          populate: "deep",
+          populate: "taiLieuDinhKem",
           pagination: {
             page: page,
             pageSize: limit,

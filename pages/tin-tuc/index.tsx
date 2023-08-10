@@ -57,7 +57,7 @@ const Tintuc = () => {
   const handleGetAll = async () => {
     try {
       const res = await axios.get(
-        `${ip}/qlkh-tin-tucs?locale=${langCode}&populate=deep`,
+        `${ip}/qlkh-tin-tucs?locale=${langCode}&populate=hinhAnh`,
         {
           params: {
             filters: {

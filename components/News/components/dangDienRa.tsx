@@ -22,7 +22,7 @@ const DangDienRa = (props: { type: string; conditionSearch: any }) => {
   const handleGetAllEvent = async () => {
     try {
       const res = await axios.get(
-        `${ip}/qlkh-tin-tucs?locale=${langCode}&populate=deep`,
+        `${ip}/qlkh-tin-tucs?locale=${langCode}&populate=hinhAnh`,
         {
           params: {
             filters: {

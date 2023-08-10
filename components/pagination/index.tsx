@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {el} from "date-fns/locale";
+import ReactPaginate from "react-paginate";
 
 interface IProps {
 	total: number;
@@ -53,19 +54,43 @@ const Pagination = (props: IProps) => {
             handleChangePage(pageNext)
         }
     }
+    const handleChangePage2 = (val:any) => {
+        console.log('va',val)
+        handleChangePage(val?.selected+1)
+    }
     return(
         <PaginationWrapper>
-            {totalPage>1&&
-              <div className="pagination">
-                  {totalPage>1&&    <a href="#" onClick={()=>{handlePrevPage()}}>&laquo;</a>}
+            <ReactPaginate
+              nextLabel=">"
+              onPageChange={handleChangePage2}
+              pageRangeDisplayed={3}
+              marginPagesDisplayed={2}
+              pageCount={dataPage?.length}
+              previousLabel="<"
+              pageClassName="page-item"
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakLabel="..."
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination"
+              activeClassName="active"
+              renderOnZeroPageCount={null}
+            />
+            {/*{totalPage>1&&*/}
+            {/*  <div className="pagination">*/}
+            {/*      {totalPage>1&&    <a href="#" onClick={()=>{handlePrevPage()}}>&laquo;</a>}*/}
 
-                  {dataPage?.map((value,i)=>{
-                      return(
-                        <a onClick={()=>changePage(value)} className={`${page===value?'active':''}`} key={i}>{value}</a>
-                      )
-                  })}
-                  {totalPage>1&& <a href="#"  onClick={()=>{handleNextPage()}}>&raquo;</a>}
-              </div>}
+            {/*      {dataPage?.map((value,i)=>{*/}
+            {/*          return(*/}
+            {/*            <a onClick={()=>changePage(value)} className={`${page===value?'active':''}`} key={i}>{value}</a>*/}
+            {/*          )*/}
+            {/*      })}*/}
+            {/*      {totalPage>1&& <a href="#"  onClick={()=>{handleNextPage()}}>&raquo;</a>}*/}
+            {/*  </div>}*/}
 
         </PaginationWrapper>
     )
@@ -73,22 +98,38 @@ const Pagination = (props: IProps) => {
 
 };
 const PaginationWrapper=styled.div`
-  .pagination {
-    display: inline-block;
-  }
+    .pagination {
+        display: flex;
+    }
 
-  .pagination a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-  }
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
 
-  .pagination a.active {
-    background-color: #DE221A;
-    color: white;
-  }
+    .page-item.active {
+        background-color: #DE221A;
+        color: white;
 
-  .pagination a:hover:not(.active) {background-color: #ddd;}
+        a {
+            color: #FFFFFF;
+        }
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: rgba(222, 34, 26, 0.73) !important;
+        color: white;
+    }
+
+    .pagination a.active {
+        background-color: #DE221A;
+        color: white;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
 `
 export default Pagination;

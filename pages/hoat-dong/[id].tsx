@@ -14,6 +14,7 @@ import TableBaseV2 from "../../components/TableBaseV2";
 import { ETYPEKHOAHOC } from "../../data/enum";
 import { AuthContext } from "../../context/AuthContext";
 import { renderImage } from "../../utils/util";
+import Pagination from "../../components/pagination";
 
 const ChiTietHoatDong = () => {
   const router = useRouter();
@@ -22,6 +23,9 @@ const ChiTietHoatDong = () => {
   const [type, setType] = useState<string>();
   const [dataDetail, setDataDetail] = useState<DataDetailKhoaHoc>();
   const [dataDetailTable, setDataDetailTable] = useState<DataDetailTableKhoaHoc[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [limit, setLimit] = useState<number>(6);
+  const [total, setTotal] = useState<number>(0);
   const { langCode } = useContext(AuthContext);
   const columns = [
     {
@@ -109,7 +113,7 @@ const ChiTietHoatDong = () => {
   const getDataDetail = async (id: string) => {
     try {
       const res = await axios.get(
-        `${ip}/qlkh-chi-tiet-hoat-dong-kh-cn-and-dmsts?locale=${langCode}&populate=deep`,
+        `${ip}/qlkh-chi-tiet-hoat-dong-kh-cn-and-dmsts?locale=${langCode}&populate=hinhAnh`,
         {
           params: {
             filters: {
@@ -117,11 +121,16 @@ const ChiTietHoatDong = () => {
                 id: { $eq: id },
               },
             },
+            pagination: {
+              page: page,
+              pageSize: limit,
+            },
           },
         }
       );
       if (res){
         setDataDetailTable(res?.data?.data??[])
+        setTotal(res?.data?.meta?.pagination?.total ?? 0);
       }
     } catch (e) {
       console.log(e);
@@ -130,10 +139,15 @@ const ChiTietHoatDong = () => {
   useEffect(() => {
     if (router) {
       getData(router?.query?.id as string);
-      getDataDetail(router?.query?.id as string);
       setType(router?.query?.type as string);
     }
   }, [router, langCode]);
+  useEffect(()=>{
+    if (router) {
+
+      getDataDetail(router?.query?.id as string);
+    }
+  },[page,limit])
   return (
     <ChiTietHoatDongWrapper>
       <div
@@ -205,10 +219,21 @@ const ChiTietHoatDong = () => {
               dataSource={dataDetailTable?.map((val, i) => {
                 return {
                   ...val,
-                  index: i + 1,
+                  index: i + 1 + (page - 1) * limit,
                 };
               })}
             />
+            <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
+              <Pagination
+                page={page}
+                limit={limit}
+                total={total}
+                handleChangePage={(page) => {
+                  console.log("page", page);
+                  setPage(page);
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
