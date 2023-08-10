@@ -271,7 +271,7 @@ const QuyChe = () => {
             dataSource={dataGioiThieu?.map((val, i) => {
               return {
                 ...val,
-                index: i + 1,
+                index: i + 1 + (page - 1) * limit,
               };
             })}
           />
