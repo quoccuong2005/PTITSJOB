@@ -314,7 +314,7 @@ const Tintuc = () => {
         </div>
 
         {type === "news" && (
-          <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
+          <div className=" md:hidden show-more flex items-center justify-center md:mt-[16px] cursor-pointer">
             <Pagination
               page={page}
               limit={limit}
