@@ -139,7 +139,7 @@ const ChiTiet = () => {
             }
           >
             <h2>{dataChiTiet?.attributes?.tieuDe} </h2>
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               {dataChiTiet?.attributes?.createdAt && (
                 <p className="date lg:mr-[40px] mr-[20px]">
                   Ngày đăng:{" "}
@@ -150,7 +150,7 @@ const ChiTiet = () => {
               )}
 
               <p className="date">Tác giả: {dataChiTiet?.attributes?.tacGia??'Không có tác giả'}</p>
-            </div>
+            </div> */}
 
             {/*<div className=' flex justify-end mt-[20px]'>*/}
             {/*	<div className="flex items-center flex-col">*/}

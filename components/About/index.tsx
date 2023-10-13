@@ -52,7 +52,7 @@ const About = (props: { dataHome: IDataHome }) => {
     <AboutWrapper>
       <div className="container mx-auto lg:mt-[50px] mt-[20px] px-[20px] lg:px-0">
         <div>
-          <Title title={"Về chúng tôi"} uppercase={true} description={""} />
+          <Title title={"Thông tin chung"} uppercase={true} description={""} />
         </div>
         <div className=" hidden lg:grid  grid-flow-col height-grid  gap-[30px]">
           <div className="row-span-2 col-span-2">

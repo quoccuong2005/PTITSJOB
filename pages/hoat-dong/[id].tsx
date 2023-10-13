@@ -186,14 +186,14 @@ const ChiTietHoatDong = () => {
             }
           >
             <h2>{dataDetail?.tieuDe}</h2>
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <p className="date lg:mr-[40px] mr-[20px]">
                 Ngày đăng: {moment().format("DD/MM/YYYY HH:mm")}
               </p>
               <p className="date">
                 Tác giả: {dataDetail?.tacGia ?? "Không có tác giả"}
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div>
