@@ -41,14 +41,14 @@ const CardDeTai = (props: IPorps) => {
       case "Trong nước":
         return (
           <div className="py-[4px] px-[20px] bg-primary inline-block text-white">
-            {type}
+            Tạp chí {type}
           </div>
         );
         break;
       case "Quốc tế":
         return (
           <div className="py-[4px] px-[20px] bg-[#0B8500] inline-block text-white">
-            {type}
+            Tạp chí {type}
           </div>
         );
         break;
@@ -62,7 +62,7 @@ const CardDeTai = (props: IPorps) => {
       case "ISI/Scopus":
         return (
           <div className="py-[4px] px-[20px] bg-[#012169] inline-block text-white">
-            {type}
+            Tạp chí {type}
           </div>
         );
         break;

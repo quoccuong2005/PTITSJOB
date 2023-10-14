@@ -129,8 +129,10 @@ const HoatDong = () => {
   const option = [
     { value: "Tất cả", label: "Tất cả" },
     { value: "Cấp nhà nước", label: "Cấp nhà nước" },
-    { value: "Cấp bộ", label: "Cấp bộ" },
+    { value: "Cấp bộ/Sở/Ban ngành", label: "Cấp bộ/Sở/Ban ngành" },
     { value: "Cấp học viện", label: "Cấp học viện" },
+    { value: "KHCN trong hợp tác quốc tế", label: "KHCN trong hợp tác quốc tế" },
+    { value: "Đề tài sinh viên", label: "Đề tài sinh viên" },
   ];
   const optionYear = [
     { value: "Tất cả", label: "Tất cả" },

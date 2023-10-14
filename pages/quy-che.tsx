@@ -55,21 +55,25 @@ const QuyChe = () => {
   };
   const getDatav2 = async () => {
     try {
-      const res = await axios.get(`${ip}/van-ban-quy-dinhs?locale=${langCode}`, {
-        params: {
-          filters: {
-            kieu: {
-              $eq: type,
+      const res = await axios.get(
+        `${ip}/van-ban-quy-dinhs?locale=${langCode}`,
+        {
+          params: {
+            filters: {
+              kieu: {
+                $eq: type,
+              },
+              ...condition,
             },
-            ...condition,
+            sort: [{ ngayBanHanh: "desc" }],
+            populate: "taiLieuDinhKem",
+            pagination: {
+              page: page,
+              pageSize: limit,
+            },
           },
-          populate: "taiLieuDinhKem",
-          pagination: {
-            page: page,
-            pageSize: limit,
-          },
-        },
-      });
+        }
+      );
       if (res) {
         console.log("resss", res);
         setDataGioiThieu(res?.data?.data ?? []);

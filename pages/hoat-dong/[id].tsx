@@ -201,16 +201,16 @@ const ChiTietHoatDong = () => {
             className="title"
             dangerouslySetInnerHTML={{ __html: dataDetail?.noiDung ?? "" }}
           ></div>
-          {dataDetail?.taiLieuDinhKem && (
-            <a
-              href={renderImage(dataDetail?.taiLieuDinhKem?.url)}
-              target={"_blank"}
-              className="show-more flex items-center cursor-pointer mt-[26px]"
-            >
-              <div className="mr-[24px] shrink-0">Phụ lục đính kèm</div>
-              <img src="/images/icons/arrow-right-2.svg" alt="image" />
-            </a>
-          )}
+          {/*{dataDetail?.taiLieuDinhKem && (*/}
+          {/*  <a*/}
+          {/*    href={renderImage(dataDetail?.taiLieuDinhKem?.url)}*/}
+          {/*    target={"_blank"}*/}
+          {/*    className="show-more flex items-center cursor-pointer mt-[26px]"*/}
+          {/*  >*/}
+          {/*    <div className="mr-[24px] shrink-0">Phụ lục đính kèm</div>*/}
+          {/*    <img src="/images/icons/arrow-right-2.svg" alt="image" />*/}
+          {/*  </a>*/}
+          {/*)}*/}
 
           <div className="mt-[26px]">
             <TableBase
