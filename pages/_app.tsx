@@ -22,6 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 	const currentUrl = process.env.BASE_URL + router.asPath;
 	useEffect(()=>{
 		googleAnalytics()
+		window.addEventListener('load', () => {
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/sw.js');
+			}
+		})
 	},[])
 	return (
 		<FlowbiteContext>
