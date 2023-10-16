@@ -21,7 +21,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const HoatDong = () => {
   const [dataSelectDeTai, setDataSelectDeTai] = useState<string>("Tất cả");
-  const [dataYear, setDateYear] = useState<string>("2023");
+  const [dataYear, setDateYear] = useState<string>("Năm 2023");
   const [dataChiTiet, setDataChiTiet] = useState<GioiThieu>();
   const [dataGioiThieu, setDataGioiThieu] = useState<DataDeTaiV2[]>([]);
   const [condition, setCondition] = useState<any>();
@@ -80,10 +80,10 @@ const HoatDong = () => {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
-  }, [router, condition, page,langCode]);
+  }, [router, condition, page, langCode]);
 
   const onSubmit = (data: any) => {
-    setPage(1)
+    setPage(1);
     console.log("data", data);
     if (data && data?.keyword !== "" && data?.keyword) {
       setCondition(
@@ -131,16 +131,31 @@ const HoatDong = () => {
     { value: "Cấp nhà nước", label: "Cấp nhà nước" },
     { value: "Cấp bộ/Sở/Ban ngành", label: "Cấp bộ/Sở/Ban ngành" },
     { value: "Cấp học viện", label: "Cấp học viện" },
-    { value: "KHCN trong hợp tác quốc tế", label: "KHCN trong hợp tác quốc tế" },
+    {
+      value: "KHCN trong hợp tác quốc tế",
+      label: "KHCN trong hợp tác quốc tế",
+    },
     { value: "Đề tài sinh viên", label: "Đề tài sinh viên" },
   ];
   const optionYear = [
     { value: "Tất cả", label: "Tất cả" },
-    { value: "2023", label: "2023" },
-    { value: "2022", label: "2022" },
-    { value: "2021", label: "2021" },
-    { value: "2020", label: "2020" },
-    { value: "2019", label: "2019" },
+    { value: "Năm 2035", label: "Năm 2035" },
+    { value: "Năm 2034", label: "Năm 2034" },
+    { value: "Năm 2033", label: "Năm 2033" },
+    { value: "Năm 2032", label: "Năm 2032" },
+    { value: "Năm 2031", label: "Năm 2031" },
+    { value: "Năm 2030", label: "Năm 2030" },
+    { value: "Năm 2029", label: "Năm 2029" },
+    { value: "Năm 2028", label: "Năm 2028" },
+    { value: "Năm 2027", label: "Năm 2027" },
+    { value: "Năm 2026", label: "Năm 2026" },
+    { value: "Năm 2025", label: "Năm 2025" },
+    { value: "Năm 2024", label: "Năm 2024" },
+    { value: "Năm 2023", label: "Năm 2023" },
+    { value: "Năm 2022", label: "Năm 2022" },
+    { value: "Năm 2021", label: "Năm 2021" },
+    { value: "Năm 2020", label: "Năm 2020" },
+    { value: "Năm 2019", label: "Năm 2019" },
   ];
   const renderDeTaiName = (type: string): string => {
     switch (type) {
@@ -154,11 +169,9 @@ const HoatDong = () => {
         return "";
     }
   };
-  useEffect(()=>{
-
-    setPage(1)
-
-  },[type])
+  useEffect(() => {
+    setPage(1);
+  }, [type]);
   return (
     <HoatDongWrapper>
       <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] xl:px-0">
@@ -169,7 +182,7 @@ const HoatDong = () => {
               <DropdownFake
                 option={type === ETYPEKHOAHOC.CB ? optionCB : option}
                 onChange={(val) => {
-                  setPage(1)
+                  setPage(1);
                   console.log("val", val);
                   setDataSelectDeTai(val?.value);
                   if (type === ETYPEKHOAHOC.CB) {
@@ -208,23 +221,25 @@ const HoatDong = () => {
               <DropdownFake
                 option={optionYear}
                 onChange={(val) => {
-                  setPage(1)
-                  console.log("val", val);
+                  setPage(1);
                   if (val?.value === "Tất cả") {
                     delete condition?.ngayDangTai;
                     setCondition({ ...condition });
                   } else {
                     setCondition({
                       ...condition,
-                      ngayDangTai: {
-                        $gte: moment()
-                          .set("years", +val?.value)
-                          .startOf("years")
-                          .toISOString(),
-                        $lte: moment()
-                          .set("years", +val?.value)
-                          .endOf("years")
-                          .toISOString(),
+                      // ngayDangTai: {
+                      //   $gte: moment()
+                      //     .set("years", +val?.value)
+                      //     .startOf("years")
+                      //     .toISOString(),
+                      //   $lte: moment()
+                      //     .set("years", +val?.value)
+                      //     .endOf("years")
+                      //     .toISOString(),
+                      // },
+                      namXuatBan: {
+                        $eq: val?.value,
                       },
                     });
                   }
@@ -237,7 +252,11 @@ const HoatDong = () => {
               <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
                 <div className="search flex item-center lg:h-full h-[36px]">
                   <div className="relative w-full">
-                    <input className="w-full" placeholder={"Tìm kiếm"} {...register("keyword")} />
+                    <input
+                      className="w-full"
+                      placeholder={"Tìm kiếm"}
+                      {...register("keyword")}
+                    />
                     {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
                     {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
                     {/*</div>*/}
@@ -344,12 +363,11 @@ const HoatDong = () => {
         )}
         {type === ETYPEKHOAHOC.SP && (
           <>
-
-              {dataGioiThieu?.length > 0 ? (
-                <>
-                  {dataGioiThieu?.map((value, index) => {
-                    return (
-                      <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
+            {dataGioiThieu?.length > 0 ? (
+              <>
+                {dataGioiThieu?.map((value, index) => {
+                  return (
+                    <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
                       <div
                         onClick={() => {
                           router.push(
@@ -371,23 +389,22 @@ const HoatDong = () => {
                           key={index}
                         />
                       </div>
-                      </div>
-                    );
-                  })}
-                </>
-              ) : (
-                <>
-                  <div className="w-full h-full justify-center items-center flex flex-col">
-                    <img
-                      className="mb-[16px]"
-                      src="/images/default/no_data.png"
-                      alt="image"
-                    />
-                    <p className="text-secondary text-sm">Không có dữ liệu</p>
-                  </div>
-                </>
-              )}
-
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <>
+                <div className="w-full h-full justify-center items-center flex flex-col">
+                  <img
+                    className="mb-[16px]"
+                    src="/images/default/no_data.png"
+                    alt="image"
+                  />
+                  <p className="text-secondary text-sm">Không có dữ liệu</p>
+                </div>
+              </>
+            )}
           </>
         )}
       </div>
