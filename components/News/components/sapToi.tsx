@@ -166,7 +166,6 @@ const SapToi = (props: { type: string; conditionSearch: any }) => {
             limit={limit}
             total={total}
             handleChangePage={(page) => {
-              console.log("page", page);
               setPage(page);
             }}
           />

@@ -126,7 +126,6 @@ const Header = (props: IProps) => {
     getDataNav();
   }, [langCode]);
   useEffect(() => {
-    console.log("router", router);
     if (router && router.pathname) {
       setTypeMenu(router?.pathname);
       setShowMenu(false);

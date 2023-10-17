@@ -125,7 +125,6 @@ const TimKiem = () => {
 				},
 			});
 			if (res) {
-				console.log("res", res);
 				setDataSearch(res?.data?.data);
 			}
 		} catch (e) {
@@ -133,7 +132,6 @@ const TimKiem = () => {
 		}
 	};
 	useEffect(() => {
-		console.log("router", router);
 		if (router) {
 			getData({
 				keyword: router?.query?.keyword as string,
@@ -150,7 +148,6 @@ const TimKiem = () => {
 		formState: { errors },
 	} = useForm();
 	const onSubmit = (data: any) => {
-		console.log("data", data);
 		// getData({
 		// 	keyword: data?.keyword,
 		// 	type: data?.type,
@@ -221,7 +218,6 @@ const TimKiem = () => {
 													<DropdownFake
 														option={option}
 														onChange={(val) => {
-															console.log("val", val);
 															onChange(val.value);
 														}}
 														value={value}

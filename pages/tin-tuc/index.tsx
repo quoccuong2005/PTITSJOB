@@ -84,9 +84,6 @@ const Tintuc = () => {
   };
 
   useEffect(() => {
-    console.log("router", router);
-  }, [router]);
-  useEffect(() => {
     if (type === "news") {
       handleGetAll();
     } else {
@@ -95,7 +92,6 @@ const Tintuc = () => {
 
   const onSubmit = (data: any) => {
     setPage(1)
-    console.log("data", data);
     if (data && data?.keyword !== "" && data?.keyword) {
       setCondition({
         ...condition,
@@ -320,7 +316,6 @@ const Tintuc = () => {
               limit={limit}
               total={total}
               handleChangePage={(page) => {
-                console.log("page", page);
                 setPage(page);
               }}
             />

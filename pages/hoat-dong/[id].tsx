@@ -229,7 +229,6 @@ const ChiTietHoatDong = () => {
                 limit={limit}
                 total={total}
                 handleChangePage={(page) => {
-                  console.log("page", page);
                   setPage(page);
                 }}
               />

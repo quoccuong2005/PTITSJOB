@@ -22,7 +22,6 @@ const DangKy: NextPage = () => {
 	const [sendSuccess, setSendSuccess] = useState<boolean>(false);
 	let timmer: NodeJS.Timeout | undefined;
 	const onSubmit = (data: any) => {
-		console.log("data", data);
 		setSendSuccess(true);
 		timmer = setTimeout(() => {
 			setSendSuccess(false);

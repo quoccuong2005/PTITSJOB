@@ -13,7 +13,6 @@ const Google = (props: { setShowModal: any }) => {
 	const router = useRouter();
 
 	const responseGoogle = async (response: any) => {
-		console.log(response);
 		const res = await postRequest("/auth/login/google", { access_token: response.credential, platform: "Web" });
 		// console.log(res);
 		if (res.data?.accessToken) {

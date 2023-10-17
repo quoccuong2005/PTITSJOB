@@ -45,7 +45,6 @@ const DonViNghienCuu = () => {
         },
       });
       if (res) {
-        console.log("resss", res);
         setDataGioiThieu(res?.data?.data ?? []);
         // setDataChiTiet(res?.data?.[0]);
         setTotal(res?.data?.meta?.pagination?.total ?? 0);
@@ -138,7 +137,6 @@ useEffect(()=>{
           limit={limit}
           total={total}
           handleChangePage={(page) => {
-            console.log("page", page);
             setPage(page);
           }}
         />

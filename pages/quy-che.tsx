@@ -45,7 +45,6 @@ const QuyChe = () => {
         },
       });
       if (res) {
-        console.log("resss", res);
         setDataGioiThieu(res?.data?.data ?? []);
         setTotal(res?.data?.metadata?.total ?? 0);
       }
@@ -75,7 +74,6 @@ const QuyChe = () => {
         }
       );
       if (res) {
-        console.log("resss", res);
         setDataGioiThieu(res?.data?.data ?? []);
         setTotal(res?.data?.meta?.pagination?.total ?? 0);
       }
@@ -178,7 +176,6 @@ const QuyChe = () => {
     },
   ];
   const onSubmit = (data: any) => {
-    console.log("data", data);
     // getData({
     // 	keyword: data?.keyword,
     // 	type: data?.type,
@@ -229,7 +226,6 @@ const QuyChe = () => {
                     option={option}
                     onChange={(val) => {
                       if (val?.value === "Tất cả") {
-                        console.log("cc", condition);
                         delete condition?.coQuanBanHanh;
                         setCondition({ ...condition });
                       } else {
@@ -295,7 +291,6 @@ const QuyChe = () => {
             limit={limit}
             total={total}
             handleChangePage={(page) => {
-              console.log("page", page);
               setPage(page);
             }}
           />

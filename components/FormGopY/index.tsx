@@ -41,7 +41,6 @@ const FormGopY = (props: IProps) => {
 				},
 			});
 			if (res) {
-				console.log("resss cmt", res);
 				setDataComment(res?.data?.data);
 				sortComment(res?.data?.data)
 			}
@@ -64,7 +63,6 @@ const FormGopY = (props: IProps) => {
 			})
 			return{...value,children:obj}
 		})
-		console.log('arr2',arr2)
 	}
 	return (
 		<FormGopYWrapper>

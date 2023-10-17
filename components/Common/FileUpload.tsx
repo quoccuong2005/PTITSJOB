@@ -18,7 +18,6 @@ const FileUpload = (props: {
 			await uploadFile({ file, filename: file.name.split(".")[0], public: true }).then((response) => {
 				const url = response.data?.data?.url;
 				let temp = [...values];
-				console.log("🚀 ~ file: FileUpload.tsx:21 ~ awaituploadFile ~ temp", values);
 				if (multiple) {
 					temp.push(url);
 				} else {

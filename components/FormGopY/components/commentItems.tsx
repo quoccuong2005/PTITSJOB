@@ -29,7 +29,6 @@ const CommentItems = (props: IProps) => {
 	const handleName = (name: string) => {
 		if (name) {
 			let arr = name.split(" ");
-			console.log("rr", arr);
 			return `${arr[0]?.[0]}${arr[1]?.[0] ? arr[1]?.[0] : arr[0]?.[1]}`;
 		} else {
 			return null;
@@ -47,7 +46,6 @@ const CommentItems = (props: IProps) => {
 		);
 	};
 	const handleSubmitForm = async (value: any) => {
-		console.log("data", value);
 		const obj = { ...value, articleId: router?.query?.id, parentId: dataRep?.id };
 		try {
 			const res = await axios.post(`${ip}/cmscore/v5/CommentArticle`, obj);

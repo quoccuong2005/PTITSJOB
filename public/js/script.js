@@ -47,7 +47,6 @@ const GUI = {};
 //   });
 // };
 GUI._initWow = function () {
-  console.log("run run run ")
   if ($(window).width() > 991) {
     wow = new WOW({
       boxClass: "wow", // default

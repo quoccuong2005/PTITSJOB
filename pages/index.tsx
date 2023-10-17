@@ -33,7 +33,6 @@ const Home: NextPage = () => {
 		}
 	};
 	useEffect(() => {
-		console.log("router", router);
 		if (router) {
 			if (router.asPath === "/#tuyen-sinh") {
 				setTypeMenu("tuyen-sinh");

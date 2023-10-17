@@ -33,7 +33,6 @@ const GioiThieu = () => {
           `${ip}/qlkh-dinh-huong-nghien-cuus?locale=${langCode}`
         );
         if (res) {
-          console.log("resss", res);
           setDataGioiThieuNC(res?.data?.data);
           setDataChiTiet(res?.data?.data?.[0]);
         }
@@ -43,7 +42,6 @@ const GioiThieu = () => {
           `${ip}/chien-luoc-phat-trien?locale=${langCode}`
         );
         if (res) {
-          console.log("resss", res);
           setDataGioiThieu(res?.data?.data);
           setDataChiTiet(res?.data?.data?.[0]);
         }

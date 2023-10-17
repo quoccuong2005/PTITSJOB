@@ -84,8 +84,6 @@ export const eventLoginAndRegister = {
 };
 
 export function googleAnalytics() {
-  console.log("GA", process.env.GA);
-  console.log("link", window.location.pathname + window.location.search);
   try {
     ReactGA.initialize(process.env.GA??'G-8Z1H039CBG');
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -101,9 +99,6 @@ export function GA(
   eventValue?: number,
   fieldsObject?: FieldsObject
 ) {
-  // console.log("category:  ",category)
-  // console.log("action:   ",action)
-  // console.log("event Label",JSON.stringify(eventLabel))
 
   ga("send", "event", {
     eventCategory: category,

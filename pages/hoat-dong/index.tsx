@@ -21,7 +21,7 @@ import { AuthContext } from "../../context/AuthContext";
 
 const HoatDong = () => {
   const [dataSelectDeTai, setDataSelectDeTai] = useState<string>("Tất cả");
-  const [dataYear, setDateYear] = useState<string>("Năm 2023");
+  const [dataYear, setDateYear] = useState<string>("Tất cả");
   const [dataChiTiet, setDataChiTiet] = useState<GioiThieu>();
   const [dataGioiThieu, setDataGioiThieu] = useState<DataDeTaiV2[]>([]);
   const [condition, setCondition] = useState<any>();
@@ -48,28 +48,29 @@ const HoatDong = () => {
       //     limit:limit,
       //   },
       // });
-      const res = await axios.get(
-        `${ip}/hoat-dong-khoa-hocs?locale=${langCode}&populate=hinhAnh`,
-        {
-          params: {
-            filters: {
-              kieu: {
-                $eq: type,
+      if (type) {
+        const res = await axios.get(
+          `${ip}/hoat-dong-khoa-hocs?locale=${langCode}&populate=hinhAnh`,
+          {
+            params: {
+              filters: {
+                kieu: {
+                  $eq: type,
+                },
+                ...condition,
               },
-              ...condition,
+              pagination: {
+                page: page,
+                pageSize: limit,
+              },
             },
-            pagination: {
-              page: page,
-              pageSize: limit,
-            },
-          },
+          }
+        );
+        if (res) {
+          setDataGioiThieu(res?.data?.data ?? []);
+          // setDataChiTiet(res?.data?.[0]);
+          setTotal(res?.data?.meta?.pagination?.total ?? 0);
         }
-      );
-      if (res) {
-        console.log("resss", res);
-        setDataGioiThieu(res?.data?.data ?? []);
-        // setDataChiTiet(res?.data?.[0]);
-        setTotal(res?.data?.meta?.pagination?.total ?? 0);
       }
     } catch (e) {
       console.log(e);
@@ -84,7 +85,6 @@ const HoatDong = () => {
 
   const onSubmit = (data: any) => {
     setPage(1);
-    console.log("data", data);
     if (data && data?.keyword !== "" && data?.keyword) {
       setCondition(
         // JSON.stringify({
@@ -183,11 +183,9 @@ const HoatDong = () => {
                 option={type === ETYPEKHOAHOC.CB ? optionCB : option}
                 onChange={(val) => {
                   setPage(1);
-                  console.log("val", val);
                   setDataSelectDeTai(val?.value);
                   if (type === ETYPEKHOAHOC.CB) {
                     if (val?.value === "Tất cả") {
-                      console.log("cc", condition);
                       delete condition?.phamVi;
                       setCondition({ ...condition });
                     } else {
@@ -200,7 +198,6 @@ const HoatDong = () => {
                     }
                   } else {
                     if (val?.value === "Tất cả") {
-                      console.log("cc", condition);
                       delete condition?.capDo;
                       setCondition({ ...condition });
                     } else {
@@ -224,6 +221,7 @@ const HoatDong = () => {
                   setPage(1);
                   if (val?.value === "Tất cả") {
                     delete condition?.ngayDangTai;
+                    delete condition?.namXuatBan;
                     setCondition({ ...condition });
                   } else {
                     setCondition({
@@ -414,7 +412,6 @@ const HoatDong = () => {
           limit={limit}
           total={total}
           handleChangePage={(page) => {
-            console.log("page", page);
             setPage(page);
           }}
         />

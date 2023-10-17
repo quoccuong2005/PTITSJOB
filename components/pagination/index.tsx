@@ -16,7 +16,6 @@ const Pagination = (props: IProps) => {
   useEffect(() => {
     const totalPage = total / limit;
     setTotalPage(totalPage);
-    console.log("total", totalPage);
     let arrPage = [];
     if (totalPage >= 1) {
       for (let i = 1; i <= Math.ceil(totalPage); i++) {
@@ -53,7 +52,6 @@ const Pagination = (props: IProps) => {
     }
   };
   const handleChangePage2 = (val: any) => {
-    console.log("va", val);
     handleChangePage(val?.selected + 1);
   };
   return (

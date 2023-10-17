@@ -126,7 +126,6 @@ const DonViNghienCuu = (props: { dataHome: IDataHome }) => {
               limit={3}
               total={total}
               handleChangePage={(page) => {
-                console.log("page", page);
                 setPage(page);
               }}
             />

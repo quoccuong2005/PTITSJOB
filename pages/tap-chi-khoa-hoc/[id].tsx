@@ -32,7 +32,6 @@ const ChiTiet = () => {
   let contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const onSubmit = async (data: any, callback: any) => {
-    console.log("data", data);
     const obj = { ...data, articleId: router?.query?.id };
     try {
       const res = await axios.post(`${ip}/cmscore/v5/CommentArticle`, obj);
