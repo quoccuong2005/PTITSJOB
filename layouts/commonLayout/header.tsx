@@ -291,7 +291,7 @@ const Header = (props: IProps) => {
                         }
                       }}
                       // href={value?.children?.length > 0 ? "" : value?.linkTo}
-                      className={` mr-[24px] last-of-type:mr-0 text-nav pt-2 cursor-pointer ${value?.link
+                      className={` xl:mr-[24px] lg:mr-[16px] last-of-type:mr-0 text-nav lg:text-[14px] text-[12px] xl:text-[16px] pt-2 cursor-pointer ${value?.link
                         ?.split("?")?.[0]
                         ?.localeCompare(typeMenu) === 0
                         ? `text-white ${isScroll
@@ -700,7 +700,7 @@ const HeaderWrapper = styled.div`
     font-family: "Inter";
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
+    
     line-height: 19px;
   }
   .text-active {
