@@ -13,8 +13,8 @@ import {ip} from "../../api/ip";
 import {AuthContext} from "../../context/AuthContext";
 
 const HomePage = () => {
-	const [dataHome,setDataHome]=useState<any>()
-	const {langCode}=useContext(AuthContext)
+	// const [dataHome,setDataHome]=useState<any>()
+	const {langCode,setDataHome,dataHome}=useContext(AuthContext)
 	const [loading,setLoading]=useState<boolean>(true)
 	const getDataHome = async () => {
 	  try {
@@ -30,11 +30,14 @@ const HomePage = () => {
 		}
 	}
 	useEffect(()=>{
-		getDataHome()
+		if (!dataHome){
+			getDataHome()
+		}
+
 	},[langCode])
 	return (
 		<div className='overflow-hidden'>
-			<BannerHome dataHome={dataHome} loading={loading}/>
+			<BannerHome dataHome={dataHome} />
 			<About dataHome={dataHome}/>
 
 			<TinTuyenSinh dataHome={dataHome}/>

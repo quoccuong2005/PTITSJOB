@@ -8,7 +8,7 @@ import i18n from "../i18n";
 import { USER_ROLE } from "../utils/constant";
 import { getRequest } from "../api";
 import { Auth } from "../api/auth/type";
-import {DataConfig, DataThongTin, MainMenu} from "../utils/interface";
+import { DataConfig, DataThongTin, MainMenu } from "../utils/interface";
 
 const defaultValue: Auth.AuthContextType = {
   isAuthenticated: false,
@@ -33,6 +33,8 @@ const defaultValue: Auth.AuthContextType = {
   setDataThongTin: () => null,
   dataThongTin: {} as DataThongTin,
   menu: [],
+  dataHome: undefined,
+  setDataHome: () => null,
   dataConfig: [],
 };
 export const AuthContext = createContext<Auth.AuthContextType>(defaultValue);
@@ -48,6 +50,7 @@ export const AuthProvider = (props: { children: React.ReactNode }) => {
   const [allApply, setAllApply] = useState<string[]>([]);
   const [allFollow, setAllFollow] = useState<string[]>([]);
   const [dataThongTin, setDataThongTin] = useState<any>();
+  const [dataHome, setDataHome] = useState<any>();
   const [OAuthData, setOAuthData] = useState<Auth.IClientOAuth>(
     {} as Auth.IClientOAuth
   );
@@ -194,6 +197,8 @@ export const AuthProvider = (props: { children: React.ReactNode }) => {
         setDataConfig,
         dataThongTin,
         setDataThongTin,
+        dataHome,
+        setDataHome,
       }}
     >
       {props.children}
