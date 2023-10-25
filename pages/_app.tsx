@@ -12,6 +12,7 @@ import CommonLayout from "../layouts/commonLayout";
 // CSS
 import "react-toastify/dist/ReactToastify.css";
 import "../components/TinyEditor/style.css";
+import 'react-loading-skeleton/dist/skeleton.css'
 import "../styles/global.scss";
 import FlowbiteContext from "../context/FlowbiteContext";
 import { useEffect } from "react";

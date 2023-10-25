@@ -15,14 +15,18 @@ import {AuthContext} from "../../context/AuthContext";
 const HomePage = () => {
 	const [dataHome,setDataHome]=useState<any>()
 	const {langCode}=useContext(AuthContext)
+	const [loading,setLoading]=useState<boolean>(true)
 	const getDataHome = async () => {
 	  try {
+			setLoading(true)
 			const res=await axios.get(`${ip}/qlkh-home-page?populate=deep&locale=${langCode}`);
 			if (res){
 				setDataHome(res?.data?.data?.attributes)
 			}
 		}catch (e) {
 			console.log(e)
+		}finally {
+			setLoading(false)
 		}
 	}
 	useEffect(()=>{
@@ -30,7 +34,7 @@ const HomePage = () => {
 	},[langCode])
 	return (
 		<div className='overflow-hidden'>
-			<BannerHome dataHome={dataHome}/>
+			<BannerHome dataHome={dataHome} loading={loading}/>
 			<About dataHome={dataHome}/>
 
 			<TinTuyenSinh dataHome={dataHome}/>
