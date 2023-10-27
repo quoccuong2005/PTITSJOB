@@ -150,10 +150,10 @@ const HoatDong = () => {
   };
   const optionCB = [
     { value: "Tất cả", label: "Tất cả" },
-    { value: "Trong nước", label: "Trong nước" },
-    { value: "Quốc tế", label: "Quốc tế" },
-    { value: "Hội nghị hội thảo", label: "Hội nghị hội thảo" },
-    { value: "ISI/Scopus", label: "ISI/Scopus" },
+    { value: "Trong nước", label: "Tạp chí trong nước" },
+    { value: "Quốc tế", label: "Tạp chí quốc tế" },
+    { value: "Hội nghị hội thảo", label: "Tạp chí hội nghị hội thảo" },
+    { value: "ISI/Scopus", label: "Tạp chí ISI/Scopus" },
   ];
   const option = [
     { value: "Tất cả", label: "Tất cả" },
