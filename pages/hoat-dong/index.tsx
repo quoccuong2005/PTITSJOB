@@ -86,9 +86,12 @@ const HoatDong = () => {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
-    setDataSelectDeTai(router?.query?.capDo as string);
   }, [router, condition, page, langCode]);
-
+  useEffect(() => {
+    if (router?.query) {
+      setDataSelectDeTai(router?.query?.capDo as string);
+    }
+  }, [router]);
   const onSubmit = (data: any) => {
     setPage(1);
     if (data && data?.keyword !== "" && data?.keyword) {

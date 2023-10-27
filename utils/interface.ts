@@ -913,7 +913,7 @@ export interface IDataHome {
       id: 1;
       tieuDe: "Đề tài KHCN cấp nhà nước";
       capDo: "Cấp nhà nước";
-      kieu: "Đề tài";
+      kieu: string;
       phamVi: "Trong nước";
       moTa: "Trong nước";
       hinhAnh: {

@@ -15,6 +15,7 @@ import { ro } from "date-fns/locale";
 // @ts-ignore
 import Slider from "react-slick";
 import CardHoatDong from "../CardHoatDong";
+import { ETYPEKHOAHOC } from "../../data/enum";
 const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
   const router = useRouter();
   const settings = {
@@ -53,44 +54,61 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
     ],
   };
   useEffect(() => {}, []);
-  if (props?.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.length>0){
+  if (
+    props?.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data
+      ?.length > 0
+  ) {
     return (
       <ChuongTrinhDaoTaoWrapper>
         <div className="bg-[#FFFFFF] py-[50px] px-[20px] lg:px-0">
           <div className="container mx-auto ">
-            <Title title={props?.dataHome?.hoatDongKhoaHoc?.title||"HOẠT ĐỘNG KH, CN & ĐMST"} uppercase={true} />
+            <Title
+              title={
+                props?.dataHome?.hoatDongKhoaHoc?.title ||
+                "HOẠT ĐỘNG KH, CN & ĐMST"
+              }
+              uppercase={true}
+            />
             <div className="hidden lg:grid grid-cols-2 gap-[40px]">
               {props.dataHome?.hoatDongKhoaHoc?.chuDe?.map((val, i) => {
                 // if (i < 3) {
-                  return (
-                    <div
-                      className="cursor-pointer"
+                return (
+                  <div
+                    className="cursor-pointer"
+                    key={i}
+                    onClick={() => {
+                      router.push(
+                        `/hoat-dong/?type=${val?.kieu}&capDo=${
+                          val?.kieu === ETYPEKHOAHOC.CB
+                            ? val?.phamVi
+                            : val?.capDo
+                        }`
+                      );
+                    }}
+                  >
+                    <CardHoatDong
+                      imageUrl={renderImage(
+                        val?.hinhAnh?.data?.attributes?.url
+                      )}
+                      title={val?.tieuDe}
+                      description={val?.moTa ?? ""}
+                      // dateTime={val?.createdAt}
                       key={i}
-                      onClick={() => {
-                        router.push(`/hoat-dong/?type=${val?.kieu}&capDo=${val?.capDo}`);
-                      }}
-                    >
-                      <CardHoatDong
-                        imageUrl={renderImage(val?.hinhAnh?.data?.attributes?.url)}
-                        title={val?.tieuDe}
-                        description={val?.moTa??''}
-                        // dateTime={val?.createdAt}
-                        key={i}
-                        type={"big"}
-                      />
-                      {/*<Card*/}
-                      {/*  data={{*/}
-                      {/*    imageUrl: renderImage(*/}
-                      {/*      val?.attributes?.hinhAnh?.data?.attributes?.url*/}
-                      {/*    ),*/}
-                      {/*    content: val?.attributes?.tieuDe,*/}
-                      {/*    description: val?.attributes?.moTa ?? "",*/}
-                      {/*    dateTime: val?.attributes?.createdAt,*/}
-                      {/*    link: ``,*/}
-                      {/*  }}*/}
-                      {/*/>*/}
-                    </div>
-                  );
+                      type={"big"}
+                    />
+                    {/*<Card*/}
+                    {/*  data={{*/}
+                    {/*    imageUrl: renderImage(*/}
+                    {/*      val?.attributes?.hinhAnh?.data?.attributes?.url*/}
+                    {/*    ),*/}
+                    {/*    content: val?.attributes?.tieuDe,*/}
+                    {/*    description: val?.attributes?.moTa ?? "",*/}
+                    {/*    dateTime: val?.attributes?.createdAt,*/}
+                    {/*    link: ``,*/}
+                    {/*  }}*/}
+                    {/*/>*/}
+                  </div>
+                );
                 // } else {
                 //   return null;
                 // }
@@ -98,33 +116,36 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
             </div>
             <div className="lg:hidden grid grid-cols-1 gap-[40px]">
               <Slider {...settings}>
-              {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.map((val, i) => {
-                return (
-                  <div
-                    className="cursor-pointer sm:pr-[16px]"
-                    key={i}
-                    onClick={() => {
-                      router.push(`/hoat-dong/${val?.id}`);
-                    }}
-                  >
-                    <CardEvent
-                      data={{
-                        imageUrl: renderImage(
-                          val?.attributes?.hinhAnh?.data?.attributes?.url
-                        ),
-                        content: val?.attributes?.tieuDe,
-                        description: val?.attributes?.moTa ?? "",
-                        dateTime: val?.attributes?.createdAt,
-                        link: ``,
-                      }}
-                      type={"small"}
-                    />
-                  </div>
-                );
-              })}
+                {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.map(
+                  (val, i) => {
+                    return (
+                      <div
+                        className="cursor-pointer sm:pr-[16px]"
+                        key={i}
+                        onClick={() => {
+                          router.push(`/hoat-dong/${val?.id}`);
+                        }}
+                      >
+                        <CardEvent
+                          data={{
+                            imageUrl: renderImage(
+                              val?.attributes?.hinhAnh?.data?.attributes?.url
+                            ),
+                            content: val?.attributes?.tieuDe,
+                            description: val?.attributes?.moTa ?? "",
+                            dateTime: val?.attributes?.createdAt,
+                            link: ``,
+                          }}
+                          type={"small"}
+                        />
+                      </div>
+                    );
+                  }
+                )}
               </Slider>
             </div>
-            {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.length > 3 && (
+            {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts
+              ?.data?.length > 3 && (
               <div className="flex justify-center md:mt-[40px] mt-[20px]">
                 <Button
                   type={"primary"}
@@ -141,22 +162,25 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
         </div>
       </ChuongTrinhDaoTaoWrapper>
     );
-  }else {
+  } else {
     return (
       <ChuongTrinhDaoTaoWrapper>
-        <div className='container mx-auto md:py-[50px] py-[20px]'>
+        <div className="container mx-auto md:py-[50px] py-[20px]">
           <div>
             <Title title={"HOẠT ĐỘNG KH, CN & ĐMST"} uppercase={true} />
           </div>
           <div className="w-full h-full justify-center items-center flex flex-col">
-            <img className="mb-[16px]" src="/images/default/no_data.png" alt="image"/>
+            <img
+              className="mb-[16px]"
+              src="/images/default/no_data.png"
+              alt="image"
+            />
             <p className="text-secondary text-sm">Không có dữ liệu</p>
           </div>
         </div>
       </ChuongTrinhDaoTaoWrapper>
-    )
+    );
   }
-
 };
 
 const ChuongTrinhDaoTaoWrapper = styled.div``;
