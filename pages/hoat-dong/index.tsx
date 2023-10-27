@@ -20,12 +20,14 @@ import Pagination from "../../components/pagination";
 import { AuthContext } from "../../context/AuthContext";
 
 const HoatDong = () => {
-  const [dataSelectDeTai, setDataSelectDeTai] = useState<string>("Tất cả");
+  const router = useRouter();
+  const [dataSelectDeTai, setDataSelectDeTai] = useState<string>(
+    (router?.query?.capDo as string) ?? "Tất cả"
+  );
   const [dataYear, setDateYear] = useState<string>("Tất cả");
   const [dataChiTiet, setDataChiTiet] = useState<GioiThieu>();
   const [dataGioiThieu, setDataGioiThieu] = useState<DataDeTaiV2[]>([]);
   const [condition, setCondition] = useState<any>();
-  const router = useRouter();
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(6);
   const [total, setTotal] = useState<number>(0);
@@ -57,6 +59,9 @@ const HoatDong = () => {
                 kieu: {
                   $eq: type,
                 },
+                capDo: {
+                  $eq: router?.query?.capDo,
+                },
                 ...condition,
               },
               pagination: {
@@ -81,6 +86,7 @@ const HoatDong = () => {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
+    setDataSelectDeTai(router?.query?.capDo as string);
   }, [router, condition, page, langCode]);
 
   const onSubmit = (data: any) => {

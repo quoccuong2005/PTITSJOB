@@ -14,6 +14,7 @@ import { renderImage } from "../../utils/util";
 import { ro } from "date-fns/locale";
 // @ts-ignore
 import Slider from "react-slick";
+import CardHoatDong from "../CardHoatDong";
 const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
   const router = useRouter();
   const settings = {
@@ -58,33 +59,41 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
         <div className="bg-[#FFFFFF] py-[50px] px-[20px] lg:px-0">
           <div className="container mx-auto ">
             <Title title={props?.dataHome?.hoatDongKhoaHoc?.title||"HOẠT ĐỘNG KH, CN & ĐMST"} uppercase={true} />
-            <div className="hidden lg:grid grid-cols-1 gap-[40px]">
-              {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data?.map((val, i) => {
-                if (i < 3) {
+            <div className="hidden lg:grid grid-cols-2 gap-[40px]">
+              {props.dataHome?.hoatDongKhoaHoc?.chuDe?.map((val, i) => {
+                // if (i < 3) {
                   return (
                     <div
                       className="cursor-pointer"
                       key={i}
                       onClick={() => {
-                        router.push(`/hoat-dong/${val?.id}`);
+                        router.push(`/hoat-dong/?type=${val?.kieu}&capDo=${val?.capDo}`);
                       }}
                     >
-                      <Card
-                        data={{
-                          imageUrl: renderImage(
-                            val?.attributes?.hinhAnh?.data?.attributes?.url
-                          ),
-                          content: val?.attributes?.tieuDe,
-                          description: val?.attributes?.moTa ?? "",
-                          dateTime: val?.attributes?.createdAt,
-                          link: ``,
-                        }}
+                      <CardHoatDong
+                        imageUrl={renderImage(val?.hinhAnh?.data?.attributes?.url)}
+                        title={val?.tieuDe}
+                        description={val?.moTa??''}
+                        // dateTime={val?.createdAt}
+                        key={i}
+                        type={"big"}
                       />
+                      {/*<Card*/}
+                      {/*  data={{*/}
+                      {/*    imageUrl: renderImage(*/}
+                      {/*      val?.attributes?.hinhAnh?.data?.attributes?.url*/}
+                      {/*    ),*/}
+                      {/*    content: val?.attributes?.tieuDe,*/}
+                      {/*    description: val?.attributes?.moTa ?? "",*/}
+                      {/*    dateTime: val?.attributes?.createdAt,*/}
+                      {/*    link: ``,*/}
+                      {/*  }}*/}
+                      {/*/>*/}
                     </div>
                   );
-                } else {
-                  return null;
-                }
+                // } else {
+                //   return null;
+                // }
               })}
             </div>
             <div className="lg:hidden grid grid-cols-1 gap-[40px]">

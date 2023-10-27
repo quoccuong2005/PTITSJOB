@@ -45,7 +45,8 @@ const Header = (props: IProps) => {
   const searchRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { setDataThongTin, dataThongTin, langCode } = useContext(AuthContext);
+  const { setDataThongTin, dataThongTin, langCode, setLangCode } =
+    useContext(AuthContext);
 
   const [isChangeLang, setIsChangeLang] = useState<boolean>(false);
   const {
@@ -62,6 +63,7 @@ const Header = (props: IProps) => {
   };
   const onChangeLanguage = (e: any, language: string) => {
     props.handleChangeLanguage(language);
+    setLangCode(language);
     setIsChangeLang(false);
   };
   const fetch = async () => {
@@ -235,9 +237,10 @@ const Header = (props: IProps) => {
 
                 <div className="flex">
                   <div
-                    className={`mr-[8px] cursor-pointer ${language === "vi-VN" ? "border-white border" : ""
-                      } hover:border-white hover:border`}
-                    onClick={() => handleChangeLanguage("vi-VN")}
+                    className={`mr-[8px] cursor-pointer ${
+                      language === "vi-VN" ? "border-white border" : ""
+                    } hover:border-white hover:border`}
+                    onClick={() => onChangeLanguage(undefined, "vi-VN")}
                   >
                     <img
                       className="h-[30px] w-[45px]"
@@ -246,9 +249,10 @@ const Header = (props: IProps) => {
                     />
                   </div>
                   <div
-                    className={`cursor-pointer ${language === "en" ? "border-white border" : ""
-                      } hover:border-white hover:border`}
-                    onClick={() => handleChangeLanguage("en")}
+                    className={`cursor-pointer ${
+                      language === "en" ? "border-white border" : ""
+                    } hover:border-white hover:border`}
+                    onClick={() => onChangeLanguage(undefined, "en")}
                   >
                     <img
                       className="h-[30px] w-[45px]"
@@ -263,10 +267,11 @@ const Header = (props: IProps) => {
         </div>
       </div>
       <div
-        className={`label ${isScroll
-          ? "fixed top-0 left-0 w-full bg-primary z-50"
-          : "lg:bg-white bg-primary"
-          } `}
+        className={`label ${
+          isScroll
+            ? "fixed top-0 left-0 w-full bg-primary z-50"
+            : "lg:bg-white bg-primary"
+        } `}
       >
         <div className="  lg:mx-auto lg:py-[20px] py-0  ">
           {/*<div className='logo'>*/}
@@ -291,16 +296,19 @@ const Header = (props: IProps) => {
                         }
                       }}
                       // href={value?.children?.length > 0 ? "" : value?.linkTo}
-                      className={` xl:mr-[24px] lg:mr-[16px] last-of-type:mr-0 text-nav lg:text-[14px] text-[12px] xl:text-[16px] pt-2 cursor-pointer ${value?.link
-                        ?.split("?")?.[0]
-                        ?.localeCompare(typeMenu) === 0
-                        ? `text-white ${isScroll
-                          ? "text-white md:border-b-2  md:border-white-500"
-                          : "text-active md:border-b-2  md:border-primary-500"
-                        } `
-                        : `md:border-none ${isScroll ? "text-white" : "text-black"
-                        }`
-                        } block  `}
+                      className={` xl:mr-[24px] lg:mr-[16px] last-of-type:mr-0 text-nav lg:text-[14px] text-[12px] xl:text-[16px] pt-2 cursor-pointer ${
+                        value?.link
+                          ?.split("?")?.[0]
+                          ?.localeCompare(typeMenu) === 0
+                          ? `text-white ${
+                              isScroll
+                                ? "text-white md:border-b-2  md:border-white-500"
+                                : "text-active md:border-b-2  md:border-primary-500"
+                            } `
+                          : `md:border-none ${
+                              isScroll ? "text-white" : "text-black"
+                            }`
+                      } block  `}
                       key={index}
                     >
                       {value?.trangCon?.length > 0 ? (
@@ -319,12 +327,13 @@ const Header = (props: IProps) => {
                                           router.push(value2?.link);
                                         }
                                       }}
-                                      className={`text-children mr-[40px] cursor-pointer pt-2 ${value2?.link?.localeCompare(
-                                        typeMenu
-                                      ) === 0
-                                        ? "text-active md:border-b-2  md:border-primary-500"
-                                        : "md:border-none"
-                                        } block  hover:border-b hover:border-primary mb-[8px]`}
+                                      className={`text-children mr-[40px] cursor-pointer pt-2 ${
+                                        value2?.link?.localeCompare(
+                                          typeMenu
+                                        ) === 0
+                                          ? "text-active md:border-b-2  md:border-primary-500"
+                                          : "md:border-none"
+                                      } block  hover:border-b hover:border-primary mb-[8px]`}
                                       key={index2}
                                     >
                                       {value2.ten}
@@ -461,7 +470,12 @@ const Header = (props: IProps) => {
                       {/*    })}*/}
                       {/*  </ul>*/}
                       {/*</div>*/}
-                      <div className="cover-ham" onClick={() => { setShowMenu(false) }}></div>
+                      <div
+                        className="cover-ham"
+                        onClick={() => {
+                          setShowMenu(false);
+                        }}
+                      ></div>
                       <div className="ham-menu z-50">
                         <ul>
                           {dataMenu?.map((value, index) => {
@@ -478,16 +492,19 @@ const Header = (props: IProps) => {
                                   }
                                 }}
                                 // href={value?.children?.length > 0 ? "" : value?.linkTo}
-                                className={` mr-[24px] mb-[16px] last-of-type:mr-0 text-nav pt-2 cursor-pointer  ${value?.link
-                                  ?.split("?")?.[0]
-                                  ?.localeCompare(typeMenu) === 0
-                                  ? `text-primary ${isScroll
-                                    ? "text-primary lg:border-b-2  lg:border-primary-500"
-                                    : "text-active lg:border-b-2  lg:border-primary-500"
-                                  } `
-                                  : `lg:border-none ${isScroll ? "text-black" : "text-black"
-                                  }`
-                                  } block  `}
+                                className={` mr-[24px] mb-[16px] last-of-type:mr-0 text-nav pt-2 cursor-pointer  ${
+                                  value?.link
+                                    ?.split("?")?.[0]
+                                    ?.localeCompare(typeMenu) === 0
+                                    ? `text-primary ${
+                                        isScroll
+                                          ? "text-primary lg:border-b-2  lg:border-primary-500"
+                                          : "text-active lg:border-b-2  lg:border-primary-500"
+                                      } `
+                                    : `lg:border-none ${
+                                        isScroll ? "text-black" : "text-black"
+                                      }`
+                                } block  `}
                                 key={index}
                               >
                                 {value?.trangCon?.length > 0 ? (
@@ -507,12 +524,13 @@ const Header = (props: IProps) => {
                                                       router.push(value2?.link);
                                                     }
                                                   }}
-                                                  className={`text-children mr-[40px] cursor-pointer pt-2 ${value2?.link?.localeCompare(
-                                                    typeMenu
-                                                  ) === 0
-                                                    ? "text-active lg:border-b-2  lg:border-primary-500"
-                                                    : "lg:border-none"
-                                                    } block  hover:border-b hover:border-primary mb-[8px]`}
+                                                  className={`text-children mr-[40px] cursor-pointer pt-2 ${
+                                                    value2?.link?.localeCompare(
+                                                      typeMenu
+                                                    ) === 0
+                                                      ? "text-active lg:border-b-2  lg:border-primary-500"
+                                                      : "lg:border-none"
+                                                  } block  hover:border-b hover:border-primary mb-[8px]`}
                                                   key={index2}
                                                 >
                                                   {value2.ten}
@@ -525,19 +543,22 @@ const Header = (props: IProps) => {
                                       style={"light"}
                                       placement="bottom"
                                     >
-
-                                      <div className="text-sm md:text-xl">{value?.ten}</div>
+                                      <div className="text-sm md:text-xl">
+                                        {value?.ten}
+                                      </div>
                                     </Tooltip>
                                   </>
                                 ) : (
-                                  <div className="text-sm md:text-xl">{value?.ten}</div>
+                                  <div className="text-sm md:text-xl">
+                                    {value?.ten}
+                                  </div>
                                 )}
                               </div>
                             );
                           })}
                         </ul>
-                      </div></>
-
+                      </div>
+                    </>
                   )}
                 </div>
                 <div className="relative mr-2 shrink-0" ref={langRef}>
@@ -665,7 +686,7 @@ const HeaderWrapper = styled.div`
     .tooltip-label {
       border-radius: 0px !important;
       padding: 20px 24px !important;
-      margin-left: -24.906px
+      margin-left: -24.906px;
     }
   }
   .search {
@@ -700,7 +721,7 @@ const HeaderWrapper = styled.div`
     font-family: "Inter";
     font-style: normal;
     font-weight: 600;
-    
+
     line-height: 19px;
   }
   .text-active {
@@ -750,7 +771,7 @@ const HeaderWrapper = styled.div`
     //visibility: hidden;
     //transform: translate(110%);
     //z-index: 998;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     animation: slide 0.5s forwards;
     //transition: 1s;
     display: flex;
@@ -759,8 +780,12 @@ const HeaderWrapper = styled.div`
     align-items: center;
   }
   @keyframes slide {
-    from {right: -50%}
-    to {right: 0}
+    from {
+      right: -50%;
+    }
+    to {
+      right: 0;
+    }
   }
 `;
 export default React.memo(Header);

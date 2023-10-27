@@ -82,7 +82,7 @@ const CardEvent = (props: IPorps) => {
               </div>
 
               <div className="card-back cursor-pointer">
-                <div className="title-back px-[20px] flex flex-col justify-center py-[50px]  bg-white">
+                <div className="title-back px-[20px] flex flex-col justify-center pt-[50px]  bg-white">
                   <div className="border-l-2 pl-[12px] lg:border-primary-500 content wow fadeInUp h-full">
                     {props.data.dateTime && (
                       <div className="text-primary time-content flex items-center">
