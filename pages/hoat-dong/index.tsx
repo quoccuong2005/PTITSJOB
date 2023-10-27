@@ -51,24 +51,44 @@ const HoatDong = () => {
       //   },
       // });
       if (type) {
+        let params = {};
+        if (type === ETYPEKHOAHOC.CB) {
+          params = {
+            filters: {
+              kieu: {
+                $eq: type,
+              },
+              phamVi: {
+                $eq: router?.query?.capDo,
+              },
+              ...condition,
+            },
+            pagination: {
+              page: page,
+              pageSize: limit,
+            },
+          };
+        } else {
+          params = {
+            filters: {
+              kieu: {
+                $eq: type,
+              },
+              capDo: {
+                $eq: router?.query?.capDo,
+              },
+              ...condition,
+            },
+            pagination: {
+              page: page,
+              pageSize: limit,
+            },
+          };
+        }
         const res = await axios.get(
           `${ip}/hoat-dong-khoa-hocs?locale=${langCode}&populate=hinhAnh`,
           {
-            params: {
-              filters: {
-                kieu: {
-                  $eq: type,
-                },
-                capDo: {
-                  $eq: router?.query?.capDo,
-                },
-                ...condition,
-              },
-              pagination: {
-                page: page,
-                pageSize: limit,
-              },
-            },
+            params: { ...params },
           }
         );
         if (res) {
