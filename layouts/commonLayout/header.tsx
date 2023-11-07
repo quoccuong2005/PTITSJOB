@@ -296,7 +296,7 @@ const Header = (props: IProps) => {
                         }
                       }}
                       // href={value?.children?.length > 0 ? "" : value?.linkTo}
-                      className={` xl:mr-[24px] lg:mr-[16px] last-of-type:mr-0 text-nav lg:text-[14px] text-[12px] xl:text-[16px] pt-2 cursor-pointer ${
+                      className={` xl:mr-[24px] lg:mr-[16px] last-of-type:mr-0 text-nav lg:text-[14px] text-[12px] 2xl:text-[16px] pt-2 cursor-pointer ${
                         value?.link
                           ?.split("?")?.[0]
                           ?.localeCompare(typeMenu) === 0
