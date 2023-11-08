@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import TableBase, {IColumns} from "../components/tableBase";
+import TableBase, { IColumns } from "../components/tableBase";
 import { dataDanhMuc, dataQuyChe } from "../data";
 import { GioiThieu } from "../utils/interface";
 import { ip } from "../api/ip";
@@ -14,7 +14,7 @@ import moment from "moment";
 import { renderImage } from "../utils/util";
 import TableBaseV2 from "../components/TableBaseV2";
 import Pagination from "../components/pagination";
-import {AuthContext} from "../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 const QuyChe = () => {
   const [sendSuccess, setSendSuccess] = useState<boolean>(false);
@@ -27,7 +27,7 @@ const QuyChe = () => {
   const [condition, setCondition] = useState<any>();
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
-  const {langCode}=useContext(AuthContext)
+  const { langCode } = useContext(AuthContext);
   const [type, setType] = useState<string>();
   const {
     register,
@@ -54,6 +54,10 @@ const QuyChe = () => {
   };
   const getDatav2 = async () => {
     try {
+      let filter =
+        router?.query?.type === "Học viện"
+          ? { coQuanBanHanh: { $eq: router?.query?.type } }
+          : { coQuanBanHanh: { $ne: "Học viện" } };
       const res = await axios.get(
         `${ip}/van-ban-quy-dinhs?locale=${langCode}`,
         {
@@ -62,6 +66,7 @@ const QuyChe = () => {
               kieu: {
                 $eq: type,
               },
+              ...filter,
               ...condition,
             },
             sort: [{ ngayBanHanh: "desc" }],
@@ -83,18 +88,18 @@ const QuyChe = () => {
   };
   useEffect(() => {
     getDatav2();
-  }, [router, page, condition,langCode]);
+  }, [router, page, condition, langCode]);
 
   const columns = [
     {
       title: "STT",
       dataIndex: "index",
-      align:'center',
+      align: "center",
     },
     {
       title: "Số văn bản",
-      dataIndex: ['attributes','so'],
-      align:'center',
+      dataIndex: ["attributes", "so"],
+      align: "center",
       render: (val: any) => {
         return val;
       },
@@ -102,7 +107,7 @@ const QuyChe = () => {
     {
       title: "Ngày ban hành",
       dataIndex: "attributes",
-      align:'center',
+      align: "center",
       render: (val: any) => {
         return val
           ? moment(val?.ngayBanHanh).format("DD/MM/YYYY")
@@ -112,7 +117,7 @@ const QuyChe = () => {
     {
       title: "Thời gian bắt đầu hiệu lực",
       dataIndex: "attributes",
-      align:'center',
+      align: "center",
       render: (val: any) => {
         return val
           ? moment(val?.thoiGianHieuLuc).format("DD/MM/YYYY")
@@ -124,43 +129,30 @@ const QuyChe = () => {
       dataIndex: "attributes",
       width: 300,
       render: (val: any) => {
-        return (
-
-          <div className="w-[250px]">
-            {val?.trichYeu}
-          </div>
-        );
+        return <div className="w-[250px]">{val?.trichYeu}</div>;
       },
     },
     {
       title: "Loại văn bản",
       dataIndex: "attributes",
-      align:'center',
+      align: "center",
       render: (val: any) => {
-       return(
-         <div className="w-[80px]">
-           {val?.loaiVanBan}
-         </div>
-       )
+        return <div className="w-[80px]">{val?.loaiVanBan}</div>;
       },
     },
     {
       title: "Cơ quan ban hành",
       dataIndex: "attributes",
-      align:'center',
+      align: "center",
       render: (val: any) => {
-        return (
-          <div className="w-[80px]">
-            {val?.coQuanBanHanh}
-          </div>
-        );
+        return <div className="w-[80px]">{val?.coQuanBanHanh}</div>;
       },
     },
     {
       title: "Tài liệu đính kèm",
       dataIndex: "attributes",
       width: "200px",
-      align:'center',
+      align: "center",
       render: (val: any) => {
         return (
           <div className="w-[200px] overflow-hidden break-words ">
@@ -190,7 +182,7 @@ const QuyChe = () => {
         {
           ...condition,
           trichYeu: {
-            '$containsi': data?.keyword,
+            $containsi: data?.keyword,
           },
         }
       );
@@ -217,32 +209,32 @@ const QuyChe = () => {
         />
         <div className="mb-[40px]">
           <div className="lg:flex justify-end grid sm:grid-cols-2 grid-cols-1 gap-[16px]">
-            <div className="dropdown lg:mr-[24px] mb-[16px] md:mb-0">
-              <Controller
-                name={"type"}
-                control={control}
-                render={({ field: { onChange, value } }) => (
-                  <DropdownFake
-                    option={option}
-                    onChange={(val) => {
-                      if (val?.value === "Tất cả") {
-                        delete condition?.coQuanBanHanh;
-                        setCondition({ ...condition });
-                      } else {
-                        setCondition({
-                          ...condition,
-                          coQuanBanHanh: {
-                            $eq: val?.value,
-                          },
-                        });
-                      }
-                    }}
-                    value={value}
-                    placeholder={"Văn bản cấp"}
-                  />
-                )}
-              />
-            </div>
+            {/*<div className="dropdown lg:mr-[24px] mb-[16px] md:mb-0">*/}
+            {/*  <Controller*/}
+            {/*    name={"type"}*/}
+            {/*    control={control}*/}
+            {/*    render={({ field: { onChange, value } }) => (*/}
+            {/*      <DropdownFake*/}
+            {/*        option={option}*/}
+            {/*        onChange={(val) => {*/}
+            {/*          if (val?.value === "Tất cả") {*/}
+            {/*            delete condition?.coQuanBanHanh;*/}
+            {/*            setCondition({ ...condition });*/}
+            {/*          } else {*/}
+            {/*            setCondition({*/}
+            {/*              ...condition,*/}
+            {/*              coQuanBanHanh: {*/}
+            {/*                $eq: val?.value,*/}
+            {/*              },*/}
+            {/*            });*/}
+            {/*          }*/}
+            {/*        }}*/}
+            {/*        value={value}*/}
+            {/*        placeholder={"Văn bản cấp"}*/}
+            {/*      />*/}
+            {/*    )}*/}
+            {/*  />*/}
+            {/*</div>*/}
             <div className="">
               <form onSubmit={handleSubmit(onSubmit)} className="h-full">
                 <div className="search flex item-center lg:h-full h-[36px]">
