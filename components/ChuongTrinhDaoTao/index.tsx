@@ -61,17 +61,17 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
     return (
       <ChuongTrinhDaoTaoWrapper>
         <div
-          className="bg-[#FFFFFF] py-[50px] px-[20px] lg:px-0 bg-cover bg-no-repeat relative lg:min-h-[500px] h-[300px]"
+          className="bg-[#FFFFFF] py-[50px] px-[20px] lg:px-0 bg-cover bg-no-repeat relative lg:min-h-[550px] h-[300px]"
           style={{
             backgroundImage: `url(${renderImage(
               props?.dataHome?.hoatDongKhoaHoc?.anhNen?.data?.attributes?.url
             )})`,
           }}
         >
-          <div className="absolute top-0 left-0 bg-[#00000082] w-full h-full z-20">
+          <div className="absolute top-0 left-0 bg-[#00000082] w-full h-full">
 
           </div>
-          <div className={"absolute top-[50px] left-0 h-full w-full z-50"}>
+          <div className={"absolute top-[50px] left-0 h-full w-full"}>
             <div className="container mx-auto z-50">
               <Title
                 title={
