@@ -154,20 +154,20 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                   )}
                 </Slider>
               </div>
-              {props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts
-                ?.data?.length > 3 && (
-                <div className="flex justify-center md:mt-[40px] mt-[20px]">
-                  <Button
-                    type={"primary"}
-                    classname="lg:w-[279px]"
-                    onClick={() => {
-                      router.push(`/hoat-dong?type=Đề tài`);
-                    }}
-                  >
-                    {props?.dataHome?.tieuDeButton}
-                  </Button>
-                </div>
-              )}
+              {/*{props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts*/}
+              {/*  ?.data?.length > 3 && (*/}
+              {/*  <div className="flex justify-center md:mt-[40px] mt-[20px]">*/}
+              {/*    <Button*/}
+              {/*      type={"primary"}*/}
+              {/*      classname="lg:w-[279px]"*/}
+              {/*      onClick={() => {*/}
+              {/*        router.push(`/hoat-dong?type=Đề tài`);*/}
+              {/*      }}*/}
+              {/*    >*/}
+              {/*      {props?.dataHome?.tieuDeButton}*/}
+              {/*    </Button>*/}
+              {/*  </div>*/}
+              {/*)}*/}
             </div>
           </div>
 
