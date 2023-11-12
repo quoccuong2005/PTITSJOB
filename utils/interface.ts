@@ -909,6 +909,74 @@ export interface IDataHome {
   hoatDongKhoaHoc: {
     id: 1;
     title: "HOẠT ĐỘNG KH, CN & ĐMST";
+    anhNen: {
+      data: {
+        id: 26;
+        attributes: {
+          name: "5.png";
+          alternativeText: null;
+          caption: null;
+          width: 1170;
+          height: 557;
+          formats: {
+            thumbnail: {
+              name: "thumbnail_5.png";
+              hash: "thumbnail_5_b9a530ea8e";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 245;
+              height: 117;
+              size: 78.76;
+              url: "/uploads/thumbnail_5_b9a530ea8e.png";
+            };
+            small: {
+              name: "small_5.png";
+              hash: "small_5_b9a530ea8e";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 500;
+              height: 238;
+              size: 306.65;
+              url: "/uploads/small_5_b9a530ea8e.png";
+            };
+            medium: {
+              name: "medium_5.png";
+              hash: "medium_5_b9a530ea8e";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 750;
+              height: 357;
+              size: 663.87;
+              url: "/uploads/medium_5_b9a530ea8e.png";
+            };
+            large: {
+              name: "large_5.png";
+              hash: "large_5_b9a530ea8e";
+              ext: ".png";
+              mime: "image/png";
+              path: null;
+              width: 1000;
+              height: 476;
+              size: 1145.14;
+              url: "/uploads/large_5_b9a530ea8e.png";
+            };
+          };
+          hash: "5_b9a530ea8e";
+          ext: ".png";
+          mime: "image/png";
+          size: 240.46;
+          url: "/uploads/5_b9a530ea8e.png";
+          previewUrl: null;
+          provider: "local";
+          provider_metadata: null;
+          createdAt: "2023-06-10T02:23:09.363Z";
+          updatedAt: "2023-10-14T00:44:58.899Z";
+        };
+      };
+    };
     chuDe: {
       id: 1;
       tieuDe: "Đề tài KHCN cấp nhà nước";

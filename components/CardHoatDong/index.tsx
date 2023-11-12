@@ -10,39 +10,39 @@ interface IProps {
 const CardHoatDong = (props: IProps) => {
   if (props.type === "big") {
     return (
-      <CardBigBannerWrapper className='hover:shadow-xl cursor-pointer bg-[#1421410A] min-h-[277px]'>
+      <CardBigBannerWrapper className='hover:shadow-xl cursor-pointer bg-[#1421410A] '>
         <div className={"flex w-full"}>
-          <div className='relative w-1/2'>
-            <img
-              className="h-full w-full object-cover"
-              src={props.imageUrl}
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // prevents looping
-                currentTarget.src = "/images/default/no_image.png";
-              }}
-              alt={"image"}
-            />
-            {/*<div className='hidden lg:block absolute bottom-0 right-0'>*/}
-            {/*  <div className='box-1 w-[85px] py-[12px] text-center'>{moment(props.dateTime).date()}</div>*/}
-            {/*  <div className='box-2 w-[85px] py-[12px] text-center'>Tháng {moment(props.dateTime).month() + 1}</div>*/}
-            {/*</div>*/}
-          </div>
+          {/*<div className='relative w-1/2'>*/}
+          {/*  <img*/}
+          {/*    className="h-full w-full object-cover"*/}
+          {/*    src={props.imageUrl}*/}
+          {/*    onError={({ currentTarget }) => {*/}
+          {/*      currentTarget.onerror = null; // prevents looping*/}
+          {/*      currentTarget.src = "/images/default/no_image.png";*/}
+          {/*    }}*/}
+          {/*    alt={"image"}*/}
+          {/*  />*/}
+          {/*  <div className='hidden lg:block absolute bottom-0 right-0'>*/}
+          {/*    <div className='box-1 w-[85px] py-[12px] text-center'>{moment(props.dateTime).date()}</div>*/}
+          {/*    <div className='box-2 w-[85px] py-[12px] text-center'>Tháng {moment(props.dateTime).month() + 1}</div>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
           <div className='ml-[30px] py-[14px]  w-1/2'>
             <div className='title-card '>{props.title}</div>
-            <div className='border-t-4 border-primary mb-[8px] w-[64px] mt-[12px]'></div>
+            {/*<div className='border-t-4 border-primary mb-[8px] w-[64px] mt-[12px]'></div>*/}
             {/*<div className='border-t-4 border-primary w-[64px] mb-[12px]'></div>*/}
             {props.description && <div className='title-card-2'>{props.description}</div>}
-            <button className='show-more mt-[12px]'>
-              <div className={"mr-2"}>Xem thêm</div>
-              <svg width='15' height='14' viewBox='0 0 15 14' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
-                <path
-                  d='M0 7H13M13 7L7.7381 1.5M13 7L7.7381 12.5'
-                  stroke='currentColor'
-                  strokeWidth='2'
-                  fill='currentColor'
-                />
-              </svg>
-            </button>
+            {/*<button className='show-more mt-[12px]'>*/}
+            {/*  <div className={"mr-2"}>Xem thêm</div>*/}
+            {/*  <svg width='15' height='14' viewBox='0 0 15 14' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>*/}
+            {/*    <path*/}
+            {/*      d='M0 7H13M13 7L7.7381 1.5M13 7L7.7381 12.5'*/}
+            {/*      stroke='currentColor'*/}
+            {/*      strokeWidth='2'*/}
+            {/*      fill='currentColor'*/}
+            {/*    />*/}
+            {/*  </svg>*/}
+            {/*</button>*/}
           </div>
         </div>
       </CardBigBannerWrapper>
@@ -232,7 +232,7 @@ const CardBigBannerWrapper = styled.div`
 		font-size: 20px;
 		line-height: 28px;
 
-		color: #212529;
+		color: #FFFFFF;
 
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -246,7 +246,7 @@ const CardBigBannerWrapper = styled.div`
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 28px;
-		color: #212529;
+		color: #FFFFFF;
 
 		overflow: hidden;
 		text-overflow: ellipsis;
