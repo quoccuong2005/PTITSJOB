@@ -27,7 +27,7 @@ const CardHoatDong = (props: IProps) => {
           {/*    <div className='box-2 w-[85px] py-[12px] text-center'>Tháng {moment(props.dateTime).month() + 1}</div>*/}
           {/*  </div>*/}
           {/*</div>*/}
-          <div className='ml-[30px] py-[14px]  w-1/2'>
+          <div className='ml-[30px] py-[14px]'>
             <div className='title-card '>{props.title}</div>
             {/*<div className='border-t-4 border-primary mb-[8px] w-[64px] mt-[12px]'></div>*/}
             {/*<div className='border-t-4 border-primary w-[64px] mb-[12px]'></div>*/}
