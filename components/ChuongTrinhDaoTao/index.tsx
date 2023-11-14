@@ -68,9 +68,7 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
             )})`,
           }}
         >
-          <div className="absolute top-0 left-0 bg-[#00000082] w-full h-full">
-
-          </div>
+          <div className="absolute top-0 left-0 bg-[#00000082] w-full h-full"></div>
           <div className={"absolute top-[50px] left-0 h-full w-full"}>
             <div className="container mx-auto z-50">
               <Title
@@ -78,7 +76,7 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                   props?.dataHome?.hoatDongKhoaHoc?.title ||
                   "HOẠT ĐỘNG KH, CN & ĐMST"
                 }
-                type={'default'}
+                type={"default"}
                 uppercase={true}
               />
               <div className="hidden lg:grid grid-cols-2 gap-[40px]">
@@ -90,11 +88,13 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                       key={i}
                       onClick={() => {
                         router.push(
-                          `/hoat-dong/?type=${val?.kieu}&capDo=${
-                            val?.kieu === ETYPEKHOAHOC.CB
-                              ? val?.phamVi
-                              : val?.capDo
-                          }`
+                          val?.duongDan
+                            ? val?.duongDan
+                            : `/hoat-dong/?type=${val?.kieu}&capDo=${
+                                val?.kieu === ETYPEKHOAHOC.CB
+                                  ? val?.phamVi
+                                  : val?.capDo
+                              }`
                         );
                       }}
                     >
@@ -128,30 +128,36 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
               </div>
               <div className="lg:hidden grid grid-cols-1 gap-[40px]">
                 <Slider {...settings}>
-                  {props.dataHome?.hoatDongKhoaHoc?.chuDe?.map(
-                    (val, i) => {
-                      return (
-                        <div
-                          className="cursor-pointer sm:pr-[16px]"
+                  {props.dataHome?.hoatDongKhoaHoc?.chuDe?.map((val, i) => {
+                    return (
+                      <div
+                        className="cursor-pointer sm:pr-[16px]"
+                        key={i}
+                        onClick={() => {
+                          router.push(
+                            val?.duongDan
+                              ? val?.duongDan
+                              : `/hoat-dong/?type=${val?.kieu}&capDo=${
+                                  val?.kieu === ETYPEKHOAHOC.CB
+                                    ? val?.phamVi
+                                    : val?.capDo
+                                }`
+                          );
+                        }}
+                      >
+                        <CardHoatDong
+                          imageUrl={renderImage(
+                            val?.hinhAnh?.data?.attributes?.url
+                          )}
+                          title={val?.tieuDe}
+                          description={val?.moTa ?? ""}
+                          // dateTime={val?.createdAt}
                           key={i}
-                          onClick={() => {
-                            router.push(`/hoat-dong/${val?.id}`);
-                          }}
-                        >
-                          <CardHoatDong
-                            imageUrl={renderImage(
-                              val?.hinhAnh?.data?.attributes?.url
-                            )}
-                            title={val?.tieuDe}
-                            description={val?.moTa ?? ""}
-                            // dateTime={val?.createdAt}
-                            key={i}
-                            type={"big"}
-                          />
-                        </div>
-                      );
-                    }
-                  )}
+                          type={"big"}
+                        />
+                      </div>
+                    );
+                  })}
                 </Slider>
               </div>
               {/*{props.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts*/}
@@ -170,7 +176,6 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
               {/*)}*/}
             </div>
           </div>
-
         </div>
       </ChuongTrinhDaoTaoWrapper>
     );

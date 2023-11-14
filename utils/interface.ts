@@ -979,11 +979,12 @@ export interface IDataHome {
     };
     chuDe: {
       id: 1;
-      tieuDe: "Đề tài KHCN cấp nhà nước";
-      capDo: "Cấp nhà nước";
+      tieuDe: string;
+      capDo: string;
+      duongDan: string;
       kieu: string;
-      phamVi: "Trong nước";
-      moTa: "Trong nước";
+      phamVi: string;
+      moTa: string;
       hinhAnh: {
         data: {
           id: 25;
