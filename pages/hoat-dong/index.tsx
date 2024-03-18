@@ -31,6 +31,7 @@ const HoatDong = () => {
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(6);
   const [total, setTotal] = useState<number>(0);
+  const [currentMenu, setCurrentMenu] = useState({ value: "Tất cả", label: "Tất cả" });
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const [type, setType] = useState<string>();
@@ -201,252 +202,512 @@ const HoatDong = () => {
   useEffect(() => {
     setPage(1);
   }, [type]);
-  return (
-    <HoatDongWrapper>
-      <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] xl:px-0">
-        <div className="mb-[40px]">
-          <Title title={renderDeTaiName(type ?? "")} uppercase={true} />
-          <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
-            <div className="dropdown  sm:mb-0 ">
-              <DropdownFake
-                option={type === ETYPEKHOAHOC.CB ? optionCB : option}
-                onChange={(val) => {
-                  setPage(1);
-                  setDataSelectDeTai(val?.value);
-                  if (type === ETYPEKHOAHOC.CB) {
+
+  if (type === ETYPEKHOAHOC.DT) {
+    return (
+      <HoatDongWrapper>
+        <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] xl:px-0">
+          <div className="mb-[40px]">
+            <Title title={renderDeTaiName(type ?? "")} uppercase={true} />
+          </div>
+          <div className="hidden xl:block mb-[20px]">
+            <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
+              <div className="dropdown  sm:mb-0 ">
+                <DropdownFake
+                  option={optionYear}
+                  onChange={(val) => {
+                    setPage(1);
                     if (val?.value === "Tất cả") {
-                      delete condition?.phamVi;
+                      delete condition?.ngayDangTai;
+                      delete condition?.namXuatBan;
                       setCondition({ ...condition });
                     } else {
                       setCondition({
                         ...condition,
-                        phamVi: {
+                        // ngayDangTai: {
+                        //   $gte: moment()
+                        //     .set("years", +val?.value)
+                        //     .startOf("years")
+                        //     .toISOString(),
+                        //   $lte: moment()
+                        //     .set("years", +val?.value)
+                        //     .endOf("years")
+                        //     .toISOString(),
+                        // },
+                        namXuatBan: {
                           $eq: val?.value,
                         },
                       });
                     }
-                  } else {
-                    if (val?.value === "Tất cả") {
-                      delete condition?.capDo;
-                      setCondition({ ...condition });
-                    } else {
-                      setCondition({
-                        ...condition,
-                        capDo: {
-                          $eq: val?.value,
-                        },
-                      });
-                    }
-                  }
-                }}
-                value={dataSelectDeTai}
-                placeholder={"Đề tài cấp"}
-              />
-            </div>
-            <div className="dropdown  sm:mb-0 ">
-              <DropdownFake
-                option={optionYear}
-                onChange={(val) => {
-                  setPage(1);
-                  if (val?.value === "Tất cả") {
-                    delete condition?.ngayDangTai;
-                    delete condition?.namXuatBan;
-                    setCondition({ ...condition });
-                  } else {
-                    setCondition({
-                      ...condition,
-                      // ngayDangTai: {
-                      //   $gte: moment()
-                      //     .set("years", +val?.value)
-                      //     .startOf("years")
-                      //     .toISOString(),
-                      //   $lte: moment()
-                      //     .set("years", +val?.value)
-                      //     .endOf("years")
-                      //     .toISOString(),
-                      // },
-                      namXuatBan: {
-                        $eq: val?.value,
-                      },
-                    });
-                  }
-                }}
-                value={dataYear}
-                placeholder={"Năm"}
-              />
-            </div>
-            <div className="">
-              <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
-                <div className="search flex item-center lg:h-full h-[36px]">
-                  <div className="relative w-full">
-                    <input
-                      className="w-full"
-                      placeholder={"Tìm kiếm"}
-                      {...register("keyword")}
-                    />
-                    {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
-                    {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
-                    {/*</div>*/}
+                  }}
+                  value={dataYear}
+                  placeholder={"Năm"}
+                />
+              </div>
+              <div className="">
+                <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
+                  <div className="search flex item-center lg:h-full h-[36px]">
+                    <div className="relative w-full">
+                      <input
+                        className="w-full"
+                        placeholder={"Tìm kiếm"}
+                        {...register("keyword")}
+                      />
+                      {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
+                      {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
+                      {/*</div>*/}
+                    </div>
+                    <button type="submit">
+                      <img src={"/images/icons/search-pri.svg"} alt={"image"} />
+                    </button>
                   </div>
-                  <button type="submit">
-                    <img src={"/images/icons/search-pri.svg"} alt={"image"} />
-                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className="grid xl:grid-cols-12 grid-cols-1 gap-[20px]">
+            <div className="xl:col-span-3">
+              <div className="xl:hidden">
+                <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
+                  <div className="dropdown  sm:mb-0 ">
+                    <DropdownFake
+                      option={type === ETYPEKHOAHOC.CB ? optionCB : option}
+                      onChange={(val) => {
+                        setPage(1);
+                        setDataSelectDeTai(val?.value);
+                        if (type === ETYPEKHOAHOC.CB) {
+                          if (val?.value === "Tất cả") {
+                            delete condition?.phamVi;
+                            setCondition({ ...condition });
+                          } else {
+                            setCondition({
+                              ...condition,
+                              phamVi: {
+                                $eq: val?.value,
+                              },
+                            });
+                          }
+                        } else {
+                          if (val?.value === "Tất cả") {
+                            delete condition?.capDo;
+                            setCondition({ ...condition });
+                          } else {
+                            setCondition({
+                              ...condition,
+                              capDo: {
+                                $eq: val?.value,
+                              },
+                            });
+                          }
+                        }
+                      }}
+                      value={dataSelectDeTai}
+                      placeholder={"Đề tài cấp"}
+                    />
+                  </div>
+                  <div className="dropdown  sm:mb-0 ">
+                    <DropdownFake
+                      option={optionYear}
+                      onChange={(val) => {
+                        setPage(1);
+                        if (val?.value === "Tất cả") {
+                          delete condition?.ngayDangTai;
+                          delete condition?.namXuatBan;
+                          setCondition({ ...condition });
+                        } else {
+                          setCondition({
+                            ...condition,
+                            // ngayDangTai: {
+                            //   $gte: moment()
+                            //     .set("years", +val?.value)
+                            //     .startOf("years")
+                            //     .toISOString(),
+                            //   $lte: moment()
+                            //     .set("years", +val?.value)
+                            //     .endOf("years")
+                            //     .toISOString(),
+                            // },
+                            namXuatBan: {
+                              $eq: val?.value,
+                            },
+                          });
+                        }
+                      }}
+                      value={dataYear}
+                      placeholder={"Năm"}
+                    />
+                  </div>
+                  <div className="">
+                    <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
+                      <div className="search flex item-center lg:h-full h-[36px]">
+                        <div className="relative w-full">
+                          <input
+                            className="w-full"
+                            placeholder={"Tìm kiếm"}
+                            {...register("keyword")}
+                          />
+                          {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
+                          {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
+                          {/*</div>*/}
+                        </div>
+                        <button type="submit">
+                          <img src={"/images/icons/search-pri.svg"} alt={"image"} />
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
-              </form>
+              </div>
+
+                <div className="hidden xl:block list-menu col-span-1 pr-[16px] border-r-2">
+                  {option?.map((value, i) => {
+                    return (
+                      <div
+                        className={`item-menu border-b py-[12px] px-[8px] cursor-pointer ${
+                          currentMenu?.value === value?.value ? "active" : ""
+                        }`}
+                        key={i}
+                        onClick={() => {
+                          setCurrentMenu(value)
+
+                          if (value?.value === "Tất cả") {
+                            delete condition?.capDo;
+                            setCondition({ ...condition });
+                          } else {
+                            setCondition({
+                              ...condition,
+                              capDo: {
+                                $eq: value?.value,
+                              },
+                            });
+                          }
+
+
+                        }}
+                      >
+                        {value?.label}
+                      </div>
+                    );
+                  })}
+                </div>
+
+            </div>
+            <div className="xl:col-span-9">
+              {type === ETYPEKHOAHOC.DT && (
+                <>
+                  {dataGioiThieu?.length > 0 ? (
+                    <>
+                      <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
+                        {dataGioiThieu?.map((value, index) => {
+                          return (
+                            <div
+                              onClick={() => {
+                                router.push(
+                                  `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.DT}`
+                                );
+                              }}
+                              key={index}
+                            >
+                              <CardDeTai
+                                data={{
+                                  imageUrl: renderImage(
+                                    value?.attributes?.hinhAnh?.data?.attributes
+                                      ?.url
+                                  ),
+                                  content: value?.attributes?.tieuDe,
+                                  dateTime: value?.attributes?.ngayDangTai,
+                                  type: value?.attributes?.capDo,
+                                  description: value?.attributes?.moTa,
+                                }}
+                                key={index}
+                              />
+                            </div>
+                          );
+                        })}{" "}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="w-full h-full justify-center items-center flex flex-col">
+                        <img
+                          className="mb-[16px]"
+                          src="/images/default/no_data.png"
+                          alt="image"
+                        />
+                        <p className="text-secondary text-sm">
+                          Không có dữ liệu
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
-        {type === ETYPEKHOAHOC.DT && (
-          <>
-            {dataGioiThieu?.length > 0 ? (
-              <>
-                <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
-                  {dataGioiThieu?.map((value, index) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          router.push(
-                            `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.DT}`
-                          );
-                        }}
-                        key={index}
-                      >
-                        <CardDeTai
-                          data={{
-                            imageUrl: renderImage(
-                              value?.attributes?.hinhAnh?.data?.attributes?.url
-                            ),
-                            content: value?.attributes?.tieuDe,
-                            dateTime: value?.attributes?.ngayDangTai,
-                            type: value?.attributes?.capDo,
-                            description: value?.attributes?.moTa,
-                          }}
-                          key={index}
-                        />
-                      </div>
-                    );
-                  })}{" "}
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="w-full h-full justify-center items-center flex flex-col">
-                  <img
-                    className="mb-[16px]"
-                    src="/images/default/no_data.png"
-                    alt="image"
-                  />
-                  <p className="text-secondary text-sm">Không có dữ liệu</p>
-                </div>
-              </>
-            )}
-          </>
-        )}
-        {type === ETYPEKHOAHOC.CB && (
-          <>
-            {dataGioiThieu?.length > 0 ? (
-              <>
-                <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
-                  {dataGioiThieu?.map((value, index) => {
-                    return (
-                      <div
-                        onClick={() => {
-                          router.push(
-                            `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.CB}`
-                          );
-                        }}
-                        key={index}
-                      >
-                        <CardDeTai
-                          data={{
-                            imageUrl: renderImage(
-                              value?.attributes?.hinhAnh?.data?.attributes?.url
-                            ),
-                            content: value?.attributes?.tieuDe,
-                            dateTime: value?.attributes?.ngayDangTai,
-                            type: value?.attributes?.phamVi,
-                            description: value?.attributes?.moTa,
-                          }}
-                          key={index}
-                        />
-                      </div>
-                    );
-                  })}{" "}
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="w-full h-full justify-center items-center flex flex-col">
-                  <img
-                    className="mb-[16px]"
-                    src="/images/default/no_data.png"
-                    alt="image"
-                  />
-                  <p className="text-secondary text-sm">Không có dữ liệu</p>
-                </div>
-              </>
-            )}
-          </>
-        )}
-        {type === ETYPEKHOAHOC.SP && (
-          <>
-            {dataGioiThieu?.length > 0 ? (
-              <>
-                {dataGioiThieu?.map((value, index) => {
-                  return (
-                    <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
-                      <div
-                        onClick={() => {
-                          router.push(
-                            `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.SP}`
-                          );
-                        }}
-                        key={index}
-                      >
-                        <CardDeTai
-                          data={{
-                            imageUrl: renderImage(
-                              value?.attributes?.hinhAnh?.data?.attributes?.url
-                            ),
-                            content: value?.attributes?.tieuDe,
-                            dateTime: value?.attributes?.ngayDangTai,
-                            type: value?.attributes?.kieu,
-                            description: value?.attributes?.moTa,
-                          }}
-                          key={index}
-                        />
-                      </div>
+        <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
+          <Pagination
+            page={page}
+            limit={limit}
+            total={total}
+            handleChangePage={(page) => {
+              setPage(page);
+            }}
+          />
+        </div>
+      </HoatDongWrapper>
+    );
+  } else {
+    return (
+      <HoatDongWrapper>
+        <div className="container mx-auto lg:mt-[50px] mt-[20px] lg:mb-[50px] mb-[20px] px-[20px] xl:px-0">
+          <div className="mb-[40px]">
+            <Title title={renderDeTaiName(type ?? "")} uppercase={true} />
+            <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
+              <div className="dropdown  sm:mb-0 ">
+                <DropdownFake
+                  option={type === ETYPEKHOAHOC.CB ? optionCB : option}
+                  onChange={(val) => {
+                    setPage(1);
+                    setDataSelectDeTai(val?.value);
+                    if (type === ETYPEKHOAHOC.CB) {
+                      if (val?.value === "Tất cả") {
+                        delete condition?.phamVi;
+                        setCondition({ ...condition });
+                      } else {
+                        setCondition({
+                          ...condition,
+                          phamVi: {
+                            $eq: val?.value,
+                          },
+                        });
+                      }
+                    } else {
+                      if (val?.value === "Tất cả") {
+                        delete condition?.capDo;
+                        setCondition({ ...condition });
+                      } else {
+                        setCondition({
+                          ...condition,
+                          capDo: {
+                            $eq: val?.value,
+                          },
+                        });
+                      }
+                    }
+                  }}
+                  value={dataSelectDeTai}
+                  placeholder={"Đề tài cấp"}
+                />
+              </div>
+              <div className="dropdown  sm:mb-0 ">
+                <DropdownFake
+                  option={optionYear}
+                  onChange={(val) => {
+                    setPage(1);
+                    if (val?.value === "Tất cả") {
+                      delete condition?.ngayDangTai;
+                      delete condition?.namXuatBan;
+                      setCondition({ ...condition });
+                    } else {
+                      setCondition({
+                        ...condition,
+                        // ngayDangTai: {
+                        //   $gte: moment()
+                        //     .set("years", +val?.value)
+                        //     .startOf("years")
+                        //     .toISOString(),
+                        //   $lte: moment()
+                        //     .set("years", +val?.value)
+                        //     .endOf("years")
+                        //     .toISOString(),
+                        // },
+                        namXuatBan: {
+                          $eq: val?.value,
+                        },
+                      });
+                    }
+                  }}
+                  value={dataYear}
+                  placeholder={"Năm"}
+                />
+              </div>
+              <div className="">
+                <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
+                  <div className="search flex item-center lg:h-full h-[36px]">
+                    <div className="relative w-full">
+                      <input
+                        className="w-full"
+                        placeholder={"Tìm kiếm"}
+                        {...register("keyword")}
+                      />
+                      {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
+                      {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
+                      {/*</div>*/}
                     </div>
-                  );
-                })}
-              </>
-            ) : (
-              <>
-                <div className="w-full h-full justify-center items-center flex flex-col">
-                  <img
-                    className="mb-[16px]"
-                    src="/images/default/no_data.png"
-                    alt="image"
-                  />
-                  <p className="text-secondary text-sm">Không có dữ liệu</p>
-                </div>
-              </>
-            )}
-          </>
-        )}
-      </div>
-      <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
-        <Pagination
-          page={page}
-          limit={limit}
-          total={total}
-          handleChangePage={(page) => {
-            setPage(page);
-          }}
-        />
-      </div>
-    </HoatDongWrapper>
-  );
+                    <button type="submit">
+                      <img src={"/images/icons/search-pri.svg"} alt={"image"} />
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          {type === ETYPEKHOAHOC.DT && (
+            <>
+              {dataGioiThieu?.length > 0 ? (
+                <>
+                  <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
+                    {dataGioiThieu?.map((value, index) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            router.push(
+                              `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.DT}`
+                            );
+                          }}
+                          key={index}
+                        >
+                          <CardDeTai
+                            data={{
+                              imageUrl: renderImage(
+                                value?.attributes?.hinhAnh?.data?.attributes
+                                  ?.url
+                              ),
+                              content: value?.attributes?.tieuDe,
+                              dateTime: value?.attributes?.ngayDangTai,
+                              type: value?.attributes?.capDo,
+                              description: value?.attributes?.moTa,
+                            }}
+                            key={index}
+                          />
+                        </div>
+                      );
+                    })}{" "}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-full h-full justify-center items-center flex flex-col">
+                    <img
+                      className="mb-[16px]"
+                      src="/images/default/no_data.png"
+                      alt="image"
+                    />
+                    <p className="text-secondary text-sm">Không có dữ liệu</p>
+                  </div>
+                </>
+              )}
+            </>
+          )}
+          {type === ETYPEKHOAHOC.CB && (
+            <>
+              {dataGioiThieu?.length > 0 ? (
+                <>
+                  <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
+                    {dataGioiThieu?.map((value, index) => {
+                      return (
+                        <div
+                          onClick={() => {
+                            router.push(
+                              `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.CB}`
+                            );
+                          }}
+                          key={index}
+                        >
+                          <CardDeTai
+                            data={{
+                              imageUrl: renderImage(
+                                value?.attributes?.hinhAnh?.data?.attributes
+                                  ?.url
+                              ),
+                              content: value?.attributes?.tieuDe,
+                              dateTime: value?.attributes?.ngayDangTai,
+                              type: value?.attributes?.phamVi,
+                              description: value?.attributes?.moTa,
+                            }}
+                            key={index}
+                          />
+                        </div>
+                      );
+                    })}{" "}
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-full h-full justify-center items-center flex flex-col">
+                    <img
+                      className="mb-[16px]"
+                      src="/images/default/no_data.png"
+                      alt="image"
+                    />
+                    <p className="text-secondary text-sm">Không có dữ liệu</p>
+                  </div>
+                </>
+              )}
+            </>
+          )}
+          {type === ETYPEKHOAHOC.SP && (
+            <>
+              {dataGioiThieu?.length > 0 ? (
+                <>
+                  {dataGioiThieu?.map((value, index) => {
+                    return (
+                      <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
+                        <div
+                          onClick={() => {
+                            router.push(
+                              `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.SP}`
+                            );
+                          }}
+                          key={index}
+                        >
+                          <CardDeTai
+                            data={{
+                              imageUrl: renderImage(
+                                value?.attributes?.hinhAnh?.data?.attributes
+                                  ?.url
+                              ),
+                              content: value?.attributes?.tieuDe,
+                              dateTime: value?.attributes?.ngayDangTai,
+                              type: value?.attributes?.kieu,
+                              description: value?.attributes?.moTa,
+                            }}
+                            key={index}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </>
+              ) : (
+                <>
+                  <div className="w-full h-full justify-center items-center flex flex-col">
+                    <img
+                      className="mb-[16px]"
+                      src="/images/default/no_data.png"
+                      alt="image"
+                    />
+                    <p className="text-secondary text-sm">Không có dữ liệu</p>
+                  </div>
+                </>
+              )}
+            </>
+          )}
+        </div>
+        <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
+          <Pagination
+            page={page}
+            limit={limit}
+            total={total}
+            handleChangePage={(page) => {
+              setPage(page);
+            }}
+          />
+        </div>
+      </HoatDongWrapper>
+    );
+  }
 };
 const HoatDongWrapper = styled.div`
   .search {
@@ -475,6 +736,27 @@ const HoatDongWrapper = styled.div`
       align-items: center;
 
       color: #ffffff;
+    }
+  }
+
+  .list-menu {
+    .item-menu {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      /* identical to box height, or 143% */
+
+      color: #000000;
+      &:hover {
+        //background-color: #003d98;
+        color: #de221a;
+      }
+    }
+    .active {
+      color: #de221a;
+      font-weight: 700;
     }
   }
 `;
