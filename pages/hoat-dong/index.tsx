@@ -31,7 +31,10 @@ const HoatDong = () => {
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(6);
   const [total, setTotal] = useState<number>(0);
-  const [currentMenu, setCurrentMenu] = useState({ value: "Tất cả", label: "Tất cả" });
+  const [currentMenu, setCurrentMenu] = useState({
+    value: "Tất cả",
+    label: "Tất cả",
+  });
   const contentRef = useRef<HTMLDivElement>(null);
   let timmer: NodeJS.Timeout | undefined;
   const [type, setType] = useState<string>();
@@ -271,34 +274,21 @@ const HoatDong = () => {
                 <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
                   <div className="dropdown  sm:mb-0 ">
                     <DropdownFake
-                      option={type === ETYPEKHOAHOC.CB ? optionCB : option}
+                      option={option}
                       onChange={(val) => {
                         setPage(1);
                         setDataSelectDeTai(val?.value);
-                        if (type === ETYPEKHOAHOC.CB) {
-                          if (val?.value === "Tất cả") {
-                            delete condition?.phamVi;
-                            setCondition({ ...condition });
-                          } else {
-                            setCondition({
-                              ...condition,
-                              phamVi: {
-                                $eq: val?.value,
-                              },
-                            });
-                          }
+
+                        if (val?.value === "Tất cả") {
+                          delete condition?.capDo;
+                          setCondition({ ...condition });
                         } else {
-                          if (val?.value === "Tất cả") {
-                            delete condition?.capDo;
-                            setCondition({ ...condition });
-                          } else {
-                            setCondition({
-                              ...condition,
-                              capDo: {
-                                $eq: val?.value,
-                              },
-                            });
-                          }
+                          setCondition({
+                            ...condition,
+                            capDo: {
+                              $eq: val?.value,
+                            },
+                          });
                         }
                       }}
                       value={dataSelectDeTai}
@@ -351,7 +341,10 @@ const HoatDong = () => {
                           {/*</div>*/}
                         </div>
                         <button type="submit">
-                          <img src={"/images/icons/search-pri.svg"} alt={"image"} />
+                          <img
+                            src={"/images/icons/search-pri.svg"}
+                            alt={"image"}
+                          />
                         </button>
                       </div>
                     </form>
@@ -359,38 +352,35 @@ const HoatDong = () => {
                 </div>
               </div>
 
-                <div className="hidden xl:block list-menu col-span-1 pr-[16px] border-r-2">
-                  {option?.map((value, i) => {
-                    return (
-                      <div
-                        className={`item-menu border-b py-[12px] px-[8px] cursor-pointer ${
-                          currentMenu?.value === value?.value ? "active" : ""
-                        }`}
-                        key={i}
-                        onClick={() => {
-                          setCurrentMenu(value)
+              <div className="hidden xl:block list-menu col-span-1 pr-[16px] border-r-2">
+                {option?.map((value, i) => {
+                  return (
+                    <div
+                      className={`item-menu border-b py-[12px] px-[8px] cursor-pointer ${
+                        currentMenu?.value === value?.value ? "active" : ""
+                      }`}
+                      key={i}
+                      onClick={() => {
+                        setCurrentMenu(value);
 
-                          if (value?.value === "Tất cả") {
-                            delete condition?.capDo;
-                            setCondition({ ...condition });
-                          } else {
-                            setCondition({
-                              ...condition,
-                              capDo: {
-                                $eq: value?.value,
-                              },
-                            });
-                          }
-
-
-                        }}
-                      >
-                        {value?.label}
-                      </div>
-                    );
-                  })}
-                </div>
-
+                        if (value?.value === "Tất cả") {
+                          delete condition?.capDo;
+                          setCondition({ ...condition });
+                        } else {
+                          setCondition({
+                            ...condition,
+                            capDo: {
+                              $eq: value?.value,
+                            },
+                          });
+                        }
+                      }}
+                    >
+                      {value?.label}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
             <div className="xl:col-span-9">
               {type === ETYPEKHOAHOC.DT && (
