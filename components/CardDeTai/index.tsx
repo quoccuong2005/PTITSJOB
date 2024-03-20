@@ -24,6 +24,27 @@ const CardDeTai = (props: IPorps) => {
           </div>
         );
         break;
+      case "Cấp bộ/Sở/Ban ngành":
+        return (
+          <div className="py-[4px] px-[20px] bg-primary inline-block text-white">
+            {type}
+          </div>
+        );
+        break;
+      case "KHCN trong hợp tác quốc tế":
+        return (
+          <div className="py-[4px] px-[20px] bg-primary inline-block text-white">
+            {type}
+          </div>
+        );
+        break;
+      case "Đề tài sinh viên":
+        return (
+          <div className="py-[4px] px-[20px] bg-primary inline-block text-white">
+            {type}
+          </div>
+        );
+        break;
       case "Cấp bộ":
         return (
           <div className="py-[4px] px-[20px] bg-[#0B8500] inline-block text-white">
@@ -105,10 +126,10 @@ const CardDeTai = (props: IPorps) => {
                   <div className="mb-[8px]">{renderType(props.data.type)}</div>
                 )}
               </div>
-
-              <div className="content-title lg:min-h-[48px]  sm:min-h-[48px]">
+              {props.data.content&& <div className="content-title lg:min-h-[48px]  sm:min-h-[48px]">
                 {props.data.content}
-              </div>
+              </div>}
+
             </div>
             {props.data.dateTime && (
               <div className="time-content flex items-center mb-[16px]">

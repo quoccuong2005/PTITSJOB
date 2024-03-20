@@ -5,17 +5,11 @@ import { DataDeTai, DataDeTaiV2, GioiThieu } from "../../utils/interface";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { ip } from "../../api/ip";
-import { dataDeTai, dataNghienCuu } from "../../data";
-import CardNghienCuu from "../../components/CardNghienCuu";
 import CardDeTai from "../../components/CardDeTai";
-import { Controller, useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import DropdownFake from "../../components/Dropdown";
-import DatePickerFake from "../../components/DatePicker";
-import moment from "moment/moment";
-import { rules } from "../../utils/rules";
 import { renderImage } from "../../utils/util";
 import { ETYPEKHOAHOC } from "../../data/enum";
-import { el } from "date-fns/locale";
 import Pagination from "../../components/pagination";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -105,17 +99,20 @@ const HoatDong = () => {
       console.log(e);
     }
   };
+
   useEffect(() => {
     if (router?.query) {
       getData(router?.query?.type as string);
       setType(router?.query?.type as string);
     }
   }, [router, condition, page, langCode]);
+
   useEffect(() => {
     if (router?.query) {
       setDataSelectDeTai(router?.query?.capDo as string);
     }
   }, [router]);
+
   const onSubmit = (data: any) => {
     setPage(1);
     if (data && data?.keyword !== "" && data?.keyword) {
@@ -269,170 +266,217 @@ const HoatDong = () => {
             </div>
           </div>
           <div className="grid xl:grid-cols-12 grid-cols-1 gap-[20px]">
-            <div className="xl:col-span-3">
-              <div className="xl:hidden">
-                <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
-                  <div className="dropdown  sm:mb-0 ">
-                    <DropdownFake
-                      option={option}
-                      onChange={(val) => {
-                        setPage(1);
-                        setDataSelectDeTai(val?.value);
+            {/*<div className="xl:col-span-3">*/}
+            {/*  <div className="xl:hidden">*/}
+            {/*    <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">*/}
+            {/*      <div className="dropdown  sm:mb-0 ">*/}
+            {/*        <DropdownFake*/}
+            {/*          option={option}*/}
+            {/*          onChange={(val) => {*/}
+            {/*            setPage(1);*/}
+            {/*            setDataSelectDeTai(val?.value);*/}
 
-                        if (val?.value === "Tất cả") {
-                          delete condition?.capDo;
-                          setCondition({ ...condition });
-                        } else {
-                          setCondition({
-                            ...condition,
-                            capDo: {
-                              $eq: val?.value,
-                            },
-                          });
-                        }
-                      }}
-                      value={dataSelectDeTai}
-                      placeholder={"Đề tài cấp"}
-                    />
-                  </div>
-                  <div className="dropdown  sm:mb-0 ">
-                    <DropdownFake
-                      option={optionYear}
-                      onChange={(val) => {
-                        setPage(1);
-                        if (val?.value === "Tất cả") {
-                          delete condition?.ngayDangTai;
-                          delete condition?.namXuatBan;
-                          setCondition({ ...condition });
-                        } else {
-                          setCondition({
-                            ...condition,
-                            // ngayDangTai: {
-                            //   $gte: moment()
-                            //     .set("years", +val?.value)
-                            //     .startOf("years")
-                            //     .toISOString(),
-                            //   $lte: moment()
-                            //     .set("years", +val?.value)
-                            //     .endOf("years")
-                            //     .toISOString(),
-                            // },
-                            namXuatBan: {
-                              $eq: val?.value,
-                            },
-                          });
-                        }
-                      }}
-                      value={dataYear}
-                      placeholder={"Năm"}
-                    />
-                  </div>
-                  <div className="">
-                    <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
-                      <div className="search flex item-center lg:h-full h-[36px]">
-                        <div className="relative w-full">
-                          <input
-                            className="w-full"
-                            placeholder={"Tìm kiếm"}
-                            {...register("keyword")}
-                          />
-                          {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
-                          {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
-                          {/*</div>*/}
-                        </div>
-                        <button type="submit">
-                          <img
-                            src={"/images/icons/search-pri.svg"}
-                            alt={"image"}
-                          />
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
+            {/*            if (val?.value === "Tất cả") {*/}
+            {/*              delete condition?.capDo;*/}
+            {/*              setCondition({ ...condition });*/}
+            {/*            } else {*/}
+            {/*              setCondition({*/}
+            {/*                ...condition,*/}
+            {/*                capDo: {*/}
+            {/*                  $eq: val?.value,*/}
+            {/*                },*/}
+            {/*              });*/}
+            {/*            }*/}
+            {/*          }}*/}
+            {/*          value={dataSelectDeTai}*/}
+            {/*          placeholder={"Đề tài cấp"}*/}
+            {/*        />*/}
+            {/*      </div>*/}
+            {/*      <div className="dropdown  sm:mb-0 ">*/}
+            {/*        <DropdownFake*/}
+            {/*          option={optionYear}*/}
+            {/*          onChange={(val) => {*/}
+            {/*            setPage(1);*/}
+            {/*            if (val?.value === "Tất cả") {*/}
+            {/*              delete condition?.ngayDangTai;*/}
+            {/*              delete condition?.namXuatBan;*/}
+            {/*              setCondition({ ...condition });*/}
+            {/*            } else {*/}
+            {/*              setCondition({*/}
+            {/*                ...condition,*/}
+            {/*                // ngayDangTai: {*/}
+            {/*                //   $gte: moment()*/}
+            {/*                //     .set("years", +val?.value)*/}
+            {/*                //     .startOf("years")*/}
+            {/*                //     .toISOString(),*/}
+            {/*                //   $lte: moment()*/}
+            {/*                //     .set("years", +val?.value)*/}
+            {/*                //     .endOf("years")*/}
+            {/*                //     .toISOString(),*/}
+            {/*                // },*/}
+            {/*                namXuatBan: {*/}
+            {/*                  $eq: val?.value,*/}
+            {/*                },*/}
+            {/*              });*/}
+            {/*            }*/}
+            {/*          }}*/}
+            {/*          value={dataYear}*/}
+            {/*          placeholder={"Năm"}*/}
+            {/*        />*/}
+            {/*      </div>*/}
+            {/*      <div className="">*/}
+            {/*        <form className="h-full" onSubmit={handleSubmit(onSubmit)}>*/}
+            {/*          <div className="search flex item-center lg:h-full h-[36px]">*/}
+            {/*            <div className="relative w-full">*/}
+            {/*              <input*/}
+            {/*                className="w-full"*/}
+            {/*                placeholder={"Tìm kiếm"}*/}
+            {/*                {...register("keyword")}*/}
+            {/*              />*/}
+            {/*              /!*<div className='icon absolute top-[9.5px] left-[14.5px]'>*!/*/}
+            {/*              /!*	<img src={"/images/icons/search.svg"} alt={"image"} />*!/*/}
+            {/*              /!*</div>*!/*/}
+            {/*            </div>*/}
+            {/*            <button type="submit">*/}
+            {/*              <img*/}
+            {/*                src={"/images/icons/search-pri.svg"}*/}
+            {/*                alt={"image"}*/}
+            {/*              />*/}
+            {/*            </button>*/}
+            {/*          </div>*/}
+            {/*        </form>*/}
+            {/*      </div>*/}
+            {/*    </div>*/}
+            {/*  </div>*/}
 
-              <div className="hidden xl:block list-menu col-span-1 pr-[16px] border-r-2">
+            {/*  <div className="hidden xl:block list-menu col-span-1 pr-[16px] border-r-2">*/}
+            {/*    {option?.map((value, i) => {*/}
+            {/*      return (*/}
+            {/*        <div*/}
+            {/*          className={`item-menu border-b py-[12px] px-[8px] cursor-pointer ${*/}
+            {/*            currentMenu?.value === value?.value ? "active" : ""*/}
+            {/*          }`}*/}
+            {/*          key={i}*/}
+            {/*          onClick={() => {*/}
+            {/*            setCurrentMenu(value);*/}
+
+            {/*            if (value?.value === "Tất cả") {*/}
+            {/*              delete condition?.capDo;*/}
+            {/*              setCondition({ ...condition });*/}
+            {/*            } else {*/}
+            {/*              setCondition({*/}
+            {/*                ...condition,*/}
+            {/*                capDo: {*/}
+            {/*                  $eq: value?.value,*/}
+            {/*                },*/}
+            {/*              });*/}
+            {/*            }*/}
+            {/*          }}*/}
+            {/*        >*/}
+            {/*          {value?.label}*/}
+            {/*        </div>*/}
+            {/*      );*/}
+            {/*    })}*/}
+            {/*  </div>*/}
+            {/*</div>*/}
+            <div className="col-span-12">
+              <div className="grid grid-cols-2 gap-[20px]">
                 {option?.map((value, i) => {
-                  return (
-                    <div
-                      className={`item-menu border-b py-[12px] px-[8px] cursor-pointer ${
-                        currentMenu?.value === value?.value ? "active" : ""
-                      }`}
-                      key={i}
-                      onClick={() => {
-                        setCurrentMenu(value);
+                  if (value?.value !== "Tất cả")
+                    return (
+                     <div onClick={()=>{
+                       router.push(`/hoat-dong-de-tai?type=${value?.value}`)
+                     }}>
+                       <CardDeTai
+                         data={{
+                           imageUrl: "",
+                           content: "",
+                           dateTime: "",
+                           type: value?.value,
+                           description: "",
+                         }}
+                         key={i}
+                       />
+                     </div>
 
-                        if (value?.value === "Tất cả") {
-                          delete condition?.capDo;
-                          setCondition({ ...condition });
-                        } else {
-                          setCondition({
-                            ...condition,
-                            capDo: {
-                              $eq: value?.value,
-                            },
-                          });
-                        }
-                      }}
-                    >
-                      {value?.label}
-                    </div>
-                  );
+                      // <div
+                      //   className={`item-menu border-b py-[12px] px-[8px] cursor-pointer ${
+                      //     currentMenu?.value === value?.value ? "active" : ""
+                      //   }`}
+                      //   key={i}
+                      //   onClick={() => {
+                      //     setCurrentMenu(value);
+                      //
+                      //     if (value?.value === "Tất cả") {
+                      //       delete condition?.capDo;
+                      //       setCondition({ ...condition });
+                      //     } else {
+                      //       setCondition({
+                      //         ...condition,
+                      //         capDo: {
+                      //           $eq: value?.value,
+                      //         },
+                      //       });
+                      //     }
+                      //   }}
+                      // >
+                      //   {value?.label}
+                      // </div>
+                    );
                 })}
               </div>
             </div>
-            <div className="xl:col-span-9">
-              {type === ETYPEKHOAHOC.DT && (
-                <>
-                  {dataGioiThieu?.length > 0 ? (
-                    <>
-                      <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
-                        {dataGioiThieu?.map((value, index) => {
-                          return (
-                            <div
-                              onClick={() => {
-                                router.push(
-                                  `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.DT}`
-                                );
-                              }}
-                              key={index}
-                            >
-                              <CardDeTai
-                                data={{
-                                  imageUrl: renderImage(
-                                    value?.attributes?.hinhAnh?.data?.attributes
-                                      ?.url
-                                  ),
-                                  content: value?.attributes?.tieuDe,
-                                  dateTime: value?.attributes?.ngayDangTai,
-                                  type: value?.attributes?.capDo,
-                                  description: value?.attributes?.moTa,
-                                }}
-                                key={index}
-                              />
-                            </div>
-                          );
-                        })}{" "}
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="w-full h-full justify-center items-center flex flex-col">
-                        <img
-                          className="mb-[16px]"
-                          src="/images/default/no_data.png"
-                          alt="image"
-                        />
-                        <p className="text-secondary text-sm">
-                          Không có dữ liệu
-                        </p>
-                      </div>
-                    </>
-                  )}
-                </>
-              )}
-            </div>
+            {/*<div className="xl:col-span-9">*/}
+            {/*  {type === ETYPEKHOAHOC.DT && (*/}
+            {/*    <>*/}
+            {/*      {dataGioiThieu?.length > 0 ? (*/}
+            {/*        <>*/}
+            {/*          <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">*/}
+            {/*            {dataGioiThieu?.map((value, index) => {*/}
+            {/*              return (*/}
+            {/*                <div*/}
+            {/*                  onClick={() => {*/}
+            {/*                    router.push(*/}
+            {/*                      `/hoat-dong/${value?.id}?type=${ETYPEKHOAHOC.DT}`*/}
+            {/*                    );*/}
+            {/*                  }}*/}
+            {/*                  key={index}*/}
+            {/*                >*/}
+            {/*                  <CardDeTai*/}
+            {/*                    data={{*/}
+            {/*                      imageUrl: renderImage(*/}
+            {/*                        value?.attributes?.hinhAnh?.data?.attributes*/}
+            {/*                          ?.url*/}
+            {/*                      ),*/}
+            {/*                      content: value?.attributes?.tieuDe,*/}
+            {/*                      dateTime: value?.attributes?.ngayDangTai,*/}
+            {/*                      type: value?.attributes?.capDo,*/}
+            {/*                      description: value?.attributes?.moTa,*/}
+            {/*                    }}*/}
+            {/*                    key={index}*/}
+            {/*                  />*/}
+            {/*                </div>*/}
+            {/*              );*/}
+            {/*            })}{" "}*/}
+            {/*          </div>*/}
+            {/*        </>*/}
+            {/*      ) : (*/}
+            {/*        <>*/}
+            {/*          <div className="w-full h-full justify-center items-center flex flex-col">*/}
+            {/*            <img*/}
+            {/*              className="mb-[16px]"*/}
+            {/*              src="/images/default/no_data.png"*/}
+            {/*              alt="image"*/}
+            {/*            />*/}
+            {/*            <p className="text-secondary text-sm">*/}
+            {/*              Không có dữ liệu*/}
+            {/*            </p>*/}
+            {/*          </div>*/}
+            {/*        </>*/}
+            {/*      )}*/}
+            {/*    </>*/}
+            {/*  )}*/}
+            {/*</div>*/}
           </div>
         </div>
         <div className="show-more flex items-center justify-center md:mt-[16px] cursor-pointer mb-[50px]">
