@@ -380,7 +380,7 @@ const HoatDong = () => {
             {/*  </div>*/}
             {/*</div>*/}
             <div className="col-span-12">
-              <div className="grid grid-cols-2 gap-[20px]">
+              <div className="grid xl:grid-cols-2 col-span-1 gap-[20px]">
                 {option?.map((value, i) => {
                   if (value?.value !== "Tất cả")
                     return (
