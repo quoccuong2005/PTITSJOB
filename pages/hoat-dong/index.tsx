@@ -210,61 +210,61 @@ const HoatDong = () => {
           <div className="mb-[40px]">
             <Title title={renderDeTaiName(type ?? "")} uppercase={true} />
           </div>
-          <div className="hidden xl:block mb-[20px]">
-            <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">
-              <div className="dropdown  sm:mb-0 ">
-                <DropdownFake
-                  option={optionYear}
-                  onChange={(val) => {
-                    setPage(1);
-                    if (val?.value === "Tất cả") {
-                      delete condition?.ngayDangTai;
-                      delete condition?.namXuatBan;
-                      setCondition({ ...condition });
-                    } else {
-                      setCondition({
-                        ...condition,
-                        // ngayDangTai: {
-                        //   $gte: moment()
-                        //     .set("years", +val?.value)
-                        //     .startOf("years")
-                        //     .toISOString(),
-                        //   $lte: moment()
-                        //     .set("years", +val?.value)
-                        //     .endOf("years")
-                        //     .toISOString(),
-                        // },
-                        namXuatBan: {
-                          $eq: val?.value,
-                        },
-                      });
-                    }
-                  }}
-                  value={dataYear}
-                  placeholder={"Năm"}
-                />
-              </div>
-              <div className="">
-                <form className="h-full" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="search flex item-center lg:h-full h-[36px]">
-                    <div className="relative w-full">
-                      <input
-                        className="w-full"
-                        placeholder={"Tìm kiếm"}
-                        {...register("keyword")}
-                      />
-                      {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
-                      {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
-                      {/*</div>*/}
-                    </div>
-                    <button type="submit">
-                      <img src={"/images/icons/search-pri.svg"} alt={"image"} />
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+          {/*<div className="hidden xl:block mb-[20px]">*/}
+          {/*  <div className="lg:flex lg:justify-end  lg:flex-row grid sm:grid-cols-3 grid-cols-1 gap-[16px]">*/}
+          {/*    <div className="dropdown  sm:mb-0 ">*/}
+          {/*      <DropdownFake*/}
+          {/*        option={optionYear}*/}
+          {/*        onChange={(val) => {*/}
+          {/*          setPage(1);*/}
+          {/*          if (val?.value === "Tất cả") {*/}
+          {/*            delete condition?.ngayDangTai;*/}
+          {/*            delete condition?.namXuatBan;*/}
+          {/*            setCondition({ ...condition });*/}
+          {/*          } else {*/}
+          {/*            setCondition({*/}
+          {/*              ...condition,*/}
+          {/*              // ngayDangTai: {*/}
+          {/*              //   $gte: moment()*/}
+          {/*              //     .set("years", +val?.value)*/}
+          {/*              //     .startOf("years")*/}
+          {/*              //     .toISOString(),*/}
+          {/*              //   $lte: moment()*/}
+          {/*              //     .set("years", +val?.value)*/}
+          {/*              //     .endOf("years")*/}
+          {/*              //     .toISOString(),*/}
+          {/*              // },*/}
+          {/*              namXuatBan: {*/}
+          {/*                $eq: val?.value,*/}
+          {/*              },*/}
+          {/*            });*/}
+          {/*          }*/}
+          {/*        }}*/}
+          {/*        value={dataYear}*/}
+          {/*        placeholder={"Năm"}*/}
+          {/*      />*/}
+          {/*    </div>*/}
+          {/*    <div className="">*/}
+          {/*      <form className="h-full" onSubmit={handleSubmit(onSubmit)}>*/}
+          {/*        <div className="search flex item-center lg:h-full h-[36px]">*/}
+          {/*          <div className="relative w-full">*/}
+          {/*            <input*/}
+          {/*              className="w-full"*/}
+          {/*              placeholder={"Tìm kiếm"}*/}
+          {/*              {...register("keyword")}*/}
+          {/*            />*/}
+          {/*            /!*<div className='icon absolute top-[9.5px] left-[14.5px]'>*!/*/}
+          {/*            /!*	<img src={"/images/icons/search.svg"} alt={"image"} />*!/*/}
+          {/*            /!*</div>*!/*/}
+          {/*          </div>*/}
+          {/*          <button type="submit">*/}
+          {/*            <img src={"/images/icons/search-pri.svg"} alt={"image"} />*/}
+          {/*          </button>*/}
+          {/*        </div>*/}
+          {/*      </form>*/}
+          {/*    </div>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
           <div className="grid xl:grid-cols-12 grid-cols-1 gap-[20px]">
             {/*<div className="xl:col-span-3">*/}
             {/*  <div className="xl:hidden">*/}
