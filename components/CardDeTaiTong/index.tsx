@@ -26,14 +26,14 @@ const CardDeTaiTong = (props: IPorps) => {
         break;
       case "Cấp bộ/Sở/Ban ngành":
         return (
-          <div className="py-[4px] px-[20px] bg-primary inline-block text-white">
+          <div className="py-[4px] px-[20px] bg-[#FEA805] inline-block text-white">
             {type}
           </div>
         );
         break;
       case "KHCN trong hợp tác quốc tế":
         return (
-          <div className="py-[4px] px-[20px] bg-primary inline-block text-white">
+          <div className="py-[4px] px-[20px] bg-[#0B8500] inline-block text-white">
             {type}
           </div>
         );
