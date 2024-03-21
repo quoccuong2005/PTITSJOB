@@ -12,6 +12,7 @@ import { renderImage } from "../../utils/util";
 import { ETYPEKHOAHOC } from "../../data/enum";
 import Pagination from "../../components/pagination";
 import { AuthContext } from "../../context/AuthContext";
+import CardDeTaiTong from "../../components/CardDeTaiTong";
 
 const HoatDong = () => {
   const router = useRouter();
@@ -380,16 +381,16 @@ const HoatDong = () => {
             {/*  </div>*/}
             {/*</div>*/}
             <div className="col-span-12">
-              <div className="grid xl:grid-cols-2 col-span-1 gap-[20px]">
+              <div className="grid xl:grid-cols-3 col-span-1 gap-[20px]">
                 {option?.map((value, i) => {
                   if (value?.value !== "Tất cả")
                     return (
                      <div onClick={()=>{
                        router.push(`/hoat-dong-de-tai?type=${value?.value}`)
                      }}>
-                       <CardDeTai
+                       <CardDeTaiTong
                          data={{
-                           imageUrl: "",
+                           imageUrl: "https://quantri-khcn.ptit.edu.vn/uploads/tin_1_5d2b1446c3.png",
                            content: "",
                            dateTime: "",
                            type: value?.value,
