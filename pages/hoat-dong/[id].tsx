@@ -32,7 +32,7 @@ const ChiTietHoatDong = () => {
       title: "STT",
       dataIndex: "index",
       align:'center',
-      width: "80px",
+      width: "60px",
     },
     {
       title: "Tên đề tài",
@@ -52,6 +52,7 @@ const ChiTietHoatDong = () => {
       title: "Chủ nhiệm đề tài",
       dataIndex: ['attributes',"chuNhiemDeTai"],
       align:'center',
+      width: "200px",
     },
     {
       title: "Thời gian thực hiện",
@@ -60,8 +61,8 @@ const ChiTietHoatDong = () => {
       render: (val: any, record: any) => {
         return (
           <>
-            {moment(val).format("DD/MM/YYYY")} -{" "}
-            {moment(record?.thoiGianThucHienKetThuc).format("DD/MM/YYYY")}
+            {moment(val).format("YYYY")} -{" "}
+            {moment(record?.thoiGianThucHienKetThuc).format("YYYY")}
           </>
         );
       },
@@ -71,7 +72,7 @@ const ChiTietHoatDong = () => {
       align:'center',
       dataIndex: ['attributes',"thoiGianNghiemThu"],
       render: (val: any, record: any) => {
-        return <>{moment(val).format("DD/MM/YYYY")}</>;
+        return <>{moment(val).format("YYYY")}</>;
       },
     },
   ];

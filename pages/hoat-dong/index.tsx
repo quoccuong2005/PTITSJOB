@@ -390,7 +390,7 @@ const HoatDong = () => {
                      }}>
                        <CardDeTaiTong
                          data={{
-                           imageUrl: "https://quantri-khcn.ptit.edu.vn/uploads/tin_1_5d2b1446c3.png",
+                           imageUrl: "https://quantri-khcn.ptit.edu.vn/uploads/Logo_PTIT_b939f9b346.png",
                            content: "",
                            dateTime: "",
                            type: value?.value,

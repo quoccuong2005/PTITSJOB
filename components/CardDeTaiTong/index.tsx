@@ -99,17 +99,19 @@ const CardDeTaiTong = (props: IPorps) => {
           style={props.style}
         >
           <div className="relative">
-            <img
-              className={
-                "image-card wow fadeInUp lg:h-[214px] h-[214px] object-cover"
-              }
-              src={props.data.imageUrl}
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // prevents looping
-                currentTarget.src = "/images/default/no_image.png";
-              }}
-              alt={"image"}
-            />
+         <div className="flex justify-center">
+           <img
+             className={
+               "image-card wow fadeInUp lg:h-[214px] h-[214px] object-cover"
+             }
+             src={props.data.imageUrl}
+             onError={({ currentTarget }) => {
+               currentTarget.onerror = null; // prevents looping
+               currentTarget.src = "/images/default/no_image.png";
+             }}
+             alt={"image"}
+           />
+         </div>
             <div className="block lg:hidden absolute left-0 bottom-[-10px] w-full">
               <div className="w-full flex justify-center">
                 {props.data.type && (
@@ -169,7 +171,7 @@ const CardDeTaiWrapper = styled.div`
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
     img {
       //max-width: 262px;
-      width: 100%;
+      //width: 100%;
     }
     .content-title {
       overflow: hidden;
