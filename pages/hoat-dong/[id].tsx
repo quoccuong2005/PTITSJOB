@@ -9,7 +9,10 @@ import { dataDanhMuc } from "../../data";
 import { axios } from "../../api";
 import { ip } from "../../api/ip";
 import { useRouter } from "next/router";
-import {DataDetailKhoaHoc, DataDetailTableKhoaHoc} from "../../utils/interface";
+import {
+  DataDetailKhoaHoc,
+  DataDetailTableKhoaHoc,
+} from "../../utils/interface";
 import TableBaseV2 from "../../components/TableBaseV2";
 import { ETYPEKHOAHOC } from "../../data/enum";
 import { AuthContext } from "../../context/AuthContext";
@@ -22,7 +25,9 @@ const ChiTietHoatDong = () => {
   const [content, setContent] = useState<any>(null);
   const [type, setType] = useState<string>();
   const [dataDetail, setDataDetail] = useState<DataDetailKhoaHoc>();
-  const [dataDetailTable, setDataDetailTable] = useState<DataDetailTableKhoaHoc[]>([]);
+  const [dataDetailTable, setDataDetailTable] = useState<
+    DataDetailTableKhoaHoc[]
+  >([]);
   const [page, setPage] = useState<number>(1);
   const [limit, setLimit] = useState<number>(6);
   const [total, setTotal] = useState<number>(0);
@@ -31,12 +36,12 @@ const ChiTietHoatDong = () => {
     {
       title: "STT",
       dataIndex: "index",
-      align:'center',
+      align: "center",
       width: "60px",
     },
     {
       title: "Tên đề tài",
-      dataIndex: ['attributes',"tenDeTai"],
+      dataIndex: ["attributes", "tenDeTai"],
       width: "300px",
       // align:'center',
       render: (val: any) => {
@@ -45,19 +50,19 @@ const ChiTietHoatDong = () => {
     },
     {
       title: "Mã đề tài",
-      dataIndex: ['attributes',"maDeTai"],
-      align:'center',
+      dataIndex: ["attributes", "maDeTai"],
+      align: "center",
     },
     {
       title: "Chủ nhiệm đề tài",
-      dataIndex: ['attributes',"chuNhiemDeTai"],
-      align:'center',
+      dataIndex: ["attributes", "chuNhiemDeTai"],
+      align: "center",
       width: "200px",
     },
     {
       title: "Thời gian thực hiện",
-      align:'center',
-      dataIndex: ['attributes',"thoiGianThucHienBatDau"],
+      align: "center",
+      dataIndex: ["attributes", "thoiGianThucHienBatDau"],
       render: (val: any, record: any) => {
         return (
           <>
@@ -69,8 +74,8 @@ const ChiTietHoatDong = () => {
     },
     {
       title: "Thời gian nghiệm thu",
-      align:'center',
-      dataIndex: ['attributes',"thoiGianNghiemThu"],
+      align: "center",
+      dataIndex: ["attributes", "thoiGianNghiemThu"],
       render: (val: any, record: any) => {
         return <>{moment(val).format("YYYY")}</>;
       },
@@ -80,32 +85,34 @@ const ChiTietHoatDong = () => {
     {
       title: "STT",
       dataIndex: "index",
-      align:'center',
+      align: "center",
       width: "80px",
     },
     {
       title: "Tên bài báo",
-      align:'center',
-      dataIndex: ['attributes',"tenDeTai"],
+      align: "center",
+      dataIndex: ["attributes", "tenDeTai"],
     },
     {
       title: "Tên tác giả",
-      align:'center',
-      dataIndex: ['attributes',"chuNhiemDeTai"],
+      align: "center",
+      dataIndex: ["attributes", "chuNhiemDeTai"],
     },
     {
       title: "Tạp chí/Hội nghị hội thảo",
-      align:'center',
-      dataIndex: ['attributes',"tapChiHoiNghi"],
+      align: "center",
+      dataIndex: ["attributes", "tapChiHoiNghi"],
     },
   ];
   const getData = async (id: string) => {
     try {
-      const res = await axios.get(
-        `${ip}/khoa-hoc-cong-nghe/${id}?locale=${langCode}`
-      );
-      if (res) {
-        setDataDetail(res?.data);
+      if (id) {
+        const res = await axios.get(
+          `${ip}/khoa-hoc-cong-nghe/${id}?locale=${langCode}`
+        );
+        if (res) {
+          setDataDetail(res?.data);
+        }
       }
     } catch (e) {
       console.log(e);
@@ -113,25 +120,27 @@ const ChiTietHoatDong = () => {
   };
   const getDataDetail = async (id: string) => {
     try {
-      const res = await axios.get(
-        `${ip}/qlkh-chi-tiet-hoat-dong-kh-cn-and-dmsts?locale=${langCode}&populate=hinhAnh`,
-        {
-          params: {
-            filters: {
-              qlkh_hoat_dong_kh_cn_and_dmst: {
-                id: { $eq: id },
+      if (id) {
+        const res = await axios.get(
+          `${ip}/qlkh-chi-tiet-hoat-dong-kh-cn-and-dmsts?locale=${langCode}&populate=hinhAnh`,
+          {
+            params: {
+              filters: {
+                qlkh_hoat_dong_kh_cn_and_dmst: {
+                  id: { $eq: id },
+                },
+              },
+              pagination: {
+                page: page,
+                pageSize: limit,
               },
             },
-            pagination: {
-              page: page,
-              pageSize: limit,
-            },
-          },
+          }
+        );
+        if (res) {
+          setDataDetailTable(res?.data?.data ?? []);
+          setTotal(res?.data?.meta?.pagination?.total ?? 0);
         }
-      );
-      if (res){
-        setDataDetailTable(res?.data?.data??[])
-        setTotal(res?.data?.meta?.pagination?.total ?? 0);
       }
     } catch (e) {
       console.log(e);
@@ -143,12 +152,11 @@ const ChiTietHoatDong = () => {
       setType(router?.query?.type as string);
     }
   }, [router, langCode]);
-  useEffect(()=>{
+  useEffect(() => {
     if (router) {
-
       getDataDetail(router?.query?.id as string);
     }
-  },[page,limit])
+  }, [page, limit, langCode, router]);
   return (
     <ChiTietHoatDongWrapper>
       <div
