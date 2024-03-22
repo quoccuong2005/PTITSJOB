@@ -66,8 +66,8 @@ const ChiTietHoatDong = () => {
       render: (val: any, record: any) => {
         return (
           <>
-            {moment(val).format("YYYY")} -{" "}
-            {moment(record?.thoiGianThucHienKetThuc).format("YYYY")}
+            {moment(val).format("YYYY")}
+            {record?.attributes?.thoiGianThucHienKetThuc?`- ${moment(record?.attributes?.thoiGianThucHienKetThuc).format("YYYY")}`:''}
           </>
         );
       },
