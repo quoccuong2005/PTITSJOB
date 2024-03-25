@@ -201,7 +201,7 @@ const HoatDongDeTai = () => {
 
           {dataGioiThieu?.length > 0 ? (
             <>
-              <div className="grid sm:grid-cols-2 grid-cols-1 gap-[30px]">
+              <div className="grid sm:grid-cols-1 grid-cols-1 gap-[30px]">
                 {dataGioiThieu?.map((value, index) => {
                   return (
                     <div
@@ -223,6 +223,7 @@ const HoatDongDeTai = () => {
                           description: value?.attributes?.moTa,
                         }}
                         key={index}
+                        vertical
                       />
                     </div>
                   );
