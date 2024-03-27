@@ -103,7 +103,7 @@ const CardDeTai = (props: IPorps) => {
             <div className="relative shrink-0">
               <img
                 className={
-                  "image-card wow fadeInUp lg:h-[337px] h-[250px] lg:w-[337px] w-full object-cover"
+                  "image-card wow fadeInUp lg:h-[250px] h-[250px] lg:w-[337px] w-full object-cover"
                 }
                 src={props.data.imageUrl}
                 onError={({ currentTarget }) => {
