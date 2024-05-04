@@ -13,7 +13,7 @@ interface IPorps {
   };
   style?: CSSProperties;
   type?: "big" | "small";
-  vertical?:boolean
+  vertical?: boolean;
 }
 const CardDeTai = (props: IPorps) => {
   const renderType = (type: string) => {
@@ -92,7 +92,7 @@ const CardDeTai = (props: IPorps) => {
         return "";
     }
   };
-  if (props?.vertical){
+  if (props?.vertical) {
     return (
       <CardDeTaiWrapper>
         <div className="h-full">
@@ -102,9 +102,9 @@ const CardDeTai = (props: IPorps) => {
           >
             <div className="relative shrink-0">
               <img
-                className={
-                  "image-card wow fadeInUp lg:h-[250px] h-[250px] lg:w-[337px] w-full object-cover"
-                }
+                className={`image-card wow fadeInUp lg:h-[250px] h-[250px] lg:w-[337px] w-full ${
+                  props.data.imageUrl ? "object-cover" : "object-contain"
+                } `}
                 src={props.data.imageUrl}
                 onError={({ currentTarget }) => {
                   currentTarget.onerror = null; // prevents looping
@@ -125,13 +125,16 @@ const CardDeTai = (props: IPorps) => {
               <div className="border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp ">
                 <div className="hidden lg:block">
                   {props.data.type && (
-                    <div className="mb-[8px]">{renderType(props.data.type)}</div>
+                    <div className="mb-[8px]">
+                      {renderType(props.data.type)}
+                    </div>
                   )}
                 </div>
-                {props.data.content&& <div className="content-title lg:min-h-[48px]  sm:min-h-[48px]">
-                  {props.data.content}
-                </div>}
-
+                {props.data.content && (
+                  <div className="content-title lg:min-h-[48px]  sm:min-h-[48px]">
+                    {props.data.content}
+                  </div>
+                )}
               </div>
               {props.data.dateTime && (
                 <div className="time-content flex items-center mb-[16px]">
@@ -161,7 +164,7 @@ const CardDeTai = (props: IPorps) => {
         </div>
       </CardDeTaiWrapper>
     );
-  }else {
+  } else {
     return (
       <CardDeTaiWrapper>
         <Link href={props.data.link ? props.data.link : "#"} className="h-full">
@@ -194,13 +197,16 @@ const CardDeTai = (props: IPorps) => {
               <div className="border-l-2 pl-[12px] md:border-primary-500 content wow fadeInUp ">
                 <div className="hidden lg:block">
                   {props.data.type && (
-                    <div className="mb-[8px]">{renderType(props.data.type)}</div>
+                    <div className="mb-[8px]">
+                      {renderType(props.data.type)}
+                    </div>
                   )}
                 </div>
-                {props.data.content&& <div className="content-title lg:min-h-[48px]  sm:min-h-[48px]">
-                  {props.data.content}
-                </div>}
-
+                {props.data.content && (
+                  <div className="content-title lg:min-h-[48px]  sm:min-h-[48px]">
+                    {props.data.content}
+                  </div>
+                )}
               </div>
               {props.data.dateTime && (
                 <div className="time-content flex items-center mb-[16px]">
@@ -231,7 +237,6 @@ const CardDeTai = (props: IPorps) => {
       </CardDeTaiWrapper>
     );
   }
-
 };
 
 const CardDeTaiWrapper = styled.div`
