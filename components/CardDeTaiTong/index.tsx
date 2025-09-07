@@ -145,7 +145,7 @@ const CardDeTaiTong = (props: IPorps) => {
                   >
                     <path
                       d="M0 7H13M13 7L7.7381 1.5M13 7L7.7381 12.5"
-                      stroke="#DE221A"
+                      stroke="#BC2826"
                       strokeWidth="2"
                     />
                   </svg>

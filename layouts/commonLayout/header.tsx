@@ -1,138 +1,27 @@
-import {
-  Button,
-  DarkThemeToggle,
-  Navbar,
-  Spinner,
-  Tooltip,
-} from "flowbite-react";
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { AuthContext, useAuth } from "../../context/AuthContext";
-import LoginPopup from "./components/LoginPopup";
-import SignupPopup from "./components/SignupPopup";
-import UserDropdown from "./components/UserDropdown";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { rules } from "../../utils/rules";
 import { useForm } from "react-hook-form";
-import { Router } from "../../config";
-import axios from "axios";
-import { ip } from "../../api/ip";
-import { DataMenu, MainMenu } from "../../utils/interface";
-import { renderImage } from "../../utils/util";
-import { el } from "date-fns/locale";
-import { dataNavBar } from "../../data";
-import { DivNode } from "postcss-value-parser";
-
-interface IProps {
-  language: string;
-  handleChangeLanguage: (lang: string) => void;
-}
-
-const Header = (props: IProps) => {
-  const [common] = useTranslation("common");
+import TextIcon from "../../components/TextIcon";
+import AISLink from "../../components/AISLink";
+import Button from "../../components/Button";
+import AISButton from "../../components/AISButton";
+import AISInput from "../../components/AISInput";
+import AISDivider from "../../components/AISDivider";
+const Header = () => {
   const router = useRouter();
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [typeMenu, setTypeMenu] = useState<string>("");
-  const [dataMenu, setDataMenu] = useState<DataMenu[]>([]);
-  const [linkLogo, setLinkLogo] = useState<string>();
-  const [mainMenu, setMainMenu] = useState<MainMenu[]>([]);
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const [isShowSearch, setIsShowSearch] = useState<boolean>(false);
-  const { language, handleChangeLanguage } = props;
   const searchRef = useRef<HTMLDivElement>(null);
-  const langRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { setDataThongTin, dataThongTin, langCode, setLangCode } =
-    useContext(AuthContext);
 
-  const [isChangeLang, setIsChangeLang] = useState<boolean>(false);
-  const {
-    isAuthenticated,
-    user,
-    dataConfig,
-    showAuthModal: showModal,
-    setShowAuthModal: setShowModal,
-    userLoading,
-    setMenu,
-  } = useAuth();
-  const onClickLanguage = () => {
-    setIsChangeLang(!isChangeLang);
-  };
-  const onChangeLanguage = (e: any, language: string) => {
-    props.handleChangeLanguage(language);
-    setLangCode(language);
-    setIsChangeLang(false);
-  };
-  const fetch = async () => {
-    // await getAllProjectList()
-    // 	.then((response) => setDanhSach(response.data))
-    // 	.catch((e) => console.log(e));
-    // if (isAuthenticated)
-    // 	getNotificationPageable({ limit: 10, page: 1 })
-    // 		.then((response) => {
-    // 			setHasUnread(!!response.data.result.filter((item) => item.unread)?.length);
-    // 		})
-    // 		.catch(console.error);
-  };
-  const getThongTinChung = async () => {
-    try {
-      const res = await axios.get(`${ip}/thong-tin-chung?locale=${langCode}`);
-      if (res) {
-        setDataThongTin(res?.data);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  const getDataNav = async () => {
-    try {
-      const res = await axios.get(
-        `${ip}/qlkh-cau-truc-trang-web?populate=deep&locale=${langCode}`
-      );
-      if (res) {
-        setDataMenu(res?.data?.data?.attributes?.cauTruc ?? []);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  // const getDataConfig = (type: string, valueGet?: string): any => {
-  // 	let obj = dataConfig?.find((item) => {
-  // 		return item.code === type;
-  // 	});
-  // 	if (valueGet) {
-  // 		return obj?.id;
-  // 	} else {
-  // 		return obj?.value;
-  // 	}
-  // };
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const {
-    register: register2,
-    formState: { errors: errors2 },
-    handleSubmit: handleSubmit2,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data: any) => {
     if (data?.keyword) {
       router.push(`/tim-kiem?keyword=${data?.keyword}`);
     }
   };
-  useEffect(() => {
-    getDataNav();
-  }, [langCode]);
-  useEffect(() => {
-    if (router && router.pathname) {
-      setTypeMenu(router?.pathname);
-      setShowMenu(false);
-    }
-  }, [router]);
 
   const handleClickOutSide = (e: any) => {
     const node = menuRef.current;
@@ -159,21 +48,13 @@ const Header = (props: IProps) => {
       setIsScroll(false);
     }
   };
-  useEffect(() => {
-    getThongTinChung();
-  }, [router, langCode]);
+
   const handleClickOutside = (e: any) => {
     const { target } = e;
     const node = searchRef?.current;
-    const node2 = langRef?.current;
     if (node) {
       if (!node.contains(target)) {
         setIsShowSearch(false);
-      }
-    }
-    if (node2) {
-      if (!node2.contains(target)) {
-        setIsChangeLang(false);
       }
     }
   };
@@ -182,87 +63,78 @@ const Header = (props: IProps) => {
     return () => {
       window.removeEventListener("click", handleClickOutside, true);
     };
-    // getLogo();
   }, []);
   return (
-    <HeaderWrapper className=" shadow-header">
-      <div className="hidden lg:block bg-[#DE221A] px-6 ">
-        <div className="container mx-auto ">
-          <div className="header-branch flex justify-between items-center">
-            <div className=" flex items-center">
-              <img src={renderImage(dataThongTin?.logoHeader)} alt={"image"} />
-            </div>
-            <div className=" flex item-center">
-              {/*<img src={"/images/icons/facebook.svg"} />*/}
-              {/*<img src={"/images/icons/twitter.svg"} />*/}
-              {/*<img src={"/images/icons/youtube.svg"} />*/}
-              <div className="flex md:order-2 " ref={searchRef}>
-                <div className="flex items-center z-50">
-                  {isShowSearch ? (
-                    <div className="mr-[32px]">
-                      <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="search flex item-center h-full">
-                          <div className="relative">
-                            <input
-                              placeholder={"Tìm kiếm"}
-                              {...register("keyword", { ...rules.required })}
-                            />
-                            {/*<div className='icon absolute top-[9.5px] left-[14.5px]'>*/}
-                            {/*	<img src={"/images/icons/search.svg"} alt={"image"} />*/}
-                            {/*</div>*/}
-                          </div>
-                          <button type="submit">
-                            <img
-                              src={"/images/icons/search.svg"}
-                              alt={"image"}
-                            />
-                          </button>
-                        </div>
-                        {/*{errors.keyword && <p className='error-text'>Bắt buộc</p>}*/}
-                      </form>
-                    </div>
-                  ) : (
-                    <div
-                      className="cursor-pointer "
-                      onClick={() => setIsShowSearch(true)}
-                    >
-                      <img
-                        className="mr-[32px]"
-                        src="/images/icons/search-header.svg"
-                        alt={"image"}
-                      />
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex">
-                  <div
-                    className={`mr-[8px] cursor-pointer ${
-                      language === "vi-VN" ? "border-white border" : ""
-                    } hover:border-white hover:border`}
-                    onClick={() => onChangeLanguage(undefined, "vi-VN")}
-                  >
-                    <img
-                      className="h-[30px] w-[45px]"
-                      src={"/images/icons/vn.svg"}
-                      alt={"image"}
-                    />
-                  </div>
-                  <div
-                    className={`cursor-pointer ${
-                      language === "en" ? "border-white border" : ""
-                    } hover:border-white hover:border`}
-                    onClick={() => onChangeLanguage(undefined, "en")}
-                  >
-                    <img
-                      className="h-[30px] w-[45px]"
-                      src={"/images/icons/us.svg"}
-                      alt={"image"}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+    <HeaderWrapper className="shadow-header">
+      <div className="hidden lg:block bg-primary">
+        <div className="flex align-items-center justify-between px-[40px] py-[5.5px]">
+          <TextIcon
+            icon={
+              <svg
+                width="16"
+                height="14"
+                viewBox="0 0 16 14"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7.62793 0.216064C7.8718 0.0948862 8.16699 0.115063 8.39453 0.275635L14.0195 4.25024C14.1094 4.3138 14.1821 4.39551 14.2354 4.48755L15.1846 5.15161C15.4389 5.32963 15.501 5.68033 15.3232 5.93481C15.1451 6.18921 14.7936 6.2515 14.5391 6.07349L14.21 5.84302L13.2051 13.2141C13.1542 13.5853 12.8366 13.8623 12.4619 13.8625H8.71191V8.98755C8.71191 8.57334 8.37613 8.23755 7.96191 8.23755C7.54783 8.2377 7.21191 8.57343 7.21191 8.98755V13.8625H3.46191C3.0861 13.8622 2.76716 13.5838 2.71777 13.2112L1.74414 5.82446L1.38184 6.07544C1.1265 6.25174 0.776328 6.18794 0.599609 5.93286C0.422999 5.67749 0.486969 5.32645 0.742188 5.14966L1.74805 4.45337C1.79828 4.37649 1.86215 4.30733 1.93945 4.2522L7.52637 0.276611L7.62793 0.216064Z"
+                  fill="white"
+                />
+              </svg>
+            }
+          >
+            <AISLink href={"/"}>
+              Cổng Thông tin Điện tử Học viện Công nghệ Bưu chính Viễn thông
+            </AISLink>
+          </TextIcon>
+          <div className="flex items-center gap-[40px]">
+            <TextIcon
+              icon={
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M13.75 10.315V12.967C13.7501 13.1569 13.6781 13.3397 13.5487 13.4786C13.4192 13.6176 13.2419 13.7022 13.0525 13.7155C12.7247 13.738 12.457 13.75 12.25 13.75C5.62225 13.75 0.25 8.37775 0.25 1.75C0.25 1.543 0.26125 1.27525 0.2845 0.9475C0.297792 0.758083 0.382436 0.580758 0.521353 0.451307C0.660269 0.321855 0.843117 0.249914 1.033 0.25H3.685C3.77803 0.249906 3.86777 0.284394 3.9368 0.346765C4.00582 0.409136 4.0492 0.494937 4.0585 0.5875C4.07575 0.76 4.0915 0.89725 4.1065 1.0015C4.25555 2.04169 4.561 3.05337 5.0125 4.00225C5.08375 4.15225 5.03725 4.3315 4.90225 4.4275L3.28375 5.584C4.27334 7.88984 6.11091 9.72741 8.41675 10.717L9.57175 9.1015C9.61896 9.0355 9.68784 8.98816 9.76637 8.96774C9.84491 8.94732 9.92812 8.95511 10.0015 8.98975C10.9503 9.44044 11.9617 9.74513 13.0015 9.8935C13.1058 9.9085 13.243 9.92425 13.414 9.9415C13.5064 9.95098 13.592 9.99443 13.6543 10.0634C13.7165 10.1324 13.7501 10.2221 13.75 10.315Z"
+                    fill="white"
+                  />
+                </svg>
+              }
+            >
+              <AISLink
+                href={"/"}
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                (024) 38 547 797
+              </AISLink>
+            </TextIcon>
+            <TextIcon
+              icon={
+                <svg
+                  width="16"
+                  height="12"
+                  viewBox="0 0 16 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.416 11.2441C14.3778 11.2478 14.339 11.25 14.2998 11.25H1.7002C1.66039 11.25 1.62085 11.2479 1.58203 11.2441L6.25977 6.87402L6.5 7.08887C7.35413 7.85293 8.64587 7.85293 9.5 7.08887L9.74023 6.87305L14.416 11.2441ZM5.13672 5.86914L0.508789 10.1953C0.503038 10.1477 0.5 10.099 0.5 10.0498V1.9502C0.5 1.87757 0.507169 1.80638 0.519531 1.7373L5.13672 5.86914ZM15.4795 1.7373C15.4919 1.80643 15.5 1.87751 15.5 1.9502V10.0498C15.5 10.099 15.496 10.1476 15.4902 10.1953L10.8613 5.86914L15.4795 1.7373ZM14.333 0.750977L8.5 5.9707C8.21527 6.22546 7.78473 6.22546 7.5 5.9707L1.66602 0.750977C1.67731 0.750662 1.68882 0.75 1.7002 0.75H14.2998C14.3108 0.75 14.322 0.75068 14.333 0.750977Z"
+                    fill="white"
+                  />
+                </svg>
+              }
+            >
+              <AISLink
+                href={"/"}
+                style={{ color: "white", textDecoration: "none" }}
+              >
+                qldt@ptit.edu.vn
+              </AISLink>
+            </TextIcon>
           </div>
         </div>
       </div>
@@ -273,373 +145,101 @@ const Header = (props: IProps) => {
             : "lg:bg-white bg-primary"
         } `}
       >
-        <div className="  lg:mx-auto lg:py-[20px] py-0  ">
-          {/*<div className='logo'>*/}
-          {/*	<img src={'/images/header/logo-db.png'} alt={"image"} />*/}
-          {/*</div>*/}
-          <div className={` ${isScroll ? " bg-primary" : "lg:bg-white"} `}>
-            <div
-              className={`container mx-auto hidden lg:flex  justify-center items-center `}
-            >
-              <div className="flex items-center justify-center ">
-                {dataMenu.map((value, index) => {
-                  return (
-                    <div
-                      onClick={() => {
-                        if (value?.trangCon?.length > 0) {
-                        } else {
-                          if (value?.sangTrangMoi) {
-                            window.open(value?.link);
-                          } else {
-                            router.push(value?.link);
-                          }
-                        }
-                      }}
-                      // href={value?.children?.length > 0 ? "" : value?.linkTo}
-                      className={` xl:mr-[24px] lg:mr-[16px] last-of-type:mr-0 text-nav lg:text-[14px] text-[12px]  pt-2 cursor-pointer ${
-                        value?.link
-                          ?.split("?")?.[0]
-                          ?.localeCompare(typeMenu) === 0
-                          ? `text-white ${
-                              isScroll
-                                ? "text-white md:border-b-2  md:border-white-500"
-                                : "text-active md:border-b-2  md:border-primary-500"
-                            } `
-                          : `md:border-none ${
-                              isScroll ? "text-white" : "text-black"
-                            }`
-                      } block  `}
-                      key={index}
-                    >
-                      {value?.trangCon?.length > 0 ? (
-                        <>
-                          <Tooltip
-                            className={"tooltip-label"}
-                            content={
-                              <>
-                                {value?.trangCon?.map((value2, index2) => {
-                                  return (
-                                    <div
-                                      onClick={() => {
-                                        if (value?.sangTrangMoi) {
-                                          window.open(value2?.link);
-                                        } else {
-                                          router.push(value2?.link);
-                                        }
-                                      }}
-                                      className={`text-children mr-[40px] cursor-pointer pt-2 ${
-                                        value2?.link?.localeCompare(
-                                          typeMenu
-                                        ) === 0
-                                          ? "text-active md:border-b-2  md:border-primary-500"
-                                          : "md:border-none"
-                                      } block  hover:border-b hover:border-primary mb-[8px]`}
-                                      key={index2}
-                                    >
-                                      {value2.ten}
-                                    </div>
-                                  );
-                                })}
-                              </>
-                            }
-                            style={"light"}
-                            placement="bottom-start"
-                          >
-                            {value?.ten}
-                          </Tooltip>
-                        </>
-                      ) : (
-                        <>{value?.ten}</>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-              {/*<Navbar className='hidden lg:block'>*/}
-              {/*	<Navbar.Collapse>*/}
-              {/*		{Router.map((value, index) => {*/}
-              {/*			return (*/}
-              {/*				<Link*/}
-              {/*					href={value.path}*/}
-              {/*					className={`uppercase text-nav pt-2 ${*/}
-              {/*						typeMenu === value.name ? "text-active md:border-t-2  md:border-primary-500" : "md:border-none"*/}
-              {/*					} block  `}*/}
-              {/*					key={index}*/}
-              {/*				>*/}
-              {/*					{common(`common.${value.name}`)}*/}
-              {/*				</Link>*/}
-              {/*			);*/}
-              {/*		})}*/}
-              {/*	</Navbar.Collapse>*/}
-              {/*</Navbar>*/}
-            </div>
-            <div
-              className={
-                "lg:hidden  flex  justify-between items-center lg:mt-[16px] mt-0 px-2 py-[8px] lg:py-0 "
-              }
-            >
-              <div className="mr-[8px]">
-                <img src="./images/header/logo-header.png" alt={"image"} />
-              </div>
-
-              <div className="flex shrink-0">
-                <div
-                  className="flex items-center relative shrink-0 mr-[8px]"
-                  ref={menuRef}
-                >
-                  <div onClick={() => setShowMenu(!showMenu)}>
-                    <img src={"/images/icons/menu.svg"} alt={"image"} />
-                  </div>
-                  {showMenu && (
-                    <>
-                      {/*<div className="menu-mobile absolute w-[280px] top-[30px] right-0 bg-white px-2 py-2 shadow-md rounded z-50">*/}
-                      {/*  <ul>*/}
-                      {/*    {dataMenu.map((value, index) => {*/}
-                      {/*      return (*/}
-                      {/*        <div*/}
-                      {/*          onClick={() => {*/}
-                      {/*            if (value?.trangCon?.length > 0) {*/}
-                      {/*            } else {*/}
-                      {/*              if (value?.sangTrangMoi) {*/}
-                      {/*                window.open(value?.link);*/}
-                      {/*              } else {*/}
-                      {/*                router.push(value?.link);*/}
-                      {/*              }*/}
-                      {/*            }*/}
-                      {/*          }}*/}
-                      {/*          // href={value?.children?.length > 0 ? "" : value?.linkTo}*/}
-                      {/*          className={` mr-[24px] last-of-type:mr-0 text-nav pt-2 cursor-pointer ${*/}
-                      {/*            value?.link*/}
-                      {/*              ?.split("?")?.[0]*/}
-                      {/*              ?.localeCompare(typeMenu) === 0*/}
-                      {/*              ? `text-white ${*/}
-                      {/*                isScroll*/}
-                      {/*                  ? "text-active md:border-b-2  md:border-white-500"*/}
-                      {/*                  : "text-active md:border-b-2  md:border-primary-500"*/}
-                      {/*              } `*/}
-                      {/*              : `md:border-none ${*/}
-                      {/*                isScroll ? "text-black" : "text-black"*/}
-                      {/*              }`*/}
-                      {/*          } block  `}*/}
-                      {/*          key={index}*/}
-                      {/*        >*/}
-                      {/*          {value?.trangCon?.length > 0 ? (*/}
-                      {/*            <>*/}
-                      {/*              <Tooltip*/}
-                      {/*                className={"tooltip-label"}*/}
-                      {/*                content={*/}
-                      {/*                  <>*/}
-                      {/*                    {value?.trangCon?.map(*/}
-                      {/*                      (value2, index2) => {*/}
-                      {/*                        return (*/}
-                      {/*                          <div*/}
-                      {/*                            onClick={() => {*/}
-                      {/*                              if (value?.sangTrangMoi) {*/}
-                      {/*                                window.open(value2?.link);*/}
-                      {/*                              } else {*/}
-                      {/*                                router.push(value2?.link);*/}
-                      {/*                              }*/}
-                      {/*                            }}*/}
-                      {/*                            className={`text-children mr-[40px] cursor-pointer pt-2 ${*/}
-                      {/*                              value2?.link?.localeCompare(*/}
-                      {/*                                typeMenu*/}
-                      {/*                              ) === 0*/}
-                      {/*                                ? "text-active md:border-b-2  md:border-primary-500"*/}
-                      {/*                                : "md:border-none"*/}
-                      {/*                            } block  hover:border-b hover:border-primary mb-[8px]`}*/}
-                      {/*                            key={index2}*/}
-                      {/*                          >*/}
-                      {/*                            {value2.ten}*/}
-                      {/*                          </div>*/}
-                      {/*                        );*/}
-                      {/*                      }*/}
-                      {/*                    )}*/}
-                      {/*                  </>*/}
-                      {/*                }*/}
-                      {/*                style={"light"}*/}
-                      {/*                placement="bottom"*/}
-                      {/*              >*/}
-                      {/*                {value?.ten}*/}
-                      {/*              </Tooltip>*/}
-                      {/*            </>*/}
-                      {/*          ) : (*/}
-                      {/*            <>{value?.ten}</>*/}
-                      {/*          )}*/}
-                      {/*        </div>*/}
-                      {/*      );*/}
-                      {/*    })}*/}
-                      {/*  </ul>*/}
-                      {/*</div>*/}
-                      <div
-                        className="cover-ham"
-                        onClick={() => {
-                          setShowMenu(false);
-                        }}
-                      ></div>
-                      <div className="ham-menu z-50">
-                        <ul>
-                          {dataMenu?.map((value, index) => {
-                            return (
-                              <div
-                                onClick={() => {
-                                  if (value?.trangCon?.length > 0) {
-                                  } else {
-                                    if (value?.sangTrangMoi) {
-                                      window.open(value?.link);
-                                    } else {
-                                      router.push(value?.link);
-                                    }
-                                  }
-                                }}
-                                // href={value?.children?.length > 0 ? "" : value?.linkTo}
-                                className={` mr-[24px] mb-[16px] last-of-type:mr-0 text-nav pt-2 cursor-pointer  ${
-                                  value?.link
-                                    ?.split("?")?.[0]
-                                    ?.localeCompare(typeMenu) === 0
-                                    ? `text-primary ${
-                                        isScroll
-                                          ? "text-primary lg:border-b-2  lg:border-primary-500"
-                                          : "text-active lg:border-b-2  lg:border-primary-500"
-                                      } `
-                                    : `lg:border-none ${
-                                        isScroll ? "text-black" : "text-black"
-                                      }`
-                                } block  `}
-                                key={index}
-                              >
-                                {value?.trangCon?.length > 0 ? (
-                                  <>
-                                    <Tooltip
-                                      className={"tooltip-label"}
-                                      content={
-                                        <>
-                                          {value?.trangCon?.map(
-                                            (value2, index2) => {
-                                              return (
-                                                <div
-                                                  onClick={() => {
-                                                    if (value?.sangTrangMoi) {
-                                                      window.open(value2?.link);
-                                                    } else {
-                                                      router.push(value2?.link);
-                                                    }
-                                                  }}
-                                                  className={`text-children mr-[40px] cursor-pointer pt-2 ${
-                                                    value2?.link?.localeCompare(
-                                                      typeMenu
-                                                    ) === 0
-                                                      ? "text-active lg:border-b-2  lg:border-primary-500"
-                                                      : "lg:border-none"
-                                                  } block  hover:border-b hover:border-primary mb-[8px]`}
-                                                  key={index2}
-                                                >
-                                                  {value2.ten}
-                                                </div>
-                                              );
-                                            }
-                                          )}
-                                        </>
-                                      }
-                                      style={"light"}
-                                      placement="bottom"
-                                    >
-                                      <div className="text-sm md:text-xl">
-                                        {value?.ten}
-                                      </div>
-                                    </Tooltip>
-                                  </>
-                                ) : (
-                                  <div className="text-sm md:text-xl">
-                                    {value?.ten}
-                                  </div>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    </>
-                  )}
-                </div>
-                <div className="relative mr-2 shrink-0" ref={langRef}>
-                  <div
-                    className="language flex items-center "
-                    onClick={() => onClickLanguage()}
+        <div className="lg:mx-auto px-[40px] py-[16px]">
+          <div className={`hidden lg:flex justify-between items-center`}>
+            <div className="flex items-center gap-[20px]">
+              <img
+                src={"/images/common/logo.svg"}
+                alt="logo lms ptit"
+                height={48}
+              />
+              <AISDivider />
+              <AISButton
+                iconPosition="end"
+                icon={
+                  <svg
+                    width="8"
+                    height="6"
+                    viewBox="0 0 8 6"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    <img
-                      className="w-8"
-                      src={
-                        props.language === "vi-VN"
-                          ? "/images/icons/vn.svg"
-                          : "/images/icons/us.svg"
-                      }
-                      alt=""
+                    <path
+                      d="M1 1.5L4 4.5L7 1.5"
+                      stroke="#BC2826"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
-                    {/*{isChangeLang ? (*/}
-                    {/*	<svg*/}
-                    {/*		className="w-6 h-6"*/}
-                    {/*		fill="none"*/}
-                    {/*		stroke="currentColor"*/}
-                    {/*		viewBox="0 0 24 24"*/}
-                    {/*		xmlns="http://www.w3.org/2000/svg"*/}
-                    {/*	>*/}
-                    {/*		<path*/}
-                    {/*			strokeLinecap="round"*/}
-                    {/*			strokeLinejoin="round"*/}
-                    {/*			strokeWidth="2"*/}
-                    {/*			d="M5 15l7-7 7 7"*/}
-                    {/*		></path>*/}
-                    {/*	</svg>*/}
-                    {/*) : (*/}
-                    {/*	<svg*/}
-                    {/*		className="w-6 h-6"*/}
-                    {/*		fill="none"*/}
-                    {/*		stroke="currentColor"*/}
-                    {/*		viewBox="0 0 24 24"*/}
-                    {/*		xmlns="http://www.w3.org/2000/svg"*/}
-                    {/*	>*/}
-                    {/*		<path*/}
-                    {/*			strokeLinecap="round"*/}
-                    {/*			strokeLinejoin="round"*/}
-                    {/*			strokeWidth="2"*/}
-                    {/*			d="M19 9l-7 7-7-7"*/}
-                    {/*		></path>*/}
-                    {/*	</svg>*/}
-                    {/*)}*/}
-                  </div>
-                  {isChangeLang && (
-                    <div className="language absolute top-9 right-0 shadow-lg py-2.5 w-40 secondary-bg rounded-xl ">
-                      <ul>
-                        <li className="hover:hover-bg px-2.5 cursor-pointer">
-                          <a
-                            className="flex items-center"
-                            onClick={(e) => onChangeLanguage(e, "en")}
-                          >
-                            <img
-                              className="w-8 mr-2"
-                              src="/images/us.png"
-                              alt=""
-                            />{" "}
-                            <span>English (US)</span>
-                          </a>
-                        </li>
-                        <li className="hover:hover-bg px-2.5 cursor-pointer">
-                          <a
-                            className="flex items-center"
-                            onClick={(e) => onChangeLanguage(e, "vi-VN")}
-                          >
-                            <img
-                              className="w-8 mr-2"
-                              src="/images/vi.png"
-                              alt=""
-                            />{" "}
-                            Tiếng Việt
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
+                  </svg>
+                }
+              >
+                Khám phá
+              </AISButton>
+            </div>
+
+            <div className="flex items-center gap-[20px]">
+              <AISInput
+                icon={
+                  <svg
+                    width="18"
+                    height="17"
+                    viewBox="0 0 18 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M13.167 12.75L16.5003 16.0833"
+                      stroke="#C0C0C0"
+                      stroke-width="1.25"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <circle
+                      cx="8.16667"
+                      cy="8.16667"
+                      r="6.66667"
+                      stroke="#C0C0C0"
+                      stroke-width="1.25"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                }
+                style={{ width: "340px" }}
+                placeholder="Bạn muốn tìm kiếm khoá học gì?"
+              />
+              <AISDivider />
+              <AISButton type="primary">Đăng nhập</AISButton>
+            </div>
+          </div>
+          <div
+            className={
+              "lg:hidden flex justify-between items-center lg:mt-[16px] mt-0 px-2 py-[8px] lg:py-0 "
+            }
+          >
+            <div className="mr-[8px]">
+              <img src="./images/header/logo-header.png" alt={"image"} />
+            </div>
+
+            <div className="flex shrink-0">
+              <div
+                className="flex items-center relative shrink-0 mr-[8px]"
+                ref={menuRef}
+              >
+                <div onClick={() => setShowMenu(!showMenu)}>
+                  <img src={"/images/icons/menu.svg"} alt={"image"} />
                 </div>
+                {showMenu && (
+                  <>
+                    <div
+                      className="cover-ham"
+                      onClick={() => {
+                        setShowMenu(false);
+                      }}
+                    ></div>
+                  </>
+                )}
               </div>
             </div>
           </div>

@@ -27,7 +27,7 @@ const Card = (props: IProps) => {
 						<div className='flex text-primary items-center mb-[10px]'>
 							<div className='mr-[16px] '>
 								<svg width='15' height='14' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
-									<path d='M0 7H13M13 7L7.7381 1.5M13 7L7.7381 12.5' stroke='#DE221A' strokeWidth='2' />
+									<path d='M0 7H13M13 7L7.7381 1.5M13 7L7.7381 12.5' stroke='#BC2826' strokeWidth='2' />
 								</svg>
 							</div>
 							{moment(props.data?.dateTime).format("DD/MM/YYYY HH:mm")}
@@ -79,7 +79,7 @@ const CardWrapper = styled.div`
 		font-size: 14px;
 		line-height: 17px;
 
-		color: #DE221A;
+		color: #BC2826;
 	}
 `;
 export default Card;

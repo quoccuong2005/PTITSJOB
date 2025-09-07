@@ -7,40 +7,14 @@
 @import "react-datepicker/dist/react-datepicker.css";
 @import "react-dropdown/style.css";
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
+:root {
+	--primary-color: #BC2826;
+}
 .top-progress {
 	animation: loading 2s ease-in-out;
 	width: 90%;
 }
 
-@layer utilities {
-	@media (min-width: 1536px) {
-		.container {
-			max-width: 1320px;
-		}
-	}
-	.h-600 {
-		height: 600px;
-	}
-	.text-black {
-		color: #000000;
-	}
-	.primary-bg {
-		background: var(--primary-color);
-	}
-	.hover-bg {
-		background: #f0f0f0;
-	}
-	.secondary-bg {
-		background: #ffffff;
-	}
-
-	.text-secondary {
-		color: rgba(0, 0, 0, 0.25);
-	}
-	.text-primary {
-		color: var(--primary-color);
-	}
-}
 @keyframes loading {
 	0% {
 		width: 0;
@@ -51,7 +25,7 @@
 }
 @media (min-width: 1440px) {
 	.container {
-		max-width: 1169px;
+		max-width: 1240px;
 	}
 }
 
@@ -87,11 +61,11 @@
 }
 * {
 	&::selection {
-		background: #DE221A;
+		background: #BC2826;
 		color: #ffffff;
 	}
 	&::-moz-selection {
-		background: #DE221A;
+		background: #BC2826;
 		color: #ffffff;
 	}
 	//&::-webkit-selection {
@@ -113,17 +87,14 @@
 	bottom: -35px;
 }
  .image-gallery-right-nav {
-	background: #DE221A !important;
+	background: #BC2826 !important;
 }
 .image-gallery-left-nav {
-	background: #DE221A !important;
+	background: #BC2826 !important;
 }
-//.bg-cover{
-//	background: #0000003b;
-//}
 @media screen and (min-width: 1440px){
 	.container{
-		max-width: 1198px!important;
+		max-width: 1198px !important;
 	}
 }
 .bg-gradient-gray{
@@ -134,7 +105,7 @@
 	background-color: #C3C7CC;
 }
 .text-primary{
-	color: #DE221A;
+	color: #BC2826;
 }
 .text-normal{
 	font-family: 'Inter';
@@ -149,6 +120,6 @@
 }
 .link-download{
 	&:hover{
-		color: #DE221A;
+		color: #BC2826;
 	}
 }

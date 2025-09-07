@@ -67,7 +67,7 @@ const CardBanner = (props: IProps) => {
 									{moment(props.dateTime).date()}
 								</div>
 								<div
-									className={"py-[12px] px-[9px] bg-[#DE221A] inline-block relative text-white w-[85px] text-center  "}
+									className={"py-[12px] px-[9px] bg-[#BC2826] inline-block relative text-white w-[85px] text-center  "}
 								>
 									Tháng {moment(props.dateTime).month() + 1}
 									{/*<div className='absolute w-full px-2 top-0 left-0'>*/}
@@ -104,14 +104,14 @@ const CardBanner = (props: IProps) => {
 							/>
 							<div
 								className={
-									"hidden lg:block absolute bottom-0 left-[16px] py-[12px] px-[9px] bg-[#DE221A] text-white w-[85px] text-center "
+									"hidden lg:block absolute bottom-0 left-[16px] py-[12px] px-[9px] bg-[#BC2826] text-white w-[85px] text-center "
 								}
 							>
 								{moment(props.dateTime).date()}
 							</div>
 						</div>
 						<div className={"px-[16px] pb-[16px]"}>
-							<div className={"hidden  py-[12px] px-[9px] bg-[#DE221A] lg:inline-block relative text-white w-[85px] text-center"}>
+							<div className={"hidden  py-[12px] px-[9px] bg-[#BC2826] lg:inline-block relative text-white w-[85px] text-center"}>
 								Tháng {moment(props.dateTime).month() + 1}
 								<div className='absolute w-full px-2 top-0 left-0'>
 									<div className='border-t-2'></div>
@@ -268,9 +268,9 @@ const CardBigBannerWrapper = styled.div`
 		text-align: center;
 
 		//color: rgba(120, 120, 120, 0.4);
-		color: #DE221A;
+		color: #BC2826;
 		//border: 1.5px solid rgba(120, 120, 120, 0.4);
-		border: 1.5px solid #DE221A;
+		border: 1.5px solid #BC2826;
 		&:hover {
 			color: #fa5252;
 			border: 1.5px solid #fa5252;

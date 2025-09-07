@@ -222,7 +222,7 @@ const FormGopYWrapper = styled.div`
 		font-size: 15px;
 		line-height: 24px;
 		text-decoration-line: underline;
-		color: #DE221A;
+		color: #BC2826;
 		cursor: pointer;
 	}
 `;

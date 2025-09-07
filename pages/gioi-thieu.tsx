@@ -195,7 +195,7 @@ const ChiTietWrapper = styled.div`
 
       color: #000000;
       &:hover {
-        //background-color: #DE221A;
+        //background-color: #BC2826;
         color: #de221a;
       }
     }
