@@ -1,27 +1,21 @@
-import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
 import TextIcon from "../../components/TextIcon";
 import AISLink from "../../components/AISLink";
-import Button from "../../components/Button";
 import AISButton from "../../components/AISButton";
 import AISInput from "../../components/AISInput";
 import AISDivider from "../../components/AISDivider";
-const Header = () => {
-  const router = useRouter();
+
+interface IProps {
+  language: string;
+  handleChangeLanguage: (lang: string) => void;
+}
+
+const Header = (props: IProps) => {
+  const { language, handleChangeLanguage } = props;
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
-  const [isShowSearch, setIsShowSearch] = useState<boolean>(false);
-  const searchRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data: any) => {
-    if (data?.keyword) {
-      router.push(`/tim-kiem?keyword=${data?.keyword}`);
-    }
-  };
 
   const handleClickOutSide = (e: any) => {
     const node = menuRef.current;
@@ -49,21 +43,6 @@ const Header = () => {
     }
   };
 
-  const handleClickOutside = (e: any) => {
-    const { target } = e;
-    const node = searchRef?.current;
-    if (node) {
-      if (!node.contains(target)) {
-        setIsShowSearch(false);
-      }
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("click", handleClickOutside, true);
-    return () => {
-      window.removeEventListener("click", handleClickOutside, true);
-    };
-  }, []);
   return (
     <HeaderWrapper className="shadow-header">
       <div className="hidden lg:block bg-primary">
@@ -89,6 +68,32 @@ const Header = () => {
             </AISLink>
           </TextIcon>
           <div className="flex items-center gap-[40px]">
+            <div className="flex">
+                  <div
+                    className={`mr-[8px] cursor-pointer ${
+                      language === "vi-VN" ? "border-white border" : ""
+                    } hover:border-white hover:border`}
+                    onClick={() => handleChangeLanguage("vi-VN")}
+                  >
+                    <img
+                      className="h-[30px] w-[45px]"
+                      src={"/images/icons/vn.svg"}
+                      alt={"image"}
+                    />
+                  </div>
+                  <div
+                    className={`cursor-pointer ${
+                      language === "en" ? "border-white border" : ""
+                    } hover:border-white hover:border`}
+                    onClick={() => handleChangeLanguage("en")}
+                  >
+                    <img
+                      className="h-[30px] w-[45px]"
+                      src={"/images/icons/us.svg"}
+                      alt={"image"}
+                    />
+                  </div>
+                </div>
             <TextIcon
               icon={
                 <svg

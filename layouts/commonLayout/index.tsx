@@ -1,6 +1,5 @@
-import { useRouter } from "next/router";
 import React, {useContext, useEffect, useState} from "react";
-import {AuthContext, useAuth} from "../../context/AuthContext";
+import {AuthContext} from "../../context/AuthContext";
 import i18n from "../../i18n";
 import ScrollTopButton from "./components/ScrollTopButton";
 import Footer from "./footer";
@@ -10,7 +9,6 @@ import Head from "next/head";
 const CommonLayout = ({ children }: any) => {
 	const [language, setLanguage] = useState<string>("");
 	const { setLangCode } = useContext(AuthContext);
-	const { pathname } = useRouter();
 
 	useEffect(() => {
 		(async () => {
@@ -37,11 +35,8 @@ const CommonLayout = ({ children }: any) => {
 			</Head>
 			<div className='flex flex-col min-h-screen bg-[#FFFFFF]'>
 				<Header language={language} handleChangeLanguage={handleChangeLanguage} />
-
 				<div className='flex-auto overflow-hidden'>{children}</div>
-
 				<Footer />
-
 				<ScrollTopButton />
 			</div>
 		</>

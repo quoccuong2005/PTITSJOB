@@ -1,6 +1,7 @@
-import styled from "styled-components";
 import AISButton from "../AISButton";
 import { BannerWrappper } from "./bannerStyle";
+import dynamic from "next/dynamic";
+const CountUp = dynamic(() => import("react-countup"), { ssr: false });
 
 const BannerSecond = () => {
   return (
@@ -9,7 +10,7 @@ const BannerSecond = () => {
         <div className="container mx-auto h-full">
           <div className="banner-content h-full">
             <h2 className="title">
-              1500+ khoá học với nhiều chủ đề dành cho sinh viên
+              <CountUp end={1500} enableScrollSpy scrollSpyOnce/>+ khoá học với nhiều chủ đề dành cho sinh viên
             </h2>
             <p className="description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque

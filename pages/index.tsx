@@ -5,6 +5,7 @@ import BannerSecond from "../components/HomePage/BannerSecond";
 import BannerThird from "../components/HomePage/BannerThird";
 import KhoaHoc from "../components/HomePage/KhoaHoc";
 import MucTieuNgheNghiep from "../components/HomePage/MucTieuNgheNghiep";
+import ChuongTrinhDaoTao from "../components/HomePage/ChuongTrinhDaoTao";
 
 const HomePage = () => {
 	return <HomePageWrapper>
@@ -22,6 +23,7 @@ const HomePage = () => {
 			buttonText="Xem tất cả chương trình"
 		/>
 		<BannerThird/>
+		<ChuongTrinhDaoTao/>
 	</HomePageWrapper>;
 }
 
