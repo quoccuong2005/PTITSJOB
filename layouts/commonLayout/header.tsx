@@ -139,12 +139,7 @@ const Header = () => {
         </div>
       </div>
       <div
-        className={`label ${
-          isScroll
-            ? "fixed top-0 left-0 w-full bg-primary z-50"
-            : "lg:bg-white bg-primary"
-        } `}
-      >
+        className={`label bg-white ${isScroll ? "fixed top-0 left-0 w-full z-50": ""} `}>
         <div className="lg:mx-auto px-[40px] py-[16px]">
           <div className={`hidden lg:flex justify-between items-center`}>
             <div className="flex items-center gap-[20px]">
