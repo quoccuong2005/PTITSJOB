@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
-import { CourseProgramCardProps, CourseStatus, } from "./types";
+import { CourseProgramCardProps, CourseCardProps, ProgramCardProps, CourseStatus, isCourseCard, isProgramCard } from "./types";
 
 
 const formatDuration = (minutes: number): string => {
@@ -28,8 +28,23 @@ const getStatusLabel = (status: CourseStatus): { text: string; color: string } =
   }
 };
 
-const CourseProgramCard: React.FC<CourseProgramCardProps> = ({
-  variant,
+const CourseProgramCard: React.FC<CourseProgramCardProps> = (props) => {
+  const handleClick = () => {
+    if (props.onClick) {
+      props.onClick(props.id, props.variant);
+    }
+  };
+
+  if (isCourseCard(props)) {
+    return <CourseCard {...props} onCardClick={handleClick} />;
+  } else if (isProgramCard(props)) {
+    return <ProgramCard {...props} onCardClick={handleClick} />;
+  }
+
+  return null;
+};
+
+const CourseCard: React.FC<CourseCardProps & { onCardClick?: () => void }> = ({
   id,
   title,
   href,
@@ -40,25 +55,15 @@ const CourseProgramCard: React.FC<CourseProgramCardProps> = ({
   status = "not_started",
   progress,
   isAI = false,
-  leadOrg,
-  teachingOrgs = [],
-  description,
-  tracking,
   className = "",
   style,
-  onClick,
+  onCardClick,
 }) => {
-  const handleClick = () => {
-    if (onClick) {
-      onClick(id, variant);
-    }
-  };
   const showProgress = status === "in_progress" || status === "completed" || (progress && progress.percent > 0);
   const actualProgress = status === "completed" ? 100 : progress?.percent || 0;
 
-
-  const renderCourseCard = () => (
-    <CardWrapper className={className} style={style} onClick={handleClick}>
+  const courseCard = (
+    <CardWrapper className={className} style={style} onClick={onCardClick}>
       <CardContent>
         <CourseImageContainer>
           <Image
@@ -78,12 +83,11 @@ const CourseProgramCard: React.FC<CourseProgramCardProps> = ({
             </AITag>
           )}
         </CourseImageContainer>        
-        {org && (
-          <OrgSection>
-            <Image src={org.logoUrl} alt={org.name} width={24} height={24} />
-            <OrgName>{org.name}</OrgName>
-          </OrgSection>
-        )}
+        
+        <OrgSection>
+          <Image src={org.logoUrl} alt={org.name} width={24} height={24} />
+          <OrgName>{org.name}</OrgName>
+        </OrgSection>
 
         <CourseTitle>{title}</CourseTitle>
 
@@ -103,7 +107,6 @@ const CourseProgramCard: React.FC<CourseProgramCardProps> = ({
           )}
 
           {status === "in_progress" ? (
-            
             showProgress && progress && (
               <ProgressSection>
                 <ProgressInfo>
@@ -132,8 +135,30 @@ const CourseProgramCard: React.FC<CourseProgramCardProps> = ({
     </CardWrapper>
   );
 
-  const renderProgramCard = () => (
-    <ProgramCardWrapper className={className} style={style} onClick={handleClick}>
+  if (href) {
+    return (
+      <Link href={href} style={{ textDecoration: "none" }}>
+        {courseCard}
+      </Link>
+    );
+  }
+
+  return courseCard;
+};
+
+const ProgramCard: React.FC<ProgramCardProps & { onCardClick?: () => void }> = ({
+  id,
+  title,
+  href,
+  imageUrl,
+  teachingOrgs = [],
+  description,
+  className = "",
+  style,
+  onCardClick,
+}) => {
+  const programCard = (
+    <ProgramCardWrapper className={className} style={style} onClick={onCardClick}>
       <ProgramImageContainer>
         <Image
           src={imageUrl}
@@ -174,15 +199,15 @@ const CourseProgramCard: React.FC<CourseProgramCardProps> = ({
     </ProgramCardWrapper>
   );
 
-  if (href && !onClick) {
+  if (href) {
     return (
       <Link href={href} style={{ textDecoration: "none" }}>
-        {variant === "course" ? renderCourseCard() : renderProgramCard()}
+        {programCard}
       </Link>
     );
   }
 
-  return variant === "course" ? renderCourseCard() : renderProgramCard();
+  return programCard;
 };
 
 const TimeIcon = () => (
@@ -294,31 +319,6 @@ const ProgramContentSection = styled.div`
   gap: 16px;
   padding: 20px;
   flex: 1;
-`;
-
-const HeaderSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-`;
-
-const OrgInfo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-`;
-
-const OrgTag = styled.div`
-  padding: 9px 12px;
-  background: #FFFFFF;
-  border: 1px solid #EEEEEE;
-  border-radius: 8px;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 1.5;
-  letter-spacing: 0.03em;
-  color: #828D9B;
 `;
 
 const OrgSection = styled.div`

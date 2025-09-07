@@ -1,0 +1,188 @@
+import React from 'react';
+import styled from 'styled-components';
+import { ProgramCardProps } from '../AISCard/types';
+import CourseProgramCard from '../AISCard';
+
+interface RelatedProgramsProps {
+  title?: string;
+  programs?: ProgramCardProps[];
+  onProgramClick?: (programId: string) => void;
+  onViewAllClick?: () => void;
+}
+
+const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
+  title = "Khám phá các mục tiêu nghề nghiệp tương tự",
+  programs = [],
+  onProgramClick,
+  onViewAllClick
+}) => {
+  
+  const defaultPrograms: ProgramCardProps[] = [
+    {
+      id: "program_2",
+      variant: "program",
+      title: "Chuyên gia thiết kế giao diện người dùng",
+      href: "/programs/program_2",
+      imageUrl: "/images/ui.png",
+      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
+      teachingOrgs: [
+        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+      ],
+      category: "Thiết kế"
+    },
+    {
+      id: "program_3", 
+      variant: "program",
+      title: "Chuyên gia phân tích dữ liệu",
+      href: "/programs/program_3",
+      imageUrl: "/images/social.png",
+      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
+      teachingOrgs: [
+        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+      ],
+      category: "Dữ liệu"
+    },
+    {
+      id: "program_4",
+      variant: "program", 
+      title: "Nhà phân tích An ninh Mạng",
+      href: "/programs/program_4",
+      imageUrl: "/images/ui.png",
+      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
+      teachingOrgs: [
+        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+      ],
+      category: "An ninh"
+    },
+    {
+      id: "program_5",
+      variant: "program",
+      title: "Chuyên gia Quản lý dự án",
+      href: "/programs/program_5", 
+      imageUrl: "/images/social.png",
+      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
+      teachingOrgs: [
+        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+      ],
+      category: "Quản lý"
+    }
+  ];
+
+  const programsToDisplay = programs.length > 0 ? programs : defaultPrograms;
+
+  return (
+    <RelatedProgramsWrapper>
+      <Container>
+        <ContentSection>
+          <SectionTitle>{title}</SectionTitle>
+          
+          <ProgramsGrid>
+            {programsToDisplay.map((program) => (
+              <CourseProgramCard
+                key={program.id}
+                {...program}
+                onClick={(programId) => onProgramClick?.(programId)}
+              />
+            ))}
+          </ProgramsGrid>
+          
+          <ViewAllButton onClick={onViewAllClick}>
+            Xem tất cả các vai trò
+          </ViewAllButton>
+        </ContentSection>
+      </Container>
+    </RelatedProgramsWrapper>
+  );
+};
+
+const RelatedProgramsWrapper = styled.div`
+  padding: 50px 0;
+  background: #FFFFFF;
+`;
+
+const Container = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+  
+  @media (max-width: 1200px) {
+    padding: 0 40px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
+`;
+
+const ContentSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const SectionTitle = styled.h2`
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.193;
+  letter-spacing: 0.05em;
+  color: #051A53;
+  margin: 0;
+  text-align: left;
+`;
+
+const ProgramsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 1440px;
+  margin: 0 auto;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+  }
+  
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ViewAllButton = styled.button`
+  background: #FFFFFF;
+  color: #BC2826;
+  border: 1px solid #BC2826;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.193;
+  letter-spacing: 0.03em;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+  margin: 0 auto;
+  
+  &:hover {
+    background: #BC2826;
+    color: #FFFFFF;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(188, 40, 38, 0.2);
+  }
+`;
+
+export default RelatedPrograms;

@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
-import { CourseProgramCardProps } from "../AISCard/types";
+import AISButton from "../AISButton";
+import { CourseCardProps } from "../AISCard/types";
 
 interface KhoaHocProps {
   title?: string;
   description?: string;
   buttonText?: string;
-  courses?: CourseProgramCardProps[];
+  courses?: CourseCardProps[];
 }
 
 const KhoaHoc: React.FC<KhoaHocProps> = ({ 
@@ -16,7 +17,7 @@ const KhoaHoc: React.FC<KhoaHocProps> = ({
   buttonText = "Khám phá tất cả chứng chỉ",
   courses = []
 }) => {
-  const defaultCourses: CourseProgramCardProps[] = [
+  const defaultCourses: CourseCardProps[] = [
     {
       variant: "course",
       id: "course_1",
@@ -99,9 +100,9 @@ const KhoaHoc: React.FC<KhoaHocProps> = ({
         </div>
 
         <div className="button-container">
-          <button className="view-all-button">
+          <AISButton type="primary">
             {buttonText}
-          </button>
+          </AISButton>
         </div>
       </div>
     </KhoaHocWrapper>
@@ -209,43 +210,6 @@ const KhoaHocWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .view-all-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 16px;
-    height: 40px;
-    background: #FFFFFF;
-    border: 1px solid #BC2826;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 1.193;
-    letter-spacing: 0.03em;
-    color: #BC2826;
-
-    &:hover {
-      background: #BC2826;
-      color: #FFFFFF;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba(188, 40, 38, 0.2);
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-
-    &:focus-visible {
-      outline: 2px solid #BC2826;
-      outline-offset: 2px;
-    }
   }
 
   @media (max-width: 1280px) {

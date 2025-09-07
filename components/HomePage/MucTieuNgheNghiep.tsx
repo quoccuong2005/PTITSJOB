@@ -1,13 +1,15 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
-import { CourseProgramCardProps } from "../AISCard/types";
+import AISButton from "../AISButton";
+import { ProgramCardProps } from "../AISCard/types";
 
 interface MucTieuNgheNghiepProps {
   title?: string;
   description?: string;
   buttonText?: string;
-  programs?: CourseProgramCardProps[];
+  programs?: ProgramCardProps[];
 }
 
 const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({ 
@@ -17,6 +19,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
   programs = []
 }) => {
   const [activeTab, setActiveTab] = useState("Phổ biến");
+  const router = useRouter();
 
   const tabs = [
     "Phổ biến",
@@ -27,7 +30,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
     "Phát triển cá nhân"
   ];
 
-  const defaultPrograms: CourseProgramCardProps[] = [
+  const defaultPrograms: ProgramCardProps[] = [
     {
       variant: "program",
       id: "program_1",
@@ -74,14 +77,14 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
 
   return (
     <MucTieuNgheNghiepWrapper>
-      <div className="container">
+      <div className="container-wide">
         <MainContent>
           <LeftSection>
             <h2 className="section-title">{title}</h2>
             <p className="section-description">{description}</p>
-            <ExploreButton>
+            <AISButton type="primary">
               {buttonText}
-            </ExploreButton>
+            </AISButton>
           </LeftSection>
           
           <RightSection>
@@ -99,7 +102,16 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
             
             <CardsContainer>
               {filteredPrograms.map((program) => (
-                <CourseProgramCard key={program.id} {...program} />
+                <div
+                  key={program.id}
+                  style={{ cursor: "pointer" }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    router.push(`/programs/${program.id}`);
+                  }}
+                >
+                  <CourseProgramCard {...program} href="" />
+                </div>
               ))}
             </CardsContainer>
           </RightSection>
@@ -112,8 +124,8 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
 
 
 const MucTieuNgheNghiepWrapper = styled.div`
-  .container {
-    max-width: 1400px;
+  .container-wide {
+    max-width: 1300px;
     margin: 0 auto;
   }
 `;
@@ -163,44 +175,6 @@ const RightSection = styled.div`
   gap: 20px;
   flex: 1;
   min-width: 0;
-`;
-
-const ExploreButton = styled.button`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  height: 40px;
-  background: #BC2826;
-  border: 1px solid #BC2826;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: fit-content;
-
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 1.193;
-  letter-spacing: 0.03em;
-  color: #FFFFFF;
-
-  &:hover {
-    background: #A01E1C;
-    border-color: #A01E1C;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(188, 40, 38, 0.2);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  &:focus-visible {
-    outline: 2px solid #BC2826;
-    outline-offset: 2px;
-  }
 `;
 
 const TabsContainer = styled.div`
