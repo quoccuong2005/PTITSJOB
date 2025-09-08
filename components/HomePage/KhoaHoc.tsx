@@ -22,6 +22,8 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: true,        
+    autoplaySpeed: 2000, 
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 3 } },
       { breakpoint: 992, settings: { slidesToShow: 2 } },
@@ -172,9 +174,17 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
 };
 
 const KhoaHocWrapper = styled.div`
-  padding: 40px 0;
-  background: #ffffff;
-
+  .slick-slider {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .slick-list {
+    padding-top: 10px;
+    .slick-track {
+      display: flex;
+      gap: 20px;
+    }
+  }
   .section-header {
     margin-bottom: 20px;
     width: 100%;
@@ -261,20 +271,6 @@ const KhoaHocWrapper = styled.div`
       justify-content: flex-start;
       overflow-x: auto;
       padding-bottom: 10px;
-      
-      &::-webkit-scrollbar {
-        height: 6px;
-      }
-      
-      &::-webkit-scrollbar-track {
-        background: #F3F4F7;
-        border-radius: 3px;
-      }
-      
-      &::-webkit-scrollbar-thumb {
-        background: #BC2826;
-        border-radius: 3px;
-      }
     }
   }
 

@@ -41,10 +41,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<meta httpEquiv='X-UA-Compatible' content='ie=edge' />
 				<meta httpEquiv='Content-Type' content='text/html; charset=UTF-8' />
-				<meta name='description' content='Trang quản lý khoa học' />
+				<meta name='description' content='Cổng học trực tuyến Học viện Công nghệ Bưu Chính Viễn Thông' />
 				<meta
 					name='keywords'
-					content='Quản lý khoa học'
+					content='Cổng học trực tuyến'
 				/>
 				<meta name='author' content='ICI' />
 				<link rel='icon' href='/favicon.ico' />

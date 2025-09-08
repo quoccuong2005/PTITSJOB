@@ -26,8 +26,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
     "Công nghệ thông tin", 
     "Đa phương tiện",
     "Khoa học dữ liệu",
-    "Khoa học máy tính",
-    "Phát triển cá nhân"
+    "Khoa học máy tính"
   ];
 
   const defaultPrograms: ProgramCardProps[] = [
@@ -81,10 +80,12 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
         <MainContent>
           <LeftSection>
             <h2 className="section-title">{title}</h2>
-            <p className="section-description">{description}</p>
-            <AISButton type="primary">
-              {buttonText}
-            </AISButton>
+            <p className="section-description mt-[12px]">{description}</p>
+            <div className="mt-[32px]">
+              <AISButton>
+                {buttonText}
+              </AISButton>
+            </div>
           </LeftSection>
           
           <RightSection>
@@ -136,11 +137,6 @@ const MainContent = styled.div`
 `;
 
 const LeftSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 12px;
-  flex: 0 0 auto;
   width: 280px;
 
   .section-title {

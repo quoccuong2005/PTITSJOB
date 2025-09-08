@@ -25,7 +25,7 @@ const MainContent: React.FC<MainContentProps> = ({ program }) => {
   return (
     <MainContentWrapper>
       <div className="bg-main">
-        <div className="flex justify-between items-center container-head mx-auto">
+        <div className="container mx-auto flex items-center gap-[80px] py-[40px]">
           <div className="content-left">
             <h1 className="program-title">{program.title}</h1>
             <p className="program-description">{program.description}</p>
@@ -41,9 +41,6 @@ const MainContent: React.FC<MainContentProps> = ({ program }) => {
             </div>
           </div>
           <div className="image-section">
-            <div className="image-banner">
-              <img src="/images/home/imgBanner.png" alt="Banner" />
-            </div>
             <div className="image-program-overlay">
               <img src={program.imageUrl} alt={program.title} />
             </div>
@@ -60,10 +57,11 @@ const MainContentWrapper = styled.div`
       linear-gradient(90deg, rgba(255, 240, 240, 0) 0%, #fff0f0 100%);
   }
 
-  .container-head {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 20px;
+  .container {
+    background-image: url(/images/home/imgBanner.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
   }
 
   .content-left {
@@ -72,7 +70,7 @@ const MainContentWrapper = styled.div`
   }
 
   .program-title {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    
     font-weight: 600;
     font-size: 44px;
     line-height: 150%;
@@ -82,7 +80,7 @@ const MainContentWrapper = styled.div`
   }
 
   .program-description {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    text-align: justify;
     font-size: 18px;
     font-weight: 500;
     line-height: 140%;
@@ -91,7 +89,7 @@ const MainContentWrapper = styled.div`
   }
 
   .detailed-description {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    
     font-size: 18px;
     font-weight: 500;
     line-height: 150%;
@@ -116,21 +114,13 @@ const MainContentWrapper = styled.div`
     background: white;
     border-radius: 16px;
     padding: 8px 16px;
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    
     font-weight: 500;
     font-size: 14px;
     color: var(--primary-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-
-  .image-section {
-    width: 650px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
+    
   .image-banner {
     width: 100%;
     
@@ -142,12 +132,7 @@ const MainContentWrapper = styled.div`
   }
 
   .image-program-overlay {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
     width: 450px;
-    height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,9 +166,7 @@ const MainContentWrapper = styled.div`
     }
 
     .image-section {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
+      
     }
 
     .image-program-overlay {

@@ -14,19 +14,53 @@ const HomePage = () => {
 	return <HomePageWrapper>
 		<Banner/>
 		<DoiTac/>
-		<KhoaHoc 
-			title={common("courses.title")}
-			description={common("courses.description")}
-			buttonText={common("courses.button")}
-		/>
-		<MucTieuNgheNghiep 
-			title={common("career.title")}
-			description={common("career.description")}
-			buttonText={common("career.button")}
-		/>
+		<div className="py-[40px]">
+			<KhoaHoc 
+				title={common("courses.title")}
+				description={common("courses.description")}
+				buttonText={common("courses.button")}
+			/>
+		</div>
+		<div className="pt-[20px] pb-[40px]">
+			<ChuongTrinhDaoTao/>
+		</div>
+		<div className="py-[40px]">
+			<MucTieuNgheNghiep 
+				title={common("career.title")}
+				description={common("career.description")}
+				buttonText={common("career.button")}
+			/>
+		</div>
 		<BannerSecond/>
+		<div className="py-[40px]">
+			<KhoaHoc 
+				title={common("courses.title")}
+				description={common("courses.description")}
+				buttonText={common("courses.button")}
+			/>
+		</div>
+		<div className="py-[40px]">
+			<KhoaHoc 
+				title={common("courses.title")}
+				description={common("courses.description")}
+				buttonText={common("courses.button")}
+			/>
+		</div>
 		<BannerThird/>
-		<ChuongTrinhDaoTao/>
+		<div className="py-[40px]">
+			<KhoaHoc 
+				title={common("courses.title")}
+				description={common("courses.description")}
+				buttonText={common("courses.button")}
+			/>
+		</div>
+		<div className="py-[40px]">
+			<KhoaHoc 
+				title={common("courses.title")}
+				description={common("courses.description")}
+				buttonText={common("courses.button")}
+			/>
+		</div>
 	</HomePageWrapper>;
 }
 

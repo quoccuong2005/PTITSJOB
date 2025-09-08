@@ -328,7 +328,7 @@ const OrgSection = styled.div`
 `;
 
 const OrgName = styled.span`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 500;
   font-size: 15px;
   line-height: 1.5;
@@ -337,7 +337,7 @@ const OrgName = styled.span`
 `;
 
 const CourseTitle = styled.h3`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 18px;
   line-height: 1.45;
@@ -354,7 +354,7 @@ const CourseTitle = styled.h3`
 `;
 
 const ProgramTitle = styled.h3`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 20px;
   line-height: 1.45;
@@ -368,7 +368,7 @@ const ProgramTitle = styled.h3`
 `;
 
 const ProgramDescription = styled.p`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 400;
   font-size: 15px;
   line-height: 1.55;
@@ -409,7 +409,7 @@ const MetaItem = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 500;
   font-size: 15px;
   line-height: 1.5;
@@ -421,7 +421,7 @@ const StatusChip = styled.div<{ color: string }>`
   padding: 6px 8px;
   background: ${props => props.color === "#1677FF" ? "#DCEDFD" : "#F6FFED"};
   border-radius: 6px;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 500;
   font-size: 14px;
   line-height: 1.35;
@@ -442,7 +442,7 @@ const ProgressInfo = styled.div`
   align-items: center;
   
   span {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    
     font-weight: 500;
     font-size: 15px;
     line-height: 1.5;
@@ -480,13 +480,15 @@ const OrgBadgeProgram = styled.div`
 
   img {
     width: 28px;
+    padding: 3px;
+    object-fit: contain;
     height: 28px;
     border-radius: 8px;
     border: 1px solid #EEEEEE;
   }
 
   span {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    
     font-weight: 500;
     font-size: 15px;
     line-height: 1.5;
@@ -511,7 +513,7 @@ const AITag = styled.div`
   border-radius: 24px;
   
   span {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    
     font-weight: 500;
     font-size: 14px;
     line-height: 1.35;
@@ -530,7 +532,7 @@ const StatusLabel = styled.div<{ status: "in_progress" | "completed" }>`
   height: 28px;
   border-radius: 6px;
   
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 500;
   font-size: 14px;
   line-height: 1.35;

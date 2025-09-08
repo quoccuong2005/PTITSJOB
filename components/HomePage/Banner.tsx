@@ -45,7 +45,7 @@ const Banner = () => {
     const year = today.getFullYear();
     const dateString = `${day}/${month}/${year}`;
 
-    const formattedDate = `${dayName}, ${timeString} ${dateString}`;
+    const formattedDate = `${dayName}, ${dateString}`;
 
     setCurrentDate(formattedDate);
   }, [i18n.language]);
@@ -53,7 +53,7 @@ const Banner = () => {
   return (
     <BannerWrappper>
       <div className="bg-banner">
-        <div className="flex justify-between items-center container mx-auto">
+        <div className="flex justify-between items-center container mx-auto h-[100%]">
           <div className="banner-content">
             <div className="show-date">
               <svg
@@ -109,9 +109,9 @@ const Banner = () => {
               />
             </div>
           </div>
-          <div className="image-banner">
+          {/* <div className="image-banner">
             <img src="/images/home/imgBanner.png" />
-          </div>
+          </div> */}
         </div>
       </div>
     </BannerWrappper>
@@ -163,8 +163,12 @@ const BannerWrappper = styled.div`
   }
 
   .bg-banner {
-    background: linear-gradient(0deg, #fff0f0, #fff0f0),
-      linear-gradient(90deg, rgba(255, 240, 240, 0) 0%, #fff0f0 100%);
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-color: #fef1f0;
+    height: 420px;
+    background-image: url(/images/home/banner-ptit.png);
   }
 `;
 export default Banner;

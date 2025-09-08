@@ -80,6 +80,14 @@ const CardCTDTWrapper = styled.div`
       transform: rotate(330deg);
       bottom: -40px;
       right: -30px;
+      transition: .2;
+    }
+  }
+
+  .card:hover {
+    .image-float {
+      opacity: 0.1;
+      mix-blend-mode: none;
     }
   }
 `

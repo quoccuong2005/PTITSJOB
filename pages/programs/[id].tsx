@@ -18,7 +18,7 @@ const ProgramDetailPage = () => {
   return (
     <Wrapper>
       <BreadcrumbSection>
-        <div className="breadcrumb-container">
+        <div className="breadcrumb-container container mx-auto py-[12px]">
           <BreadcrumbPage
             data={[
               { title: 'Trang chủ', path: '/' },
@@ -43,11 +43,11 @@ const ProgramDetailPage = () => {
       <RelatedPrograms 
         onProgramClick={(programId) => {
           console.log('Program clicked:', programId);
-          router.push(`/programs/${programId}`);
+          router.push('#');
         }}
         onViewAllClick={() => {
           console.log('View all clicked');
-          router.push('/programs');
+          router.push('#');
         }}
       />
     </Wrapper>
@@ -56,18 +56,10 @@ const ProgramDetailPage = () => {
 
 const Wrapper = styled.div`
   background: #fff;
-  min-height: 100vh;
 `;
 
 const BreadcrumbSection = styled.div`
-  padding: 20px 0;
   background: #fff;
-  
-  .breadcrumb-container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
 `;
 
 export default ProgramDetailPage;

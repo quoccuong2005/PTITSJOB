@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { KnowledgeModulesProps, KnowledgeModule } from './types';
 import CourseProgramCard from '../AISCard';
+import AISButton from '../AISButton';
 
 const Modules: React.FC<KnowledgeModulesProps> = ({
   title = "Modun kiến thức",
@@ -70,9 +71,9 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
             </SkillsTags>
           </SkillsSection>
 
-          <ExploreButton>
+          <AISButton>
             Khám phá chứng chỉ
-          </ExploreButton>
+          </AISButton>
         </MainModuleCard>
 
         <CoursesSection>
@@ -242,7 +243,7 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
 
   return (
     <ModulesWrapper>
-      <Container>
+      <div className="container mx-auto">
         <HeaderSection>
           <HeaderContent>
             <TextContent>
@@ -252,25 +253,16 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
           </HeaderContent>
         </HeaderSection>
 
-        <ContentSection>
-          {modulesToDisplay.map((module) => (
-            <ModuleWithNavigation key={module.id} module={module} />
-          ))}
-        </ContentSection>
-      </Container>
+        {modulesToDisplay.map((module) => (
+          <div className="mt-[32px]"><ModuleWithNavigation key={module.id} module={module} /></div>
+        ))}
+      </div>
     </ModulesWrapper>
   );
 };
 
 const ModulesWrapper = styled.div`
-  padding: 60px 0;
-  background: #FAFBFC;
-`;
-
-const Container = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 20px;
+  padding: 40px 0;
 `;
 
 const HeaderSection = styled.div`
@@ -290,7 +282,7 @@ const TextContent = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 24px;
   line-height: 1.193;
@@ -300,7 +292,7 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionDescription = styled.p`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 500;
   font-size: 16px;
   line-height: 1.193;
@@ -310,23 +302,17 @@ const SectionDescription = styled.p`
   max-width: 600px;
 `;
 
-const ContentSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-`;
-
 const ModuleSection = styled.div`
   display: flex;
   gap: 40px;
   align-items: flex-start;
+  padding: 20px;
+  background-color: #F6FAFF;
+  border-radius: 16px;
 `;
 
 const MainModuleCard = styled.div`
   flex: 0 0 376px;
-  background: #F6FAFF;
-  border-radius: 16px;
-  padding: 24px;
 `;
 
 const ModuleHeader = styled.div`
@@ -344,7 +330,7 @@ const OrgBadge = styled.div`
   width: fit-content;
   
   span {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    
     font-weight: 500;
     font-size: 16px;
     color: #828D9B;
@@ -352,7 +338,7 @@ const OrgBadge = styled.div`
 `;
 
 const ModuleTitle = styled.h3`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 24px;
   line-height: 1.45;
@@ -373,14 +359,14 @@ const StarIcon = styled.div`
 `;
 
 const RatingScore = styled.span`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 16px;
   color: #BC2826;
 `;
 
 const RatingCount = styled.span`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 500;
   font-size: 16px;
   color: #051A53;
@@ -392,7 +378,7 @@ const CourseCountSection = styled.div`
   gap: 12px;
   
   span {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    
     font-weight: 500;
     font-size: 16px;
     color: #051A53;
@@ -415,7 +401,7 @@ const SkillsSection = styled.div`
 `;
 
 const SkillsTitle = styled.h4`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 16px;
   color: #051A53;
@@ -433,7 +419,7 @@ const SkillTag = styled.span`
   color: #1677FF;
   padding: 6px 8px;
   border-radius: 6px;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 500;
   font-size: 14px;
   text-align: center;
@@ -446,7 +432,7 @@ const ExploreButton = styled.button`
   border: 1px solid #BC2826;
   padding: 12px 16px;
   border-radius: 8px;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
@@ -486,7 +472,7 @@ const CoursesHeader = styled.div`
 `;
 
 const CoursesCount = styled.span`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 500;
   font-size: 14px;
   color: #535355;

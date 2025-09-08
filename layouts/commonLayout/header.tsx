@@ -82,71 +82,7 @@ const Header = (props: IProps) => {
             </AISLink>
           </TextIcon>
           <div className="flex items-center gap-[40px]">
-            <div className="relative" ref={languageRef}>
-              <div
-                className="flex items-center cursor-pointer p-1"
-                onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-              >
-                <img
-                  className="h-[20px] w-[35px] mr-2"
-                  src={language === "en" ? "/images/icons/us.svg" : "/images/icons/vn.svg"}
-                  alt="current language"
-                />
-                <svg
-                  width="12"
-                  height="8"
-                  viewBox="0 0 12 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className={`transition-transform ${showLanguageDropdown ? 'rotate-180' : ''}`}
-                >
-                  <path
-                    d="M1 1.5L6 6.5L11 1.5"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              
-              {showLanguageDropdown && (
-                <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md overflow-hidden z-50 min-w-[160px]">
-                  <div
-                    className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
-                      language === "vi" ? "bg-gray-50" : ""
-                    }`}
-                    onClick={() => {
-                      handleChangeLanguage("vi");
-                      setShowLanguageDropdown(false);
-                    }}
-                  >
-                    <img
-                      className="h-[20px] w-[30px] mr-3"
-                      src="/images/icons/vn.svg"
-                      alt="Vietnamese"
-                    />
-                    <span className="text-gray-800 text-sm">{common("language_vietnamese")}</span>
-                  </div>
-                  <div
-                    className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
-                      language === "en" ? "bg-gray-50" : ""
-                    }`}
-                    onClick={() => {
-                      handleChangeLanguage("en");
-                      setShowLanguageDropdown(false);
-                    }}
-                  >
-                    <img
-                      className="h-[20px] w-[30px] mr-3"
-                      src="/images/icons/us.svg"
-                      alt="English"
-                    />
-                    <span className="text-gray-800 text-sm">{common("language_english")}</span>
-                  </div>
-                </div>
-              )}
-            </div>
+            
             <TextIcon
               icon={
                 <svg
@@ -193,6 +129,71 @@ const Header = (props: IProps) => {
                 qldt@ptit.edu.vn
               </AISLink>
             </TextIcon>
+            <div className="relative" ref={languageRef}>
+              <div
+                className="flex items-center cursor-pointer p-1"
+                onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+              >
+                <img
+                  className="h-[20px] mr-2"
+                  src={language === "en" ? "/images/icons/us.svg" : "/images/icons/vn.svg"}
+                  alt="current language"
+                />
+                <svg
+                  width="12"
+                  height="8"
+                  viewBox="0 0 12 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`transition-transform ${showLanguageDropdown ? 'rotate-180' : ''}`}
+                >
+                  <path
+                    d="M1 1.5L6 6.5L11 1.5"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              
+              {showLanguageDropdown && (
+                <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-md overflow-hidden z-50 min-w-[160px]">
+                  <div
+                    className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
+                      language === "vi" ? "bg-gray-50" : ""
+                    }`}
+                    onClick={() => {
+                      handleChangeLanguage("vi");
+                      setShowLanguageDropdown(false);
+                    }}
+                  >
+                    <img
+                      className="h-[20px] w-[30px] mr-3"
+                      src="/images/icons/vn.svg"
+                      alt="Vietnamese"
+                    />
+                    <span className="text-gray-800 text-sm">{common("language_vietnamese")}</span>
+                  </div>
+                  <div
+                    className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
+                      language === "en" ? "bg-gray-50" : ""
+                    }`}
+                    onClick={() => {
+                      handleChangeLanguage("en");
+                      setShowLanguageDropdown(false);
+                    }}
+                  >
+                    <img
+                      className="h-[20px] w-[30px] mr-3"
+                      src="/images/icons/us.svg"
+                      alt="English"
+                    />
+                    <span className="text-gray-800 text-sm">{common("language_english")}</span>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -263,7 +264,7 @@ const Header = (props: IProps) => {
                 placeholder={common("search_placeholder")}
               />
               <AISDivider />
-              <AISButton type="primary">{common("login")}</AISButton>
+              <AISButton onClick={() => {window.location.href = "https://slink.ptit.edu.vn"}} type="primary">{common("login")}</AISButton>
             </div>
           </div>
           <div

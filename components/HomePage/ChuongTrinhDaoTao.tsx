@@ -3,9 +3,6 @@ import CardCTDT from "./CardCTDT";
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 // @ts-ignore
 import Slider from "react-slick";
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 
 const ChuongTrinhDaoTao = () => {
@@ -57,6 +54,8 @@ const ChuongTrinhDaoTao = () => {
     speed: 600,
     slidesToShow: 4,
     slidesToScroll: 1,
+    autoplay: true,        
+    autoplaySpeed: 2000, 
     arrows: false,
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 3 } },
@@ -67,7 +66,7 @@ const ChuongTrinhDaoTao = () => {
 
   return (
     <CTDTWrapper>
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
         <div className="header-section">
           <div className="text-content">
             <h2 className="title">{common("training.title")}</h2>
@@ -116,8 +115,6 @@ const ChuongTrinhDaoTao = () => {
 };
 
 const CTDTWrapper = styled.div`
-  padding: 40px 0;
-  
   .header-section {
     display: flex;
     justify-content: space-between;

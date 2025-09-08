@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ProgramCardProps } from '../AISCard/types';
 import CourseProgramCard from '../AISCard';
+import AISButton from '../AISButton';
 
 interface RelatedProgramsProps {
   title?: string;
@@ -76,7 +77,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
 
   return (
     <RelatedProgramsWrapper>
-      <Container>
+      <div className="container mx-auto">
         <ContentSection>
           <SectionTitle>{title}</SectionTitle>
           
@@ -90,24 +91,21 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
             ))}
           </ProgramsGrid>
           
-          <ViewAllButton onClick={onViewAllClick}>
-            Xem tất cả các vai trò
-          </ViewAllButton>
+          <AISButton onClick={onViewAllClick}>
+            Xem tất cả nghề nghiệp
+          </AISButton>
         </ContentSection>
-      </Container>
+      </div>
     </RelatedProgramsWrapper>
   );
 };
 
 const RelatedProgramsWrapper = styled.div`
-  padding: 50px 0;
-  background: #FFFFFF;
+  padding: 40px 0;
+  border-top: 1.5px solid #EEEEEE;
 `;
 
 const Container = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
-  
   @media (max-width: 1200px) {
     padding: 0 40px;
   }
@@ -124,7 +122,7 @@ const ContentSection = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 24px;
   line-height: 1.193;
@@ -137,11 +135,9 @@ const SectionTitle = styled.h2`
 const ProgramsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 20px;
   justify-content: center;
   align-items: center;
-  width: 1440px;
-  margin: 0 auto;
   
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
@@ -163,7 +159,7 @@ const ViewAllButton = styled.button`
   border: 1px solid #BC2826;
   border-radius: 8px;
   padding: 12px 16px;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
   font-weight: 600;
   font-size: 16px;
   line-height: 1.193;
