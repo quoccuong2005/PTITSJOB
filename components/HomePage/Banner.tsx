@@ -163,7 +163,7 @@ const BannerWrappper = styled.div`
   }
 
   .bg-banner {
-    background-size: contain;
+    background-size: auto 100%;
     background-position: right;
     background-repeat: no-repeat;
     background-color: #fef1f0;

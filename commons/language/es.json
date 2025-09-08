@@ -1,0 +1,82 @@
+{
+  "common": {
+    "login": "Iniciar sesión",
+    "home": "Inicio",
+    "gioi-thieu": "Introducción",
+    "tin-tuc": "Noticias - Eventos",
+    "tin-tuyen-sinh": "Noticias de admisión",
+    "su-kien": "Eventos",
+    "thong-bao": "Anuncios",
+    "tuyen-sinh": "Admisión",
+    "dao-tao": "Formación",
+    "so-do": "Mapa del sitio",
+    "lien-he": "Contacto",
+    "search": "Buscar",
+    "search_placeholder": "¿Qué curso quieres buscar?",
+    "partner": "Socios",
+    "already": "Disponible",
+    "more-info": "Ver más",
+    "discover": "Descubrir",
+    "portal_title": "Portal de Información Electrónica de la Academia de Tecnología de Correos y Telecomunicaciones",
+    "language_vietnamese": "Vietnamita",
+    "language_english": "Inglés",
+    "banner": {
+      "platform_name": "Plataforma Universitaria Digital PTIT",
+      "date_format": "Lun, 12:00 25/08/2025",
+      "today": "Hoy",
+      "courses_title": "+ cursos con muchos temas para estudiantes",
+      "learn_more": "Aprender más",
+      "discover_title": "Descubre cosas nuevas orientadas a tus metas personales y profesionales",
+      "explore_free": "Explorar gratis"
+    },
+    "training": {
+      "title": "Programas de formación",
+      "subtitle": "Descubre nuestros programas de formación más populares"
+    },
+    "partners": {
+      "title": "Con la presencia de más de",
+      "organizations": "+ organizaciones educativas",
+      "subtitle": "prestigiosas de todas partes"
+    },
+    "courses": {
+      "title": "Certificados más populares",
+      "description": "Descubre nuestros certificados más populares, listos para satisfacer todas las necesidades",
+      "button": "Explorar todos los certificados"
+    },
+    "career": {
+      "title": "Objetivos profesionales",
+      "description": "Descubre programas de formación especializados que te ayudan a alcanzar tus metas profesionales",
+      "button": "Ver todos los programas"
+    },
+    "empty": "¡No hay datos!",
+    "pricing": "Precios",
+    "price-table": "Tabla de precios generales",
+    "search-result": "Resultados de búsqueda"
+  },
+  "home": {
+    "customer": "Clientes",
+    "satisfaction": "Satisfacción",
+    "customer-say": "Comentarios",
+    "customer-feedback": "Lo que dicen nuestros clientes y socios al trabajar con nosotros",
+    "introdution": "Introducción general"
+  },
+  "news": {
+    "edu": "Noticias de educación"
+  },
+  "gallery": {
+    "image": "Galería de imágenes",
+    "video": "Galería de videos",
+    "audio": "Galería de audio"
+  },
+  "event": {
+    "event": "Evento"
+  },
+  "footer": {
+    "address": "Dirección",
+    "phone": "Teléfono",
+    "email": "Correo electrónico",
+    "web": "Sitio web",
+    "time": "Horario laboral",
+    "location": "Mapa de ubicación"
+  }
+}

@@ -8,31 +8,44 @@ import Head from "next/head";
 
 const CommonLayout = ({ children }: any) => {
 	const [language, setLanguage] = useState<string>("vi");
-	const [mounted, setMounted] = useState(false);
-	const { setLangCode } = useContext(AuthContext);
+  const [mounted, setMounted] = useState(false);
+  const { setLangCode } = useContext(AuthContext);
 
-	useEffect(() => {
-		setMounted(true);
-		const langCode = localStorage.getItem("langCode") || "vi-VN";
-		const mappedLang = langCode === 'vi-VN' ? 'vi' : langCode;
-		
-		
-		setLanguage(mappedLang);
-		i18n.changeLanguage(mappedLang);
-		setLangCode(langCode);
-	}, [setLangCode]);
+  const langMap: Record<string, string> = {
+    "vi-VN": "vi",
+    "en-US": "en",
+    "es-ES": "es",
+    "zh-CN": "zh",
+    "zh-TW": "zh-TW",
+    "lo-LA": "lo",
+    "km-KH": "km",
+  };
 
-	const handleChangeLanguage = (lang: string) => {
-		
-		const langCodeToStore = lang === 'vi' ? 'vi-VN' : lang;
-		
-		i18n.changeLanguage(lang);
-		setLanguage(lang);
-		if (mounted) {
-			localStorage.setItem("langCode", langCodeToStore);
-		}
-		setLangCode(langCodeToStore);
-	};
+  const reverseLangMap: Record<string, string> = Object.fromEntries(
+    Object.entries(langMap).map(([k, v]) => [v, k])
+  );
+
+  useEffect(() => {
+    setMounted(true);
+    const storedLangCode = localStorage.getItem("langCode") || "vi-VN";
+    const mappedLang = langMap[storedLangCode] || "vi";
+
+    setLanguage(mappedLang);
+    i18n.changeLanguage(mappedLang);
+    setLangCode(storedLangCode);
+  }, [setLangCode]);
+
+  const handleChangeLanguage = (lang: string) => {
+    const langCodeToStore = reverseLangMap[lang] || "vi-VN";
+
+    i18n.changeLanguage(lang);
+    setLanguage(lang);
+
+    if (mounted) {
+      localStorage.setItem("langCode", langCodeToStore);
+    }
+    setLangCode(langCodeToStore);
+  };
 
 	return (
 		<>

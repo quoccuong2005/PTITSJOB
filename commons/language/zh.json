@@ -1,0 +1,82 @@
+{
+  "common": {
+    "login": "登录",
+    "home": "首页",
+    "gioi-thieu": "介绍",
+    "tin-tuc": "新闻 - 活动",
+    "tin-tuyen-sinh": "招生新闻",
+    "su-kien": "活动",
+    "thong-bao": "通知",
+    "tuyen-sinh": "招生",
+    "dao-tao": "培训",
+    "so-do": "网站地图",
+    "lien-he": "联系",
+    "search": "搜索",
+    "search_placeholder": "您想搜索什么课程？",
+    "partner": "合作伙伴",
+    "already": "可用",
+    "more-info": "查看更多",
+    "discover": "探索",
+    "portal_title": "邮电技术学院电子信息门户",
+    "language_vietnamese": "越南语",
+    "language_english": "英语",
+    "banner": {
+      "platform_name": "PTIT 数字大学平台",
+      "date_format": "星期一, 12:00 2025/08/25",
+      "today": "今天",
+      "courses_title": "+ 门课程，涵盖多个主题，适合学生",
+      "learn_more": "了解更多",
+      "discover_title": "探索新事物，实现个人目标与专业发展",
+      "explore_free": "免费探索"
+    },
+    "training": {
+      "title": "培训课程",
+      "subtitle": "探索我们最受欢迎的培训课程"
+    },
+    "partners": {
+      "title": "已有超过",
+      "organizations": "+ 教育机构",
+      "subtitle": "来自各地的知名机构"
+    },
+    "courses": {
+      "title": "最受欢迎的证书",
+      "description": "探索我们最受欢迎的证书，满足各种需求",
+      "button": "查看所有证书"
+    },
+    "career": {
+      "title": "职业目标",
+      "description": "探索专业培训课程，帮助您实现职业目标",
+      "button": "查看所有课程"
+    },
+    "empty": "暂无数据！",
+    "pricing": "价格",
+    "price-table": "通用价格表",
+    "search-result": "搜索结果"
+  },
+  "home": {
+    "customer": "客户",
+    "satisfaction": "满意度",
+    "customer-say": "反馈信息",
+    "customer-feedback": "客户和合作伙伴对与我们合作的评价",
+    "introdution": "总体介绍"
+  },
+  "news": {
+    "edu": "教育新闻"
+  },
+  "gallery": {
+    "image": "图片库",
+    "video": "视频库",
+    "audio": "音频库"
+  },
+  "event": {
+    "event": "活动"
+  },
+  "footer": {
+    "address": "地址",
+    "phone": "电话",
+    "email": "电子邮箱",
+    "web": "网站",
+    "time": "工作时间",
+    "location": "地图指引"
+  }
+}
