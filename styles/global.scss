@@ -28,7 +28,6 @@
 		max-width: 1240px;
 	}
 }
-
 .required-label {
 	&::after {
 		content: "*";
@@ -91,11 +90,6 @@
 }
 .image-gallery-left-nav {
 	background: #BC2826 !important;
-}
-@media screen and (min-width: 1440px){
-	.container{
-		max-width: 1198px !important;
-	}
 }
 .bg-gradient-gray{
 	background: linear-gradient(0deg, rgba(20, 33, 65, 0.06), rgba(20, 33, 65, 0.06)), #FFFFFF;

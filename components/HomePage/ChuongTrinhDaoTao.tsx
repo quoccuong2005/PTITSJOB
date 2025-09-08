@@ -1,5 +1,3 @@
-"use client";
-
 import styled from "styled-components";
 import CardCTDT from "./CardCTDT";
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
 import AISButton from "../AISButton";
 import { CourseCardProps } from "../AISCard/types";
+// @ts-ignore
+import Slider from "react-slick";
 
 interface KhoaHocProps {
   title?: string;
@@ -11,12 +13,21 @@ interface KhoaHocProps {
   courses?: CourseCardProps[];
 }
 
-const KhoaHoc: React.FC<KhoaHocProps> = ({ 
-  title = "Chứng chỉ phổ biến nhất",
-  description = "Khám phá các chứng chỉ phổ biến nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
-  buttonText = "Khám phá tất cả chứng chỉ",
-  courses = []
-}) => {
+const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
+  const sliderRef = useRef<Slider | null>(null);
+  const {title, description, buttonText, courses} = props;
+  const settings = {
+    dots: false,
+    speed: 600,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      { breakpoint: 1200, settings: { slidesToShow: 3 } },
+      { breakpoint: 992, settings: { slidesToShow: 2 } },
+      { breakpoint: 576, settings: { slidesToShow: 1 } },
+    ],
+  };
   const defaultCourses: CourseCardProps[] = [
     {
       variant: "course",
@@ -65,13 +76,60 @@ const KhoaHoc: React.FC<KhoaHocProps> = ({
       status: "not_started",
       isAI: true
     },
+    {
+      variant: "course",
+      id: "course_5",
+      title: "Giải tích 1",
+      href: "/courses/giai-tich-1",
+      imageUrl: "/images/test_course1.png",
+      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+      durationMinutes: 136,
+      certificateType: "Chứng chỉ chuyên môn",
+      status: "not_started"
+    },
+    {
+      variant: "course",
+      id: "course_6",
+      title: "Đại số tuyến tính",
+      href: "/courses/dai-so-tuyen-tinh",
+      imageUrl: "/images/test_course.png",
+      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+      durationMinutes: 180,
+      certificateType: "Chứng chỉ chuyên môn",
+      status: "in_progress",
+      progress: { percent: 65, completedLessons: 13, totalLessons: 20 }
+    },
+    {
+      variant: "course",
+      id: "course_7",
+      title: "An toàn và bảo mật hệ thống thông tin",
+      href: "/courses/an-toan-bao-mat",
+      imageUrl: "/images/test_course1.png",
+      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+      durationMinutes: 240,
+      certificateType: "Chứng chỉ chuyên môn",
+      status: "completed",
+      progress: { percent: 100, completedLessons: 24, totalLessons: 24 }
+    },
+    {
+      variant: "course",
+      id: "course_8",
+      title: "Trí tuệ nhân tạo (AI)",
+      href: "/courses/tri-tue-nhan-tao",
+      imageUrl: "/images/test_course.png",
+      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+      durationMinutes: 320,
+      certificateType: "Chứng chỉ chuyên môn",
+      status: "not_started",
+      isAI: true
+    },
   ];
 
-  const coursesToDisplay = courses.length > 0 ? courses : defaultCourses;
+  const coursesToDisplay = courses?.length ? courses : defaultCourses;
 
   return (
     <KhoaHocWrapper>
-      <div className="container py-10">
+      <div className="container mx-auto">
         <div className="section-header">
           <div className="header-content">
             <div className="text-content">
@@ -79,12 +137,12 @@ const KhoaHoc: React.FC<KhoaHocProps> = ({
               <p className="section-description">{description}</p>
             </div>
             <div className="navigation-arrows">
-              <button className="nav-button" aria-label="Previous courses">
+              <button className="nav-button" aria-label="Previous courses" onClick={() => sliderRef.current?.slickPrev()}>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M12.5 15L7.5 10L12.5 5" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </button>
-              <button className="nav-button" aria-label="Next courses">
+              <button className="nav-button" aria-label="Next courses" onClick={() => sliderRef.current?.slickNext()}>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M7.5 5L12.5 10L7.5 15" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -93,14 +151,18 @@ const KhoaHoc: React.FC<KhoaHocProps> = ({
           </div>
         </div>
 
-        <div className="course-grid">
-          {coursesToDisplay.map((course) => (
-            <CourseProgramCard key={course.id} {...course} />
-          ))}
+        <div className="slider-container">
+          <Slider ref={sliderRef} {...settings}>
+            {coursesToDisplay.map((course) => (
+              <div className="slick-slide">
+                <CourseProgramCard key={course.id} {...course} />
+              </div>
+            ))}
+            </Slider>
         </div>
 
         <div className="button-container">
-          <AISButton type="primary">
+          <AISButton type="default">
             {buttonText}
           </AISButton>
         </div>
@@ -112,19 +174,10 @@ const KhoaHoc: React.FC<KhoaHocProps> = ({
 const KhoaHocWrapper = styled.div`
   padding: 40px 0;
   background: #ffffff;
-  
-  .container {
-    max-width: 1240px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 
   .section-header {
     margin-bottom: 20px;
     width: 100%;
-    max-width: 1240px;
   }
 
   .header-content {
@@ -141,7 +194,6 @@ const KhoaHocWrapper = styled.div`
   }
 
   .section-title {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     font-size: 24px;
     line-height: 1.193;
@@ -151,7 +203,6 @@ const KhoaHocWrapper = styled.div`
   }
 
   .section-description {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.193;
@@ -194,22 +245,8 @@ const KhoaHocWrapper = styled.div`
     }
   }
 
-  .course-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 20px;
-    width: 1240px;
-    height: 420px;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-  }
-
   .button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-top: 20px;
   }
 
   @media (max-width: 1280px) {

@@ -14,7 +14,6 @@ const HomePage = () => {
 	return <HomePageWrapper>
 		<Banner/>
 		<DoiTac/>
-		<BannerSecond/>
 		<KhoaHoc 
 			title={common("courses.title")}
 			description={common("courses.description")}
@@ -25,6 +24,7 @@ const HomePage = () => {
 			description={common("career.description")}
 			buttonText={common("career.button")}
 		/>
+		<BannerSecond/>
 		<BannerThird/>
 		<ChuongTrinhDaoTao/>
 	</HomePageWrapper>;

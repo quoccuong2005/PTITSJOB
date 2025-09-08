@@ -77,7 +77,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
 
   return (
     <MucTieuNgheNghiepWrapper>
-      <div className="container-wide">
+      <div className="container mx-auto">
         <MainContent>
           <LeftSection>
             <h2 className="section-title">{title}</h2>
@@ -124,19 +124,15 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
 
 
 const MucTieuNgheNghiepWrapper = styled.div`
-  .container-wide {
-    max-width: 1300px;
-    margin: 0 auto;
-  }
 `;
 
 const MainContent = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
-  background: #FFFFFF;
+  background: #F6FAFF;
   border-radius: 16px;
-  padding: 20px 10px;
+  padding: 20px;
 `;
 
 const LeftSection = styled.div`
@@ -148,7 +144,6 @@ const LeftSection = styled.div`
   width: 280px;
 
   .section-title {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     font-size: 24px;
     line-height: 1.5;
@@ -158,7 +153,6 @@ const LeftSection = styled.div`
   }
 
   .section-description {
-    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
@@ -194,7 +188,6 @@ const TabButton = styled.button<{ active: boolean }>`
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.193;
@@ -227,7 +220,6 @@ const CardsContainer = styled.div`
   height: 580px;
   overflow-x: auto;
   flex-wrap: nowrap;
-  padding-right: 20px;
 
   @media (max-width: 1280px) {
     justify-content: flex-start;
