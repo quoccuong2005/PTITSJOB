@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import TextIcon from "../../components/TextIcon";
 import AISLink from "../../components/AISLink";
 import AISButton from "../../components/AISButton";
@@ -13,16 +14,25 @@ interface IProps {
 
 const Header = (props: IProps) => {
   const { language, handleChangeLanguage } = props;
+  const { t, i18n } = useTranslation("common");
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const languageRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutSide = (e: any) => {
     const node = menuRef.current;
+    const languageNode = languageRef.current;
     const { target } = e;
     if (node) {
       if (!node.contains(target)) {
         setShowMenu(false);
+      }
+    }
+    if (languageNode) {
+      if (!languageNode.contains(target)) {
+        setShowLanguageDropdown(false);
       }
     }
   };
@@ -34,6 +44,13 @@ const Header = (props: IProps) => {
       window.removeEventListener("click", handleClickOutSide);
     };
   }, []);
+
+  useEffect(() => {
+    const mappedLang = language === 'vi-VN' ? 'vi' : language;
+    if (i18n.language !== mappedLang) {
+      i18n.changeLanguage(mappedLang);
+    }
+  }, [language, i18n]);
 
   const isSticky = (e: any) => {
     if (window.scrollY > 167) {
@@ -64,36 +81,75 @@ const Header = (props: IProps) => {
             }
           >
             <AISLink href={"/"}>
-              Cổng Thông tin Điện tử Học viện Công nghệ Bưu chính Viễn thông
+              {t("portal_title") as string}
             </AISLink>
           </TextIcon>
           <div className="flex items-center gap-[40px]">
-            <div className="flex">
+            <div className="relative" ref={languageRef}>
+              <div
+                className="flex items-center cursor-pointer hover:border-white hover:border p-1"
+                onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+              >
+                <img
+                  className="h-[30px] w-[45px] mr-2"
+                  src={language === "en" ? "/images/icons/us.svg" : "/images/icons/vn.svg"}
+                  alt="current language"
+                />
+                <svg
+                  width="12"
+                  height="8"
+                  viewBox="0 0 12 8"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={`transition-transform ${showLanguageDropdown ? 'rotate-180' : ''}`}
+                >
+                  <path
+                    d="M1 1.5L6 6.5L11 1.5"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              
+              {showLanguageDropdown && (
+                <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md overflow-hidden z-50 min-w-[160px]">
                   <div
-                    className={`mr-[8px] cursor-pointer ${
-                      language === "vi-VN" ? "border-white border" : ""
-                    } hover:border-white hover:border`}
-                    onClick={() => handleChangeLanguage("vi-VN")}
+                    className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
+                      language === "vi-VN" ? "bg-gray-50" : ""
+                    }`}
+                    onClick={() => {
+                      handleChangeLanguage("vi-VN");
+                      setShowLanguageDropdown(false);
+                    }}
                   >
                     <img
-                      className="h-[30px] w-[45px]"
-                      src={"/images/icons/vn.svg"}
-                      alt={"image"}
+                      className="h-[20px] w-[30px] mr-3"
+                      src="/images/icons/vn.svg"
+                      alt="Vietnamese"
                     />
+                    <span className="text-gray-800 text-sm">{t("language_vietnamese") as string}</span>
                   </div>
                   <div
-                    className={`cursor-pointer ${
-                      language === "en" ? "border-white border" : ""
-                    } hover:border-white hover:border`}
-                    onClick={() => handleChangeLanguage("en")}
+                    className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
+                      language === "en" ? "bg-gray-50" : ""
+                    }`}
+                    onClick={() => {
+                      handleChangeLanguage("en");
+                      setShowLanguageDropdown(false);
+                    }}
                   >
                     <img
-                      className="h-[30px] w-[45px]"
-                      src={"/images/icons/us.svg"}
-                      alt={"image"}
+                      className="h-[20px] w-[30px] mr-3"
+                      src="/images/icons/us.svg"
+                      alt="English"
                     />
+                    <span className="text-gray-800 text-sm">{t("language_english") as string}</span>
                   </div>
                 </div>
+              )}
+            </div>
             <TextIcon
               icon={
                 <svg
@@ -174,7 +230,7 @@ const Header = (props: IProps) => {
                   </svg>
                 }
               >
-                Khám phá
+                {t("discover") as string}
               </AISButton>
             </div>
 
@@ -207,10 +263,10 @@ const Header = (props: IProps) => {
                   </svg>
                 }
                 style={{ width: "340px" }}
-                placeholder="Bạn muốn tìm kiếm khoá học gì?"
+                placeholder={t("search_placeholder") as string}
               />
               <AISDivider />
-              <AISButton type="primary">Đăng nhập</AISButton>
+              <AISButton type="primary">{t("login")}</AISButton>
             </div>
           </div>
           <div

@@ -2,6 +2,7 @@
 
 import styled from "styled-components";
 import CardCTDT from "./CardCTDT";
+import { useTranslation } from "react-i18next";
 // @ts-ignore
 import Slider from "react-slick";
 
@@ -10,6 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 
 const ChuongTrinhDaoTao = () => {
+  const { t } = useTranslation("common");
   const sliderRef = useRef<Slider | null>(null);
   const dataCTDT = [
     {
@@ -68,9 +70,9 @@ const ChuongTrinhDaoTao = () => {
     <CTDTWrapper>
       <div className="container mx-auto">
         <div className="header">
-          <h2 className="title">Chương trình đào tạo</h2>
+          <h2 className="title">{t("training.title") as string}</h2>
           <p className="subtitle">
-            Khám phá các chương trình đào tạo phổ biến nhất của chúng tôi
+            {t("training.subtitle") as string}
           </p>
         </div>
 

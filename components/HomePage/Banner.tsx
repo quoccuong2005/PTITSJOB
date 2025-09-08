@@ -4,6 +4,7 @@ import {
   Dela_Gothic_One,
 } from "next/font/google";
 import { ReactTyped } from "react-typed";
+import { useTranslation } from "react-i18next";
 
 const font = Big_Shoulders_Inline_Display({
   subsets: ["latin"],
@@ -16,6 +17,8 @@ const font2 = Dela_Gothic_One({
 });
 
 const Banner = () => {
+  const { t } = useTranslation("common");
+  
   return (
     <BannerWrappper>
       <div className="bg-banner">
@@ -54,7 +57,7 @@ const Banner = () => {
                   fill="#BC2826"
                 />
               </svg>
-              <span>Thứ 2, 12:00 25/08/2025</span>
+              <span>{t("banner.date_format")}</span>
             </div>
             <div className={`${font.className} title`}>UNI-Learn</div>
             <div className={`${font2.className} description`}>

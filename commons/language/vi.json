@@ -1,9 +1,6 @@
 {
 	"common": {
-
-
 		"login": "Đăng nhập",
-
 		"home": "Trang chủ",
 		"gioi-thieu": "Giới thiệu",
 		"tin-tuc": "Tin tức - sự kiện",
@@ -15,9 +12,41 @@
 		"so-do": "Sơ đồ",
 		"lien-he": "Liên hệ",
 		"search": "Tìm kiếm",
+		"search_placeholder": "Bạn muốn tìm kiếm khoá học gì?",
 		"partner": "Đối tác",
 		"already": "Có sẵn",
 		"more-info": "Xem chi tiết",
+		"discover": "Khám phá",
+		"portal_title": "Cổng Thông tin Điện tử Học viện Công nghệ Bưu chính Viễn thông",
+		"language_vietnamese": "Tiếng Việt",
+		"language_english": "English",
+		"banner": {
+			"platform_name": "Nền tảng Đại học số PTIT",
+			"date_format": "Thứ 2, 12:00 25/08/2025",
+			"courses_title": "+ khoá học với nhiều chủ đề dành cho sinh viên",
+			"learn_more": "Tìm hiểu thêm",
+			"discover_title": "Khám phá những điều mới mẻ hướng tới mục tiêu cá nhân và sự chuyên nghiệp",
+			"explore_free": "Khám phá miễn phí"
+		},
+		"training": {
+			"title": "Chương trình đào tạo",
+			"subtitle": "Khám phá các chương trình đào tạo phổ biến nhất của chúng tôi"
+		},
+		"partners": {
+			"title": "Với sự có mặt của hơn",
+			"organizations": "+ tổ chức giảng dạy",
+			"subtitle": "uy tín từ khắp nơi"
+		},
+		"courses": {
+			"title": "Chứng chỉ phổ biến nhất",
+			"description": "Khám phá các chứng chỉ phổ biến nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"button": "Khám phá tất cả chứng chỉ"
+		},
+		"career": {
+			"title": "Mục tiêu nghề nghiệp",
+			"description": "Khám phá các chương trình đào tạo chuyên sâu giúp bạn đạt được mục tiêu nghề nghiệp",
+			"button": "Xem tất cả chương trình"
+		},
 		"empty": "Không có dữ liệu!",
 		"pricing": "Báo giá",
 		"price-table": "Bảng báo giá chung",

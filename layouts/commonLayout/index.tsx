@@ -13,13 +13,18 @@ const CommonLayout = ({ children }: any) => {
 	useEffect(() => {
 		(async () => {
 			const langCode = localStorage.getItem("langCode") || "vi-VN";
+			const mappedLang = langCode === 'vi-VN' ? 'vi' : langCode;
+			
 			setLanguage(langCode);
-			i18n.changeLanguage(langCode);
+			i18n.changeLanguage(mappedLang);
 		})();
 	}, []);
 
 	const handleChangeLanguage = (lang: string) => {
-		i18n.changeLanguage(lang);
+		// Map vi-VN to vi for i18n compatibility
+		const mappedLang = lang === 'vi-VN' ? 'vi' : lang;
+		
+		i18n.changeLanguage(mappedLang);
 		setLanguage(lang);
 		localStorage.setItem("langCode", lang);
 		setLangCode(lang);

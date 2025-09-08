@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import Banner from "../components/HomePage/Banner";
 import DoiTac from "../components/HomePage/DoiTac";
 import BannerSecond from "../components/HomePage/BannerSecond";
@@ -8,19 +9,21 @@ import MucTieuNgheNghiep from "../components/HomePage/MucTieuNgheNghiep";
 import ChuongTrinhDaoTao from "../components/HomePage/ChuongTrinhDaoTao";
 
 const HomePage = () => {
+	const { t } = useTranslation("common");
+	
 	return <HomePageWrapper>
 		<Banner/>
 		<DoiTac/>
 		<BannerSecond/>
 		<KhoaHoc 
-			title="Chứng chỉ phổ biến nhất"
-			description="Khám phá các chứng chỉ phổ biến nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"
-			buttonText="Khám phá tất cả chứng chỉ"
+			title={t("courses.title") as string}
+			description={t("courses.description") as string}
+			buttonText={t("courses.button") as string}
 		/>
 		<MucTieuNgheNghiep 
-			title="Mục tiêu nghề nghiệp"
-			description="Khám phá các chương trình đào tạo chuyên sâu giúp bạn đạt được mục tiêu nghề nghiệp"
-			buttonText="Xem tất cả chương trình"
+			title={t("career.title") as string}
+			description={t("career.description") as string}
+			buttonText={t("career.button") as string}
 		/>
 		<BannerThird/>
 		<ChuongTrinhDaoTao/>

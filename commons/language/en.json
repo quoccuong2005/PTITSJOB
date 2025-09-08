@@ -13,6 +13,38 @@
 		"viewAll": "View all",
 		"download": "",
 		"search": "Search",
+		"search_placeholder": "What course do you want to search for?",
+		"discover": "Discover",
+		"portal_title": "Posts and Telecommunications Institute of Technology - Portal",
+		"language_vietnamese": "Vietnamese",
+		"language_english": "English",
+		"banner": {
+			"platform_name": "PTIT Digital University Platform",
+			"date_format": "Monday, 12:00 25/08/2025",
+			"courses_title": "+ courses with many topics for students",
+			"learn_more": "Learn more",
+			"discover_title": "Discover new things towards personal and professional goals",
+			"explore_free": "Explore for free"
+		},
+		"training": {
+			"title": "Training Programs",
+			"subtitle": "Explore our most popular training programs"
+		},
+		"partners": {
+			"title": "With the presence of over",
+			"organizations": "+ reputable teaching organizations",
+			"subtitle": "from all over"
+		},
+		"courses": {
+			"title": "Most Popular Certificates",
+			"description": "Explore our most popular certificates, ready to serve all your needs",
+			"button": "Explore all certificates"
+		},
+		"career": {
+			"title": "Career Goals",
+			"description": "Explore specialized training programs to help you achieve your career goals",
+			"button": "View all programs"
+		},
 		"inputSearch": {
 			"search-1": "No.",
 			"search-2": "Diploma number",
@@ -22,11 +54,6 @@
 		},
 		"searchTitle": "Can look up by registration number, student code, payment code, ...",
 		"communication": "All on 1 platform",
-		"banner": {
-			"title-1": "Look up public diploma information quickly",
-			"title-2": "Make it convenient for students, candidates and employers to check and find information",
-			"title-3": "Ensure the accuracy and legality of the search information"
-		},
 		"cantGetDatabase": "Note: Can't get the information in the database",
 		"dontMatch": "Note: Information on blockchain is not identical to the database",
 		"infoVerified": "The information on the blockchain has been verified!",
