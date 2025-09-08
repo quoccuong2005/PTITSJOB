@@ -21,8 +21,7 @@ const BannerThird = () => {
                 {common("banner.discover_title")}
               </h2>
               <p className="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                auctor sapien pharetra mauris bibendum tristique.
+                {common("banner.description")}
               </p>
               <div style={{ marginTop: "22px" }}>
                 <AISButton type="primary">{common("banner.explore_free")}</AISButton>

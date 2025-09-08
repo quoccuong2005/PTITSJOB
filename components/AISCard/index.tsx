@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 import { CourseProgramCardProps, CourseCardProps, ProgramCardProps, CourseStatus, isCourseCard, isProgramCard } from "./types";
-
+import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 
 const formatDuration = (minutes: number): string => {
   const hours = Math.floor(minutes / 60);
@@ -61,7 +61,6 @@ const CourseCard: React.FC<CourseCardProps & { onCardClick?: () => void }> = ({
 }) => {
   const showProgress = status === "in_progress" || status === "completed" || (progress && progress.percent > 0);
   const actualProgress = status === "completed" ? 100 : progress?.percent || 0;
-
   const courseCard = (
     <CardWrapper className={className} style={style} onClick={onCardClick}>
       <CardContent>
@@ -146,6 +145,7 @@ const CourseCard: React.FC<CourseCardProps & { onCardClick?: () => void }> = ({
   return courseCard;
 };
 
+
 const ProgramCard: React.FC<ProgramCardProps & { onCardClick?: () => void }> = ({
   id,
   title,
@@ -157,6 +157,7 @@ const ProgramCard: React.FC<ProgramCardProps & { onCardClick?: () => void }> = (
   style,
   onCardClick,
 }) => {
+  const [common] = useCommonTranslation();
   const programCard = (
     <ProgramCardWrapper className={className} style={style} onClick={onCardClick}>
       <ProgramImageContainer>
@@ -182,7 +183,7 @@ const ProgramCard: React.FC<ProgramCardProps & { onCardClick?: () => void }> = (
           <MetaRow>
             <MetaItem>
               <OrgIcon />
-              <span>Tổ chức giảng dạy</span>
+              <span>{common("teach.title")}</span>
             </MetaItem>
           </MetaRow>
           

@@ -27,7 +27,8 @@
       "courses_title": "+ 门课程，涵盖多个主题，适合学生",
       "learn_more": "了解更多",
       "discover_title": "探索新事物，实现个人目标与专业发展",
-      "explore_free": "免费探索"
+      "explore_free": "免费探索",
+      "description": "课程以实际需求为导向，帮助学生锻炼专业技能和软技能，拓宽思维，树立坚实的职业定位。"
     },
     "training": {
       "title": "培训课程",
@@ -47,6 +48,28 @@
       "title": "职业目标",
       "description": "探索专业培训课程，帮助您实现职业目标",
       "button": "查看所有课程"
+    },
+    "tabs": {
+      "populate": "热门",
+      "it": "信息技术",
+      "multimedia": "多媒体",
+      "dataScience": "数据科学",
+      "computerScience": "计算机科学"
+    },
+    "socialMedia": {
+      "title": "社交媒体专员",
+      "description": "社交媒体专员负责制定、实施和管理社交媒体平台上的传播策略。主要任务包括研究趋势、制作内容和管理活动。"
+    },
+    "dataAnalyst": {
+      "title": "数据分析师",
+      "description": "数据分析师负责收集、清洗和解释数据，以提供可操作的见解。他们使用 Excel、SQL 和 Tableau 等工具来分析趋势，帮助企业做出数据驱动的决策。"
+    },
+    "networkSecurity": {
+      "title": "网络安全分析师",
+      "description": "通过实施先进的安全措施，设计并维护有效的安全策略，持续监控潜在风险，并快速响应安全事件，以保护 IT 系统免受网络攻击。"
+    },
+    "teach": {
+      "title": "教学组织"
     },
     "empty": "暂无数据！",
     "pricing": "价格",

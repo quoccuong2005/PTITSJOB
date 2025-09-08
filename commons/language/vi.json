@@ -27,7 +27,8 @@
 			"courses_title": "+ khoá học với nhiều chủ đề dành cho sinh viên",
 			"learn_more": "Tìm hiểu thêm",
 			"discover_title": "Khám phá những điều mới mẻ hướng tới mục tiêu cá nhân và sự chuyên nghiệp",
-			"explore_free": "Khám phá miễn phí"
+			"explore_free": "Khám phá miễn phí",
+			"description": "Khoá học được xây dựng dựa trên nhu cầu thực tế, giúp sinh viên rèn luyện kỹ năng chuyên môn lẫn kỹ năng mềm, mở rộng tư duy và định hướng nghề nghiệp vững chắc."
 		},
 		"training": {
 			"title": "Chương trình đào tạo",
@@ -47,6 +48,28 @@
 			"title": "Mục tiêu nghề nghiệp",
 			"description": "Khám phá các chương trình đào tạo chuyên sâu giúp bạn đạt được mục tiêu nghề nghiệp",
 			"button": "Xem tất cả chương trình"
+		},
+		"tabs": {
+			"populate": "Phổ biến",
+			"it": "Công nghệ Thông tin",
+			"multimedia": "Đa phương tiện",
+			"dataScience": "Khoa học Dữ liệu",
+			"computerScience": "Khoa học Máy tính"
+		},
+		"socialMedia": {
+			"title": "Chuyên viên Truyền thông Mạng Xã hội",
+			"description": "Chuyên viên Truyền thông Mạng Xã hội chịu trách nhiệm xây dựng, triển khai và quản lý các chiến lược truyền thông trên các nền tảng mạng xã hội. Nhiệm vụ chính bao gồm nghiên cứu xu hướng, sản xuất nội dung và quản lý chiến dịch."
+		},
+		"dataAnalyst": {
+			"title": "Chuyên viên Phân tích Dữ liệu",
+			"description": "Chuyên viên phân tích dữ liệu thu thập, làm sạch và diễn giải dữ liệu để đưa ra các thông tin hữu ích. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và hỗ trợ doanh nghiệp ra quyết định dựa trên dữ liệu."
+		},
+		"networkSecurity": {
+			"title": "Chuyên viên Phân tích An ninh Mạng",
+			"description": "Bảo vệ hệ thống CNTT khỏi các cuộc tấn công mạng bằng cách triển khai các biện pháp bảo mật tiên tiến, thiết kế và duy trì chiến lược an ninh hiệu quả, liên tục giám sát rủi ro tiềm ẩn và phản ứng nhanh với sự cố an ninh."
+		},
+		"teach":{
+			"title" : "Tổ chức giảng dạy"
 		},
 		"empty": "Không có dữ liệu!",
 		"pricing": "Báo giá",

@@ -65,28 +65,28 @@ const Footer = () => {
           <section className="contact-info">
             <div className="grid grid-cols-3 gap-y-[50px] gap-x-[10px]">
               <AISContact label="Số điện thoại liên hệ">
-                <AISLink style={{ fontSize: "16px" }}>024 3756 2186</AISLink>
+                <AISLink href="tel:02437562186" style={{ fontSize: "16px" }}>024 3756 2186</AISLink>
               </AISContact>
               <AISContact label="Trụ sở chính">
-                <AISLink style={{ fontSize: "16px" }}>
+                <AISLink href="https://www.google.com/maps/place/Vi%E1%BB%87n+Khoa+h%E1%BB%8Dc+K%E1%BB%B9+thu%E1%BA%ADt+B%C6%B0u+%C4%91i%E1%BB%87n,+122+Ho%C3%A0ng+Qu%E1%BB%91c+Vi%E1%BB%87t,+C%E1%BB%95+Nhu%E1%BA%BF,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0463573,105.791915,203m/data=!3m1!1e3!4m15!1m8!3m7!1s0x3135ab303fd3ac4f:0x8c5d7b3e90ab9a3a!2zMTIyIEhvw6BuZyBRdeG7kWMgVmnhu4d0LCBD4buVIE5odeG6vywgQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWkgMTEzMDAsIFZp4buHdCBOYW0!3b1!8m2!3d21.04647!4d105.792306!16s%2Fg%2F11sqhf15s4!3m5!1s0x3135ab303c8fa8dd:0xa221c6abb139912a!8m2!3d21.0465794!4d105.7922477!16s%2Fg%2F11bvtc44rk?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" style={{ fontSize: "16px" }}>
                   Số 122 Hoàng Quốc Việt, P. Nghĩa Đô, TP. Hà Nội
                 </AISLink>
               </AISContact>
               <AISContact label="Học viện cơ sở tại TP. Hồ Chí Minh">
-                <AISLink style={{ fontSize: "16px" }}>
+                <AISLink href="https://www.google.com/maps/place/Khoa+Vi%E1%BB%85n+Th%C3%B4ng+(Ng%C3%A0nh+K%E1%BB%B9+Thu%E1%BA%ADt+%C4%90i%E1%BB%87n+T%E1%BB%AD+Vi%E1%BB%85n+Th%C3%B4ng,+Ng%C3%A0nh+C%C3%B4ng+Ngh%E1%BB%87+Internet+V%E1%BA%A1n+V%E1%BA%ADt)/@10.7894399,106.7007287,855m/data=!3m2!1e3!4b1!4m6!3m5!1s0x317529c5ac3bea21:0x4205b86798ec87cb!8m2!3d10.7894399!4d106.7007287!16s%2Fg%2F11r3r_dwzr?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" style={{ fontSize: "16px" }}>
                   Số 11 Nguyễn Đình Chiểu, P. Sài Gòn, TP. Hồ Chí Minh
                 </AISLink>
               </AISContact>
               <AISContact label="Email liên hệ">
-                <AISLink style={{ fontSize: "16px" }}>ctsv@ptit.edu.vn</AISLink>
+                <AISLink href="mailto:ctsv@ptit.edu.vn" style={{ fontSize: "16px" }}>ctsv@ptit.edu.vn</AISLink>
               </AISContact>
               <AISContact label="Cơ sở đào tạo tại Hà Nội">
-                <AISLink style={{ fontSize: "16px" }}>
+                <AISLink href="https://www.google.com/maps/place/H%E1%BB%8Dc+vi%E1%BB%87n+C%C3%B4ng+ngh%E1%BB%87+B%C6%B0u+ch%C3%ADnh+vi%E1%BB%85n+th%C3%B4ng/@20.980913,105.7826528,813m/data=!3m1!1e3!4m6!3m5!1s0x3135accdd8a1ad71:0xa2f9b16036648187!8m2!3d20.980913!4d105.7874165!16s%2Fg%2F12168p16?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" style={{ fontSize: "16px" }}>
                   Số 96A Trần Phú, P. Hà Đông, TP. Hà Nội
                 </AISLink>
               </AISContact>
               <AISContact label="Cơ sở đào tạo tại TP Hồ Chí Minh">
-                <AISLink style={{ fontSize: "16px" }}>
+                <AISLink href="https://www.google.com/maps/place/H%E1%BB%8Dc+vi%E1%BB%87n+C%C3%B4ng+ngh%E1%BB%87+B%C6%B0u+Ch%C3%ADnh+Vi%E1%BB%85n+Th%C3%B4ng+c%C6%A1+s%E1%BB%9F+t%E1%BA%A1i+TP.HCM/@10.8478107,106.7847125,428m/data=!3m1!1e3!4m15!1m8!3m7!1s0x317527131ae8b249:0x4d2d3c8fab7d3c2e!2zOTcgTWFuIFRoaeG7h24sIEhp4buHcCBQaMO6LCBUaOG7pyDEkOG7qWMsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!3b1!8m2!3d10.8473782!4d106.7857609!16s%2Fg%2F11c5j8p21n!3m5!1s0x31752772b245dff1:0xb838977f3d419d!8m2!3d10.847987!4d106.7866647!16s%2Fm%2F0119w781?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" style={{ fontSize: "16px" }}>
                   Số 97 Man Thiện, P. Tăng Nhơn Phú, TP. Hồ Chí Minh
                 </AISLink>
               </AISContact>
@@ -96,37 +96,37 @@ const Footer = () => {
           <section className="backlink">
 						<div className="title-backlink">ĐƯỜNG DẪN LIÊN KẾT</div>
             <div className="grid grid-cols-3 gap-y-[16px] gap-x-[10px]">
-              <AISLink style={{ fontSize: "16px" }}>
+              <AISLink href="https://mst.gov.vn/gioi-thieu-19797875.htm" style={{ fontSize: "16px" }}>
                 Bộ Thông tin và Truyền thông
               </AISLink>
-              <AISLink style={{ fontSize: "16px" }}>
+              <AISLink href="https://ptithcm.edu.vn/" style={{ fontSize: "16px" }}>
                 Học viện Cơ sở TP. Hồ Chí Minh
               </AISLink>
-              <AISLink style={{ fontSize: "16px" }}>
+              <AISLink href="https://daotao.ptit.edu.vn/" style={{ fontSize: "16px" }}>
                 Cổng thông tin Đào tạo
               </AISLink>
-              <AISLink style={{ fontSize: "16px" }}>
+              <AISLink href="https://ript.vn/" style={{ fontSize: "16px" }}>
                 Viện Khoa học Kỹ thuật Bưu điện
               </AISLink>
-              <AISLink style={{ fontSize: "16px" }}>
+              <AISLink href="https://pttc.edu.vn/" style={{ fontSize: "16px" }}>
                 Trung tâm Đào tạo Bưu chính Viễn thông 1
               </AISLink>
-              <AISLink style={{ fontSize: "16px" }}>
+              <AISLink href="https://khcn.ptit.edu.vn/" style={{ fontSize: "16px" }}>
                 Cổng thông tin Khoa học Công nghệ
               </AISLink>
-              <AISLink style={{ fontSize: "16px" }}>
+              <AISLink href="https://eript.ptit.edu.vn/" style={{ fontSize: "16px" }}>
                 Viện Kinh tế Bưu điện
               </AISLink>
-              <AISLink style={{ fontSize: "16px" }}>
+              <AISLink href="http://pttc2.ptit.edu.vn" style={{ fontSize: "16px" }}>
                 Trung tâm Đào tạo Bưu chính Viễn thông 2
               </AISLink>
-							<AISLink style={{ fontSize: "16px" }}>
+							<AISLink href="https://english.ptit.edu.vn" style={{ fontSize: "16px" }}>
                 Cổng thông tin Hợp tác Quốc tế
               </AISLink>
-							<AISLink style={{ fontSize: "16px" }}>
+							<AISLink href="https://cdit.ptit.edu.vn/" style={{ fontSize: "16px" }}>
                 Viện Công nghệ Thông tin và Truyền thông CDIT
               </AISLink>
-							<AISLink style={{ fontSize: "16px" }}>
+							<AISLink href="https://cie.ptit.edu.vn/vi/" style={{ fontSize: "16px" }}>
                 Trung tâm Đào tạo Quốc tế
               </AISLink>
             </div>

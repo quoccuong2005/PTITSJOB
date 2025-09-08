@@ -25,7 +25,8 @@
 			"courses_title": "+ courses with many topics for students",
 			"learn_more": "Learn more",
 			"discover_title": "Discover new things towards personal and professional goals",
-			"explore_free": "Explore for free"
+			"explore_free": "Explore for free",
+			"description": "The course is built on practical needs, helping students practice both professional and soft skills, broaden their thinking and have a solid career orientation."
 		},
 		"training": {
 			"title": "Training Programs",
@@ -45,6 +46,33 @@
 			"title": "Career Goals",
 			"description": "Explore specialized training programs to help you achieve your career goals",
 			"button": "View all programs"
+		},
+		"tabs": {
+			"populate": "Popular",
+			"it": "Information Technology",
+			"multimedia": "Multimedia",
+			"dataScience": "Data Science",
+			"computerScience": "Computer Science"
+		},
+		"socialMedia": {
+			"title": "Social Media Specialist",
+			"description": "A Social Media Specialist is responsible for developing, implementing and managing communication strategies on social media platforms. The main tasks include researching trends, producing and"
+		},
+		"dataAnalyst": {
+			"title": "Data Analyst",
+			"description": "A data analyst collects, cleans, and interprets data to provide actionable insights. They use tools like Excel, SQL, and Tableau to analyze trends and help businesses make data-driven decisions."
+		},
+		"networkSecurity": {
+			"title": "Cyber Security Analyst",
+			"description": "Protect IT systems from cyber attacks by implementing advanced security measures, designing and maintaining effective security strategies, continuously monitoring potential risks and "
+		},
+		"teach": {
+			"title": "Teaching Organization"
+		},
+		"program1":{
+			"title": "Social Media Specialist",
+			"description": "A Social Media Specialist is responsible for developing, implementing and managing communication strategies on social media platforms. Main tasks include researching trends, producing and optimizing content, managing user communities, monitoring and analyzing campaign effectiveness, and coordinating with marketing, PR or sales departments to enhance brand image and promote business goals.",
+			"detailedDescription": "A good social media professional not only understands online user behavior but also has the ability to create engaging content and leverage technology and data to make effective decisions. This is a dynamic career that requires flexibility, the ability to quickly update trends and good communication skills to build strong relationships between brands and communities."
 		},
 		"inputSearch": {
 			"search-1": "No.",

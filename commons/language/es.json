@@ -27,7 +27,8 @@
       "courses_title": "+ cursos con muchos temas para estudiantes",
       "learn_more": "Aprender más",
       "discover_title": "Descubre cosas nuevas orientadas a tus metas personales y profesionales",
-      "explore_free": "Explorar gratis"
+      "explore_free": "Explorar gratis",
+      "description": "El curso se basa en necesidades prácticas, ayudando a los estudiantes a practicar habilidades tanto profesionales como interpersonales, ampliar su pensamiento y tener una sólida orientación profesional."
     },
     "training": {
       "title": "Programas de formación",
@@ -47,6 +48,28 @@
       "title": "Objetivos profesionales",
       "description": "Descubre programas de formación especializados que te ayudan a alcanzar tus metas profesionales",
       "button": "Ver todos los programas"
+    },
+    "tabs": {
+      "populate": "Popular",
+      "it": "Tecnología de la Información",
+      "multimedia": "Multimedia",
+      "dataScience": "Ciencia de Datos",
+      "computerScience": "Ciencias de la Computación"
+    },
+    "socialMedia": {
+      "title": "Especialista en Redes Sociales",
+      "description": "Un Especialista en Redes Sociales es responsable de desarrollar, implementar y gestionar estrategias de comunicación en plataformas sociales. Sus principales tareas incluyen investigar tendencias, producir contenido y administrar campañas."
+    },
+    "dataAnalyst": {
+      "title": "Analista de Datos",
+      "description": "Un analista de datos recopila, limpia e interpreta datos para proporcionar información útil. Utiliza herramientas como Excel, SQL y Tableau para analizar tendencias y ayudar a las empresas a tomar decisiones basadas en datos."
+    },
+    "networkSecurity": {
+      "title": "Analista de Ciberseguridad",
+      "description": "Protege los sistemas informáticos contra ataques cibernéticos mediante la implementación de medidas avanzadas, el diseño y mantenimiento de estrategias de seguridad, la supervisión constante de riesgos y la respuesta rápida a incidentes."
+    },
+    "teach": {
+      "title": "Organización de Enseñanza"
     },
     "empty": "¡No hay datos!",
     "pricing": "Precios",

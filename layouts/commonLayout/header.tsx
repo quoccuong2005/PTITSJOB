@@ -96,7 +96,7 @@ const Header = (props: IProps) => {
               </svg>
             }
           >
-            <AISLink href={"/"}>{common("portal_title") as string}</AISLink>
+            <AISLink href={"https://ptit.edu.vn/"}>{common("portal_title") as string}</AISLink>
           </TextIcon>
           <div className="flex items-center gap-[40px]">
             <TextIcon
@@ -116,7 +116,7 @@ const Header = (props: IProps) => {
               }
             >
               <AISLink
-                href={"/"}
+                href={"tel:02438547797"}
                 style={{ color: "white", textDecoration: "none" }}
               >
                 (024) 38 547 797
@@ -139,7 +139,7 @@ const Header = (props: IProps) => {
               }
             >
               <AISLink
-                href={"/"}
+                href={"mailto:qldt@ptit.edu.vn"}
                 style={{ color: "white", textDecoration: "none" }}
               >
                 qldt@ptit.edu.vn

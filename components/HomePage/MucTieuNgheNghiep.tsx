@@ -4,6 +4,7 @@ import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
 import AISButton from "../AISButton";
 import { ProgramCardProps } from "../AISCard/types";
+import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 
 interface MucTieuNgheNghiepProps {
   title?: string;
@@ -21,52 +22,53 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
   const [activeTab, setActiveTab] = useState("Phổ biến");
   const router = useRouter();
 
+  const [common] = useCommonTranslation();
   const tabs = [
-    "Phổ biến",
-    "Công nghệ thông tin", 
-    "Đa phương tiện",
-    "Khoa học dữ liệu",
-    "Khoa học máy tính"
+    common("tabs.populate"),
+    common("tabs.it"), 
+    common("tabs.multimedia"),
+    common("tabs.dataScience"),
+    common("tabs.computerScience")
   ];
 
   const defaultPrograms: ProgramCardProps[] = [
     {
       variant: "program",
       id: "program_1",
-      title: "Chuyên gia truyền thông xã hội",
+      title: common("socialMedia.title"),
       href: "/programs/truyen-thong-xa-hoi",
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
       ],
-      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
+      description: common("socialMedia.description"),
       category: "Phổ biến"
     },
     {
       variant: "program",
       id: "program_2", 
-      title: "Chuyên gia phân tích dữ liệu",
+      title: common("dataAnalyst.title"),
       href: "/programs/phan-tich-du-lieu",
-      imageUrl: "/images/social.png",
+      imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
       ],
-      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
+      description: common("dataAnalyst.description"),
       category: "Phổ biến"
     },
     {
       variant: "program",
       id: "program_3",
-      title: "Nhà phân tích An ninh Mạng",
+      title: common("networkSecurity.title"),
       href: "/programs/an-ninh-mang",
-      imageUrl: "/images/social.png",
+      imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
       ],
-      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
+      description: common("networkSecurity.description"),
       category: "Phổ biến"
     }
   ];

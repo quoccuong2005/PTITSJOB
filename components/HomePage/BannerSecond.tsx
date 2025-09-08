@@ -16,8 +16,7 @@ const BannerSecond = () => {
               <p className="w-[115px] inline-block"><CountUp end={1500} enableScrollSpy scrollSpyOnce/></p>{common("banner.courses_title")}
             </h2>
             <p className="description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              auctor sapien pharetra mauris bibendum tristique.
+              {common("banner.description")}
             </p>
             <div style={{marginTop: '22px'}}>
               <AISButton type="primary">{common("banner.learn_more")}</AISButton>
