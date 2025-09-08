@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import AISButton from "../AISButton";
 import { BannerWrappper } from "./bannerStyle";
-import { useTranslation } from "react-i18next";
+import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 
 const BannerThird = () => {
-  const { t } = useTranslation("common");
+  const [common] = useCommonTranslation();
   
   return (
     <BannerWrappper>
@@ -18,14 +18,14 @@ const BannerThird = () => {
           <div className="w-[50%]">
             <div className="banner-content h-full">
               <h2 className="title" style={{fontSize: '36px'}}>
-                {t("banner.discover_title") as string}
+                {common("banner.discover_title")}
               </h2>
               <p className="description">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
                 auctor sapien pharetra mauris bibendum tristique.
               </p>
               <div style={{ marginTop: "22px" }}>
-                <AISButton type="primary">{t("banner.explore_free") as string}</AISButton>
+                <AISButton type="primary">{common("banner.explore_free")}</AISButton>
               </div>
             </div>
           </div>

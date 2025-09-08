@@ -41,7 +41,7 @@ export const AuthContext = createContext<Auth.AuthContextType>(defaultValue);
 
 export const AuthProvider = (props: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User.IRoot | undefined>(undefined);
-  const [langCode, setLangCode] = useState<string>(i18n.language);
+  const [langCode, setLangCode] = useState<string>('vi'); // Default to 'vi' for SSR
   const [menu, setMenu] = useState<MainMenu[]>([]);
   const [dataConfig, setDataConfig] = useState<DataConfig[]>([]);
   const [userLoading, setUserLoading] = useState(true);

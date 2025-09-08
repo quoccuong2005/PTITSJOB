@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
+import { useCommonTranslation } from "../hooks/useCommonTranslation";
 import Banner from "../components/HomePage/Banner";
 import DoiTac from "../components/HomePage/DoiTac";
 import BannerSecond from "../components/HomePage/BannerSecond";
@@ -9,21 +9,21 @@ import MucTieuNgheNghiep from "../components/HomePage/MucTieuNgheNghiep";
 import ChuongTrinhDaoTao from "../components/HomePage/ChuongTrinhDaoTao";
 
 const HomePage = () => {
-	const { t } = useTranslation("common");
+	const [common] = useCommonTranslation();
 	
 	return <HomePageWrapper>
 		<Banner/>
 		<DoiTac/>
 		<BannerSecond/>
 		<KhoaHoc 
-			title={t("courses.title") as string}
-			description={t("courses.description") as string}
-			buttonText={t("courses.button") as string}
+			title={common("courses.title")}
+			description={common("courses.description")}
+			buttonText={common("courses.button")}
 		/>
 		<MucTieuNgheNghiep 
-			title={t("career.title") as string}
-			description={t("career.description") as string}
-			buttonText={t("career.button") as string}
+			title={common("career.title")}
+			description={common("career.description")}
+			buttonText={common("career.button")}
 		/>
 		<BannerThird/>
 		<ChuongTrinhDaoTao/>

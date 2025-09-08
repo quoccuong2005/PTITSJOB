@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
+import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 import TextIcon from "../../components/TextIcon";
 import AISLink from "../../components/AISLink";
 import AISButton from "../../components/AISButton";
@@ -14,7 +14,7 @@ interface IProps {
 
 const Header = (props: IProps) => {
   const { language, handleChangeLanguage } = props;
-  const { t, i18n } = useTranslation("common");
+  const [common] = useCommonTranslation();
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showLanguageDropdown, setShowLanguageDropdown] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
@@ -47,10 +47,7 @@ const Header = (props: IProps) => {
 
   useEffect(() => {
     const mappedLang = language === 'vi-VN' ? 'vi' : language;
-    if (i18n.language !== mappedLang) {
-      i18n.changeLanguage(mappedLang);
-    }
-  }, [language, i18n]);
+  }, [language]);
 
   const isSticky = (e: any) => {
     if (window.scrollY > 167) {
@@ -81,17 +78,17 @@ const Header = (props: IProps) => {
             }
           >
             <AISLink href={"/"}>
-              {t("portal_title") as string}
+              {common("portal_title") as string}
             </AISLink>
           </TextIcon>
           <div className="flex items-center gap-[40px]">
             <div className="relative" ref={languageRef}>
               <div
-                className="flex items-center cursor-pointer hover:border-white hover:border p-1"
+                className="flex items-center cursor-pointer p-1"
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
               >
                 <img
-                  className="h-[30px] w-[45px] mr-2"
+                  className="h-[20px] w-[35px] mr-2"
                   src={language === "en" ? "/images/icons/us.svg" : "/images/icons/vn.svg"}
                   alt="current language"
                 />
@@ -117,10 +114,10 @@ const Header = (props: IProps) => {
                 <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md overflow-hidden z-50 min-w-[160px]">
                   <div
                     className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
-                      language === "vi-VN" ? "bg-gray-50" : ""
+                      language === "vi" ? "bg-gray-50" : ""
                     }`}
                     onClick={() => {
-                      handleChangeLanguage("vi-VN");
+                      handleChangeLanguage("vi");
                       setShowLanguageDropdown(false);
                     }}
                   >
@@ -129,7 +126,7 @@ const Header = (props: IProps) => {
                       src="/images/icons/vn.svg"
                       alt="Vietnamese"
                     />
-                    <span className="text-gray-800 text-sm">{t("language_vietnamese") as string}</span>
+                    <span className="text-gray-800 text-sm">{common("language_vietnamese")}</span>
                   </div>
                   <div
                     className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
@@ -145,7 +142,7 @@ const Header = (props: IProps) => {
                       src="/images/icons/us.svg"
                       alt="English"
                     />
-                    <span className="text-gray-800 text-sm">{t("language_english") as string}</span>
+                    <span className="text-gray-800 text-sm">{common("language_english")}</span>
                   </div>
                 </div>
               )}
@@ -230,7 +227,7 @@ const Header = (props: IProps) => {
                   </svg>
                 }
               >
-                {t("discover") as string}
+                {common("discover")}
               </AISButton>
             </div>
 
@@ -263,10 +260,10 @@ const Header = (props: IProps) => {
                   </svg>
                 }
                 style={{ width: "340px" }}
-                placeholder={t("search_placeholder") as string}
+                placeholder={common("search_placeholder")}
               />
               <AISDivider />
-              <AISButton type="primary">{t("login")}</AISButton>
+              <AISButton type="primary">{common("login")}</AISButton>
             </div>
           </div>
           <div

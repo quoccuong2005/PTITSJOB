@@ -7,27 +7,31 @@ import Header from "./header";
 import Head from "next/head";
 
 const CommonLayout = ({ children }: any) => {
-	const [language, setLanguage] = useState<string>("");
+	const [language, setLanguage] = useState<string>("vi");
+	const [mounted, setMounted] = useState(false);
 	const { setLangCode } = useContext(AuthContext);
 
 	useEffect(() => {
-		(async () => {
-			const langCode = localStorage.getItem("langCode") || "vi-VN";
-			const mappedLang = langCode === 'vi-VN' ? 'vi' : langCode;
-			
-			setLanguage(langCode);
-			i18n.changeLanguage(mappedLang);
-		})();
-	}, []);
+		setMounted(true);
+		const langCode = localStorage.getItem("langCode") || "vi-VN";
+		const mappedLang = langCode === 'vi-VN' ? 'vi' : langCode;
+		
+		
+		setLanguage(mappedLang);
+		i18n.changeLanguage(mappedLang);
+		setLangCode(langCode);
+	}, [setLangCode]);
 
 	const handleChangeLanguage = (lang: string) => {
-		// Map vi-VN to vi for i18n compatibility
-		const mappedLang = lang === 'vi-VN' ? 'vi' : lang;
 		
-		i18n.changeLanguage(mappedLang);
+		const langCodeToStore = lang === 'vi' ? 'vi-VN' : lang;
+		
+		i18n.changeLanguage(lang);
 		setLanguage(lang);
-		localStorage.setItem("langCode", lang);
-		setLangCode(lang);
+		if (mounted) {
+			localStorage.setItem("langCode", langCodeToStore);
+		}
+		setLangCode(langCodeToStore);
 	};
 
 	return (
@@ -49,3 +53,4 @@ const CommonLayout = ({ children }: any) => {
 	);
 };
 export default React.memo(CommonLayout);
+4

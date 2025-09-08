@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Slider from "react-slick";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useTranslation } from "react-i18next";
+import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 const CountUp = dynamic(() => import("react-countup"), { ssr: false });
 
 const DoiTac = () => {
-  const { t } = useTranslation("common");
+  const [common] = useCommonTranslation();
   const logos = [
     "/images/logo-ptit.png",
     "/images/logo-ptit.png",
@@ -49,7 +49,7 @@ const DoiTac = () => {
     <div className="bg py-[40px]">
       <div className="container mx-auto">
         <h2 className="title">
-          {t("partners.title") as string} <span className="hight-light"><CountUp end={300}/>{t("partners.organizations") as string}</span> {t("partners.subtitle") as string}
+          {common("partners.title")} <span className="hight-light"><CountUp end={300}/>{common("partners.organizations")}</span> {common("partners.subtitle")}
         </h2>
         <Slider className="slide" {...settings}>
         {logos.map((logo, i) => (

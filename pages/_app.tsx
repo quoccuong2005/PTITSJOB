@@ -7,7 +7,7 @@ import { I18nextProvider } from "react-i18next";
 import { ToastContainer } from "react-toastify";
 import Loading from "../components/Loading";
 import { AuthProvider } from "../context/AuthContext";
-import "../i18n";
+import i18n from "../i18n";
 import CommonLayout from "../layouts/commonLayout";
 // CSS
 import "react-toastify/dist/ReactToastify.css";
@@ -22,6 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 	const currentUrl = process.env.BASE_URL + router.asPath;
 	useEffect(()=>{
+		if (typeof window !== 'undefined') {
+			const savedLanguage = localStorage.getItem('langCode') || 'vi';
+			const mappedLang = savedLanguage === 'vi-VN' ? 'vi' : savedLanguage;
+			i18n.changeLanguage(mappedLang);
+		}
 		googleAnalytics()
 		window.addEventListener('load', () => {
 			if ('serviceWorker' in navigator) {

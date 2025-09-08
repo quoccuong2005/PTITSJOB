@@ -4,6 +4,8 @@ import {
   Dela_Gothic_One,
 } from "next/font/google";
 import { ReactTyped } from "react-typed";
+import { useCommonTranslation } from "../../hooks/useCommonTranslation";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const font = Big_Shoulders_Inline_Display({
@@ -17,7 +19,36 @@ const font2 = Dela_Gothic_One({
 });
 
 const Banner = () => {
-  const { t } = useTranslation("common");
+  const [common] = useCommonTranslation();
+  const { i18n } = useTranslation();
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const today = new Date();
+    
+    const currentLang = i18n.language;
+    
+    const dayOptions: Intl.DateTimeFormatOptions = {
+      weekday: 'long'
+    };
+    const dayName = today.toLocaleDateString(currentLang === 'vi' ? 'vi-VN' : 'en-US', dayOptions);
+    
+    const hourOptions: Intl.DateTimeFormatOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    };
+    const timeString = today.toLocaleTimeString(currentLang === 'vi' ? 'vi-VN' : 'en-US', hourOptions);
+    
+    const day = today.getDate().toString().padStart(2, '0');
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const year = today.getFullYear();
+    const dateString = `${day}/${month}/${year}`;
+
+    const formattedDate = `${dayName}, ${timeString} ${dateString}`;
+
+    setCurrentDate(formattedDate);
+  }, [i18n.language]);
   
   return (
     <BannerWrappper>
@@ -57,7 +88,7 @@ const Banner = () => {
                   fill="#BC2826"
                 />
               </svg>
-              <span>{t("banner.date_format")}</span>
+              <span>{currentDate}</span>
             </div>
             <div className={`${font.className} title`}>UNI-Learn</div>
             <div className={`${font2.className} description`}>
