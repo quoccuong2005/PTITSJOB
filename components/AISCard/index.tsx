@@ -9,11 +9,11 @@ const formatDuration = (minutes: number): string => {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
   if (hours > 0 && mins > 0) {
-    return `${hours} giờ ${mins} phút`;
+    return `${hours} giờ ${Math.round(mins)} phút`;
   } else if (hours > 0) {
     return `${hours} giờ`;
   } else {
-    return `${mins} phút`;
+    return `${Math.round(mins)} phút`;
   }
 };
 
