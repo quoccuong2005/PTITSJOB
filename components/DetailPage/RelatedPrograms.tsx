@@ -4,76 +4,45 @@ import { ProgramCardProps } from '../AISCard/types';
 import CourseProgramCard from '../AISCard';
 import AISButton from '../AISButton';
 import useCommonTranslation from '../../hooks/useCommonTranslation';
+import { getDefaultPrograms } from '../../data/muc-tieu-test';
 
 interface RelatedProgramsProps {
   title?: string;
   programs?: ProgramCardProps[];
+  currentProgramId?: string; 
   onProgramClick?: (programId: string) => void;
   onViewAllClick?: () => void;
 }
 
 const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
   programs = [],
+  currentProgramId,
   onProgramClick,
   onViewAllClick
 }) => {
   const [common] = useCommonTranslation();
-  const defaultPrograms: ProgramCardProps[] = [
-    {
-      variant: "program",
-      id: "program_1",
-      title: common("socialMedia.title"),
-      href: "/muc-tieu-nghe-nghiep/program_1",
-      imageUrl: "/images/social.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("socialMedia.description"),
-      categoryId: "Phổ biến"
-    },
-    {
-      variant: "program",
-      id: "program_2", 
-      title: common("dataAnalyst.title"),
-      href: "/muc-tieu-nghe-nghiep/program_2",
-      imageUrl: "/images/data-analysis.jpeg",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("dataAnalyst.description"),
-      categoryId: "Phổ biến"
-    },
-    {
-      variant: "program",
-      id: "program_3",
-      title: common("networkSecurity.title"),
-      href: "/muc-tieu-nghe-nghiep/program_3",
-      imageUrl: "/images/X5gFB1559764843.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("networkSecurity.description"),
-      categoryId: "Phổ biến"
-    },
-    {
-      variant: "program",
-      id: "program_4",
-      title: common("networkSecurity.title"),
-      href: "/muc-tieu-nghe-nghiep/program_4",
-      imageUrl: "/images/X5gFB1559764843.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("networkSecurity.description"),
-      categoryId: "Phổ biến"
-    }
-  ];
+  
+  
+  const allPrograms = getDefaultPrograms(common);
+  const getBaseId = (id?: string) => id?.split('_')[0] || "";
+  
+  const getRelatedPrograms = (): ProgramCardProps[] => {
+    const baseCurrent = getBaseId(currentProgramId);
 
-  const programsToDisplay = programs.length > 0 ? programs : defaultPrograms;
+    const source = programs.length > 0 ? programs : allPrograms;
+
+    const uniqueByBase = Array.from(
+      new Map(
+        source
+          .filter(p => getBaseId(p.id) !== baseCurrent)
+          .map(p => [getBaseId(p.id), p]) // key = baseId, value = first program
+      ).values()
+    );
+
+    return uniqueByBase.sort(() => Math.random() - 0.5).slice(0, 4);
+  };
+
+  const programsToDisplay = getRelatedPrograms();
 
   return (
     <RelatedProgramsWrapper>

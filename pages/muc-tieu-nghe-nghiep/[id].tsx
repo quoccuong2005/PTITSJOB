@@ -5,7 +5,7 @@ import BreadcrumbPage from '../../components/Breadcrumb';
 import Modules from '../../components/DetailPage/Module';
 import ProgramMainContent from '../../components/DetailPage/MainContent';
 import RelatedPrograms from '../../components/DetailPage/RelatedPrograms';
-import { getDefaultPrograms, createProgramDetail } from '../../data/muc-tieu-test';
+import { getDefaultPrograms, createProgramDetail, createProgramModules } from '../../data/muc-tieu-test';
 import useCommonTranslation from '../../hooks/useCommonTranslation';
 
 const ProgramDetailPage = () => {
@@ -21,6 +21,7 @@ const ProgramDetailPage = () => {
   }
 
   const program = createProgramDetail(programCard, common);
+  const programModules = createProgramModules(programCard, common);
 
   return (
     <Wrapper>
@@ -39,6 +40,9 @@ const ProgramDetailPage = () => {
       <ProgramMainContent program={program} />
 
       <Modules 
+        title={`${program.title} - ${common('modules.title')}`}
+        description={common('modules.description')}
+        modules={programModules}
         onModuleClick={(moduleId) => {
           console.log('Module clicked:', moduleId);
         }}
@@ -48,13 +52,14 @@ const ProgramDetailPage = () => {
       />
 
       <RelatedPrograms 
+        currentProgramId={id as string}
         onProgramClick={(programId) => {
           console.log('Program clicked:', programId);
-          router.push('#');
+          router.push(`/muc-tieu-nghe-nghiep/${programId}`);
         }}
         onViewAllClick={() => {
           console.log('View all clicked');
-          router.push('#');
+          router.push('/muc-tieu-nghe-nghiep');
         }}
       />
     </Wrapper>
