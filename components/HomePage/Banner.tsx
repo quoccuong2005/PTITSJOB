@@ -53,7 +53,7 @@ const Banner = () => {
   return (
     <BannerWrappper>
       <div className="bg-banner">
-        <div className="flex justify-between items-center container mx-auto h-[100%]">
+        <div className="flex justify-between items-center container mx-auto h-[100%] bg-[#fef1f0] md:bg-[unset]">
           <div className="banner-content">
             <div className="show-date">
               <svg
@@ -90,8 +90,8 @@ const Banner = () => {
               </svg>
               <span>{currentDate}</span>
             </div>
-            <div className={`${font.className} title`}>UNI-Learn</div>
-            <div className={`${font2.className} description`}>
+            <div className={`${font.className} title text-[50px] md:text-[130px] fw-[700] md:fw-[900]`}>UNI-Learn</div>
+            <div className={`${font2.className} description text-[20px] md:text-[35px] fw-[400] md:fw-[400]`}>
               <ReactTyped
                 strings={[
                   "Nền tảng Đại học số PTIT",
@@ -120,8 +120,6 @@ const Banner = () => {
 
 const BannerWrappper = styled.div`
   .title {
-    font-weight: 900;
-    font-size: 130px;
     line-height: 120%;
     letter-spacing: 3%;
     text-transform: uppercase;
@@ -147,8 +145,6 @@ const BannerWrappper = styled.div`
   }
 
   .description {
-    font-weight: 400;
-    font-size: 35px;
     line-height: 120%;
     letter-spacing: 3%;
     color: var(--primary-color);
