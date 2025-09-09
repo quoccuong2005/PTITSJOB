@@ -28,6 +28,14 @@
 		max-width: 1240px;
 	}
 }
+
+@media (max-width: 1280px) {
+    .container {
+			padding-left: 20px;
+			padding-right: 20px;
+			max-width: 100%;
+    }
+}
 .required-label {
 	&::after {
 		content: "*";

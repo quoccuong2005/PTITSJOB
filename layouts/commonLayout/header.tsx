@@ -195,7 +195,7 @@ const Header = (props: IProps) => {
           isScroll ? "fixed top-0 left-0 w-full z-50" : ""
         } `}
       >
-        <div className="lg:mx-auto px-[40px] py-[16px]">
+        <div className="lg:mx-auto px-[16px] lg:px-[40px] py-[16px]">
           <div className={`hidden lg:flex justify-between items-center`}>
             <div className="flex items-center gap-[20px]">
               <img
@@ -272,11 +272,11 @@ const Header = (props: IProps) => {
           </div>
           <div
             className={
-              "lg:hidden flex justify-between items-center lg:mt-[16px] mt-0 px-2 py-[8px] lg:py-0 "
+              "lg:hidden flex justify-between items-center"
             }
           >
             <div className="mr-[8px]">
-              <img src="./images/header/logo-header.png" alt={"image"} />
+              <img src="/images/common/logo.svg" alt={"image"} />
             </div>
 
             <div className="flex shrink-0">

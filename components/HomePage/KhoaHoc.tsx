@@ -1,21 +1,23 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
 import AISButton from "../AISButton";
 import { CourseCardProps } from "../AISCard/types";
 // @ts-ignore
 import Slider from "react-slick";
+import { getKhoaHocMienPhi, getKhoaHocMoiNhat, getKhoaHocNangCao, getKhoaHocPhoBien } from "../../api/khoahoc";
 
 interface KhoaHocProps {
   title?: string;
   description?: string;
   buttonText?: string;
   courses?: CourseCardProps[];
+  type?: "chungchi" | "phobien" | "moinhat" | "mienphi" | "nangcao"
 }
 
 const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
   const sliderRef = useRef<Slider | null>(null);
-  const {title, description, buttonText, courses} = props;
+  const {title, description, buttonText, courses, type} = props;
   const settings = {
     dots: false,
     speed: 600,
@@ -126,6 +128,57 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
       isAI: true
     },
   ];
+
+  let res;
+  switch(type) {
+    case "chungchi":
+      res = getKhoaHocPhoBien();
+      break;
+    case "phobien":
+      res = getKhoaHocPhoBien();
+      break;
+    case "moinhat":
+      res = getKhoaHocMoiNhat();
+      break;
+    case "mienphi":
+      res = getKhoaHocMienPhi();
+      break;
+    case "nangcao":
+      res = getKhoaHocNangCao();
+      break;
+    default: 
+      res = getKhoaHocPhoBien();
+      break;
+  };
+
+  useEffect(() => {
+    (
+      async () => {
+        try {
+          const response = await res;
+          const data = response.data.data;
+          if(!data) return;
+          const mapper: CourseCardProps[] = data.map(
+            item => {
+              return {
+                variant: "course",
+                org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+                id: item.id,
+                title: item.name,
+                href: "",
+                imageUrl: item.image_url,
+                durationMinutes: item.duration*60,
+                certificateType: item.topics.map(topic => topic.name).join(', '),
+                status: "in_progress",
+              }
+            }
+          )
+          console.log(mapper);
+        } catch (err) {
+        }
+      }
+    )();
+  })
 
   const coursesToDisplay = courses?.length ? courses : defaultCourses;
 

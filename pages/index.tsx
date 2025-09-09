@@ -34,31 +34,31 @@ const HomePage = () => {
 		<BannerSecond/>
 		<div className="py-[40px]">
 			<KhoaHoc 
-				title={common("courses.title")}
-				description={common("courses.description")}
-				buttonText={common("courses.button")}
+				title={"Khoá học phổ biến"}
+				description={"Khám phá các khoá học phổ biến của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"}
+				buttonText={"Khám phá tất cả khoá học"}
 			/>
 		</div>
 		<div className="py-[40px]">
 			<KhoaHoc 
-				title={common("courses.title")}
-				description={common("courses.description")}
-				buttonText={common("courses.button")}
+				title={"Khoá học mới nhất"}
+				description={"Khám phá các khoá học mới nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"}
+				buttonText={"Khám phá tất cả khoá học"}
 			/>
 		</div>
 		<BannerThird/>
 		<div className="py-[40px]">
 			<KhoaHoc 
-				title={common("courses.title")}
-				description={common("courses.description")}
-				buttonText={common("courses.button")}
+				title={"Khoá học miễn phí"}
+				description={"Khám phá các khoá học miễn phí của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"}
+				buttonText={"Khám phá tất cả khoá học"}
 			/>
 		</div>
 		<div className="py-[40px]">
 			<KhoaHoc 
-				title={common("courses.title")}
-				description={common("courses.description")}
-				buttonText={common("courses.button")}
+				title={"Khoá học nâng cao"}
+				description={"Khám phá các khoá học nâng cao của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"}
+				buttonText={"Khám phá tất cả khoá học"}
 			/>
 		</div>
 	</HomePageWrapper>;
