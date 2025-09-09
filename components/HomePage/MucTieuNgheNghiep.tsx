@@ -78,7 +78,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
   return (
     <MucTieuNgheNghiepWrapper>
       <div className="container mx-auto">
-        <MainContent>
+        <MainContent className="flex flex-col lg:flex-row gap-[24px]">
           <LeftSection>
             <h2 className="section-title">{title}</h2>
             <p className="section-description mt-[12px]">{description}</p>
@@ -102,7 +102,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
               ))}
             </TabsContainer>
             
-            <CardsContainer>
+            <CardsContainer className="flex flex-col md:flex-row gap-[20px]">
               {filteredPrograms.map((program) => (
                 <div
                   key={program.id}
@@ -129,8 +129,6 @@ const MucTieuNgheNghiepWrapper = styled.div`
 `;
 
 const MainContent = styled.div`
-  display: flex;
-  align-items: center;
   gap: 24px;
   background: #F6FAFF;
   border-radius: 16px;
@@ -210,10 +208,6 @@ const TabButton = styled.button<{ active: boolean }>`
 `;
 
 const CardsContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
   height: 580px;
   overflow-x: auto;
   flex-wrap: nowrap;

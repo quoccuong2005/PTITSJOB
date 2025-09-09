@@ -217,7 +217,6 @@ const Header = (props: IProps) => {
               >
                 <img
                   className="h-[20px] w-[30px] mr-2"
-                  style={{border: '1px solid #ffffff45'}}
                   src={currentLang.flag}
                   alt={currentLang.label}
                 />

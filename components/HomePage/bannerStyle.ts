@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const BannerWrappper = styled.div`
   .bg {
     background-color: #fff0f0;
-    background-image: url(/images/home/bg-second.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;

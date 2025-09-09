@@ -13,12 +13,7 @@ const DoiTac = () => {
     "/images/logo/abf51ba6a63c9a93bb6c88a984faeab9.png",
     "/images/logo/Arm_Holdings-Logo.wine-1.png",
     "/images/logo/Ericsson-logo-1.png",
-    "/images/logo/logo-fpt-inkythuatso-1-01-01-14-33-19-e1727270330460.jpg",
-    "/images/logo/Logo-Rikkei.png",
-    "/images/logo/Logo-Tap-doan-vien-thong-Viettel-Moi-02-01-1024x640-1-e1727270304736.jpg",
-    "/images/logo/Logo-VNPT.png",
     "/images/logo/microsoft.png",
-    "/images/logo/Mobifone.png",
     "/images/logo/Naver.png",
     "/images/logo/qualcomm.png",
     "/images/logo/VMO_Logo_Positive--e1727270372975.webp",
@@ -75,6 +70,12 @@ const DoiTac = () => {
 const DoiTacWrapper = styled.div`
   .logo {
     height: 80px;
+    object-fit: contain;
+  }
+
+  .slick-slider {
+    display: flex;
+    gap: 20px;
   }
 
   .bg {

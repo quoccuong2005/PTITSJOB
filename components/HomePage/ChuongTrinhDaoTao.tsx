@@ -78,7 +78,7 @@ const ChuongTrinhDaoTao = () => {
     speed: 600,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,        
+    autoplay: false,        
     autoplaySpeed: 2000, 
     arrows: false,
     responsive: [
@@ -206,6 +206,10 @@ const CTDTWrapper = styled.div`
 
   .card-slide {
     padding: 0 10px;
+    height: 100%;
+    * {
+      height: 100%;
+    }
   }
 
   .slick-track {

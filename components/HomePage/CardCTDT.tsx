@@ -58,6 +58,7 @@ const CardCTDTWrapper = styled.div`
       letter-spacing: 3%;
       text-align: justify;
       color: #051A53;
+      min-height: 52px;
     }
 
     .link {

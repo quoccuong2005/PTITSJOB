@@ -9,7 +9,7 @@ const BannerSecond = () => {
   
   return (
     <BannerWrappper>
-      <div className="bg py-[20px]">
+      <div className="bg py-[20px] bg-none lg:bg-[url(/images/home/bg-second.png)]">
         <div className="container mx-auto h-full">
           <div className="banner-content h-full">
             <h2 className="title">
