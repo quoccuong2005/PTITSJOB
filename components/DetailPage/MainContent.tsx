@@ -113,7 +113,7 @@ const MainContentWrapper = styled.div`
   }
 
   .detailed-description {
-    
+    text-align: justify;
     font-size: 18px;
     font-weight: 500;
     line-height: 150%;

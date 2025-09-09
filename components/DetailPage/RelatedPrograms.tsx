@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { ProgramCardProps } from '../AISCard/types';
 import CourseProgramCard from '../AISCard';
 import AISButton from '../AISButton';
+import useCommonTranslation from '../../hooks/useCommonTranslation';
 
 interface RelatedProgramsProps {
   title?: string;
@@ -17,59 +18,59 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
   onProgramClick,
   onViewAllClick
 }) => {
-  
+  const [common] = useCommonTranslation();
   const defaultPrograms: ProgramCardProps[] = [
     {
-      id: "program_2",
       variant: "program",
-      title: "Chuyên gia thiết kế giao diện người dùng",
-      href: "/programs/program_2",
-      imageUrl: "/images/ui.png",
-      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      category: "Thiết kế"
-    },
-    {
-      id: "program_3", 
-      variant: "program",
-      title: "Chuyên gia phân tích dữ liệu",
-      href: "/programs/program_3",
+      id: "program_1",
+      title: common("socialMedia.title"),
+      href: "/chuong-trinh-dao-tao/program_1",
       imageUrl: "/images/social.png",
-      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         
       ],
-      category: "Dữ liệu"
+      description: common("socialMedia.description"),
+      category: "Phổ biến"
     },
     {
+      variant: "program",
+      id: "program_2", 
+      title: common("dataAnalyst.title"),
+      href: "/chuong-trinh-dao-tao/program_2",
+      imageUrl: "/images/data-analysis.jpeg",
+      teachingOrgs: [
+        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+        
+      ],
+      description: common("dataAnalyst.description"),
+      category: "Phổ biến"
+    },
+    {
+      variant: "program",
+      id: "program_3",
+      title: common("networkSecurity.title"),
+      href: "/chuong-trinh-dao-tao/program_3",
+      imageUrl: "/images/X5gFB1559764843.png",
+      teachingOrgs: [
+        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+        
+      ],
+      description: common("networkSecurity.description"),
+      category: "Phổ biến"
+    },
+    {
+      variant: "program",
       id: "program_4",
-      variant: "program", 
-      title: "Nhà phân tích An ninh Mạng",
-      href: "/programs/program_4",
-      imageUrl: "/images/ui.png",
-      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
+      title: common("networkSecurity.title"),
+      href: "/chuong-trinh-dao-tao/program_4",
+      imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         
       ],
-      category: "An ninh"
-    },
-    {
-      id: "program_5",
-      variant: "program",
-      title: "Chuyên gia Quản lý dự án",
-      href: "/programs/program_5", 
-      imageUrl: "/images/social.png",
-      description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      category: "Quản lý"
+      description: common("networkSecurity.description"),
+      category: "Phổ biến"
     }
   ];
 

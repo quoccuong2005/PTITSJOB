@@ -21,7 +21,6 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState("Phổ biến");
   const router = useRouter();
-
   const [common] = useCommonTranslation();
   const tabs = [
     common("tabs.populate"),
@@ -43,7 +42,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
         
       ],
       description: common("socialMedia.description"),
-      category: "Phổ biến"
+      category: common("tabs.populate")
     },
     {
       variant: "program",
@@ -56,7 +55,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
         
       ],
       description: common("dataAnalyst.description"),
-      category: "Phổ biến"
+      category: common("tabs.populate")
     },
     {
       variant: "program",
@@ -69,7 +68,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
         
       ],
       description: common("networkSecurity.description"),
-      category: "Phổ biến"
+      category: common("tabs.populate")
     }
   ];
 
