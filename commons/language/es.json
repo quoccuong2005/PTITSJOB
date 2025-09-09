@@ -21,6 +21,11 @@
     "already": "Disponible",
     "more-info": "Ver más",
     "discover": "Descubrir",
+    "skillsNeeded": "Habilidades que necesitarás",
+    "relatedPrograms": {
+        "title": "Explora Objetivos Profesionales Similares",
+        "viewAll": "Ver Todas las Carreras"
+    },
     "portal_title": "Portal de Información Electrónica de la Academia de Tecnología de Correos y Telecomunicaciones",
     "language_vietnamese": "Vietnamita",
     "language_english": "Inglés",
@@ -86,9 +91,8 @@
     "tabs": {
       "populate": "Popular",
       "it": "Tecnología de la Información",
-      "multimedia": "Multimedia",
-      "dataScience": "Ciencia de Datos",
-      "computerScience": "Ciencias de la Computación"
+      "media": "Comunicación",
+      "economic": "Economía"
     },
     "socialMedia": {
       "title": "Especialista en Redes Sociales",
@@ -99,8 +103,184 @@
       "description": "Un analista de datos recopila, limpia e interpreta datos para proporcionar información útil. Utiliza herramientas como Excel, SQL y Tableau para analizar tendencias y ayudar a las empresas a tomar decisiones basadas en datos."
     },
     "networkSecurity": {
-      "title": "Analista de Ciberseguridad",
-      "description": "Protege los sistemas informáticos contra ataques cibernéticos mediante la implementación de medidas avanzadas, el diseño y mantenimiento de estrategias de seguridad, la supervisión constante de riesgos y la respuesta rápida a incidentes."
+      "title": "Profesional en Ciberseguridad y Seguridad de la Información",
+      "description": "Los profesionales en ciberseguridad y seguridad de la información desempeñan un papel fundamental en la protección de toda la infraestructura tecnológica de una organización. Son responsables de desarrollar e implementar soluciones de defensa para prevenir ciberataques, supervisar continuamente los sistemas para detectar riesgos de forma temprana y responder con prontitud a los incidentes de seguridad. Además, participan en el diseño de arquitecturas de seguridad, la creación de políticas de gestión de acceso, la formación de usuarios y la coordinación con otros departamentos para garantizar que los datos y la información importantes se mantengan siempre confidenciales, intactos y disponibles. Este puesto requiere conocimientos profundos, una gran capacidad de análisis y actualizaciones periódicas sobre las nuevas tecnologías y amenazas de la era digital.",
+      "skillNeeded": {
+        "skill1": "Seguridad de red (Firewall, IDS/IPS, VPN)",
+        "skill2": "Cifrado y gestión de claves (SSL/TLS, AES, RSA)",
+        "skill3": "Análisis forense digital y respuesta a incidentes",
+        "skill4": "Administración de sistemas operativos (Linux, Windows)",
+        "skill5": "Pruebas de penetración y explotación de vulnerabilidades",
+        "skill6": "Estándares de seguridad (ISO 27001, NIST, OWASP)",
+        "skill7": "Análisis y gestión de riesgos",
+        "skill8": "Habilidades interpersonales: Comunicación, trabajo en equipo"
+      }
+    },
+    "financialAnalyst": {
+      "title": "Analista Financiero y Especialista en Inversión",
+      "description": "Los analistas financieros y especialistas en inversión desempeñan un papel fundamental en la investigación, evaluación y toma de decisiones relacionadas con los flujos de capital y las estrategias financieras. Son responsables de analizar los estados financieros corporativos, evaluar el valor de los activos y monitorear las fluctuaciones del mercado de valores, bonos, derivados y otros canales de inversión. Asimismo, pronostican tendencias macroeconómicas e identifican oportunidades y riesgos, creando así carteras de inversión óptimas y garantizando la seguridad del capital para organizaciones e inversores. Además de sus profundos conocimientos financieros y contables, aplican tecnologías modernas como Excel avanzado, Python, R, inteligencia artificial y FinTech para analizar big data y modelar escenarios de inversión. Los analistas financieros y expertos en inversión no solo ofrecen recomendaciones de inversión precisas, sino que también participan en consultoría estratégica, gestión de riesgos y apoyan a la junta directiva en la toma de decisiones, contribuyendo a aumentar el valor sostenible y la competitividad en el mercado.",
+      "skillNeeded": {
+        "skill1": "Análisis de estados financieros",
+        "skill2": "Valoración de empresas y activos",
+        "skill3": "Conocimiento de valores y derivados",
+        "skill4": "Pronósticos económicos y tendencias del mercado",
+        "skill5": "Gestión de riesgos financieros",
+        "skill6": "Excel avanzado y herramientas de análisis",
+        "skill7": "Python/R para finanzas cuantitativas",
+        "skill8": "Comprensión de FinTech y blockchain",
+        "skill9": "Pensamiento cuantitativo y análisis de datos",
+        "skill10": "Comunicación, presentación y negociación"
+      }
+    },
+    "digitalStrategist": {
+      "title": "Estratega de Medios Digitales",
+      "description": "Un Estratega de Medios Digitales es quien crea, gestiona y optimiza planes de comunicación en el entorno digital, ayudando a organizaciones o marcas a llegar al público objetivo adecuado y lograr la máxima eficiencia. Es responsable de la investigación de mercado, el análisis del comportamiento del usuario, la selección de los canales de comunicación adecuados (redes sociales, sitios web, email marketing, SEO/SEM, publicidad digital, etc.) y el diseño de estrategias de contenido creativo que se alineen con los objetivos de negocio. Además de sus conocimientos de comunicación y marketing, los expertos también dominan las herramientas de análisis de datos, la medición del rendimiento (KPI, ROI), así como las nuevas tendencias tecnológicas como IA, Big Data y Marketing Automation para optimizar la experiencia del usuario y mejorar la competitividad. Se trata de un puesto creativo y estratégico que contribuye a construir la imagen de marca, expandir la influencia y promover el crecimiento sostenible en la era digital.",
+      "skillNeeded": {
+        "skill1": "Planificación de medios",
+        "skill2": "Análisis de mercado y clientes",
+        "skill3": "Estrategia de contenido digital",
+        "skill4": "Gestión multicanal",
+        "skill5": "SEO/SEM y publicidad digital",
+        "skill6": "Medición y optimización del rendimiento",
+        "skill7": "Herramientas de análisis de datos",
+        "skill8": "Automatización de marketing e IA",
+        "skill9": "Pensamiento estratégico y creativo",
+        "skill10": "Comunicación y presentación"
+      }
+    },
+    "aiSpecialist": {
+      "title": "Especialista en IA",
+      "description": "Un especialista en IA es una persona con amplia experiencia en la investigación, el diseño, el desarrollo y la aplicación de sistemas de inteligencia artificial. Son personas que comprenden algoritmos, modelos matemáticos, tecnología y herramientas de IA para resolver problemas complejos en diversos campos, como la salud, la educación, las finanzas, el comercio electrónico, la industria, los servicios públicos, etc.\nLos expertos en inteligencia artificial suelen ser competentes en diversas áreas que combinan ciencia y tecnología. Poseen sólidos conocimientos de matemáticas, probabilidad y estadística para comprender algoritros. Además, son competentes en el procesamiento y análisis de datos, la creación y optimización de modelos de aprendizaje automático, el aprendizaje profundo, el procesamiento del lenguaje natural o la visión artificial. No solo son expertos en tecnología, sino que también poseen un pensamiento creativo para la resolución de problemas, saben cómo convertir datos en conocimiento útil y tienen la capacidad de comunicarse y coordinarse eficazmente con diversos grupos para implementar la IA en aplicaciones prácticas.",
+      "skillNeeded": {
+        "skill1": "Python",
+        "skill2": "Aprendizaje automático",
+        "skill3": "Procesamiento de datos",
+        "skill4": "Aprendizaje profundo",
+        "skill5": "Búsqueda de IA"
+      }
+    },
+    "networkInfrastructure": {
+      "title": "Especialista en Infraestructura de Redes y Telecomunicaciones",
+      "description": "Los especialistas en infraestructura de redes y telecomunicaciones diseñan, implementan y gestionan sistemas de redes informáticas y de telecomunicaciones, garantizando que los datos, la voz y los servicios digitales se transmitan siempre de forma rápida, estable y segura. Conocen las redes LAN, WAN, transmisión óptica e inalámbricas, y son competentes en la configuración y operación de dispositivos como routers, switches y firewalls para mantener la continuidad de la infraestructura tecnológica.\nAdemás de las operaciones, también investigan y aplican nuevas tecnologías como 5G, IoT, computación en la nube o SDN/NFV, centrándose en la implementación de soluciones de seguridad para prevenir riesgos de ciberataques. Gracias a ello, los especialistas en infraestructura de redes y telecomunicaciones se convierten en la columna vertebral que conecta a las personas, las empresas y el mundo en la sociedad digital.",
+      "skillNeeded": {
+        "skill1": "Administración de redes",
+        "skill2": "Seguridad del sistema",
+        "skill3": "Enrutadores y conmutadores",
+        "skill4": "Nube y 5G"
+      }
+    },
+    "dataScientist": {
+      "title": "Especialista en Ciencia y Análisis de Datos",
+      "description": "Un Especialista en Ciencia y Análisis de Datos se encarga de recopilar, procesar y analizar datos de múltiples fuentes, con el fin de extraer información útil que sirva a las decisiones estratégicas de la organización.\nLas tareas principales incluyen construir procesos de recolección y limpieza de datos, realizar análisis exploratorio de datos (EDA), desarrollar e implementar modelos predictivos con machine learning, visualizar resultados mediante paneles de control/informes y trabajar en estrecha colaboración con los equipos de negocios, marketing o producción para transformar los datos en soluciones prácticas y optimizar la eficiencia operativa.\nUn especialista competente no solo domina matemáticas, estadísticas y algoritmos, sino que también tiene la capacidad de explicar los insights de manera clara y conectar los datos con el contexto empresarial. Saben aprovechar las tecnologías y herramientas modernas para tomar decisiones rápidas y precisas. Esta es una carrera dinámica que requiere curiosidad, aprendizaje continuo y buenas habilidades de comunicación para transmitir el valor de los datos en todos los niveles de la organización.",
+      "skillNeeded": {
+        "skill1": "Python/R",
+        "skill2": "SQL",
+        "skill3": "Machine Learning",
+        "skill4": "Visualización de datos (Tableau/Power BI)",
+        "skill5": "Estadística aplicada"
+      }
+    },
+    "modules": {
+      "title": "Módulos de Conocimiento",
+      "description": "Explora nuestros últimos certificados, listos para satisfacer todas tus necesidades",
+      "exploreButton": "Explorar Certificado",
+      "skillsTitle": "Habilidades que obtendrás",
+      "reviewsCount": "reseñas",
+      "coursesRemaining": "cursos para completar",
+      "defaultModules": {
+        "multimedia": {
+            "name": "Tecnología Multimedia",
+            "skills": {
+                "cpp": "C++",
+                "ux": "Experiencia de Usuario",
+                "aiSearch": "Búsqueda con IA",
+                "uxDesign": "Diseño UX"
+            }
+        },
+        "dataScience": {
+            "name": "Ciencia de Datos",
+            "skills": {
+                "python": "Python",
+                "machineLearning": "Aprendizaje Automático",
+                "dataAnalysis": "Análisis de Datos",
+                "statistics": "Estadísticas"
+            }
+        }
+      }
+    },
+    "discoverDropdown": {
+        "trendingSkills": {
+          "title": "EXPLORA HABILIDADES EN TENDENCIA",
+          "items": [
+            "Python",
+            "Inteligencia Artificial",
+            "Excel",
+            "Aprendizaje Automático",
+            "SQL",
+            "Gestión de Proyectos",
+            "Power BI",
+            "Multimedia"
+          ],
+          "viewAllText": "Ver todo"
+        },
+        "careerGoals": {
+          "title": "EXPLORA OBJETIVOS PROFESIONALES",
+          "items": [
+            "Especialista en Redes Sociales",
+            "Gerente de Proyectos",
+            "Científico de Datos",
+            "Ingeniero de Aprendizaje Automático",
+            "Analista de Ciberseguridad",
+            "Analista de Datos",
+            "Especialista en Diseño de UI",
+            "Especialista en Marketing Digital"
+          ],
+          "viewAllText": "Ver todo"
+        },
+        "categories": {
+          "title": "EXPLORA CATEGORÍAS",
+          "items": [
+            "Multimedia",
+            "Ciencia de Datos",
+            "Tecnologías de la Información",
+            "Ciencias de la Computación",
+            "Desarrollo Personal",
+            "Ciencias Sociales",
+            "Aprendizaje de Idiomas",
+            "Ciencias Físicas e Ingeniería"
+          ],
+          "viewAllText": "Ver todo"
+        },
+        "certificates": {
+          "title": "OBTÉN CERTIFICADOS PROFESIONALES",
+          "items": [
+            "Multimedia",
+            "Ciencias de la Computación",
+            "Ciencia de Datos",
+            "Tecnologías de la Información"
+          ],
+          "viewAllText": "Ver todo"
+        }
+      },
+    "pages": {
+      "allPrograms": {
+          "title": "Objetivos Profesionales",
+          "searchPlaceholder": "Ingrese palabras clave para buscar programas",
+          "loadingPrograms": "Cargando programas de formación...",
+          "noResultsWithQuery": "No se encontraron programas que coincidan con la palabra clave \"{query}\" en la categoría \"{category}\"",
+          "noResultsInCategory": "No se encontraron programas en la categoría \"{category}\""
+      },
+      "allCourses": {
+          "title": "Todos los Cursos",
+          "loadingCourses": "Cargando cursos...",
+          "noResultsWithQuery": "No se encontraron cursos que coincidan con la palabra clave \"{query}\"",
+          "searchResultsFor": "Resultados de búsqueda para \"{query}\""
+      }
+    },
+    "breadcrumb": {
+        "home": "Inicio",
+        "allPrograms": "Objetivos Profesionales",
+        "allCourses": "Todos los Cursos"
     },
     "teach": {
       "title": "Organización de Enseñanza"

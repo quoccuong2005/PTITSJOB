@@ -44,7 +44,7 @@ const Banner = () => {
     const year = today.getFullYear();
     const dateString = `${day}/${month}/${year}`;
 
-    const formattedDate = `${dayName}, ${dateString}`;
+    const formattedDate = `${dayName}, ${timeString} ${dateString}`;
 
     setCurrentDate(formattedDate);
   }, [i18n.language]); 

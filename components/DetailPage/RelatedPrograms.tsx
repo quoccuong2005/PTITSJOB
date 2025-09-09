@@ -13,7 +13,6 @@ interface RelatedProgramsProps {
 }
 
 const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
-  title = "Khám phá các mục tiêu nghề nghiệp tương tự",
   programs = [],
   onProgramClick,
   onViewAllClick
@@ -31,7 +30,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
         
       ],
       description: common("socialMedia.description"),
-      category: "Phổ biến"
+      categoryId: "Phổ biến"
     },
     {
       variant: "program",
@@ -44,7 +43,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
         
       ],
       description: common("dataAnalyst.description"),
-      category: "Phổ biến"
+      categoryId: "Phổ biến"
     },
     {
       variant: "program",
@@ -57,7 +56,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
         
       ],
       description: common("networkSecurity.description"),
-      category: "Phổ biến"
+      categoryId: "Phổ biến"
     },
     {
       variant: "program",
@@ -70,7 +69,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
         
       ],
       description: common("networkSecurity.description"),
-      category: "Phổ biến"
+      categoryId: "Phổ biến"
     }
   ];
 
@@ -80,8 +79,8 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
     <RelatedProgramsWrapper>
       <div className="container mx-auto">
         <ContentSection>
-          <SectionTitle>{title}</SectionTitle>
-          
+          <SectionTitle>{common("relatedPrograms.title")}</SectionTitle>
+
           <ProgramsGrid>
             {programsToDisplay.map((program) => (
               <CourseProgramCard
@@ -93,7 +92,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
           </ProgramsGrid>
           
           <AISButton onClick={onViewAllClick}>
-            Xem tất cả nghề nghiệp
+            {common("relatedPrograms.viewAll")}
           </AISButton>
         </ContentSection>
       </div>

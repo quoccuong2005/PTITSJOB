@@ -40,7 +40,7 @@ export interface ProgramCardProps extends BaseCardProps {
   leadOrg?: Organization;
   teachingOrgs?: Organization[];
   description?: string;
-  category?: string;
+  categoryId?: string;
 }
 
 

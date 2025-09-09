@@ -1,197 +1,160 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import BreadcrumbPage from '../../components/Breadcrumb';
 import CourseProgramCard from '../../components/AISCard';
 import { ProgramCardProps } from '../../components/AISCard/types';
 import { useCommonTranslation } from '../../hooks/useCommonTranslation';
 
+type CategoryId = 'populate' | 'it' | 'media' | 'economic';
+
+
 const TatCaChuongTrinhPage = () => {
-  const [programs, setPrograms] = useState<ProgramCardProps[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("Phổ biến");
-  const programsPerPage = 8; 
-
+  const [isHydrated, setIsHydrated] = useState(false);
   const [common] = useCommonTranslation();
+  const CATEGORIES: { id: CategoryId; label: string }[] = [
+      { id: 'populate', label: common('tabs.populate') },
+      { id: 'it',       label: common('tabs.it') },
+      { id: 'media',    label: common('tabs.media') },
+      { id: 'economic', label: common('tabs.economic') },
+    ];
+  const [activeTab, setActiveTab] = useState<CategoryId>('populate');
+  const programsPerPage = 8;   
+  const tabs = CATEGORIES;
   
-  const tabs = [
-    common("tabs.populate"),
-    common("tabs.it"), 
-    common("tabs.multimedia"),
-    common("tabs.dataScience"),
-    common("tabs.computerScience")
-  ];
+  
+  const rawPrograms = [
+      {
+        variant: 'program' as const,
+        id: 'networkSecurity',
+        href: '/muc-tieu-nghe-nghiep/networkSecurity',
+        imageUrl: '/images/X5gFB1559764843.png',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'networkSecurity.title',
+        descKey: 'networkSecurity.description',
+        categoryId: 'populate' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'financialAnalyst',
+        href: '/muc-tieu-nghe-nghiep/phan-tich-tai-chinh',
+        imageUrl: '/images/data-analysis.jpeg',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'financialAnalyst.title',
+        descKey: 'financialAnalyst.description',
+        categoryId: 'economic' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'digitalStrategist',
+        href: '/muc-tieu-nghe-nghiep/chien-luoc-truyen-thong-so',
+        imageUrl: '/images/social.png',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'digitalStrategist.title',
+        descKey: 'digitalStrategist.description',
+        categoryId: 'media' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'digitalStrategist_populate',
+        href: '/muc-tieu-nghe-nghiep/chien-luoc-truyen-thong-so',
+        imageUrl: '/images/social.png',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'digitalStrategist.title',
+        descKey: 'digitalStrategist.description',
+        categoryId: 'populate' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'aiSpecialist_it',
+        href: '/muc-tieu-nghe-nghiep/chuyen-gia-ai',
+        imageUrl: '/images/data-analysis.jpeg',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'aiSpecialist.title',
+        descKey: 'aiSpecialist.description',
+        categoryId: 'it' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'aiSpecialist_populate',
+        href: '/muc-tieu-nghe-nghiep/chuyen-gia-ai',
+        imageUrl: '/images/data-analysis.jpeg',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'aiSpecialist.title',
+        descKey: 'aiSpecialist.description',
+        categoryId: 'populate' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'networkInfrastructure',
+        href: '/muc-tieu-nghe-nghiep/ha-tang-mang',
+        imageUrl: '/images/X5gFB1559764843.png',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'networkInfrastructure.title',
+        descKey: 'networkInfrastructure.description',
+        categoryId: 'it' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'dataScientist_it',
+        href: '/muc-tieu-nghe-nghiep/khoa-hoc-du-lieu',
+        imageUrl: '/images/data-analysis.jpeg',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'dataScientist.title',
+        descKey: 'dataScientist.description',
+        categoryId: 'it' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'dataScientist_economic',
+        href: '/muc-tieu-nghe-nghiep/khoa-hoc-du-lieu',
+        imageUrl: '/images/data-analysis.jpeg',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'dataScientist.title',
+        descKey: 'dataScientist.description',
+        categoryId: 'economic' as CategoryId,
+      },
+      {
+        variant: 'program' as const,
+        id: 'dataScientist_populate',
+        href: '/muc-tieu-nghe-nghiep/khoa-hoc-du-lieu',
+        imageUrl: '/images/data-analysis.jpeg',
+        teachingOrgs: [{ name: 'PTIT', logoUrl: '/images/logo-ptit.png' }],
+        titleKey: 'dataScientist.title',
+        descKey: 'dataScientist.description',
+        categoryId: 'populate' as CategoryId,
+      },
+    ];
 
-  
-  const mockPrograms: ProgramCardProps[] = [
-    {
-      variant: "program",
-      id: "program_1",
-      title: common("socialMedia.title"),
-      href: "/muc-tieu-nghe-nghiep/truyen-thong-xa-hoi",
-      imageUrl: "/images/social.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" }
-      ],
-      description: common("socialMedia.description"),
-      category: "Phổ biến"
-    },
-    {
-      variant: "program",
-      id: "program_2", 
-      title: common("dataAnalyst.title"),
-      href: "/muc-tieu-nghe-nghiep/phan-tich-du-lieu",
-      imageUrl: "/images/data-analysis.jpeg",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("dataAnalyst.description"),
-      category: "Phổ biến"
-    },
-    {
-      variant: "program",
-      id: "program_3",
-      title: common("networkSecurity.title"),
-      href: "/muc-tieu-nghe-nghiep/an-ninh-mang",
-      imageUrl: "/images/X5gFB1559764843.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("networkSecurity.description"),
-      category: "Phổ biến"
-    },
-    {
-      variant: "program",
-      id: "program_4",
-      title: "Chuyên gia phát triển Full-stack",
-      href: "/muc-tieu-nghe-nghiep/fullstack-developer",
-      imageUrl: "/images/ui.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Trở thành chuyên gia phát triển web đầy đủ với khả năng làm việc cả frontend và backend, sử dụng các công nghệ hiện đại như React, Node.js, và các cơ sở dữ liệu.",
-      category: "Công nghệ thông tin"
-    },
-    {
-      variant: "program",
-      id: "program_5",
-      title: "Chuyên gia thiết kế UX/UI",
-      href: "/muc-tieu-nghe-nghiep/ux-ui-designer",
-      imageUrl: "/images/social.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Học cách thiết kế giao diện người dùng trực quan và trải nghiệm người dùng tối ưu cho các ứng dụng web và di động.",
-      category: "Công nghệ thông tin"
-    },
-    {
-      variant: "program",
-      id: "program_6",
-      title: "Chuyên gia DevOps Engineer",
-      href: "/muc-tieu-nghe-nghiep/devops-engineer",
-      imageUrl: "/images/data-analysis.jpeg",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Nắm vững các công cụ và quy trình DevOps để tự động hóa việc triển khai, giám sát và quản lý hạ tầng công nghệ.",
-      category: "Công nghệ thông tin"
-    },
-    {
-      variant: "program",
-      id: "program_7",
-      title: "Chuyên gia Digital Marketing",
-      href: "/muc-tieu-nghe-nghiep/digital-marketing",
-      imageUrl: "/images/X5gFB1559764843.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Học các chiến lược marketing số hiệu quả, SEO, SEM, social media marketing và phân tích dữ liệu khách hàng.",
-      category: "Đa phương tiện"
-    },
-    {
-      variant: "program",
-      id: "program_8",
-      title: "Chuyên gia Machine Learning",
-      href: "/muc-tieu-nghe-nghiep/machine-learning",
-      imageUrl: "/images/ui.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Khám phá thế giới học máy với Python, TensorFlow và các thuật toán AI tiên tiến để giải quyết các bài toán thực tế.",
-      category: "Khoa học dữ liệu"
-    },
-    {
-      variant: "program",
-      id: "program_9",
-      title: "Chuyên gia Data Science",
-      href: "/muc-tieu-nghe-nghiep/data-science",
-      imageUrl: "/images/social.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Trở thành chuyên gia phân tích dữ liệu với Python, R, SQL và các kỹ thuật thống kê, machine learning để đưa ra insights từ dữ liệu.",
-      category: "Khoa học dữ liệu"
-    },
-    {
-      variant: "program",
-      id: "program_10",
-      title: "Chuyên gia Blockchain Developer",
-      href: "/muc-tieu-nghe-nghiep/blockchain-developer",
-      imageUrl: "/images/data-analysis.jpeg",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Học phát triển ứng dụng blockchain, smart contracts và cryptocurrency với Ethereum, Solidity và Web3.",
-      category: "Khoa học máy tính"
-    },
-    {
-      variant: "program",
-      id: "program_11",
-      title: "Chuyên gia Mobile App Development",
-      href: "/muc-tieu-nghe-nghiep/mobile-app-development",
-      imageUrl: "/images/X5gFB1559764843.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Phát triển ứng dụng di động đa nền tảng với React Native, Flutter hoặc native iOS/Android development.",
-      category: "Khoa học máy tính"
-    },
-    {
-      variant: "program",
-      id: "program_12",
-      title: "Chuyên gia Cloud Computing",
-      href: "/muc-tieu-nghe-nghiep/cloud-computing",
-      imageUrl: "/images/ui.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: "Nắm vững các dịch vụ cloud như AWS, Azure, Google Cloud và kiến trúc cloud để xây dựng hệ thống scalable.",
-      category: "Khoa học máy tính"
-    }
-  ];
+  const programs = useMemo(() => {
+    return rawPrograms.map(p => ({
+      ...p,
+      title: common(p.titleKey),
+      description: p.descKey ? common(p.descKey) : undefined,
+    }));
+  }, [common]);
+
+  const filteredPrograms = useMemo(() => {
+    const q = searchQuery.toLowerCase();
+    return programs.filter(p => {
+      const matchesSearch =
+        p.title.toLowerCase().includes(q) ||
+        (p.description ?? '').toLowerCase().includes(q);
+      const matchesTab = p.categoryId === activeTab;
+      return matchesSearch && matchesTab;
+    });
+  }, [programs, searchQuery, activeTab]);
 
   useEffect(() => {
-    
+    setIsHydrated(true);
+    setActiveTab(tabs[0].id);
     const loadPrograms = async () => {
       setLoading(true);
       try {
-        
         await new Promise(resolve => setTimeout(resolve, 500));
-        setPrograms(mockPrograms);
       } catch (err) {
-        setPrograms(mockPrograms);
       } finally {
         setLoading(false);
       }
@@ -199,14 +162,6 @@ const TatCaChuongTrinhPage = () => {
 
     loadPrograms();
   }, []);
-
-  
-  const filteredPrograms = programs.filter(program => {
-    const matchesSearch = program.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         program.description?.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesTab = program.category === activeTab;
-    return matchesSearch && matchesTab;
-  });
 
   
   const totalPages = Math.ceil(filteredPrograms.length / programsPerPage);
@@ -219,25 +174,36 @@ const TatCaChuongTrinhPage = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-    setCurrentPage(1); 
-    setSearchQuery(''); 
-  };
-
   const handleProgramClick = (programId: string) => {
     console.log('Program clicked:', programId);
     
   };
-
+  if (!isHydrated) {
+    return (
+      <Wrapper>
+        <MainContent>
+          <div className="container mx-auto">
+            <Header>
+              <div className="header-content">
+                <h1 className="page-title">{common('pages.allPrograms.title')}</h1>
+              </div>
+            </Header>
+            <LoadingSection>
+              <div className="loading-text">{common('pages.allPrograms.loadingPrograms')}</div>
+            </LoadingSection>
+          </div>
+        </MainContent>
+      </Wrapper>
+    );
+  }
   return (
     <Wrapper>
       <BreadcrumbSection>
         <div className="breadcrumb-container container mx-auto py-[12px]">
           <BreadcrumbPage
             data={[
-              { title: 'Trang chủ', path: '/' },
-              { title: 'Mục tiêu nghề nghiệp', path: '/muc-tieu-nghe-nghiep' }
+              { title: common('breadcrumb.home'), path: '/' },
+              { title: common('breadcrumb.allPrograms'), path: '/muc-tieu-nghe-nghiep' }
             ]}
           />
         </div>
@@ -247,7 +213,7 @@ const TatCaChuongTrinhPage = () => {
         <div className="container mx-auto">
           <Header>
             <div className="header-content">
-              <h1 className="page-title">Chương trình đào tạo</h1>
+              <h1 className="page-title">{common('pages.allPrograms.title')}</h1>
               <SearchBox>
                 <SearchIcon>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -257,7 +223,7 @@ const TatCaChuongTrinhPage = () => {
                 </SearchIcon>
                 <input
                   type="text"
-                  placeholder="Nhập từ khóa để tìm kiếm chương trình"
+                  placeholder={common('pages.allPrograms.searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
@@ -272,11 +238,11 @@ const TatCaChuongTrinhPage = () => {
             <TabsContainer>
               {tabs.map((tab) => (
                 <TabButton
-                  key={tab}
-                  active={activeTab === tab}
-                  onClick={() => handleTabChange(tab)}
+                  key={tab.id}
+                  active={activeTab === tab.id}
+                  onClick={() => setActiveTab(tab.id)}
                 >
-                  {tab}
+                  {tab.label}
                 </TabButton>
               ))}
             </TabsContainer>
@@ -284,7 +250,7 @@ const TatCaChuongTrinhPage = () => {
 
           {loading ? (
             <LoadingSection>
-              <div className="loading-text">Đang tải chương trình đào tạo...</div>
+              <div className="loading-text">{common('pages.allPrograms.loadingPrograms')}</div>
             </LoadingSection>
           ) : (
             <>
@@ -303,8 +269,8 @@ const TatCaChuongTrinhPage = () => {
                 <NoResultsSection>
                   <div className="no-results-text">
                     {searchQuery 
-                      ? `Không tìm thấy chương trình nào phù hợp với từ khóa "${searchQuery}" trong danh mục "${activeTab}"`
-                      : `Không có chương trình nào trong danh mục "${activeTab}"`
+                      ? common('pages.allPrograms.noResultsWithQuery').replace('{query}', searchQuery).replace('{category}', tabs.find(tab => tab.id === activeTab)?.label || activeTab)
+                      : common('pages.allPrograms.noResultsInCategory').replace('{category}', tabs.find(tab => tab.id === activeTab)?.label || activeTab)
                     }
                   </div>
                 </NoResultsSection>

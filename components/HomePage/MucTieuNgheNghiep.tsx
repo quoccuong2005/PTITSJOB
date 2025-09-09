@@ -5,6 +5,7 @@ import CourseProgramCard from "../AISCard";
 import AISButton from "../AISButton";
 import { ProgramCardProps } from "../AISCard/types";
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
+import { getDefaultPrograms } from "../../data/muc-tieu-test";
 import { set } from "lodash";
 
 interface MucTieuNgheNghiepProps {
@@ -32,50 +33,11 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
   useEffect(() => {
     setActiveTab(tabs[0]);
   }, [tabs[0]]);
-  const defaultPrograms: ProgramCardProps[] = [
-    {
-      variant: "program",
-      id: "program_1",
-      title: common("socialMedia.title"),
-      href: "/muc-tieu-nghe-nghiep/truyen-thong-xa-hoi",
-      imageUrl: "/images/social.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("socialMedia.description"),
-      category: common("tabs.populate")
-    },
-    {
-      variant: "program",
-      id: "program_2", 
-      title: common("dataAnalyst.title"),
-      href: "/programs/phan-tich-du-lieu",
-      imageUrl: "/images/data-analysis.jpeg",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("dataAnalyst.description"),
-      category: common("tabs.populate")
-    },
-    {
-      variant: "program",
-      id: "program_3",
-      title: common("networkSecurity.title"),
-      href: "/programs/an-ninh-mang",
-      imageUrl: "/images/X5gFB1559764843.png",
-      teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        
-      ],
-      description: common("networkSecurity.description"),
-      category: common("tabs.populate")
-    }
-  ];
+  
+  const defaultPrograms = getDefaultPrograms(common);
 
   const programsToDisplay = programs.length > 0 ? programs : defaultPrograms;
-  const filteredPrograms = programsToDisplay.filter(program => program.category === activeTab);
+  const filteredPrograms = programsToDisplay.filter(program => program.categoryId === activeTab);
 
   return (
     <MucTieuNgheNghiepWrapper>

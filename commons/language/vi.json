@@ -97,10 +97,6 @@
 			"title": "Chuyên viên Phân tích Dữ liệu",
 			"description": "Chuyên viên phân tích dữ liệu thu thập, làm sạch và diễn giải dữ liệu để đưa ra các thông tin hữu ích. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và hỗ trợ doanh nghiệp ra quyết định dựa trên dữ liệu."
 		},
-		"networkSecurity": {
-			"title": "Chuyên viên Phân tích An ninh Mạng",
-			"description": "Bảo vệ hệ thống CNTT khỏi các cuộc tấn công mạng bằng cách triển khai các biện pháp bảo mật tiên tiến, thiết kế và duy trì chiến lược an ninh hiệu quả, liên tục giám sát rủi ro tiềm ẩn và phản ứng nhanh với sự cố an ninh."
-		},
 		"teach": {
 			"title": "Tổ chức giảng dạy"
 		},
@@ -145,10 +141,200 @@
 
 			"explore" : "Khám phá chi tiết"
 		},
+		"networkSecurity": {
+			"title": "Chuyên gia An ninh mạng và An toàn thông tin",
+			"description": "Chuyên gia An ninh mạng và An toàn thông tin là người đóng vai trò then chốt trong việc bảo vệ toàn bộ hạ tầng công nghệ của tổ chức. Họ chịu trách nhiệm xây dựng và triển khai các giải pháp phòng thủ để ngăn chặn tấn công mạng, giám sát liên tục các hệ thống nhằm phát hiện sớm rủi ro, đồng thời ứng phó kịp thời với sự cố an ninh. Bên cạnh đó, họ còn tham gia thiết kế kiến trúc bảo mật, xây dựng chính sách quản trị truy cập, đào tạo người dùng và phối hợp với các bộ phận khác để đảm bảo dữ liệu và thông tin quan trọng luôn duy trì được tính bảo mật – toàn vẹn – sẵn sàng. Đây là vị trí đòi hỏi kiến thức chuyên sâu, kỹ năng phân tích sắc bén và sự cập nhật thường xuyên với các công nghệ cũng như mối đe dọa mới trong kỷ nguyên số.",
+			"skillNeeded": {
+				"skill1": "Bảo mật mạng (Firewall, IDS/IPS, VPN)",
+				"skill2": "Mã hóa và quản lý khóa (SSL/TLS, AES, RSA)",
+				"skill3": "Điều tra số & phản ứng sự cố",
+				"skill4": "Quản trị hệ điều hành (Linux, Windows)",
+				"skill5": "Pentest & khai thác lỗ hổng",
+				"skill6": "Tiêu chuẩn bảo mật (ISO 27001, NIST, OWASP)",
+				"skill7": "Phân tích & quản lý rủi ro",
+				"skill8": "Kỹ năng mềm: giao tiếp, teamwork"
+			}
+		},
+		"financialAnalyst": {
+			"title": "Chuyên gia Phân tích & Đầu tư tài chính",
+			"description": "Chuyên gia Phân tích & Đầu tư tài chính là người đóng vai trò quan trọng trong việc nghiên cứu, đánh giá và đưa ra các quyết định liên quan đến dòng vốn và chiến lược tài chính. Họ chịu trách nhiệm phân tích báo cáo tài chính doanh nghiệp, thẩm định giá trị tài sản, theo dõi biến động của thị trường chứng khoán, trái phiếu, công cụ phái sinh và các kênh đầu tư khác. Đồng thời, chuyên gia còn dự báo xu hướng kinh tế vĩ mô, nhận diện cơ hội và rủi ro, từ đó xây dựng danh mục đầu tư tối ưu và đảm bảo an toàn vốn cho tổ chức hoặc nhà đầu tư.\nNgoài kiến thức tài chính – kế toán chuyên sâu, họ còn ứng dụng công nghệ hiện đại như Excel nâng cao, Python, R, trí tuệ nhân tạo và FinTech để phân tích dữ liệu lớn và mô hình hóa kịch bản đầu tư. Chuyên gia Phân tích & Đầu tư tài chính không chỉ đưa ra khuyến nghị đầu tư chính xác, mà còn tham gia tư vấn chiến lược, quản trị rủi ro và hỗ trợ ban lãnh đạo trong việc ra quyết định, góp phần gia tăng giá trị bền vững và năng lực cạnh tranh trên thị trường.",
+			"skillNeeded": {
+				"skill1": "Phân tích báo cáo tài chính",
+				"skill2": "Định giá doanh nghiệp & tài sản",
+				"skill3": "Kiến thức chứng khoán & phái sinh",
+				"skill4": "Dự báo kinh tế & xu hướng thị trường",
+				"skill5": "Quản trị rủi ro tài chính",
+				"skill6": "Excel nâng cao & công cụ phân tích",
+				"skill7": "Python/R cho tài chính định lượng",
+				"skill8": "Hiểu biết FinTech & Blockchain",
+				"skill9": "Tư duy định lượng & phân tích dữ liệu",
+				"skill10": "Giao tiếp, thuyết trình, đàm phán"
+			}
+		},
+		"digitalStrategist": {
+			"title": "Chuyên gia Chiến lược Truyền thông số",
+			"description": "Chuyên gia Chiến lược Truyền thông số là người xây dựng, quản lý và tối ưu hóa các kế hoạch truyền thông trong môi trường số, nhằm giúp tổ chức hoặc thương hiệu tiếp cận đúng đối tượng mục tiêu và đạt hiệu quả cao nhất. Họ chịu trách nhiệm nghiên cứu thị trường, phân tích hành vi người dùng, lựa chọn kênh truyền thông phù hợp (mạng xã hội, website, email marketing, SEO/SEM, quảng cáo số…) và thiết kế chiến lược nội dung sáng tạo, gắn kết với mục tiêu kinh doanh.\nNgoài kiến thức về truyền thông và marketing, chuyên gia còn am hiểu công cụ phân tích dữ liệu, đo lường hiệu quả (KPIs, ROI), cũng như xu hướng công nghệ mới như AI, Big Data, Marketing Automation để tối ưu hóa trải nghiệm người dùng và nâng cao sức cạnh tranh. Đây là vị trí vừa mang tính sáng tạo, vừa mang tính chiến lược, góp phần xây dựng hình ảnh thương hiệu, mở rộng tầm ảnh hưởng và thúc đẩy tăng trưởng bền vững trong kỷ nguyên số.",
+			"skillNeeded": {
+				"skill1": "Lập kế hoạch truyền thông",
+				"skill2": "Phân tích thị trường & khách hàng",
+				"skill3": "Chiến lược nội dung số",
+				"skill4": "Quản lý đa kênh truyền thông",
+				"skill5": "SEO/SEM & Digital Ads",
+				"skill6": "Đo lường & tối ưu hiệu quả",
+				"skill7": "Công cụ phân tích dữ liệu",
+				"skill8": "Marketing Automation & AI",
+				"skill9": "Tư duy chiến lược & sáng tạo",
+				"skill10": "Giao tiếp & thuyết trình"
+			}
+		},	
+		"aiSpecialist": {
+			"title": "Chuyên gia Trí tuệ nhân tạo",
+			"description": "Chuyên gia Trí tuệ nhân tạo (AI Specialist) là người có chuyên môn sâu trong việc nghiên cứu, thiết kế, phát triển và ứng dụng các hệ thống trí tuệ nhân tạo. Họ là những người hiểu rõ các thuật toán, mô hình toán học, công nghệ và công cụ AI để giải quyết các bài toán phức tạp trong nhiều lĩnh vực như y tế, giáo dục, tài chính, thương mại điện tử, công nghiệp, dịch vụ công…\nChuyên gia Trí tuệ nhân tạo thường giỏi ở nhiều mảng kết hợp giữa khoa học và công nghệ. Họ có nền tảng vững chắc về toán học, xác suất và thống kê để hiểu rõ các thuật toán. Bên cạnh đó, họ giỏi trong việc xử lý và phân tích dữ liệu, xây dựng và tối ưu mô hình học máy, học sâu, xử lý ngôn ngữ tự nhiên hay thị giác máy tính. Không chỉ mạnh về kỹ thuật, chuyên gia AI còn có tư duy giải quyết vấn đề sáng tạo, biết cách biến dữ liệu thành tri thức hữu ích, đồng thời có khả năng giao tiếp và phối hợp hiệu quả với nhiều nhóm khác nhau để đưa AI vào ứng dụng thực tiễn.",
+			"skillNeeded": {
+				"skill1": "Python",
+				"skill2": "Machine Learning",
+				"skill3": "Xử lý dữ liệu",
+				"skill4": "Deep Learning",
+				"skill5": "AI Search"
+			}
+		},	
+		"networkInfrastructure": {
+			"title": "Chuyên gia hạ tầng mạng và viễn thông",
+			"description": "Chuyên gia hạ tầng mạng và viễn thông là người thiết kế, triển khai và quản lý các hệ thống mạng máy tính, viễn thông, đảm bảo dữ liệu, thoại và dịch vụ số luôn truyền tải nhanh, ổn định và an toàn. Họ am hiểu mạng LAN, WAN, truyền dẫn quang, mạng không dây, đồng thời thành thạo cấu hình và vận hành thiết bị như router, switch, firewall để duy trì sự thông suốt của hạ tầng công nghệ.\nNgoài vận hành, họ còn nghiên cứu và ứng dụng công nghệ mới như 5G, IoT, điện toán đám mây hay SDN/NFV, đồng thời chú trọng triển khai giải pháp bảo mật để ngăn chặn rủi ro tấn công mạng. Nhờ đó, chuyên gia hạ tầng mạng và viễn thông trở thành “xương sống” kết nối con người, doanh nghiệp và toàn cầu trong xã hội số.",
+			"skillNeeded": {
+				"skill1": "Quản trị mạng",
+				"skill2": "Bảo mật hệ thống",
+				"skill3": "Router & Switch",
+				"skill4": "Cloud & 5G"
+			}
+		},	
+		"dataScientist": {
+			"title": "Chuyên gia Khoa học và Phân tích dữ liệu",
+			"description": "Chuyên gia Khoa học và Phân tích dữ liệu (Data Science & Analytics Specialist) là người phụ trách thu thập, xử lý và phân tích dữ liệu từ nhiều nguồn khác nhau, nhằm khai thác thông tin giá trị phục vụ cho các quyết định chiến lược của tổ chức.\nCông việc chính bao gồm xây dựng quy trình thu thập và làm sạch dữ liệu, khám phá dữ liệu (EDA), phát triển và triển khai các mô hình dự báo bằng machine learning, trực quan hóa kết quả bằng dashboard/báo cáo, đồng thời phối hợp chặt chẽ với các bộ phận kinh doanh, marketing hay sản xuất để biến dữ liệu thành giải pháp thực tế và tối ưu hiệu quả hoạt động.\nMột chuyên gia khoa học và phân tích dữ liệu giỏi không chỉ am hiểu về toán học, thống kê và thuật toán mà còn có khả năng giải thích insight một cách rõ ràng, kết nối dữ liệu với bối cảnh kinh doanh. Họ biết tận dụng công nghệ và công cụ hiện đại để đưa ra quyết định nhanh chóng và chính xác. Đây là nghề nghiệp năng động, đòi hỏi sự tò mò, khả năng học hỏi liên tục, và kỹ năng giao tiếp tốt để truyền tải giá trị dữ liệu đến mọi cấp độ trong doanh nghiệp.",
+			"skillNeeded": {
+				"skill1": "Python/R",
+				"skill2": "SQL",
+				"skill3": "Machine Learning",
+				"skill4": "Trực quan hóa dữ liệu (Tableau/Power BI)",
+				"skill5": "Thống kê ứng dụng"
+			}
+		},
+		"discoverDropdown": {
+			"trendingSkills": {
+				"title": "KHÁM PHÁ CÁC KỸ NĂNG THỊNH HÀNH",
+				"items": [
+				"Python",
+				"Trí tuệ nhân tạo",
+				"Excel",
+				"Học máy",
+				"SQL",
+				"Quản lý dự án",
+				"Power BI",
+				"Đa phương tiện"
+				],
+				"viewAllText": "Xem tất cả"
+			},
+			"careerGoals": {
+				"title": "KHÁM PHÁ MỤC TIÊU NGHỀ NGHIỆP",
+				"items": [
+				"Chuyên gia truyền thông xã hội",
+				"Quản lý dự án",
+				"Nhà khoa học dữ liệu",
+				"Kỹ sư học máy",
+				"Nhà phân tích An ninh Mạng",
+				"Chuyên gia phân tích dữ liệu",
+				"Chuyên gia TK giao diện người dùng",
+				"Chuyên gia tiếp thị kỹ thuật số"
+				],
+				"viewAllText": "Xem tất cả"
+			},
+			"categories": {
+				"title": "KHÁM PHÁ DANH MỤC",
+				"items": [
+				"Đa phương tiện",
+				"Khoa học dữ liệu",
+				"Công nghệ thông tin",
+				"Khoa học máy tính",
+				"Phát triển cá nhân",
+				"Khoa học xã hội",
+				"Học ngôn ngữ",
+				"Khoa học vật lý và kỹ thuật"
+				],
+				"viewAllText": "Xem tất cả"
+			},
+			"certificates": {
+				"title": "NHẬN CHỨNG CHỈ CHUYÊN MÔN",
+				"items": [
+				"Đa phương tiện",
+				"Khoa học máy tính",
+				"Khoa học dữ liệu",
+				"Công nghệ thông tin"
+				],
+				"viewAllText": "Xem tất cả"
+			}
+			},
+		"skillsNeeded": "Kỹ năng bạn cần có",
+		"relatedPrograms": {
+			"title": "Khám phá các mục tiêu nghề nghiệp tương tự",
+			"viewAll": "Xem tất cả nghề nghiệp"
+		},
 		"empty": "Không có dữ liệu!",
 		"pricing": "Báo giá",
 		"price-table": "Bảng báo giá chung",
-		"search-result": "Kết quả tìm kiếm"
+		"search-result": "Kết quả tìm kiếm",
+		"certificateTypes": {
+			"professional": "Chứng chỉ chuyên môn",
+			"course": "Khoá học"
+		},
+		"pages": {
+			"allPrograms": {
+				"title": "Mục tiêu nghề nghiệp",
+				"searchPlaceholder": "Nhập từ khóa để tìm kiếm chương trình",
+				"loadingPrograms": "Đang tải chương trình đào tạo...",
+				"noResultsWithQuery": "Không tìm thấy chương trình nào phù hợp với từ khóa \"{query}\" trong danh mục \"{category}\"",
+				"noResultsInCategory": "Không có chương trình nào trong danh mục \"{category}\""
+			},
+			"allCourses": {
+				"title": "Tất cả khóa học", 
+				"loadingCourses": "Đang tải khóa học...",
+				"noResultsWithQuery": "Không tìm thấy khóa học nào phù hợp với từ khóa \"{query}\"",
+				"searchResultsFor": "Kết quả tìm kiếm cho \"{query}\""
+			}
+		},
+		"modules": {
+			"title": "Modun kiến thức",
+			"description": "Khám phá các chứng chỉ mới nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"exploreButton": "Khám phá chứng chỉ",
+			"skillsTitle": "Kỹ năng bạn sẽ đạt được",
+			"reviewsCount": "đánh giá",
+			"coursesRemaining": "khoá học phải hoàn thành",
+			"defaultModules": {
+				"multimedia": {
+					"name": "Công nghệ Đa phương tiện",
+					"skills": {
+						"cpp": "C++",
+						"ux": "Trải nghiệm người dùng",
+						"aiSearch": "AI Search",
+						"uxDesign": "UX Design"
+					}
+				},
+				"dataScience": {
+					"name": "Khoa học Dữ liệu",
+					"skills": {
+						"python": "Python",
+						"machineLearning": "Machine Learning",
+						"dataAnalysis": "Data Analysis",
+						"statistics": "Statistics"
+					}
+				}
+			}
+		},
+		"breadcrumb": {
+			"home": "Trang chủ",
+			"allPrograms": "Mục tiêu nghề nghiệp",
+			"allCourses": "Tất cả khóa học"
+		},
+		"programNotFound": "Chương trình không tồn tại. ID:"
 	},
 	"home": {
 		"customer": "Khách hàng",

@@ -46,58 +46,27 @@ const Header = (props: IProps) => {
 
   const discoverDropdownData = [
     {
-      title: "KHÁM PHÁ CÁC KỸ NĂNG THỊNH HÀNH",
-      items: [
-        "Python",
-        "Trí tuệ nhân tạo", 
-        "Excel",
-        "Học máy",
-        "SQL",
-        "Quản lý dự án",
-        "Power BI",
-        "Đa phương tiện"
-      ],
-      viewAllText: "Xem tất cả"
+      title: common("discoverDropdown.trendingSkills.title") as string,
+      items: common("discoverDropdown.trendingSkills.items", { returnObjects: true }) as unknown as string[],
+      viewAllText: common("discoverDropdown.trendingSkills.viewAllText") as string,
     },
     {
-      title: "KHÁM PHÁ MỤC TIÊU NGHỀ NGHIỆP",
-      items: [
-        "Chuyên gia truyền thông xã hội",
-        "Quản lý dự án",
-        "Nhà khoa học dữ liệu",
-        "Kỹ sư học máy",
-        "Nhà phân tích An ninh Mạng",
-        "Chuyên gia phân tích dữ liệu",
-        "Chuyên gia TK giao diện người dùng",
-        "Chuyên gia tiếp thị kỹ thuật số"
-      ],
-      viewAllText: "Xem tất cả"
+      title: common("discoverDropdown.careerGoals.title") as string,
+      items: common("discoverDropdown.careerGoals.items", { returnObjects: true }) as unknown as string[],
+      viewAllText: common("discoverDropdown.careerGoals.viewAllText") as string,
     },
     {
-      title: "KHÁM PHÁ DANH MỤC",
-      items: [
-        "Đa phương tiện",
-        "Khoa học dữ liệu",
-        "Công nghệ thông tin",
-        "Khoa học máy tính",
-        "Phát triển cá nhân",
-        "Khoa học xã hội",
-        "Học ngôn ngữ",
-        "Khoa học vật lý và kỹ thuật"
-      ],
-      viewAllText: "Xem tất cả"
+      title: common("discoverDropdown.categories.title") as string,
+      items: common("discoverDropdown.categories.items", { returnObjects: true }) as unknown as string[],
+      viewAllText: common("discoverDropdown.categories.viewAllText") as string,
     },
     {
-      title: "NHẬN CHỨNG CHỈ CHUYÊN MÔN",
-      items: [
-        "Đa phương tiện",
-        "Khoa học máy tính",
-        "Khoa học dữ liệu",
-        "Công nghệ thông tin"
-      ],
-      viewAllText: "Xem tất cả"
-    }
+      title: common("discoverDropdown.certificates.title") as string,
+      items: common("discoverDropdown.certificates.items", { returnObjects: true }) as unknown as string[],
+      viewAllText: common("discoverDropdown.certificates.viewAllText") as string,
+    },
   ];
+
 
   const handleClickOutSide = (e: any) => {
     const node = menuRef.current;

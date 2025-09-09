@@ -1,25 +1,99 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { KnowledgeModulesProps, KnowledgeModule } from './types';
 import CourseProgramCard from '../AISCard';
 import AISButton from '../AISButton';
+import { CourseCardProps } from '../AISCard/types';
+import { getKhoaHocPhoBien } from '../../api/khoahoc';
+import { ELang } from '../../utils/constant';
+import { useTranslation } from 'react-i18next';
+import useCommonTranslation from '../../hooks/useCommonTranslation';
 
 const Modules: React.FC<KnowledgeModulesProps> = ({
-  title = "Modun kiến thức",
-  description = "Khám phá các chứng chỉ mới nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+  title,
+  description,
   modules = [],
   onModuleClick,
   onCourseClick
 }) => {
+  const [common] = useCommonTranslation();
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
+  const [apiCourses, setApiCourses] = useState<CourseCardProps[]>([]);
 
-  // Component for individual module with navigation
+  const displayTitle = title || common('modules.title');
+  const displayDescription = description || common('modules.description');
+
+  // Define default modules with translations
+  const defaultModules: KnowledgeModule[] = [
+    {
+      id: "module_1",
+      name: common('modules.defaultModules.multimedia.name'),
+      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+      rating: { score: 4.8, reviewCount: 23 },
+      coursesRemaining: 6,
+      totalCourses: 6,
+      skills: [
+        { name: common('modules.defaultModules.multimedia.skills.cpp'), level: "intermediate" },
+        { name: common('modules.defaultModules.multimedia.skills.ux'), level: "beginner" },
+        { name: common('modules.defaultModules.multimedia.skills.aiSearch'), level: "advanced" },
+        { name: common('modules.defaultModules.multimedia.skills.uxDesign'), level: "intermediate" }
+      ],
+      courses: []
+    },
+    {
+      id: "module_2",
+      name: common('modules.defaultModules.dataScience.name'),
+      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+      rating: { score: 4.6, reviewCount: 45 },
+      coursesRemaining: 8,
+      totalCourses: 8,
+      skills: [
+        { name: common('modules.defaultModules.dataScience.skills.python'), level: "intermediate" },
+        { name: common('modules.defaultModules.dataScience.skills.machineLearning'), level: "advanced" },
+        { name: common('modules.defaultModules.dataScience.skills.dataAnalysis'), level: "intermediate" },
+        { name: common('modules.defaultModules.dataScience.skills.statistics'), level: "beginner" }
+      ],
+      courses: []
+    }
+  ];
+
+  useEffect(() => {
+    if (currentLang) {
+      (async () => {
+        try {
+          const response = await getKhoaHocPhoBien(currentLang as ELang);
+          const data = response.data.data;
+          if (!data) return;
+          
+          const mapper: CourseCardProps[] = data.map(item => ({
+            variant: "course" as const,
+            org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+            id: item.id,
+            title: item.name,
+            href: item.course_url,
+            imageUrl: item.image_url,
+            durationMinutes: item.duration * 60,
+            certificateType: item.topics.map(topic => topic.name).join(', '),
+            isAI: true
+          }));
+          setApiCourses(mapper);
+        } catch (err) {
+          console.error('Error fetching courses:', err);
+        }
+      })();
+    }
+  }, [currentLang]);
+
   const ModuleWithNavigation: React.FC<{ module: KnowledgeModule }> = ({ module }) => {
     const [currentCourseIndex, setCurrentCourseIndex] = useState(0);
     const coursesPerPage = 3;
-    const totalPages = Math.ceil(module.courses.length / coursesPerPage);
     
-    const currentCourses = module.courses.slice(
+    const coursesToUse = apiCourses.length > 0 ? apiCourses : module.courses;
+    const totalPages = Math.ceil(coursesToUse.length / coursesPerPage);
+    
+    const currentCourses = coursesToUse.slice(
       currentCourseIndex * coursesPerPage,
       (currentCourseIndex + 1) * coursesPerPage
     );
@@ -49,19 +123,19 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
             <RatingSection>
               {renderStars(module.rating.score)}
               <RatingScore>{module.rating.score.toFixed(1)}</RatingScore>
-              <RatingCount>{module.rating.reviewCount} đánh giá</RatingCount>
+              <RatingCount>{module.rating.reviewCount} {common('modules.reviewsCount')}</RatingCount>
             </RatingSection>
 
             <CourseCountSection>
               {renderCourseIcon()}
-              <span>{module.coursesRemaining} khoá học phải hoàn thành</span>
+              <span>{module.coursesRemaining} {common('modules.coursesRemaining')}</span>
             </CourseCountSection>
           </ModuleHeader>
 
           <Divider />
 
           <SkillsSection>
-            <SkillsTitle>Kỹ năng bạn sẽ đạt được</SkillsTitle>
+            <SkillsTitle>{common('modules.skillsTitle')}</SkillsTitle>
             <SkillsTags>
               {module.skills.map((skill, index) => (
                 <SkillTag key={index}>
@@ -72,7 +146,7 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
           </SkillsSection>
 
           <AISButton>
-            Khám phá chứng chỉ
+            {common('modules.exploreButton')}
           </AISButton>
         </MainModuleCard>
 
@@ -118,107 +192,6 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
     );
   };
 
-  const defaultModules: KnowledgeModule[] = [
-    {
-      id: "module_1",
-      name: "Công nghệ Đa phương tiện",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      rating: { score: 4.8, reviewCount: 23 },
-      coursesRemaining: 6,
-      totalCourses: 6,
-      skills: [
-        { name: "C++", level: "intermediate" },
-        { name: "Trải nghiệm người dùng", level: "beginner" },
-        { name: "AI Search", level: "advanced" },
-        { name: "UX Design", level: "intermediate" }
-      ],
-      courses: [
-        {
-          id: "course_1",
-          title: "Mạng máy tính (Computer Networks)",
-          href: "/courses/test_course1",
-          imageUrl: "/images/test_course1.png",
-          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-          certificateType: "Chứng chỉ chuyên môn",
-          durationMinutes: 180
-        },
-        {
-          id: "course_2", 
-          title: "Phát triển ứng dụng web",
-          href: "/courses/test_course",
-          imageUrl: "/images/test_course.png",
-          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-          certificateType: "Chứng chỉ chuyên môn",
-          durationMinutes: 240
-        },
-        {
-          id: "course_3",
-          title: "Nhập môn lập trình",
-          href: "/courses/test_course",
-          imageUrl: "/images/test_course1.png", 
-          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-          certificateType: "Chứng chỉ chuyên môn",
-          isAI: true,
-          durationMinutes: 120
-        },
-        {
-          id: "course_4",
-          title: "Phân tích dữ liệu với Python",
-          href: "/courses/course_4",
-          imageUrl: "/images/test_course1.png",
-          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-          certificateType: "Chứng chỉ chuyên môn",
-          durationMinutes: 300
-        },
-        {
-          id: "course_5",
-          title: "Machine Learning cơ bản",
-          href: "/courses/course_5",
-          imageUrl: "/images/test_course.png",
-          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-          certificateType: "Chứng chỉ chuyên môn",
-          isAI: true,
-          durationMinutes: 360
-        }
-      ]
-    },
-    {
-      id: "module_2",
-      name: "Khoa học Dữ liệu",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      rating: { score: 4.6, reviewCount: 45 },
-      coursesRemaining: 8,
-      totalCourses: 8,
-      skills: [
-        { name: "Python", level: "intermediate" },
-        { name: "Machine Learning", level: "advanced" },
-        { name: "Data Analysis", level: "intermediate" },
-        { name: "Statistics", level: "beginner" }
-      ],
-      courses: [
-        {
-          id: "course_4",
-          title: "Phân tích dữ liệu với Python",
-          href: "/courses/course_4",
-          imageUrl: "/images/test_course1.png",
-          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-          certificateType: "Chứng chỉ chuyên môn",
-          durationMinutes: 300
-        },
-        {
-          id: "course_5",
-          title: "Machine Learning cơ bản",
-          href: "/courses/course_5",
-          imageUrl: "/images/test_course.png",
-          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-          certificateType: "Chứng chỉ chuyên môn",
-          isAI: true,
-          durationMinutes: 360
-        }
-      ]
-    }
-  ];
-
   const modulesToDisplay = modules.length > 0 ? modules : defaultModules;
 
   const renderStars = (score: number) => {
@@ -247,8 +220,8 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
         <HeaderSection>
           <HeaderContent>
             <TextContent>
-              <SectionTitle>{title}</SectionTitle>
-              <SectionDescription>{description}</SectionDescription>
+              <SectionTitle>{displayTitle}</SectionTitle>
+              <SectionDescription>{displayDescription}</SectionDescription>
             </TextContent>
           </HeaderContent>
         </HeaderSection>

@@ -1,51 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ProgramDetail } from './types';
-
-export const mockPrograms: { [key: string]: ProgramDetail } = {
-  'program_1': {
-    title: 'Chuyên gia truyền thông xã hội',
-    description: 'Chuyên gia truyền thông xã hội (Social Media Specialist) là người phụ trách xây dựng, triển khai và quản lý các chiến lược truyền thông trên các nền tảng mạng xã hội. Công việc chính bao gồm nghiên cứu xu hướng, sản xuất và tối ưu hóa nội dung, quản lý cộng đồng người dùng, theo dõi – phân tích hiệu quả chiến dịch, đồng thời phối hợp với các bộ phận marketing, PR hay bán hàng để nâng cao hình ảnh thương hiệu và thúc đẩy mục tiêu kinh doanh.',
-    detailedDescription: 'Một chuyên gia truyền thông xã hội giỏi không chỉ am hiểu về hành vi người dùng trên mạng mà còn có khả năng sáng tạo nội dung cuốn hút, biết tận dụng công nghệ và dữ liệu để đưa ra quyết định hiệu quả. Đây là nghề nghiệp năng động, đòi hỏi sự linh hoạt, khả năng cập nhật xu hướng nhanh chóng và kỹ năng giao tiếp tốt để xây dựng mối quan hệ bền chặt giữa thương hiệu và cộng đồng.',
-    imageUrl: '/images/social.png',
-    teachingOrgs: [
-      { name: 'PTIT', logoUrl: '/images/logo-ptit.png' },
-      { name: 'RIPT', logoUrl: '/images/logo-ptit.png' }
-    ],
-    requiredSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search'],
-    achievableSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search', 'UX Design']
-  },
-  'program_2': {
-    title: 'Chuyên gia truyền thông xã hội',
-    description: 'Chuyên gia truyền thông xã hội (Social Media Specialist) là người phụ trách xây dựng, triển khai và quản lý các chiến lược truyền thông trên các nền tảng mạng xã hội. Công việc chính bao gồm nghiên cứu xu hướng, sản xuất và tối ưu hóa nội dung, quản lý cộng đồng người dùng, theo dõi – phân tích hiệu quả chiến dịch, đồng thời phối hợp với các bộ phận marketing, PR hay bán hàng để nâng cao hình ảnh thương hiệu và thúc đẩy mục tiêu kinh doanh.',
-    detailedDescription: 'Một chuyên gia truyền thông xã hội giỏi không chỉ am hiểu về hành vi người dùng trên mạng mà còn có khả năng sáng tạo nội dung cuốn hút, biết tận dụng công nghệ và dữ liệu để đưa ra quyết định hiệu quả. Đây là nghề nghiệp năng động, đòi hỏi sự linh hoạt, khả năng cập nhật xu hướng nhanh chóng và kỹ năng giao tiếp tốt để xây dựng mối quan hệ bền chặt giữa thương hiệu và cộng đồng.',
-    imageUrl: '/images/social.png',
-    teachingOrgs: [
-      { name: 'PTIT', logoUrl: '/images/logo-ptit.png' },
-      { name: 'RIPT', logoUrl: '/images/logo-ptit.png' }
-    ],
-    requiredSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search'],
-    achievableSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search', 'UX Design']
-  },
-  'program_3': {
-    title: 'Chuyên gia truyền thông xã hội',
-    description: 'Chuyên gia truyền thông xã hội (Social Media Specialist) là người phụ trách xây dựng, triển khai và quản lý các chiến lược truyền thông trên các nền tảng mạng xã hội. Công việc chính bao gồm nghiên cứu xu hướng, sản xuất và tối ưu hóa nội dung, quản lý cộng đồng người dùng, theo dõi – phân tích hiệu quả chiến dịch, đồng thời phối hợp với các bộ phận marketing, PR hay bán hàng để nâng cao hình ảnh thương hiệu và thúc đẩy mục tiêu kinh doanh.',
-    detailedDescription: 'Một chuyên gia truyền thông xã hội giỏi không chỉ am hiểu về hành vi người dùng trên mạng mà còn có khả năng sáng tạo nội dung cuốn hút, biết tận dụng công nghệ và dữ liệu để đưa ra quyết định hiệu quả. Đây là nghề nghiệp năng động, đòi hỏi sự linh hoạt, khả năng cập nhật xu hướng nhanh chóng và kỹ năng giao tiếp tốt để xây dựng mối quan hệ bền chặt giữa thương hiệu và cộng đồng.',
-    imageUrl: '/images/social.png',
-    teachingOrgs: [
-      { name: 'PTIT', logoUrl: '/images/logo-ptit.png' },
-      { name: 'RIPT', logoUrl: '/images/logo-ptit.png' }
-    ],
-    requiredSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search'],
-    achievableSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search', 'UX Design']
-  },
-};
+import useCommonTranslation from '../../hooks/useCommonTranslation';
 
 interface MainContentProps {
   program: ProgramDetail;
 }
 
 const MainContent: React.FC<MainContentProps> = ({ program }) => {
+  const [common] = useCommonTranslation();
+  const skills = program.skillNeeded
+  ? Object.values(program.skillNeeded).filter(Boolean)
+  : program.requiredSkills || [];
+  const filteredSkills = skills.filter(skill => !skill.startsWith('common'));
   return (
     <MainContentWrapper>
       <div className="bg-main">
@@ -53,12 +20,11 @@ const MainContent: React.FC<MainContentProps> = ({ program }) => {
           <div className="content-left">
             <h1 className="program-title">{program.title}</h1>
             <p className="program-description">{program.description}</p>
-            <p className="detailed-description">{program.detailedDescription}</p>
             
             <div className="skills-section">
-              <span style={{ fontWeight: 'bold', fontSize: '18px', color: '#051A53' }}>Kỹ năng bạn cần có</span>
+              <span style={{ fontWeight: 'bold', fontSize: '18px', color: '#051A53' }}>{common("skillsNeeded")}</span>
               <div className="skills-tags">
-                {program.requiredSkills.map((skill, idx) => (
+                {filteredSkills.map((skill, idx) => (
                   <span key={idx} className="skill-tag">{skill}</span>
                 ))}
               </div>
@@ -143,6 +109,12 @@ const MainContentWrapper = styled.div`
     font-size: 14px;
     color: var(--primary-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &.professional {
+      background: linear-gradient(135deg, #FFF0F0 0%, #F0F8FF 100%);
+      border: 1px solid #BC2826;
+      color: #BC2826;
+    }
   }
     
   .image-banner {

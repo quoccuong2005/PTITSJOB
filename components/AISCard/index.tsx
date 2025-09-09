@@ -260,6 +260,7 @@ const CardWrapper = styled.div`
 `;
 
 const ProgramCardWrapper = styled.div`
+  width: 280px;
   height: 520px;
   background: #FFFFFF;
   border: 1.2px solid #EEEEEE;
@@ -270,6 +271,7 @@ const ProgramCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  flex-shrink: 0;
 
   &:hover {
     transform: translateY(-2px);

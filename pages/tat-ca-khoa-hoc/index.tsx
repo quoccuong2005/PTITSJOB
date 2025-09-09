@@ -4,6 +4,10 @@ import BreadcrumbPage from '../../components/Breadcrumb';
 import CourseProgramCard from '../../components/AISCard';
 import { CourseCardProps } from '../../components/AISCard/types';
 import { useRouter } from "next/router";
+import { useCommonTranslation } from '../../hooks/useCommonTranslation';
+import { getKhoaHocPhoBien } from '../../api/khoahoc';
+import { ELang } from '../../utils/constant';
+import { useTranslation } from 'react-i18next';
 
 const TatCaKhoaHocPage = () => {
   const [courses, setCourses] = useState<CourseCardProps[]>([]);
@@ -11,200 +15,49 @@ const TatCaKhoaHocPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [isHydrated, setIsHydrated] = useState(false);
+  const [common] = useCommonTranslation();
   const router = useRouter();
   const { search = "" } = router.query;
   const coursesPerPage = 12;
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
 
-  const mockCourses: CourseCardProps[] = [
-    {
-      variant: "course",
-      id: "course_1",
-      title: "Nguyên lý ngôn ngữ lập trình",
-      href: "/courses/nguyen-ly-ngon-ngu-lap-trinh",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_2",
-      title: "Xác xuất thống kê",
-      href: "/courses/xac-xuat-thong-ke",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_3",
-      title: "An toàn và bảo mật hệ thống thông tin",
-      href: "/courses/an-toan-bao-mat",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_4",
-      title: "Xử lý ngôn ngữ tự nhiên Natural Language Processing",
-      href: "/courses/xu-ly-ngon-ngu-tu-nhien",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started",
-      isAI: true
-    },
-    {
-      variant: "course",
-      id: "course_5",
-      title: "Giải tích 1",
-      href: "/courses/giai-tich-1",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_6",
-      title: "Đại số tuyến tính",
-      href: "/courses/dai-so-tuyen-tinh",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_7",
-      title: "Nguyên lý hệ điều hành",
-      href: "/courses/nguyen-ly-he-dieu-hanh",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Khoá học",
-      status: "not_started",
-      isAI: true
-    },
-    {
-      variant: "course",
-      id: "course_8",
-      title: "Trí tuệ nhân tạo (AI)",
-      href: "/courses/tri-tue-nhan-tao",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started",
-      isAI: true
-    },
-    {
-      variant: "course",
-      id: "course_9",
-      title: "Vật lý đại cương",
-      href: "/courses/vat-ly-dai-cuong",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_10",
-      title: "Nhập môn lập trình",
-      href: "/courses/nhap-mon-lap-trinh",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Khoá học",
-      status: "not_started",
-      isAI: true
-    },
-    {
-      variant: "course",
-      id: "course_11",
-      title: "Mạng máy tính (Computer Networks)",
-      href: "/courses/mang-may-tinh",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_12",
-      title: "Phát triển ứng dụng web",
-      href: "/courses/phat-trien-ung-dung-web",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_13",
-      title: "Công nghệ Web nâng cao (Fullstack, Frameworks: React, Angular, Vue…)",
-      href: "/courses/cong-nghe-web-nang-cao",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Khoá học",
-      status: "not_started",
-      isAI: true
-    },
-    {
-      variant: "course",
-      id: "course_14",
-      title: "Phát triển ứng dụng di động (Android/iOS)",
-      href: "/courses/phat-trien-ung-dung-di-dong",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_15",
-      title: "Xử lý ảnh & thị giác máy tính",
-      href: "/courses/xu-ly-anh-thi-giac-may-tinh",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Khoá học",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_16",
-      title: "Kỹ nghệ phần mềm nâng cao (Agile, DevOps)",
-      href: "/courses/ky-nghe-phan-mem-nang-cao",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started",
-      isAI: true
+  const fetchCourses = async () => {
+    if (!currentLang) return;
+    
+    setLoading(true);
+    try {
+      const response = await getKhoaHocPhoBien(currentLang as ELang);
+      const data = response.data.data;
+      
+      if (data) {
+        const mappedCourses: CourseCardProps[] = data.map(item => ({
+          variant: "course",
+          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+          id: item.id,
+          title: item.name,
+          href: item.course_url,
+          imageUrl: item.image_url,
+          durationMinutes: item.duration * 60,
+          certificateType: item.topics.map(topic => topic.name).join(', '),
+          status: "not_started",
+          isAI: true
+        }));
+        setCourses(mappedCourses);
+      }
+    } catch (error) {
+      console.error('Error fetching courses:', error);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
 
   useEffect(() => {
     setIsHydrated(true);
-    setCourses(mockCourses);
-    setLoading(false);
-  }, []);
+    if (currentLang) {
+      fetchCourses();
+    }
+  }, [currentLang]);
 
   
   const filteredCourses = courses.filter(course =>
@@ -234,11 +87,11 @@ const TatCaKhoaHocPage = () => {
           <div className="container mx-auto">
             <Header>
               <div className="header-content">
-                <h1 className="page-title">Tất cả khoá học</h1>
+                <h1 className="page-title">{common('pages.allCourses.title')}</h1>
               </div>
             </Header>
             <LoadingSection>
-              <div className="loading-text">Đang tải khóa học...</div>
+              <div className="loading-text">{common('pages.allCourses.loadingCourses')}</div>
             </LoadingSection>
           </div>
         </MainContent>
@@ -252,8 +105,8 @@ const TatCaKhoaHocPage = () => {
         <div className="breadcrumb-container container mx-auto py-[12px]">
           <BreadcrumbPage
             data={[
-              { title: 'Trang chủ', path: '/' },
-              { title: 'Tất cả khóa học', path: '/tat-ca-khoa-hoc' }
+              { title: common('breadcrumb.home'), path: '/' },
+              { title: common('breadcrumb.allCourses'), path: '/tat-ca-khoa-hoc' }
             ]}
           />
         </div>
@@ -263,13 +116,13 @@ const TatCaKhoaHocPage = () => {
         <div className="container mx-auto">
           <Header>
             <div className="header-content">
-              <h1 className="page-title">{search ? `Kết quả tìm kiếm cho "${search}"` : "Tất cả khoá học"}</h1>
+              <h1 className="page-title">{search ? common('pages.allCourses.searchResultsFor').replace('{query}', search as string) : common('pages.allCourses.title')}</h1>
             </div>
           </Header>
 
           {loading ? (
             <LoadingSection>
-              <div className="loading-text">Đang tải khóa học...</div>
+              <div className="loading-text">{common('pages.allCourses.loadingCourses')}</div>
             </LoadingSection>
           ) : (
             <>
@@ -287,7 +140,7 @@ const TatCaKhoaHocPage = () => {
               {filteredCourses.length === 0 && !loading && (
                 <NoResultsSection>
                   <div className="no-results-text">
-                    Không tìm thấy khóa học nào phù hợp với từ khóa "{search as string}"
+                    {common('pages.allCourses.noResultsWithQuery').replace('{query}', search as string)}
                   </div>
                 </NoResultsSection>
               )}

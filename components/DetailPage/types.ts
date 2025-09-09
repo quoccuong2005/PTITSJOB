@@ -49,6 +49,10 @@ export interface TeachingOrg {
   logoUrl: string;
 }
 
+export interface SkillNeeded {
+  [key: string]: string; 
+}
+
 export interface ProgramDetail {
   title: string;
   description: string;
@@ -57,4 +61,5 @@ export interface ProgramDetail {
   teachingOrgs: TeachingOrg[];
   requiredSkills: string[];
   achievableSkills: string[];
+  skillNeeded?: SkillNeeded;
 }

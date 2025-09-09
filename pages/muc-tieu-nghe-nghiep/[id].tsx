@@ -3,17 +3,24 @@ import React from 'react';
 import styled from 'styled-components';
 import BreadcrumbPage from '../../components/Breadcrumb';
 import Modules from '../../components/DetailPage/Module';
-import ProgramMainContent, { mockPrograms } from '../../components/DetailPage/MainContent';
+import ProgramMainContent from '../../components/DetailPage/MainContent';
 import RelatedPrograms from '../../components/DetailPage/RelatedPrograms';
+import { getDefaultPrograms, createProgramDetail } from '../../data/muc-tieu-test';
+import useCommonTranslation from '../../hooks/useCommonTranslation';
 
 const ProgramDetailPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  const program = mockPrograms[id as string];
-
-  if (!program) {
-    return <div>Chương trình không tồn tại.</div>;
+  const [common] = useCommonTranslation();
+  
+  const programs = getDefaultPrograms(common);
+  const programCard = programs.find(p => p.id === id);
+  
+  if (!programCard) {
+    return <div>{common('programNotFound')} {id}</div>;
   }
+
+  const program = createProgramDetail(programCard, common);
 
   return (
     <Wrapper>
@@ -21,9 +28,9 @@ const ProgramDetailPage = () => {
         <div className="breadcrumb-container container mx-auto py-[12px]">
           <BreadcrumbPage
             data={[
-              { title: 'Trang chủ', path: '/' },
-              { title: 'Mục tiêu nghề nghiệp', path: '/#career-goals' },
-              { title: program.title, path: `/programs/${id}` }
+              { title: common('breadcrumb.home'), path: '/' },
+              { title: common('breadcrumb.allPrograms'), path: '/muc-tieu-nghe-nghiep' },
+              { title: program.title, path: `/muc-tieu-nghe-nghiep/${id}` }
             ]}
           />
         </div>

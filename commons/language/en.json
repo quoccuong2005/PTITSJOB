@@ -93,10 +93,64 @@
             "description": "Explore specialized training programs to help you achieve your career goals",
             "button": "View all programs"
         },
+        "discoverDropdown": {
+            "trendingSkills": {
+                "title": "EXPLORE TRENDING SKILLS",
+                "items": [
+                "Python",
+                "Artificial Intelligence",
+                "Excel",
+                "Machine Learning",
+                "SQL",
+                "Project Management",
+                "Power BI",
+                "Multimedia"
+                ],
+                "viewAllText": "View All"
+            },
+            "careerGoals": {
+                "title": "EXPLORE CAREER GOALS",
+                "items": [
+                "Social Media Specialist",
+                "Project Manager",
+                "Data Scientist",
+                "Machine Learning Engineer",
+                "Cybersecurity Analyst",
+                "Data Analyst",
+                "UI Design Specialist",
+                "Digital Marketing Specialist"
+                ],
+                "viewAllText": "View All"
+            },
+            "categories": {
+                "title": "EXPLORE CATEGORIES",
+                "items": [
+                "Multimedia",
+                "Data Science",
+                "Information Technology",
+                "Computer Science",
+                "Personal Development",
+                "Social Sciences",
+                "Language Learning",
+                "Physical Science and Engineering"
+                ],
+                "viewAllText": "View All"
+            },
+            "certificates": {
+                "title": "GET PROFESSIONAL CERTIFICATES",
+                "items": [
+                "Multimedia",
+                "Computer Science",
+                "Data Science",
+                "Information Technology"
+                ],
+                "viewAllText": "View All"
+            }
+        },
         "tabs": {
             "populate": "Popular",
             "it": "Information Technology",
-            "media": "Media",
+            "media": "Communications",
             "economic": "Economics"
         },
         "socialMedia": {
@@ -108,8 +162,82 @@
             "description": "A data analyst collects, cleans, and interprets data to provide actionable insights. They use tools like Excel, SQL, and Tableau to analyze trends and help businesses make data-driven decisions."
         },
         "networkSecurity": {
-            "title": "Cyber Security Analyst",
-            "description": "Protecting IT systems from cyber attacks by implementing advanced security measures, designing and maintaining effective security strategies, continuously monitoring potential risks, and responding quickly to security incidents."
+            "title": "Cybersecurity and Information Security Professional",
+            "description": "Cybersecurity and Information Security professionals play a key role in protecting an organization’s entire technology infrastructure. They are responsible for developing and implementing defense solutions to prevent cyber attacks, continuously monitoring systems to detect risks early, and promptly responding to security incidents. In addition, they participate in designing security architectures, building access management policies, training users, and coordinating with other departments to ensure that important data and information are always maintained confidentially, intact, and available. This is a position that requires in-depth knowledge, sharp analytical skills, and regular updates on new technologies and threats in the digital age.",
+            "skillNeeded": {
+                "skill1": "Network Security (Firewall, IDS/IPS, VPN)",
+                "skill2": "Encryption & Key Management (SSL/TLS, AES, RSA)",
+                "skill3": "Digital Forensics & Incident Response",
+                "skill4": "Operating System Administration (Linux, Windows)",
+                "skill5": "Pentest & Vulnerability Exploitation",
+                "skill6": "Security Standards (ISO 27001, NIST, OWASP)",
+                "skill7": "Risk Analysis & Management",
+                "skill8": "Soft Skills: Communication, Teamwork"
+            }
+        },
+        "financialAnalyst": {
+            "title": "Financial Analyst & Investment Specialist",
+            "description": "Financial Analysts & Investment Specialists play an important role in researching, evaluating and making decisions related to capital flows and financial strategies. They are responsible for analyzing corporate financial statements, appraising asset values, monitoring fluctuations in the stock market, bonds, derivatives and other investment channels. At the same time, experts also forecast macroeconomic trends, identify opportunities and risks, thereby building optimal investment portfolios and ensuring capital safety for organizations or investors. In addition to in-depth financial and accounting knowledge, they also apply modern technology such as advanced Excel, Python, R, artificial intelligence and FinTech to analyze big data and model investment scenarios. Financial Analysts & Investment Experts not only provide accurate investment recommendations, but also participate in strategic consulting, risk management and support the board of directors in decision making, contributing to increasing sustainable value and competitiveness in the market.",
+            "skillNeeded": {
+                "skill1": "Financial Statement Analysis",
+                "skill2": "Business & Asset Valuation",
+                "skill3": "Securities & Derivatives Knowledge",
+                "skill4": "Economic Forecasting & Market Trends",
+                "skill5": "Financial Risk Management",
+                "skill6": "Advanced Excel & Analysis Tools",
+                "skill7": "Python/R for Quantitative Finance",
+                "skill8": "FinTech & Blockchain Understanding",
+                "skill9": "Quantitative Thinking & Data Analysis",
+                "skill10": "Communication, Presentation, Negotiation"
+            }
+        },
+        "digitalStrategist": {
+            "title": "Digital Media Strategist",
+            "description": "A Digital Media Strategist is someone who builds, manages and optimizes communication plans in the digital environment, helping organizations or brands reach the right target audience and achieve the highest efficiency. They are responsible for market research, analyzing user behavior, choosing the right communication channels (social networks, websites, email marketing, SEO/SEM, digital advertising, etc.) and designing creative content strategies that align with business goals. In addition to knowledge of communications and marketing, experts also understand data analysis tools, performance measurement (KPIs, ROI), as well as new technology trends such as AI, Big Data, Marketing Automation to optimize user experience and enhance competitiveness. This is a position that is both creative and strategic, contributing to building brand image, expanding influence and promoting sustainable growth in the digital age.",
+            "skillNeeded": {
+                "skill1": "Media Planning",
+                "skill2": "Market & Customer Analysis",
+                "skill3": "Digital Content Strategy",
+                "skill4": "Multi-Channel Management",
+                "skill5": "SEO/SEM & Digital Ads",
+                "skill6": "Performance Measurement & Optimization",
+                "skill7": "Data Analytics Tools",
+                "skill8": "Marketing Automation & AI",
+                "skill9": "Strategic & Creative Thinking",
+                "skill10": "Communication & Presentation"
+            }
+        },
+        "aiSpecialist": {
+            "title": "AI Specialist",
+            "description": "An AI Specialist is someone who has deep expertise in researching, designing, developing and applying artificial intelligence systems. They are people who understand algorithms, mathematical models, technology and AI tools to solve complex problems in many fields such as healthcare, education, finance, e-commerce, industry, public services, etc.\nArtificial Intelligence experts are often good at many areas that combine science and technology. They have a solid foundation in mathematics, probability and statistics to understand algorithms. In addition, they are good at processing and analyzing data, building and optimizing machine learning models, deep learning, natural language processing or computer vision. Not only strong in technology, AI experts also have creative problem-solving thinking, know how to turn data into useful knowledge, and have the ability to communicate and coordinate effectively with many different groups to bring AI into practical applications.",
+            "skillNeeded": {
+                "skill1": "Python",
+                "skill2": "Machine Learning",
+                "skill3": "Data Processing",
+                "skill4": "Deep Learning",
+                "skill5": "AI Search"
+            }
+        },
+        "networkInfrastructure": {
+            "title": "Network and Telecommunications Infrastructure Specialist",
+            "description": "Network and telecommunications infrastructure specialists design, deploy and manage computer and telecommunications network systems, ensuring that data, voice and digital services are always transmitted quickly, stably and securely. They are knowledgeable about LAN, WAN, optical transmission, wireless networks, and are proficient in configuring and operating devices such as routers, switches, and firewalls to maintain the continuity of technology infrastructure.\nIn addition to operations, they also research and apply new technologies such as 5G, IoT, cloud computing or SDN/NFV, while focusing on deploying security solutions to prevent cyber attack risks. Thanks to that, network and telecommunications infrastructure specialists become the \"backbone\" connecting people, businesses and the world in the digital society.",
+            "skillNeeded": {
+                "skill1": "Network Administration",
+                "skill2": "System Security",
+                "skill3": "Router & Switch",
+                "skill4": "Cloud & 5G"
+            }
+        },
+        "dataScientist": {
+            "title": "Data Science & Analytics Specialist",
+            "description": "A Data Science & Analytics Specialist is in charge of gathering, processing, and analyzing data from multiple sources to extract valuable information that serves the organization’s strategic decisions.\nMain tasks include building data collection and cleaning processes, performing exploratory data analysis (EDA), developing and deploying predictive models with machine learning, visualizing results through dashboards/reports, and working closely with business, marketing, or production teams to turn data into practical solutions and optimize operational efficiency.\nA strong specialist not only masters mathematics, statistics, and algorithms but also has the ability to clearly explain insights and connect data with the business context. They know how to leverage modern technologies and tools to make fast and accurate decisions. This is a dynamic career that requires curiosity, continuous learning, and strong communication skills to deliver the value of data across all levels of an organization.",
+            "skillNeeded": {
+                "skill1": "Python/R",
+                "skill2": "SQL",
+                "skill3": "Machine Learning",
+                "skill4": "Data Visualization (Tableau/Power BI)",
+                "skill5": "Applied Statistics"
+            }
         },
         "teach": {
             "title": "Teaching Organization"
@@ -182,10 +310,68 @@
         "digitalSigned": "Diploma information has been digitally signed:",
         "checkSignature": "Digital Signature Check (JWS)",
         "diplomaFile": "Diploma file:",
+        "skillsNeeded": "Skills you need",
+        "relatedPrograms": {
+            "title": "Explore Similar Career Goals",
+            "viewAll": "View All Careers"
+        },
         "empty": "No data found!",
         "pricing": "Pricing",
         "price-table": "General price list",
-        "search-result": "Search result"
+        "search-result": "Search result",
+        "certificateTypes": {
+            "professional": "Professional Certificate",
+            "course": "Course"
+        },
+        "pages": {
+            "allPrograms": {
+                "title": "Career Goals",
+                "searchPlaceholder": "Enter keywords to search for programs",
+                "loadingPrograms": "Loading training programs...",
+                "noResultsWithQuery": "No programs found matching keyword \"{query}\" in category \"{category}\"",
+                "noResultsInCategory": "No programs found in category \"{category}\""
+            },
+            "allCourses": {
+                "title": "All Courses",
+                "loadingCourses": "Loading courses...",
+                "noResultsWithQuery": "No courses found matching keyword \"{query}\"",
+                "searchResultsFor": "Search results for \"{query}\""
+            }
+        },
+        "breadcrumb": {
+            "home": "Home",
+            "allPrograms": "Career Goals", 
+            "allCourses": "All Courses"
+        },
+        "modules": {
+            "title": "Knowledge Modules",
+            "description": "Explore our latest certificates, ready to serve all your needs",
+            "exploreButton": "Explore Certificate",
+            "skillsTitle": "Skills you will achieve",
+            "reviewsCount": "reviews",
+            "coursesRemaining": "courses to complete",
+            "defaultModules": {
+                "multimedia": {
+                    "name": "Multimedia Technology",
+                    "skills": {
+                        "cpp": "C++",
+                        "ux": "User Experience",
+                        "aiSearch": "AI Search",
+                        "uxDesign": "UX Design"
+                    }
+                },
+                "dataScience": {
+                    "name": "Data Science",
+                    "skills": {
+                        "python": "Python",
+                        "machineLearning": "Machine Learning",
+                        "dataAnalysis": "Data Analysis",
+                        "statistics": "Statistics"
+                    }
+                }
+            }
+        },
+        "programNotFound": "Program not found. ID:"
     },
     "home": {
         "customer": "Customers",
