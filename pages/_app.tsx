@@ -22,11 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 	const currentUrl = process.env.BASE_URL + router.asPath;
 	useEffect(()=>{
-		if (typeof window !== 'undefined') {
-			const savedLanguage = localStorage.getItem('langCode') || 'vi';
-			const mappedLang = savedLanguage === 'vi-VN' ? 'vi' : savedLanguage;
-			i18n.changeLanguage(mappedLang);
-		}
+		// if (typeof window !== 'undefined') {
+		// 	const savedLanguage = localStorage.getItem('langCode') || 'vi';
+		// 	const mappedLang = savedLanguage === 'vi-VN' ? 'vi' : savedLanguage;
+		// 	i18n.changeLanguage(mappedLang);
+		// }
 		googleAnalytics()
 		window.addEventListener('load', () => {
 			if ('serviceWorker' in navigator) {
@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<meta httpEquiv='X-UA-Compatible' content='ie=edge' />
 				<meta httpEquiv='Content-Type' content='text/html; charset=UTF-8' />
-				<meta name='description' content='Cổng học trực tuyến Học viện Công nghệ Bưu Chính Viễn Thông' />
+				<meta name='description' content='Nền tảng Đại học số Học viện Công nghệ Bưu Chính Viễn Thông' />
 				<meta
 					name='keywords'
 					content='Cổng học trực tuyến, Đại học số'
@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta property='og:type' content='article' />
 				<meta
 					property='og:description'
-					content='quan-ly-khoa-hoc-ptit'
+					content='Cổng học trực tuyến, Đại học số'
 					key='ogdesc'
 				/>
 				<meta property='og:image' content='/images/PTIT_LOGO.png' key='ogimg' />

@@ -10,7 +10,7 @@ import AISDropdown from "../../components/AISDropdown";
 import { useRouter } from "next/router";
 import Link from "next/link";
 interface IProps {
-  language: string;
+  language?: string;
   handleChangeLanguage: (lang: string) => void;
 }
 
@@ -97,10 +97,6 @@ const Header = (props: IProps) => {
       window.removeEventListener("click", handleClickOutSide);
     };
   }, []);
-
-  useEffect(() => {
-    const mappedLang = language === "vi-VN" ? "vi" : language;
-  }, [language]);
 
   const isSticky = (e: any) => {
     if (window.scrollY > 167) {

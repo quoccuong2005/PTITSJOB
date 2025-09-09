@@ -7,7 +7,7 @@ import Header from "./header";
 import Head from "next/head";
 
 const CommonLayout = ({ children }: any) => {
-	const [language, setLanguage] = useState<string>("vi");
+	const [language, setLanguage] = useState<string>();
   const [mounted, setMounted] = useState(false);
   const { setLangCode } = useContext(AuthContext);
 
