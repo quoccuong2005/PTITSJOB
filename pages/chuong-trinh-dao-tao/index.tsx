@@ -376,11 +376,7 @@ const BreadcrumbSection = styled.div`
 `;
 
 const MainContent = styled.div`
-  padding: 32px 100px 40px;
-  
-  @media (max-width: 1200px) {
-    padding: 24px 20px 32px;
-  }
+  padding: 40px 0;
 `;
 
 const Header = styled.div`
@@ -532,11 +528,6 @@ const ProgramsGrid = styled.div`
   
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
-  }
-  
-  .program-item {
-    display: flex;
-    justify-content: center;
   }
 `;
 
