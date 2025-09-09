@@ -36,7 +36,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
       variant: "program",
       id: "program_1",
       title: common("socialMedia.title"),
-      href: "/programs/truyen-thong-xa-hoi",
+      href: "/chuong-trinh-dao-tao/truyen-thong-xa-hoi",
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -84,7 +84,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
             <h2 className="section-title">{title}</h2>
             <p className="section-description mt-[12px]">{description}</p>
             <div className="mt-[32px]">
-              <AISButton>
+              <AISButton onClick={() => router.push('/chuong-trinh-dao-tao')}>
                 {buttonText}
               </AISButton>
             </div>
@@ -110,7 +110,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
                   style={{ cursor: "pointer" }}
                   onClick={(e) => {
                     e.preventDefault();
-                    router.push(`/programs/${program.id}`);
+                    router.push(`/chuong-trinh-dao-tao/${program.id}`);
                   }}
                 >
                   <CourseProgramCard {...program} href="" />

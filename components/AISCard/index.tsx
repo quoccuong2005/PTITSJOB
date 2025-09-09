@@ -236,7 +236,8 @@ const AIIcon = () => (
 );
 
 const CardWrapper = styled.div`
-  height: 400px;
+  width: 295px;
+  height: 368px;
   background: #FFFFFF;
   border: 1.2px solid #EEEEEE;
   border-radius: 16px;
@@ -285,7 +286,7 @@ const ProgramCardWrapper = styled.div`
 const CardContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   flex: 1;
   height: 100%;
 `;
@@ -294,7 +295,7 @@ const CardContent = styled.div`
 const CourseImageContainer = styled.div`
   position: relative;
   width: calc(100% - 20px);
-  height: 140px;
+  height: 154px;
   border-radius: 8px;
   overflow: hidden;
   background: #F5F5F5;
@@ -325,6 +326,7 @@ const OrgSection = styled.div`
   align-items: center;
   gap: 12px;
   padding: 0 20px;
+  height: 24px;
   flex-shrink: 0;
 `;
 
@@ -351,7 +353,7 @@ const CourseTitle = styled.h3`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  min-height: 52px;
+  height: 52px;
 `;
 
 const ProgramTitle = styled.h3`
@@ -389,6 +391,7 @@ const MetaSection = styled.div`
   padding: 0 20px;
   margin-top: auto;
   flex-shrink: 0;
+  height: 60px;
 `;
 
 const ProgramMetaSection = styled.div`

@@ -6,6 +6,7 @@ import { CourseCardProps } from "../AISCard/types";
 // @ts-ignore
 import Slider from "react-slick";
 import { getKhoaHocMienPhi, getKhoaHocMoiNhat, getKhoaHocNangCao, getKhoaHocPhoBien } from "../../api/khoahoc";
+import { useRouter } from "next/router";
 
 interface KhoaHocProps {
   title?: string;
@@ -17,6 +18,7 @@ interface KhoaHocProps {
 
 const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
   const sliderRef = useRef<Slider | null>(null);
+  const router = useRouter();
   const {title, description, buttonText, courses, type} = props;
   const settings = {
     dots: false,
@@ -217,7 +219,7 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
         </div>
 
         <div className="button-container">
-          <AISButton type="default">
+          <AISButton type="default" onClick={() => router.push('/tat-ca-khoa-hoc')}>
             {buttonText}
           </AISButton>
         </div>
