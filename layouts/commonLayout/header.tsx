@@ -273,9 +273,6 @@ const Header = (props: IProps) => {
                 ref={discoverRef}
                 onMouseEnter={() => setShowDiscoverDropdown(true)}
                 onMouseLeave={() => setShowDiscoverDropdown(false)}
-                style={{
-                  paddingBottom: showDiscoverDropdown ? '8px' : '0px'
-                }}
               >
                 <AISButton
                   iconPosition="end"

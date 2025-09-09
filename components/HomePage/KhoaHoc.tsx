@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
 import AISButton from "../AISButton";
@@ -20,6 +20,7 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
   const sliderRef = useRef<Slider | null>(null);
   const router = useRouter();
   const {title, description, buttonText, courses, type} = props;
+  const [listCourses, setListCourses] = useState<CourseCardProps[]>([]);
   const settings = {
     dots: false,
     speed: 600,
@@ -34,102 +35,88 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
       { breakpoint: 576, settings: { slidesToShow: 1 } },
     ],
   };
-  const defaultCourses: CourseCardProps[] = [
-    {
-      variant: "course",
-      id: "course_1",
-      title: "Giải tích 1",
-      href: "/courses/giai-tich-1",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_2",
-      title: "Đại số tuyến tính",
-      href: "/courses/dai-so-tuyen-tinh",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 180,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "in_progress",
-      progress: { percent: 65, completedLessons: 13, totalLessons: 20 }
-    },
-    {
-      variant: "course",
-      id: "course_3",
-      title: "An toàn và bảo mật hệ thống thông tin",
-      href: "/courses/an-toan-bao-mat",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 240,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "completed",
-      progress: { percent: 100, completedLessons: 24, totalLessons: 24 }
-    },
-    {
-      variant: "course",
-      id: "course_4",
-      title: "Trí tuệ nhân tạo (AI)",
-      href: "/courses/tri-tue-nhan-tao",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 320,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started",
-      isAI: true
-    },
-    {
-      variant: "course",
-      id: "course_5",
-      title: "Giải tích 1",
-      href: "/courses/giai-tich-1",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 136,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started"
-    },
-    {
-      variant: "course",
-      id: "course_6",
-      title: "Đại số tuyến tính",
-      href: "/courses/dai-so-tuyen-tinh",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 180,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "in_progress",
-      progress: { percent: 65, completedLessons: 13, totalLessons: 20 }
-    },
-    {
-      variant: "course",
-      id: "course_7",
-      title: "An toàn và bảo mật hệ thống thông tin",
-      href: "/courses/an-toan-bao-mat",
-      imageUrl: "/images/test_course1.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 240,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "completed",
-      progress: { percent: 100, completedLessons: 24, totalLessons: 24 }
-    },
-    {
-      variant: "course",
-      id: "course_8",
-      title: "Trí tuệ nhân tạo (AI)",
-      href: "/courses/tri-tue-nhan-tao",
-      imageUrl: "/images/test_course.png",
-      org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-      durationMinutes: 320,
-      certificateType: "Chứng chỉ chuyên môn",
-      status: "not_started",
-      isAI: true
-    },
-  ];
+  //   {
+  //     variant: "course",
+  //     id: "course_1",
+  //     title: "Giải tích 1",
+  //     href: "/courses/giai-tich-1",
+  //     imageUrl: "/images/test_course1.png",
+  //     org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+  //     durationMinutes: 136,
+  //     certificateType: "Chứng chỉ chuyên môn",
+  //   },
+  //   {
+  //     variant: "course",
+  //     id: "course_2",
+  //     title: "Đại số tuyến tính",
+  //     href: "/courses/dai-so-tuyen-tinh",
+  //     imageUrl: "/images/test_course.png",
+  //     org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+  //     durationMinutes: 180,
+  //     certificateType: "Chứng chỉ chuyên môn",
+  //   },
+  //   {
+  //     variant: "course",
+  //     id: "course_3",
+  //     title: "An toàn và bảo mật hệ thống thông tin",
+  //     href: "/courses/an-toan-bao-mat",
+  //     imageUrl: "/images/test_course1.png",
+  //     org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+  //     durationMinutes: 240,
+  //     certificateType: "Chứng chỉ chuyên môn",
+  //   },
+  //   {
+  //     variant: "course",
+  //     id: "course_4",
+  //     title: "Trí tuệ nhân tạo (AI)",
+  //     href: "/courses/tri-tue-nhan-tao",
+  //     imageUrl: "/images/test_course.png",
+  //     org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+  //     durationMinutes: 320,
+  //     certificateType: "Chứng chỉ chuyên môn",
+  //     isAI: true
+  //   },
+  //   {
+  //     variant: "course",
+  //     id: "course_5",
+  //     title: "Giải tích 1",
+  //     href: "/courses/giai-tich-1",
+  //     imageUrl: "/images/test_course1.png",
+  //     org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+  //     durationMinutes: 136,
+  //     certificateType: "Chứng chỉ chuyên môn",
+  //   },
+  //   {
+  //     variant: "course",
+  //     id: "course_6",
+  //     title: "Đại số tuyến tính",
+  //     href: "/courses/dai-so-tuyen-tinh",
+  //     imageUrl: "/images/test_course.png",
+  //     org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+  //     durationMinutes: 180,
+  //     certificateType: "Chứng chỉ chuyên môn",
+  //   },
+  //   {
+  //     variant: "course",
+  //     id: "course_7",
+  //     title: "An toàn và bảo mật hệ thống thông tin",
+  //     href: "/courses/an-toan-bao-mat",
+  //     imageUrl: "/images/test_course1.png",
+  //     org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+  //     durationMinutes: 240,
+  //     certificateType: "Chứng chỉ chuyên môn",
+  //   },
+  //   {
+  //     variant: "course",
+  //     id: "course_8",
+  //     title: "Trí tuệ nhân tạo (AI)",
+  //     href: "/courses/tri-tue-nhan-tao",
+  //     imageUrl: "/images/test_course.png",
+  //     org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+  //     durationMinutes: 320,
+  //     certificateType: "Chứng chỉ chuyên môn",
+  //   },
+  // ];
 
   let res;
   switch(type) {
@@ -170,19 +157,18 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
                 href: "",
                 imageUrl: item.image_url,
                 durationMinutes: item.duration*60,
-                certificateType: item.topics.map(topic => topic.name).join(', '),
-                status: "in_progress",
+                certificateType: item.topics.map(topic => topic.name).join(', ')
               }
             }
           )
-          console.log(mapper);
+          setListCourses(mapper);
         } catch (err) {
         }
       }
     )();
-  })
+  }, []);
 
-  const coursesToDisplay = courses?.length ? courses : defaultCourses;
+  const coursesToDisplay = courses?.length ? courses : listCourses;
 
   return (
     <KhoaHocWrapper>

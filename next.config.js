@@ -11,9 +11,8 @@ module.exports = withBundleAnalyzer({
 		GA: process.env.GA,
 	},
 	images: {
-		domains: ["ais.aisenote.com"],
+		domains: ["ais.aisenote.com", "lms.ptit.edu.vn"],
 	},
 	reactStrictMode: true,
 	swcMinify: true,
 });
-

@@ -236,8 +236,7 @@ const AIIcon = () => (
 );
 
 const CardWrapper = styled.div`
-  width: 295px;
-  height: 368px;
+  height: 375px;
   background: #FFFFFF;
   border: 1.2px solid #EEEEEE;
   border-radius: 16px;
