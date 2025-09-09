@@ -1,5 +1,7 @@
 {
   "common": {
+    "name_org": "Posts and Telecommunications Institute of Technology",
+    "name_site": "数字大学平台",
     "login": "登录",
     "home": "首页",
     "gioi-thieu": "介绍",

@@ -8,6 +8,7 @@ import AISInput from "../../components/AISInput";
 import AISDivider from "../../components/AISDivider";
 import AISDropdown from "../../components/AISDropdown";
 import { useRouter } from "next/router";
+import Link from "next/link";
 interface IProps {
   language: string;
   handleChangeLanguage: (lang: string) => void;
@@ -262,11 +263,13 @@ const Header = (props: IProps) => {
         <div className="lg:mx-auto px-[16px] lg:px-[40px] py-[16px]">
           <div className={`hidden lg:flex justify-between items-center relative`}>
             <div className="flex items-center gap-[20px]">
-              <img
-                src={"/images/common/logo.svg"}
-                alt="logo lms ptit"
-                height={48}
-              />
+              <Link href="/" className="logo flex flex-row gap-[12px] items-center">
+                  <img src="/images/logo-ptit.png" className="h-[40px]" alt={"image"} />
+                  <div className="flex flex-col gap-[3px]">
+                    <h2 className="name-dv">{common("name_org") as string}</h2>
+                    <h2 className="name-main">{common("name_site") as string}</h2>
+                  </div>
+              </Link>
               <AISDivider />
               <div 
                 ref={discoverRef}
@@ -357,9 +360,11 @@ const Header = (props: IProps) => {
               "lg:hidden flex justify-between items-center"
             }
           >
-            <div className="mr-[8px]">
-              <img src="/images/common/logo.svg" alt={"image"} />
-            </div>
+            <Link href="/" className="mr-[8px]">
+              <div className="logo">
+                  <img src="/images/logo-ptit.png" className="h-[40px]" alt={"image"} />
+              </div>
+            </Link>
 
             <div className="flex shrink-0">
               <div
@@ -392,6 +397,18 @@ const HeaderWrapper = styled.div`
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
   z-index: 30;
   position: relative;
+
+  .name-dv {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+  
+  .name-main {
+    color: #051A53;
+    font-size: 18px;
+    font-weight: 600;
+  }
   .header-branch {
     padding: 16px 0;
     .info {
