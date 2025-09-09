@@ -71,6 +71,46 @@
     "teach": {
       "title": "ອົງການຈັດການສອນ"
     },
+    "foot": {
+      "phoneNumber": "ເບີໂທຕິດຕໍ່",
+      "headquarters": "ສໍານັກງານໃຫຍ່",
+      "academiaHCM": "ສະຖາບັນ ໃນນະຄອນໂຮຈີມິນ",
+      "emailContactus": "ອີເມວຕິດຕໍ່",
+      "trainingHN": "ສູນຝຶກອົບຮົມ ທີ່ຮາໂນຍ",
+      "trainingHCM": "ສູນຝຶກອົບຮົມ ທີ່ນະຄອນໂຮຈີມິນ",
+      "link": "ລິ້ງ",
+      "IandC": "ກະຊວງຂໍ້ມູນຂ່າວສານ ແລະ ການສື່ສານ",
+      "HCMAcademy": "ສະຖາບັນ ນະຄອນໂຮຈີມິນ",
+      "trainingPortal": "ພອດຕໍລະການຝຶກອົບຮົມ",
+      "technologyInstitute": "ສະຖາບັນ ວິທະຍາສາດ ແລະ ເຕັກໂນໂລຊີ ໄປສະນີ-ໂທລະຄົມ",
+      "trainingCenter1": "ສູນຝຶກອົບຮົມ ໄປສະນີ-ໂທລະຄົມ 1",
+      "SandTPortal": "ພອດຕໍລະວິທະຍາສາດ ແລະ ເຕັກໂນໂລຊີ",
+      "economicsInstitute": "ສະຖາບັນ ເສດຖະກິດ ໄປສະນີ-ໂທລະຄົມ",
+      "trainingCenter2": "ສູນຝຶກອົບຮົມ ໄປສະນີ-ໂທລະຄົມ 2",
+      "internationalCooperation": "ພອດຕໍລະຄວາມຮ່ວມມືສາກົນ",
+      "CDIT": "ສະຖາບັນ CDIT ດ້ານ ຂໍ້ມູນ ແລະ ການສື່ສານ",
+      "internationalTrainingCenter": "ສູນຝຶກອົບຮົມສາກົນ"
+    },
+    "address": {
+      "headquartersAddress": "122 ຖະໜົນ Hoang Quoc Viet, ບ້ານ Nghia Do, ເມືອງ ຫານໍ້ອຍ",
+      "trainingHNAddress": "96A ຖະໜົນ Tran Phu, ບ້ານ Ha Dong, ເມືອງ ຫານໍ້ອຍ",
+      "academiaHCMAddress": "11 ຖະໜົນ Nguyen Dinh Chieu, ບ້ານ Sai Gon, ເມືອງ ໂຮຈີມິນ",
+      "trainingHCMAddress": "97 ຖະໜົນ Man Thien, ບ້ານ Tang Nhon Phu, ເມືອງ ໂຮຈີມິນ"
+    },
+    "CTDT": {
+      "AIoT": "ປັນຍາປະດິດແລະອິນເຕີເນັດຂອງສິ່ງຂອງ (AIoT)",
+      "ATTT": "ຄວາມປອດໄພຂໍ້ມູນຂ່າວສານ",
+      "UDU": "ເທກໂນໂລຢີຂໍ້ມູນຂ່າວສານ (ທິດທາງການນຳໃຊ້)",
+      "Logistics": "ໂຄງການໂລຈິສຕິກແລະການຄຸ້ມຄອງລະບົບສະໜອງ",
+      "AI": "ປັນຍາປະດິດ",
+      "CNTTV-J": "ເທກໂນໂລຢີຂໍ້ມູນຂ່າວສານຫວຽດນາມ-ຍີ່ປຸ່ນ",
+      "GAME": "ໂຄງການອອກແບບແລະພັດທະນາເກມ",
+      "QHCC": "ໂຄງການການສ້າງສາຍພົວພັນສາທາລະນະ (ການຕະຫຼາດ)",
+      "KT-CLC": "ການບັນຊີ",
+      "CNTC": "ເທກໂນໂລຢີການເງິນ - Fintech",
+
+      "explore" : "ຄົ້ນຫາລາຍລະອຽດ"
+    },
     "empty": "ບໍ່ມີຂໍ້ມູນ!",
     "pricing": "ລາຄາ",
     "price-table": "ຕາຕະລາງລາຄາທົ່ວໄປ",

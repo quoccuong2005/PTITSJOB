@@ -22,6 +22,12 @@ const DoiTac = () => {
     "/images/logo/Naver.png",
     "/images/logo/qualcomm.png",
     "/images/logo/VMO_Logo_Positive--e1727270372975.webp",
+    "/images/logo/arizona-state-university-logo-vertical.png",
+    "/images/logo/college-of-staten-island-logo-png_seeklogo-511032.png",
+    "/images/logo/cropped-logo_reseau_Polytech.png",
+    "/images/logo/logo-lg-100-44.png",
+    "/images/logo/nokia-refreshed-logo-1_1.jpg",
+    "/images/logo/s5e04176fbbfa3.png"
   ];
 
   const settings = {

@@ -68,8 +68,48 @@
 			"title": "Chuyên viên Phân tích An ninh Mạng",
 			"description": "Bảo vệ hệ thống CNTT khỏi các cuộc tấn công mạng bằng cách triển khai các biện pháp bảo mật tiên tiến, thiết kế và duy trì chiến lược an ninh hiệu quả, liên tục giám sát rủi ro tiềm ẩn và phản ứng nhanh với sự cố an ninh."
 		},
-		"teach":{
-			"title" : "Tổ chức giảng dạy"
+		"teach": {
+			"title": "Tổ chức giảng dạy"
+		},
+		"foot": {
+			"phoneNumber": "Số điện thoại liên hệ",
+			"headquarters": "Trụ sở chính",
+			"academiaHCM": "Học viện cơ sở tại TP. Hồ Chí Minh",
+			"emailContactus": "Email liên hệ",
+			"trainingHN": "Cơ sở đào tạo tại Hà Nội",
+			"trainingHCM": "Cơ sở đào tạo tại TP. Hồ Chí Minh",
+			"link": "ĐƯỜNG DẪN LIÊN KẾT",
+			"IandC": "Bộ thông tin và truyền thông",
+			"HCMAcademy": "Học viện Cơ sở TP. Hồ Chí Minh",
+			"trainingPortal": "Cổng thông tin đào tạo",
+			"technologyInstitute": "Viện Khoa học Kỹ thuật Bưu điện",
+			"trainingCenter1": "Trung tâm Đào tạo Bưu chính Viễn thông 1",
+			"SandTPortal": "Cổng thông tin Khoa học Công nghệ",
+			"economicsInstitute": "Viện Kinh tế Bưu điện",
+			"trainingCenter2": "Trung tâm Đào tạo Bưu chính Viễn thông 2",
+			"internationalCooperation": "Cổng thông tin Hợp tác Quốc tế",
+			"CDIT": "Viện Công nghệ Thông tin và Truyền thông CDIT",
+			"internationalTrainingCenter": "Trung tâm Đào tạo Quốc tế"
+		},
+		"address": {
+			"headquartersAddress": "Số 122 Hoàng Quốc Việt, P. Nghĩa Đô, TP. Hà Nội",
+			"trainingHNAddress": "Số 96A Trần Phú, P. Hà Đông, TP. Hà Nội",
+			"academiaHCMAddress": "Số 11 Nguyễn Đình Chiểu, P. Sài Gòn, TP. Hồ Chí Minh",
+			"trainingHCMAddress": "Số 97 Man Thiện, P. Tăng Nhơn Phú, TP. Hồ Chí Minh"
+		},
+		"CTDT":{
+			"AIoT": "Trí tuệ nhân tạo và Vạn vật (AIoT)",
+			"ATTT": "An toàn thông tin",
+			"UDU": "Công nghệ thông tin (định hướng ứng dụng)",
+			"Logistics" :"Chương trình Logistics và quản trị chuỗi cung ứng",
+			"AI" : "Ngành trí tuệ nhân tạo",
+			"CNTTV-J": "Công nghệ thông tin Việt-Nhật",
+			"GAME": "Chương trình thiết kế và phát triển GAME",
+			"QHCC": "Chương trình Quan hệ công chúng (Ngành Marketing)",
+			"KT-CLC": "Kế toán",
+			"CNTC": "Công nghệ tài chính - Fintech",
+
+			"explore" : "Khám phá chi tiết"
 		},
 		"empty": "Không có dữ liệu!",
 		"pricing": "Báo giá",

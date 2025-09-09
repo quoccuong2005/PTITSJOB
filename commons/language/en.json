@@ -69,7 +69,47 @@
 		"teach": {
 			"title": "Teaching Organization"
 		},
-		"program1":{
+		"foot": {
+			"phoneNumber": "Contact phone number",
+			"headquarters": "Headquarters",
+			"academiaHCM": "Academy in Ho Chi Minh City",
+			"emailContactus": "Contact email",
+			"trainingHN": "Training center in Hanoi",
+			"trainingHCM": "Training center in Ho Chi Minh City",
+			"link": "LINK",
+			"IandC": "Ministry of Information and Communications",
+			"HCMAcademy": "Ho Chi Minh City Academy",
+			"trainingPortal": "Training information portal",
+			"technologyInstitute": "Institute of Posts and Telecommunications Technology",
+			"trainingCenter1": "Postal and Telecommunications Training Center 1",
+			"SandTPortal": "Science and Technology Portal",
+			"economicsInstitute": "Institute of Post and Telecommunications Economics",
+			"trainingCenter2": "Postal and Telecommunications Training Center 2",
+			"internationalCooperation": "International Cooperation Portal",
+			"CDIT": "CDIT Institute of Information and Communication Technology",
+			"internationalTrainingCenter": "International Training Center"
+		},
+		"address": {
+			"headquartersAddress": "122 Hoang Quoc Viet Street, Nghia Do Ward, Hanoi City",
+			"trainingHNAddress": "96A Tran Phu Street, Ha Dong Ward, Hanoi City",
+			"academiaHCMAddress": "11 Nguyen Dinh Chieu Street, Sai Gon Ward, Ho Chi Minh City",
+			"trainingHCMAddress": "97 Man Thien Street, Tang Nhon Phu Ward, Ho Chi Minh City"
+		},
+		"CTDT": {
+			"AIoT": "Artificial Intelligence and Internet of Things (AIoT)",
+			"ATTT": "Information Security",
+			"UDU": "Information Technology (Application-oriented)",
+			"Logistics": "Logistics and Supply Chain Management Program",
+			"AI": "Artificial Intelligence",
+			"CNTTV-J": "Vietnam-Japan Information Technology",
+			"GAME": "Game Design and Development Program",
+			"QHCC": "Public Relations Program (Marketing)",
+			"KT-CLC": "Accounting",
+			"CNTC": "Financial Technology - Fintech",
+
+			"explore" : "Explore Details"
+		},
+		"program1": {
 			"title": "Social Media Specialist",
 			"description": "A Social Media Specialist is responsible for developing, implementing and managing communication strategies on social media platforms. Main tasks include researching trends, producing and optimizing content, managing user communities, monitoring and analyzing campaign effectiveness, and coordinating with marketing, PR or sales departments to enhance brand image and promote business goals.",
 			"detailedDescription": "A good social media professional not only understands online user behavior but also has the ability to create engaging content and leverage technology and data to make effective decisions. This is a dynamic career that requires flexibility, the ability to quickly update trends and good communication skills to build strong relationships between brands and communities."
@@ -104,9 +144,6 @@
 		"address": "Address:",
 		"contact": "Contact:",
 		"environment": "Resources:",
-		"headquarters": "Head quarters:",
-		"headquartersHCM": "Branch in Ho Chi Minh City:",
-		"trainingHN": "Campus in Ha Noi:",
-		"trainingHCM": "Campus in Ho Chi Minh:"
+		"headquartersHCM": "Branch in Ho Chi Minh City:"
 	}
 }

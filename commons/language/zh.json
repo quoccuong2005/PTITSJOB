@@ -71,6 +71,46 @@
     "teach": {
       "title": "教学组织"
     },
+    "foot": {
+      "phoneNumber": "联系电话",
+      "headquarters": "总部",
+      "academiaHCM": "胡志明市学院",
+      "emailContactus": "联系邮箱",
+      "trainingHN": "河内培训中心",
+      "trainingHCM": "胡志明市培训中心",
+      "link": "链接",
+      "IandC": "信息与通信部",
+      "HCMAcademy": "胡志明市学院",
+      "trainingPortal": "培训信息门户",
+      "technologyInstitute": "邮电科学技术研究院",
+      "trainingCenter1": "邮电培训中心1",
+      "SandTPortal": "科技信息门户",
+      "economicsInstitute": "邮电经济研究院",
+      "trainingCenter2": "邮电培训中心2",
+      "internationalCooperation": "国际合作门户",
+      "CDIT": "CDIT 信息与通信技术研究院",
+      "internationalTrainingCenter": "国际培训中心"
+    },
+    "address": {
+      "headquartersAddress": "越南河内市义都坊黄国越街122号",
+      "trainingHNAddress": "越南河内市河东坊陈富街96A号",
+      "academiaHCMAddress": "越南胡志明市西贡坊阮定俦街11号",
+      "trainingHCMAddress": "越南胡志明市增仁富坊满善街97号"
+    },
+    "CTDT": {
+      "AIoT": "人工智能与物联网 (AIoT)",
+      "ATTT": "信息安全",
+      "UDU": "信息技术（应用导向）",
+      "Logistics": "物流与供应链管理专业",
+      "AI": "人工智能",
+      "CNTTV-J": "越日信息技术",
+      "GAME": "游戏设计与开发专业",
+      "QHCC": "公共关系专业（市场营销）",
+      "KT-CLC": "会计",
+      "CNTC": "金融科技 - Fintech",
+
+      "explore" : "详细了解"
+    },
     "empty": "暂无数据！",
     "pricing": "价格",
     "price-table": "通用价格表",

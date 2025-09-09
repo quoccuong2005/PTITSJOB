@@ -71,6 +71,46 @@
     "teach": {
       "title": "Organización de Enseñanza"
     },
+    "foot": {
+      "phoneNumber": "Número de teléfono de contacto",
+      "headquarters": "Sede central",
+      "academiaHCM": "Academia en Ciudad Ho Chi Minh",
+      "emailContactus": "Correo electrónico de contacto",
+      "trainingHN": "Centro de formación en Hanói",
+      "trainingHCM": "Centro de formación en Ciudad Ho Chi Minh",
+      "link": "ENLACE",
+      "IandC": "Ministerio de Información y Comunicaciones",
+      "HCMAcademy": "Academia de Ciudad Ho Chi Minh",
+      "trainingPortal": "Portal de información de formación",
+      "technologyInstitute": "Instituto de Ciencia y Tecnología de Correos y Telecomunicaciones",
+      "trainingCenter1": "Centro de Formación Postal y de Telecomunicaciones 1",
+      "SandTPortal": "Portal de Ciencia y Tecnología",
+      "economicsInstitute": "Instituto de Economía Postal y de Telecomunicaciones",
+      "trainingCenter2": "Centro de Formación Postal y de Telecomunicaciones 2",
+      "internationalCooperation": "Portal de Cooperación Internacional",
+      "CDIT": "Instituto CDIT de Tecnología de la Información y Comunicación",
+      "internationalTrainingCenter": "Centro Internacional de Formación"
+    },
+    "address": {
+      "headquartersAddress": "122 Calle Hoang Quoc Viet, Barrio Nghia Do, Ciudad de Hanói",
+      "trainingHNAddress": "96A Calle Tran Phu, Barrio Ha Dong, Ciudad de Hanói",
+      "academiaHCMAddress": "11 Calle Nguyen Dinh Chieu, Barrio Sai Gon, Ciudad de Ho Chi Minh",
+      "trainingHCMAddress": "97 Calle Man Thien, Barrio Tang Nhon Phu, Ciudad de Ho Chi Minh"
+    },
+    "CTDT": {
+      "AIoT": "Inteligencia Artificial e Internet de las Cosas (AIoT)",
+      "ATTT": "Seguridad de la Información",
+      "UDU": "Tecnología de la Información (orientada a aplicaciones)",
+      "Logistics": "Programa de Logística y Gestión de la Cadena de Suministro",
+      "AI": "Inteligencia Artificial",
+      "CNTTV-J": "Tecnología de la Información Vietnam-Japón",
+      "GAME": "Programa de Diseño y Desarrollo de Juegos",
+      "QHCC": "Programa de Relaciones Públicas (Marketing)",
+      "KT-CLC": "Contabilidad",
+      "CNTC": "Tecnología Financiera - Fintech",
+
+      "explore" : "Explorar Detalles"
+    },
     "empty": "¡No hay datos!",
     "pricing": "Precios",
     "price-table": "Tabla de precios generales",
