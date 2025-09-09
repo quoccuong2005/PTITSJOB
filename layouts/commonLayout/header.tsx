@@ -6,6 +6,7 @@ import AISLink from "../../components/AISLink";
 import AISButton from "../../components/AISButton";
 import AISInput from "../../components/AISInput";
 import AISDivider from "../../components/AISDivider";
+import AISDropdown from "../../components/AISDropdown";
 
 interface IProps {
   language: string;
@@ -18,9 +19,12 @@ const Header = (props: IProps) => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [showLanguageDropdown, setShowLanguageDropdown] =
     useState<boolean>(false);
+  const [showDiscoverDropdown, setShowDiscoverDropdown] = 
+    useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const languageRef = useRef<HTMLDivElement>(null);
+  const discoverRef = useRef<HTMLDivElement>(null);
   const allLanguages = [
     {
       code: "vi",
@@ -40,9 +44,65 @@ const Header = (props: IProps) => {
   const currentLang =
     allLanguages.find((l) => l.code === language) || allLanguages[0];
 
+  const discoverDropdownData = [
+    {
+      title: "KHÁM PHÁ CÁC KỸ NĂNG THỊNH HÀNH",
+      items: [
+        "Python",
+        "Trí tuệ nhân tạo", 
+        "Excel",
+        "Học máy",
+        "SQL",
+        "Quản lý dự án",
+        "Power BI",
+        "Đa phương tiện"
+      ],
+      viewAllText: "Xem tất cả"
+    },
+    {
+      title: "KHÁM PHÁ MỤC TIÊU NGHỀ NGHIỆP",
+      items: [
+        "Chuyên gia truyền thông xã hội",
+        "Quản lý dự án",
+        "Nhà khoa học dữ liệu",
+        "Kỹ sư học máy",
+        "Nhà phân tích An ninh Mạng",
+        "Chuyên gia phân tích dữ liệu",
+        "Chuyên gia TK giao diện người dùng",
+        "Chuyên gia tiếp thị kỹ thuật số"
+      ],
+      viewAllText: "Xem tất cả"
+    },
+    {
+      title: "KHÁM PHÁ DANH MỤC",
+      items: [
+        "Đa phương tiện",
+        "Khoa học dữ liệu",
+        "Công nghệ thông tin",
+        "Khoa học máy tính",
+        "Phát triển cá nhân",
+        "Khoa học xã hội",
+        "Học ngôn ngữ",
+        "Khoa học vật lý và kỹ thuật"
+      ],
+      viewAllText: "Xem tất cả"
+    },
+    {
+      title: "NHẬN CHỨNG CHỈ CHUYÊN MÔN",
+      items: [
+        "Đa phương tiện",
+        "Khoa học máy tính",
+        "Khoa học dữ liệu",
+        "Công nghệ thông tin"
+      ],
+      viewAllText: "Xem tất cả"
+    }
+  ];
+
   const handleClickOutSide = (e: any) => {
     const node = menuRef.current;
     const languageNode = languageRef.current;
+    const discoverNode = discoverRef.current;
     const { target } = e;
     if (node) {
       if (!node.contains(target)) {
@@ -52,6 +112,11 @@ const Header = (props: IProps) => {
     if (languageNode) {
       if (!languageNode.contains(target)) {
         setShowLanguageDropdown(false);
+      }
+    }
+    if (discoverNode) {
+      if (!discoverNode.contains(target)) {
+        setShowDiscoverDropdown(false);
       }
     }
   };
@@ -192,11 +257,11 @@ const Header = (props: IProps) => {
       </div>
       <div
         className={`label bg-white ${
-          isScroll ? "fixed top-0 left-0 w-full z-50" : ""
+          isScroll ? "fixed top-0 left-0 w-full z-40" : ""
         } `}
       >
         <div className="lg:mx-auto px-[16px] lg:px-[40px] py-[16px]">
-          <div className={`hidden lg:flex justify-between items-center`}>
+          <div className={`hidden lg:flex justify-between items-center relative`}>
             <div className="flex items-center gap-[20px]">
               <img
                 src={"/images/common/logo.svg"}
@@ -204,28 +269,44 @@ const Header = (props: IProps) => {
                 height={48}
               />
               <AISDivider />
-              <AISButton
-                iconPosition="end"
-                icon={
-                  <svg
-                    width="8"
-                    height="6"
-                    viewBox="0 0 8 6"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1 1.5L4 4.5L7 1.5"
-                      stroke="#BC2826"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                }
+              <div 
+                ref={discoverRef}
+                onMouseEnter={() => setShowDiscoverDropdown(true)}
+                onMouseLeave={() => setShowDiscoverDropdown(false)}
+                style={{
+                  paddingBottom: showDiscoverDropdown ? '8px' : '0px'
+                }}
               >
-                {common("discover")}
-              </AISButton>
+                <AISButton
+                  iconPosition="end"
+                  icon={
+                    <svg
+                      width="8"
+                      height="6"
+                      viewBox="0 0 8 6"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 1.5L4 4.5L7 1.5"
+                        stroke="#BC2826"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  }
+                >
+                  {common("discover")}
+                </AISButton>
+
+                <AISDropdown
+                  isVisible={showDiscoverDropdown}
+                  sections={discoverDropdownData}
+                  onMouseEnter={() => setShowDiscoverDropdown(true)}
+                  onMouseLeave={() => setShowDiscoverDropdown(false)}
+                />
+              </div>
             </div>
 
             <div className="flex items-center gap-[20px]">
@@ -308,7 +389,8 @@ const Header = (props: IProps) => {
 
 const HeaderWrapper = styled.div`
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-  z-index: 10;
+  z-index: 30;
+  position: relative;
   .header-branch {
     padding: 16px 0;
     .info {
