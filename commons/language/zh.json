@@ -2,6 +2,8 @@
   "common": {
     "name_org": "Posts and Telecommunications Institute of Technology",
     "name_site": "数字大学平台",
+    "hour": "小时",
+    "minute": "分钟",
     "login": "登录",
     "home": "首页",
     "gioi-thieu": "介绍",
@@ -120,7 +122,8 @@
       "trainingCenter2": "邮电培训中心2",
       "internationalCooperation": "国际合作门户",
       "CDIT": "CDIT 信息与通信技术研究院",
-      "internationalTrainingCenter": "国际培训中心"
+      "internationalTrainingCenter": "国际培训中心",
+      "copyright": "邮电技术学院保留本网站内容的版权"
     },
     "address": {
       "headquartersAddress": "越南河内市义都坊黄国越街122号",

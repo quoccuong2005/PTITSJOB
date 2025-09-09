@@ -2,6 +2,8 @@
   "common": {
     "name_org": "Posts and Telecommunications Institute of Technology",
     "name_site": "PLATAFORMA UNIVERSITARIA DIGITAL",
+    "hour": "hora",
+    "minute": "minuto",
     "login": "Iniciar sesión",
     "home": "Inicio",
     "gioi-thieu": "Introducción",
@@ -121,7 +123,8 @@
       "trainingCenter2": "Centro de Formación Postal y de Telecomunicaciones 2",
       "internationalCooperation": "Portal de Cooperación Internacional",
       "CDIT": "Instituto CDIT de Tecnología de la Información y Comunicación",
-      "internationalTrainingCenter": "Centro Internacional de Formación"
+      "internationalTrainingCenter": "Centro Internacional de Formación",
+      "copyright": "El Instituto de Correos y Telecomunicaciones posee los derechos de autor del contenido de este sitio web"
     },
     "address": {
       "headquartersAddress": "122 Calle Hoang Quoc Viet, Barrio Nghia Do, Ciudad de Hanói",

@@ -4,7 +4,6 @@ import {
   Dela_Gothic_One,
 } from "next/font/google";
 import { ReactTyped } from "react-typed";
-import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -19,7 +18,6 @@ const font2 = Dela_Gothic_One({
 });
 
 const Banner = () => {
-  const [common] = useCommonTranslation();
   const { i18n } = useTranslation();
   const [currentDate, setCurrentDate] = useState("");
 

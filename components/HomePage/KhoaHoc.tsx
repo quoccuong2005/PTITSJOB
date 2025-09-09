@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
 import AISButton from "../AISButton";
@@ -7,6 +7,8 @@ import { CourseCardProps } from "../AISCard/types";
 import Slider from "react-slick";
 import { getKhoaHocMienPhi, getKhoaHocMoiNhat, getKhoaHocNangCao, getKhoaHocPhoBien } from "../../api/khoahoc";
 import { useRouter } from "next/router";
+import { ELang, LangMap } from "../../utils/constant";
+import { useTranslation } from "react-i18next";
 
 interface KhoaHocProps {
   title?: string;
@@ -21,6 +23,8 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
   const router = useRouter();
   const {title, description, buttonText, courses, type} = props;
   const [listCourses, setListCourses] = useState<CourseCardProps[]>([]);
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
   const settings = {
     dots: false,
     speed: 600,
@@ -35,32 +39,32 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
       { breakpoint: 576, settings: { slidesToShow: 1 } },
     ],
   };
-
-  let res;
-  switch(type) {
-    case "chungchi":
-      res = getKhoaHocPhoBien();
-      break;
-    case "phobien":
-      res = getKhoaHocPhoBien();
-      break;
-    case "moinhat":
-      res = getKhoaHocMoiNhat();
-      break;
-    case "mienphi":
-      res = getKhoaHocMienPhi();
-      break;
-    case "nangcao":
-      res = getKhoaHocNangCao();
-      break;
-    default: 
-      res = getKhoaHocPhoBien();
-      break;
-  };
-
   useEffect(() => {
-    (
+    console.log(currentLang);
+    if(currentLang) (
       async () => {
+        let res;
+        switch(type) {
+          case "chungchi":
+            res = getKhoaHocPhoBien(currentLang as ELang);
+            break;
+          case "phobien":
+            res = getKhoaHocPhoBien(currentLang as ELang);
+            break;
+          case "moinhat":
+            res = getKhoaHocMoiNhat(currentLang as ELang);
+            break;
+          case "mienphi":
+            res = getKhoaHocMienPhi(currentLang as ELang);
+            break;
+          case "nangcao":
+            res = getKhoaHocNangCao(currentLang as ELang);
+            break;
+          default: 
+            res = getKhoaHocPhoBien(currentLang as ELang);
+            break;
+        };
+
         try {
           const response = await res;
           const data = response.data.data;
@@ -85,7 +89,7 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
         }
       }
     )();
-  }, []);
+  }, [currentLang]);
 
   const coursesToDisplay = courses?.length ? courses : listCourses;
 

@@ -2,6 +2,8 @@
   "common": {
     "name_org": "Posts and Telecommunications Institute of Technology",
     "name_site": "ແພລດຟອມມະຫາວິທະຍາໄລດິຈິຕອນ",
+    "hour": "ຊົ່ວໂມງ",
+    "minute": "ນາທີ",
     "login": "ເຂົ້າລະບົບ",
     "home": "ໜ້າຫຼັກ",
     "gioi-thieu": "ແນະນຳ",
@@ -120,7 +122,8 @@
       "trainingCenter2": "ສູນຝຶກອົບຮົມ ໄປສະນີ-ໂທລະຄົມ 2",
       "internationalCooperation": "ພອດຕໍລະຄວາມຮ່ວມມືສາກົນ",
       "CDIT": "ສະຖາບັນ CDIT ດ້ານ ຂໍ້ມູນ ແລະ ການສື່ສານ",
-      "internationalTrainingCenter": "ສູນຝຶກອົບຮົມສາກົນ"
+      "internationalTrainingCenter": "ສູນຝຶກອົບຮົມສາກົນ",
+      "copyright": "ສະຖາບັນໄປສະນີ ແລະ ໂທລະຄົມມະນາຄົມ ຖືກຮັກສາລິຂະສິດເນື້ອຫາໃນເວັບໄຊນີ້"
     },
     "address": {
       "headquartersAddress": "122 ຖະໜົນ Hoang Quoc Viet, ບ້ານ Nghia Do, ເມືອງ ຫານໍ້ອຍ",

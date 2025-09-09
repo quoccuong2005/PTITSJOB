@@ -53,7 +53,7 @@ const CommonLayout = ({ children }: any) => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<meta httpEquiv="X-UA-Compatible" content="ie=edge" />
 				<link rel="icon" href="/favicon.ico"></link>
-				<title>Cổng học trực tuyến</title>
+				<title>Đại học số</title>
 			</Head>
 			<div className='flex flex-col min-h-screen bg-[#FFFFFF]'>
 				<Header language={language} handleChangeLanguage={handleChangeLanguage} />

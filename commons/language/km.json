@@ -2,6 +2,8 @@
   "common": {
     "name_org": "Posts and Telecommunications Institute of Technology",
     "name_site": "វេទិកាសាកលវិទ្យាល័យឌីជីថល",
+    "hour": "ម៉ោង",
+    "minute": "នាទី",
     "login": "ចូលប្រព័ន្ធ",
     "home": "ទំព័រដើម",
     "gioi-thieu": "ការណែនាំ",
@@ -120,7 +122,8 @@
       "trainingCenter2": "មជ្ឈមណ្ឌលបណ្តុះបណ្តាលប្រៃសណីយ៍ និងទូរគមនាគមន៍ 2",
       "internationalCooperation": "វេទិការួមគ្នាអន្តរជាតិ",
       "CDIT": "វិទ្យាស្ថាន CDIT ព័ត៌មាន និងទំនាក់ទំនង",
-      "internationalTrainingCenter": "មជ្ឈមណ្ឌលបណ្តុះបណ្តាលអន្តរជាតិ"
+      "internationalTrainingCenter": "មជ្ឈមណ្ឌលបណ្តុះបណ្តាលអន្តរជាតិ",
+      "copyright": "វិទ្យាស្ថានប្រៃសណីយ៍ និងទូរគមនាគមន៍ កាន់កាប់សិទ្ធិអ្នកនិពន្ធលើមាតិកានៅលើគេហទំព័រនេះ"
     },
     "address": {
       "headquartersAddress": "122 ផ្លូវ Hoang Quoc Viet, សង្កាត់ Nghia Do, រាជធានី ហាណូយ",

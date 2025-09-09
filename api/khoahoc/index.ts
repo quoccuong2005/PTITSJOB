@@ -1,18 +1,37 @@
 import axios from "axios";
 import { ApiOdooResponse, Course } from "./type";
+import { ELang } from "../../utils/constant";
 
-export const getKhoaHocPhoBien = () => {
-	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/popular`);
+export const getKhoaHocPhoBien = (lang?: ELang) => {
+	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/popular`, {
+		params: {
+			lang: lang
+		}
+	});
 };
 
-export const getKhoaHocMoiNhat = () => {
-	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/latest`);
+export const getKhoaHocMoiNhat = (lang?: ELang) => {
+	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/latest`,
+		{
+			params: {
+				lang: lang
+			}
+		}
+	);
 };
 
-export const getKhoaHocMienPhi = () => {
-	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/free`);
+export const getKhoaHocMienPhi = (lang?: ELang) => {
+	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/free`, {
+		params: {
+			lang: lang
+		}
+	});
 };
 
-export const getKhoaHocNangCao = () => {
-	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/advanced`);
+export const getKhoaHocNangCao = (lang?: ELang) => {
+	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/advanced`, {
+		params: {
+			lang: lang
+		}
+	});
 };

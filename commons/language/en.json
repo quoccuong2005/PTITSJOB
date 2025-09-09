@@ -2,6 +2,8 @@
     "common": {
         "name_org": "Posts and Telecommunications Institute of Technology",
         "name_site": "DIGITAL UNIVERSITY PLATFORM",
+        "hour": "hour",
+        "minute": "minute",
         "ptit": "PTIT",
         "payment": "Payment",
         "login": "Login",
@@ -130,7 +132,8 @@
             "trainingCenter2": "Postal and Telecommunications Training Center 2",
             "internationalCooperation": "International Cooperation Portal",
             "CDIT": "CDIT Institute of Information and Communication Technology",
-            "internationalTrainingCenter": "International Training Center"
+            "internationalTrainingCenter": "International Training Center",
+            "copyright": "Posts and Telecommunications Institute of Technology holds the copyright of the content on this website"
         },
         "address": {
             "headquartersAddress": "122 Hoang Quoc Viet Street, Nghia Do Ward, Hanoi City",

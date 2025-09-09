@@ -6,14 +6,15 @@ import { CourseProgramCardProps, CourseCardProps, ProgramCardProps, CourseStatus
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 
 const formatDuration = (minutes: number): string => {
+  const [common] = useCommonTranslation();
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
   if (hours > 0 && mins > 0) {
-    return `${hours} giờ ${Math.round(mins)} phút`;
+    return `${hours} ${common("hour")} ${Math.round(mins)} ${common("minute")}`;
   } else if (hours > 0) {
-    return `${hours} giờ`;
+    return `${hours} ${common("hour")}`;
   } else {
-    return `${Math.round(mins)} phút`;
+    return `${Math.round(mins)} ${common("minute")}`;
   }
 };
 

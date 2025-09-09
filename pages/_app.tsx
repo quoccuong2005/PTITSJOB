@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<meta name='description' content='Cổng học trực tuyến Học viện Công nghệ Bưu Chính Viễn Thông' />
 				<meta
 					name='keywords'
-					content='Cổng học trực tuyến'
+					content='Cổng học trực tuyến, Đại học số'
 				/>
 				<meta name='author' content='ICI' />
 				<link rel='icon' href='/favicon.ico' />
