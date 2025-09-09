@@ -22,6 +22,36 @@
     "portal_title": "Portal de Información Electrónica de la Academia de Tecnología de Correos y Telecomunicaciones",
     "language_vietnamese": "Vietnamita",
     "language_english": "Inglés",
+    "language_spanish": "Español",
+    "language_lao": "Lao",
+    "language_khmer": "Jemer",
+    "language_chinese": "Chino",
+    "popularCourses": {
+      "title": "Cursos Populares",
+      "description": "Descubre nuestros cursos más populares, listos para satisfacer todas las necesidades",
+      "button": "Explorar todos los cursos"
+    },
+    "latestCourses": {
+      "title": "Cursos Más Recientes",
+      "description": "Descubre nuestros cursos más recientes, listos para satisfacer todas las necesidades",
+      "button": "Explorar todos los cursos"
+    },
+    "freeCourses": {
+      "title": "Cursos Gratuitos",
+      "description": "Descubre nuestros cursos gratuitos, listos para satisfacer todas las necesidades",
+      "button": "Explorar todos los cursos"
+    },
+    "advancedCourses": {
+      "title": "Cursos Avanzados",
+      "description": "Descubre nuestros cursos avanzados, listos para satisfacer todas las necesidades",
+      "button": "Explorar todos los cursos"
+    },
+    "seeMore": "Ver más",
+    "seeLess": "Ver menos",
+    "viewMore": "Ver más",
+    "viewLess": "Ver menos",
+    "loading": "Cargando...",
+    "noData": "No hay datos",
     "banner": {
       "platform_name": "Plataforma Universitaria Digital PTIT",
       "date_format": "Lun, 12:00 25/08/2025",
@@ -105,13 +135,12 @@
       "UDU": "Tecnología de la Información (orientada a aplicaciones)",
       "Logistics": "Programa de Logística y Gestión de la Cadena de Suministro",
       "AI": "Inteligencia Artificial",
-      "CNTTV-J": "Tecnología de la Información Vietnam-Japón",
+      "CNTTV-J": "Tecnología de la Información Vietnam-Jápón",
       "GAME": "Programa de Diseño y Desarrollo de Juegos",
       "QHCC": "Programa de Relaciones Públicas (Marketing)",
       "KT-CLC": "Contabilidad",
       "CNTC": "Tecnología Financiera - Fintech",
-
-      "explore" : "Explorar Detalles"
+      "explore": "Explorar Detalles"
     },
     "empty": "¡No hay datos!",
     "pricing": "Precios",

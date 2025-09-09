@@ -34,31 +34,31 @@ const HomePage = () => {
 		<BannerSecond/>
 		<div className="py-[40px]">
 			<KhoaHoc type="phobien"
-				title={"Khoá học phổ biến"}
-				description={"Khám phá các khoá học phổ biến của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"}
-				buttonText={"Khám phá tất cả khoá học"}
+				title={common("popularCourses.title")}
+				description={common("popularCourses.description")}
+				buttonText={common("popularCourses.button")}
 			/>
 		</div>
 		<div className="py-[40px]">
 			<KhoaHoc type="moinhat"
-				title={"Khoá học mới nhất"}
-				description={"Khám phá các khoá học mới nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"}
-				buttonText={"Khám phá tất cả khoá học"}
+				title={common("latestCourses.title")}
+				description={common("latestCourses.description")}
+				buttonText={common("latestCourses.button")}
 			/>
 		</div>
 		<BannerThird/>
 		<div className="py-[40px]">
 			<KhoaHoc type="mienphi"
-				title={"Khoá học miễn phí"}
-				description={"Khám phá các khoá học miễn phí của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"}
-				buttonText={"Khám phá tất cả khoá học"}
+				title={common("freeCourses.title")}
+				description={common("freeCourses.description")}
+				buttonText={common("freeCourses.button")}
 			/>
 		</div>
 		<div className="py-[40px]">
 			<KhoaHoc type="nangcao"
-				title={"Khoá học nâng cao"}
-				description={"Khám phá các khoá học nâng cao của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu"}
-				buttonText={"Khám phá tất cả khoá học"}
+				title={common("advancedCourses.title")}
+				description={common("advancedCourses.description")}
+				buttonText={common("advancedCourses.button")}
 			/>
 		</div>
 	</HomePageWrapper>;

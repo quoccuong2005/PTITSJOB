@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
 import AISButton from "../AISButton";
 import { ProgramCardProps } from "../AISCard/types";
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
+import { set } from "lodash";
 
 interface MucTieuNgheNghiepProps {
   title?: string;
@@ -19,23 +20,24 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
   buttonText = "Khám phá tất cả nghề nghiệp",
   programs = []
 }) => {
-  const [activeTab, setActiveTab] = useState("Phổ biến");
   const router = useRouter();
   const [common] = useCommonTranslation();
   const tabs = [
     common("tabs.populate"),
     common("tabs.it"), 
-    common("tabs.multimedia"),
-    common("tabs.dataScience"),
-    common("tabs.computerScience")
+    common("tabs.media"),
+    common("tabs.economic"),
   ];
-
+  const [activeTab, setActiveTab] = useState("");
+  useEffect(() => {
+    setActiveTab(tabs[0]);
+  }, [tabs[0]]);
   const defaultPrograms: ProgramCardProps[] = [
     {
       variant: "program",
       id: "program_1",
       title: common("socialMedia.title"),
-      href: "/chuong-trinh-dao-tao/truyen-thong-xa-hoi",
+      href: "/muc-tieu-nghe-nghiep/truyen-thong-xa-hoi",
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -83,7 +85,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
             <h2 className="section-title">{title}</h2>
             <p className="section-description mt-[12px]">{description}</p>
             <div className="mt-[32px]">
-              <AISButton onClick={() => router.push('/chuong-trinh-dao-tao')}>
+              <AISButton onClick={() => router.push('/muc-tieu-nghe-nghiep')}>
                 {buttonText}
               </AISButton>
             </div>
@@ -109,7 +111,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
                   style={{ cursor: "pointer" }}
                   onClick={(e) => {
                     e.preventDefault();
-                    router.push(`/chuong-trinh-dao-tao/${program.id}`);
+                    router.push(`/muc-tieu-nghe-nghiep/${program.id}`);
                   }}
                 >
                   <CourseProgramCard {...program} href="" />

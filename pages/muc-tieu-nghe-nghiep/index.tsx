@@ -29,7 +29,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_1",
       title: common("socialMedia.title"),
-      href: "/chuong-trinh-dao-tao/truyen-thong-xa-hoi",
+      href: "/muc-tieu-nghe-nghiep/truyen-thong-xa-hoi",
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" }
@@ -41,7 +41,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_2", 
       title: common("dataAnalyst.title"),
-      href: "/chuong-trinh-dao-tao/phan-tich-du-lieu",
+      href: "/muc-tieu-nghe-nghiep/phan-tich-du-lieu",
       imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -54,7 +54,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_3",
       title: common("networkSecurity.title"),
-      href: "/chuong-trinh-dao-tao/an-ninh-mang",
+      href: "/muc-tieu-nghe-nghiep/an-ninh-mang",
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -67,7 +67,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_4",
       title: "Chuyên gia phát triển Full-stack",
-      href: "/chuong-trinh-dao-tao/fullstack-developer",
+      href: "/muc-tieu-nghe-nghiep/fullstack-developer",
       imageUrl: "/images/ui.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -80,7 +80,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_5",
       title: "Chuyên gia thiết kế UX/UI",
-      href: "/chuong-trinh-dao-tao/ux-ui-designer",
+      href: "/muc-tieu-nghe-nghiep/ux-ui-designer",
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -93,7 +93,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_6",
       title: "Chuyên gia DevOps Engineer",
-      href: "/chuong-trinh-dao-tao/devops-engineer",
+      href: "/muc-tieu-nghe-nghiep/devops-engineer",
       imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -106,7 +106,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_7",
       title: "Chuyên gia Digital Marketing",
-      href: "/chuong-trinh-dao-tao/digital-marketing",
+      href: "/muc-tieu-nghe-nghiep/digital-marketing",
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -119,7 +119,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_8",
       title: "Chuyên gia Machine Learning",
-      href: "/chuong-trinh-dao-tao/machine-learning",
+      href: "/muc-tieu-nghe-nghiep/machine-learning",
       imageUrl: "/images/ui.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -132,7 +132,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_9",
       title: "Chuyên gia Data Science",
-      href: "/chuong-trinh-dao-tao/data-science",
+      href: "/muc-tieu-nghe-nghiep/data-science",
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -145,7 +145,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_10",
       title: "Chuyên gia Blockchain Developer",
-      href: "/chuong-trinh-dao-tao/blockchain-developer",
+      href: "/muc-tieu-nghe-nghiep/blockchain-developer",
       imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -158,7 +158,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_11",
       title: "Chuyên gia Mobile App Development",
-      href: "/chuong-trinh-dao-tao/mobile-app-development",
+      href: "/muc-tieu-nghe-nghiep/mobile-app-development",
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -171,7 +171,7 @@ const TatCaChuongTrinhPage = () => {
       variant: "program",
       id: "program_12",
       title: "Chuyên gia Cloud Computing",
-      href: "/chuong-trinh-dao-tao/cloud-computing",
+      href: "/muc-tieu-nghe-nghiep/cloud-computing",
       imageUrl: "/images/ui.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -237,7 +237,7 @@ const TatCaChuongTrinhPage = () => {
           <BreadcrumbPage
             data={[
               { title: 'Trang chủ', path: '/' },
-              { title: 'Chương trình đào tạo', path: '/chuong-trinh-dao-tao' }
+              { title: 'Mục tiêu nghề nghiệp', path: '/muc-tieu-nghe-nghiep' }
             ]}
           />
         </div>

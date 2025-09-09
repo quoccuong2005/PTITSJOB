@@ -22,6 +22,36 @@
     "portal_title": "邮电技术学院电子信息门户",
     "language_vietnamese": "越南语",
     "language_english": "英语",
+    "language_spanish": "西班牙语",
+    "language_lao": "老挝语",
+    "language_khmer": "高棉语",
+    "language_chinese": "中文",
+    "popularCourses": {
+      "title": "热门课程",
+      "description": "探索我们最受欢迎的课程，满足各种需求",
+      "button": "查看所有课程"
+    },
+    "latestCourses": {
+      "title": "最新课程",
+      "description": "探索我们最新的课程，满足各种需求",
+      "button": "查看所有课程"
+    },
+    "freeCourses": {
+      "title": "免费课程",
+      "description": "探索我们免费的课程，满足各种需求",
+      "button": "查看所有课程"
+    },
+    "advancedCourses": {
+      "title": "高级课程",
+      "description": "探索我们高级的课程，满足各种需求",
+      "button": "查看所有课程"
+    },
+    "seeMore": "查看更多",
+    "seeLess": "收起",
+    "viewMore": "查看更多",
+    "viewLess": "收起",
+    "loading": "加载中...",
+    "noData": "无数据",
     "banner": {
       "platform_name": "PTIT 数字大学平台",
       "date_format": "星期一, 12:00 2025/08/25",
@@ -54,9 +84,8 @@
     "tabs": {
       "populate": "热门",
       "it": "信息技术",
-      "multimedia": "多媒体",
-      "dataScience": "数据科学",
-      "computerScience": "计算机科学"
+      "media": "传媒",
+      "economic": "经济"
     },
     "socialMedia": {
       "title": "社交媒体专员",
@@ -110,8 +139,7 @@
       "QHCC": "公共关系专业（市场营销）",
       "KT-CLC": "会计",
       "CNTC": "金融科技 - Fintech",
-
-      "explore" : "详细了解"
+      "explore": "详细了解"
     },
     "empty": "暂无数据！",
     "pricing": "价格",

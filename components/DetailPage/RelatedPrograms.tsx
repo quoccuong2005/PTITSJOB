@@ -24,7 +24,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       variant: "program",
       id: "program_1",
       title: common("socialMedia.title"),
-      href: "/chuong-trinh-dao-tao/program_1",
+      href: "/muc-tieu-nghe-nghiep/program_1",
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -37,7 +37,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       variant: "program",
       id: "program_2", 
       title: common("dataAnalyst.title"),
-      href: "/chuong-trinh-dao-tao/program_2",
+      href: "/muc-tieu-nghe-nghiep/program_2",
       imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -50,7 +50,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       variant: "program",
       id: "program_3",
       title: common("networkSecurity.title"),
-      href: "/chuong-trinh-dao-tao/program_3",
+      href: "/muc-tieu-nghe-nghiep/program_3",
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
@@ -63,7 +63,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       variant: "program",
       id: "program_4",
       title: common("networkSecurity.title"),
-      href: "/chuong-trinh-dao-tao/program_4",
+      href: "/muc-tieu-nghe-nghiep/program_4",
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },

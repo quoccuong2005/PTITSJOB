@@ -1,151 +1,218 @@
 {
-	"common": {
-		"name_org": "Posts and Telecommunications Institute of Technology",
-  	"name_site": "DIGITAL UNIVERSITY PLATFORM",
-		"ptit": "",
-		"payment": "",
-		"home": "Home",
-		"guide": "Guide",
-		"about": "About us",
-		"control": "Control",
-		"login": "Login",
-		"headline": "",
-		"bank": "Bank and payment channel support",
-		"news": "News",
-		"viewAll": "View all",
-		"download": "",
-		"search": "Search",
-		"search_placeholder": "What course do you want to search for?",
-		"discover": "Discover",
-		"portal_title": "Posts and Telecommunications Institute of Technology - Portal",
-		"language_vietnamese": "Vietnamese",
-		"language_english": "English",
-		"banner": {
-			"platform_name": "PTIT Digital University Platform",
-			"date_format": "Monday, 12:00 25/08/2025",
-			"today": "Today",
-			"courses_title": "+ courses with many topics for students",
-			"learn_more": "Learn more",
-			"discover_title": "Discover new things towards personal and professional goals",
-			"explore_free": "Explore for free",
-			"description": "The course is built on practical needs, helping students practice both professional and soft skills, broaden their thinking and have a solid career orientation."
-		},
-		"training": {
-			"title": "Training Programs",
-			"subtitle": "Explore our most popular training programs"
-		},
-		"partners": {
-			"title": "With the presence of over",
-			"organizations": "+ reputable teaching organizations",
-			"subtitle": "from all over"
-		},
-		"courses": {
-			"title": "Most Popular Certificates",
-			"description": "Explore our most popular certificates, ready to serve all your needs",
-			"button": "Explore all certificates"
-		},
-		"career": {
-			"title": "Career Goals",
-			"description": "Explore specialized training programs to help you achieve your career goals",
-			"button": "View all programs"
-		},
-		"tabs": {
-			"populate": "Popular",
-			"it": "Information Technology",
-			"multimedia": "Multimedia",
-			"dataScience": "Data Science",
-			"computerScience": "Computer Science"
-		},
-		"socialMedia": {
-			"title": "Social Media Specialist",
-			"description": "A Social Media Specialist is responsible for developing, implementing and managing communication strategies on social media platforms. The main tasks include researching trends, producing and"
-		},
-		"dataAnalyst": {
-			"title": "Data Analyst",
-			"description": "A data analyst collects, cleans, and interprets data to provide actionable insights. They use tools like Excel, SQL, and Tableau to analyze trends and help businesses make data-driven decisions."
-		},
-		"networkSecurity": {
-			"title": "Cyber Security Analyst",
-			"description": "Protect IT systems from cyber attacks by implementing advanced security measures, designing and maintaining effective security strategies, continuously monitoring potential risks and "
-		},
-		"teach": {
-			"title": "Teaching Organization"
-		},
-		"foot": {
-			"phoneNumber": "Contact phone number",
-			"headquarters": "Headquarters",
-			"academiaHCM": "Academy in Ho Chi Minh City",
-			"emailContactus": "Contact email",
-			"trainingHN": "Training center in Hanoi",
-			"trainingHCM": "Training center in Ho Chi Minh City",
-			"link": "LINK",
-			"IandC": "Ministry of Information and Communications",
-			"HCMAcademy": "Ho Chi Minh City Academy",
-			"trainingPortal": "Training information portal",
-			"technologyInstitute": "Institute of Posts and Telecommunications Technology",
-			"trainingCenter1": "Postal and Telecommunications Training Center 1",
-			"SandTPortal": "Science and Technology Portal",
-			"economicsInstitute": "Institute of Post and Telecommunications Economics",
-			"trainingCenter2": "Postal and Telecommunications Training Center 2",
-			"internationalCooperation": "International Cooperation Portal",
-			"CDIT": "CDIT Institute of Information and Communication Technology",
-			"internationalTrainingCenter": "International Training Center"
-		},
-		"address": {
-			"headquartersAddress": "122 Hoang Quoc Viet Street, Nghia Do Ward, Hanoi City",
-			"trainingHNAddress": "96A Tran Phu Street, Ha Dong Ward, Hanoi City",
-			"academiaHCMAddress": "11 Nguyen Dinh Chieu Street, Sai Gon Ward, Ho Chi Minh City",
-			"trainingHCMAddress": "97 Man Thien Street, Tang Nhon Phu Ward, Ho Chi Minh City"
-		},
-		"CTDT": {
-			"AIoT": "Artificial Intelligence and Internet of Things (AIoT)",
-			"ATTT": "Information Security",
-			"UDU": "Information Technology (Application-oriented)",
-			"Logistics": "Logistics and Supply Chain Management Program",
-			"AI": "Artificial Intelligence",
-			"CNTTV-J": "Vietnam-Japan Information Technology",
-			"GAME": "Game Design and Development Program",
-			"QHCC": "Public Relations Program (Marketing)",
-			"KT-CLC": "Accounting",
-			"CNTC": "Financial Technology - Fintech",
-
-			"explore" : "Explore Details"
-		},
-		"program1": {
-			"title": "Social Media Specialist",
-			"description": "A Social Media Specialist is responsible for developing, implementing and managing communication strategies on social media platforms. Main tasks include researching trends, producing and optimizing content, managing user communities, monitoring and analyzing campaign effectiveness, and coordinating with marketing, PR or sales departments to enhance brand image and promote business goals.",
-			"detailedDescription": "A good social media professional not only understands online user behavior but also has the ability to create engaging content and leverage technology and data to make effective decisions. This is a dynamic career that requires flexibility, the ability to quickly update trends and good communication skills to build strong relationships between brands and communities."
-		},
-		"inputSearch": {
-			"search-1": "No.",
-			"search-2": "Diploma number",
-			"search-3": "Student's name",
-			"search-4": "Student code",
-			"search-5": "Date of birth"
-		},
-		"searchTitle": "Can look up by registration number, student code, payment code, ...",
-		"communication": "All on 1 platform",
-		"cantGetDatabase": "Note: Can't get the information in the database",
-		"dontMatch": "Note: Information on blockchain is not identical to the database",
-		"infoVerified": "The information on the blockchain has been verified!",
-		"schoolCode": "School code",
-		"decision": "Graduation decision",
-		"createdAt": "Created at",
-		"updatedAt": "Updated at",
-		"action": "Actions",
-		"viewDetail": "View detail",
-		"searchResult": "Search result",
-		"detail": "Diploma details",
-		"digitalSigned": "Diploma information has been digitally signed:",
-		"checkSignature": "Digital Signature Check (JWS)",
-		"diplomaFile": "Diploma file:"
-	},
-	"footer": {
-		"payment": "Payment",
-		"title": "We accept Credit Card, Debit Card and Cryptocurrency Payments.",
-		"address": "Address:",
-		"contact": "Contact:",
-		"environment": "Resources:",
-		"headquartersHCM": "Branch in Ho Chi Minh City:"
-	}
+    "common": {
+        "name_org": "Posts and Telecommunications Institute of Technology",
+        "name_site": "DIGITAL UNIVERSITY PLATFORM",
+        "ptit": "PTIT",
+        "payment": "Payment",
+        "login": "Login",
+        "home": "Home",
+        "gioi-thieu": "About us",
+        "tin-tuc": "News - Events",
+        "tin-tuyen-sinh": "Admissions News",
+        "su-kien": "Events",
+        "thong-bao": "Announcements",
+        "tuyen-sinh": "Training",
+        "dao-tao": "Training",
+        "so-do": "Site Map",
+        "lien-he": "Contact",
+        "guide": "Guide",
+        "about": "About us",
+        "control": "Control",
+        "headline": "Headline",
+        "bank": "Bank and payment channel support",
+        "news": "News",
+        "viewAll": "View all",
+        "download": "Download",
+        "search": "Search",
+        "search_placeholder": "What course do you want to search for?",
+        "partner": "Partners",
+        "already": "Available",
+        "more-info": "View details",
+        "discover": "Discover",
+        "portal_title": "Posts and Telecommunications Institute of Technology - Portal",
+        "language_vietnamese": "Vietnamese",
+        "language_english": "English",
+        "language_spanish": "Spanish",
+        "language_lao": "Lao",
+        "language_khmer": "Khmer",
+        "language_chinese": "Chinese",
+        "popularCourses": {
+            "title": "Popular Courses",
+            "description": "Explore our most popular courses, ready to serve all your needs",
+            "button": "Explore all courses"
+        },
+        "latestCourses": {
+            "title": "Latest Courses",
+            "description": "Explore our latest courses, ready to serve all your needs",
+            "button": "Explore all courses"
+        },
+        "freeCourses": {
+            "title": "Free Courses",
+            "description": "Explore our free courses, ready to serve all your needs",
+            "button": "Explore all courses"
+        },
+        "advancedCourses": {
+            "title": "Advanced Courses",
+            "description": "Explore our advanced courses, ready to serve all your needs",
+            "button": "Explore all courses"
+        },
+        "seeMore": "See more",
+        "seeLess": "See less",
+        "viewMore": "View more",
+        "viewLess": "View less",
+        "loading": "Loading...",
+        "noData": "No data",
+        "banner": {
+            "platform_name": "PTIT Digital University Platform",
+            "date_format": "Monday, 12:00 25/08/2025",
+            "today": "Today",
+            "courses_title": "+ courses with many topics for students",
+            "learn_more": "Learn more",
+            "discover_title": "Discover new things towards personal and professional goals",
+            "explore_free": "Explore for free",
+            "description": "The course is built on practical needs, helping students practice both professional and soft skills, broaden their thinking and have a solid career orientation."
+        },
+        "training": {
+            "title": "Training Programs",
+            "subtitle": "Explore our most popular training programs"
+        },
+        "partners": {
+            "title": "With the presence of over",
+            "organizations": "+ reputable teaching organizations",
+            "subtitle": "from all over"
+        },
+        "courses": {
+            "title": "Most Popular Certificates",
+            "description": "Explore our most popular certificates, ready to serve all your needs",
+            "button": "Explore all certificates"
+        },
+        "career": {
+            "title": "Career Goals",
+            "description": "Explore specialized training programs to help you achieve your career goals",
+            "button": "View all programs"
+        },
+        "tabs": {
+            "populate": "Popular",
+            "it": "Information Technology",
+            "media": "Media",
+            "economic": "Economics"
+        },
+        "socialMedia": {
+            "title": "Social Media Specialist",
+            "description": "A Social Media Specialist is responsible for developing, implementing, and managing communication strategies on social media platforms. Key tasks include researching trends, producing content, and managing campaigns."
+        },
+        "dataAnalyst": {
+            "title": "Data Analyst",
+            "description": "A data analyst collects, cleans, and interprets data to provide actionable insights. They use tools like Excel, SQL, and Tableau to analyze trends and help businesses make data-driven decisions."
+        },
+        "networkSecurity": {
+            "title": "Cyber Security Analyst",
+            "description": "Protecting IT systems from cyber attacks by implementing advanced security measures, designing and maintaining effective security strategies, continuously monitoring potential risks, and responding quickly to security incidents."
+        },
+        "teach": {
+            "title": "Teaching Organization"
+        },
+        "foot": {
+            "phoneNumber": "Contact phone number",
+            "headquarters": "Headquarters",
+            "academiaHCM": "Academy in Ho Chi Minh City",
+            "emailContactus": "Contact email",
+            "trainingHN": "Training center in Hanoi",
+            "trainingHCM": "Training center in Ho Chi Minh City",
+            "link": "LINK",
+            "IandC": "Ministry of Information and Communications",
+            "HCMAcademy": "Ho Chi Minh City Academy",
+            "trainingPortal": "Training information portal",
+            "technologyInstitute": "Institute of Posts and Telecommunications Technology",
+            "trainingCenter1": "Postal and Telecommunications Training Center 1",
+            "SandTPortal": "Science and Technology Portal",
+            "economicsInstitute": "Institute of Post and Telecommunications Economics",
+            "trainingCenter2": "Postal and Telecommunications Training Center 2",
+            "internationalCooperation": "International Cooperation Portal",
+            "CDIT": "CDIT Institute of Information and Communication Technology",
+            "internationalTrainingCenter": "International Training Center"
+        },
+        "address": {
+            "headquartersAddress": "122 Hoang Quoc Viet Street, Nghia Do Ward, Hanoi City",
+            "trainingHNAddress": "96A Tran Phu Street, Ha Dong Ward, Hanoi City",
+            "academiaHCMAddress": "11 Nguyen Dinh Chieu Street, Sai Gon Ward, Ho Chi Minh City",
+            "trainingHCMAddress": "97 Man Thien Street, Tang Nhon Phu Ward, Ho Chi Minh City"
+        },
+        "CTDT": {
+            "AIoT": "Artificial Intelligence and Internet of Things (AIoT)",
+            "ATTT": "Information Security",
+            "UDU": "Information Technology (Application-oriented)",
+            "Logistics": "Logistics and Supply Chain Management Program",
+            "AI": "Artificial Intelligence",
+            "CNTTV-J": "Vietnam-Japan Information Technology",
+            "GAME": "Game Design and Development Program",
+            "QHCC": "Public Relations Program (Marketing)",
+            "KT-CLC": "Accounting",
+            "CNTC": "Financial Technology - Fintech",
+            "explore": "Explore Details"
+        },
+        "program1": {
+            "title": "Social Media Specialist",
+            "description": "A Social Media Specialist is responsible for developing, implementing and managing communication strategies on social media platforms. Main tasks include researching trends, producing and optimizing content, managing user communities, monitoring and analyzing campaign effectiveness, and coordinating with marketing, PR or sales departments to enhance brand image and promote business goals.",
+            "detailedDescription": "A good social media professional not only understands online user behavior but also has the ability to create engaging content and leverage technology and data to make effective decisions. This is a dynamic career that requires flexibility, the ability to quickly update trends and good communication skills to build strong relationships between brands and communities."
+        },
+        "inputSearch": {
+            "search-1": "No.",
+            "search-2": "Diploma number",
+            "search-3": "Student's name",
+            "search-4": "Student code",
+            "search-5": "Date of birth"
+        },
+        "searchTitle": "Can look up by registration number, student code, payment code, ...",
+        "communication": "All on 1 platform",
+        "cantGetDatabase": "Note: Can't get the information in the database",
+        "dontMatch": "Note: Information on blockchain is not identical to the database",
+        "infoVerified": "The information on the blockchain has been verified!",
+        "schoolCode": "School code",
+        "decision": "Graduation decision",
+        "createdAt": "Created at",
+        "updatedAt": "Updated at",
+        "action": "Actions",
+        "viewDetail": "View detail",
+        "searchResult": "Search result",
+        "detail": "Diploma details",
+        "digitalSigned": "Diploma information has been digitally signed:",
+        "checkSignature": "Digital Signature Check (JWS)",
+        "diplomaFile": "Diploma file:",
+        "empty": "No data found!",
+        "pricing": "Pricing",
+        "price-table": "General price list",
+        "search-result": "Search result"
+    },
+    "home": {
+        "customer": "Customers",
+        "satisfaction": "Satisfaction",
+        "customer-say": "Testimonials",
+        "customer-feedback": "What our customers and partners say about working with us",
+        "introdution": "General Introduction"
+    },
+    "news": {
+        "edu": "Education News"
+    },
+    "gallery": {
+        "image": "Image Gallery",
+        "video": "Video Gallery",
+        "audio": "Audio Gallery"
+    },
+    "event": {
+        "event": "Events"
+    },
+    "footer": {
+        "payment": "Payment",
+        "title": "We accept Credit Card, Debit Card and Cryptocurrency Payments.",
+        "address": "Address:",
+        "phone": "Phone (Tel)",
+        "email": "E-mail",
+        "web": "Website",
+        "time": "Working Hours",
+        "location": "Location Map",
+        "contact": "Contact:",
+        "environment": "Resources:",
+        "headquartersHCM": "Branch in Ho Chi Minh City:"
+    }
 }

@@ -31,14 +31,15 @@ const Banner = () => {
     const dayOptions: Intl.DateTimeFormatOptions = {
       weekday: 'long'
     };
-    const dayName = today.toLocaleDateString(currentLang === 'vi' ? 'vi-VN' : 'en-US', dayOptions);
+    
+    const dayName = today.toLocaleDateString(currentLang, dayOptions);
     
     const hourOptions: Intl.DateTimeFormatOptions = {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false
     };
-    const timeString = today.toLocaleTimeString(currentLang === 'vi' ? 'vi-VN' : 'en-US', hourOptions);
+    const timeString = today.toLocaleTimeString(currentLang, hourOptions);
     
     const day = today.getDate().toString().padStart(2, '0');
     const month = (today.getMonth() + 1).toString().padStart(2, '0');
@@ -48,7 +49,7 @@ const Banner = () => {
     const formattedDate = `${dayName}, ${dateString}`;
 
     setCurrentDate(formattedDate);
-  }, [i18n.language]);
+  }, [i18n.language]); 
   
   return (
     <BannerWrappper>

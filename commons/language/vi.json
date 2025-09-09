@@ -21,7 +21,37 @@
 		"discover": "Khám phá",
 		"portal_title": "Cổng Thông tin Điện tử Học viện Công nghệ Bưu chính Viễn thông",
 		"language_vietnamese": "Tiếng Việt",
-		"language_english": "English",
+		"language_english": "Tiếng Anh",
+		"language_spanish": "Tiếng TBN",
+		"language_lao": "Tiếng Lào",
+		"language_khmer": "Tiếng Khmer",
+		"language_chinese": "Tiếng Trung",
+		"popularCourses": {
+			"title": "Khoá học phổ biến",
+			"description": "Khám phá các khoá học phổ biến của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"button": "Khám phá tất cả khoá học"
+		},
+		"latestCourses": {
+			"title": "Khoá học mới nhất",
+			"description": "Khám phá các khoá học mới nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"button": "Khám phá tất cả khoá học"
+		},
+		"freeCourses": {
+			"title": "Khoá học miễn phí",
+			"description": "Khám phá các khoá học miễn phí của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"button": "Khám phá tất cả khoá học"
+		},
+		"advancedCourses": {		
+			"title": "Khoá học nâng cao",
+			"description": "Khám phá các khoá học nâng cao của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"button": "Khám phá tất cả khoá học"
+		},
+		"seeMore": "Xem thêm",
+		"seeLess": "Thu gọn",
+		"viewMore": "Xem thêm",
+		"viewLess": "Thu gọn",
+		"loading": "Đang tải...",
+		"noData": "Không có dữ liệu",
 		"banner": {
 			"platform_name": "Nền tảng Đại học số PTIT",
 			"date_format": "Thứ 2, 12:00 25/08/2025",
@@ -54,9 +84,8 @@
 		"tabs": {
 			"populate": "Phổ biến",
 			"it": "Công nghệ Thông tin",
-			"multimedia": "Đa phương tiện",
-			"dataScience": "Khoa học Dữ liệu",
-			"computerScience": "Khoa học Máy tính"
+			"media": "Truyền thông",
+			"economic": "Kinh tế"
 		},
 		"socialMedia": {
 			"title": "Chuyên viên Truyền thông Mạng Xã hội",
