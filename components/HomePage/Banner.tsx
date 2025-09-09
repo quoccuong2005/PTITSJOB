@@ -163,7 +163,7 @@ const BannerWrappper = styled.div`
     background-repeat: no-repeat;
     background-color: #fef1f0;
     height: 420px;
-    background-image: url(/images/home/banner-ptit.png);
+    background-image: url(/images/home/banner-ptit.jpg);
   }
 `;
 export default Banner;

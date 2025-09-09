@@ -1,37 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import BreadcrumbPage from '../../components/Breadcrumb';
-import CourseProgramCard from '../../components/AISCard';
-import { CourseCardProps } from '../../components/AISCard/types';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import BreadcrumbPage from "../../components/Breadcrumb";
+import CourseProgramCard from "../../components/AISCard";
+import { CourseCardProps } from "../../components/AISCard/types";
 import { useRouter } from "next/router";
-import { useCommonTranslation } from '../../hooks/useCommonTranslation';
-import { getKhoaHocPhoBien } from '../../api/khoahoc';
-import { ELang } from '../../utils/constant';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { ELang } from "../../utils/constant";
+import { getAllKhoaHoc } from "../../api/khoahoc";
+import useCommonTranslation from "../../hooks/useCommonTranslation";
 
 const TatCaKhoaHocPage = () => {
   const [courses, setCourses] = useState<CourseCardProps[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [total, setTotal] = useState<number>(1);
   const [loading, setLoading] = useState(true);
   const [isHydrated, setIsHydrated] = useState(false);
   const [common] = useCommonTranslation();
   const router = useRouter();
   const { search = "" } = router.query;
-  const coursesPerPage = 12;
   const { i18n } = useTranslation();
   const currentLang = i18n.language;
 
-  const fetchCourses = async () => {
-    if (!currentLang) return;
-    
-    setLoading(true);
+  const getKhoaHoc = async (page?: number) => {
     try {
-      const response = await getKhoaHocPhoBien(currentLang as ELang);
+      const response = await getAllKhoaHoc({
+        lang: currentLang as ELang,
+        q: String(search),
+        page: page || 1,
+        limit: 3,
+      });
       const data = response.data.data;
-      
-      if (data) {
-        const mappedCourses: CourseCardProps[] = data.map(item => ({
+      const pagi = response.data.pagination;
+      setTotal(pagi.total_pages);
+      setCurrentPage(pagi.page);
+      if (!data) return;
+      const mapper: CourseCardProps[] = data.map((item) => {
+        return {
           variant: "course",
           org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
           id: item.id,
@@ -39,45 +43,25 @@ const TatCaKhoaHocPage = () => {
           href: item.course_url,
           imageUrl: item.image_url,
           durationMinutes: item.duration * 60,
-          certificateType: item.topics.map(topic => topic.name).join(', '),
-          status: "not_started",
-          isAI: true
-        }));
-        setCourses(mappedCourses);
-      }
-    } catch (error) {
-      console.error('Error fetching courses:', error);
-    } finally {
-      setLoading(false);
-    }
+          certificateType: item.topics.map((topic) => topic.name).join(", "),
+          isAI: true,
+        };
+      });
+      setCourses(mapper);
+    } catch (err) {}
   };
+  useEffect(() => {
+    if (currentLang) getKhoaHoc();
+  }, [currentLang, search]);
 
   useEffect(() => {
     setIsHydrated(true);
-    if (currentLang) {
-      fetchCourses();
-    }
-  }, [currentLang]);
-
-  
-  const filteredCourses = courses.filter(course =>
-    course.title.toLowerCase().includes((search as string).toLowerCase())
-  );
-
-  
-  const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
-  const startIndex = (currentPage - 1) * coursesPerPage;
-  const endIndex = startIndex + coursesPerPage;
-  const currentCourses = filteredCourses.slice(startIndex, endIndex);
+    setLoading(false);
+  }, []);
 
   const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleCourseClick = (courseId: string) => {
-    console.log('Course clicked:', courseId);
-    
+    getKhoaHoc(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (!isHydrated) {
@@ -98,7 +82,7 @@ const TatCaKhoaHocPage = () => {
       </Wrapper>
     );
   }
-  
+
   return (
     <Wrapper>
       <BreadcrumbSection>
@@ -127,17 +111,14 @@ const TatCaKhoaHocPage = () => {
           ) : (
             <>
               <CoursesGrid>
-                {currentCourses.map((course) => (
+                {courses.map((course) => (
                   <div key={course.id} className="course-item">
-                    <CourseProgramCard
-                      {...course}
-                      onClick={handleCourseClick}
-                    />
+                    <CourseProgramCard {...course} />
                   </div>
                 ))}
               </CoursesGrid>
 
-              {filteredCourses.length === 0 && !loading && (
+              {courses.length === 0 && !loading && (
                 <NoResultsSection>
                   <div className="no-results-text">
                     {common('pages.allCourses.noResultsWithQuery').replace('{query}', search as string)}
@@ -145,7 +126,7 @@ const TatCaKhoaHocPage = () => {
                 </NoResultsSection>
               )}
 
-              {totalPages > 1 && (
+              {total > 1 && (
                 <PaginationSection>
                   <Pagination>
                     <button
@@ -153,27 +134,40 @@ const TatCaKhoaHocPage = () => {
                       disabled={currentPage === 1}
                       onClick={() => handlePageChange(currentPage - 1)}
                     >
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M12.5 15L7.5 10L12.5 5" stroke={currentPage === 1 ? "#C3C7CC" : "#051A53"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M12.5 15L7.5 10L12.5 5"
+                          stroke={currentPage === 1 ? "#C3C7CC" : "#051A53"}
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                     </button>
-                    
-                    {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+
+                    {Array.from({ length: Math.min(5, total) }, (_, i) => {
                       let pageNumber;
-                      if (totalPages <= 5) {
+                      if (total <= 5) {
                         pageNumber = i + 1;
                       } else if (currentPage <= 3) {
                         pageNumber = i + 1;
-                      } else if (currentPage >= totalPages - 2) {
-                        pageNumber = totalPages - 4 + i;
+                      } else if (currentPage >= total - 2) {
+                        pageNumber = total - 4 + i;
                       } else {
                         pageNumber = currentPage - 2 + i;
                       }
-                      
+
                       return (
                         <button
                           key={pageNumber}
-                          className={`page-button ${currentPage === pageNumber ? 'active' : ''}`}
+                          className={`page-button ${
+                            currentPage === pageNumber ? "active" : ""
+                          }`}
                           onClick={() => handlePageChange(pageNumber)}
                         >
                           {pageNumber}
@@ -183,11 +177,22 @@ const TatCaKhoaHocPage = () => {
 
                     <button
                       className="nav-button next"
-                      disabled={currentPage === totalPages}
+                      disabled={currentPage === total}
                       onClick={() => handlePageChange(currentPage + 1)}
                     >
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M7.5 5L12.5 10L7.5 15" stroke={currentPage === totalPages ? "#C3C7CC" : "#051A53"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                      >
+                        <path
+                          d="M7.5 5L12.5 10L7.5 15"
+                          stroke={currentPage === total ? "#C3C7CC" : "#051A53"}
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
                     </button>
                   </Pagination>
@@ -203,7 +208,7 @@ const TatCaKhoaHocPage = () => {
 
 const Wrapper = styled.div`
   background: #fff;
-  min-height: 100vh;
+  min-height: 90vh;
 `;
 
 const BreadcrumbSection = styled.div`
@@ -216,26 +221,26 @@ const MainContent = styled.div`
 
 const Header = styled.div`
   margin-bottom: 20px;
-  
+
   .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 17px;
-    
+
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: stretch;
       gap: 16px;
     }
   }
-  
+
   .page-title {
     font-weight: 600;
     font-size: 24px;
     line-height: 1.193;
     letter-spacing: 0.05em;
-    color: #051A53;
+    color: #051a53;
     margin: 0;
   }
 `;
@@ -250,12 +255,12 @@ const SearchBox = styled.div`
   padding: 8px 16px 8px 12px;
   background: #fff;
   min-width: 320px;
-  
+
   @media (max-width: 768px) {
     min-width: auto;
     width: 100%;
   }
-  
+
   input {
     border: none;
     outline: none;
@@ -263,12 +268,12 @@ const SearchBox = styled.div`
     font-size: 16px;
     line-height: 1.193;
     letter-spacing: 0.03em;
-    color: #051A53;
+    color: #051a53;
     background: transparent;
     padding-left: 12px;
-    
+
     &::placeholder {
-      color: #C0C0C0;
+      color: #c0c0c0;
     }
   }
 `;
@@ -287,7 +292,7 @@ const LoadingSection = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 400px;
-  
+
   .loading-text {
     font-size: 16px;
     color: #535355;
@@ -299,7 +304,7 @@ const NoResultsSection = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 400px;
-  
+
   .no-results-text {
     font-size: 16px;
     color: #535355;
@@ -313,15 +318,15 @@ const CoursesGrid = styled.div`
   gap: 20px;
   margin-bottom: 40px;
   justify-content: center;
-  
+
   @media (max-width: 1280px) {
     grid-template-columns: repeat(3, 295px);
   }
-  
+
   @media (max-width: 960px) {
     grid-template-columns: repeat(2, 295px);
   }
-  
+
   @media (max-width: 640px) {
     grid-template-columns: 295px;
   }
@@ -337,29 +342,29 @@ const Pagination = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  
+
   .nav-button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 32px;
     height: 32px;
-    background: #F3F4F7;
+    background: #f3f4f7;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
-    
+
     &:disabled {
       cursor: not-allowed;
       opacity: 0.5;
     }
-    
+
     &:not(:disabled):hover {
-      background: #E5E7EB;
+      background: #e5e7eb;
     }
   }
-  
+
   .page-button {
     display: flex;
     justify-content: center;
@@ -376,14 +381,14 @@ const Pagination = styled.div`
     cursor: pointer;
     transition: all 0.2s ease;
     background: #fff;
-    color: #6F6F6F;
-    
+    color: #6f6f6f;
+
     &:hover {
-      background: #F3F4F7;
+      background: #f3f4f7;
     }
-    
+
     &.active {
-      background: #BC2826;
+      background: #bc2826;
       color: #fff;
     }
   }

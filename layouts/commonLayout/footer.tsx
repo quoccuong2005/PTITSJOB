@@ -18,7 +18,7 @@ const Footer = () => {
                 src="/images/common/logo-footer.svg"
                 height={64}
               />
-              <div className="flex flex-col gap-[3px]">
+              <div className="flex flex-col">
                 <h2 className="name-dv">{common("name_org") as string}</h2>
                 <h2 className="name-main">{common("name_site") as string}</h2>
               </div>

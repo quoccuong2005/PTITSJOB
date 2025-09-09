@@ -233,7 +233,7 @@ const Header = (props: IProps) => {
             <div className="flex items-center gap-[20px]">
               <Link href="/" className="logo flex flex-row gap-[12px] items-center">
                   <img src="/images/logo-ptit.png" className="h-[40px]" alt={"image"} />
-                  <div className="flex flex-col gap-[3px]">
+                  <div className="flex flex-col">
                     <h2 className="name-dv">{common("name_org") as string}</h2>
                     <h2 className="name-main">{common("name_site") as string}</h2>
                   </div>
@@ -307,9 +307,7 @@ const Header = (props: IProps) => {
                 style={{ width: "340px" }}
                 placeholder={common("search_placeholder")}
                 onEnter={(value) => {
-                  if (value.trim()) {
-                    router.push(`/tat-ca-khoa-hoc?search=${encodeURIComponent(value.trim())}`);
-                  }
+                  router.push(`/tat-ca-khoa-hoc?search=${encodeURIComponent(value.trim())}`);
                 }}
               />
               <AISDivider />

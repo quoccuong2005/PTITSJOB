@@ -2,6 +2,18 @@ export interface ApiOdooResponse<T> {
   status: string;
   count: number;
   data: T[];
+  pagination: Pagination;
+}
+
+export interface Pagination {
+  has_next: boolean;
+  has_prev: boolean;
+  limit: number;
+  next_page: number | null;
+  page: number;
+  prev_page: number | null;
+  total_count: number;
+  total_pages: number;
 }
 
 export interface Course {
