@@ -32,8 +32,7 @@ const TatCaChuongTrinhPage = () => {
       href: "/chuong-trinh-dao-tao/truyen-thong-xa-hoi",
       imageUrl: "/images/social.png",
       teachingOrgs: [
-        { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        { name: "PTIT", logoUrl: "/images/logo-ptit.png" }
       ],
       description: common("socialMedia.description"),
       category: "Phổ biến"
@@ -46,7 +45,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: common("dataAnalyst.description"),
       category: "Phổ biến"
@@ -59,7 +58,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: common("networkSecurity.description"),
       category: "Phổ biến"
@@ -72,7 +71,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/ui.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Trở thành chuyên gia phát triển web đầy đủ với khả năng làm việc cả frontend và backend, sử dụng các công nghệ hiện đại như React, Node.js, và các cơ sở dữ liệu.",
       category: "Công nghệ thông tin"
@@ -85,7 +84,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Học cách thiết kế giao diện người dùng trực quan và trải nghiệm người dùng tối ưu cho các ứng dụng web và di động.",
       category: "Công nghệ thông tin"
@@ -98,7 +97,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Nắm vững các công cụ và quy trình DevOps để tự động hóa việc triển khai, giám sát và quản lý hạ tầng công nghệ.",
       category: "Công nghệ thông tin"
@@ -111,7 +110,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Học các chiến lược marketing số hiệu quả, SEO, SEM, social media marketing và phân tích dữ liệu khách hàng.",
       category: "Đa phương tiện"
@@ -124,7 +123,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/ui.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Khám phá thế giới học máy với Python, TensorFlow và các thuật toán AI tiên tiến để giải quyết các bài toán thực tế.",
       category: "Khoa học dữ liệu"
@@ -137,7 +136,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Trở thành chuyên gia phân tích dữ liệu với Python, R, SQL và các kỹ thuật thống kê, machine learning để đưa ra insights từ dữ liệu.",
       category: "Khoa học dữ liệu"
@@ -150,7 +149,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Học phát triển ứng dụng blockchain, smart contracts và cryptocurrency với Ethereum, Solidity và Web3.",
       category: "Khoa học máy tính"
@@ -163,7 +162,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Phát triển ứng dụng di động đa nền tảng với React Native, Flutter hoặc native iOS/Android development.",
       category: "Khoa học máy tính"
@@ -176,7 +175,7 @@ const TatCaChuongTrinhPage = () => {
       imageUrl: "/images/ui.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: "Nắm vững các dịch vụ cloud như AWS, Azure, Google Cloud và kiến trúc cloud để xây dựng hệ thống scalable.",
       category: "Khoa học máy tính"

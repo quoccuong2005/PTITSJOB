@@ -13,6 +13,7 @@ export interface Course {
   tags: Tag[];
   topics: Topic[];
   providers: Provider[];
+  course_url: string;
 }
 
 export interface Tag {

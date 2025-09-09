@@ -28,7 +28,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       category: "Thiết kế"
     },
@@ -41,7 +41,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       category: "Dữ liệu"
     },
@@ -54,7 +54,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       category: "An ninh"
     },
@@ -67,7 +67,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       description: "Một nhà phân tích dữ liệu thu thập, dọn dẹp và giải thích dữ liệu để cung cấp thông tin chi tiết có thể thực hiện được. Họ sử dụng các công cụ như Excel, SQL và Tableau để phân tích xu hướng và giúp doanh nghiệp đưa ra quyết định dựa trên dữ liệu.",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       category: "Quản lý"
     }

@@ -40,7 +40,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
       imageUrl: "/images/social.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: common("socialMedia.description"),
       category: "Phổ biến"
@@ -53,7 +53,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
       imageUrl: "/images/data-analysis.jpeg",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: common("dataAnalyst.description"),
       category: "Phổ biến"
@@ -66,7 +66,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
       imageUrl: "/images/X5gFB1559764843.png",
       teachingOrgs: [
         { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-        { name: "RIPT", logoUrl: "/images/logo-ptit.png" }
+        
       ],
       description: common("networkSecurity.description"),
       category: "Phổ biến"

@@ -15,6 +15,30 @@ export const mockPrograms: { [key: string]: ProgramDetail } = {
     requiredSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search'],
     achievableSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search', 'UX Design']
   },
+  'program_2': {
+    title: 'Chuyên gia truyền thông xã hội',
+    description: 'Chuyên gia truyền thông xã hội (Social Media Specialist) là người phụ trách xây dựng, triển khai và quản lý các chiến lược truyền thông trên các nền tảng mạng xã hội. Công việc chính bao gồm nghiên cứu xu hướng, sản xuất và tối ưu hóa nội dung, quản lý cộng đồng người dùng, theo dõi – phân tích hiệu quả chiến dịch, đồng thời phối hợp với các bộ phận marketing, PR hay bán hàng để nâng cao hình ảnh thương hiệu và thúc đẩy mục tiêu kinh doanh.',
+    detailedDescription: 'Một chuyên gia truyền thông xã hội giỏi không chỉ am hiểu về hành vi người dùng trên mạng mà còn có khả năng sáng tạo nội dung cuốn hút, biết tận dụng công nghệ và dữ liệu để đưa ra quyết định hiệu quả. Đây là nghề nghiệp năng động, đòi hỏi sự linh hoạt, khả năng cập nhật xu hướng nhanh chóng và kỹ năng giao tiếp tốt để xây dựng mối quan hệ bền chặt giữa thương hiệu và cộng đồng.',
+    imageUrl: '/images/social.png',
+    teachingOrgs: [
+      { name: 'PTIT', logoUrl: '/images/logo-ptit.png' },
+      { name: 'RIPT', logoUrl: '/images/logo-ptit.png' }
+    ],
+    requiredSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search'],
+    achievableSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search', 'UX Design']
+  },
+  'program_3': {
+    title: 'Chuyên gia truyền thông xã hội',
+    description: 'Chuyên gia truyền thông xã hội (Social Media Specialist) là người phụ trách xây dựng, triển khai và quản lý các chiến lược truyền thông trên các nền tảng mạng xã hội. Công việc chính bao gồm nghiên cứu xu hướng, sản xuất và tối ưu hóa nội dung, quản lý cộng đồng người dùng, theo dõi – phân tích hiệu quả chiến dịch, đồng thời phối hợp với các bộ phận marketing, PR hay bán hàng để nâng cao hình ảnh thương hiệu và thúc đẩy mục tiêu kinh doanh.',
+    detailedDescription: 'Một chuyên gia truyền thông xã hội giỏi không chỉ am hiểu về hành vi người dùng trên mạng mà còn có khả năng sáng tạo nội dung cuốn hút, biết tận dụng công nghệ và dữ liệu để đưa ra quyết định hiệu quả. Đây là nghề nghiệp năng động, đòi hỏi sự linh hoạt, khả năng cập nhật xu hướng nhanh chóng và kỹ năng giao tiếp tốt để xây dựng mối quan hệ bền chặt giữa thương hiệu và cộng đồng.',
+    imageUrl: '/images/social.png',
+    teachingOrgs: [
+      { name: 'PTIT', logoUrl: '/images/logo-ptit.png' },
+      { name: 'RIPT', logoUrl: '/images/logo-ptit.png' }
+    ],
+    requiredSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search'],
+    achievableSkills: ['C++', 'Trải nghiệm người dùng', 'AI Search', 'UX Design']
+  },
 };
 
 interface MainContentProps {
