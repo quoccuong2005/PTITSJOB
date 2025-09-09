@@ -9,13 +9,13 @@ const BannerThird = () => {
   return (
     <BannerWrappper>
       <div className="container mx-auto">
-        <div className="flex flex-row gap-[60px] py-[32px]">
-          <div className="w-[50%]">
+        <div className="flex flex-col lg:flex-row gap-[60px] py-[32px]">
+          <div className="w-[100%] lg:w-[50%]">
             <div className="bn-image">
               <img src="/images/home/img-banner3.png" />
             </div>
           </div>
-          <div className="w-[50%]">
+          <div className="w-[100%] lg:w-[50%]">
             <div className="banner-content h-full">
               <h2 className="title" style={{fontSize: '36px'}}>
                 {common("banner.discover_title")}

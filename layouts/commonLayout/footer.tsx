@@ -9,7 +9,7 @@ const Footer = () => {
     <FooterWrapper>
       <div className="footer-backgroud">
         <div className="container mx-auto py-[40px]">
-          <section className="brand-info flex justify-between items-center">
+          <section className="brand-info flex flex-col lg:flex-row gap-[20px] justify-between items-center">
             <img
               alt="logo-footer"
               src="/images/common/logo-footer.svg"
@@ -63,7 +63,7 @@ const Footer = () => {
           </section>
           <AISHozionalDivider space={40} />
           <section className="contact-info">
-            <div className="grid grid-cols-3 gap-y-[50px] gap-x-[10px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <AISContact label="Số điện thoại liên hệ">
                 <AISLink href="tel:02437562186" style={{ fontSize: "16px" }}>024 3756 2186</AISLink>
               </AISContact>
@@ -95,7 +95,7 @@ const Footer = () => {
           <AISHozionalDivider space={40} />
           <section className="backlink">
 						<div className="title-backlink">ĐƯỜNG DẪN LIÊN KẾT</div>
-            <div className="grid grid-cols-3 gap-y-[16px] gap-x-[10px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <AISLink href="https://mst.gov.vn/gioi-thieu-19797875.htm" style={{ fontSize: "16px" }}>
                 Bộ Thông tin và Truyền thông
               </AISLink>
