@@ -7,7 +7,7 @@ import AISButton from "../../components/AISButton";
 import AISInput from "../../components/AISInput";
 import AISDivider from "../../components/AISDivider";
 import AISDropdown from "../../components/AISDropdown";
-
+import { useRouter } from "next/router";
 interface IProps {
   language: string;
   handleChangeLanguage: (lang: string) => void;
@@ -17,14 +17,13 @@ const Header = (props: IProps) => {
   const { language, handleChangeLanguage } = props;
   const [common] = useCommonTranslation();
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const [showLanguageDropdown, setShowLanguageDropdown] =
-    useState<boolean>(false);
-  const [showDiscoverDropdown, setShowDiscoverDropdown] = 
-    useState<boolean>(false);
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState<boolean>(false);
+  const [showDiscoverDropdown, setShowDiscoverDropdown] = useState<boolean>(false);
   const [isScroll, setIsScroll] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const languageRef = useRef<HTMLDivElement>(null);
   const discoverRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
   const allLanguages = [
     {
       code: "vi",
@@ -319,23 +318,28 @@ const Header = (props: IProps) => {
                     <path
                       d="M13.167 12.75L16.5003 16.0833"
                       stroke="#C0C0C0"
-                      stroke-width="1.25"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="1.25"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <circle
                       cx="8.16667"
                       cy="8.16667"
                       r="6.66667"
                       stroke="#C0C0C0"
-                      stroke-width="1.25"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="1.25"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 }
                 style={{ width: "340px" }}
                 placeholder={common("search_placeholder")}
+                onEnter={(value) => {
+                  if (value.trim()) {
+                    router.push(`/tat-ca-khoa-hoc?search=${encodeURIComponent(value.trim())}`);
+                  }
+                }}
               />
               <AISDivider />
               <AISButton

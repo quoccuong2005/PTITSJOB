@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import BreadcrumbPage from '../../components/Breadcrumb';
 import CourseProgramCard from '../../components/AISCard';
 import { CourseCardProps } from '../../components/AISCard/types';
-// Removed: import { getKhoaHocPhoBien } from '../../api/khoahoc';
+import { useRouter } from "next/router";
 
 const TatCaKhoaHocPage = () => {
   const [courses, setCourses] = useState<CourseCardProps[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [isHydrated, setIsHydrated] = useState(false);
+  const router = useRouter();
+  const { search = "" } = router.query;
   const coursesPerPage = 12;
 
   const mockCourses: CourseCardProps[] = [
@@ -198,14 +201,14 @@ const TatCaKhoaHocPage = () => {
   ];
 
   useEffect(() => {
-    // Set courses from mock data instead of fetching from an API
+    setIsHydrated(true);
     setCourses(mockCourses);
     setLoading(false);
   }, []);
 
   
   const filteredCourses = courses.filter(course =>
-    course.title.toLowerCase().includes(searchQuery.toLowerCase())
+    course.title.toLowerCase().includes((search as string).toLowerCase())
   );
 
   
@@ -224,6 +227,25 @@ const TatCaKhoaHocPage = () => {
     
   };
 
+  if (!isHydrated) {
+    return (
+      <Wrapper>
+        <MainContent>
+          <div className="container mx-auto">
+            <Header>
+              <div className="header-content">
+                <h1 className="page-title">Tất cả khoá học</h1>
+              </div>
+            </Header>
+            <LoadingSection>
+              <div className="loading-text">Đang tải khóa học...</div>
+            </LoadingSection>
+          </div>
+        </MainContent>
+      </Wrapper>
+    );
+  }
+  
   return (
     <Wrapper>
       <BreadcrumbSection>
@@ -241,7 +263,7 @@ const TatCaKhoaHocPage = () => {
         <div className="container mx-auto">
           <Header>
             <div className="header-content">
-              <h1 className="page-title">Tất cả khoá học</h1>
+              <h1 className="page-title">{search ? `Kết quả tìm kiếm cho "${search}"` : "Tất cả khoá học"}</h1>
             </div>
           </Header>
 
@@ -265,7 +287,7 @@ const TatCaKhoaHocPage = () => {
               {filteredCourses.length === 0 && !loading && (
                 <NoResultsSection>
                   <div className="no-results-text">
-                    Không tìm thấy khóa học nào phù hợp với từ khóa "{searchQuery}"
+                    Không tìm thấy khóa học nào phù hợp với từ khóa "{search as string}"
                   </div>
                 </NoResultsSection>
               )}
