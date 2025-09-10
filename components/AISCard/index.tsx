@@ -260,8 +260,8 @@ const CardWrapper = styled.div`
 `;
 
 const ProgramCardWrapper = styled.div`
-  width: 280px;
-  height: 520px;
+  max-width: 350px;
+height: 520px;
   background: #FFFFFF;
   border: 1.2px solid #EEEEEE;
   border-radius: 16px;

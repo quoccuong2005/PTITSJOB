@@ -151,7 +151,7 @@ const TatCaKhoaHocPage = () => {
                     </button>
 
                     {Array.from({ length: Math.min(5, total) }, (_, i) => {
-                      let pageNumber;
+                      let pageNumber: number;
                       if (total <= 5) {
                         pageNumber = i + 1;
                       } else if (currentPage <= 3) {
