@@ -2,6 +2,7 @@ import styled from "styled-components";
 import AISButton from "../AISButton";
 import { BannerWrappper } from "./bannerStyle";
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
+import router from "next/router";
 
 const BannerThird = () => {
   const [common] = useCommonTranslation();
@@ -24,7 +25,7 @@ const BannerThird = () => {
                 {common("banner.description")}
               </p>
               <div style={{ marginTop: "22px" }}>
-                <AISButton type="primary">{common("banner.explore_free")}</AISButton>
+                <AISButton type="primary" onClick={() => router.push('/tat-ca-khoa-hoc')}>{common("banner.explore_free")}</AISButton>
               </div>
             </div>
           </div>
