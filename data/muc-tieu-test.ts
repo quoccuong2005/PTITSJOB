@@ -22,36 +22,36 @@ export const getSkillNeeded = (common: any, skillKey: string) => {
 };
 
 
-const getMockModulesForProgram = (skillKey: string): KnowledgeModule[] => {
+const getMockModulesForProgram = (skillKey: string, common: any): KnowledgeModule[] => {
   const mockModules: { [key: string]: KnowledgeModule[] } = {
     networkSecurity: [
       {
         id: "networkSecurity_foundation",
-        name: "Cybersecurity Fundamentals",
+        name: common('programs.networkSecurity.foundation.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.9, reviewCount: 127 },
         coursesRemaining: 8,
         totalCourses: 8,
         skills: [
-          { name: "Network Security", level: "intermediate" },
-          { name: "Firewall Configuration", level: "advanced" },
-          { name: "Incident Response", level: "intermediate" },
-          { name: "Risk Assessment", level: "beginner" }
+          { name: common('programs.networkSecurity.foundation.skills.networkSecurity'), level: "intermediate" },
+          { name: common('programs.networkSecurity.foundation.skills.firewallConfiguration'), level: "advanced" },
+          { name: common('programs.networkSecurity.foundation.skills.incidentResponse'), level: "intermediate" },
+          { name: common('programs.networkSecurity.foundation.skills.riskAssessment'), level: "beginner" }
         ],
         courses: []
       },
       {
         id: "networkSecurity_advanced",
-        name: "Advanced Security & Penetration Testing",
+        name: common('programs.networkSecurity.advanced.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.7, reviewCount: 89 },
         coursesRemaining: 10,
         totalCourses: 10,
         skills: [
-          { name: "Penetration Testing", level: "advanced" },
-          { name: "Digital Forensics", level: "advanced" },
-          { name: "Security Standards", level: "intermediate" },
-          { name: "Ethical Hacking", level: "advanced" }
+          { name: common('programs.networkSecurity.advanced.skills.penetrationTesting'), level: "advanced" },
+          { name: common('programs.networkSecurity.advanced.skills.digitalForensics'), level: "advanced" },
+          { name: common('programs.networkSecurity.advanced.skills.securityStandards'), level: "intermediate" },
+          { name: common('programs.networkSecurity.advanced.skills.ethicalHacking'), level: "advanced" }
         ],
         courses: []
       }
@@ -59,31 +59,31 @@ const getMockModulesForProgram = (skillKey: string): KnowledgeModule[] => {
     financialAnalyst: [
       {
         id: "financialAnalyst_foundation",
-        name: "Financial Analysis & Valuation",
+        name: common('programs.financialAnalyst.foundation.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.8, reviewCount: 156 },
         coursesRemaining: 6,
         totalCourses: 6,
         skills: [
-          { name: "Financial Statement Analysis", level: "intermediate" },
-          { name: "Business Valuation", level: "advanced" },
-          { name: "Excel Modeling", level: "intermediate" },
-          { name: "Market Analysis", level: "beginner" }
+          { name: common('programs.financialAnalyst.foundation.skills.financialStatementAnalysis'), level: "intermediate" },
+          { name: common('programs.financialAnalyst.foundation.skills.businessValuation'), level: "advanced" },
+          { name: common('programs.financialAnalyst.foundation.skills.excelModeling'), level: "intermediate" },
+          { name: common('programs.financialAnalyst.foundation.skills.marketAnalysis'), level: "beginner" }
         ],
         courses: []
       },
       {
         id: "financialAnalyst_advanced",
-        name: "Advanced Investment & Risk Management",
+        name: common('programs.financialAnalyst.advanced.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.6, reviewCount: 98 },
         coursesRemaining: 8,
         totalCourses: 8,
         skills: [
-          { name: "Portfolio Management", level: "advanced" },
-          { name: "Risk Assessment", level: "advanced" },
-          { name: "Quantitative Analysis", level: "intermediate" },
-          { name: "Financial Modeling", level: "advanced" }
+          { name: common('programs.financialAnalyst.advanced.skills.portfolioManagement'), level: "advanced" },
+          { name: common('programs.financialAnalyst.advanced.skills.riskAssessment'), level: "advanced" },
+          { name: common('programs.financialAnalyst.advanced.skills.quantitativeAnalysis'), level: "intermediate" },
+          { name: common('programs.financialAnalyst.advanced.skills.financialModeling'), level: "advanced" }
         ],
         courses: []
       }
@@ -91,31 +91,31 @@ const getMockModulesForProgram = (skillKey: string): KnowledgeModule[] => {
     digitalStrategist: [
       {
         id: "digitalStrategist_foundation",
-        name: "Digital Marketing Foundation",
+        name: common('programs.digitalStrategist.foundation.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.7, reviewCount: 203 },
         coursesRemaining: 7,
         totalCourses: 7,
         skills: [
-          { name: "Media Planning", level: "intermediate" },
-          { name: "Customer Analysis", level: "advanced" },
-          { name: "Content Strategy", level: "intermediate" },
-          { name: "SEO/SEM", level: "beginner" }
+          { name: common('programs.digitalStrategist.foundation.skills.mediaPlanning'), level: "intermediate" },
+          { name: common('programs.digitalStrategist.foundation.skills.customerAnalysis'), level: "advanced" },
+          { name: common('programs.digitalStrategist.foundation.skills.contentStrategy'), level: "intermediate" },
+          { name: common('programs.digitalStrategist.foundation.skills.seoSem'), level: "beginner" }
         ],
         courses: []
       },
       {
         id: "digitalStrategist_advanced",
-        name: "Advanced Digital Strategy & Analytics",
+        name: common('programs.digitalStrategist.advanced.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.5, reviewCount: 134 },
         coursesRemaining: 9,
         totalCourses: 9,
         skills: [
-          { name: "Data Analytics", level: "advanced" },
-          { name: "Marketing Automation", level: "advanced" },
-          { name: "Performance Optimization", level: "intermediate" },
-          { name: "Strategic Planning", level: "advanced" }
+          { name: common('programs.digitalStrategist.advanced.skills.dataAnalytics'), level: "advanced" },
+          { name: common('programs.digitalStrategist.advanced.skills.marketingAutomation'), level: "advanced" },
+          { name: common('programs.digitalStrategist.advanced.skills.performanceOptimization'), level: "intermediate" },
+          { name: common('programs.digitalStrategist.advanced.skills.strategicPlanning'), level: "advanced" }
         ],
         courses: []
       }
@@ -123,31 +123,31 @@ const getMockModulesForProgram = (skillKey: string): KnowledgeModule[] => {
     aiSpecialist: [
       {
         id: "aiSpecialist_foundation",
-        name: "AI & Machine Learning Fundamentals",
+        name: common('programs.aiSpecialist.foundation.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.9, reviewCount: 289 },
         coursesRemaining: 10,
         totalCourses: 10,
         skills: [
-          { name: "Python Programming", level: "intermediate" },
-          { name: "Machine Learning", level: "advanced" },
-          { name: "Data Processing", level: "intermediate" },
-          { name: "Statistical Analysis", level: "beginner" }
+          { name: common('programs.aiSpecialist.foundation.skills.pythonProgramming'), level: "intermediate" },
+          { name: common('programs.aiSpecialist.foundation.skills.machineLearning'), level: "advanced" },
+          { name: common('programs.aiSpecialist.foundation.skills.dataProcessing'), level: "intermediate" },
+          { name: common('programs.aiSpecialist.foundation.skills.statisticalAnalysis'), level: "beginner" }
         ],
         courses: []
       },
       {
         id: "aiSpecialist_advanced",
-        name: "Advanced AI & Deep Learning",
+        name: common('programs.aiSpecialist.advanced.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.8, reviewCount: 178 },
         coursesRemaining: 12,
         totalCourses: 12,
         skills: [
-          { name: "Deep Learning", level: "advanced" },
-          { name: "Neural Networks", level: "advanced" },
-          { name: "Computer Vision", level: "intermediate" },
-          { name: "NLP", level: "advanced" }
+          { name: common('programs.aiSpecialist.advanced.skills.deepLearning'), level: "advanced" },
+          { name: common('programs.aiSpecialist.advanced.skills.neuralNetworks'), level: "advanced" },
+          { name: common('programs.aiSpecialist.advanced.skills.computerVision'), level: "intermediate" },
+          { name: common('programs.aiSpecialist.advanced.skills.nlp'), level: "advanced" }
         ],
         courses: []
       }
@@ -155,31 +155,31 @@ const getMockModulesForProgram = (skillKey: string): KnowledgeModule[] => {
     dataScientist: [
       {
         id: "dataScientist_foundation",
-        name: "Data Science & Analytics Foundation",
+        name: common('programs.dataScientist.foundation.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.8, reviewCount: 245 },
         coursesRemaining: 8,
         totalCourses: 8,
         skills: [
-          { name: "Python/R", level: "intermediate" },
-          { name: "Data Visualization", level: "advanced" },
-          { name: "Statistics", level: "intermediate" },
-          { name: "SQL", level: "beginner" }
+          { name: common('programs.dataScientist.foundation.skills.pythonR'), level: "intermediate" },
+          { name: common('programs.dataScientist.foundation.skills.dataVisualization'), level: "advanced" },
+          { name: common('programs.dataScientist.foundation.skills.statistics'), level: "intermediate" },
+          { name: common('programs.dataScientist.foundation.skills.sql'), level: "beginner" }
         ],
         courses: []
       },
       {
         id: "dataScientist_advanced",
-        name: "Advanced Data Science & Big Data",
+        name: common('programs.dataScientist.advanced.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.7, reviewCount: 167 },
         coursesRemaining: 10,
         totalCourses: 10,
         skills: [
-          { name: "Big Data Processing", level: "advanced" },
-          { name: "Predictive Modeling", level: "advanced" },
-          { name: "Data Engineering", level: "intermediate" },
-          { name: "Cloud Analytics", level: "advanced" }
+          { name: common('programs.dataScientist.advanced.skills.bigDataProcessing'), level: "advanced" },
+          { name: common('programs.dataScientist.advanced.skills.predictiveModeling'), level: "advanced" },
+          { name: common('programs.dataScientist.advanced.skills.dataEngineering'), level: "intermediate" },
+          { name: common('programs.dataScientist.advanced.skills.cloudAnalytics'), level: "advanced" }
         ],
         courses: []
       }
@@ -187,31 +187,31 @@ const getMockModulesForProgram = (skillKey: string): KnowledgeModule[] => {
     networkInfrastructure: [
       {
         id: "networkInfrastructure_foundation",
-        name: "Network Infrastructure Basics",
+        name: common('programs.networkInfrastructure.foundation.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.6, reviewCount: 112 },
         coursesRemaining: 6,
         totalCourses: 6,
         skills: [
-          { name: "Network Protocols", level: "intermediate" },
-          { name: "Router Configuration", level: "advanced" },
-          { name: "Network Troubleshooting", level: "intermediate" },
-          { name: "System Administration", level: "beginner" }
+          { name: common('programs.networkInfrastructure.foundation.skills.networkProtocols'), level: "intermediate" },
+          { name: common('programs.networkInfrastructure.foundation.skills.routerConfiguration'), level: "advanced" },
+          { name: common('programs.networkInfrastructure.foundation.skills.networkTroubleshooting'), level: "intermediate" },
+          { name: common('programs.networkInfrastructure.foundation.skills.systemAdministration'), level: "beginner" }
         ],
         courses: []
       },
       {
         id: "networkInfrastructure_advanced",
-        name: "Advanced Network Architecture",
+        name: common('programs.networkInfrastructure.advanced.name'),
         org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
         rating: { score: 4.4, reviewCount: 78 },
         coursesRemaining: 8,
         totalCourses: 8,
         skills: [
-          { name: "Cloud Networking", level: "advanced" },
-          { name: "Network Security", level: "advanced" },
-          { name: "Infrastructure Design", level: "intermediate" },
-          { name: "Performance Optimization", level: "advanced" }
+          { name: common('programs.networkInfrastructure.advanced.skills.cloudNetworking'), level: "advanced" },
+          { name: common('programs.networkInfrastructure.advanced.skills.networkSecurity'), level: "advanced" },
+          { name: common('programs.networkInfrastructure.advanced.skills.infrastructureDesign'), level: "intermediate" },
+          { name: common('programs.networkInfrastructure.advanced.skills.performanceOptimization'), level: "advanced" }
         ],
         courses: []
       }
@@ -228,7 +228,7 @@ export const createProgramModules = (program: ProgramCardProps, common: any): Kn
     skillKey = skillKey.split('_')[0];
   }
 
-  return getMockModulesForProgram(skillKey);
+  return getMockModulesForProgram(skillKey, common);
 };
 
 export const createProgramDetail = (program: ProgramCardProps, common: any, detailedDescription?: string): ProgramDetail => {

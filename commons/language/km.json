@@ -325,6 +325,128 @@
       "CNTC": "បច្ចេកវិទ្យាហិរញ្ញវត្ថុ - Fintech",
       "explore": "ស្វែងយល់លម្អិត"
     },
+    "programs": {
+      "networkSecurity": {
+        "foundation": {
+          "name": "មូលដ្ឋានគ្រឹះនៃសន្តិសុខអ៊ីនធឺណិត",
+          "skills": {
+            "networkSecurity": "សន្តិសុខបណ្តាញ",
+            "firewallConfiguration": "ការកំណត់រចនាសម្ព័ន្ធ Firewall",
+            "incidentResponse": "ការឆ្លើយតបឧប្បត្តិហេតុ",
+            "riskAssessment": "ការវាយតម្លៃហានិភ័យ"
+          }
+        },
+        "advanced": {
+          "name": "សន្តិសុខកម្រិតខ្ពស់ និងការធ្វើតេស្តការជ្រៀតចូល",
+          "skills": {
+            "penetrationTesting": "ការធ្វើតេស្តការជ្រៀតចូល",
+            "digitalForensics": "កោសល្យវិច្ច័យឌីជីថល",
+            "securityStandards": "ស្តង់ដាសន្តិសុខ",
+            "ethicalHacking": "ការលួចចូលដោយសីលធម៌"
+          }
+        }
+      },
+      "financialAnalyst": {
+        "foundation": {
+          "name": "ការវិភាគ និងការវាយតម្លៃហិរញ្ញវត្ថុ",
+          "skills": {
+            "financialStatementAnalysis": "ការវិភាគរបាយការណ៍ហិរញ្ញវត្ថុ",
+            "businessValuation": "ការវាយតម្លៃអាជីវកម្ម",
+            "excelModeling": "ការបង្កើតគំរូ Excel",
+            "marketAnalysis": "ការវិភាគទីផ្សារ"
+          }
+        },
+        "advanced": {
+          "name": "ការវិនិយោគកម្រិតខ្ពស់ និងការគ្រប់គ្រងហានិភ័យ",
+          "skills": {
+            "portfolioManagement": "ការគ្រប់គ្រងផលប័ត្រ",
+            "riskAssessment": "ការវាយតម្លៃហានិភ័យ",
+            "quantitativeAnalysis": "ការវិភាគបរិមាណ",
+            "financialModeling": "ការបង្កើតគំរូហិរញ្ញវត្ថុ"
+          }
+        }
+      },
+      "digitalStrategist": {
+        "foundation": {
+          "name": "មូលដ្ឋានគ្រឹះទីផ្សារឌីជីថល",
+          "skills": {
+            "mediaPlanning": "ការរៀបចំផែនការប្រព័ន្ធផ្សព្វផ្សាយ",
+            "customerAnalysis": "ការវិភាគអតិថិជន",
+            "contentStrategy": "យុទ្ធសាស្ត្រមាតិកា",
+            "seoSem": "SEO/SEM"
+          }
+        },
+        "advanced": {
+          "name": "យុទ្ធសាស្ត្រ និងការវិភាគឌីជីថលកម្រិតខ្ពស់",
+          "skills": {
+            "dataAnalytics": "ការវិភាគទិន្នន័យ",
+            "marketingAutomation": "ស្វ័យប្រវត្តិកម្មទីផ្សារ",
+            "performanceOptimization": "ការបង្កើនប្រសិទ្ធភាព",
+            "strategicPlanning": "ការរៀបចំផែនការយុទ្ធសាស្រ្ត"
+          }
+        }
+      },
+      "aiSpecialist": {
+        "foundation": {
+          "name": "មូលដ្ឋានគ្រឹះនៃ AI និងការរៀនរបស់ម៉ាស៊ីន",
+          "skills": {
+            "pythonProgramming": "ការសរសេរកម្មវិធី Python",
+            "machineLearning": "ការរៀនរបស់ម៉ាស៊ីន",
+            "dataProcessing": "ការประมวลผลข้อมูล",
+            "statisticalAnalysis": "ការវិភាគស្ថិតិ"
+          }
+        },
+        "advanced": {
+          "name": "AI កម្រិតខ្ពស់ និងការរៀនស៊ីជម្រៅ",
+          "skills": {
+            "deepLearning": "ការរៀនស៊ីជម្រៅ",
+            "neuralNetworks": "បណ្តាញណឺរ៉ូន",
+            "computerVision": "ចក្ខុវិស័យកុំព្យូទ័រ",
+            "nlp": "ការประมวลผลภาษาธรรมชาติ (NLP)"
+          }
+        }
+      },
+      "dataScientist": {
+        "foundation": {
+          "name": "មូលដ្ឋានគ្រឹះវិទ្យាសាស្ត្រ និងការវិភាគទិន្នន័យ",
+          "skills": {
+            "pythonR": "Python/R",
+            "dataVisualization": "ការបង្ហាញទិន្នន័យជា​រូបភាព",
+            "statistics": "ស្ថិតិ",
+            "sql": "SQL"
+          }
+        },
+        "advanced": {
+          "name": "វិទ្យាសាស្ត្រទិន្នន័យកម្រិតខ្ពស់ និងទិន្នន័យធំ",
+          "skills": {
+            "bigDataProcessing": "ការประมวลผลទិន្នន័យធំ",
+            "predictiveModeling": "ការสร้างគំរូព្យាករណ៍",
+            "dataEngineering": "វិស្វកម្មទិន្នន័យ",
+            "cloudAnalytics": "ការវិភាគលើ σύννεφο"
+          }
+        }
+      },
+      "networkInfrastructure": {
+        "foundation": {
+          "name": "មូលដ្ឋានគ្រឹះនៃហេដ្ឋារចនាសម្ព័ន្ធបណ្តាញ",
+          "skills": {
+            "networkProtocols": "ពិធីការបណ្តាញ",
+            "routerConfiguration": "ការកំណត់រចនាសម្ព័ន្ធរ៉ោតទ័រ",
+            "networkTroubleshooting": "ការដោះស្រាយបញ្ហាបណ្តាញ",
+            "systemAdministration": "ការគ្រប់គ្រងប្រព័ន្ធ"
+          }
+        },
+        "advanced": {
+          "name": "ស្ថាបត្យកម្មបណ្តាញកម្រិតខ្ពស់",
+          "skills": {
+            "cloudNetworking": "បណ្តាញ σύννεφο",
+            "networkSecurity": "សន្តិសុខបណ្តាញ",
+            "infrastructureDesign": "ការออกแบบโครงสร้างพื้นฐาน",
+            "performanceOptimization": "ការបង្កើនប្រសិទ្ធភាព"
+          }
+        }
+      }
+  },
     "empty": "មិនមានទិន្នន័យ!",
     "pricing": "តម្លៃ",
     "price-table": "តារាងតម្លៃទូទៅ",

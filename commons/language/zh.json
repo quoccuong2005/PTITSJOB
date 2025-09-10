@@ -324,12 +324,134 @@
       "KT-CLC": "会计",
       "CNTC": "金融科技 - Fintech",
       "explore": "详细了解"
+    },"programs": {
+      "networkSecurity": {
+        "foundation": {
+          "name": "网络安全基础",
+          "skills": {
+            "networkSecurity": "网络安全",
+            "firewallConfiguration": "防火墙配置",
+            "incidentResponse": "事件响应",
+            "riskAssessment": "风险评估"
+          }
+        },
+        "advanced": {
+          "name": "高级安全与渗透测试",
+          "skills": {
+            "penetrationTesting": "渗透测试",
+            "digitalForensics": "数字取证",
+            "securityStandards": "安全标准",
+            "ethicalHacking": "道德黑客"
+          }
+        }
+      },
+      "financialAnalyst": {
+        "foundation": {
+          "name": "财务分析与估值",
+          "skills": {
+            "financialStatementAnalysis": "财务报表分析",
+            "businessValuation": "商业估值",
+            "excelModeling": "Excel建模",
+            "marketAnalysis": "市场分析"
+          }
+        },
+        "advanced": {
+          "name": "高级投资与风险管理",
+          "skills": {
+            "portfolioManagement": "投资组合管理",
+            "riskAssessment": "风险评估",
+            "quantitativeAnalysis": "定量分析",
+            "financialModeling": "金融建模"
+          }
+        }
+      },
+      "digitalStrategist": {
+        "foundation": {
+          "name": "数字营销基础",
+          "skills": {
+            "mediaPlanning": "媒体策划",
+            "customerAnalysis": "客户分析",
+            "contentStrategy": "内容策略",
+            "seoSem": "SEO/SEM"
+          }
+        },
+        "advanced": {
+          "name": "高级数字战略与分析",
+          "skills": {
+            "dataAnalytics": "数据分析",
+            "marketingAutomation": "营销自动化",
+            "performanceOptimization": "性能优化",
+            "strategicPlanning": "战略规划"
+          }
+        }
+      },
+      "aiSpecialist": {
+        "foundation": {
+          "name": "人工智能与机器学习基础",
+          "skills": {
+            "pythonProgramming": "Python编程",
+            "machineLearning": "机器学习",
+            "dataProcessing": "数据处理",
+            "statisticalAnalysis": "统计分析"
+          }
+        },
+        "advanced": {
+          "name": "高级人工智能与深度学习",
+          "skills": {
+            "deepLearning": "深度学习",
+            "neuralNetworks": "神经网络",
+            "computerVision": "计算机视觉",
+            "nlp": "自然语言处理 (NLP)"
+          }
+        }
+      },
+      "dataScientist": {
+        "foundation": {
+          "name": "数据科学与分析基础",
+          "skills": {
+            "pythonR": "Python/R",
+            "dataVisualization": "数据可视化",
+            "statistics": "统计学",
+            "sql": "SQL"
+          }
+        },
+        "advanced": {
+          "name": "高级数据科学与大数据",
+          "skills": {
+            "bigDataProcessing": "大数据处理",
+            "predictiveModeling": "预测建模",
+            "dataEngineering": "数据工程",
+            "cloudAnalytics": "云分析"
+          }
+        }
+      },
+      "networkInfrastructure": {
+        "foundation": {
+          "name": "网络基础设施基础",
+          "skills": {
+            "networkProtocols": "网络协议",
+            "routerConfiguration": "路由器配置",
+            "networkTroubleshooting": "网络故障排除",
+            "systemAdministration": "系统管理"
+          }
+        },
+        "advanced": {
+          "name": "高级网络架构",
+          "skills": {
+            "cloudNetworking": "云网络",
+            "networkSecurity": "网络安全",
+            "infrastructureDesign": "基础设施设计",
+            "performanceOptimization": "性能优化"
+          }
+        }
+      }
     },
     "empty": "暂无数据！",
     "pricing": "价格",
     "price-table": "通用价格表",
     "search-result": "搜索结果"
   },
+  
   "home": {
     "customer": "客户",
     "satisfaction": "满意度",

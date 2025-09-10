@@ -35,7 +35,7 @@ const RelatedPrograms: React.FC<RelatedProgramsProps> = ({
       new Map(
         source
           .filter(p => getBaseId(p.id) !== baseCurrent)
-          .map(p => [getBaseId(p.id), p]) // key = baseId, value = first program
+          .map(p => [getBaseId(p.id), p]) 
       ).values()
     );
 

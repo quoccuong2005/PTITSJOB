@@ -325,6 +325,128 @@
       "CNTC": "Tecnología Financiera - Fintech",
       "explore": "Explorar Detalles"
     },
+    "programs": {
+      "networkSecurity": {
+        "foundation": {
+          "name": "Fundamentos de Ciberseguridad",
+          "skills": {
+            "networkSecurity": "Seguridad de Redes",
+            "firewallConfiguration": "Configuración de Firewall",
+            "incidentResponse": "Respuesta a Incidentes",
+            "riskAssessment": "Evaluación de Riesgos"
+          }
+        },
+        "advanced": {
+          "name": "Seguridad Avanzada y Pruebas de Penetración",
+          "skills": {
+            "penetrationTesting": "Pruebas de Penetración",
+            "digitalForensics": "Forense Digital",
+            "securityStandards": "Estándares de Seguridad",
+            "ethicalHacking": "Hacking Ético"
+          }
+        }
+      },
+      "financialAnalyst": {
+        "foundation": {
+          "name": "Análisis y Valoración Financiera",
+          "skills": {
+            "financialStatementAnalysis": "Análisis de Estados Financieros",
+            "businessValuation": "Valoración de Empresas",
+            "excelModeling": "Modelado en Excel",
+            "marketAnalysis": "Análisis de Mercado"
+          }
+        },
+        "advanced": {
+          "name": "Inversión Avanzada y Gestión de Riesgos",
+          "skills": {
+            "portfolioManagement": "Gestión de Carteras",
+            "riskAssessment": "Evaluación de Riesgos",
+            "quantitativeAnalysis": "Análisis Cuantitativo",
+            "financialModeling": "Modelado Financiero"
+          }
+        }
+      },
+      "digitalStrategist": {
+        "foundation": {
+          "name": "Fundamentos de Marketing Digital",
+          "skills": {
+            "mediaPlanning": "Planificación de Medios",
+            "customerAnalysis": "Análisis de Clientes",
+            "contentStrategy": "Estrategia de Contenido",
+            "seoSem": "SEO/SEM"
+          }
+        },
+        "advanced": {
+          "name": "Estrategia y Analítica Digital Avanzada",
+          "skills": {
+            "dataAnalytics": "Análisis de Datos",
+            "marketingAutomation": "Automatización del Marketing",
+            "performanceOptimization": "Optimización del Rendimiento",
+            "strategicPlanning": "Planificación Estratégica"
+          }
+        }
+      },
+      "aiSpecialist": {
+        "foundation": {
+          "name": "Fundamentos de IA y Aprendizaje Automático",
+          "skills": {
+            "pythonProgramming": "Programación en Python",
+            "machineLearning": "Aprendizaje Automático",
+            "dataProcessing": "Procesamiento de Datos",
+            "statisticalAnalysis": "Análisis Estadístico"
+          }
+        },
+        "advanced": {
+          "name": "IA Avanzada y Aprendizaje Profundo",
+          "skills": {
+            "deepLearning": "Aprendizaje Profundo",
+            "neuralNetworks": "Redes Neuronales",
+            "computerVision": "Visión por Computadora",
+            "nlp": "Procesamiento de Lenguaje Natural (PLN)"
+          }
+        }
+      },
+      "dataScientist": {
+        "foundation": {
+          "name": "Fundamentos de Ciencia y Análisis de Datos",
+          "skills": {
+            "pythonR": "Python/R",
+            "dataVisualization": "Visualización de Datos",
+            "statistics": "Estadísticas",
+            "sql": "SQL"
+          }
+        },
+        "advanced": {
+          "name": "Ciencia de Datos Avanzada y Big Data",
+          "skills": {
+            "bigDataProcessing": "Procesamiento de Big Data",
+            "predictiveModeling": "Modelado Predictivo",
+            "dataEngineering": "Ingeniería de Datos",
+            "cloudAnalytics": "Análisis en la Nube"
+          }
+        }
+      },
+      "networkInfrastructure": {
+        "foundation": {
+          "name": "Conceptos Básicos de Infraestructura de Red",
+          "skills": {
+            "networkProtocols": "Protocolos de Red",
+            "routerConfiguration": "Configuración de Enrutadores",
+            "networkTroubleshooting": "Solución de Problemas de Red",
+            "systemAdministration": "Administración de Sistemas"
+          }
+        },
+        "advanced": {
+          "name": "Arquitectura de Red Avanzada",
+          "skills": {
+            "cloudNetworking": "Redes en la Nube",
+            "networkSecurity": "Seguridad de Redes",
+            "infrastructureDesign": "Diseño de Infraestructura",
+            "performanceOptimization": "Optimización del Rendimiento"
+          }
+        }
+      }
+    },
     "empty": "¡No hay datos!",
     "pricing": "Precios",
     "price-table": "Tabla de precios generales",

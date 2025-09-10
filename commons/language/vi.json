@@ -334,7 +334,129 @@
 			"allPrograms": "Mục tiêu nghề nghiệp",
 			"allCourses": "Tất cả khóa học"
 		},
-		"programNotFound": "Chương trình không tồn tại. ID:"
+		"programNotFound": "Chương trình không tồn tại. ID:",
+		"programs": {
+		"networkSecurity": {
+			"foundation": {
+			"name": "Nền tảng An ninh mạng",
+			"skills": {
+				"networkSecurity": "An ninh mạng",
+				"firewallConfiguration": "Cấu hình tường lửa",
+				"incidentResponse": "Ứng phó sự cố",
+				"riskAssessment": "Đánh giá rủi ro"
+			}
+			},
+			"advanced": {
+			"name": "Bảo mật nâng cao & Kiểm thử xâm nhập",
+			"skills": {
+				"penetrationTesting": "Kiểm thử xâm nhập",
+				"digitalForensics": "Điều tra số",
+				"securityStandards": "Tiêu chuẩn bảo mật",
+				"ethicalHacking": "Hacking có đạo đức"
+			}
+			}
+		},
+		"financialAnalyst": {
+			"foundation": {
+			"name": "Phân tích & Định giá tài chính",
+			"skills": {
+				"financialStatementAnalysis": "Phân tích báo cáo tài chính",
+				"businessValuation": "Định giá doanh nghiệp",
+				"excelModeling": "Lập mô hình trên Excel",
+				"marketAnalysis": "Phân tích thị trường"
+			}
+			},
+			"advanced": {
+			"name": "Quản lý Rủi ro & Đầu tư Nâng cao",
+			"skills": {
+				"portfolioManagement": "Quản lý danh mục đầu tư",
+				"riskAssessment": "Đánh giá rủi ro",
+				"quantitativeAnalysis": "Phân tích định lượng",
+				"financialModeling": "Lập mô hình tài chính"
+			}
+			}
+		},
+		"digitalStrategist": {
+			"foundation": {
+			"name": "Nền tảng Tiếp thị Kỹ thuật số",
+			"skills": {
+				"mediaPlanning": "Lập kế hoạch truyền thông",
+				"customerAnalysis": "Phân tích khách hàng",
+				"contentStrategy": "Chiến lược nội dung",
+				"seoSem": "SEO/SEM"
+			}
+			},
+			"advanced": {
+			"name": "Chiến lược & Phân tích Kỹ thuật số Nâng cao",
+			"skills": {
+				"dataAnalytics": "Phân tích dữ liệu",
+				"marketingAutomation": "Tự động hóa tiếp thị",
+				"performanceOptimization": "Tối ưu hóa hiệu suất",
+				"strategicPlanning": "Lập kế hoạch chiến lược"
+			}
+			}
+		},
+		"aiSpecialist": {
+			"foundation": {
+			"name": "Nền tảng AI & Học máy",
+			"skills": {
+				"pythonProgramming": "Lập trình Python",
+				"machineLearning": "Học máy",
+				"dataProcessing": "Xử lý dữ liệu",
+				"statisticalAnalysis": "Phân tích thống kê"
+			}
+			},
+			"advanced": {
+			"name": "AI & Học sâu Nâng cao",
+			"skills": {
+				"deepLearning": "Học sâu",
+				"neuralNetworks": "Mạng nơ-ron",
+				"computerVision": "Thị giác máy tính",
+				"nlp": "Xử lý ngôn ngữ tự nhiên (NLP)"
+			}
+			}
+		},
+		"dataScientist": {
+			"foundation": {
+			"name": "Nền tảng Khoa học & Phân tích Dữ liệu",
+			"skills": {
+				"pythonR": "Python/R",
+				"dataVisualization": "Trực quan hóa dữ liệu",
+				"statistics": "Thống kê",
+				"sql": "SQL"
+			}
+			},
+			"advanced": {
+			"name": "Khoa học Dữ liệu Nâng cao & Dữ liệu lớn",
+			"skills": {
+				"bigDataProcessing": "Xử lý dữ liệu lớn",
+				"predictiveModeling": "Mô hình hóa dự đoán",
+				"dataEngineering": "Kỹ thuật dữ liệu",
+				"cloudAnalytics": "Phân tích trên nền tảng đám mây"
+			}
+			}
+		},
+		"networkInfrastructure": {
+			"foundation": {
+			"name": "Cơ bản về Hạ tầng mạng",
+			"skills": {
+				"networkProtocols": "Giao thức mạng",
+				"routerConfiguration": "Cấu hình bộ định tuyến",
+				"networkTroubleshooting": "Xử lý sự cố mạng",
+				"systemAdministration": "Quản trị hệ thống"
+			}
+			},
+			"advanced": {
+			"name": "Kiến trúc mạng Nâng cao",
+			"skills": {
+				"cloudNetworking": "Mạng đám mây",
+				"networkSecurity": "Bảo mật mạng",
+				"infrastructureDesign": "Thiết kế hạ tầng",
+				"performanceOptimization": "Tối ưu hóa hiệu suất"
+			}
+			}
+		}
+    }
 	},
 	"home": {
 		"customer": "Khách hàng",

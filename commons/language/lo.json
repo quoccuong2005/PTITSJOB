@@ -325,6 +325,128 @@
       "CNTC": "ເທກໂນໂລຢີການເງິນ - Fintech",
       "explore": "ຄົ້ນຫາລາຍລະອຽດ"
     },
+    "programs": {
+      "networkSecurity": {
+        "foundation": {
+          "name": "ພື້ນຖານຄວາມປອດໄພທາງໄຊເບີ",
+          "skills": {
+            "networkSecurity": "ຄວາມປອດໄພຂອງເຄືອຂ່າຍ",
+            "firewallConfiguration": "ການຕັ້ງຄ່າ Firewall",
+            "incidentResponse": "ການຕອບໂຕ້ເຫດການ",
+            "riskAssessment": "ການປະເມີນຄວາມສ່ຽງ"
+          }
+        },
+        "advanced": {
+          "name": "ຄວາມປອດໄພຂັ້ນສູງ ແລະ ການທົດສອບການເຈາະລະບົບ",
+          "skills": {
+            "penetrationTesting": "ການທົດສອບການເຈາະລະບົບ",
+            "digitalForensics": "ການກວດສອບຫຼັກຖານດິຈິຕອນ",
+            "securityStandards": "ມາດຕະຖານຄວາມປອດໄພ",
+            "ethicalHacking": "ການແຮັກຢ່າງມີຈັນຍາບັນ"
+          }
+        }
+      },
+      "financialAnalyst": {
+        "foundation": {
+          "name": "ການວິເຄາະ ແລະ ການປະເມີນມູນຄ່າທາງການເງິນ",
+          "skills": {
+            "financialStatementAnalysis": "ການວິເຄາະໃບລາຍງານການເງິນ",
+            "businessValuation": "ການປະເມີນມູນຄ່າທຸລະກິດ",
+            "excelModeling": "ການສ້າງແບບຈໍາລອງ Excel",
+            "marketAnalysis": "ການວິເຄາະຕະຫຼາດ"
+          }
+        },
+        "advanced": {
+          "name": "ການລົງທຶນຂັ້ນສູງ ແລະ ການຈັດການຄວາມສ່ຽງ",
+          "skills": {
+            "portfolioManagement": "ການຈັດການຫຼັກຊັບ",
+            "riskAssessment": "ການປະເມີນຄວາມສ່ຽງ",
+            "quantitativeAnalysis": "ການວິເຄາະเชิงປະລິມານ",
+            "financialModeling": "ການສ້າງແບບຈໍາລອງທາງການເງິນ"
+          }
+        }
+      },
+      "digitalStrategist": {
+        "foundation": {
+          "name": "ພື້ນຖານການຕະຫຼາດດິຈິຕອນ",
+          "skills": {
+            "mediaPlanning": "ການວາງແຜນສື່",
+            "customerAnalysis": "ການວິເຄາະຜູ້ບໍລິໂພກ",
+            "contentStrategy": "ຍຸດທະສາດເນື້ອຫາ",
+            "seoSem": "SEO/SEM"
+          }
+        },
+        "advanced": {
+          "name": "ຍຸດທະສາດ ແລະ ການວິເຄາະດິຈິຕອນຂັ້ນສູງ",
+          "skills": {
+            "dataAnalytics": "ການວິເຄາະຂໍ້ມູນ",
+            "marketingAutomation": "ການຕະຫຼາດອັດຕະໂນມັດ",
+            "performanceOptimization": "ການເພີ່ມປະສິດທິພາບ",
+            "strategicPlanning": "ການວາງແຜນຍຸດທະສາດ"
+          }
+        }
+      },
+      "aiSpecialist": {
+        "foundation": {
+          "name": "ພື້ນຖານ AI ແລະ ການຮຽນຮູ້ຂອງເຄື່ອງ",
+          "skills": {
+            "pythonProgramming": "ການຂຽນໂປຣແກຣມ Python",
+            "machineLearning": "ການຮຽນຮູ້ຂອງເຄື່ອງ",
+            "dataProcessing": "ການປະມວນຜົນຂໍ້ມູນ",
+            "statisticalAnalysis": "ການວິເຄາະສະຖິຕິ"
+          }
+        },
+        "advanced": {
+          "name": "AI ຂັ້ນສູງ ແລະ ການຮຽນຮູ້ເລິກ",
+          "skills": {
+            "deepLearning": "ການຮຽນຮູ້ເລິກ",
+            "neuralNetworks": "ເຄືອຂ່າຍປະສາດທຽມ",
+            "computerVision": "ການເບິ່ງເຫັນຂອງຄອມພິວເຕີ",
+            "nlp": "ການປະມວນຜົນພາສາທຳມະຊາດ (NLP)"
+          }
+        }
+      },
+      "dataScientist": {
+        "foundation": {
+          "name": "ພື້ນຖານວິທະຍາສາດຂໍ້ມູນ ແລະ ການວິເຄາະ",
+          "skills": {
+            "pythonR": "Python/R",
+            "dataVisualization": "ການສະແດງຂໍ້ມູນເປັນພາບ",
+            "statistics": "ສະຖິຕິ",
+            "sql": "SQL"
+          }
+        },
+        "advanced": {
+          "name": "ວິທະຍາສາດຂໍ້ມູນຂັ້ນສູງ ແລະ ຂໍ້ມູນຂະໜາດໃຫຍ່",
+          "skills": {
+            "bigDataProcessing": "ການປະມວນຜົນຂໍ້ມູນຂະໜາດໃຫຍ່",
+            "predictiveModeling": "ການສ້າງແບບຈໍາລອງການຄາດຄະເນ",
+            "dataEngineering": "ວິສະວະກຳຂໍ້ມູນ",
+            "cloudAnalytics": "ການວິເຄາະເທິງຄລາວ"
+          }
+        }
+      },
+      "networkInfrastructure": {
+        "foundation": {
+          "name": "ພື້ນຖານໂຄງລ່າງເຄືອຂ່າຍ",
+          "skills": {
+            "networkProtocols": "ໂປຣໂຕຄໍເຄືອຂ່າຍ",
+            "routerConfiguration": "ການຕັ້ງຄ່າເຣົາເຕີ",
+            "networkTroubleshooting": "ການແກ້ໄຂບັນຫາເຄືອຂ່າຍ",
+            "systemAdministration": "ການບໍລິຫານລະບົບ"
+          }
+        },
+        "advanced": {
+          "name": "ສະຖາປັດຕະຍະກຳເຄືອຂ່າຍຂັ້ນສູງ",
+          "skills": {
+            "cloudNetworking": "ເຄືອຂ່າຍຄລາວ",
+            "networkSecurity": "ຄວາມປອດໄພຂອງເຄືອຂ່າຍ",
+            "infrastructureDesign": "ການອອກແບບໂຄງລ່າງ",
+            "performanceOptimization": "ການເພີ່ມປະສິດທິພາບ"
+          }
+        }
+      }
+    },
     "empty": "ບໍ່ມີຂໍ້ມູນ!",
     "pricing": "ລາຄາ",
     "price-table": "ຕາຕະລາງລາຄາທົ່ວໄປ",

@@ -371,6 +371,128 @@
                 }
             }
         },
+        "programs": {
+      "networkSecurity": {
+        "foundation": {
+          "name": "Cybersecurity Fundamentals",
+          "skills": {
+            "networkSecurity": "Network Security",
+            "firewallConfiguration": "Firewall Configuration",
+            "incidentResponse": "Incident Response",
+            "riskAssessment": "Risk Assessment"
+          }
+        },
+        "advanced": {
+          "name": "Advanced Security & Penetration Testing",
+          "skills": {
+            "penetrationTesting": "Penetration Testing",
+            "digitalForensics": "Digital Forensics",
+            "securityStandards": "Security Standards",
+            "ethicalHacking": "Ethical Hacking"
+          }
+        }
+      },
+      "financialAnalyst": {
+        "foundation": {
+          "name": "Financial Analysis & Valuation",
+          "skills": {
+            "financialStatementAnalysis": "Financial Statement Analysis",
+            "businessValuation": "Business Valuation",
+            "excelModeling": "Excel Modeling",
+            "marketAnalysis": "Market Analysis"
+          }
+        },
+        "advanced": {
+          "name": "Advanced Investment & Risk Management",
+          "skills": {
+            "portfolioManagement": "Portfolio Management",
+            "riskAssessment": "Risk Assessment",
+            "quantitativeAnalysis": "Quantitative Analysis",
+            "financialModeling": "Financial Modeling"
+          }
+        }
+      },
+      "digitalStrategist": {
+        "foundation": {
+          "name": "Digital Marketing Foundation",
+          "skills": {
+            "mediaPlanning": "Media Planning",
+            "customerAnalysis": "Customer Analysis",
+            "contentStrategy": "Content Strategy",
+            "seoSem": "SEO/SEM"
+          }
+        },
+        "advanced": {
+          "name": "Advanced Digital Strategy & Analytics",
+          "skills": {
+            "dataAnalytics": "Data Analytics",
+            "marketingAutomation": "Marketing Automation",
+            "performanceOptimization": "Performance Optimization",
+            "strategicPlanning": "Strategic Planning"
+          }
+        }
+      },
+      "aiSpecialist": {
+        "foundation": {
+          "name": "AI & Machine Learning Fundamentals",
+          "skills": {
+            "pythonProgramming": "Python Programming",
+            "machineLearning": "Machine Learning",
+            "dataProcessing": "Data Processing",
+            "statisticalAnalysis": "Statistical Analysis"
+          }
+        },
+        "advanced": {
+          "name": "Advanced AI & Deep Learning",
+          "skills": {
+            "deepLearning": "Deep Learning",
+            "neuralNetworks": "Neural Networks",
+            "computerVision": "Computer Vision",
+            "nlp": "NLP"
+          }
+        }
+      },
+      "dataScientist": {
+        "foundation": {
+          "name": "Data Science & Analytics Foundation",
+          "skills": {
+            "pythonR": "Python/R",
+            "dataVisualization": "Data Visualization",
+            "statistics": "Statistics",
+            "sql": "SQL"
+          }
+        },
+        "advanced": {
+          "name": "Advanced Data Science & Big Data",
+          "skills": {
+            "bigDataProcessing": "Big Data Processing",
+            "predictiveModeling": "Predictive Modeling",
+            "dataEngineering": "Data Engineering",
+            "cloudAnalytics": "Cloud Analytics"
+          }
+        }
+      },
+      "networkInfrastructure": {
+        "foundation": {
+          "name": "Network Infrastructure Basics",
+          "skills": {
+            "networkProtocols": "Network Protocols",
+            "routerConfiguration": "Router Configuration",
+            "networkTroubleshooting": "Network Troubleshooting",
+            "systemAdministration": "System Administration"
+          }
+        },
+        "advanced": {
+          "name": "Advanced Network Architecture",
+          "skills": {
+            "cloudNetworking": "Cloud Networking",
+            "networkSecurity": "Network Security",
+            "infrastructureDesign": "Infrastructure Design",
+            "performanceOptimization": "Performance Optimization"
+          }
+        }
+      }
+    },
         "programNotFound": "Program not found. ID:"
     },
     "home": {

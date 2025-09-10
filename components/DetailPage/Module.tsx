@@ -25,7 +25,6 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
   const displayTitle = title || common('modules.title');
   const displayDescription = description || common('modules.description');
 
-  // Define default modules with translations
   const defaultModules: KnowledgeModule[] = [
     {
       id: "module_1",
