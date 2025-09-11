@@ -66,7 +66,7 @@ const CourseCard: React.FC<CourseCardProps & { onCardClick?: () => void }> = ({
     <CardWrapper className={className} style={style} onClick={onCardClick}>
       <CardContent>
         <CourseImageContainer>
-          <Image
+          <Image unoptimized
             src={imageUrl}
             alt={title}
             fill
