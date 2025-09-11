@@ -52,7 +52,7 @@ const DoiTac = () => {
     <div className="bg py-[40px]">
       <div className="container mx-auto">
         <h2 className="title">
-          {common("partners.title")} <span className="hight-light"><CountUp end={300}/>{common("partners.organizations")}</span> {common("partners.subtitle")}
+          {common("partners.title")} <span className="hight-light"><CountUp end={30}/>{common("partners.organizations")}</span> {common("partners.subtitle")}
         </h2>
         <Slider className="slide" {...settings}>
         {logos.map((logo, i) => (

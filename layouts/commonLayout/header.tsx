@@ -334,7 +334,7 @@ const Header = (props: IProps) => {
                 ref={menuRef}
               >
                 <div onClick={() => setShowMenu(!showMenu)}>
-                  <img src={"/images/icons/menu.svg"} alt={"image"} />
+                  <img src={"/images/icons/icon-menu.png"} style={{height: '24px'}} alt={"image"} />
                 </div>
                 {showMenu && (
                   <>

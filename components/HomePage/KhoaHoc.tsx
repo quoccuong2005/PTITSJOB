@@ -40,56 +40,57 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
     ],
   };
   useEffect(() => {
-    console.log(currentLang);
-    if(currentLang) (
-      async () => {
-        let res;
-        switch(type) {
-          case "chungchi":
-            res = getKhoaHocPhoBien(currentLang as ELang);
-            break;
-          case "phobien":
-            res = getKhoaHocPhoBien(currentLang as ELang);
-            break;
-          case "moinhat":
-            res = getKhoaHocMoiNhat(currentLang as ELang);
-            break;
-          case "mienphi":
-            res = getKhoaHocMienPhi(currentLang as ELang);
-            break;
-          case "nangcao":
-            res = getKhoaHocNangCao(currentLang as ELang);
-            break;
-          default: 
-            res = getKhoaHocPhoBien(currentLang as ELang);
-            break;
-        };
+  if (!currentLang) return;
 
-        try {
-          const response = await res;
-          const data = response.data.data;
-          if(!data) return;
-          const mapper: CourseCardProps[] = data.map(
-            item => {
-              return {
-                variant: "course",
-                org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-                id: item.id,
-                title: item.name,
-                href: item.course_url,
-                imageUrl: item.image_url,
-                durationMinutes: item.duration*60,
-                certificateType: item.topics.map(topic => topic.name).join(', '),
-                isAI: true
-              }
-            }
-          )
-          setListCourses(mapper);
-        } catch (err) {
-        }
+  const handler = setTimeout(() => {
+    (async () => {
+      console.log(currentLang);
+      let res;
+      switch (type) {
+        case "chungchi":
+        case "phobien":
+          res = getKhoaHocPhoBien(currentLang as ELang);
+          break;
+        case "moinhat":
+          res = getKhoaHocMoiNhat(currentLang as ELang);
+          break;
+        case "mienphi":
+          res = getKhoaHocMienPhi(currentLang as ELang);
+          break;
+        case "nangcao":
+          res = getKhoaHocNangCao(currentLang as ELang);
+          break;
+        default:
+          res = getKhoaHocPhoBien(currentLang as ELang);
+          break;
       }
-    )();
-  }, [currentLang]);
+
+      try {
+        const response = await res;
+        const data = response.data.data;
+        if (!data) return;
+
+        const mapper: CourseCardProps[] = data.map(item => ({
+          variant: "course",
+          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+          id: item.id,
+          title: item.name,
+          href: item.course_url,
+          imageUrl: item.image_url,
+          durationMinutes: item.duration * 60,
+          certificateType: item.topics.map(topic => topic.name).join(", "),
+          isAI: true,
+        }));
+
+        setListCourses(mapper);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, 100);
+
+  return () => clearTimeout(handler);
+}, [currentLang]);
 
   const coursesToDisplay = courses?.length ? courses : listCourses;
 

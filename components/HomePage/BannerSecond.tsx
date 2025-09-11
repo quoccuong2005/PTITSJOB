@@ -10,11 +10,11 @@ const BannerSecond = () => {
   
   return (
     <BannerWrappper>
-      <div className="bg py-[20px] bg-none lg:bg-[url(/images/home/bg-second.png)]">
+      <div className="bg py-[20px] bg-none lg:bg-[url(/images/home/bg-second.jpeg)]">
         <div className="container mx-auto h-full">
           <div className="banner-content h-full">
             <h2 className="title">
-              <p className="w-[115px] inline-block"><CountUp end={1500} enableScrollSpy scrollSpyOnce/></p>{common("banner.courses_title")}
+              <p className="w-[55px] inline-block"><CountUp end={50} enableScrollSpy scrollSpyOnce/></p>{common("banner.courses_title")}
             </h2>
             <p className="description">
               {common("banner.description")}

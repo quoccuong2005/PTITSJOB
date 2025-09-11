@@ -172,7 +172,6 @@ const TabButton = styled.button<{ active: boolean }>`
 `;
 
 const CardsContainer = styled.div`
-  height: 580px;
   overflow-x: auto;
   flex-wrap: nowrap;
 

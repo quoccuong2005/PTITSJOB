@@ -43,5 +43,8 @@ export const BannerWrappper = styled.div`
     height: 436px;
     display: flex;
     align-items: center;
+    img {
+      border-radius: 16px;
+    }
   }
 `;

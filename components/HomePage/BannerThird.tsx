@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import AISButton from "../AISButton";
 import { BannerWrappper } from "./bannerStyle";
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
@@ -13,7 +12,7 @@ const BannerThird = () => {
         <div className="flex flex-col lg:flex-row gap-[60px] py-[32px]">
           <div className="w-[100%] lg:w-[50%]">
             <div className="bn-image">
-              <img src="/images/home/img-banner3.png" />
+              <img src="/images/home/img-banner3.jpeg" />
             </div>
           </div>
           <div className="w-[100%] lg:w-[50%]">
