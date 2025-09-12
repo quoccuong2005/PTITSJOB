@@ -66,7 +66,7 @@ const MucTieuNgheNghiep: React.FC<MucTieuNgheNghiepProps> = ({
               ))}
             </TabsContainer>
             
-            <CardsContainer className="flex flex-col md:flex-row gap-[20px]">
+            <CardsContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:grid-cols-auto gap-[20px]">
               {filteredPrograms.map((program) => (
                 <div
                   key={program.id}

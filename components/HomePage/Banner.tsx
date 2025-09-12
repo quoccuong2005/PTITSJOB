@@ -51,10 +51,10 @@ const Banner = () => {
   
   return (
     <BannerWrappper>
-      <div className="bg-banner">
+      <div className="bg-banner h-[300px] md:h-[420px]">
         <div className="flex justify-between items-center container mx-auto h-[100%] bg-[#fef1f0] md:bg-[unset]">
           <div className="banner-content">
-            <div className="show-date">
+            <div className="show-date text-[16px] md:text-[18px]">
               <svg
                 width="32"
                 height="33"
@@ -89,7 +89,7 @@ const Banner = () => {
               </svg>
               <span>{currentDate}</span>
             </div>
-            <div className={`${font.className} title text-[50px] md:text-[130px] fw-[700] md:fw-[900]`}>UNI-Learn</div>
+            <div className={`${font.className} title text-[50px] md:text-[130px] fw-[700] md:fw-[900]`}>UniVERSE</div>
             <div className={`${font2.className} description text-[20px] md:text-[35px] fw-[400] md:fw-[400]`}>
               <ReactTyped
                 strings={[
@@ -121,21 +121,17 @@ const BannerWrappper = styled.div`
   .title {
     line-height: 120%;
     letter-spacing: 3%;
-    text-transform: uppercase;
     color: var(--primary-color);
     margin-top: 32px;
   }
 
   .show-date {
-    width: 283;
-    height: 48;
     gap: 10px;
     border-radius: 24px;
     padding: 8px 20px 8px 10px;
     background-color: white;
     width: max-content;
     font-weight: 600;
-    font-size: 18px;
     line-height: 100%;
     letter-spacing: 3%;
     display: flex;
@@ -162,7 +158,6 @@ const BannerWrappper = styled.div`
     background-position: right;
     background-repeat: no-repeat;
     background-color: #fef1f0;
-    height: 420px;
     background-image: url(/images/home/banner-ptit.jpg);
   }
 `;

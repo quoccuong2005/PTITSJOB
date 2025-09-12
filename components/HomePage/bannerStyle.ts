@@ -36,7 +36,6 @@ export const BannerWrappper = styled.div`
 
   .bn-image {
     background-image: url(/images/home/ptit-logo.png);
-    padding-left: 80px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: left;

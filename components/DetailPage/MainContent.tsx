@@ -16,7 +16,7 @@ const MainContent: React.FC<MainContentProps> = ({ program }) => {
   return (
     <MainContentWrapper>
       <div className="bg-main">
-        <div className="container mx-auto flex items-center gap-[80px] py-[40px]">
+        <div className="container mx-auto flex items-center gap-[80px] py-[40px] lg:bg-[url(/images/home/imgBanner.png)]">
           <div className="content-left">
             <h1 className="program-title">{program.title}</h1>
             <p className="program-description">{program.description}</p>
@@ -48,7 +48,6 @@ const MainContentWrapper = styled.div`
   }
 
   .container {
-    background-image: url(/images/home/imgBanner.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
@@ -164,12 +163,6 @@ const MainContentWrapper = styled.div`
     .image-section {
       
     }
-
-    .image-program-overlay {
-      width: 400px;
-      height: 400px;
-      top: 10%;
-    }
   }
 
   @media (max-width: 768px) {
@@ -187,9 +180,7 @@ const MainContentWrapper = styled.div`
 
     .image-program-overlay {
       width: 350px;
-      height: 350px;
       top: 5%;
-      padding: 20px;
     }
 
     .skill-tag {

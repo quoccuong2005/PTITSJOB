@@ -11,7 +11,7 @@ const Footer = () => {
     <FooterWrapper>
       <div className="footer-backgroud">
         <div className="container mx-auto py-[40px]">
-          <section className="brand-info flex flex-col lg:flex-row gap-[20px] justify-between items-center">
+          <section className="brand-info flex flex-col lg:flex-row gap-[20px] justify-between">
             <div className="flex flex-row items-center gap-[15px]">
               <img
                 alt="logo-footer"
@@ -19,8 +19,8 @@ const Footer = () => {
                 height={64}
               />
               <div className="flex flex-col">
-                <h2 className="name-dv">{common("name_org") as string}</h2>
-                <h2 className="name-main">{common("name_site") as string}</h2>
+                <h2 className="name-dv text-[14px] md:text-[18px]">{common("name_org") as string}</h2>
+                <h2 className="name-main text-[18px] md:text-[24px]">{common("name_site") as string}</h2>
               </div>
             </div>
 
@@ -73,11 +73,11 @@ const Footer = () => {
           <AISHozionalDivider space={40} />
           <section className="contact-info">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <AISContact label={common("foot.phoneNumber")}>
+              {/* <AISContact label={common("foot.phoneNumber")}>
                 <AISLink href="tel:02437562186" style={{ fontSize: "16px" }}>
                   024 3756 2186
                 </AISLink>
-              </AISContact>
+              </AISContact> */}
               <AISContact label={common("foot.headquarters")}>
                 <AISLink
                   href="https://www.google.com/maps/place/Vi%E1%BB%87n+Khoa+h%E1%BB%8Dc+K%E1%BB%B9+thu%E1%BA%ADt+B%C6%B0u+%C4%91i%E1%BB%87n,+122+Ho%C3%A0ng+Qu%E1%BB%91c+Vi%E1%BB%87t,+C%E1%BB%95+Nhu%E1%BA%BF,+C%E1%BA%A7u+Gi%E1%BA%A5y,+H%C3%A0+N%E1%BB%99i,+Vi%E1%BB%87t+Nam/@21.0463573,105.791915,203m/data=!3m1!1e3!4m15!1m8!3m7!1s0x3135ab303fd3ac4f:0x8c5d7b3e90ab9a3a!2zMTIyIEhvw6BuZyBRdeG7kWMgVmnhu4d0LCBD4buVIE5odeG6vywgQ-G6p3UgR2nhuqV5LCBIw6AgTuG7mWkgMTEzMDAsIFZp4buHdCBOYW0!3b1!8m2!3d21.04647!4d105.792306!16s%2Fg%2F11sqhf15s4!3m5!1s0x3135ab303c8fa8dd:0xa221c6abb139912a!8m2!3d21.0465794!4d105.7922477!16s%2Fg%2F11bvtc44rk?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D"
@@ -96,10 +96,10 @@ const Footer = () => {
               </AISContact>
               <AISContact label={common("foot.emailContactus")}>
                 <AISLink
-                  href="mailto:ctsv@ptit.edu.vn"
+                  href="mailto:ript@ptit.edu.vn"
                   style={{ fontSize: "16px" }}
                 >
-                  ctsv@ptit.edu.vn
+                  ript@ptit.edu.vn
                 </AISLink>
               </AISContact>
               <AISContact label={common("foot.trainingHN")}>
@@ -200,14 +200,12 @@ const Footer = () => {
 
 const FooterWrapper = styled.div`
   .name-dv {
-    font-size: 18px;
     font-weight: 600;
     color: white;
   }
   
   .name-main {
     color: white;
-    font-size: 24px;
     font-weight: 500;
   }
   .footer-backgroud {
@@ -227,7 +225,7 @@ const FooterWrapper = styled.div`
     background-color: #941a1a;
     font-weight: 300;
     font-size: 14px;
-    line-height: 100%;
+    line-height: 140%;
     letter-spacing: 6%;
     text-align: center;
     color: #ffb6b6;

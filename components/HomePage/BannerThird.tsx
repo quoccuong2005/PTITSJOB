@@ -11,7 +11,7 @@ const BannerThird = () => {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row gap-[60px] py-[32px]">
           <div className="w-[100%] lg:w-[50%]">
-            <div className="bn-image">
+            <div className="bn-image md:pl-[80px]">
               <img src="/images/home/img-banner3.jpeg" />
             </div>
           </div>

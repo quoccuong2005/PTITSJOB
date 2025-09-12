@@ -110,7 +110,7 @@ const Modules: React.FC<KnowledgeModulesProps> = ({
     };
 
     return (
-      <ModuleSection>
+      <ModuleSection className='flex flex-col md:flex-row'>
         <MainModuleCard onClick={() => onModuleClick?.(module.id)}>
           <ModuleHeader>
             <OrgBadge>
@@ -275,9 +275,7 @@ const SectionDescription = styled.p`
 `;
 
 const ModuleSection = styled.div`
-  display: flex;
   gap: 40px;
-  align-items: flex-start;
   padding: 20px;
   background-color: #F6FAFF;
   border-radius: 16px;

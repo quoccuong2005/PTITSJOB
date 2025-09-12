@@ -27,7 +27,7 @@ const TatCaKhoaHocPage = () => {
         lang: currentLang as ELang,
         q: String(search),
         page: page || 1,
-        limit: 3,
+        limit: 8,
       });
       const data = response.data.data;
       const pagi = response.data.pagination;
