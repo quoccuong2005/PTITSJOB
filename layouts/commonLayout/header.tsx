@@ -362,44 +362,44 @@ const Header = (props: IProps) => {
             </Link>
 
             <div className="flex shrink-0">
-              <div className="relative" ref={languageRef}>
-              <div
-                className="flex items-center cursor-pointer"
-                onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
-              >
-                <img
-                  className="h-[28px] mr-4"
-                  src={currentLang.flag}
-                  alt={currentLang.label}
-                />
-              </div>
-
-              {showLanguageDropdown && (
-                <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-md overflow-hidden z-50 min-w-[160px]">
-                  {allLanguages.map((lang) => (
-                    <div
-                      key={lang.code}
-                      className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
-                        language === lang.code ? "bg-gray-50" : ""
-                      }`}
-                      onClick={() => {
-                        handleChangeLanguage(lang.code);
-                        setShowLanguageDropdown(false);
-                      }}
-                    >
-                      <img
-                        className="h-[20px] w-[30px] mr-3"
-                        src={lang.flag}
-                        alt={lang.label}
-                      />
-                      <span className="text-gray-800 text-sm">
-                        {lang.label}
-                      </span>
-                    </div>
-                  ))}
+              {/* <div className="relative" ref={languageRef}>
+                <div
+                  className="flex items-center cursor-pointer"
+                  onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+                >
+                  <img
+                    className="h-[28px] mr-4"
+                    src={currentLang.flag}
+                    alt={currentLang.label}
+                  />
                 </div>
-              )}
-            </div>
+
+                {showLanguageDropdown && (
+                  <div className="absolute top-full right-0 mt-2 bg-white shadow-lg rounded-md overflow-hidden z-50 min-w-[160px]">
+                    {allLanguages.map((lang) => (
+                      <div
+                        key={lang.code}
+                        className={`flex items-center px-4 py-3 cursor-pointer hover:bg-gray-100 ${
+                          language === lang.code ? "bg-gray-50" : ""
+                        }`}
+                        onClick={() => {
+                          handleChangeLanguage(lang.code);
+                          setShowLanguageDropdown(false);
+                        }}
+                      >
+                        <img
+                          className="h-[20px] w-[30px] mr-3"
+                          src={lang.flag}
+                          alt={lang.label}
+                        />
+                        <span className="text-gray-800 text-sm">
+                          {lang.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div> */}
 
               <div
                 className="flex items-center relative shrink-0 mr-[8px]"
