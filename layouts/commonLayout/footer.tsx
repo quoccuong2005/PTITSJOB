@@ -24,7 +24,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-[12px]">
+            <div className="hidden md:flex items-center gap-[12px]">
               <SocialIcon href="https://www.facebook.com/HocvienPTIT">
                 <svg
                   width="9"
