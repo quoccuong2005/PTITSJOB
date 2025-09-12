@@ -6,6 +6,7 @@ import { CourseProgramCardProps, CourseCardProps, ProgramCardProps, CourseStatus
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 
 const formatDuration = (minutes: number): string => {
+  console.log(minutes);
   const [common] = useCommonTranslation();
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
@@ -104,7 +105,7 @@ const CourseCard: React.FC<CourseCardProps & { onCardClick?: () => void }> = ({
                 </StatusLabel>
               )}
             </MetaRow>
-          )}
+          ) || ''}
 
           {status === "in_progress" ? (
             showProgress && progress && (

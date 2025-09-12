@@ -314,21 +314,21 @@ const NoResultsSection = styled.div`
 
 const CoursesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 295px);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
   margin-bottom: 40px;
   justify-content: center;
 
   @media (max-width: 1280px) {
-    grid-template-columns: repeat(3, 295px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   @media (max-width: 960px) {
-    grid-template-columns: repeat(2, 295px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   @media (max-width: 640px) {
-    grid-template-columns: 295px;
+    grid-template-columns: 1fr;
   }
 `;
 

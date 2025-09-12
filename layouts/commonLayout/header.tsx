@@ -112,28 +112,28 @@ const Header = (props: IProps) => {
   {
     id: 1,
     ten: common('courses.title'),
-    link: "/",
+    link: "/tat-ca-khoa-hoc",
     sangTrangMoi: false,
     trangCon: []
   },
   {
     id: 2,
     ten: common('training.title'),
-    link: "/gioi-thieu",
+    link: "https://daotao.ptit.edu.vn/ctdt/dai-hoc/",
     sangTrangMoi: false,
     trangCon: []
   },
   {
     id: 3,
     ten: common('career.title'),
-    link: "/tin-tuc",
+    link: "/muc-tieu-nghe-nghiep",
     sangTrangMoi: false,
     trangCon: []
   },
   {
     id: 4,
     ten: common('pages.allCourses.title'),
-    link: "/tin-tuc",
+    link: "/tat-ca-khoa-hoc",
     sangTrangMoi: false,
     trangCon: []
   },
@@ -434,6 +434,7 @@ const Header = (props: IProps) => {
                                       router.push(value?.link);
                                     }
                                   }
+                                  setShowMenu(false);
                                 }}
                                 className={` mr-[24px] mb-[24px] last-of-type:mr-0 text-nav pt-2 cursor-pointer  ${
                                   value?.link
