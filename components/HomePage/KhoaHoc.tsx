@@ -86,7 +86,14 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
           })
         }));
 
-        setListCourses(mapper);
+        console.log(mapper);
+
+        const reordered = [
+          ...mapper.filter(item => item.id == '32'),
+          ...mapper.filter(item => item.id != '32'),
+        ];
+
+        setListCourses(reordered);
       } catch (err) {
         console.error(err);
       }
