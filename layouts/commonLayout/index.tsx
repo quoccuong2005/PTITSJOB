@@ -5,6 +5,7 @@ import ScrollTopButton from "./components/ScrollTopButton";
 import Footer from "./footer";
 import Header from "./header";
 import Head from "next/head";
+import Ami from "../../components/Ami";
 
 const CommonLayout = ({ children }: any) => {
 	const [language, setLanguage] = useState<string>();
@@ -61,6 +62,7 @@ const CommonLayout = ({ children }: any) => {
 				<Footer />
 				<ScrollTopButton />
 			</div>
+      <Ami/>
 		</>
 
 	);
