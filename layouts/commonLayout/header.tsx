@@ -202,15 +202,15 @@ const Header = (props: IProps) => {
               }
             >
               <AISLink
-                href={"mailto:ript@ptit.edu.vn"}
+                href={"mailto:universe@ptit.edu.vn"}
                 style={{ color: "white", textDecoration: "none" }}
               >
-                ript@ptit.edu.vn
+                universe@ptit.edu.vn
               </AISLink>
             </TextIcon>
-            <div className="relative" ref={languageRef}>
+            <div className="relative w-[120px]" ref={languageRef}>
               <div
-                className="flex items-center cursor-pointer"
+                className="flex justify-end items-center cursor-pointer"
                 onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
               >
                 <img

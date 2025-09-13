@@ -22,33 +22,34 @@ const Banner = () => {
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
-    const today = new Date();
-    
-    const currentLang = i18n.language;
-    
-    const dayOptions: Intl.DateTimeFormatOptions = {
-      weekday: 'long'
-    };
-    
-    const dayName = today.toLocaleDateString(currentLang, dayOptions);
-    
-    const hourOptions: Intl.DateTimeFormatOptions = {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false
-    };
-    const timeString = today.toLocaleTimeString(currentLang, hourOptions);
-    
-    const day = today.getDate().toString().padStart(2, '0');
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const year = today.getFullYear();
-    const dateString = `${day}/${month}/${year}`;
+    const updateDateTime = () => {
+      const today = new Date();
+      const currentLang = i18n.language;
 
-    const formattedDate = `${dayName}, ${timeString} ${dateString}`;
+      const dayOptions: Intl.DateTimeFormatOptions = { weekday: "long" };
+      const dayName = today.toLocaleDateString(currentLang, dayOptions);
 
-    setCurrentDate(formattedDate);
-  }, [i18n.language]); 
-  
+      const hourOptions: Intl.DateTimeFormatOptions = {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      };
+      const timeString = today.toLocaleTimeString(currentLang, hourOptions);
+
+      const day = today.getDate().toString().padStart(2, "0");
+      const month = (today.getMonth() + 1).toString().padStart(2, "0");
+      const year = today.getFullYear();
+      const dateString = `${day}/${month}/${year}`;
+
+      const formattedDate = `${dayName}, ${timeString} ${dateString}`;
+      setCurrentDate(formattedDate);
+    };
+
+    updateDateTime();
+    const interval = setInterval(updateDateTime, 1000);
+    return () => clearInterval(interval);
+  }, [i18n.language]);
+    
   return (
     <BannerWrappper>
       <div className="bg-banner h-[300px] md:h-[420px]">

@@ -96,10 +96,10 @@ const Footer = () => {
               </AISContact>
               <AISContact label={common("foot.emailContactus")}>
                 <AISLink
-                  href="mailto:ript@ptit.edu.vn"
+                  href="mailto:universe@ptit.edu.vn"
                   style={{ fontSize: "16px" }}
                 >
-                  ript@ptit.edu.vn
+                  universe@ptit.edu.vn
                 </AISLink>
               </AISContact>
               <AISContact label={common("foot.trainingHN")}>

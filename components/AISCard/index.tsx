@@ -6,7 +6,6 @@ import { CourseProgramCardProps, CourseCardProps, ProgramCardProps, CourseStatus
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 
 const formatDuration = (minutes: number): string => {
-  console.log(minutes);
   const [common] = useCommonTranslation();
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;

@@ -9,20 +9,17 @@ const CountUp = dynamic(() => import("react-countup"), { ssr: false });
 const DoiTac = () => {
   const [common] = useCommonTranslation();
   const logos = [
-    "/images/logo/abf51ba6a63c9a93bb6c88a984faeab9-3.png",
-    "/images/logo/abf51ba6a63c9a93bb6c88a984faeab9.png",
-    "/images/logo/Arm_Holdings-Logo.wine-1.png",
-    "/images/logo/Ericsson-logo-1.png",
-    "/images/logo/microsoft.png",
-    "/images/logo/Naver.png",
-    "/images/logo/qualcomm.png",
-    "/images/logo/VMO_Logo_Positive--e1727270372975.webp",
-    "/images/logo/arizona-state-university-logo-vertical.png",
-    "/images/logo/college-of-staten-island-logo-png_seeklogo-511032.png",
-    "/images/logo/cropped-logo_reseau_Polytech.png",
-    "/images/logo/logo-lg-100-44.png",
-    "/images/logo/nokia-refreshed-logo-1_1.jpg",
-    "/images/logo/s5e04176fbbfa3.png"
+    "/images/doitac/logo1.png",
+    "/images/doitac/logo2.png",
+    "/images/doitac/logo3.png",
+    "/images/doitac/logo4.png",
+    "/images/doitac/logo5.png",
+    "/images/doitac/logo6.png",
+    "/images/doitac/logo7.png",
+    "/images/doitac/logo8.png",
+    "/images/doitac/logo9.png",
+    "/images/doitac/logo10.png",
+    "/images/doitac/logo11.png"
   ];
 
   const settings = {
@@ -52,7 +49,7 @@ const DoiTac = () => {
     <div className="bg py-[40px]">
       <div className="container mx-auto">
         <h2 className="title">
-          {common("partners.title")} <span className="hight-light"><CountUp end={30}/>{common("partners.organizations")}</span> {common("partners.subtitle")}
+          {common("partners.title")} <span className="hight-light"><CountUp end={10}/>{common("partners.organizations")}</span> {common("partners.subtitle")}
         </h2>
         <Slider className="slide" {...settings}>
         {logos.map((logo, i) => (
@@ -71,6 +68,7 @@ const DoiTacWrapper = styled.div`
   .logo {
     height: 80px;
     object-fit: contain;
+    max-width: 120px;
   }
 
   .slick-slider {
