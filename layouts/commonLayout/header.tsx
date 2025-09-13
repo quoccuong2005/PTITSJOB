@@ -82,7 +82,7 @@ const Header = (props: IProps) => {
     }
     if (languageNode) {
       if (!languageNode.contains(target)) {
-        setShowLanguageDropdown(false);
+        //
       }
     }
     if (discoverNode) {
@@ -362,7 +362,7 @@ const Header = (props: IProps) => {
             </Link>
 
             <div className="flex shrink-0">
-              {/* <div className="relative" ref={languageRef}>
+              <div className="relative" ref={languageRef}>
                 <div
                   className="flex items-center cursor-pointer"
                   onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
@@ -399,7 +399,7 @@ const Header = (props: IProps) => {
                     ))}
                   </div>
                 )}
-              </div> */}
+              </div>
 
               <div
                 className="flex items-center relative shrink-0 mr-[8px]"
