@@ -32,6 +32,7 @@ export interface CourseCardProps extends BaseCardProps {
   status?: CourseStatus;
   progress?: CourseProgress;
   isAI?: boolean;
+  tags?: string[];
 }
 
 

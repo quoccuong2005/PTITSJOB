@@ -16,6 +16,7 @@ const HomePage = () => {
 		<DoiTac/>
 		<div className="py-[40px]">
 			<KhoaHoc type="chungchi"
+				autoplay={false}
 				title={common("courses.title")}
 				description={common("courses.description")}
 				buttonText={common("courses.button")}

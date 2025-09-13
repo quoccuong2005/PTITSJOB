@@ -56,6 +56,7 @@ const CourseCard: React.FC<CourseCardProps & { onCardClick?: () => void }> = ({
   status = "not_started",
   progress,
   isAI = false,
+  tags,
   className = "",
   style,
   onCardClick,
@@ -76,11 +77,13 @@ const CourseCard: React.FC<CourseCardProps & { onCardClick?: () => void }> = ({
               target.style.display = "none";
             }}
           />
-          {isAI && (
-            <AITag>
-              <span>AI</span>
-              <AIIcon />
-            </AITag>
+          {tags?.length && (
+            tags.map(item => {
+              return <AITag>
+                <span>{item}</span>
+                <AIIcon />
+              </AITag>
+            })
           )}
         </CourseImageContainer>        
         

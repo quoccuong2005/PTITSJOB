@@ -45,6 +45,9 @@ const TatCaKhoaHocPage = () => {
           durationMinutes: item.duration * 60,
           certificateType: item.topics.map((topic) => topic.name).join(", "),
           isAI: true,
+          tags: item?.tags?.map(item => {
+            return item.name
+          })
         };
       });
       setCourses(mapper);

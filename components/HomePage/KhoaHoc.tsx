@@ -15,13 +15,14 @@ interface KhoaHocProps {
   description?: string;
   buttonText?: string;
   courses?: CourseCardProps[];
-  type?: "chungchi" | "phobien" | "moinhat" | "mienphi" | "nangcao"
+  type?: "chungchi" | "phobien" | "moinhat" | "mienphi" | "nangcao",
+  autoplay?: boolean
 }
 
 const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
   const sliderRef = useRef<Slider | null>(null);
   const router = useRouter();
-  const {title, description, buttonText, courses, type} = props;
+  const {title, description, buttonText, courses, type, autoplay=true} = props;
   const [listCourses, setListCourses] = useState<CourseCardProps[]>([]);
   const { i18n } = useTranslation();
   const currentLang = i18n.language;
@@ -31,7 +32,7 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: true,        
+    autoplay: autoplay,        
     autoplaySpeed: 2000, 
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 3 } },
@@ -80,6 +81,9 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
           durationMinutes: item.duration * 60,
           certificateType: item.topics.map(topic => topic.name).join(", "),
           isAI: true,
+          tags: item?.tags?.map(item => {
+            return item.name
+          })
         }));
 
         setListCourses(mapper);
