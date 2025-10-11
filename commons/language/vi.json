@@ -3,7 +3,7 @@
 		"name_org": "Học viện Công nghệ Bưu chính Viễn thông",
 		"name_site": "NỀN TẢNG ĐẠI HỌC SỐ",
 		"hour": "giờ",
-    "minute": "phút",
+		"minute": "phút",
 		"login": "Đăng nhập",
 		"home": "Trang chủ",
 		"gioi-thieu": "Giới thiệu",
@@ -29,21 +29,21 @@
 		"language_khmer": "Tiếng Khmer",
 		"language_chinese": "Tiếng Trung",
 		"popularCourses": {
-			"title": "Khoá học phổ biến",
-			"description": "Khám phá các khoá học phổ biến của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"title": "Tích hợp việc làm từ TopCV",
+			"description": "Lắng nghe nhu cầu của bạn và gửi đến bạn những việc làm phù hợp đến từ TopCV",
 			"button": "Khám phá tất cả khoá học"
 		},
 		"latestCourses": {
-			"title": "Khoá học mới nhất",
-			"description": "Khám phá các khoá học mới nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"title": "Top ngành nổi bật",
+			"description": "Khám phá các khóa học mới nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
 			"button": "Khám phá tất cả khoá học"
 		},
 		"freeCourses": {
-			"title": "Khoá học miễn phí",
-			"description": "Khám phá các khoá học miễn phí của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"title": "Tin tức việc làm",
+			"description": "Điểm danh các tin tức đáng chú ý",
 			"button": "Khám phá tất cả khoá học"
 		},
-		"advancedCourses": {		
+		"advancedCourses": {
 			"title": "Khoá học nâng cao",
 			"description": "Khám phá các khoá học nâng cao của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
 			"button": "Khám phá tất cả khoá học"
@@ -65,8 +65,8 @@
 			"description": "Khoá học được xây dựng dựa trên nhu cầu thực tế, giúp sinh viên rèn luyện kỹ năng chuyên môn lẫn kỹ năng mềm, mở rộng tư duy và định hướng nghề nghiệp vững chắc."
 		},
 		"training": {
-			"title": "Chương trình đào tạo",
-			"subtitle": "Khám phá các chương trình đào tạo phổ biến nhất của chúng tôi"
+			"title": "Doanh nghiệp tiêu biểu",
+			"subtitle": "Số lượng lớn doanh nghiệp tiêu biểu đang tìm việc trên Job PTIT"
 		},
 		"partners": {
 			"title": "Với hơn",
@@ -74,9 +74,19 @@
 			"subtitle": "tham gia giảng dạy"
 		},
 		"courses": {
-			"title": "Chứng chỉ phổ biến nhất",
-			"description": "Khám phá các chứng chỉ phổ biến nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
+			"title": "Việc làm nổi bật",
+			"description": "Biết giá trị của bạn và tìm công việc phù hợp với cuộc sống của bạn",
 			"button": "Khám phá tất cả chứng chỉ"
+		},
+		"vieclambanquantam": {
+			"title": "Việc làm bạn quan tâm",
+			"description": "Biết giá trị của bạn và tìm công việc phù hợp với cuộc sống của bạn",
+			"button": "Xem tất cả việc làm"
+		},
+		"vieclamlienquan": {
+			"title": "Việc làm liên quan",
+			"description": "Biết giá trị của bạn và tìm công việc phù hợp với cuộc sống của bạn",
+			"button": "Xem tất cả việc làm"
 		},
 		"career": {
 			"title": "Mục tiêu nghề nghiệp",
@@ -127,19 +137,18 @@
 			"academiaHCMAddress": "Số 11 Nguyễn Đình Chiểu, P. Sài Gòn, TP. Hồ Chí Minh",
 			"trainingHCMAddress": "Số 97 Man Thiện, P. Tăng Nhơn Phú, TP. Hồ Chí Minh"
 		},
-		"CTDT":{
+		"CTDT": {
 			"AIoT": "Trí tuệ nhân tạo và Vạn vật (AIoT)",
 			"ATTT": "An toàn thông tin",
 			"UDU": "Công nghệ thông tin (định hướng ứng dụng)",
-			"Logistics" :"Chương trình Logistics và quản trị chuỗi cung ứng",
-			"AI" : "Ngành trí tuệ nhân tạo",
+			"Logistics": "Chương trình Logistics và quản trị chuỗi cung ứng",
+			"AI": "Ngành trí tuệ nhân tạo",
 			"CNTTV-J": "Công nghệ thông tin Việt-Nhật",
 			"GAME": "Chương trình thiết kế và phát triển GAME",
 			"QHCC": "Chương trình Quan hệ công chúng (Ngành Marketing)",
 			"KT-CLC": "Kế toán",
 			"CNTC": "Công nghệ tài chính - Fintech",
-
-			"explore" : "Khám phá chi tiết"
+			"explore": "Khám phá chi tiết"
 		},
 		"networkSecurity": {
 			"title": "Chuyên gia An ninh mạng và An toàn thông tin",
@@ -186,7 +195,7 @@
 				"skill9": "Tư duy chiến lược & sáng tạo",
 				"skill10": "Giao tiếp & thuyết trình"
 			}
-		},	
+		},
 		"aiSpecialist": {
 			"title": "Chuyên gia Trí tuệ nhân tạo",
 			"description": "Chuyên gia Trí tuệ nhân tạo (AI Specialist) là người có chuyên môn sâu trong việc nghiên cứu, thiết kế, phát triển và ứng dụng các hệ thống trí tuệ nhân tạo. Họ là những người hiểu rõ các thuật toán, mô hình toán học, công nghệ và công cụ AI để giải quyết các bài toán phức tạp trong nhiều lĩnh vực như y tế, giáo dục, tài chính, thương mại điện tử, công nghiệp, dịch vụ công…\nChuyên gia Trí tuệ nhân tạo thường giỏi ở nhiều mảng kết hợp giữa khoa học và công nghệ. Họ có nền tảng vững chắc về toán học, xác suất và thống kê để hiểu rõ các thuật toán. Bên cạnh đó, họ giỏi trong việc xử lý và phân tích dữ liệu, xây dựng và tối ưu mô hình học máy, học sâu, xử lý ngôn ngữ tự nhiên hay thị giác máy tính. Không chỉ mạnh về kỹ thuật, chuyên gia AI còn có tư duy giải quyết vấn đề sáng tạo, biết cách biến dữ liệu thành tri thức hữu ích, đồng thời có khả năng giao tiếp và phối hợp hiệu quả với nhiều nhóm khác nhau để đưa AI vào ứng dụng thực tiễn.",
@@ -197,7 +206,7 @@
 				"skill4": "Deep Learning",
 				"skill5": "AI Search"
 			}
-		},	
+		},
 		"networkInfrastructure": {
 			"title": "Chuyên gia hạ tầng mạng và viễn thông",
 			"description": "Chuyên gia hạ tầng mạng và viễn thông là người thiết kế, triển khai và quản lý các hệ thống mạng máy tính, viễn thông, đảm bảo dữ liệu, thoại và dịch vụ số luôn truyền tải nhanh, ổn định và an toàn. Họ am hiểu mạng LAN, WAN, truyền dẫn quang, mạng không dây, đồng thời thành thạo cấu hình và vận hành thiết bị như router, switch, firewall để duy trì sự thông suốt của hạ tầng công nghệ.\nNgoài vận hành, họ còn nghiên cứu và ứng dụng công nghệ mới như 5G, IoT, điện toán đám mây hay SDN/NFV, đồng thời chú trọng triển khai giải pháp bảo mật để ngăn chặn rủi ro tấn công mạng. Nhờ đó, chuyên gia hạ tầng mạng và viễn thông trở thành “xương sống” kết nối con người, doanh nghiệp và toàn cầu trong xã hội số.",
@@ -207,7 +216,7 @@
 				"skill3": "Router & Switch",
 				"skill4": "Cloud & 5G"
 			}
-		},	
+		},
 		"dataScientist": {
 			"title": "Chuyên gia Khoa học và Phân tích dữ liệu",
 			"description": "Chuyên gia Khoa học và Phân tích dữ liệu (Data Science & Analytics Specialist) là người phụ trách thu thập, xử lý và phân tích dữ liệu từ nhiều nguồn khác nhau, nhằm khai thác thông tin giá trị phục vụ cho các quyết định chiến lược của tổ chức.\nCông việc chính bao gồm xây dựng quy trình thu thập và làm sạch dữ liệu, khám phá dữ liệu (EDA), phát triển và triển khai các mô hình dự báo bằng machine learning, trực quan hóa kết quả bằng dashboard/báo cáo, đồng thời phối hợp chặt chẽ với các bộ phận kinh doanh, marketing hay sản xuất để biến dữ liệu thành giải pháp thực tế và tối ưu hiệu quả hoạt động.\nMột chuyên gia khoa học và phân tích dữ liệu giỏi không chỉ am hiểu về toán học, thống kê và thuật toán mà còn có khả năng giải thích insight một cách rõ ràng, kết nối dữ liệu với bối cảnh kinh doanh. Họ biết tận dụng công nghệ và công cụ hiện đại để đưa ra quyết định nhanh chóng và chính xác. Đây là nghề nghiệp năng động, đòi hỏi sự tò mò, khả năng học hỏi liên tục, và kỹ năng giao tiếp tốt để truyền tải giá trị dữ liệu đến mọi cấp độ trong doanh nghiệp.",
@@ -223,56 +232,56 @@
 			"trendingSkills": {
 				"title": "KHÁM PHÁ CÁC KỸ NĂNG THỊNH HÀNH",
 				"items": [
-				"Python",
-				"Trí tuệ nhân tạo",
-				"Excel",
-				"Học máy",
-				"SQL",
-				"Quản lý dự án",
-				"Power BI",
-				"Đa phương tiện"
+					"Python",
+					"Trí tuệ nhân tạo",
+					"Excel",
+					"Học máy",
+					"SQL",
+					"Quản lý dự án",
+					"Power BI",
+					"Đa phương tiện"
 				],
 				"viewAllText": "Xem tất cả"
 			},
 			"careerGoals": {
 				"title": "KHÁM PHÁ MỤC TIÊU NGHỀ NGHIỆP",
 				"items": [
-				"Chuyên gia truyền thông xã hội",
-				"Quản lý dự án",
-				"Nhà khoa học dữ liệu",
-				"Kỹ sư học máy",
-				"Nhà phân tích An ninh Mạng",
-				"Chuyên gia phân tích dữ liệu",
-				"Chuyên gia TK giao diện người dùng",
-				"Chuyên gia tiếp thị kỹ thuật số"
+					"Chuyên gia truyền thông xã hội",
+					"Quản lý dự án",
+					"Nhà khoa học dữ liệu",
+					"Kỹ sư học máy",
+					"Nhà phân tích An ninh Mạng",
+					"Chuyên gia phân tích dữ liệu",
+					"Chuyên gia TK giao diện người dùng",
+					"Chuyên gia tiếp thị kỹ thuật số"
 				],
 				"viewAllText": "Xem tất cả"
 			},
 			"categories": {
 				"title": "KHÁM PHÁ DANH MỤC",
 				"items": [
-				"Đa phương tiện",
-				"Khoa học dữ liệu",
-				"Công nghệ thông tin",
-				"Khoa học máy tính",
-				"Phát triển cá nhân",
-				"Khoa học xã hội",
-				"Học ngôn ngữ",
-				"Khoa học vật lý và kỹ thuật"
+					"Đa phương tiện",
+					"Khoa học dữ liệu",
+					"Công nghệ thông tin",
+					"Khoa học máy tính",
+					"Phát triển cá nhân",
+					"Khoa học xã hội",
+					"Học ngôn ngữ",
+					"Khoa học vật lý và kỹ thuật"
 				],
 				"viewAllText": "Xem tất cả"
 			},
 			"certificates": {
 				"title": "NHẬN CHỨNG CHỈ CHUYÊN MÔN",
 				"items": [
-				"Đa phương tiện",
-				"Khoa học máy tính",
-				"Khoa học dữ liệu",
-				"Công nghệ thông tin"
+					"Đa phương tiện",
+					"Khoa học máy tính",
+					"Khoa học dữ liệu",
+					"Công nghệ thông tin"
 				],
 				"viewAllText": "Xem tất cả"
 			}
-			},
+		},
 		"skillsNeeded": "Kỹ năng bạn cần có",
 		"relatedPrograms": {
 			"title": "Khám phá các mục tiêu nghề nghiệp tương tự",
@@ -295,7 +304,7 @@
 				"noResultsInCategory": "Không có chương trình nào trong danh mục \"{category}\""
 			},
 			"allCourses": {
-				"title": "Tất cả khóa học", 
+				"title": "Tất cả khóa học",
 				"loadingCourses": "Đang tải khóa học...",
 				"noResultsWithQuery": "Không tìm thấy khóa học nào phù hợp với từ khóa \"{query}\"",
 				"searchResultsFor": "Kết quả tìm kiếm cho \"{query}\""
@@ -336,127 +345,127 @@
 		},
 		"programNotFound": "Chương trình không tồn tại. ID:",
 		"programs": {
-		"networkSecurity": {
-			"foundation": {
-			"name": "Nền tảng An ninh mạng",
-			"skills": {
-				"networkSecurity": "An ninh mạng",
-				"firewallConfiguration": "Cấu hình tường lửa",
-				"incidentResponse": "Ứng phó sự cố",
-				"riskAssessment": "Đánh giá rủi ro"
-			}
+			"networkSecurity": {
+				"foundation": {
+					"name": "Nền tảng An ninh mạng",
+					"skills": {
+						"networkSecurity": "An ninh mạng",
+						"firewallConfiguration": "Cấu hình tường lửa",
+						"incidentResponse": "Ứng phó sự cố",
+						"riskAssessment": "Đánh giá rủi ro"
+					}
+				},
+				"advanced": {
+					"name": "Bảo mật nâng cao & Kiểm thử xâm nhập",
+					"skills": {
+						"penetrationTesting": "Kiểm thử xâm nhập",
+						"digitalForensics": "Điều tra số",
+						"securityStandards": "Tiêu chuẩn bảo mật",
+						"ethicalHacking": "Hacking có đạo đức"
+					}
+				}
 			},
-			"advanced": {
-			"name": "Bảo mật nâng cao & Kiểm thử xâm nhập",
-			"skills": {
-				"penetrationTesting": "Kiểm thử xâm nhập",
-				"digitalForensics": "Điều tra số",
-				"securityStandards": "Tiêu chuẩn bảo mật",
-				"ethicalHacking": "Hacking có đạo đức"
-			}
-			}
-		},
-		"financialAnalyst": {
-			"foundation": {
-			"name": "Phân tích & Định giá tài chính",
-			"skills": {
-				"financialStatementAnalysis": "Phân tích báo cáo tài chính",
-				"businessValuation": "Định giá doanh nghiệp",
-				"excelModeling": "Lập mô hình trên Excel",
-				"marketAnalysis": "Phân tích thị trường"
-			}
+			"financialAnalyst": {
+				"foundation": {
+					"name": "Phân tích & Định giá tài chính",
+					"skills": {
+						"financialStatementAnalysis": "Phân tích báo cáo tài chính",
+						"businessValuation": "Định giá doanh nghiệp",
+						"excelModeling": "Lập mô hình trên Excel",
+						"marketAnalysis": "Phân tích thị trường"
+					}
+				},
+				"advanced": {
+					"name": "Quản lý Rủi ro & Đầu tư Nâng cao",
+					"skills": {
+						"portfolioManagement": "Quản lý danh mục đầu tư",
+						"riskAssessment": "Đánh giá rủi ro",
+						"quantitativeAnalysis": "Phân tích định lượng",
+						"financialModeling": "Lập mô hình tài chính"
+					}
+				}
 			},
-			"advanced": {
-			"name": "Quản lý Rủi ro & Đầu tư Nâng cao",
-			"skills": {
-				"portfolioManagement": "Quản lý danh mục đầu tư",
-				"riskAssessment": "Đánh giá rủi ro",
-				"quantitativeAnalysis": "Phân tích định lượng",
-				"financialModeling": "Lập mô hình tài chính"
-			}
-			}
-		},
-		"digitalStrategist": {
-			"foundation": {
-			"name": "Nền tảng Tiếp thị Kỹ thuật số",
-			"skills": {
-				"mediaPlanning": "Lập kế hoạch truyền thông",
-				"customerAnalysis": "Phân tích khách hàng",
-				"contentStrategy": "Chiến lược nội dung",
-				"seoSem": "SEO/SEM"
-			}
+			"digitalStrategist": {
+				"foundation": {
+					"name": "Nền tảng Tiếp thị Kỹ thuật số",
+					"skills": {
+						"mediaPlanning": "Lập kế hoạch truyền thông",
+						"customerAnalysis": "Phân tích khách hàng",
+						"contentStrategy": "Chiến lược nội dung",
+						"seoSem": "SEO/SEM"
+					}
+				},
+				"advanced": {
+					"name": "Chiến lược & Phân tích Kỹ thuật số Nâng cao",
+					"skills": {
+						"dataAnalytics": "Phân tích dữ liệu",
+						"marketingAutomation": "Tự động hóa tiếp thị",
+						"performanceOptimization": "Tối ưu hóa hiệu suất",
+						"strategicPlanning": "Lập kế hoạch chiến lược"
+					}
+				}
 			},
-			"advanced": {
-			"name": "Chiến lược & Phân tích Kỹ thuật số Nâng cao",
-			"skills": {
-				"dataAnalytics": "Phân tích dữ liệu",
-				"marketingAutomation": "Tự động hóa tiếp thị",
-				"performanceOptimization": "Tối ưu hóa hiệu suất",
-				"strategicPlanning": "Lập kế hoạch chiến lược"
-			}
-			}
-		},
-		"aiSpecialist": {
-			"foundation": {
-			"name": "Nền tảng AI & Học máy",
-			"skills": {
-				"pythonProgramming": "Lập trình Python",
-				"machineLearning": "Học máy",
-				"dataProcessing": "Xử lý dữ liệu",
-				"statisticalAnalysis": "Phân tích thống kê"
-			}
+			"aiSpecialist": {
+				"foundation": {
+					"name": "Nền tảng AI & Học máy",
+					"skills": {
+						"pythonProgramming": "Lập trình Python",
+						"machineLearning": "Học máy",
+						"dataProcessing": "Xử lý dữ liệu",
+						"statisticalAnalysis": "Phân tích thống kê"
+					}
+				},
+				"advanced": {
+					"name": "AI & Học sâu Nâng cao",
+					"skills": {
+						"deepLearning": "Học sâu",
+						"neuralNetworks": "Mạng nơ-ron",
+						"computerVision": "Thị giác máy tính",
+						"nlp": "Xử lý ngôn ngữ tự nhiên (NLP)"
+					}
+				}
 			},
-			"advanced": {
-			"name": "AI & Học sâu Nâng cao",
-			"skills": {
-				"deepLearning": "Học sâu",
-				"neuralNetworks": "Mạng nơ-ron",
-				"computerVision": "Thị giác máy tính",
-				"nlp": "Xử lý ngôn ngữ tự nhiên (NLP)"
-			}
-			}
-		},
-		"dataScientist": {
-			"foundation": {
-			"name": "Nền tảng Khoa học & Phân tích Dữ liệu",
-			"skills": {
-				"pythonR": "Python/R",
-				"dataVisualization": "Trực quan hóa dữ liệu",
-				"statistics": "Thống kê",
-				"sql": "SQL"
-			}
+			"dataScientist": {
+				"foundation": {
+					"name": "Nền tảng Khoa học & Phân tích Dữ liệu",
+					"skills": {
+						"pythonR": "Python/R",
+						"dataVisualization": "Trực quan hóa dữ liệu",
+						"statistics": "Thống kê",
+						"sql": "SQL"
+					}
+				},
+				"advanced": {
+					"name": "Khoa học Dữ liệu Nâng cao & Dữ liệu lớn",
+					"skills": {
+						"bigDataProcessing": "Xử lý dữ liệu lớn",
+						"predictiveModeling": "Mô hình hóa dự đoán",
+						"dataEngineering": "Kỹ thuật dữ liệu",
+						"cloudAnalytics": "Phân tích trên nền tảng đám mây"
+					}
+				}
 			},
-			"advanced": {
-			"name": "Khoa học Dữ liệu Nâng cao & Dữ liệu lớn",
-			"skills": {
-				"bigDataProcessing": "Xử lý dữ liệu lớn",
-				"predictiveModeling": "Mô hình hóa dự đoán",
-				"dataEngineering": "Kỹ thuật dữ liệu",
-				"cloudAnalytics": "Phân tích trên nền tảng đám mây"
-			}
-			}
-		},
-		"networkInfrastructure": {
-			"foundation": {
-			"name": "Cơ bản về Hạ tầng mạng",
-			"skills": {
-				"networkProtocols": "Giao thức mạng",
-				"routerConfiguration": "Cấu hình bộ định tuyến",
-				"networkTroubleshooting": "Xử lý sự cố mạng",
-				"systemAdministration": "Quản trị hệ thống"
-			}
-			},
-			"advanced": {
-			"name": "Kiến trúc mạng Nâng cao",
-			"skills": {
-				"cloudNetworking": "Mạng đám mây",
-				"networkSecurity": "Bảo mật mạng",
-				"infrastructureDesign": "Thiết kế hạ tầng",
-				"performanceOptimization": "Tối ưu hóa hiệu suất"
-			}
+			"networkInfrastructure": {
+				"foundation": {
+					"name": "Cơ bản về Hạ tầng mạng",
+					"skills": {
+						"networkProtocols": "Giao thức mạng",
+						"routerConfiguration": "Cấu hình bộ định tuyến",
+						"networkTroubleshooting": "Xử lý sự cố mạng",
+						"systemAdministration": "Quản trị hệ thống"
+					}
+				},
+				"advanced": {
+					"name": "Kiến trúc mạng Nâng cao",
+					"skills": {
+						"cloudNetworking": "Mạng đám mây",
+						"networkSecurity": "Bảo mật mạng",
+						"infrastructureDesign": "Thiết kế hạ tầng",
+						"performanceOptimization": "Tối ưu hóa hiệu suất"
+					}
+				}
 			}
 		}
-    }
 	},
 	"home": {
 		"customer": "Khách hàng",

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import CourseProgramCard from "../AISCard";
 import AISButton from "../AISButton";
 import { CourseCardProps } from "../AISCard/types";
+import { fakeJobsData } from "../AISCard/FakeData/Fakedata";
+import JobCard from "../AISCard/FakeData/JobCard";
 // @ts-ignore
 import Slider from "react-slick";
 import { getKhoaHocMienPhi, getKhoaHocMoiNhat, getKhoaHocNangCao, getKhoaHocPhoBien } from "../../api/khoahoc";
@@ -10,20 +12,32 @@ import { useRouter } from "next/router";
 import { ELang, LangMap } from "../../utils/constant";
 import { useTranslation } from "react-i18next";
 
+// Filter tabs data
+const filterTabs = [
+  { id: "all", label: "Tất cả", isActive: true },
+  { id: "schedule", label: "Thời vụ", isActive: false },
+  // { id: "timeline", label: "Theo dự án", isActive: false },
+  // { id: "fulltime", label: "Fulltime (Fresher)", isActive: false },
+  // { id: "remote", label: "Từ xa linh hoạt", isActive: false },
+  // { id: "internship", label: "Thực tập", isActive: false },
+];
+
 interface KhoaHocProps {
   title?: string;
   description?: string;
   buttonText?: string;
   courses?: CourseCardProps[];
   type?: "chungchi" | "phobien" | "moinhat" | "mienphi" | "nangcao",
-  autoplay?: boolean
+  autoplay?: boolean;
+  showFilter?: boolean;
 }
 
 const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
   const sliderRef = useRef<Slider | null>(null);
   const router = useRouter();
-  const {title, description, buttonText, courses, type, autoplay=true} = props;
+  const { title, description, buttonText, courses, type, autoplay = true, showFilter = true } = props;
   const [listCourses, setListCourses] = useState<CourseCardProps[]>([]);
+  const [activeFilter, setActiveFilter] = useState("all");
   const { i18n } = useTranslation();
   const currentLang = i18n.language;
   const settings = {
@@ -32,8 +46,8 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: autoplay,        
-    autoplaySpeed: 2000, 
+    autoplay: autoplay,
+    autoplaySpeed: 2000,
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 3 } },
       { breakpoint: 992, settings: { slidesToShow: 2 } },
@@ -41,67 +55,68 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
     ],
   };
   useEffect(() => {
-  if (!currentLang) return;
+    if (!currentLang) return;
 
-  const handler = setTimeout(() => {
-    (async () => {
-      console.log(currentLang);
-      let res;
-      switch (type) {
-        case "chungchi":
-        case "phobien":
-          res = getKhoaHocPhoBien(currentLang as ELang);
-          break;
-        case "moinhat":
-          res = getKhoaHocMoiNhat(currentLang as ELang);
-          break;
-        case "mienphi":
-          res = getKhoaHocMienPhi(currentLang as ELang);
-          break;
-        case "nangcao":
-          res = getKhoaHocNangCao(currentLang as ELang);
-          break;
-        default:
-          res = getKhoaHocPhoBien(currentLang as ELang);
-          break;
-      }
+    const handler = setTimeout(() => {
+      (async () => {
+        console.log(currentLang);
+        let res;
+        switch (type) {
+          case "chungchi":
+          case "phobien":
+            res = getKhoaHocPhoBien(currentLang as ELang);
+            break;
+          case "moinhat":
+            res = getKhoaHocMoiNhat(currentLang as ELang);
+            break;
+          case "mienphi":
+            res = getKhoaHocMienPhi(currentLang as ELang);
+            break;
+          case "nangcao":
+            res = getKhoaHocNangCao(currentLang as ELang);
+            break;
+          default:
+            res = getKhoaHocPhoBien(currentLang as ELang);
+            break;
+        }
 
-      try {
-        const response = await res;
-        const data = response.data.data;
-        if (!data) return;
+        try {
+          const response = await res;
+          const data = response.data.data;
+          if (!data) return;
 
-        const mapper: CourseCardProps[] = data.map(item => ({
-          variant: "course",
-          org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-          id: item.id,
-          title: item.name,
-          href: item.course_url,
-          imageUrl: item.image_url,
-          durationMinutes: item.duration * 60,
-          certificateType: item.topics.map(topic => topic.name).join(", "),
-          isAI: true,
-          tags: item?.tags?.map(item => {
-            return item.name
-          })
-        }));
+          const mapper: CourseCardProps[] = data.map(item => ({
+            variant: "course",
+            org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+            id: item.id,
+            title: item.name,
+            href: item.course_url,
+            imageUrl: item.image_url,
+            durationMinutes: item.duration * 60,
+            certificateType: item.topics.map(topic => topic.name).join(", "),
+            isAI: true,
+            tags: item?.tags?.map(item => {
+              return item.name
+            })
+          }));
 
-        console.log(mapper);
+          console.log(mapper);
 
-        const reordered = [
-          ...mapper.filter(item => item.id == '32'),
-          ...mapper.filter(item => item.id != '32'),
-        ];
+          const reordered = [
+            ...mapper.filter(item => item.id == '32'),
+            ...mapper.filter(item => item.id != '32'),
+          ];
 
-        setListCourses(reordered);
-      } catch (err) {
-        console.error(err);
-      }
-    })();
-  }, 100);
+          setListCourses(reordered);
+        } catch (err) {
+          console.error(err);
+        }
+      })();
+    }, 100);
 
-  return () => clearTimeout(handler);
-}, [currentLang]);
+    return () => clearTimeout(handler);
+  }, [currentLang]);
+
 
   const coursesToDisplay = courses?.length ? courses : listCourses;
 
@@ -117,32 +132,82 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
             <div className="navigation-arrows">
               <button className="nav-button" aria-label="Previous courses" onClick={() => sliderRef.current?.slickPrev()}>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M12.5 15L7.5 10L12.5 5" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12.5 15L7.5 10L12.5 5" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
               <button className="nav-button" aria-label="Next courses" onClick={() => sliderRef.current?.slickNext()}>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M7.5 5L12.5 10L7.5 15" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M7.5 5L12.5 10L7.5 15" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
             </div>
           </div>
         </div>
 
-        <div className="slider-container">
-          <Slider ref={sliderRef} {...settings}>
-            {coursesToDisplay.map((course) => (
-              <div className="slick-slide">
-                <CourseProgramCard key={course.id} {...course} />
+        {/* Filter Tabs */}
+        {showFilter && (
+          <div className="filter-tabs-container">
+            <div className="filter-tabs">
+              <div className="filter-icon">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M2 3H14L11 7V11L5 7V3Z" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span>Lọc theo:</span>
               </div>
-            ))}
-            </Slider>
+              <div className="tabs-wrapper">
+                <>
+                  <button className="nav-button" aria-label="Previous courses" onClick={() => sliderRef.current?.slickPrev()}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M12.5 15L7.5 10L12.5 5" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  {filterTabs.map((tab) => (
+                    <>
+                      <button
+                        key={tab.id}
+                        className={`tab-button ${activeFilter === tab.id ? 'active' : ''}`}
+                        onClick={() => setActiveFilter(tab.id)}
+                      >
+                        {tab.label}
+                      </button>
+                    </>
+                  ))}
+                  <button className="nav-button" aria-label="Next courses" onClick={() => sliderRef.current?.slickNext()}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                      <path d="M7.5 5L12.5 10L7.5 15" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                </>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="courses-grid">
+          {fakeJobsData.map((job) => (
+            <div className="course-item" key={job.id}>
+              <JobCard {...job} />
+            </div>
+          ))}
         </div>
 
-        <div className="button-container">
+        {/* <div className="button-container">
           <AISButton type="default" onClick={() => router.push('/tat-ca-khoa-hoc')}>
             {buttonText}
           </AISButton>
+        </div> */}
+        <div className="navigation-arrows" style={{ justifyContent: 'center', marginBottom: '40px' }}>
+          <button className="nav-button" aria-label="Previous courses" onClick={() => sliderRef.current?.slickPrev()}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M12.5 15L7.5 10L12.5 5" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <span>1/5</span>
+          <button className="nav-button" aria-label="Next courses" onClick={() => sliderRef.current?.slickNext()}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 5L12.5 10L7.5 15" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
     </KhoaHocWrapper>
@@ -150,17 +215,6 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
 };
 
 const KhoaHocWrapper = styled.div`
-  .slick-slider {
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-  .slick-list {
-    padding-top: 10px;
-    .slick-track {
-      display: flex;
-      gap: 20px;
-    }
-  }
   .section-header {
     margin-bottom: 20px;
     width: 100%;
@@ -234,6 +288,85 @@ const KhoaHocWrapper = styled.div`
   .button-container {
     margin-top: 20px;
   }
+    /* Grid Layout cho courses */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+
+  .course-item {
+    width: 100%;
+  }
+
+  /* Filter Tabs Styles */
+  .filter-tabs-container {
+    margin-bottom: 24px;
+  }
+
+  /* Filter Tabs Styles */
+  .filter-tabs-container {
+    margin-bottom: 24px;
+  }
+
+  .filter-tabs {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    justify-content: space-between;
+  }
+
+  .filter-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #6B7280;
+    font-weight: 500;
+    white-space: nowrap;
+    background: #F9FAFB;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    padding:10px;
+  }
+
+  .tabs-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tab-button {
+    padding: 6px 16px;
+    background: transparent;
+    border: 1px solid #D1D5DB;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background: #F3F4F6;
+      border-color: #9CA3AF;
+    }
+
+    &.active {
+      background: #FEE2E2;
+      border-color: #FCA5A5;
+      color: #DC2626;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #DC2626;
+      outline-offset: 2px;
+    }
+  }
 
   @media (max-width: 1280px) {
     .container {
@@ -281,6 +414,31 @@ const KhoaHocWrapper = styled.div`
       height: auto;
       gap: 12px;
       justify-content: flex-start;
+    }
+
+    /* Mobile Filter Tabs */
+    .filter-tabs {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .filter-icon {
+      margin-bottom: 4px;
+    }
+
+    .tabs-wrapper {
+      width: 100%;
+      gap: 8px;
+    }
+
+    .tab-button {
+      flex: 1;
+      min-width: 0;
+      text-align: center;
+      padding: 8px 12px;
+      font-size: 13px;
     }
   }
 `;

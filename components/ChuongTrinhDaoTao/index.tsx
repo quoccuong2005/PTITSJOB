@@ -53,7 +53,7 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
       },
     ],
   };
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   if (
     props?.dataHome?.hoatDongKhoaHoc?.qlkh_hoat_dong_kh_cn_and_dmsts?.data
       ?.length > 0
@@ -90,11 +90,10 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                         router.push(
                           val?.duongDan
                             ? val?.duongDan
-                            : `/hoat-dong/?type=${val?.kieu}&capDo=${
-                                val?.kieu === ETYPEKHOAHOC.CB
-                                  ? val?.phamVi
-                                  : val?.capDo
-                              }`
+                            : `/hoat-dong/?type=${val?.kieu}&capDo=${val?.kieu === ETYPEKHOAHOC.CB
+                              ? val?.phamVi
+                              : val?.capDo
+                            }`
                         );
                       }}
                     >
@@ -137,11 +136,10 @@ const ChuongTrinhDaoTao = (props: { dataHome: IDataHome }) => {
                           router.push(
                             val?.duongDan
                               ? val?.duongDan
-                              : `/hoat-dong/?type=${val?.kieu}&capDo=${
-                                  val?.kieu === ETYPEKHOAHOC.CB
-                                    ? val?.phamVi
-                                    : val?.capDo
-                                }`
+                              : `/hoat-dong/?type=${val?.kieu}&capDo=${val?.kieu === ETYPEKHOAHOC.CB
+                                ? val?.phamVi
+                                : val?.capDo
+                              }`
                           );
                         }}
                       >

@@ -209,7 +209,10 @@ const FooterWrapper = styled.div`
     font-weight: 500;
   }
   .footer-backgroud {
-    background-color: #9f1111;
+    background-image: url("/images/about/Footer PTIT Jobs.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .title-backlink {
