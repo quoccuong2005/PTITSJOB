@@ -4,20 +4,15 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const Banner1: React.FC = () => {
-  return (
+  return (<>
     <Wrapper>
       <Inner>
-        <Left>
-          <img src="/images/home/tuyendungtext.png" alt="Tuyển dụng" />
 
-          <img className="mt-[3rem] mb-[2rem]" src="/images/home/tiepcantext.png" alt="Tiếp cận" />
+        <img src="/images/home/congcutuyendungthongminh.png" alt="Tuyển dụng" />
 
-          <Actions>
-            <Primary href="/dashboard/post-job">Đăng tuyển ngay</Primary>
-          </Actions>
-        </Left>
       </Inner>
     </Wrapper>
+  </>
   );
 };
 
@@ -26,13 +21,12 @@ export default Banner1;
 // Styled
 const Wrapper = styled.section`
   width: 100%;
-  height: 600px;
-  background: linear-gradient(90deg, #fff6f7 0%, #fff 30%);
+  height: 510px;
+  background: #FFF;
   background-repeat: no-repeat;
-  background-image: url('/images/home/Banner1background.png');
+  background-image: url('/images/home/bgbanner2.png');
   background-size: 100% 100%;
   border-radius: 12px;
-  padding: 28px;
   box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
   overflow: hidden;
   position: relative;
@@ -41,17 +35,16 @@ const Wrapper = styled.section`
     padding: 16px;
     background-image: none;
     background-color: #fff6f7;
-  }
 `;
 
 const Inner = styled.div`
   max-width: 1240px;
-  margin: 0 auto;
+  margin: 28px auto;
   display: flex;
   align-items: center;
   gap: 24px;
   position: relative;
-
+  flex-direction: row-reverse;
   @media (max-width: 992px) {
     padding: 10px;
     gap: 12px;
@@ -63,11 +56,7 @@ const Inner = styled.div`
   }
 `;
 
-const Left = styled.div`
-  flex: 1;
-  min-width: 0;
-  padding-right: 16px;
-`;
+
 
 const Kicker = styled.div`
   color: #bf3b3b;

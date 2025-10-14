@@ -3,11 +3,11 @@ import { ApiOdooResponse, Course } from "./type";
 import { ELang } from "../../utils/constant";
 
 export interface CourseSearchParams {
-  q?: string;
-  page?: number;
-  limit?: number;
-  order?: string;
-  lang?: string;
+	q?: string;
+	page?: number;
+	limit?: number;
+	order?: string;
+	lang?: string;
 }
 export const getAllKhoaHoc = (params: CourseSearchParams) => {
 	return axios.get<ApiOdooResponse<Course>>(`https://lms.ptit.edu.vn/lms/api/courses/search`, {

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { getBaiVietSlug } from "../../api/baivietpublic";
+import { BaiViet } from "../../api/baivietpublic/type";
 
 // Mock data cho bài viết
 const articleData = {
@@ -107,6 +110,42 @@ const articleData = {
 };
 
 const NewsPage = () => {
+  const router = useRouter();
+  const { slug } = router.query as { slug?: string };
+
+  const [article, setArticle] = useState<BaiViet | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+
+    if (!slug || Array.isArray(slug)) return;
+
+    const fetchArticle = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await getBaiVietSlug(String(slug));
+
+        const data = res?.data ?? res;
+        setArticle(Array.isArray(data) ? data[0] : data);
+      } catch (err: any) {
+        console.error("Error fetching article:", err);
+        setError("Không thể tải bài viết.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticle();
+  }, [slug]);
+
+  if (router.isFallback || loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+
+  const display = article ? article : null;
+  console.log("Displaying article:", display);
   return (
     <PageContainer>
       <Container>

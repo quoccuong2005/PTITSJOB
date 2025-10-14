@@ -1,52 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-
+import { getCVTemplatesList } from "../../api/cvtemplatepublic"
+import { CVTemplatePublic } from "../../api/cvtemplatepublic/type"
 // Interface cho dữ liệu mẫu CV
-interface CVTemplate {
-    id: string;
-    name: string;
-    image: string;
-    category: string;
-    isPremium?: boolean;
-}
+// interface CVTemplate {
+//     id: string;
+//     name: string;
+//     image: string;
+//     category: string;
+//     isPremium?: boolean;
+// }
+
 
 // Dữ liệu mẫu CV
-const cvTemplates: CVTemplate[] = [
-    {
-        id: '1',
-        name: 'Mẫu CV Tiêu Chuẩn',
-        image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-        category: 'Tiêu chuẩn'
-    },
-    {
-        id: '2',
-        name: 'Mẫu CV Năng Động',
-        image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-        category: 'Năng động'
-    },
-    {
-        id: '3',
-        name: 'Mẫu CV Chuyên Nghiệp',
-        image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-        category: 'Chuyên nghiệp'
-    },
-    {
-        id: '4',
-        name: 'Mẫu CV Hiện Đại',
-        image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-        category: 'Hiện đại'
-    },
-    {
-        id: '5',
-        name: 'Mẫu CV Ấn Tượng',
-        image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-        category: 'Ấn tượng'
-    }
-];
+// const cvTemplates: CVTemplate[] = [
+//     {
+//         id: '1',
+//         name: 'Mẫu CV Tiêu Chuẩn',
+//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
+//         category: 'Tiêu chuẩn'
+//     },
+//     {
+//         id: '2',
+//         name: 'Mẫu CV Năng Động',
+//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
+//         category: 'Năng động'
+//     },
+//     {
+//         id: '3',
+//         name: 'Mẫu CV Chuyên Nghiệp',
+//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
+//         category: 'Chuyên nghiệp'
+//     },
+//     {
+//         id: '4',
+//         name: 'Mẫu CV Hiện Đại',
+//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
+//         category: 'Hiện đại'
+//     },
+//     {
+//         id: '5',
+//         name: 'Mẫu CV Ấn Tượng',
+//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
+//         category: 'Ấn tượng'
+//     }
+// ];
 
 const MauCV: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
+    const [cvTemplates, setCvTemplates] = useState<CVTemplatePublic[]>([]);
+
+    useEffect(() => {
+        getCVTemplatesList()
+            .then((response) => {
+                setCvTemplates(response.data);
+            }
+            )
+            .catch((error) => {
+                console.error("Lỗi khi gọi API:", error);
+            });
+    }, []);
+    console.log("CV", cvTemplates);
 
     // // Lọc mẫu CV theo danh mục
     // const filteredTemplates = selectedCategory === 'all'
@@ -88,26 +103,26 @@ const MauCV: React.FC = () => {
 
             {/* CV Templates Grid */}
             <TemplatesGrid>
-                {cvTemplates.map((template) => (
-                    <TemplateCard key={template.id}>
+                {Array.isArray(cvTemplates) && cvTemplates.map((template) => (
+                    <TemplateCard key={template._id}>
                         <TemplateImageContainer>
                             <TemplateImage
-                                src={template.image}
-                                alt={template.name}
+                                src={template.hinhAnh}
+                                alt={template.ten}
                                 onError={(e) => {
                                     e.currentTarget.src = '/images/cv-templates/default-cv.jpg';
                                 }}
                             />
                             <TemplateOverlay>
-                                <PreviewButton href={`/mau-cv/preview/${template.id}`}>
+                                <PreviewButton href={`/mau-cv/preview/${template._id}`}>
                                     Xem trước
                                 </PreviewButton>
                             </TemplateOverlay>
                         </TemplateImageContainer>
 
                         <TemplateInfo>
-                            <TemplateName>{template.name}</TemplateName>
-                            <UseTemplateButton href={`/mau-cv/editor/${template.id}`}>
+                            <TemplateName>{template.ten}</TemplateName>
+                            <UseTemplateButton href={`/mau-cv/editor/${template._id}`}>
                                 Dùng mẫu ngay
                             </UseTemplateButton>
                         </TemplateInfo>

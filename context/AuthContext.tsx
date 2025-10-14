@@ -54,6 +54,40 @@ export const AuthProvider = (props: { children: React.ReactNode }) => {
   const [OAuthData, setOAuthData] = useState<Auth.IClientOAuth>(
     {} as Auth.IClientOAuth
   );
+  useEffect(() => {
+    setOAuthData({
+
+      "_id": "PTIT", // Mã định danh client (ví dụ: tên viết tắt tổ chức)
+      "name": "Học viện Công nghệ Bưu chính Viễn thông", // Tên đầy đủ của client
+      "oauth": {
+        "fieldMap": {
+          "username": "preferred_username", // Trường username trong thông tin người dùng OIDC
+          "email": "email", // Trường email trong thông tin người dùng OIDC
+          "fullname": "name", // Trường họ tên đầy đủ
+          "familyName": "family_name", // Trường họ
+          "givenName": "given_name" // Trường tên riêng
+        },
+        "enable": true, // Cho phép hoặc vô hiệu hóa OAuth
+        "clientId": "slink-web", // ID client đăng ký trong hệ thống OIDC
+        "name": "S-Link ID", // Tên hiển thị của OAuth provider
+        "discovery": "https://slinkid.ptit.edu.vn/auth/realms/master/.well-known/openid-configuration", // URL discovery của OpenID Connect
+        "buttonColor": "#cc0d00", // Màu nút đăng nhập
+        "issuer": "https://slinkid.ptit.edu.vn/auth/realms/master", // Issuer (nguồn phát hành token)
+        "authorizationEndpoint": "https://slinkid.ptit.edu.vn/auth/realms/master/protocol/openid-connect/auth", // Endpoint để khởi tạo quá trình đăng nhập
+        "tokenEndpoint": "https://slinkid.ptit.edu.vn/auth/realms/master/protocol/openid-connect/token", // Endpoint để lấy access token
+        "introspectionEndpoint": "https://slinkid.ptit.edu.vn/auth/realms/master/protocol/openid-connect/token/introspect", // Endpoint kiểm tra token hợp lệ
+        "userinfoEndpoint": "https://slinkid.ptit.edu.vn/auth/realms/master/protocol/openid-connect/userinfo", // Endpoint lấy thông tin người dùng
+        "endSessionEndpoint": "https://slinkid.ptit.edu.vn/auth/realms/master/protocol/openid-connect/logout", // Endpoint đăng xuất
+        "jwksUri": "https://slinkid.ptit.edu.vn/auth/realms/master/protocol/openid-connect/certs" // Endpoint lấy public keys để verify token
+      },
+      "createdAt": "2022-12-27T03:10:25.697Z", // Thời điểm tạo
+      "updatedAt": "2022-12-27T03:10:25.697Z" // Thời điểm cập nhật
+
+
+    })
+  }, []);
+
+
   const [typeLogin, setTypeLogin] = useState<"keycloak" | "default">(
     typeof window !== "undefined" && localStorage.getItem("typeLogin")
       ? (localStorage.getItem("typeLogin") as "keycloak" | "default")

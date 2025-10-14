@@ -44,7 +44,7 @@ const LoginForm = (props: { showModal?: string; setShowModal: any }) => {
 	};
 
 	return (
-		<div className='max-w-xl self-center flex mx-auto flex-col'>
+		<div className='max-w-xl self-center flex mx-auto flex-col mb-[20px]'>
 			{isPopup ? (
 				<></>
 			) : (

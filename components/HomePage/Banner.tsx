@@ -7,6 +7,7 @@ import { ReactTyped } from "react-typed";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+
 // Fake Data
 const jobCategories = [
   { id: "cntt", name: "Công nghệ thông tin", count: 18, isHot: true },
@@ -241,7 +242,7 @@ const Banner = () => {
             </div>
           </div>
 
-          <div className="">
+          <div className="w-[1240px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Cột trái - Thống kê ngành nghề */}
               <div className="space-y-2 text-sm bg-white p-[17px] rounded-lg">

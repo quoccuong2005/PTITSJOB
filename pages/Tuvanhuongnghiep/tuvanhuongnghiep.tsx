@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-
+import { getBaiVietPage, getBaiVietList, getBaiVietSlug } from '../../api/baivietpublic';
+import { BaiViet } from '../../api/baivietpublic/type';
 // Interface cho bài viết tư vấn
 interface CareerArticle {
     id: string;
@@ -110,7 +111,8 @@ const careerArticles: CareerArticle[] = [
 const Tuvanhuongnghiep = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
-
+    const [posts, setPosts] = useState<BaiViet[]>([]);
+    const [page, setPage] = useState(1);
     // Filter articles based on search and category
     const filteredArticles = careerArticles.filter(article => {
         const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -118,6 +120,48 @@ const Tuvanhuongnghiep = () => {
         return matchesSearch && matchesCategory;
     });
 
+    useEffect(() => {
+        // gọi API lấy danh sách bài viết, chuẩn hoá về mảng và lưu vào posts
+        const load = async () => {
+            try {
+                const res: any = await getBaiVietList();
+                const raw = res?.data ?? res;
+                let list: BaiViet[] = [];
+
+                if (Array.isArray(raw)) {
+                    list = raw;
+                } else if (Array.isArray(raw?.items)) {
+                    list = raw.items;
+                } else if (Array.isArray(raw?.docs)) {
+                    list = raw.docs;
+                } else if (Array.isArray(raw?.data)) {
+                    list = raw.data;
+                } else if (raw && typeof raw === 'object') {
+                    // try to find first array in object
+                    const arr = Object.values(raw).find(v => Array.isArray(v));
+                    if (Array.isArray(arr)) list = arr as BaiViet[];
+                }
+                setPosts(list);
+            } catch (error) {
+                console.error("Lỗi khi gọi API lấy bài viết:", error);
+            }
+
+        };
+
+        load();
+    }, []);
+
+    useEffect(() => {
+        const fetchPage = async () => {
+            try {
+                const res = await getBaiVietPage(page, 6);
+                console.log(`📄 Trang ${page}:`, res.data);
+            } catch (e) {
+                console.error("Lỗi phân trang:", e);
+            }
+        };
+        fetchPage();
+    }, [page]);
     return (
         <Container>
             {/* Search and Filter Section */}
@@ -154,7 +198,7 @@ const Tuvanhuongnghiep = () => {
                     <PageTitle>Tư Vấn Hướng Nghiệp</PageTitle>
                 </HeaderLeft>
                 <HeaderRight>
-                    Hơn {careerArticles.length} bài viết
+                    Hơn {posts.length} bài viết
                 </HeaderRight>
             </PageHeader>
 
@@ -162,24 +206,16 @@ const Tuvanhuongnghiep = () => {
 
             {/* Articles Grid */}
             <ArticlesGrid>
-                {filteredArticles.map((article) => (
-                    <ArticleCard key={article.id} type={article.type}>
-                        <ArticleImageContainer type={article.type}>
+                {posts.map((article) => (
+                    <ArticleCard key={article._id} >
+                        <ArticleImageContainer >
                             <ArticleImage
-                                src={article.image}
-                                alt={article.title}
-                                onError={(e) => {
-                                    // Set fallback image based on type
-                                    const fallbackImages = {
-                                        brand: '/images/career/default-brand.png',
-                                        quiz: '/images/career/default-quiz.png',
-                                        cv: '/images/career/default-cv.png'
-                                    };
-                                    e.currentTarget.src = fallbackImages[article.type] || '/images/career/default.png';
-                                }}
+                                src={article.hinhAnh}
+                                alt={article.tieuDe}
+
                             />
-                            <CategoryBadge type={article.type}>
-                                {article.category}
+                            <CategoryBadge >
+                                {article.noiDung}
                             </CategoryBadge>
                             <NotificationIcon>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -189,20 +225,19 @@ const Tuvanhuongnghiep = () => {
                         </ArticleImageContainer>
 
                         <ArticleContent>
-                            <ArticleDate>
+                            {/* <ArticleDate>
                                 <DateIcon>
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                                         <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19Z" fill="#666" />
                                     </svg>
                                 </DateIcon>
                                 {article.date}
-                            </ArticleDate>
+                            </ArticleDate> */}
 
-                            <ArticleTitle>{article.title}</ArticleTitle>
+                            <ArticleTitle>{article.noiDung}</ArticleTitle>
 
                             <ReadMoreButton
-                                href={article.link}
-                                type={article.type}
+                                href={article.slug ? `/tu-van/${article.slug}` : '#'}
                             >
                                 Xem chi tiết
                             </ReadMoreButton>
@@ -367,22 +402,15 @@ const ArticlesGrid = styled.div`
     }
 `;
 
-const ArticleCard = styled.div<{ type: string }>`
+const ArticleCard = styled.div`
     
 `;
 
-const ArticleImageContainer = styled.div<{ type: string }>`
+const ArticleImageContainer = styled.div`
     position: relative;
     width: 100%;
     height: 200px;
-    background: ${props => {
-        switch (props.type) {
-            case 'brand': return 'linear-gradient(135deg, #FF6B35, #F7931E)';
-            case 'quiz': return 'linear-gradient(135deg, #FF4757, #FF6B7A)';
-            case 'cv': return 'linear-gradient(135deg, #C0392B, #E74C3C)';
-            default: return 'linear-gradient(135deg, #3498DB, #5DADE2)';
-        }
-    }};
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -400,18 +428,11 @@ const ArticleImage = styled.img`
     object-fit: cover;
 `;
 
-const CategoryBadge = styled.div<{ type: string }>`
+const CategoryBadge = styled.div`
     position: absolute;
     top: 16px;
     left: 16px;
-    background: ${props => {
-        switch (props.type) {
-            case 'brand': return '#FF6B35';
-            case 'quiz': return '#FF4757';
-            case 'cv': return '#C0392B';
-            default: return '#3498DB';
-        }
-    }};
+    
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
@@ -490,7 +511,7 @@ const ArticleTitle = styled.h3`
     }
 `;
 
-const ReadMoreButton = styled(Link) <{ type: string }>`
+const ReadMoreButton = styled.a`
     display: inline-block;
     color: #BC2626;
     text-decoration: none;
@@ -513,3 +534,9 @@ const ReadMoreButton = styled(Link) <{ type: string }>`
 `;
 
 export default Tuvanhuongnghiep;
+
+
+//  href={article.link}
+// type={article.type}
+
+// styled(Link) <{ type: string }>
