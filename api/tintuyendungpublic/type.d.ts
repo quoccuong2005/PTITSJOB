@@ -1,0 +1,55 @@
+export interface Tintuyendungpublic {
+
+    _id: string;
+    ssoId: string;
+    doanhNghiepId: string;
+    tieuDe: string;
+    viTriChuyenMon: string;
+    kienThucNganhNghe: string;
+    capBac: string;
+    kinhNghiem: "Không yêu cầu kinh nghiệm";
+    moTa: string;
+    yeuCauCongViec: string;
+    quyenLoi: string,
+    quyenLoiBoSung: string,
+    hinhThucCongViec: string,
+    mucLuong: 0,
+    mucLuongToiDa: 0,
+    mucLuongToiThieu: 0,
+    diaDiemLamViec: string,
+    thuBatDauLamViec: "Thứ 2",
+    thuKetThucLamViec: "Thứ 2",
+    khungGioBatDauLamViec: string,
+    khungGioKetThucLamViec: string,
+    hanNhanHoSo: "2025-10-14T09:25:24.831Z",
+    soLuongTuyen: 0,
+    hoTenNguoiLienHe: string,
+    emailNguoiLienHe: string,
+    soDienThoaiNguoiLienHe: string,
+    trangThaiTin: "Đang hoạt động",
+    trangThaiDuyet: "Chờ duyệt",
+    lyDoTuChoiDuyet: string,
+    ngayHetHan: "2025-10-14T09:25:24.831Z",
+    doanhNghiep: {
+        _id: string,
+        ssoId: string,
+        ten: string,
+        email: string,
+        soDienThoai: string,
+        diaChi: string,
+        tenNhaTuyenDung: string,
+        emailNhaTuyenDung: string,
+        soDienThoaiNhaTuyenDung: string,
+        gioiTinhnhaTuyenDung: "Female",
+        website: string,
+        logo: string,
+        moTa: string,
+        loaiDoanhNghiep: string,
+        quyMo: "Dưới 10 nhân viên",
+        linhVuc: string,
+        namThanhLap: 0,
+        trangThaiTuyenDung: "Đang tuyển dụng",
+        trangThaiHienThi: "Hiển thị"
+    }
+
+}

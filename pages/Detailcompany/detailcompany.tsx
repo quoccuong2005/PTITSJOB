@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Vieclamlienquan from '../../components/Relatedjobs';
-import { useCommonTranslation } from "../../hooks/useCommonTranslation";// Dữ liệu mẫu cho trang chi tiết công việc
+import { useCommonTranslation } from "../../hooks/useCommonTranslation";
+import { getTintuyendungById } from "../../api/tintuyendungpublic/index"
+import { Tintuyendungpublic } from "../../api/tintuyendungpublic/type"
 const jobDetail = {
   id: "data-analyst",
   title: "Data Analyst (Risk Management)",
@@ -69,10 +71,33 @@ const jobDetail = {
   locations: ["Hà Nội", "Đống Đa"]
 };
 
-const JobDetailPage = () => {
+const JobDetailPage = ({ id }: { id: string }) => {
   const router = useRouter();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [common] = useCommonTranslation();
+  const [Detailjob, setDetailjob] = useState<Tintuyendungpublic | null>(null);
+
+  useEffect(() => {
+    if (!id) return;
+    (async () => {
+      try {
+        const res = await getTintuyendungById(id);
+        if (res.data.length > 0) {
+          setDetailjob(res.data[0]);
+        } else {
+          setDetailjob(null);
+        }
+      } catch (error) {
+        console.error("Error fetching job detail:", error);
+        setDetailjob(null);
+      }
+    })();
+  }, [id]);
+  console.log("Detailjob", Detailjob);
+
+
+
+
 
   const handleApply = () => {
     // Kiểm tra đăng nhập và mở modal nếu chưa đăng nhập
