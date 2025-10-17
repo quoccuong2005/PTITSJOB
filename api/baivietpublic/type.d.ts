@@ -2,6 +2,7 @@ export interface BaiViet {
     _id: string,
     ssoId: string,
     tenTacGia: string,
+    loai: "Tin tức" | "Tư vấn hướng nghiệp",
     tieuDe: string,
     noiDung: string,
     hinhAnh: string,
@@ -9,7 +10,7 @@ export interface BaiViet {
     tag: [
         string
     ],
-    trangThai: Nháp,
+    trangThai: "Phát hành" | "Đã duyệt" | "Chờ duyệt" | "Từ chối",
     view: [
         {
             _id: string,

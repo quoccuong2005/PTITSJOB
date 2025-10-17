@@ -1,23 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { Ungtuyen } from "../../api/ungtuyen/type";
 import { postUngtuyen } from "../../api/ungtuyen";
+import { getTintuyendungById } from "../../api/tintuyendungpublic/index"
+import { Tintuyendungpublic } from "../../api/tintuyendungpublic/type"
 
 const Formungtuyen: React.FC = () => {
   const router = useRouter();
-  const { jobTitle } = router.query;
+  const rawId = router.query.id as string | string[] | undefined;
+  const idParam = Array.isArray(rawId) ? rawId[0] : rawId;
   const [activeTab, setActiveTab] = useState<'upload' | 'direct'>('upload');
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
-
+  const [Detailjob, setDetailjob] = useState<Tintuyendungpublic | null>(null);
   // Form data
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [location, setLocation] = useState('');
   const [introduction, setIntroduction] = useState('');
+
+  useEffect(() => {
+    if (!idParam) return;
+    (async () => {
+      try {
+        const res = await getTintuyendungById(idParam);
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          setDetailjob(res.data[0]);
+        } else if (res.data && (res.data as any).data && Array.isArray((res.data as any).data) && (res.data as any).data.length > 0) {
+          setDetailjob((res.data as any).data[0]);
+        } else {
+          setDetailjob(null);
+        }
+      } catch (error) {
+        console.error("Error fetching job detail:", error);
+        setDetailjob(null);
+      }
+    })();
+  }, [idParam]);
 
   // Xử lý chọn file CV
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +48,7 @@ const Formungtuyen: React.FC = () => {
       setUploadedFile(file);
     }
   };
+
 
   // 🧩 Gửi form ứng tuyển thật sự qua API
   const handleSubmit = async (e: React.FormEvent) => {
@@ -61,14 +84,12 @@ const Formungtuyen: React.FC = () => {
 
   return (
     <Container>
-      <Head>
-        <title>Ứng Tuyển {jobTitle || 'Vị Trí'}</title>
-      </Head>
+
 
       <FormContainer>
         <FormHeader>
           <FormTitle>
-            Ứng Tuyển Ngay <JobTitle>{jobTitle || 'Data Analyst (Risk Management)'}</JobTitle>
+            Ứng Tuyển Ngay <JobTitle>{Detailjob?.tieuDe}</JobTitle>
           </FormTitle>
           <CloseButton onClick={() => router.back()}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

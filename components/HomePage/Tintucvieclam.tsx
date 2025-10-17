@@ -9,24 +9,19 @@ const Tintucvieclam = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+
   useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const res = await getBaiVietList();
-        const data = Array.isArray(res.data) ? res.data : [];
-        setPosts(data);
-      } catch (err: any) {
-        console.error("Lỗi khi tải danh sách bài viết:", err);
-        setError("Không thể tải danh sách bài viết.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPosts();
+    getBaiVietList()
+      .then((response) => {
+        const data = Array.isArray(response.data.data) ? response.data.data : [];
+        const filtered = data.filter(item => item.loai === "Tin tức");
+        setPosts(filtered);
+      })
+      .catch((error) => {
+        console.error("Lỗi khi gọi API:", error);
+      });
   }, []);
-  console.log("hihi", posts);
+
   return (
     <Wrapper>
       <Container>
@@ -63,7 +58,7 @@ const Tintucvieclam = () => {
                     </div>
                     <h3 className="news-title">{item.tieuDe}</h3>
                   </div>
-                  <Link href={`/tin-tuc/${item.slug}`} className="detail-btn">
+                  <Link href={`/Newspage/${item._id}/${item.slug}`} className="detail-btn">
                     Xem chi tiết
                   </Link>
                 </div>

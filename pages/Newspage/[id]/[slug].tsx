@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { getBaiVietSlug } from "../../api/baivietpublic";
-import { BaiViet } from "../../api/baivietpublic/type";
+import { getBaiVietSlug } from "../../../api/baivietpublic";
+import { BaiViet } from "../../../api/baivietpublic/type";
 
 // Mock data cho bài viết
 const articleData = {
@@ -111,11 +111,18 @@ const articleData = {
 
 const NewsPage = () => {
   const router = useRouter();
-  const { slug } = router.query as { slug?: string };
+  const { slug, _id } = router.query as { slug?: string, _id?: string };
 
   const [article, setArticle] = useState<BaiViet | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  function formatDate(isoString: string): string {
+    const date = new Date(isoString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
 
   useEffect(() => {
 
@@ -156,39 +163,35 @@ const NewsPage = () => {
               <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z" fill="#666" />
             </svg>
           </HomeIcon>
-          <Link href="/">Trang chủ</Link> &gt; <Link href="/tin-tuc">Tin tức</Link> &gt; <span>{articleData.title}</span>
+          <Link href="/">Trang chủ</Link> &gt; <Link href="/tin-tuc">Tin tức</Link> &gt; <span>{display?.data?.tieuDe}</span>
         </Breadcrumbs>
 
         <PageContent>
           {/* Main Content */}
           <MainContent>
-            <ArticleTitle>{articleData.title}</ArticleTitle>
+            <ArticleTitle>{display?.data?.tieuDe}</ArticleTitle>
 
             {/* Author and Date */}
             <ArticleMeta>
               <MetaItem>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7v-5z" fill="#666" />
-                </svg>
+                <img src="/images/home/calendarcolor.png" />
                 <div className="inline-grid">
                   <span>Ngày đăng:</span>
-                  <span>{articleData.date}</span>
+                  <span className="font-bold text-[#051A53]">{formatDate(display?.data?.createdAt)}</span>
                 </div>
               </MetaItem>
               <MetaItem>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#666" />
-                </svg>
+                <img src="/images/home/user.png" />
                 <div className="inline-grid">
                   <span>Người đăng:</span>
-                  <span>{articleData.author}</span>
+                  <span className="font-bold text-[#051A53]">{display?.data?.tenTacGia}</span>
                 </div>
               </MetaItem>
             </ArticleMeta>
 
             {/* Article Content */}
             <ArticleContent>
-              {articleData.content.map((block, index) => {
+              {/* {display?.data?.noiDung.map((block, index) => {
                 if (block.type === 'paragraph') {
                   return <p key={index}>{block.text}</p>;
                 } else if (block.type === 'image') {
@@ -211,7 +214,8 @@ const NewsPage = () => {
                   }
                 }
                 return null;
-              })}
+              })} */}
+              <div dangerouslySetInnerHTML={{ __html: display?.data?.noiDung || '' }} />
             </ArticleContent>
           </MainContent>
 
@@ -222,39 +226,31 @@ const NewsPage = () => {
               <SidebarTitle>Thông tin chung</SidebarTitle>
               <StatsContainer>
                 <StatsItem>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7v-5z" fill="#666" />
-                  </svg>
+                  <img src="/images/home/calendarcolor.png" alt="Calendar" />
                   <div className="inline-grid">
                     <span>Ngày đăng</span>
-                    <span>{articleData.date}</span>
+                    <span className="font-bold text-[#051A53]">{formatDate(display?.data?.createdAt)}</span>
                   </div>
                 </StatsItem>
                 <StatsItem>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#666" />
-                  </svg>
+                  <img src="/images/home/user.png" alt="Author" />
                   <div className="inline-grid">
                     <span>Người đăng</span>
-                    <span>{articleData.author}</span>
+                    <span className="font-bold text-[#051A53]">{display?.data?.tenTacGia}</span>
                   </div>
                 </StatsItem>
                 <StatsItem>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#666" />
-                  </svg>
+                  <img src="/images/home/location.png" alt="Location" />
                   <div className="inline-grid">
                     <span>Địa điểm</span>
-                    <span>Hà Nội</span>
+                    <span className="font-bold text-[#051A53]">Hà Nội</span>
                   </div>
                 </StatsItem>
                 <StatsItem>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="#666" />
-                  </svg>
+                  <img src="/images/home/views.png" alt="Views" />
                   <div className="inline-grid">
                     <span>Lượt xem</span>
-                    <span>{articleData.views}</span>
+                    <span className="font-bold text-[#051A53]">{articleData.views}</span>
                   </div>
                 </StatsItem>
               </StatsContainer>
@@ -292,20 +288,20 @@ const NewsPage = () => {
             {/* Danh mục liên quan */}
             <SidebarBox>
               <SidebarTitle>Danh mục từ khóa liên quan</SidebarTitle>
-              <CategoryList>
-                {articleData.categories.map((category, index) => (
+              {/* <CategoryList>
+                {articleDatadsad.categories.map((category, index) => (
                   <CategoryItem key={index}>
                     <Link href={`/category/${encodeURIComponent(category)}`}>{category}</Link>
                   </CategoryItem>
                 ))}
-              </CategoryList>
+              </CategoryList> */}
             </SidebarBox>
 
             {/* Bài viết liên quan */}
             <SidebarBox>
               <SidebarTitle>Bài Viết Liên Quan</SidebarTitle>
-              <RelatedPostList>
-                {articleData.relatedPosts.map(post => (
+              {/* <RelatedPostList>
+                {display.relatedPosts.map(post => (
                   <RelatedPostItem key={post.id}>
                     <RelatedPostLink href={`/news/${post.id}`}>
                       <RelatedPostImage>
@@ -323,7 +319,7 @@ const NewsPage = () => {
                     </RelatedPostLink>
                   </RelatedPostItem>
                 ))}
-              </RelatedPostList>
+              </RelatedPostList> */}
             </SidebarBox>
           </SidebarContainer>
         </PageContent>
@@ -422,7 +418,7 @@ const ArticleContent = styled.div`
   p {
     margin-bottom: 16px;
     line-height: 1.6;
-    color: #333;
+    color: #051A53;
     text-align: justify;
   }
 `;

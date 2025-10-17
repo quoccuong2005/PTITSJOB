@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { getCVTemplatesList } from "../../api/cvtemplatepublic"
 import { CVTemplatePublic } from "../../api/cvtemplatepublic/type"
-// Interface cho dữ liệu mẫu CV
 // interface CVTemplate {
 //     id: string;
 //     name: string;
@@ -54,6 +53,7 @@ const MauCV: React.FC = () => {
     useEffect(() => {
         getCVTemplatesList()
             .then((response) => {
+                console.log("API CV", response);
                 setCvTemplates(response.data);
             }
             )
@@ -63,12 +63,7 @@ const MauCV: React.FC = () => {
     }, []);
     console.log("CV", cvTemplates);
 
-    // // Lọc mẫu CV theo danh mục
-    // const filteredTemplates = selectedCategory === 'all'
-    //     ? cvTemplates
-    //     : cvTemplates.filter(template => template.category === selectedCategory);
 
-    // const categories = ['all', 'Tiêu chuẩn', 'Năng động', 'Chuyên nghiệp', 'Hiện đại', 'Ấn tượng'];
 
     return (
         <Container>
@@ -81,25 +76,14 @@ const MauCV: React.FC = () => {
                 </Breadcrumb>
 
                 <HeaderContent>
-                    <Title>Tổng Hợp Mẫu CV Xin Việc Chuẩn 2025</Title>
+                    <Title>Tổng Hợp Mẫu CV Xin Việc Chuẩn 2025</Title>\
+
                     <ViewAllLink href="/mau-cv/all">
-                        Hơn 5+ mẫu CV
+                        Hơn {cvTemplates.length} mẫu CV
                     </ViewAllLink>
                 </HeaderContent>
             </HeaderSection>
 
-            {/* Filter Section
-            <FilterSection>
-                {categories.map(category => (
-                    <FilterButton
-                        key={category}
-                        active={selectedCategory === category}
-                        onClick={() => setSelectedCategory(category)}
-                    >
-                        {category === 'all' ? 'Tất cả' : category}
-                    </FilterButton>
-                ))}
-            </FilterSection> */}
 
             {/* CV Templates Grid */}
             <TemplatesGrid>
@@ -130,12 +114,7 @@ const MauCV: React.FC = () => {
                 ))}
             </TemplatesGrid>
 
-            {/* Load More Section */}
-            {/* <LoadMoreSection>
-                <LoadMoreButton>
-                    Xem thêm mẫu CV
-                </LoadMoreButton>
-            </LoadMoreSection> */}
+
         </Container>
     );
 };

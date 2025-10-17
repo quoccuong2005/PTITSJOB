@@ -1,27 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { JobCardProps } from "./Fakedata";
+import Link from "next/link";
+import { Tintuyendungpublic } from "../../../api/tintuyendungpublic/type";
 
-const JobCard: React.FC<JobCardProps> = ({ title, company, location, salary, time, tags, image }) => {
+
+const JobCard: React.FC<Tintuyendungpublic> = ({ mucLuongToiThieu, mucLuongToiDa, tieuDe, createdAt, _id }) => {
+
   return (
-    <CardWrapper>
-      <Header><Image src={image} alt={title} />
-        <div>
-          <Company>{company}</Company>
-          <Title>{title}</Title>
-        </div>
-      </Header>
-      <Meta>
+
+    <Link href={`/Detailcompany/${_id}`}>
+      <CardWrapper>
+        <Header>
+          {/* <Image src={image} alt={tieuDe} /> */}
+          <div>
+            <Company></Company>
+            <Title>{tieuDe}</Title>
+          </div>
+        </Header>
+        {/* <Meta>
         <span className="flex"><img src="/images/home/Group.png" className="mr-[12px]" alt="Location" />{location}</span>
         <span className="flex"><img src="/images/home/calendar.png" className="mr-[12px]" alt="Time" /> {time}</span>
-      </Meta>
-      <Salary>{salary}</Salary>
-      <Tags>
+      </Meta> */}
+        <Salary>{mucLuongToiThieu} - {mucLuongToiDa}</Salary>
+        {/* <Tags>
         {tags.map((tag, i) => (
           <Tag key={i}>{tag}</Tag>
         ))}
-      </Tags>
-    </CardWrapper>
+      </Tags> */}
+      </CardWrapper>
+    </Link>
+
   );
 };
 
@@ -31,8 +40,8 @@ const Header = styled.div`
 `;
 
 const Image = styled.img`
-  width: 55px;
-  height: 55px;
+  width: 80px;
+  height: 80px;
   border-radius: 8px;
   background: #f3f4f6;
   object-fit: cover;

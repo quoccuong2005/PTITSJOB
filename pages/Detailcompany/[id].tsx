@@ -71,19 +71,23 @@ const jobDetail = {
   locations: ["Hà Nội", "Đống Đa"]
 };
 
-const JobDetailPage = ({ id }: { id: string }) => {
+const JobDetailPage = () => {
   const router = useRouter();
+  const rawId = router.query.id as string | string[] | undefined;
+  const idParam = Array.isArray(rawId) ? rawId[0] : rawId;
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [common] = useCommonTranslation();
   const [Detailjob, setDetailjob] = useState<Tintuyendungpublic | null>(null);
 
   useEffect(() => {
-    if (!id) return;
+    if (!idParam) return;
     (async () => {
       try {
-        const res = await getTintuyendungById(id);
-        if (res.data.length > 0) {
+        const res = await getTintuyendungById(idParam);
+        if (Array.isArray(res.data) && res.data.length > 0) {
           setDetailjob(res.data[0]);
+        } else if (res.data && (res.data as any).data && Array.isArray((res.data as any).data) && (res.data as any).data.length > 0) {
+          setDetailjob((res.data as any).data[0]);
         } else {
           setDetailjob(null);
         }
@@ -92,7 +96,7 @@ const JobDetailPage = ({ id }: { id: string }) => {
         setDetailjob(null);
       }
     })();
-  }, [id]);
+  }, [idParam]);
   console.log("Detailjob", Detailjob);
 
 
@@ -120,13 +124,13 @@ const JobDetailPage = ({ id }: { id: string }) => {
           <LeftColumn>
             <JobDetailCard>
               <JobHeader>
-                <JobTitle>{jobDetail.title}</JobTitle>
+                <JobTitle>{Detailjob?.tieuDe}</JobTitle>
                 <JobMetaRow>
                   <JobMetaItem>
                     <img src="/images/home/salary.png" alt="Mức lương" />
                     <div className="inline-grid">
                       <span>Mức lương </span>
-                      <span className="text-[#051A53] ">{jobDetail.mucLuong}</span>
+                      <span className="text-[#051A53] ">{Detailjob?.mucLuongToiThieu} - {Detailjob?.mucLuongToiDa}</span>
                     </div>
                   </JobMetaItem>
                   <JobMetaItem>
@@ -140,7 +144,7 @@ const JobDetailPage = ({ id }: { id: string }) => {
                     <img src="/images/home/experience.png" alt="Kinh nghiệm" />
                     <div className="inline-grid">
                       <span>Kinh nghiệm </span>
-                      <span className="text-[#051A53]">{jobDetail.experience}</span>
+                      <span className="text-[#051A53]">{Detailjob?.kinhNghiem}</span>
                     </div>
                   </JobMetaItem>
                   <JobMetaItem>
@@ -160,10 +164,13 @@ const JobDetailPage = ({ id }: { id: string }) => {
                   </JobMetaItem>
                 </JobMetaSecondRow>
               </JobHeader>
+
               <div className="flex gap-[30px]">
-                <ApplyButton onClick={handleApply} >
-                  Ứng tuyển ngay
-                </ApplyButton>
+                <Link className='w-[100%]' href={`/Formungtuyen/${Detailjob?._id}`}>
+                  <ApplyButton  >
+                    Ứng tuyển ngay
+                  </ApplyButton>
+                </Link>
                 <img src="/images/home/Yêu thích.png" className="w-[36px] h-[36px]" />
               </div>
 
@@ -200,11 +207,14 @@ const JobDetailPage = ({ id }: { id: string }) => {
                 ))}
               </DetailList>
 
-              <ButtonContainer>
-                <ApplyButton onClick={handleApply} fullWidth>
-                  Ứng tuyển ngay
-                </ApplyButton>
-              </ButtonContainer>
+              <div className="flex gap-[30px] mt-4">
+                <Link className='w-[100%]' href={`/Formungtuyen/${Detailjob?._id}`}>
+                  <ApplyButton  >
+                    Ứng tuyển ngay
+                  </ApplyButton>
+                </Link>
+                <img src="/images/home/Yêu thích.png" className="w-[36px] h-[36px]" />
+              </div>
             </JobDetailSection>
           </LeftColumn>
 
@@ -248,7 +258,7 @@ const JobDetailPage = ({ id }: { id: string }) => {
                   </InfoGridIcon>
                   <div>
                     <InfoGridLabel>Cấp bậc</InfoGridLabel>
-                    <InfoGridValue>{jobDetail.level}</InfoGridValue>
+                    <InfoGridValue>{Detailjob?.capBac}</InfoGridValue>
                   </div>
                 </InfoGridItem>
 
@@ -472,7 +482,7 @@ const ApplyButton = styled.button<{ fullWidth?: boolean }>`
   font-size: 15px;
   cursor: pointer;
   transition: background-color 0.2s;
-  width: ${props => props.fullWidth ? '100%' : '87%'};
+  width: 100%;
   
   &:hover {
     background-color: #9c1f1e;

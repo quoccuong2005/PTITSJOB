@@ -114,16 +114,17 @@ const Banner = () => {
             <div className="text-center mb-8">
               <div className="flex justify-center items-center mb-4 space-x-2">
                 <div className="flex space-x-1 mr-4 ">
-                  <img src="/images/home/J.png" alt="Logo JOBS PTIT" />
-                  <img src="/images/home/O.png" alt="Logo JOBS PTIT" />
-                  <img src="/images/home/B.png" alt="Logo JOBS PTIT" />
-                  <img src="/images/home/S.png" alt="Logo JOBS PTIT" />
-                </div>
-                <div className="flex space-x-1">
+
                   <img src="/images/home/P.png" alt="Logo JOBS PTIT" />
                   <img src="/images/home/T.png" alt="Logo JOBS PTIT" />
                   <img src="/images/home/I.png" alt="Logo JOBS PTIT" />
                   <img src="/images/home/T.png" alt="Logo JOBS PTIT" />
+                </div>
+                <div className="flex space-x-1">
+                  <img src="/images/home/J.png" alt="Logo JOBS PTIT" />
+                  <img src="/images/home/O.png" alt="Logo JOBS PTIT" />
+                  <img src="/images/home/B.png" alt="Logo JOBS PTIT" />
+                  <img src="/images/home/S.png" alt="Logo JOBS PTIT" />
                 </div>
               </div>
               <p className="subtitle text-base sm:text-xl md:text-[32px] lg:text-[42px] leading-[120%] font-bold text-[#051A53]">

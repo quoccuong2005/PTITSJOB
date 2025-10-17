@@ -1,15 +1,15 @@
 export interface Tintuyendungpublic {
 
-    _id: string;
-    ssoId: string;
-    doanhNghiepId: string;
-    tieuDe: string;
-    viTriChuyenMon: string;
-    kienThucNganhNghe: string;
-    capBac: string;
-    kinhNghiem: "Không yêu cầu kinh nghiệm";
-    moTa: string;
-    yeuCauCongViec: string;
+    _id: string,
+    ssoId: string,
+    doanhNghiepId: string,
+    tieuDe: string,
+    viTriChuyenMon: string,
+    kienThucNganhNghe: string,
+    capBac: string,
+    kinhNghiem: "Không yêu cầu kinh nghiệm",
+    moTa: string,
+    yeuCauCongViec: string,
     quyenLoi: string,
     quyenLoiBoSung: string,
     hinhThucCongViec: string,
@@ -21,7 +21,7 @@ export interface Tintuyendungpublic {
     thuKetThucLamViec: "Thứ 2",
     khungGioBatDauLamViec: string,
     khungGioKetThucLamViec: string,
-    hanNhanHoSo: "2025-10-14T09:25:24.831Z",
+    hanNhanHoSo: "2025-10-16T08:31:30.822Z",
     soLuongTuyen: 0,
     hoTenNguoiLienHe: string,
     emailNguoiLienHe: string,
@@ -29,7 +29,7 @@ export interface Tintuyendungpublic {
     trangThaiTin: "Đang hoạt động",
     trangThaiDuyet: "Chờ duyệt",
     lyDoTuChoiDuyet: string,
-    ngayHetHan: "2025-10-14T09:25:24.831Z",
+    ngayHetHan: "2025-10-16T08:31:30.822Z",
     doanhNghiep: {
         _id: string,
         ssoId: string,
@@ -50,6 +50,8 @@ export interface Tintuyendungpublic {
         namThanhLap: 0,
         trangThaiTuyenDung: "Đang tuyển dụng",
         trangThaiHienThi: "Hiển thị"
-    }
+    },
+    createdAt: {},
+    view: {}
 
 }

@@ -46,6 +46,7 @@ const OAuthLogin = (props: { setShowModal?: any; redirect?: string }) => {
 	};
 
 	const onFailure = (response: any) => console.error(response);
+	console.log("OAuthData", process.env.BASE_URL);
 
 	return (
 		<>

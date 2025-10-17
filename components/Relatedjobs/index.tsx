@@ -11,146 +11,174 @@ import { getKhoaHocMienPhi, getKhoaHocMoiNhat, getKhoaHocNangCao, getKhoaHocPhoB
 import { useRouter } from "next/router";
 import { ELang, LangMap } from "../../utils/constant";
 import { useTranslation } from "react-i18next";
-
+import { getTintuyendungList } from "../../api/tintuyendungpublic";
+import { Tintuyendungpublic } from "../../api/tintuyendungpublic/type";
 // Filter tabs data
 const filterTabs = [
-    { id: "all", label: "Tất cả", isActive: true },
-    { id: "schedule", label: "Thời vụ", isActive: false },
-    { id: "timeline", label: "Theo dự án", isActive: false },
-    { id: "fulltime", label: "Fulltime (Fresher)", isActive: false },
-    { id: "remote", label: "Từ xa linh hoạt", isActive: false },
-    { id: "internship", label: "Thực tập", isActive: false },
+  { id: "all", label: "Tất cả", isActive: true },
+  { id: "schedule", label: "Thời vụ", isActive: false },
+  { id: "timeline", label: "Theo dự án", isActive: false },
+  { id: "fulltime", label: "Fulltime (Fresher)", isActive: false },
+  { id: "remote", label: "Từ xa linh hoạt", isActive: false },
+  { id: "internship", label: "Thực tập", isActive: false },
 ];
 
 interface KhoaHocProps {
-    title?: string;
-    description?: string;
-    buttonText?: string;
-    courses?: CourseCardProps[];
-    type?: "chungchi" | "phobien" | "moinhat" | "mienphi" | "nangcao",
-    autoplay?: boolean;
-    showFilter?: boolean;
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  courses?: CourseCardProps[];
+  type?: "chungchi" | "phobien" | "moinhat" | "mienphi" | "nangcao",
+  autoplay?: boolean;
+  showFilter?: boolean;
 }
 
 const Vieclamlienquan: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
-    const sliderRef = useRef<Slider | null>(null);
-    const router = useRouter();
-    const { title, description, buttonText, courses, type, autoplay = true, showFilter = true } = props;
-    const [listCourses, setListCourses] = useState<CourseCardProps[]>([]);
-    const [activeFilter, setActiveFilter] = useState("all");
-    const { i18n } = useTranslation();
-    const currentLang = i18n.language;
-    const settings = {
-        dots: false,
-        speed: 600,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        arrows: false,
-        autoplay: autoplay,
-        autoplaySpeed: 2000,
-        responsive: [
-            { breakpoint: 1200, settings: { slidesToShow: 3 } },
-            { breakpoint: 992, settings: { slidesToShow: 2 } },
-            { breakpoint: 576, settings: { slidesToShow: 1 } },
-        ],
-    };
-    useEffect(() => {
-        if (!currentLang) return;
+  const sliderRef = useRef<Slider | null>(null);
+  const router = useRouter();
+  const { title, description, buttonText, courses, type, autoplay = true, showFilter = true } = props;
+  const [listCourses, setListCourses] = useState<CourseCardProps[]>([]);
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [jobList, setJobList] = useState<Tintuyendungpublic[]>([]);
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language;
+  const defaultSlidesToShow = 3;
 
-        const handler = setTimeout(() => {
-            (async () => {
-                console.log(currentLang);
-                let res;
-                switch (type) {
-                    case "chungchi":
-                    case "phobien":
-                        res = getKhoaHocPhoBien(currentLang as ELang);
-                        break;
-                    case "moinhat":
-                        res = getKhoaHocMoiNhat(currentLang as ELang);
-                        break;
-                    case "mienphi":
-                        res = getKhoaHocMienPhi(currentLang as ELang);
-                        break;
-                    case "nangcao":
-                        res = getKhoaHocNangCao(currentLang as ELang);
-                        break;
-                    default:
-                        res = getKhoaHocPhoBien(currentLang as ELang);
-                        break;
-                }
+  // determine how many slides to show based on available items to avoid react-slick cloning
+  const computedSlidesToShow = Math.min(defaultSlidesToShow, Math.max(1, jobList.length || 1));
 
-                try {
-                    const response = await res;
-                    const data = response.data.data;
-                    if (!data) return;
-
-                    const mapper: CourseCardProps[] = data.map(item => ({
-                        variant: "course",
-                        org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
-                        id: item.id,
-                        title: item.name,
-                        href: item.course_url,
-                        imageUrl: item.image_url,
-                        durationMinutes: item.duration * 60,
-                        certificateType: item.topics.map(topic => topic.name).join(", "),
-                        isAI: true,
-                        tags: item?.tags?.map(item => {
-                            return item.name
-                        })
-                    }));
-
-                    console.log(mapper);
-
-                    const reordered = [
-                        ...mapper.filter(item => item.id == '32'),
-                        ...mapper.filter(item => item.id != '32'),
-                    ];
-
-                    setListCourses(reordered);
-                } catch (err) {
-                    console.error(err);
-                }
-            })();
-        }, 100);
-
-        return () => clearTimeout(handler);
-    }, [currentLang]);
+  const settings = {
+    dots: false,
+    speed: 600,
+    slidesToShow: computedSlidesToShow,
+    slidesToScroll: 1,
+    arrows: false,
+    infinite: jobList.length > defaultSlidesToShow,
+    autoplay: autoplay && jobList.length > defaultSlidesToShow,
+    autoplaySpeed: 2000,
+    responsive: [
+      { breakpoint: 1200, settings: { slidesToShow: Math.min(3, jobList.length || 1) } },
+      { breakpoint: 992, settings: { slidesToShow: Math.min(2, jobList.length || 1) } },
+      { breakpoint: 576, settings: { slidesToShow: 1 } },
+    ],
+  };
+  useEffect(() => {
+    getTintuyendungList()
+      .then((response) => {
+        console.log("Dữ liệu bài viết tuyển dụng:", response.data);
+        // API might return either an array (response.data) or a wrapper { data: [...] }
+        const payload = response.data;
+        const list = Array.isArray(payload)
+          ? payload
+          : Array.isArray((payload && (payload as any).data))
+            ? (payload as any).data
+            : [];
+        setJobList(list as Tintuyendungpublic[]);
+      })
+      .catch((error) => {
+        console.error("Lỗi khi gọi API:", error);
+      });
+  }, []);
+  console.log("jobList", jobList);
 
 
-    const coursesToDisplay = courses?.length ? courses : listCourses;
+  useEffect(() => {
+    if (!currentLang) return;
 
-    return (
-        <KhoaHocWrapper>
-            <div className="container mx-auto">
-                <div className="section-header">
-                    <div className="header-content">
-                        <div className="text-content">
-                            <h2 className="section-title">{title}</h2>
-                            <p className="section-description">{description}</p>
-                        </div>
-                    </div>
-                </div>
+    const handler = setTimeout(() => {
+      (async () => {
+        console.log(currentLang);
+        let res;
+        switch (type) {
+          case "chungchi":
+          case "phobien":
+            res = getKhoaHocPhoBien(currentLang as ELang);
+            break;
+          case "moinhat":
+            res = getKhoaHocMoiNhat(currentLang as ELang);
+            break;
+          case "mienphi":
+            res = getKhoaHocMienPhi(currentLang as ELang);
+            break;
+          case "nangcao":
+            res = getKhoaHocNangCao(currentLang as ELang);
+            break;
+          default:
+            res = getKhoaHocPhoBien(currentLang as ELang);
+            break;
+        }
+
+        try {
+          const response = await res;
+          const data = response.data.data;
+          if (!data) return;
+
+          const mapper: CourseCardProps[] = data.map(item => ({
+            variant: "course",
+            org: { name: "PTIT", logoUrl: "/images/logo-ptit.png" },
+            id: item.id,
+            title: item.name,
+            href: item.course_url,
+            imageUrl: item.image_url,
+            durationMinutes: item.duration * 60,
+            certificateType: item.topics.map(topic => topic.name).join(", "),
+            isAI: true,
+            tags: item?.tags?.map(item => {
+              return item.name
+            })
+          }));
+
+          console.log(mapper);
+
+          const reordered = [
+            ...mapper.filter(item => item.id == '32'),
+            ...mapper.filter(item => item.id != '32'),
+          ];
+
+          setListCourses(reordered);
+        } catch (err) {
+          console.error(err);
+        }
+      })();
+    }, 100);
+
+    return () => clearTimeout(handler);
+  }, [currentLang]);
+
+
+  const coursesToDisplay = courses?.length ? courses : listCourses;
+
+  return (
+    <KhoaHocWrapper>
+      <div className="container mx-auto">
+        <div className="section-header">
+          <div className="header-content">
+            <div className="text-content">
+              <h2 className="section-title">{title}</h2>
+              <p className="section-description">{description}</p>
+            </div>
+          </div>
+        </div>
 
 
 
-                <div className="courses-grid">
-                    {fakeJobsData.map((job) => (
-                        <div className="course-item" key={job.id}>
-                            <JobCard {...job} />
-                        </div>
-                    ))}
-                </div>
+        <div className="courses-grid">
+          {jobList.map((job) => (
+            <div className="course-item" key={job._id}>
+              <JobCard {...job} />
+            </div>
+          ))}
+        </div>
 
-                {/* <div className="button-container">
+        {/* <div className="button-container">
           <AISButton type="default" onClick={() => router.push('/tat-ca-khoa-hoc')}>
             {buttonText}
           </AISButton>
         </div> */}
 
-            </div>
-        </KhoaHocWrapper>
-    );
+      </div>
+    </KhoaHocWrapper>
+  );
 };
 
 const KhoaHocWrapper = styled.div`

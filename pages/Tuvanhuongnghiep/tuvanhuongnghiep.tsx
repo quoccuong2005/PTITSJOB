@@ -215,7 +215,7 @@ const Tuvanhuongnghiep = () => {
 
                             />
                             <CategoryBadge >
-                                {article.noiDung}
+                                {article.tieuDe}
                             </CategoryBadge>
                             <NotificationIcon>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -234,11 +234,9 @@ const Tuvanhuongnghiep = () => {
                                 {article.date}
                             </ArticleDate> */}
 
-                            <ArticleTitle>{article.noiDung}</ArticleTitle>
+                            <ArticleTitle>{article.tieuDe}</ArticleTitle>
 
-                            <ReadMoreButton
-                                href={article.slug ? `/tu-van/${article.slug}` : '#'}
-                            >
+                            <ReadMoreButton href={`/Newspage/${article._id}/${article.slug}`}>
                                 Xem chi tiết
                             </ReadMoreButton>
                         </ArticleContent>

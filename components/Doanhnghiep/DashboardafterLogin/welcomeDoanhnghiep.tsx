@@ -91,64 +91,64 @@ const StatImage = styled.img`
 `;
 
 const stats = [
-    {
-        number: "10",
-        label: "CV của ứng viên chưa xem",
-        button: "Xem CV ngay",
-        buttonLink: "#",
-        bg: "linear-gradient(135deg, #ffeaea 0%, #ffeaea 100%)",
-        color: "#d32f2f",
-        img: "/images/about/Card1.png",
-    },
-    {
-        number: "54",
-        label: "CV của ứng viên đang xét duyệt",
-        button: "Xem CV ngay",
-        buttonLink: "#",
-        bg: "linear-gradient(135deg, #f3eaff 0%, #f3eaff 100%)",
-        color: "#d32f2f",
-        img: "/images/about/Card2.png",
-    },
-    {
-        number: "6",
-        label: "CV đã tuyển dụng thành công",
-        button: "Xem CV ngay",
-        buttonLink: "#",
-        bg: "linear-gradient(135deg, #eafff3 0%, #eafff3 100%)",
-        color: "#1db46b",
-        img: "/images/about/Card3.png",
-    },
-    {
-        number: "06",
-        label: "Tin tuyển dụng đã đăng",
-        button: "Xem tin ngay",
-        buttonLink: "#",
-        bg: "linear-gradient(135deg, #eaf6ff 0%, #eaf6ff 100%)",
-        color: "#0070f3",
-        img: "/images/about/Card4.png",
-    },
+  {
+    number: "10",
+    label: "CV của ứng viên chưa xem",
+    button: "Xem CV ngay",
+    buttonLink: "#",
+    bg: "linear-gradient(135deg, #ffeaea 0%, #ffeaea 100%)",
+    color: "#d32f2f",
+    img: "/images/about/Card1.png",
+  },
+  {
+    number: "54",
+    label: "CV của ứng viên đang xét duyệt",
+    button: "Xem CV ngay",
+    buttonLink: "#",
+    bg: "linear-gradient(135deg, #f3eaff 0%, #f3eaff 100%)",
+    color: "#d32f2f",
+    img: "/images/about/Card2.png",
+  },
+  {
+    number: "06",
+    label: "CV đã tuyển dụng thành công",
+    button: "Xem CV ngay",
+    buttonLink: "#",
+    bg: "linear-gradient(135deg, #eafff3 0%, #eafff3 100%)",
+    color: "#1db46b",
+    img: "/images/about/Card3.png",
+  },
+  {
+    number: "06",
+    label: "Tin tuyển dụng đã đăng",
+    button: "Xem tin ngay",
+    buttonLink: "#",
+    bg: "linear-gradient(135deg, #eaf6ff 0%, #eaf6ff 100%)",
+    color: "#0070f3",
+    img: "/images/about/Card4.png",
+  },
 ];
 
 const WelcomeDoanhnghiep: React.FC = () => {
-    return (
-        <Container>
-            <Title>
-                Xin Chào, <span>Công Ty Cổ Phần Công Nghệ HNS</span>
-            </Title>
-            <StatsGrid>
-                {stats.map((stat, idx) => (
-                    <StatCard key={idx} bg={stat.bg}>
-                        <StatInfo>
-                            <StatNumber color={stat.color}>{stat.number}</StatNumber>
-                            <StatLabel>{stat.label}</StatLabel>
-                            <StatButton href={stat.buttonLink}>{stat.button}</StatButton>
-                        </StatInfo>
-                        <StatImage src={stat.img} alt="stat" />
-                    </StatCard>
-                ))}
-            </StatsGrid>
-        </Container>
-    );
+  return (
+    <Container>
+      <Title>
+        Xin Chào, <span>Công Ty Cổ Phần Công Nghệ HNS</span>
+      </Title>
+      <StatsGrid>
+        {stats.map((stat, idx) => (
+          <StatCard key={idx} bg={stat.bg}>
+            <StatInfo>
+              <StatNumber color={stat.color}>{stat.number}</StatNumber>
+              <StatLabel>{stat.label}</StatLabel>
+              <StatButton href={stat.buttonLink}>{stat.button}</StatButton>
+            </StatInfo>
+            <StatImage src={stat.img} alt="stat" />
+          </StatCard>
+        ))}
+      </StatsGrid>
+    </Container>
+  );
 };
 
 export default WelcomeDoanhnghiep;

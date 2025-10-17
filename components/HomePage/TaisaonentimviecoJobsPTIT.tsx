@@ -13,7 +13,7 @@ const TaisaonentimviecoJobsPTIT = () => {
       <Container>
         <MapSection>
           <div className="map-container">
-            <img src="/images/home/MapVietNam.png" alt="Bản đồ Việt Nam" className="map-image" />
+            <img src="/images/home/VN-MAP.png" alt="Bản đồ Việt Nam" className="map-image" />
             <img src="/images/home/danhdau1.png" alt="Đánh dấu 1" className="map-marker1" />
             <img src="/images/home/danhdau2.png" alt="Đánh dấu 2" className="map-marker2" />
             <div className="stat-box new-jobs">
