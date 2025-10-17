@@ -56,7 +56,6 @@ export const AuthProvider = (props: { children: React.ReactNode }) => {
   );
   useEffect(() => {
     setOAuthData({
-
       "_id": "PTIT", // Mã định danh client (ví dụ: tên viết tắt tổ chức)
       "name": "Học viện Công nghệ Bưu chính Viễn thông", // Tên đầy đủ của client
       "oauth": {

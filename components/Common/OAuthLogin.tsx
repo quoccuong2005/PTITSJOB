@@ -52,9 +52,9 @@ const OAuthLogin = (props: { setShowModal?: any; redirect?: string }) => {
 		<>
 			{OAuthData ? (
 				<OAuth2Login
-					authorizationUrl={OAuthData?.oauth?.authorizationEndpoint}
+					authorizationUrl={'https://sso.ript.vn/realms/ript'}
 					responseType='code'
-					clientId={OAuthData?.oauth?.clientId}
+					clientId={'ptit'}
 					redirectUri={`${process.env.BASE_URL}/oauth-callback`}
 					onSuccess={onSuccess}
 					onFailure={onFailure}
