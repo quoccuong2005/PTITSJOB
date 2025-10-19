@@ -6,6 +6,7 @@ import StatisticSection from "../../../components/Doanhnghiep/Dashboard/statisti
 import Quytrinhdongian from "../../../components/Doanhnghiep/Dashboard/Quytrinhdongian"
 import Lydodoanhnghiepchon from "../../../components/Doanhnghiep/Dashboard/Lydodoanhnghiepchon"
 import Tintucvieclam from "../../../components/HomePage/Tintucvieclam"
+import Hoptacnhatruong from "../../../components/Doanhnghiep/Dashboard/Hoptacnhatruong"
 const DashboardCompanys = () => {
 
   return <DashboardCompanysWrapper>
@@ -13,7 +14,7 @@ const DashboardCompanys = () => {
 
     {/* <DoiTac/> */}
     <div >
-      <Banner2 />
+      <Lydodoanhnghiepchon />
     </div>
     <div>
       <Banner3 />
@@ -25,7 +26,10 @@ const DashboardCompanys = () => {
       <Quytrinhdongian />
     </div>
     <div>
-      <Lydodoanhnghiepchon />
+      <Banner2 />
+    </div>
+    <div>
+      <Hoptacnhatruong />
     </div>
     <div>
       <Tintucvieclam />

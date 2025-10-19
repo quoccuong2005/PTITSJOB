@@ -50,100 +50,52 @@ const Banner = () => {
         <BannerWrapper>
             <SearchFormContainer>
                 <SearchForm onSubmit={handleSearch}>
-                    <FilterItem>
-                        <FilterIcon>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#637381" />
-                            </svg>
-                        </FilterIcon>
-                        <FilterSelect>
-                            <select
-                                value={location}
-                                onChange={(e: ChangeEvent<HTMLSelectElement>) => setLocation(e.target.value)}
-                            >
+                    <div className="flex flex-col lg:flex-row justify-center items-stretch gap-3 ">
+                        <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
+                            <span className="text-gray-500 mr-2"><img src="/images/home/map1.png" alt="Location" /></span>
+                            <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer">
                                 {locationOptions.map((option) => (
                                     <option key={option.value} value={option.value}>
                                         {option.label}
                                     </option>
                                 ))}
                             </select>
-                            <ChevronIcon>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 10l5 5 5-5z" fill="#637381" />
-                                </svg>
-                            </ChevronIcon>
-                        </FilterSelect>
-                    </FilterItem>
+                        </div>
 
-                    <FilterItem>
-                        <FilterIcon>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 16H4V8h4v2h8V8h4v12z" fill="#637381" />
-                            </svg>
-                        </FilterIcon>
-                        <FilterSelect>
-                            <select
-                                value={industry}
-                                onChange={(e: ChangeEvent<HTMLSelectElement>) => setIndustry(e.target.value)}
-                            >
+                        <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
+                            <span className="text-gray-500 mr-2"><img src="/images/home/industry.png" alt="Industry" /></span>
+                            <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer !pr-0 ">
                                 {industryOptions.map((option) => (
                                     <option key={option.value} value={option.value}>
                                         {option.label}
                                     </option>
                                 ))}
                             </select>
-                            <ChevronIcon>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 10l5 5 5-5z" fill="#637381" />
-                                </svg>
-                            </ChevronIcon>
-                        </FilterSelect>
-                    </FilterItem>
+                        </div>
 
-                    <FilterItem>
-                        <FilterIcon>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" fill="#637381" />
-                            </svg>
-                        </FilterIcon>
-                        <FilterSelect>
-                            <select
-                                value={jobType}
-                                onChange={(e: ChangeEvent<HTMLSelectElement>) => setJobType(e.target.value)}
-                            >
+                        <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
+                            <span className="text-gray-500 mr-2"><img src="/images/home/job-type.png" alt="Job Type" /></span>
+                            <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer">
                                 {jobTypeOptions.map((option) => (
                                     <option key={option.value} value={option.value}>
                                         {option.label}
                                     </option>
                                 ))}
                             </select>
-                            <ChevronIcon>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 10l5 5 5-5z" fill="#637381" />
-                                </svg>
-                            </ChevronIcon>
-                        </FilterSelect>
-                    </FilterItem>
-
-                    <SearchInputContainer>
-                        <SearchIcon>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#637381" />
-                            </svg>
-                        </SearchIcon>
-                        <input
-                            type="text"
-                            placeholder="Nhập thông tin cần tìm"
-                            value={keyword}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => setKeyword(e.target.value)}
-                        />
-                    </SearchInputContainer>
-
-                    <SearchButtonContainer>
-                        <SearchButton type="submit">
-                            Tìm kiếm
-                        </SearchButton>
-                    </SearchButtonContainer>
+                        </div>
+                        <div className="flex gap-3 w-full lg:w-auto">
+                            <div className="flex items-center bg-white rounded-lg px-4 py-3 flex-1 h-[56px] shadow-sm border">
+                                <input
+                                    type="text"
+                                    placeholder="Nhập thông tin cần tìm"
+                                    className="flex-1 text-gray-700 bg-transparent border-0 outline-none"
+                                />
+                            </div>
+                            <button className="bg-[#BC2826] hover:bg-[#a01f1e] text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 w-full lg:w-[120px] h-[56px] shadow-lg">
+                                Tìm kiếm
+                            </button>
+                        </div>
+                    </div>
                 </SearchForm>
             </SearchFormContainer>
         </BannerWrapper>
@@ -163,14 +115,7 @@ const SearchFormContainer = styled.div`
 `;
 
 const SearchForm = styled.form`
-  display: flex;
-  align-items: center;
-  gap: 8px;
   
-  @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 12px;
-  }
 `;
 
 const FilterItem = styled.div`

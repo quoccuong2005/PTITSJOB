@@ -138,28 +138,21 @@ const ViecLamDaUngTuyen: React.FC = () => {
                                 <JobInfo>
                                     <InfoItem>
                                         <LocationIcon>
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                <path d="M8 1.33334C5.42 1.33334 3.33334 3.42001 3.33334 6.00001C3.33334 9.50001 8 14.6667 8 14.6667C8 14.6667 12.6667 9.50001 12.6667 6.00001C12.6667 3.42001 10.58 1.33334 8 1.33334Z" fill="#666666" />
-                                            </svg>
+                                            <img src='/images/home/mapicon.png' />
                                         </LocationIcon>
                                         <span>{job.location}</span>
                                     </InfoItem>
 
                                     <InfoItem>
                                         <TimeIcon>
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                <path d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0ZM8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C11.31 2 14 4.69 14 8C14 11.31 11.31 14 8 14Z" fill="#666666" />
-                                                <path d="M8.5 4H7V8.5L10.75 10.75L11.5 9.5L8.5 7.75V4Z" fill="#666666" />
-                                            </svg>
+                                            <img src="/images/home/calendar.png" alt="Time" />
                                         </TimeIcon>
                                         <span>{job.daysAgo}</span>
                                     </InfoItem>
 
                                     <InfoItem>
                                         <SalaryIcon>
-                                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                                <path d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0ZM8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C11.31 2 14 4.69 14 8C14 11.31 11.31 14 8 14Z" fill="#BC2826" />
-                                            </svg>
+                                            <img src="/images/home/Lương.png" alt="Salary" />
                                         </SalaryIcon>
                                         <SalaryText>{job.salary}</SalaryText>
                                     </InfoItem>
@@ -236,7 +229,7 @@ const Header = styled.div`
     height: 87px;
 
     @media (max-width: 768px) {
-        flex-direction: column;
+        
         align-items: flex-start;
         gap: 16px;
     }
@@ -356,12 +349,12 @@ const CompanyDetails = styled.div`
 
 const CompanyName = styled.div`
     font-size: 14px;
-    color: #666;
+    color: #ABABAB;
     margin-bottom: 4px;
 `;
 
 const JobTitle = styled.h3`
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     color: #051A53;
     margin: 0;

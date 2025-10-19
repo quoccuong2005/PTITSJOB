@@ -716,7 +716,7 @@ const TwoColumnLayout = styled.div`
 `;
 
 const LeftColumn = styled.div`
-  width: 371px;
+  width: auto;
   flex: 1;
 `;
 
@@ -761,9 +761,14 @@ const JobMetaRow = styled.div`
     flex-wrap: wrap;
   }
   @media (max-width: 600px) {
-    gap: 24px;
-    flex-direction: column;
+    gap: 15px;
+    
   }
+    @media (max-width: 1350px) {
+    width: 100%;
+
+    
+}
 `;
 
 const JobMetaSecondRow = styled.div`
@@ -785,34 +790,7 @@ const JobMetaItem = styled.div`
   }
 `;
 
-const ApplyButton = styled.button<{ fullWidth?: boolean }>`
-  background-color: #BC2826;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 24px;
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  width: 100%;
-  
-  &:hover {
-    background-color: #9c1f1e;
-  }
-`;
 
-const FavoriteButton = styled.button`
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  background: transparent;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-`;
 
 const JobDetailSection = styled.section`
   background-color: white;
@@ -836,19 +814,6 @@ const DetailList = styled.ul`
   margin: 0;
 `;
 
-const DetailListItem = styled.li`
-  margin-bottom: 8px;
-  line-height: 1.5;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  margin-top: 24px;
-`;
-
 const CompanyInfoCard = styled.div`
   background-color: white;
   border-radius: 8px;
@@ -862,19 +827,7 @@ const CompanyInfoCard = styled.div`
   height: 113.46px;
 `;
 
-const CompanyLogo = styled.div`
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
-  background-color: #f5f5f5;
-  margin-bottom: 16px;
-  
-  img {
-    width: 80px;
-    height: 80px ;
-    object-fit: contain;
-  }
-`;
+
 
 const CompanyName = styled.h3`
   font-size: 8px;
@@ -970,150 +923,6 @@ const InfoGridValue = styled.div`
   font-size: 7px;
   font-weight: 500;
   color: #333;
-`;
-
-const LinkShareInput = styled.div`
-  display: flex;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  overflow: hidden;
-  
-  input {
-    flex: 1;
-    border: none;
-    padding: 8px 12px;
-    font-size: 14px;
-    outline: none;
-  }
-`;
-
-const CopyButton = styled.button`
-  background-color: #f5f5f5;
-  border: none;
-  border-left: 1px solid #ddd;
-  padding: 8px 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  &:hover {
-    background-color: #e5e5e5;
-  }
-`;
-
-const TagsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-
-const Tag = styled.span`
-  background-color: #f0f0f0;
-  color: #555;
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 13px;
-`;
-
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-`;
-
-const ModalContent = styled.div`
-  background-color: white;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 450px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-`;
-
-const ModalHeader = styled.div`
-  padding: 16px 24px;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const ModalTitle = styled.h3`
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin: 0;
-`;
-
-const ModalCloseButton = styled.button`
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #999;
-  
-  &:hover {
-    color: #333;
-  }
-`;
-
-const ModalBody = styled.div`
-  padding: 24px;
-  
-  p {
-    margin: 0 0 24px;
-    text-align: center;
-    color: #666;
-  }
-`;
-
-const ModalButtonGroup = styled.div`
-  display: flex;
-  gap: 12px;
-`;
-
-interface ModalButtonProps {
-    primary?: boolean;
-}
-
-const ModalButton = styled(Link) <ModalButtonProps>`
-  flex: 1;
-  text-align: center;
-  padding: 10px;
-  border-radius: 6px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.2s;
-  
-  ${props => props.primary ? `
-    background-color: #BC2826;
-    color: white;
-    
-    &:hover {
-      background-color: #9c1f1e;
-    }
-  ` : `
-    background-color: #f5f5f5;
-    color: #333;
-    
-    &:hover {
-      background-color: #e5e5e5;
-    }
-  `}
-`;
-const RelatedJob = styled.div`
-  max-width: 1240px;
-  padding: 24px;
-  
-  margin: 0 auto ;
 `;
 
 export default Dangtuyen;

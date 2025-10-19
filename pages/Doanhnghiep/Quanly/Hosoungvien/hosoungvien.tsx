@@ -50,7 +50,7 @@ const HosoungvienPage: React.FC = () => {
     return (
         <>
             <div className="bg-[url('/images/home/1.png')] bg-cover bg-center w-full">
-                <div className=" pt-4 pb-4 mb-6 w-[1280px] mx-auto">
+                <div className=" pt-4 pb-4 mb-6 lg:w-[1280px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-6 gap-3 items-center">
                         <div>
                             <select className="w-full border rounded px-3 py-2 text-sm">
@@ -83,7 +83,7 @@ const HosoungvienPage: React.FC = () => {
             </div>
             <div className="p-6 bg-gray-50 ">
 
-                <div className="w-[1280px] mx-auto">
+                <div className="lg:w-[1280px] mx-auto">
                     <div className="flex items-center justify-between mb-6">
                         <h1 className="text-3xl font-bold text-blue-900">Hồ Sơ Ứng Viên</h1>
                         <div className="flex items-center gap-4">

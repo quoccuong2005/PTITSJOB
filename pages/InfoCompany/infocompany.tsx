@@ -8,11 +8,6 @@ import RelatedCompanies from "../../components/InfoCompany/Doanhnghieplienquan"
 
 
 const InfoCompany: React.FC = () => {
-
-
-
-
-
     return (
         <Container>
             {/* Breadcrumb */}

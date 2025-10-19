@@ -5,9 +5,15 @@ const Container = styled.div`
   background: #fff;
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  width: 1280px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 `;
 
 const Title = styled.h2`
@@ -15,9 +21,16 @@ const Title = styled.h2`
   font-weight: 700;
   color: #1a2b6d;
   margin-bottom: 24px;
+  text-align: left;
+
   span {
     color: #d32f2f;
     font-weight: 700;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    text-align: center;
   }
 `;
 
@@ -25,10 +38,12 @@ const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
-  @media (max-width: 900px) {
+
+  @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -38,13 +53,24 @@ const StatsGrid = styled.div`
 const StatCard = styled.div<{ bg?: string }>`
   background: ${({ bg }) => bg || "#f5f5f5"};
   border-radius: 16px;
-  padding: 24px 18px 18px 24px;
+  padding: 24px 18px;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   min-height: 160px;
-  width: 296px;
-  height: 200px;
+  width: 100%;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding: 20px;
+  }
 `;
 
 const StatInfo = styled.div`
@@ -56,6 +82,10 @@ const StatNumber = styled.div<{ color?: string }>`
   font-weight: 700;
   color: ${({ color }) => color || "#d32f2f"};
   margin-bottom: 4px;
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 const StatLabel = styled.div`
@@ -63,6 +93,10 @@ const StatLabel = styled.div`
   color: #1a2b6d;
   font-weight: 500;
   margin-bottom: 16px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const StatButton = styled.a`
@@ -71,15 +105,20 @@ const StatButton = styled.a`
   color: #0070f3;
   font-weight: 700;
   border-radius: 24px;
-  padding: 8px 24px;
+  padding: 8px 20px;
   font-size: 15px;
   text-decoration: none;
-  margin-top: 8px;
   transition: background 0.2s;
   white-space: nowrap;
   cursor: pointer;
+
   &:hover {
     background: linear-gradient(90deg, #cbe6ff 0%, #e3f0ff 100%);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 6px 16px;
   }
 `;
 
@@ -88,6 +127,14 @@ const StatImage = styled.img`
   height: 100px;
   margin-left: 16px;
   object-fit: contain;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    margin-top: 12px;
+    width: 80px;
+    height: 80px;
+    align-self: center;
+  }
 `;
 
 const stats = [
@@ -152,4 +199,3 @@ const WelcomeDoanhnghiep: React.FC = () => {
 };
 
 export default WelcomeDoanhnghiep;
-// ...existing code...

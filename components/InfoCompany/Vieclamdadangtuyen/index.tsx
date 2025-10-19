@@ -123,41 +123,51 @@ const JobListings = () => {
             <JobsSectionHeader>
                 <SectionTitle>Việc Làm Đã Đăng Tuyển</SectionTitle>
                 <ViewAllJobsLink href={`/cong-ty/${companyInfo.id}/viec-lam`}>
-                    5 việc làm đã đăng
+                    5 việc làm
                 </ViewAllJobsLink>
             </JobsSectionHeader>
 
             {/* Job Filters */}
             <JobFilters>
                 <FilterGroup>
-                    <FilterSelect
-                        value={jobFilters.position}
-                        onChange={(e) => handleFilterChange('position', e.target.value)}
-                    >
-                        <option value="">Ngành nghề</option>
-                        <option value="analyst">Data Analyst</option>
-                        <option value="developer">Developer</option>
-                    </FilterSelect>
+                    <InputWrapper>
+                        <img src="/images/home/industry.png" alt="Industry" />
+                        <FilterSelect
+
+                            value={jobFilters.position}
+                            onChange={(e) => handleFilterChange('position', e.target.value)}
+                        >
+                            <option value="">Ngành nghề</option>
+                            <option value="analyst">Data Analyst</option>
+                            <option value="developer">Developer</option>
+                        </FilterSelect>
+                    </InputWrapper>
                 </FilterGroup>
 
                 <FilterGroup>
-                    <FilterSelect
-                        value={jobFilters.location}
-                        onChange={(e) => handleFilterChange('location', e.target.value)}
-                    >
-                        <option value="">Nơi làm việc</option>
-                        <option value="hanoi">Hà Nội</option>
-                        <option value="hcm">TP. Hồ Chí Minh</option>
-                    </FilterSelect>
+                    <InputWrapper>
+                        <img src="/images/home/job-type.png" alt="Job Type" />
+                        <FilterSelect
+                            value={jobFilters.location}
+                            onChange={(e) => handleFilterChange('location', e.target.value)}
+                        >
+                            <option value="">Nơi làm việc</option>
+                            <option value="hanoi">Hà Nội</option>
+                            <option value="hcm">TP. Hồ Chí Minh</option>
+                        </FilterSelect>
+                    </InputWrapper>
                 </FilterGroup>
 
                 <FilterGroup>
-                    <FilterInput
-                        type="text"
-                        placeholder="Từ khóa tìm kiếm"
-                        value={jobFilters.experience}
-                        onChange={(e) => handleFilterChange('experience', e.target.value)}
-                    />
+                    <InputWrapper>
+                        <img src="/images/home/timkiem.png" alt="Search" />
+                        <FilterInput
+                            type="text"
+                            placeholder="Từ khóa tìm kiếm"
+                            value={jobFilters.experience}
+                            onChange={(e) => handleFilterChange('experience', e.target.value)}
+                        />
+                    </InputWrapper>
                 </FilterGroup>
 
                 <SearchButton>
@@ -184,22 +194,21 @@ const JobListings = () => {
                             <JobMeta>
                                 <JobMetaItem>
                                     <LocationIcon>
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                                            <path d="M8 1.33334C5.42 1.33334 3.33334 3.42001 3.33334 6.00001C3.33334 9.50001 8 14.6667 8 14.6667C8 14.6667 12.6667 9.50001 12.6667 6.00001C12.6667 3.42001 10.58 1.33334 8 1.33334Z" fill="#666666" />
-                                        </svg>
+                                        <img src="/images/home/mapicon.png" alt="Location" />
                                     </LocationIcon>
                                     <span>{job.location}</span>
                                 </JobMetaItem>
 
                                 <JobMetaItem>
                                     <TimeIcon>
-                                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                                            <path d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0Z" fill="#666666" />
-                                        </svg>
+                                        <img src="/images/home/calendar.png" alt="Time" />
                                     </TimeIcon>
                                     <span>{job.daysAgo}</span>
                                 </JobMetaItem>
                                 <JobMetaItem>
+                                    <SalaryIcon>
+                                        <img src="/images/home/Lương.png" alt="Salary" />
+                                    </SalaryIcon>
                                     <SalaryText>{job.salary}</SalaryText>
                                 </JobMetaItem>
                             </JobMeta>
@@ -263,7 +272,7 @@ const SectionTitle = styled.h2`
 const ViewAllJobsLink = styled(Link)`
     color: #007AFF;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
 
     &:hover {
@@ -293,10 +302,24 @@ const FilterGroup = styled.div`
     display: flex;
     flex-direction: column;
 `;
+const InputWrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  img {
+    position: absolute;
+    left: 12px;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+`
 
 const FilterSelect = styled.select`
     width: 100%;
-    padding: 10px 12px;
+    padding: 10px 12px 10px 38px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 14px;
@@ -309,14 +332,14 @@ const FilterSelect = styled.select`
     }
 
     @media (max-width: 768px) {
-        padding: 12px;
+        
         font-size: 15px;
     }
 `;
 
 const FilterInput = styled.input`
     width: 100%;
-    padding: 10px 12px;
+    padding: 10px 12px 10px 38px; /* ✅ giống select */
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 14px;
@@ -434,7 +457,7 @@ const JobTitle = styled.h3`
 
 const JobMeta = styled.div`
     display: flex;
-    gap: 24px;
+    gap: 130px;
     margin-bottom: 8px;
     flex-wrap: wrap;
 
@@ -470,8 +493,6 @@ const SalaryText = styled.div`
     color: #BC2826;
     font-weight: 600;
     font-size: 15px;
-    margin-top: 4px;
-
     @media (max-width: 768px) {
         font-size: 14px;
         margin-top: 2px;
@@ -503,11 +524,11 @@ const JobTags = styled.div`
 `;
 
 const JobTag = styled.span`
-    background: #f0f0f0;
-    color: #666;
+    background: #F7F6F5;
+    color: #AE7174;
     padding: 4px 10px;
     border-radius: 12px;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 500;
 
     @media (max-width: 768px) {
@@ -561,6 +582,10 @@ const CompanyLogo = styled.img`
         height: 60px;
         border-radius: 6px;
     }
+`;
+const SalaryIcon = styled.div`
+    display: flex;
+    align-items: center;
 `;
 
 export default JobListings;

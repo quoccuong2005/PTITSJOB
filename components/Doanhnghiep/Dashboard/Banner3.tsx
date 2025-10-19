@@ -4,44 +4,44 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const Banner3: React.FC = () => {
-    return (
-        <Wrapper>
-            <Inner>
-                <Left>
-                    <Title>
-                        Tuyển Tập Hình Thức Việc Làm Của Chúng Tôi -{" "}
-                        <span className="accent">Jobs PTIT</span>
-                    </Title>
+  return (
+    <Wrapper>
+      <Inner>
+        <Left>
+          <Title>
+            Tuyển Tập Hình Thức Việc Làm Của Chúng Tôi -{" "}
+            <span className="accent">Jobs PTIT</span>
+          </Title>
 
-                    <List>
-                        <ListItem>
-                            <img src="/images/icons/Exclude.png" /> Thực tập/ Cộng tác viên
-                        </ListItem>
-                        <ListItem>
-                            <img src="/images/icons/Exclude.png" /> Việc làm bán thời gian/ theo ca
-                        </ListItem>
-                        <ListItem>
-                            <img src="/images/icons/Exclude.png" /> Việc làm ngắn hạn theo dự án
-                        </ListItem>
-                        <ListItem>
-                            <img src="/images/icons/Exclude.png" /> Việc làm Fulltime (Fresher/ SV mới tốt nghiệp)
-                        </ListItem>
-                    </List>
+          <List>
+            <ListItem>
+              <img src="/images/icons/Exclude.png" /> Thực tập/ Cộng tác viên
+            </ListItem>
+            <ListItem>
+              <img src="/images/icons/Exclude.png" /> Việc làm bán thời gian/ theo ca
+            </ListItem>
+            <ListItem>
+              <img src="/images/icons/Exclude.png" /> Việc làm ngắn hạn theo dự án
+            </ListItem>
+            <ListItem>
+              <img src="/images/icons/Exclude.png" /> Việc làm Fulltime (Fresher/ SV mới tốt nghiệp)
+            </ListItem>
+          </List>
 
-                    <Actions>
-                        <CTA href="/employer/post-job">ĐĂNG TUYỂN NGAY</CTA>
-                    </Actions>
-                </Left>
+          <Actions>
+            <CTA href="/employer/post-job">ĐĂNG TUYỂN NGAY</CTA>
+          </Actions>
+        </Left>
 
-                <Right>
-                    <Illustration
-                        src="/images/home/imagebanner3.jpg"
-                        alt="Jobs illustration"
-                    />
-                </Right>
-            </Inner>
-        </Wrapper>
-    );
+        <Right>
+          <Illustration
+            src="/images/about/2.png"
+            alt="Jobs illustration"
+          />
+        </Right>
+      </Inner>
+    </Wrapper>
+  );
 };
 
 export default Banner3;
@@ -156,7 +156,7 @@ const Illustration = styled.img`
   border-radius: 6px;
 
   @media (max-width: 992px) {
-    width: 80%;
+    
     margin-top: 12px;
   }
 `;

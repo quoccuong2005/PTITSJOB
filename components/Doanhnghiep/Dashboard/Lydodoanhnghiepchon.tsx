@@ -20,8 +20,10 @@ const Lydodoanhnghiepchon: React.FC = () => {
   return (
     <Wrapper>
       <Inner>
-        {/* Left column uses a background image - add your image to public/images/home/Doanhnghiep-bg.png */}
-        <Left role="img" aria-label="Doanh nghiệp chọn Jobs PTIT" />
+
+        <Left>
+          <img src="/images/about/Frame.png" />
+        </Left>
 
         <Right>
           <Heading>
@@ -55,17 +57,13 @@ export default Lydodoanhnghiepchon;
 /* Styled */
 const Wrapper = styled.section`
   width: 100%;
-  height:721px;
+  height:526px;
   background: #fff;
   padding: 36px 0;
   box-sizing: border-box;
-   background-image: url("/images/home/Doanhnghiepbg.png");
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: contain;
   
   @media (max-width: 995px) {
-    height: 530px;
+    height: auto;
     padding: 40px 0 20px 0;
     background-image: none;
     background-color: #fff6f7;

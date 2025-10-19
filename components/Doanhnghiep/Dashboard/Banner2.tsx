@@ -1,129 +1,181 @@
 // ...existing code...
-import React from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
+import React from "react";
+import styled from "styled-components";
+import Link from "next/link";
+import Banner from "../../HomePage/Banner";
 
-const Banner1: React.FC = () => {
-  return (<>
+type Reason = {
+  id: string;
+  title: string;
+  desc?: string;
+};
+
+const reasons: Reason[] = [
+  { id: "r1", title: "Gợi ý ứng viên phù hợp", desc: "Dựa trên công nghệ lọc và phân tích thông tin hiện đại." },
+  { id: "r2", title: "Quản lý ứng viên dễ dàng", desc: "Theo dõi toàn bộ quá trình tuyển chọn trên một nền tảng." },
+  { id: "r3", title: "Lọc hồ sơ chính xác", desc: "Tìm đúng người trong hàng ngàn hồ sơ chỉ với vài cú nhấp chuột." },
+
+];
+
+const Banner2: React.FC = () => {
+  return (
     <Wrapper>
       <Inner>
 
-        <img src="/images/home/congcutuyendungthongminh.png" alt="Tuyển dụng" />
+        <Left>
+          <img src="/images/about/3.png" />
+        </Left>
 
+        <Right>
+          <Heading>
+            Công Cụ Tuyển Dụng Thông Minh
+          </Heading>
+
+          <List>
+            {reasons.map((r) => (
+              <ListItem key={r.id}>
+                <Content>
+                  <ItemTitle>{r.title}</ItemTitle>
+                  {r.desc && <ItemDesc>{r.desc}</ItemDesc>}
+                </Content>
+              </ListItem>
+            ))}
+          </List>
+
+          <CtaRow>
+            <Cta href="/employer/post-job">ĐĂNG TUYỂN NGAY</Cta>
+          </CtaRow>
+        </Right>
       </Inner>
     </Wrapper>
-  </>
   );
 };
 
-export default Banner1;
+export default Banner2;
 
-// Styled
+/* Styled */
 const Wrapper = styled.section`
   width: 100%;
-  height: 510px;
-  background: #FFF;
-  background-repeat: no-repeat;
-  background-image: url('/images/home/bgbanner2.png');
-  background-size: 100% 100%;
-  border-radius: 12px;
-  box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
-  overflow: hidden;
-  position: relative;
-  @media (max-width: 768px) {
+  height:526px;
+  background: #fff;
+  padding: 36px 0;
+  box-sizing: border-box;
+  
+  @media (max-width: 995px) {
     height: auto;
-    padding: 16px;
+    padding: 40px 0 20px 0;
     background-image: none;
     background-color: #fff6f7;
 `;
 
 const Inner = styled.div`
   max-width: 1240px;
-  margin: 28px auto;
+  margin: 0 auto;
   display: flex;
+  gap: 114px;
   align-items: center;
-  gap: 24px;
-  position: relative;
-  flex-direction: row-reverse;
-  @media (max-width: 992px) {
-    padding: 10px;
-    gap: 12px;
-  }
+  padding: 12px;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
+  @media (max-width: 992px) {
+    flex-direction: column-reverse;
+    gap: 18px;
   }
 `;
 
+/* Left uses background image so you can drop the PNG/SVG into public/images/home/Doanhnghiep-bg.png */
+const Left = styled.div`
+  flex: 1;
+  min-width: 0;
+  border-radius: 12px;
+  min-height: 420px;
 
+ 
 
-const Kicker = styled.div`
-  color: #bf3b3b;
+  @media (max-width: 1200px) {
+    background-position: left center;
+    background-size: 70%;
+  }
+
+  @media (max-width: 992px) {
+    background-position: center top;
+    background-size: 80%;
+    min-height: 320px;
+  }
+`;
+
+const Right = styled.div`
+  flex: 1;
+  min-width: 0;
+  padding: 12px 24px;
+`;
+
+const Heading = styled.h2`
+  color: #0b2b61;
+  font-size: 28px;
   font-weight: 700;
-  margin-bottom: 8px;
-  font-size: 18px;
-`;
+  margin: 0 0 22px;
+  line-height: 1.5;
 
-const Title = styled.h2`
-  font-size: 34px;
-  line-height: 1.05;
-  color: #051a53;
-  margin: 0 0 14px;
-  font-weight: 800;
-
-  .normal {
-    display: inline-block;
-    background: #fff3f4;
+  .accent {
     color: #bf3b3b;
-    padding: 6px 10px;
-    border-radius: 6px;
-    margin-right: 8px;
-    font-weight: 800;
-  }
-
-  @media (max-width: 992px) {
-    font-size: 28px;
   }
 
   @media (max-width: 480px) {
+    text-align: center;
     font-size: 22px;
   }
 `;
 
-const Desc = styled.p`
-  color: #4b5563;
-  margin: 0 0 18px;
-  max-width: 620px;
-  font-size: 15px;
-  line-height: 1.6;
-
-  @media (max-width: 768px) {
-    margin: 0 auto 18px;
-  }
-`;
-
-const Actions = styled.div`
+const List = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
   display: flex;
+  flex-direction: column;
   gap: 12px;
+`;
+
+const ListItem = styled.li`
+  display: flex;
+  gap: 14px;
   align-items: center;
-
-  @media (max-width: 768px) {
-    justify-content: center;
-    width: 100%;
-  }
+  background: linear-gradient(180deg, #FFEDED, #FFFAFA);
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
+  height: 88px;
 `;
 
-const Primary = styled(Link)`
-  display: inline-block;
-  background: #DFEDFF;
-  color: #007AFF;
-  padding: 10px 18px;
-  border-radius: 25px;
+
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ItemTitle = styled.div`
   font-weight: 700;
-  text-decoration: none;
-
-  
+  color: #051A53;
+  font-size: 18px;
 `;
 
+const ItemDesc = styled.div`
+  color: #535355;
+  font-size: 14px;
+  margin-top: 6px;
+`;
+
+const CtaRow = styled.div`
+  margin-top: 18px;
+`;
+
+const Cta = styled(Link)`
+  display: inline-block;
+  background: #e6f3ff;
+  color: #0b66ff;
+  padding: 10px 16px;
+  border-radius: 24px;
+  font-weight: 600;
+  text-decoration: none;
+`;
 // ...existing code...

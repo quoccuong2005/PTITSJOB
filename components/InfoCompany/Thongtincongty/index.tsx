@@ -126,15 +126,14 @@ const CompanyInfo = () => {
                     <CompanyName>{companyInfo.name}</CompanyName>
                     <CompanyMeta>
                         <MetaItem>
+                            <img src='/images/home/website.png' />
                             <CompanyContact>
                                 <ContactItem><span>Website</span> <ContactLink href={companyInfo.website} target="_blank">{companyInfo.website}</ContactLink></ContactItem>
                             </CompanyContact>
                         </MetaItem>
                         <MetaItem>
                             <FollowersIcon>
-                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M8 8C10.21 8 12 6.21 12 4C12 1.79 10.21 0 8 0C5.79 0 4 1.79 4 4C4 6.21 5.79 8 8 8ZM8 10C5.33 10 0 11.34 0 14V15C0 15.55 0.45 16 1 16H15C15.55 16 16 15.55 16 15V14C16 11.34 10.67 10 8 10Z" fill="#666666" />
-                                </svg>
+                                <img src='/images/home/employee.png' />
                             </FollowersIcon>
                             <div className="flex flex-col">
                                 <span>Tổng số nhân viên</span>
@@ -142,6 +141,7 @@ const CompanyInfo = () => {
                             </div>
                         </MetaItem>
                         <MetaItem>
+                            <img src="/images/home/industry.png" alt="Industry" />
                             <div className="flex flex-col">
                                 <span>Việc làm đăng tuyển</span>
                                 <span>{jobs.length} việc làm</span>
@@ -233,7 +233,7 @@ const CompanyName = styled.h1`
 `;
 const CompanyMeta = styled.div`
     display: flex;
-    gap: 74px;
+    gap: 59px;
     margin-bottom: 12px;
     flex-wrap: wrap;
 

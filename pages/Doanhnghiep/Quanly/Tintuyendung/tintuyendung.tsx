@@ -35,28 +35,28 @@ const sampleData = [
 
 const TintuyendungTable = () => {
     return (
-        <div className="bg-white rounded-xl shadow p-6 mx-auto mt-8 w-[1280px] mb-8 ">
-            <h2 className="text-2xl font-bold text-blue-900 mb-6">Tin Tuyển Dụng</h2>
-            <div className="flex justify-end mb-2">
-                <span className="text-blue-600 text-sm font-medium cursor-pointer">4 tin tuyển dụng</span>
+        <div className="bg-white rounded-xl shadow p-4 sm:p-6 mx-auto mt-6 lg:w-[1280px] mb-8">
+            <div className="flex  flex-row items-center justify-between gap-2 mb-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-blue-900">Tin Tuyển Dụng</h2>
+                <span className="text-blue-600 text-sm font-medium cursor-pointer text-right">4 tin tuyển dụng</span>
             </div>
             <div className="overflow-x-auto">
-                <table className="min-w-full text-sm">
+                <table className="min-w-[700px] w-full text-sm">
                     <thead>
                         <tr className="bg-gray-50 text-gray-700">
-                            <th className="px-4 py-2 font-semibold text-left">STT</th>
-                            <th className="px-4 py-2 font-semibold text-left">Tin tuyển dụng</th>
-                            <th className="px-4 py-2 font-semibold text-left">Hồ sơ đã ứng tuyển</th>
-                            <th className="px-4 py-2 font-semibold text-left">Ngày hết hạn tin</th>
-                            <th className="px-4 py-2 font-semibold text-left">Trạng thái</th>
-                            <th className="px-4 py-2 font-semibold text-left"></th>
+                            <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">STT</th>
+                            <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Tin tuyển dụng</th>
+                            <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Hồ sơ đã ứng tuyển</th>
+                            <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Ngày hết hạn tin</th>
+                            <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Trạng thái</th>
+                            <th className="px-2 sm:px-4 py-2 font-semibold text-left"></th>
                         </tr>
                     </thead>
                     <tbody>
                         {sampleData.map((row, idx) => (
                             <tr key={row.id} className="border-b last:border-none">
-                                <td className="px-4 py-3 font-medium text-gray-700">{idx + 1}</td>
-                                <td className="px-4 py-3">
+                                <td className="px-2 sm:px-4 py-3 font-medium text-gray-700">{idx + 1}</td>
+                                <td className="px-2 sm:px-4 py-3">
                                     <div className="flex flex-col gap-1">
                                         <span className="text-blue-600 text-xs font-medium flex items-center gap-1">
                                             {row.code}
@@ -67,7 +67,7 @@ const TintuyendungTable = () => {
                                         <span className="font-semibold text-base text-gray-900">{row.title}</span>
                                     </div>
                                 </td>
-                                <td className="px-4 py-3">
+                                <td className="px-2 sm:px-4 py-3">
                                     {row.applied > 0 ? (
                                         <div className="flex flex-col gap-1">
                                             <span className="text-blue-700 font-medium">{row.applied} hồ sơ cần đánh giá</span>
@@ -77,11 +77,11 @@ const TintuyendungTable = () => {
                                         <span className="text-gray-500">Chưa có hồ sơ nào</span>
                                     )}
                                 </td>
-                                <td className="px-4 py-3 text-gray-700">{row.expiredDate}</td>
-                                <td className="px-4 py-3">
+                                <td className="px-2 sm:px-4 py-3 text-gray-700">{row.expiredDate}</td>
+                                <td className="px-2 sm:px-4 py-3">
                                     <span className={`px-3 py-1 rounded-full text-xs font-semibold ${row.statusColor}`}>{row.status}</span>
                                 </td>
-                                <td className="px-4 py-3">
+                                <td className="px-2 sm:px-4 py-3">
                                     <div className="flex gap-3 text-gray-400">
                                         <button title="Sửa">
                                             <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z" /></svg>

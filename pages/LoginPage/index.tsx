@@ -5,8 +5,8 @@ import { NextPage } from 'next';
 
 const LoginPage: NextPage = () => {
     return (
-        // <LoginFlow />
-        <LoginForm showModal="ok" setShowModal={() => { }} />
+        <LoginFlow />
+        // <LoginForm showModal="ok" setShowModal={() => { }} />
     );
 };
 

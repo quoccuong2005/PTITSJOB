@@ -11,6 +11,9 @@ import { getKhoaHocMienPhi, getKhoaHocMoiNhat, getKhoaHocNangCao, getKhoaHocPhoB
 import { useRouter } from "next/router";
 import { ELang, LangMap } from "../../utils/constant";
 import { useTranslation } from "react-i18next";
+import { getTintuyendungList } from "../../api/tintuyendungpublic";
+import { Tintuyendungpublic } from "../../api/tintuyendungpublic/type";
+
 
 // Filter tabs data
 const filterTabs = [
@@ -38,22 +41,53 @@ const Vieclambanquantam: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
   const { title, description, buttonText, courses, type, autoplay = true, showFilter = true } = props;
   const [listCourses, setListCourses] = useState<CourseCardProps[]>([]);
   const [activeFilter, setActiveFilter] = useState("all");
+  const [jobList, setJobList] = useState<Tintuyendungpublic[]>([]);
   const { i18n } = useTranslation();
   const currentLang = i18n.language;
+  const defaultSlidesToShow = 3;
+
+  // determine how many slides to show based on available items to avoid react-slick cloning
+  const computedSlidesToShow = Math.min(defaultSlidesToShow, Math.max(1, jobList.length || 1));
+
   const settings = {
     dots: false,
     speed: 600,
-    slidesToShow: 4,
+    slidesToShow: computedSlidesToShow,
     slidesToScroll: 1,
     arrows: false,
-    autoplay: autoplay,
+    infinite: jobList.length > defaultSlidesToShow,
+    autoplay: autoplay && jobList.length > defaultSlidesToShow,
     autoplaySpeed: 2000,
     responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 3 } },
-      { breakpoint: 992, settings: { slidesToShow: 2 } },
+      { breakpoint: 1200, settings: { slidesToShow: Math.min(3, jobList.length || 1) } },
+      { breakpoint: 992, settings: { slidesToShow: Math.min(2, jobList.length || 1) } },
       { breakpoint: 576, settings: { slidesToShow: 1 } },
     ],
   };
+  useEffect(() => {
+    getTintuyendungList()
+      .then((response) => {
+        console.log("Dữ liệu bài viết tuyển dụng:", response.data);
+        // API might return either an array (response.data) or a wrapper { data: [...] }
+        const payload = response.data;
+        const list = Array.isArray(payload)
+          ? payload
+          : Array.isArray((payload && (payload as any).data))
+            ? (payload as any).data
+            : [];
+        setJobList(list as Tintuyendungpublic[]);
+      })
+      .catch((error) => {
+        console.error("Lỗi khi gọi API:", error);
+      });
+  }, []);
+  console.log("jobList", jobList);
+
+
+
+
+
+
   useEffect(() => {
     if (!currentLang) return;
 
@@ -184,11 +218,13 @@ const Vieclambanquantam: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
         )}
 
         <div className="courses-grid">
-          {fakeJobsData.map((job) => (
-            <div className="course-item" key={job.id}>
-              <JobCard {...job} />
-            </div>
-          ))}
+          <Slider ref={sliderRef} {...settings}>
+            {jobList.map((job) => (
+              <div className="course-item" key={job._id}>
+                <JobCard {...job} />
+              </div>
+            ))}
+          </Slider>
         </div>
 
         {/* <div className="button-container">
@@ -215,6 +251,18 @@ const Vieclambanquantam: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
 };
 
 const KhoaHocWrapper = styled.div`
+.slick-slider {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .slick-list {
+    padding-top: 10px;
+    .slick-track {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
   .section-header {
     margin-bottom: 20px;
     width: 100%;
@@ -298,6 +346,7 @@ const KhoaHocWrapper = styled.div`
 
   .course-item {
     width: 100%;
+    height: 230px;
   }
 
   /* Filter Tabs Styles */
