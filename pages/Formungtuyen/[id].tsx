@@ -62,10 +62,11 @@ const Formungtuyen: React.FC = () => {
         soDienThoai: "0987654321",
         email: "cuong.nguyen@example.com",
         diaChi: "Số 25, đường Trần Thái Tông, Cầu Giấy, Hà Nội",
-        gioiThieu: "Tôi là một lập trình viên trẻ đam mê công nghệ, có kinh nghiệm phát triển web với React và Node.js. Tôi mong muốn được làm việc trong môi trường chuyên nghiệp để học hỏi và phát triển kỹ năng."
+        gioiThieu: "Tôi là một lập trình viên trẻ đam mê công nghệ, có kinh nghiệm phát triển web với React và Node.js. Tôi mong muốn được làm việc trong môi trường chuyên nghiệp để học hỏi và phát triển kỹ năng.",
+        trangThaiUngTuyen: "Đang chờ"
       };
 
-      const response = await postUngtuyen(payload);
+      const response = await postUngtuyen(idParam || "", payload);
 
       if (response.data.success) {
         alert("Ứng tuyển thành công!");

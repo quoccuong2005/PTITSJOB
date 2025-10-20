@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { getBaiVietSlug } from "../../../api/baivietpublic";
 import { BaiViet } from "../../../api/baivietpublic/type";
-
+import { postBaiVietView } from "../../../api/baivietview";
 // Mock data cho bài viết
 const articleData = {
   title: "Bạn là ai khi xung quanh toàn người giỏi?",
@@ -111,11 +111,13 @@ const articleData = {
 
 const NewsPage = () => {
   const router = useRouter();
-  const { slug, _id } = router.query as { slug?: string, _id?: string };
+  const { slug, id } = router.query as { slug?: string, id?: string };
+  console.log("id", id);
 
   const [article, setArticle] = useState<BaiViet | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [viewCount, setViewCount] = useState<number | null>(null);
   function formatDate(isoString: string): string {
     const date = new Date(isoString);
     const day = date.getDate().toString().padStart(2, "0");
@@ -146,6 +148,18 @@ const NewsPage = () => {
 
     fetchArticle();
   }, [slug]);
+
+  useEffect(() => {
+    if (id) {
+      // Khi đã có id (router đã load), gọi API tăng view
+      postBaiVietView(id as string)
+        .then(() => setViewCount((prev) => (prev ? prev + 1 : 1)))
+        .catch((err) => console.error("Lỗi khi ghi nhận view:", err));
+    }
+  }, [id]);
+  console.log("View", viewCount);
+
+
 
   if (router.isFallback || loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -250,7 +264,7 @@ const NewsPage = () => {
                   <img src="/images/home/views.png" alt="Views" />
                   <div className="inline-grid">
                     <span>Lượt xem</span>
-                    <span className="font-bold text-[#051A53]">{articleData.views}</span>
+                    <span className="font-bold text-[#051A53]">{viewCount}</span>
                   </div>
                 </StatsItem>
               </StatsContainer>

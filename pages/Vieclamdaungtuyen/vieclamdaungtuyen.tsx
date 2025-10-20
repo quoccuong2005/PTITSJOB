@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import RelatedJobs from "../../components/Vieclamlienquan"
+import { getUngtuyenByUser } from "../../api/ungtuyen";
+import { UngTuyenResponse } from "../../api/ungtuyen/type";
+
 
 // Interface cho dữ liệu công việc đã ứng tuyển
 interface AppliedJob {
@@ -76,24 +79,36 @@ const appliedJobs: AppliedJob[] = [
 
 const ViecLamDaUngTuyen: React.FC = () => {
     const [activeTab, setActiveTab] = useState<'all' | 'pending' | 'accepted' | 'rejected'>('all');
+    const [appliedJobs, setAppliedJobs] = useState<UngTuyenResponse | null>(null);
+    useEffect(() => {
+        getUngtuyenByUser()
+            .then((response) => {
+                console.log("Dữ liệu bài viết:", response.data);
+                setAppliedJobs(response.data);
+            })
+            .catch((error) => {
+                console.error("Lỗi khi gọi API:", error);
+            });
+    }, []);
+    console.log("Dữ liệu đã ứng tuyển:", appliedJobs);
 
-    // Lọc công việc theo trạng thái
-    const filteredJobs = activeTab === 'all'
-        ? appliedJobs
-        : appliedJobs.filter(job => job.status === activeTab);
+    // // Lọc công việc theo trạng thái
+    // const filteredJobs = activeTab === 'all'
+    //     ? appliedJobs
+    //     : appliedJobs.filter(job => job.trangThaiUngTuyen === activeTab);
 
-    const getStatusColor = (status: string) => {
-        switch (status) {
-            case 'pending':
-                return '#FFA500';
-            case 'accepted':
-                return '#28A745';
-            case 'rejected':
-                return '#DC3545';
-            default:
-                return '#6C757D';
-        }
-    };
+    // const getStatusColor = (status: string) => {
+    //     switch (status) {
+    //         case 'pending':
+    //             return '#FFA500';
+    //         case 'accepted':
+    //             return '#28A745';
+    //         case 'rejected':
+    //             return '#DC3545';
+    //         default:
+    //             return '#6C757D';
+    //     }
+    // };
 
     return (
         <Container>
@@ -116,7 +131,7 @@ const ViecLamDaUngTuyen: React.FC = () => {
 
                 {/* Applied Jobs List */}
                 <JobsList>
-                    {filteredJobs.map((job) => (
+                    {/* {filteredJobs.map((job) => (
                         <JobCard key={job.id}>
                             <JobHeader>
                                 <CompanyInfo>
@@ -169,7 +184,7 @@ const ViecLamDaUngTuyen: React.FC = () => {
                                 </JobActions>
                             </div>
                         </JobCard>
-                    ))}
+                    ))} */}
                 </JobsList>
             </MainContent>
 

@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
+import { getCvTemplatePage } from '../../api/CVtemplate';
+import { CvTemplate } from '../../api/CVtemplate/type';
+import { formatDate } from '../../assets/formatDate';
 // Interface cho CV
 interface CVItem {
     id: string;
@@ -48,21 +50,31 @@ const mockCVData: CVItem[] = [
 ];
 
 const QuanlyCV: React.FC = () => {
-    const [cvList, setCvList] = useState(mockCVData);
+    const [cvList, setCvList] = useState<CvTemplate[]>([]);
     const [selectedCV, setSelectedCV] = useState<string | null>(null);
 
+
     const handleDeleteCV = (id: string) => {
-        setCvList(prev => prev.filter(cv => cv.id !== id));
+        setCvList(prev => prev.filter(cv => cv._id !== id));
     };
 
-    const handleDownloadCV = (cv: CVItem) => {
+    const handleDownloadCV = (cv: CvTemplate) => {
         // Simulate download
-        console.log(`Downloading ${cv.fileName}`);
+        console.log(`Downloading ${cv.ten} from ${cv.cvFile}`);
     };
 
     const handleMoreOptions = (id: string) => {
         setSelectedCV(selectedCV === id ? null : id);
     };
+
+    useEffect(() => {
+        getCvTemplatePage().then(data => {
+            console.log("Fetched CV Templates:", data.data.result);
+            setCvList(data.data.result);
+        }).catch(err => {
+            console.error("Error fetching CV Templates:", err);
+        });
+    }, []);
 
     return (
         <Container>
@@ -84,11 +96,11 @@ const QuanlyCV: React.FC = () => {
                 {/* CV Grid */}
                 <CVGrid>
                     {cvList.map((cv) => (
-                        <CVCard key={cv.id}>
+                        <CVCard key={cv._id}>
                             <CVPreview>
                                 <CVImage
-                                    src={cv.previewImage}
-                                    alt={cv.name}
+                                    src={cv.hinhAnh}
+                                    alt={cv.ten}
                                     onError={(e) => {
                                         // Fallback to default CV template image
                                         e.currentTarget.src = '/images/cv-templates/default-cv.jpg';
@@ -104,21 +116,23 @@ const QuanlyCV: React.FC = () => {
                                                 <path d="M19 9H15V3H9V9H5L12 16L19 9ZM5 18V20H19V18H5Z" fill="white" />
                                             </svg>
                                         </ActionButton>
-                                        <ActionButton
-                                            onClick={() => console.log('Preview CV')}
-                                            title="Xem trước"
-                                        >
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                                <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5S21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12S9.24 7 12 7S17 9.24 17 12S14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z" fill="white" />
-                                            </svg>
-                                        </ActionButton>
+                                        <a href={cv.cvFile} target="_blank" rel="noopener noreferrer">
+                                            <ActionButton
+                                                onClick={() => console.log('Preview CV')}
+                                                title="Xem trước"
+                                            >
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12C2.73 16.39 7 19.5 12 19.5S21.27 16.39 23 12C21.27 7.61 17 4.5 12 4.5ZM12 17C9.24 17 7 14.76 7 12S9.24 7 12 7S17 9.24 17 12S14.76 17 12 17ZM12 9C10.34 9 9 10.34 9 12S10.34 15 12 15S15 13.66 15 12S13.66 9 12 9Z" fill="white" />
+                                                </svg>
+                                            </ActionButton>
+                                        </a>
                                     </CVActions>
                                 </CVOverlay>
                             </CVPreview>
 
                             <CVInfo>
-                                <CVName>{cv.name}</CVName>
-                                <CVDate>{cv.lastModified}</CVDate>
+                                <CVName>{cv.ten}</CVName>
+                                <CVDate>Cập nhật : {formatDate(cv.createdAt)}</CVDate>
                             </CVInfo>
                         </CVCard>
                     ))}

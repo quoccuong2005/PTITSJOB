@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { getCVTemplatesList, getCVTemplatesPage } from "../../api/cvtemplatepublic";
+import { getUngtuyenByUser } from "../../api/ungtuyen";
 
 const BaiVietPage: React.FC = () => {
     useEffect(() => {
-        getCVTemplatesList()
+        getUngtuyenByUser()
             .then((response) => {
                 console.log("Dữ liệu bài viếtp[ad[a]spd]:", response.data);
             })
@@ -12,15 +12,7 @@ const BaiVietPage: React.FC = () => {
             });
     }, []);
 
-    useEffect(() => {
-        getCVTemplatesPage()
-            .then((response) => {
-                console.log("Dữ liệu bài viết pagedasdasdasd:", response.data);
-            })
-            .catch((error) => {
-                console.error("Lỗi khi gọi API page:", error);
-            });
-    }, []);
+
 
 
 

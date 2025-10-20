@@ -6,6 +6,7 @@ import Vieclamlienquan from '../../components/Relatedjobs';
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 import { getTintuyendungById } from "../../api/tintuyendungpublic/index"
 import { Tintuyendungpublic } from "../../api/tintuyendungpublic/type"
+import { getUngtuyenById } from "../../api/ungtuyen/index"
 const jobDetail = {
   id: "data-analyst",
   title: "Data Analyst (Risk Management)",
@@ -78,7 +79,7 @@ const JobDetailPage = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [common] = useCommonTranslation();
   const [Detailjob, setDetailjob] = useState<Tintuyendungpublic | null>(null);
-
+  const [hasApplied, setHasApplied] = useState(false);
   useEffect(() => {
     if (!idParam) return;
     (async () => {
@@ -99,7 +100,31 @@ const JobDetailPage = () => {
   }, [idParam]);
   console.log("Detailjob", Detailjob);
 
+  useEffect(() => {
+    if (!idParam) return;
+    (async () => {
+      try {
+        const res = await getUngtuyenById(idParam);
+        // chuẩn hóa kết quả trả về thành mảng bản ghi ứng tuyển
+        let apps: any[] = [];
+        if (!res) apps = [];
+        else if (Array.isArray(res.data)) apps = res.data;
+        else if (res.data && Array.isArray((res.data as any).data)) apps = (res.data as any).data;
+        else if (res.data) apps = [res.data];
 
+        // nếu bất kỳ bản ghi có trường tinTuyenDungId hoặc tinTuyenDung trùng idParam => đã ứng tuyển
+        const applied = apps.some((a: any) => {
+          const tinId = a.tinTuyenDungId ?? a.tinTuyenDung ?? a.tinTuyenDungId ?? a.tinTuyenDung;
+          return tinId && String(tinId) === String(idParam);
+        });
+
+        setHasApplied(Boolean(applied));
+      } catch (err) {
+        console.error("Lỗi khi kiểm tra trạng thái ứng tuyển:", err);
+        setHasApplied(false);
+      }
+    })();
+  }, [idParam]);
 
 
 
@@ -164,15 +189,23 @@ const JobDetailPage = () => {
                   </JobMetaItem>
                 </JobMetaSecondRow>
               </JobHeader>
+              {hasApplied ? (
+                <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                  +                    <span style={{ padding: "10px 24px", borderRadius: 4, background: "#f5f5f5", color: "#666", fontWeight: 600 }}>
+                    +                      Đã ứng tuyển
+                    +                    </span>
+                  +                  </div>
+              ) : (
+                <div className="flex gap-[30px]">
+                  <Link className='w-[100%]' href={`/Formungtuyen/${Detailjob?._id}`}>
+                    <ApplyButton  >
+                      Ứng tuyển ngay
+                    </ApplyButton>
+                  </Link>
+                  <img src="/images/home/Yêu thích.png" className="w-[36px] h-[36px]" />
+                </div>
+              )}
 
-              <div className="flex gap-[30px]">
-                <Link className='w-[100%]' href={`/Formungtuyen/${Detailjob?._id}`}>
-                  <ApplyButton  >
-                    Ứng tuyển ngay
-                  </ApplyButton>
-                </Link>
-                <img src="/images/home/Yêu thích.png" className="w-[36px] h-[36px]" />
-              </div>
 
               <FavoriteButton>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">

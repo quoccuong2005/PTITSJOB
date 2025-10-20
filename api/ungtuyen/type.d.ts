@@ -5,6 +5,7 @@ export interface Ungtuyen {
     email: string,
     diaChi: string,
     gioiThieu: string,
+    trangThaiUngTuyen: "Đang chờ"
 }
 
 export interface UngTuyenResponse {
