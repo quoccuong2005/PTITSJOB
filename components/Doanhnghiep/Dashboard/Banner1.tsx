@@ -13,7 +13,11 @@ const Banner1: React.FC = () => {
           <img className="mt-[3rem] mb-[2rem]" src="/images/home/tiepcantext.png" alt="Tiếp cận" />
 
           <Actions>
-            <Primary href="/dashboard/post-job">Đăng tuyển ngay</Primary>
+            <a href="/Doanhnghiep/Dangtuyen/Dangtuyen" >
+              <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                ĐĂNG TUYỂN NGAY
+              </button>
+            </a>
           </Actions>
         </Left>
       </Inner>

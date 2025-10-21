@@ -5,42 +5,48 @@ import Link from "next/link";
 
 const Banner3: React.FC = () => {
   return (
-    <Wrapper>
-      <Inner>
-        <Left>
-          <Title>
-            Tuyển Tập Hình Thức Việc Làm Của Chúng Tôi -{" "}
-            <span className="accent">Jobs PTIT</span>
-          </Title>
+    <div id="hinhthuc">
+      <Wrapper>
+        <Inner>
+          <Left>
+            <Title>
+              Tuyển Tập Hình Thức Việc Làm Của Chúng Tôi -{" "}
+              <span className="accent">Jobs PTIT</span>
+            </Title>
 
-          <List>
-            <ListItem>
-              <img src="/images/icons/Exclude.png" /> Thực tập/ Cộng tác viên
-            </ListItem>
-            <ListItem>
-              <img src="/images/icons/Exclude.png" /> Việc làm bán thời gian/ theo ca
-            </ListItem>
-            <ListItem>
-              <img src="/images/icons/Exclude.png" /> Việc làm ngắn hạn theo dự án
-            </ListItem>
-            <ListItem>
-              <img src="/images/icons/Exclude.png" /> Việc làm Fulltime (Fresher/ SV mới tốt nghiệp)
-            </ListItem>
-          </List>
+            <List>
+              <ListItem>
+                <img src="/images/icons/Exclude.png" /> Thực tập/ Cộng tác viên
+              </ListItem>
+              <ListItem>
+                <img src="/images/icons/Exclude.png" /> Việc làm bán thời gian/ theo ca
+              </ListItem>
+              <ListItem>
+                <img src="/images/icons/Exclude.png" /> Việc làm ngắn hạn theo dự án
+              </ListItem>
+              <ListItem>
+                <img src="/images/icons/Exclude.png" /> Việc làm Fulltime (Fresher/ SV mới tốt nghiệp)
+              </ListItem>
+            </List>
 
-          <Actions>
-            <CTA href="/employer/post-job">ĐĂNG TUYỂN NGAY</CTA>
-          </Actions>
-        </Left>
+            <Actions>
+              <a href="/Doanhnghiep/Dangtuyen/Dangtuyen" >
+                <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                  ĐĂNG TUYỂN NGAY
+                </button>
+              </a>
+            </Actions>
+          </Left>
 
-        <Right>
-          <Illustration
-            src="/images/about/2.png"
-            alt="Jobs illustration"
-          />
-        </Right>
-      </Inner>
-    </Wrapper>
+          <Right>
+            <Illustration
+              src="/images/about/2.png"
+              alt="Jobs illustration"
+            />
+          </Right>
+        </Inner>
+      </Wrapper>
+    </div>
   );
 };
 

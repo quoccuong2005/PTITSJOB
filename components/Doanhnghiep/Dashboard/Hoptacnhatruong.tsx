@@ -5,87 +5,86 @@ import { getBaiVietList } from "../../../api/baivietpublic";
 import type { BaiViet } from "../../../api/baivietpublic/type";
 
 const Hoptacnhatruong = () => {
-    const [posts, setPosts] = useState<BaiViet[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+  const [posts, setPosts] = useState<BaiViet[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
 
-    useEffect(() => {
-        getBaiVietList()
-            .then((response) => {
-                const data = Array.isArray(response.data.data) ? response.data.data : [];
-                const filtered = data.filter(item => item.loai === "Tin tức");
-                setPosts(filtered);
-            })
-            .catch((error) => {
-                console.error("Lỗi khi gọi API:", error);
-            });
-    }, []);
+  useEffect(() => {
+    getBaiVietList()
+      .then((response: any) => {
+        const data = Array.isArray(response.data.data) ? response.data.data : [];
+        const filtered = data.filter((item: any) => item.loai === "Tin tức");
+        setPosts(filtered);
+      })
+      .catch((error) => {
+        console.error("Lỗi khi gọi API:", error);
+      });
+  }, []);
 
-    return (
-        <Wrapper>
-            <Container>
-                <SectionHeader>
+  return (
+    <div id="hoptac">
+      <Wrapper>
+        <Container>
+          <SectionHeader>
+            <div>
+              <h2>HỢP TÁC NHÀ TRƯỜNG</h2>
+              <p>Tổng hợp các hạng mục hợp tác giữa Học viện - Doanh nghiệp</p>
+            </div>
+          </SectionHeader>
+
+          {loading ? (
+            <p>Đang tải bài viết...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : Array.isArray(posts) && posts.length > 0 ? (
+            <NewsList>
+              {posts.map((item, idx) => (
+                <NewsCard key={idx}>
+                  <div className="image-container">
+                    <img
+                      src={item.hinhAnh || "/images/home/default-news.png"}
+                      alt={item.tieuDe}
+                    />
+                  </div>
+                  <div className="content">
                     <div>
-                        <h2>HỢP TÁC NHÀ TRƯỜNG</h2>
-                        <p>Tổng hợp các hạng mục hợp tác giữa Học viện - Doanh nghiệp</p>
-                    </div>
-                </SectionHeader>
-
-                {loading ? (
-                    <p>Đang tải bài viết...</p>
-                ) : error ? (
-                    <p>{error}</p>
-                ) : Array.isArray(posts) && posts.length > 0 ? (
-                    <NewsList>
-                        {posts.map((item, idx) => (
-                            <NewsCard key={idx}>
-                                <div className="image-container">
-                                    <img
-                                        src={item.hinhAnh || "/images/home/default-news.png"}
-                                        alt={item.tieuDe}
-                                    />
-                                </div>
-                                <div className="content">
-                                    <div>
-                                        <div className="date-row">
-                                            <img src="/images/home/calendar.png" alt="calendar" />
-                                            {/* <span>
+                      <div className="date-row">
+                        <img src="/images/home/calendar.png" alt="calendar" />
+                        {/* <span>
                 {item.ngayDang
                   ? new Date(item.ngayDang).toLocaleDateString("vi-VN")
                   : "Không rõ ngày"}
               </span> */}
-                                        </div>
-                                        <h3 className="news-title">{item.tieuDe}</h3>
-                                    </div>
-                                    <Link href={`/Newspage/${item._id}/${item.slug}`} className="detail-btn">
-                                        Xem chi tiết
-                                    </Link>
-                                </div>
-                            </NewsCard>
-                        ))}
-                    </NewsList>
-                ) : (
-                    <EmptyMessage>Hiện tại chưa có bài viết nào.</EmptyMessage>
-                )}
-
-
-
-            </Container>
-        </Wrapper>
-    );
+                      </div>
+                      <h3 className="news-title">{item.tieuDe}</h3>
+                    </div>
+                    <Link href={`/Newspage/${item._id}/${item.slug}`} className="detail-btn">
+                      Xem chi tiết
+                    </Link>
+                  </div>
+                </NewsCard>
+              ))}
+            </NewsList>
+          ) : (
+            <EmptyMessage>Hiện tại chưa có bài viết nào.</EmptyMessage>
+          )}
+        </Container>
+      </Wrapper>
+    </div>
+  );
 };
 
 export default Hoptacnhatruong;
 
 // ========== Dưới là các styled components giữ nguyên ==========
 const partners = [
-    { img: "/images/home/riptdo.png" },
-    { img: "/images/home/riptxanh.png" },
-    { img: "/images/home/riptdo.png" },
-    { img: "/images/home/riptxanh.png" },
-    { img: "/images/home/riptdo.png" },
-    { img: "/images/home/riptxanh.png" },
+  { img: "/images/home/riptdo.png" },
+  { img: "/images/home/riptxanh.png" },
+  { img: "/images/home/riptdo.png" },
+  { img: "/images/home/riptxanh.png" },
+  { img: "/images/home/riptdo.png" },
+  { img: "/images/home/riptxanh.png" },
 ];
 
 const Wrapper = styled.div`

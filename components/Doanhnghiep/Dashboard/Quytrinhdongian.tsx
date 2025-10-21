@@ -17,62 +17,65 @@ const steps: Step[] = [
 
 const Quytrinhdongian: React.FC = () => {
   return (
-    <Wrapper>
-      <Inner>
-        <Left>
-          <Heading>
-            <img src="/images/home/quytrinhdongian.png" alt="Quy Trình Đơn Giản" />
-          </Heading>
+    <div id="quytrinh">
 
-          <List>
-            {steps.map((s) => (
-              <ListItem key={s.id}>
-                <Badge>{s.number}</Badge>
-                <ListContent>
-                  <ItemTitle>{s.title}</ItemTitle>
-                  <ItemDesc>{s.desc}</ItemDesc>
-                </ListContent>
-              </ListItem>
-            ))}
-          </List>
+      <Wrapper>
+        <Inner>
+          <Left>
+            <Heading>
+              <img src="/images/home/quytrinhdongian.png" alt="Quy Trình Đơn Giản" />
+            </Heading>
 
-          <CtaRow>
-            <Cta href="/employer/post-job">ĐĂNG TUYỂN NGAY</Cta>
-          </CtaRow>
-        </Left>
+            <List>
+              {steps.map((s) => (
+                <ListItem key={s.id}>
+                  <Badge>{s.number}</Badge>
+                  <ListContent>
+                    <ItemTitle>{s.title}</ItemTitle>
+                    <ItemDesc>{s.desc}</ItemDesc>
+                  </ListContent>
+                </ListItem>
+              ))}
+            </List>
 
-        <Right>
-          <CarouselMock>
-            <Card>
-              <CardNum>1</CardNum>
-              <CardTitle>Đăng tin tuyển dụng</CardTitle>
-              <div className="mt-[30px] items-center flex flex-col gap-[44px]">
-                <CardIllustration src="/images/home/dangtinimage.png" alt="step1" />
-                <img src="/images/home/Cham1.png" alt="step1" />
-              </div>
-            </Card>
+            <CtaRow>
+              <Cta href="/employer/post-job">ĐĂNG TUYỂN NGAY</Cta>
+            </CtaRow>
+          </Left>
 
-            <Card>
-              <CardNum>2</CardNum>
-              <CardTitle>Tiếp cận ứng viên trẻ</CardTitle>
-              <div className="mt-[30px] items-center flex flex-col gap-[44px]">
-                <CardIllustration src="/images/home/tiepcanimage.png" alt="step2" />
-                <img src="/images/home/Cham2.png" alt="step2" />
-              </div>
-            </Card>
+          <Right>
+            <CarouselMock>
+              <Card>
+                <CardNum>1</CardNum>
+                <CardTitle>Đăng tin tuyển dụng</CardTitle>
+                <div className="mt-[30px] items-center flex flex-col gap-[44px]">
+                  <CardIllustration src="/images/home/dangtinimage.png" alt="step1" />
+                  <img src="/images/home/Cham1.png" alt="step1" />
+                </div>
+              </Card>
 
-            <Card>
-              <CardNum>3</CardNum>
-              <CardTitle>Phỏng vấn & tuyển chọn</CardTitle>
-              <div className="mt-[30px] items-center flex flex-col gap-[44px]">
-                <CardIllustration src="/images/home/phongvanimage.png" alt="step3" />
-                <img src="/images/home/Cham3.png" alt="step3" />
-              </div>
-            </Card>
-          </CarouselMock>
-        </Right>
-      </Inner>
-    </Wrapper>
+              <Card>
+                <CardNum>2</CardNum>
+                <CardTitle>Tiếp cận ứng viên trẻ</CardTitle>
+                <div className="mt-[30px] items-center flex flex-col gap-[44px]">
+                  <CardIllustration src="/images/home/tiepcanimage.png" alt="step2" />
+                  <img src="/images/home/Cham2.png" alt="step2" />
+                </div>
+              </Card>
+
+              <Card>
+                <CardNum>3</CardNum>
+                <CardTitle>Phỏng vấn & tuyển chọn</CardTitle>
+                <div className="mt-[30px] items-center flex flex-col gap-[44px]">
+                  <CardIllustration src="/images/home/phongvanimage.png" alt="step3" />
+                  <img src="/images/home/Cham3.png" alt="step3" />
+                </div>
+              </Card>
+            </CarouselMock>
+          </Right>
+        </Inner>
+      </Wrapper>
+    </div>
   );
 };
 

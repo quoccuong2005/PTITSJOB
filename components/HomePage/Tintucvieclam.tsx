@@ -12,9 +12,9 @@ const Tintucvieclam = () => {
 
   useEffect(() => {
     getBaiVietList()
-      .then((response) => {
+      .then((response: any) => {
         const data = Array.isArray(response.data.data) ? response.data.data : [];
-        const filtered = data.filter(item => item.loai === "Tin tức");
+        const filtered = data.filter((item: any) => item.loai === "Tin tức");
         setPosts(filtered);
       })
       .catch((error) => {
@@ -23,78 +23,80 @@ const Tintucvieclam = () => {
   }, []);
 
   return (
-    <Wrapper>
-      <Container>
-        <SectionHeader>
-          <div>
-            <h2>Tin Tức Việc Làm</h2>
-            <p>Điểm danh các tin tức đáng chú ý</p>
-          </div>
-        </SectionHeader>
+    <div id="tintuc">
+      <Wrapper>
+        <Container>
+          <SectionHeader>
+            <div>
+              <h2>Tin Tức Việc Làm</h2>
+              <p>Điểm danh các tin tức đáng chú ý</p>
+            </div>
+          </SectionHeader>
 
-        {loading ? (
-          <p>Đang tải bài viết...</p>
-        ) : error ? (
-          <p>{error}</p>
-        ) : Array.isArray(posts) && posts.length > 0 ? (
-          <NewsList>
-            {posts.map((item, idx) => (
-              <NewsCard key={idx}>
-                <div className="image-container">
-                  <img
-                    src={item.hinhAnh || "/images/home/default-news.png"}
-                    alt={item.tieuDe}
-                  />
-                </div>
-                <div className="content">
-                  <div>
-                    <div className="date-row">
-                      <img src="/images/home/calendar.png" alt="calendar" />
-                      {/* <span>
+          {loading ? (
+            <p>Đang tải bài viết...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : Array.isArray(posts) && posts.length > 0 ? (
+            <NewsList>
+              {posts.map((item, idx) => (
+                <NewsCard key={idx}>
+                  <div className="image-container">
+                    <img
+                      src={item.hinhAnh || "/images/home/default-news.png"}
+                      alt={item.tieuDe}
+                    />
+                  </div>
+                  <div className="content">
+                    <div>
+                      <div className="date-row">
+                        <img src="/images/home/calendar.png" alt="calendar" />
+                        {/* <span>
                 {item.ngayDang
                   ? new Date(item.ngayDang).toLocaleDateString("vi-VN")
                   : "Không rõ ngày"}
               </span> */}
+                      </div>
+                      <h3 className="news-title">{item.tieuDe}</h3>
                     </div>
-                    <h3 className="news-title">{item.tieuDe}</h3>
+                    <Link href={`/Newspage/${item._id}/${item.slug}`} className="detail-btn">
+                      Xem chi tiết
+                    </Link>
                   </div>
-                  <Link href={`/Newspage/${item._id}/${item.slug}`} className="detail-btn">
-                    Xem chi tiết
-                  </Link>
-                </div>
-              </NewsCard>
+                </NewsCard>
+              ))}
+            </NewsList>
+          ) : (
+            <EmptyMessage>Hiện tại chưa có bài viết nào.</EmptyMessage>
+          )}
+
+
+          {/* Đối tác */}
+          <SectionHeader style={{ marginTop: "40px" }}>
+            <div>
+              <h2>Đối Tác & Khách Hàng</h2>
+              <p>Được tin tưởng bởi rất nhiều doanh nghiệp lớn nhỏ</p>
+            </div>
+            <NavButtons>
+              <button className="nav-btn prev">
+                <span>&#8592;</span>
+              </button>
+              <button className="nav-btn next">
+                <span>&#8594;</span>
+              </button>
+            </NavButtons>
+          </SectionHeader>
+
+          <PartnersGrid>
+            {partners.map((p, idx) => (
+              <PartnerCard key={idx}>
+                <img src={p.img} alt="partner" />
+              </PartnerCard>
             ))}
-          </NewsList>
-        ) : (
-          <EmptyMessage>Hiện tại chưa có bài viết nào.</EmptyMessage>
-        )}
-
-
-        {/* Đối tác */}
-        <SectionHeader style={{ marginTop: "40px" }}>
-          <div>
-            <h2>Đối Tác & Khách Hàng</h2>
-            <p>Được tin tưởng bởi rất nhiều doanh nghiệp lớn nhỏ</p>
-          </div>
-          <NavButtons>
-            <button className="nav-btn prev">
-              <span>&#8592;</span>
-            </button>
-            <button className="nav-btn next">
-              <span>&#8594;</span>
-            </button>
-          </NavButtons>
-        </SectionHeader>
-
-        <PartnersGrid>
-          {partners.map((p, idx) => (
-            <PartnerCard key={idx}>
-              <img src={p.img} alt="partner" />
-            </PartnerCard>
-          ))}
-        </PartnersGrid>
-      </Container>
-    </Wrapper>
+          </PartnersGrid>
+        </Container>
+      </Wrapper>
+    </div>
   );
 };
 

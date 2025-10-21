@@ -19,35 +19,41 @@ const reasons: Reason[] = [
 
 const Banner2: React.FC = () => {
   return (
-    <Wrapper>
-      <Inner>
+    <div id="congcu">
+      <Wrapper>
+        <Inner>
 
-        <Left>
-          <img src="/images/about/3.png" />
-        </Left>
+          <Left>
+            <img src="/images/about/3.png" />
+          </Left>
 
-        <Right>
-          <Heading>
-            Công Cụ Tuyển Dụng Thông Minh
-          </Heading>
+          <Right>
+            <Heading>
+              Công Cụ Tuyển Dụng Thông Minh
+            </Heading>
 
-          <List>
-            {reasons.map((r) => (
-              <ListItem key={r.id}>
-                <Content>
-                  <ItemTitle>{r.title}</ItemTitle>
-                  {r.desc && <ItemDesc>{r.desc}</ItemDesc>}
-                </Content>
-              </ListItem>
-            ))}
-          </List>
+            <List>
+              {reasons.map((r) => (
+                <ListItem key={r.id}>
+                  <Content>
+                    <ItemTitle>{r.title}</ItemTitle>
+                    {r.desc && <ItemDesc>{r.desc}</ItemDesc>}
+                  </Content>
+                </ListItem>
+              ))}
+            </List>
 
-          <CtaRow>
-            <Cta href="/employer/post-job">ĐĂNG TUYỂN NGAY</Cta>
-          </CtaRow>
-        </Right>
-      </Inner>
-    </Wrapper>
+            <CtaRow>
+              <a href="/Doanhnghiep/Dangtuyen/Dangtuyen" >
+                <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                  ĐĂNG TUYỂN NGAY
+                </button>
+              </a>
+            </CtaRow>
+          </Right>
+        </Inner>
+      </Wrapper>
+    </div>
   );
 };
 

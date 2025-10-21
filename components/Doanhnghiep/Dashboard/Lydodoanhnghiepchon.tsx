@@ -18,37 +18,42 @@ const reasons: Reason[] = [
 
 const Lydodoanhnghiepchon: React.FC = () => {
   return (
-    <Wrapper>
-      <Inner>
+    <div id="lydo">
+      <Wrapper>
+        <Inner>
+          <Left>
+            <img src="/images/about/Frame.png" />
+          </Left>
 
-        <Left>
-          <img src="/images/about/Frame.png" />
-        </Left>
+          <Right>
+            <Heading>
+              Lý Do Các Doanh Nghiệp Chọn <br />
+              Chúng Tôi - <span className="accent">Jobs PTIT</span>
+            </Heading>
 
-        <Right>
-          <Heading>
-            Lý Do Các Doanh Nghiệp Chọn <br />
-            Chúng Tôi - <span className="accent">Jobs PTIT</span>
-          </Heading>
+            <List>
+              {reasons.map((r) => (
+                <ListItem key={r.id}>
+                  <img src="/images/icons/Exclude.png" />
+                  <Content>
+                    <ItemTitle>{r.title}</ItemTitle>
+                    {r.desc && <ItemDesc>{r.desc}</ItemDesc>}
+                  </Content>
+                </ListItem>
+              ))}
+            </List>
 
-          <List>
-            {reasons.map((r) => (
-              <ListItem key={r.id}>
-                <img src="/images/icons/Exclude.png" />
-                <Content>
-                  <ItemTitle>{r.title}</ItemTitle>
-                  {r.desc && <ItemDesc>{r.desc}</ItemDesc>}
-                </Content>
-              </ListItem>
-            ))}
-          </List>
-
-          <CtaRow>
-            <Cta href="/employer/post-job">ĐĂNG TUYỂN NGAY</Cta>
-          </CtaRow>
-        </Right>
-      </Inner>
-    </Wrapper>
+            <CtaRow>
+              <a href="/Doanhnghiep/Dangtuyen/Dangtuyen" >
+                <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                  ĐĂNG TUYỂN NGAY
+                </button>
+              </a>
+            </CtaRow>
+          </Right>
+        </Inner>
+      </Wrapper>
+    </div>
   );
 };
 

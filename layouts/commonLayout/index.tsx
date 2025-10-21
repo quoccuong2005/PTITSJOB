@@ -85,9 +85,9 @@ const CommonLayout = ({ children }: any) => {
       <div className='flex flex-col min-h-screen bg-[#FFFFFF]'>
         {/* Hiển thị header theo vai trò */}
         {userRole === "candidate" ? (
-          <HeaderSinhVien />
+          <HeaderSinhVien language={language} handleChangeLanguage={handleChangeLanguage} />
         ) : userRole === "recruiter" ? (
-          <HeaderDoanhNghiep />
+          <HeaderDoanhNghiep language={language} handleChangeLanguage={handleChangeLanguage} />
         ) : (
           // <Header language={language} handleChangeLanguage={handleChangeLanguage} />
           <></>
