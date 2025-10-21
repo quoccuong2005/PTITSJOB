@@ -245,41 +245,7 @@ const HeaderSinhVien = (props: IProps) => {
                                 </div>
                             </Link>
                             <AISDivider />
-                            {/* <div
-                                ref={discoverRef}
-                                onMouseEnter={() => setShowDiscoverDropdown(true)}
-                                onMouseLeave={() => setShowDiscoverDropdown(false)}
-                            >
-                                <AISButton
-                                    iconPosition="end"
-                                    icon={
-                                        <svg
-                                            width="8"
-                                            height="6"
-                                            viewBox="0 0 8 6"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M1 1.5L4 4.5L7 1.5"
-                                                stroke="#BC2826"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            />
-                                        </svg>
-                                    }
-                                >
-                                    {common("discover")}
-                                </AISButton>
 
-                                <AISDropdown
-                                    isVisible={showDiscoverDropdown}
-                                    sections={discoverDropdownData}
-                                    onMouseEnter={() => setShowDiscoverDropdown(true)}
-                                    onMouseLeave={() => setShowDiscoverDropdown(false)}
-                                />
-                            </div> */}
                             <a href="/" className="flex items-center gap-1 px-2 py-1 font-semibold text-[#051A53] hover:text-[#d32f2f] bg-transparent border-none outline-none cursor-pointer">Trang chủ</a>
                             {/* Dropdown Việc làm */}
                             <div
@@ -364,7 +330,12 @@ const HeaderSinhVien = (props: IProps) => {
                         </div>
 
                         <div className="flex items-center gap-[20px]">
-                            <button className="px-4 py-2 bg-[#F5F1ED] text-[#051A53] font-medium rounded-[8px]  transition-colors duration-200">
+                            <button onClick={() => {
+                                if (typeof window !== "undefined") {
+                                    localStorage.setItem("userRole", "recruiter");
+                                }
+                                router.push("/Doanhnghiep/Dashboard/dashboard");
+                            }} className="px-4 py-2 bg-[#F5F1ED] text-[#051A53] font-medium rounded-[8px]  transition-colors duration-200">
                                 Đăng tuyển & tìm hồ sơ
                             </button>
                             <button className="px-4 py-2 border border-primary text-primary font-medium rounded-[8px] hover:bg-primary hover:text-white transition-colors duration-200">

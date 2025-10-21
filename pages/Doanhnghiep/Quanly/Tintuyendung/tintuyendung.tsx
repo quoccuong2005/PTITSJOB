@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getTintuyendungPageDoanhnghiep } from "../../../../api/tintuyendung/index"
+import { Tintuyendungdoanhnghiep } from "../../../../api/tintuyendung/type"
 
 const sampleData = [
     {
@@ -34,11 +36,47 @@ const sampleData = [
 ];
 
 const TintuyendungTable = () => {
+    const [data, setData] = useState<Tintuyendungdoanhnghiep[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getTintuyendungPageDoanhnghiep(1, 6);
+                setData(response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+    console.log("Data:", data);
+    // const TintuyendungTable = ({ currentDoanhNghiepId }) => {
+    // const [data, setData] = useState<Tintuyendungdoanhnghiep[]>([]);
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await getTintuyendungPageDoanhnghiep(1, 10);
+    //             // Lọc chỉ lấy tin của doanh nghiệp hiện tại
+    //             const filtered = response.data.filter(
+    //                 (item) => item.doanhNghiepId === currentDoanhNghiepId
+    //             );
+    //             setData(filtered);
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, [currentDoanhNghiepId]);
+
+    // ...render table với data đã lọc
+    // };
     return (
         <div className="bg-white rounded-xl shadow p-4 sm:p-6 mx-auto mt-6 lg:w-[1280px] mb-8">
             <div className="flex  flex-row items-center justify-between gap-2 mb-4">
                 <h2 className="text-xl sm:text-2xl font-bold text-blue-900">Tin Tuyển Dụng</h2>
-                <span className="text-blue-600 text-sm font-medium cursor-pointer text-right">4 tin tuyển dụng</span>
+                <span className="text-blue-600 text-sm font-medium cursor-pointer text-right">{data.length} tin tuyển dụng</span>
             </div>
             <div className="overflow-x-auto">
                 <table className="min-w-[700px] w-full text-sm">

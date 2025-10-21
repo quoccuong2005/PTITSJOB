@@ -304,9 +304,11 @@ const HeaderDoanhNghiep = (props: IProps) => {
                                     ĐĂNG TUYỂN NGAY
                                 </button>
                             </a>
-                            <button className="px-4 py-2 border border-primary text-primary font-medium rounded-[8px] hover:bg-primary hover:text-white transition-colors duration-200">
-                                Đăng ký
-                            </button>
+                            <a href="/Doanhnghiep/Register/registerDoanhnghiep">
+                                <button className="px-4 py-2 border border-primary text-primary font-medium rounded-[8px] hover:bg-primary hover:text-white transition-colors duration-200">
+                                    Đăng ký
+                                </button>
+                            </a>
                             <AISButton
                                 onClick={() => {
                                     // Navigate to login page

@@ -1,4 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
+import { getHosoungvien } from "../../../../api/hosoungvien/index";
+import { HosoungvienResponse } from "../../../../api/hosoungvien/type";
 
 type Candidate = {
     id: number;
@@ -36,6 +38,21 @@ const HosoungvienPage: React.FC = () => {
     const [rows, setRows] = useState<Candidate[]>(SAMPLE);
     const [query, setQuery] = useState('');
     const [statusFilter, setStatusFilter] = useState<string>('Tất cả');
+    const [apiData, setApiData] = useState<HosoungvienResponse | null>(null);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getHosoungvien();
+                setApiData(response.data);
+                // Map API data to Candidate type if needed
+                console.log("API Data:", response.data);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const filtered = useMemo(() => rows.filter(r => {
         if (statusFilter !== 'Tất cả' && r.status !== statusFilter) return false;
@@ -112,7 +129,7 @@ const HosoungvienPage: React.FC = () => {
                                             <td className="px-4 py-4 align-top">{i + 1}</td>
                                             <td className="px-4 py-4">
                                                 <div className="flex items-center gap-3">
-                                                    <img src={r.avatar} alt="avatar" className="w-12 h-12 rounded-full object-cover" onError={(e: any) => e.currentTarget.src = '/images/default-avatar.png'} />
+                                                    <img src={r.avatar} alt="avatar" className="w-12 h-12 rounded-full object-cover" />
                                                     <div>
                                                         <div className="font-semibold text-gray-900">{r.name}</div>
                                                         <div className="flex items-center gap-2 mt-1">

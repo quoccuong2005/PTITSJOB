@@ -89,7 +89,6 @@ const CommonLayout = ({ children }: any) => {
         ) : userRole === "recruiter" ? (
           <HeaderDoanhNghiep language={language} handleChangeLanguage={handleChangeLanguage} />
         ) : (
-          // <Header language={language} handleChangeLanguage={handleChangeLanguage} />
           <></>
         )}
         <div className='flex-auto overflow-hidden bg-[#F7F7F7]'>{children}</div>

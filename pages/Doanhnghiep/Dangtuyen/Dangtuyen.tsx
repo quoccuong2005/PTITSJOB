@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
 import styled from 'styled-components';
 import Link from "next/link";
+import { postUngtuyen } from "../../../api/tintuyendung";
+import { TinTuyenDungDangTin } from "../../../api/tintuyendung/type";
 const Dangtuyen: React.FC = () => {
     const [step, setStep] = useState<number>(1);
 
@@ -34,8 +36,8 @@ const Dangtuyen: React.FC = () => {
 
     // completeness check
     const step1Complete = useMemo(() => {
-        return title && position && knowledge && description.length > 10;
-    }, [title, position, knowledge, description]);
+        return title;
+    }, [title]);
 
     const step2Complete = useMemo(() => {
         return jobType && salary && city;
@@ -152,12 +154,13 @@ const Dangtuyen: React.FC = () => {
                     {/* Step 1 */}
                     {step === 1 && (
                         <div className="space-y-4">
+                            <h3 className="text-[#051A53] font-semibold mb-2">Thông tin chung</h3>
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700">
+                                <label className="block text-sm font-semibold text-[#6F6F6F]">
                                     Tiêu đề tin *
                                 </label>
                                 <input
-                                    className="mt-1 w-full border rounded-md px-3 py-2"
+                                    className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
                                     placeholder="Nhập tiêu đề tin"
@@ -165,24 +168,24 @@ const Dangtuyen: React.FC = () => {
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Vị trí chuyên môn *
                                     </label>
                                     <input
                                         value={position}
                                         onChange={(e) => setPosition(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                         placeholder="Nhập vị trí chuyên môn"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Kiến thức ngành *
                                     </label>
                                     <input
                                         value={knowledge}
                                         onChange={(e) => setKnowledge(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                         placeholder="Nhập kiến thức ngành"
                                     />
                                 </div>
@@ -190,74 +193,74 @@ const Dangtuyen: React.FC = () => {
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Cấp bậc
                                     </label>
                                     <input
                                         value={level}
                                         onChange={(e) => setLevel(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                         placeholder="Nhập cấp bậc"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Kinh nghiệm tối thiểu
                                     </label>
                                     <input
                                         value={experience}
                                         onChange={(e) => setExperience(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
-                                        placeholder="Nhập số năm kinh nghiệm"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
+                                        placeholder="Nhập yêu cầu kinh nghiệm"
                                     />
                                 </div>
                             </div>
-
+                            <h3 className="text-[#051A53] font-semibold mb-2">Thông tin chi tiết</h3>
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700">
+                                <label className="block text-sm font-semibold text-[#6F6F6F]">
                                     Mô tả công việc *
                                 </label>
                                 <textarea
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
                                     rows={5}
-                                    className="mt-1 w-full border rounded-md px-3 py-2"
+                                    className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                     placeholder="Nhập mô tả chi tiết công việc..."
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700">
+                                <label className="block text-sm font-semibold text-[#6F6F6F]">
                                     Yêu cầu ứng viên
                                 </label>
                                 <textarea
                                     value={requirements}
                                     onChange={(e) => setRequirements(e.target.value)}
                                     rows={3}
-                                    className="mt-1 w-full border rounded-md px-3 py-2"
+                                    className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                     placeholder="Nhập yêu cầu..."
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700">
+                                <label className="block text-sm font-semibold text-[#6F6F6F]">
                                     Quyền lợi ứng viên
                                 </label>
                                 <textarea
                                     value={benefits}
                                     onChange={(e) => setBenefits(e.target.value)}
                                     rows={3}
-                                    className="mt-1 w-full border rounded-md px-3 py-2"
+                                    className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                     placeholder="Nhập quyền lợi..."
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-semibold text-gray-700">
+                                <label className="block text-sm font-semibold text-[#6F6F6F]">
                                     Quyền lợi bổ sung
                                 </label>
                                 <textarea
                                     value={extra}
                                     onChange={(e) => setExtra(e.target.value)}
                                     rows={2}
-                                    className="mt-1 w-full border rounded-md px-3 py-2"
+                                    className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                     placeholder="Nhập quyền lợi bổ sung..."
                                 />
                             </div>
@@ -280,61 +283,62 @@ const Dangtuyen: React.FC = () => {
                     {/* Step 2 */}
                     {step === 2 && (
                         <div className="space-y-4">
+                            <h3 className="text-[#051A53] font-semibold mb-2">Mức lương & địa điểm </h3>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Loại hình công việc *
                                     </label>
                                     <input
                                         value={jobType}
                                         onChange={(e) => setJobType(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                         placeholder="VD: Full-time"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Mức lương *
                                     </label>
                                     <input
                                         value={salary}
                                         onChange={(e) => setSalary(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                         placeholder="Nhập mức lương"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Thành phố *
                                     </label>
                                     <input
                                         value={city}
                                         onChange={(e) => setCity(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                         placeholder="Chọn thành phố"
                                     />
                                 </div>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Quận / Huyện
                                     </label>
                                     <input
                                         value={district}
                                         onChange={(e) => setDistrict(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                         placeholder="Chọn quận"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Địa chỉ cụ thể
                                     </label>
                                     <input
                                         value={address}
                                         onChange={(e) => setAddress(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                         placeholder="Nhập địa chỉ cụ thể"
                                     />
                                 </div>
@@ -342,13 +346,13 @@ const Dangtuyen: React.FC = () => {
                             {/* Thử làm việc */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Thứ làm việc (Bắt đầu)
                                     </label>
                                     <select
                                         value={trialStart}
                                         onChange={(e) => setTrialStart(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2 bg-white"
+                                        className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                     >
                                         <option value="">Chọn thứ bắt đầu</option>
                                         <option value="Thứ 2">Thứ 2</option>
@@ -362,13 +366,13 @@ const Dangtuyen: React.FC = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Thứ làm việc (Kết thúc)
                                     </label>
                                     <select
                                         value={trialEnd}
                                         onChange={(e) => setTrialEnd(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2 bg-white"
+                                        className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                     >
                                         <option value="">Chọn thứ kết thúc</option>
                                         <option value="Thứ 2">Thứ 2</option>
@@ -386,53 +390,53 @@ const Dangtuyen: React.FC = () => {
                             {/* Khung giờ làm việc */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Giờ làm việc (Bắt đầu) *
                                     </label>
                                     <input
                                         type="time"
                                         value={workStart}
                                         onChange={(e) => setWorkStart(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-semibold text-gray-700">
+                                    <label className="block text-sm font-semibold text-[#6F6F6F]">
                                         Giờ làm việc (Kết thúc) *
                                     </label>
                                     <input
                                         type="time"
                                         value={workEnd}
                                         onChange={(e) => setWorkEnd(e.target.value)}
-                                        className="mt-1 w-full border rounded-md px-3 py-2"
+                                        className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                     />
                                 </div>
                             </div>
 
                             {/* Thông tin nhận hồ sơ */}
                             <div className="pt-4">
-                                <h3 className="text-blue-600 font-semibold mb-2">Thông tin nhận hồ sơ</h3>
+                                <h3 className="text-[#051A53] font-semibold mb-2">Thông tin nhận hồ sơ</h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700">
+                                        <label className="block text-sm font-semibold text-[#6F6F6F]">
                                             Hạn nhận hồ sơ *
                                         </label>
                                         <input
                                             type="date"
                                             value={deadline}
                                             onChange={(e) => setDeadline(e.target.value)}
-                                            className="mt-1 w-full border rounded-md px-3 py-2"
+                                            className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700">
+                                        <label className="block text-sm font-semibold text-[#6F6F6F]">
                                             Số lượng tuyển dụng *
                                         </label>
                                         <input
                                             type="number"
                                             value={quantity}
                                             onChange={(e) => setQuantity(e.target.value)}
-                                            className="mt-1 w-full border rounded-md px-3 py-2"
+                                            className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                             placeholder="Nhập số lượng"
                                         />
                                     </div>
@@ -440,36 +444,36 @@ const Dangtuyen: React.FC = () => {
 
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3">
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700">
+                                        <label className="block text-sm font-semibold text-[#6F6F6F]">
                                             Họ tên người nhận *
                                         </label>
                                         <input
                                             value={receiverName}
                                             onChange={(e) => setReceiverName(e.target.value)}
-                                            className="mt-1 w-full border rounded-md px-3 py-2"
+                                            className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                             placeholder="Nhập họ tên"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700">
+                                        <label className="block text-sm font-semibold text-[#6F6F6F]">
                                             Số điện thoại *
                                         </label>
                                         <input
                                             value={receiverPhone}
                                             onChange={(e) => setReceiverPhone(e.target.value)}
-                                            className="mt-1 w-full border rounded-md px-3 py-2"
+                                            className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                                             placeholder="Nhập SĐT"
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700">
+                                        <label className="block text-sm font-semibold text-[#6F6F6F]">
                                             Email người nhận
                                         </label>
                                         <input
                                             type="email"
                                             value={receiverEmail}
                                             onChange={(e) => setReceiverEmail(e.target.value)}
-                                            className="mt-1 w-full border rounded-md px-3 py-2"
+                                            className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                                             placeholder="Nhập email"
                                         />
                                     </div>
@@ -490,6 +494,44 @@ const Dangtuyen: React.FC = () => {
                                         ? "bg-red-600 text-white"
                                         : "bg-gray-200 text-gray-500 cursor-not-allowed"
                                         }`}
+                                    onClick={async () => {
+                                        if (!step2Complete) return;
+                                        const data: TinTuyenDungDangTin = {
+                                            tieuDe: title,
+                                            viTriChuyenMon: position,
+                                            kienThucNganhNghe: knowledge,
+                                            capBac: level,
+                                            kinhNghiem: "Không yêu cầu kinh nghiệm",
+                                            moTa: description,
+                                            yeuCauCongViec: requirements,
+                                            quyenLoi: benefits,
+                                            quyenLoiBoSung: extra,
+                                            hinhThucCongViec: jobType,
+                                            mucLuong: 0,
+                                            mucLuongToiDa: 0,
+                                            mucLuongToiThieu: 0,
+                                            diaDiemLamViec: address,
+                                            thuBatDauLamViec: trialStart,
+                                            thuKetThucLamViec: trialEnd,
+                                            khungGioBatDauLamViec: workStart,
+                                            khungGioKetThucLamViec: workEnd,
+                                            hanNhanHoSo: "2025-10-21T05:23:38.973Z",
+                                            soLuongTuyen: 0,
+                                            hoTenNguoiLienHe: receiverName,
+                                            emailNguoiLienHe: receiverEmail,
+                                            soDienThoaiNguoiLienHe: receiverPhone,
+                                            lyDoTuChoiDuyet: "",
+                                            ngayHetHan: "2025-10-21T05:23:38.973Z",
+                                        };
+                                        try {
+                                            const res = await postUngtuyen(data);
+                                            alert("Đăng tin thành công!");
+                                            setStep(1);
+                                        } catch (err) {
+                                            alert("Đăng tin thất bại!");
+
+                                        }
+                                    }}
                                 >
                                     Thêm tin tuyển dụng
                                 </button>
@@ -499,7 +541,7 @@ const Dangtuyen: React.FC = () => {
                 </div>
 
                 {/* RIGHT PREVIEW PANEL */}
-                {canPreview && (
+                {canPreview ? (
                     <>
                         <div className="bg-blue-50 rounded-xl shadow-inner p-6">
                             <h3 className="text-lg font-bold text-gray-800 mb-4">
@@ -628,7 +670,7 @@ const Dangtuyen: React.FC = () => {
                                                         </InfoGridIcon>
                                                         <div>
                                                             <InfoGridLabel>Cấp bậc</InfoGridLabel>
-                                                            <InfoGridValue>{jobDetail?.level}</InfoGridValue>
+                                                            <InfoGridValue>{level || "Chưa có"}</InfoGridValue>
                                                         </div>
                                                     </InfoGridItem>
 
@@ -690,6 +732,10 @@ const Dangtuyen: React.FC = () => {
                         </div>
 
                     </>
+                ) : (
+                    <div className="flex items-center justify-center h-full">
+                        <p className="text-gray-500">Vui lòng hoàn thành tất cả các bước để xem trước tin đăng tuyển.</p>
+                    </div>
                 )}
             </div>
         </div>
@@ -754,7 +800,7 @@ const JobMetaRow = styled.div`
   height: 18px;
   display: flex;
   flex-wrap: nowrap;
-  gap: 36px;
+  gap: 24px;
   margin-bottom: 16px;
   @media (max-width: 1200px) {
     gap: 40px;
@@ -766,6 +812,7 @@ const JobMetaRow = styled.div`
   }
     @media (max-width: 1350px) {
     width: 100%;
+    gap: 10px;
 
     
 }

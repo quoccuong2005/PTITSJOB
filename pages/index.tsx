@@ -41,7 +41,7 @@ const HomePage = () => {
 				buttonText={common("career.button")}
 			/>
 		</div> */}
-		<BannerSecond />
+
 
 		<div className="pb-[40px]">
 			{/* <KhoaHoc type="moinhat"

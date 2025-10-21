@@ -3,48 +3,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { getCVTemplatesList } from "../../api/cvtemplatepublic"
 import { CVTemplatePublic } from "../../api/cvtemplatepublic/type"
-// interface CVTemplate {
-//     id: string;
-//     name: string;
-//     image: string;
-//     category: string;
-//     isPremium?: boolean;
-// }
 
 
-// Dữ liệu mẫu CV
-// const cvTemplates: CVTemplate[] = [
-//     {
-//         id: '1',
-//         name: 'Mẫu CV Tiêu Chuẩn',
-//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-//         category: 'Tiêu chuẩn'
-//     },
-//     {
-//         id: '2',
-//         name: 'Mẫu CV Năng Động',
-//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-//         category: 'Năng động'
-//     },
-//     {
-//         id: '3',
-//         name: 'Mẫu CV Chuyên Nghiệp',
-//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-//         category: 'Chuyên nghiệp'
-//     },
-//     {
-//         id: '4',
-//         name: 'Mẫu CV Hiện Đại',
-//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-//         category: 'Hiện đại'
-//     },
-//     {
-//         id: '5',
-//         name: 'Mẫu CV Ấn Tượng',
-//         image: 'https://images.careerviet.vn/content/images/mau-cv-tieng-viet-careerbuilder-6.jpg',
-//         category: 'Ấn tượng'
-//     }
-// ];
 
 const MauCV: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -52,9 +12,8 @@ const MauCV: React.FC = () => {
 
     useEffect(() => {
         getCVTemplatesList()
-            .then((response) => {
-                console.log("API CV", response);
-                setCvTemplates(response.data);
+            .then((response: any) => {
+                setCvTemplates(response.data.data);
             }
             )
             .catch((error) => {
@@ -88,29 +47,31 @@ const MauCV: React.FC = () => {
             {/* CV Templates Grid */}
             <TemplatesGrid>
                 {Array.isArray(cvTemplates) && cvTemplates.map((template) => (
-                    <TemplateCard key={template._id}>
-                        <TemplateImageContainer>
-                            <TemplateImage
-                                src={template.hinhAnh}
-                                alt={template.ten}
-                                onError={(e) => {
-                                    e.currentTarget.src = '/images/cv-templates/default-cv.jpg';
-                                }}
-                            />
-                            <TemplateOverlay>
-                                <PreviewButton href={`/mau-cv/preview/${template._id}`}>
-                                    Xem trước
-                                </PreviewButton>
-                            </TemplateOverlay>
-                        </TemplateImageContainer>
+                    <a href={`/Maucvdetail/${template._id}`}>
+                        <TemplateCard key={template._id}>
+                            <TemplateImageContainer>
+                                <TemplateImage
+                                    src={template.hinhAnh}
+                                    alt={template.ten}
+                                    onError={(e) => {
+                                        e.currentTarget.src = '/images/cv-templates/default-cv.jpg';
+                                    }}
+                                />
+                                <TemplateOverlay>
+                                    <PreviewButton href={`/mau-cv/preview/${template._id}`}>
+                                        Xem trước
+                                    </PreviewButton>
+                                </TemplateOverlay>
+                            </TemplateImageContainer>
 
-                        <TemplateInfo>
-                            <TemplateName>{template.ten}</TemplateName>
-                            <UseTemplateButton href={`/mau-cv/editor/${template._id}`}>
-                                Dùng mẫu ngay
-                            </UseTemplateButton>
-                        </TemplateInfo>
-                    </TemplateCard>
+                            <TemplateInfo>
+                                <TemplateName>{template.ten}</TemplateName>
+                                <UseTemplateButton href={`/Maucvdetail/${template._id}`}>
+                                    Dùng mẫu ngay
+                                </UseTemplateButton>
+                            </TemplateInfo>
+                        </TemplateCard>
+                    </a>
                 ))}
             </TemplatesGrid>
 
