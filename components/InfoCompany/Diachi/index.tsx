@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { getNhaTuyenDungList } from '../../../api/doanhnghieppublic';
+import { NhaTuyenDung } from '../../../api/doanhnghieppublic/type';
+import { useRouter } from 'next/router';
 
 interface CompanyInfo {
     id: string;
@@ -35,16 +38,31 @@ const companyInfo: CompanyInfo = {
     followers: 15420,
 };
 const Address = () => {
+    const [address, setAddress] = useState<NhaTuyenDung | null>(null);
+    const router = useRouter();
+    const id = router.query.id;
+    useEffect(() => {
+        if (id) {
+            getNhaTuyenDungList().then((response: any) => {
+
+                const company = response.data.data.find((c: NhaTuyenDung) => c._id === id);
+                setAddress(company || null);
+            }).catch(error => {
+                console.error('Lỗi khi lấy thông tin công ty:', error);
+            });
+        }
+    }, [])
+    console.log("Address", address);
     return (<>
         <MapContainer>
             <MapAddressInfo>
                 <div className="flex items-center gap-2">
-                    <MapLogoCompany src={companyInfo.logo}
-                        alt={companyInfo.name}
+                    <MapLogoCompany src={address?.logo}
+                        alt={address?.ten}
                         style={{ width: '80px', height: '80px' }} />
-                    <MapNameCompany>{companyInfo.name}</MapNameCompany>
+                    <MapNameCompany>{address?.ten}</MapNameCompany>
                 </div>
-                <MapAddress>Địa chỉ: {companyInfo.address}</MapAddress>
+                <MapAddress>Địa chỉ: {address?.diaChi}</MapAddress>
             </MapAddressInfo>
             <MapPlaceholder>
                 <MapIcon>

@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { getNhaTuyenDungList } from '../../../api/doanhnghieppublic';
+import { NhaTuyenDung } from '../../../api/doanhnghieppublic/type';
+import { useRouter } from 'next/router';
 
 // Interface cho công ty liên quan
 interface RelatedCompany {
@@ -52,23 +55,32 @@ const relatedCompanies: RelatedCompany[] = [
     }
 ];
 const RelatedCompanies = () => {
+    const [relatedCompany, setAddress] = useState<NhaTuyenDung[]>([]);
+
+    useEffect(() => {
+        getNhaTuyenDungList()
+            .then((response: any) => {
+                const company = response.data.data;
+                setAddress(company.slice(0, 4) || []);
+            }).catch(error => {
+                console.error('Lỗi khi lấy thông tin công ty:', error);
+            });
+    }, [])
     return (<>
         <SidebarSection>
             <SidebarTitle>Doanh Nghiệp Liên Quan</SidebarTitle>
 
             <RelatedCompaniesList>
-                {relatedCompanies.map((company) => (
-                    <RelatedCompanyCard key={company.id}>
+                {relatedCompany?.map((company) => (
+                    <RelatedCompanyCard key={company._id}>
                         <RelatedCompanyHeader>
                             <div className="flex items-center gap-3">
                                 <RelatedCompanyLogo
                                     src={company.logo}
-                                    alt={company.name}
-                                    onError={(e) => {
-                                        e.currentTarget.src = '/images/companies/default-company.png';
-                                    }}
+                                    alt={company.ten}
+
                                 />
-                                <RelatedCompanyName>{company.name}</RelatedCompanyName>
+                                <RelatedCompanyName>{company.ten}</RelatedCompanyName>
                             </div>
                             <RelatedCompanyInfo>
 
@@ -77,27 +89,27 @@ const RelatedCompanies = () => {
                                         <LocationIcon>
                                             <img src="/images/home/mapicon.png" alt="Location" />
                                         </LocationIcon>
-                                        <span>{company.location}</span>
+                                        <span className='truncate w-20'>{company.diaChi}</span>
                                     </RelatedMetaItem>
                                     <RelatedMetaItem>
                                         <FollowersIcon>
                                             <img src="/images/home/nhom2.png" alt="Employees" />
                                         </FollowersIcon>
-                                        <span>{company.followers} người theo dõi</span>
+                                        <span>{company.quyMo} </span>
                                     </RelatedMetaItem>
                                     <RelatedMetaItem>
                                         <WorkIcon>
                                             <img src="/images/home/congviec.png" alt="Posted Date" />
                                         </WorkIcon>
-                                        <span>{company.postedDate}</span>
+                                        <span>{company.namThanhLap}</span>
                                     </RelatedMetaItem>
                                 </RelatedCompanyMeta>
                                 <RelatedCompanyDescription>
-                                    {company.description}
+                                    {company.moTa}
                                 </RelatedCompanyDescription>
 
                                 <RelatedCompanyActions>
-                                    <ViewCompanyButton href={`/cong-ty/${company.id}`}>
+                                    <ViewCompanyButton href={`/cong-ty/${company._id}`}>
                                         Xem trang công ty
                                     </ViewCompanyButton>
                                     <FollowRelatedButton>

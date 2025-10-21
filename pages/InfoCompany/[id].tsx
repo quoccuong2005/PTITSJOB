@@ -14,7 +14,7 @@ const InfoCompany: React.FC = () => {
             <Breadcrumb>
                 <BreadcrumbItem href="/">Tìm việc</BreadcrumbItem>
                 <BreadcrumbSeparator>/</BreadcrumbSeparator>
-                <BreadcrumbItem href="/cong-ty">Danh sách công ty</BreadcrumbItem>
+                <BreadcrumbItem href="/ListCompany/ListCompany">Danh sách công ty</BreadcrumbItem>
                 <BreadcrumbSeparator>/</BreadcrumbSeparator>
                 <BreadcrumbItem href="/cong-ty/1" active>Ngân hàng thương mại cổ phần kỹ thương Việt Nam</BreadcrumbItem>
             </Breadcrumb>

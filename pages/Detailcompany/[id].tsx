@@ -98,7 +98,6 @@ const JobDetailPage = () => {
       }
     })();
   }, [idParam]);
-  console.log("Detailjob", Detailjob);
 
   useEffect(() => {
     if (!idParam) return;

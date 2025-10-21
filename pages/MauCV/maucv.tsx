@@ -76,7 +76,7 @@ const MauCV: React.FC = () => {
                 </Breadcrumb>
 
                 <HeaderContent>
-                    <Title>Tổng Hợp Mẫu CV Xin Việc Chuẩn 2025</Title>\
+                    <Title>Tổng Hợp Mẫu CV Xin Việc Chuẩn 2025</Title>
 
                     <ViewAllLink href="/mau-cv/all">
                         Hơn {cvTemplates.length} mẫu CV

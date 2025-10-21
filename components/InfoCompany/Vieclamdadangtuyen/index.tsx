@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-
+import { useRouter } from 'next/router';
+import { getTintuyendungByDoanhNghiep } from '../../../api/tintuyendungpublic';
+import { Tintuyendungpublic } from '../../../api/tintuyendungpublic/type';
 // Interface cho thông tin công ty
 interface CompanyInfo {
     id: string;
@@ -104,12 +106,28 @@ const jobs: Job[] = [
     }
 ];
 
-const JobListings = () => {
+const JobListings = ({ }) => {
     const [jobFilters, setJobFilters] = useState({
         position: '',
         location: '',
         experience: ''
     });
+    const [jobList, setJobList] = useState<Tintuyendungpublic[]>([]);
+    const router = useRouter();
+    const id = router.query.id;
+
+    useEffect(() => {
+        if (id) {
+            getTintuyendungByDoanhNghiep(id as string).then((response: any) => {
+                const jobData = response.data.data;
+                setJobList(jobData || []);
+                console.log('Dữ liệu việc làm:', jobData);
+
+            }).catch(error => {
+                console.error('Lỗi khi lấy thông tin việc làm:', error);
+            });
+        }
+    }, [id]);
 
     const handleFilterChange = (field: string, value: string) => {
         setJobFilters(prev => ({
@@ -123,7 +141,7 @@ const JobListings = () => {
             <JobsSectionHeader>
                 <SectionTitle>Việc Làm Đã Đăng Tuyển</SectionTitle>
                 <ViewAllJobsLink href={`/cong-ty/${companyInfo.id}/viec-lam`}>
-                    5 việc làm
+                    {jobList.length} việc làm
                 </ViewAllJobsLink>
             </JobsSectionHeader>
 
@@ -174,11 +192,16 @@ const JobListings = () => {
                     Tìm kiếm
                 </SearchButton>
             </JobFilters>
+            {jobList.length === 0 && (
+                <div className="text-center text-gray-500 italic py-6 border rounded-lg bg-gray-50">
+                    Hiện tại không có việc làm nào.
+                </div>
+            )}
 
             {/* Jobs List */}
             <JobsList>
-                {jobs.map((job) => (
-                    <JobCard key={job.id}>
+                {jobList.map((job) => (
+                    <JobCard key={job._id}>
                         <JobCardHeader>
                             <JobHeaderTop>
                                 <CompanyLogo
@@ -186,8 +209,8 @@ const JobListings = () => {
                                     alt={companyInfo.name}
                                 />
                                 <JobCompanyInfo>
-                                    <CompanyName>{job.namecompany}</CompanyName>
-                                    <JobTitle>{job.title}</JobTitle>
+                                    <CompanyName>{job.doanhNghiep.ten}</CompanyName>
+                                    <JobTitle>{job.tieuDe}</JobTitle>
                                 </JobCompanyInfo>
                             </JobHeaderTop>
 
@@ -196,20 +219,20 @@ const JobListings = () => {
                                     <LocationIcon>
                                         <img src="/images/home/mapicon.png" alt="Location" />
                                     </LocationIcon>
-                                    <span>{job.location}</span>
+                                    <span>{job.doanhNghiep.diaChi}</span>
                                 </JobMetaItem>
 
                                 <JobMetaItem>
                                     <TimeIcon>
                                         <img src="/images/home/calendar.png" alt="Time" />
                                     </TimeIcon>
-                                    <span>{job.daysAgo}</span>
+                                    <span>{job.ngayHetHan}</span>
                                 </JobMetaItem>
                                 <JobMetaItem>
                                     <SalaryIcon>
                                         <img src="/images/home/Lương.png" alt="Salary" />
                                     </SalaryIcon>
-                                    <SalaryText>{job.salary}</SalaryText>
+                                    <SalaryText>{job.mucLuong}</SalaryText>
                                 </JobMetaItem>
                             </JobMeta>
 
@@ -217,13 +240,13 @@ const JobListings = () => {
                         </JobCardHeader>
 
                         <JobCardFooter>
-                            <JobTags>
+                            {/* <JobTags>
                                 {job.tags.map((tag, index) => (
                                     <JobTag key={index}>{tag}</JobTag>
                                 ))}
-                            </JobTags>
+                            </JobTags> */}
                             <JobActions>
-                                <ApplyButton href={`/viec-lam/${job.id}/ung-tuyen`}>
+                                <ApplyButton href={`/viec-lam/${job._id}/ung-tuyen`}>
                                     Ứng tuyển ngay
                                 </ApplyButton>
                             </JobActions>

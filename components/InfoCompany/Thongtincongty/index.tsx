@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Address from '../Diachi';
+import { getNhaTuyenDungList } from '../../../api/doanhnghieppublic';
+import { NhaTuyenDung } from '../../../api/doanhnghieppublic/type';
+import { useRouter } from 'next/router';
 
 
 // Interface cho thông tin công ty
@@ -108,27 +111,39 @@ const jobs: Job[] = [
     }
 ];
 const CompanyInfo = () => {
+    const [detailCompany, setDetailCompany] = useState<NhaTuyenDung | null>(null);
+    const router = useRouter();
+    const id = router.query.id;
     const handleFollowCompany = () => {
         // Logic theo dõi công ty
         console.log('Theo dõi công ty');
     };
+    useEffect(() => {
+        if (id) {
+            getNhaTuyenDungList().then((response: any) => {
+
+                const company = response.data.data.find((c: NhaTuyenDung) => c._id === id);
+                setDetailCompany(company || null);
+            }).catch(error => {
+                console.error('Lỗi khi lấy thông tin công ty:', error);
+            });
+        }
+    }, [])
     return (<>
         <CompanyHeader>
             <CompanyHeaderLeft>
                 <CompanyLogo
-                    src={companyInfo.logo}
-                    alt={companyInfo.name}
-                    onError={(e) => {
-                        e.currentTarget.src = '/images/companies/default-company.png';
-                    }}
+                    src={detailCompany?.logo}
+                    alt={detailCompany?.ten}
+
                 />
                 <CompanyBasicInfo>
-                    <CompanyName>{companyInfo.name}</CompanyName>
+                    <CompanyName>{detailCompany?.ten}</CompanyName>
                     <CompanyMeta>
                         <MetaItem>
                             <img src='/images/home/website.png' />
                             <CompanyContact>
-                                <ContactItem><span>Website</span> <ContactLink href={companyInfo.website} target="_blank">{companyInfo.website}</ContactLink></ContactItem>
+                                <ContactItem><span>Website</span> <ContactLink href={detailCompany?.website} target="_blank">{detailCompany?.website || "Không có"}</ContactLink></ContactItem>
                             </CompanyContact>
                         </MetaItem>
                         <MetaItem>
@@ -137,14 +152,14 @@ const CompanyInfo = () => {
                             </FollowersIcon>
                             <div className="flex flex-col">
                                 <span>Tổng số nhân viên</span>
-                                <span>{companyInfo.employees.toLocaleString()}</span>
+                                <span>{detailCompany?.quyMo.toLocaleString() || "Không có"}</span>
                             </div>
                         </MetaItem>
                         <MetaItem>
                             <img src="/images/home/industry.png" alt="Industry" />
                             <div className="flex flex-col">
                                 <span>Việc làm đăng tuyển</span>
-                                <span>{jobs.length} việc làm</span>
+                                <span>{jobs.length || "0"} việc làm</span>
                             </div>
                         </MetaItem>
                     </CompanyMeta>
@@ -163,7 +178,7 @@ const CompanyInfo = () => {
         <CompanyDetailsSection>
             <SectionTitle>Giới thiệu công ty</SectionTitle>
             <CompanyDescription>
-                {companyInfo.description}
+                {detailCompany?.moTa}
             </CompanyDescription>
 
 

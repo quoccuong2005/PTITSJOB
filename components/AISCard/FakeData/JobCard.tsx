@@ -3,26 +3,29 @@ import styled from "styled-components";
 import { JobCardProps } from "./Fakedata";
 import Link from "next/link";
 import { Tintuyendungpublic } from "../../../api/tintuyendungpublic/type";
+import { formatDate } from "../../../assets/formatDate";
 
-
-const JobCard: React.FC<Tintuyendungpublic> = ({ mucLuongToiThieu, mucLuongToiDa, tieuDe, createdAt, _id }) => {
+const JobCard: React.FC<Tintuyendungpublic> = ({ mucLuongToiThieu, mucLuongToiDa, tieuDe, createdAt, _id, hinhAnh, diaDiemLamViec, doanhNghiep }) => {
 
   return (
 
     <Link href={`/Detailcompany/${_id}`}>
       <CardWrapper>
         <Header>
-          {/* <Image src={image} alt={tieuDe} /> */}
+          <Image src={hinhAnh} alt={tieuDe} />
           <div>
-            <Company></Company>
-            <Title>{tieuDe}</Title>
+            <Company>{doanhNghiep?.ten || "Chưa có tên công ty"}</Company>
+            <Title>{tieuDe || "Chưa có tiêu đề"}</Title>
           </div>
         </Header>
-        {/* <Meta>
-        <span className="flex"><img src="/images/home/Group.png" className="mr-[12px]" alt="Location" />{location}</span>
-        <span className="flex"><img src="/images/home/calendar.png" className="mr-[12px]" alt="Time" /> {time}</span>
-      </Meta> */}
-        <Salary>{mucLuongToiThieu} - {mucLuongToiDa}</Salary>
+        <Meta>
+          <span className="flex"><img src="/images/home/Group.png" className="mr-[12px]" alt="Location" /><span className="truncate w-40">{diaDiemLamViec || "Chưa có địa điểm"}</span></span>
+          <span className="flex"><img src="/images/home/calendar.png" className="mr-[12px]" alt="Time" /> {formatDate(createdAt as Date)}</span>
+        </Meta>
+        <div className="flex">
+          <img className="mr-3" src="/images/home/Lương.png" />
+          <Salary>{mucLuongToiThieu} - {mucLuongToiDa}</Salary>
+        </div>
         {/* <Tags>
         {tags.map((tag, i) => (
           <Tag key={i}>{tag}</Tag>

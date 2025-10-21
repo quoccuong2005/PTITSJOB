@@ -1,52 +1,62 @@
+
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 type Role = "candidate" | "recruiter" | null;
 
-const Checkuser: React.FC<{ onClose?: () => void; onSelect?: (r: Role) => void }> = ({ onClose, onSelect }) => {
-    const [role, setRole] = useState<Role>(null);
+const Checkuser: React.FC = () => {
+  const [show, setShow] = useState(false);
+  const router = useRouter();
 
-    useEffect(() => {
-        const prev = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
-        return () => {
-            document.body.style.overflow = prev;
-        };
-    }, []);
+  useEffect(() => {
+    // Only show if not set
+    const saved = typeof window !== 'undefined' ? localStorage.getItem("userRole") : null;
+    if (!saved) setShow(true);
+    // Prevent scroll when modal open
+    if (show) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [show]);
 
-    const choose = (r: Role) => {
-        setRole(r);
-        onSelect?.(r);
-    };
+  const choose = (r: Role) => {
+    if (!r) return;
+    localStorage.setItem("userRole", r);
+    setShow(false);
+    if (r === "candidate") router.push("/");
+    else if (r === "recruiter") router.push("/Doanhnghiep/Dashboard/dashboard");
+  };
 
-    return (
-        <Backdrop role="dialog" aria-modal="true" aria-label="Chọn nhóm người dùng">
-            <Card>
-                <CloseBtn onClick={() => onClose?.()} aria-label="Đóng">✕</CloseBtn>
+  if (!show) return null;
 
-                <Header>
-                    <Greeting>Xin chào bạn <Emoji>👋</Emoji></Greeting>
-                    <Description>
-                        Hãy dành ít thời gian để xác nhận thông tin dưới đây,<br /> để chúng tôi mang đến trải nghiệm phù hợp nhất cho bạn.
-                        <br />
-                        Để sử dụng PTIT Jobs hiệu quả và đúng nhu cầu, vui lòng chọn nhóm phù hợp với bạn:
-                    </Description>
-                </Header>
+  return (
+    <Backdrop role="dialog" aria-modal="true" aria-label="Chọn nhóm người dùng">
+      <Card>
+        <Header>
+          <Greeting>Xin chào bạn <Emoji>👋</Emoji></Greeting>
+          <Description>
+            Hãy dành ít thời gian để xác nhận thông tin dưới đây,<br /> để chúng tôi mang đến trải nghiệm phù hợp nhất cho bạn.
+            <br />
+            Để sử dụng PTIT Jobs hiệu quả và đúng nhu cầu, vui lòng chọn nhóm phù hợp với bạn:
+          </Description>
+        </Header>
 
-                <Options>
-                    <OptionCard onClick={() => choose("candidate")} $active={role === "candidate"}>
-                        <Portrait src="/images/about/imageungvien.png" alt="Ứng viên" />
-                        <OptionLabel>Tôi là Ứng viên tìm việc</OptionLabel>
-                    </OptionCard>
+        <Options>
+          <OptionCard onClick={() => choose("candidate")}>
+            <Portrait src="/images/about/imageungvien.png" alt="Ứng viên" />
+            <OptionLabel>Tôi là Ứng viên tìm việc</OptionLabel>
+          </OptionCard>
 
-                    <OptionCard onClick={() => choose("recruiter")} $active={role === "recruiter"}>
-                        <Portrait src="/images/about/imagetuyendung.png" alt="Nhà tuyển dụng" />
-                        <OptionLabel $blue>Tôi là Nhà tuyển dụng</OptionLabel>
-                    </OptionCard>
-                </Options>
-            </Card>
-        </Backdrop>
-    );
+          <OptionCard onClick={() => choose("recruiter")}>
+            <Portrait src="/images/about/imagetuyendung.png" alt="Nhà tuyển dụng" />
+            <OptionLabel $blue>Tôi là Nhà tuyển dụng</OptionLabel>
+          </OptionCard>
+        </Options>
+      </Card>
+    </Backdrop>
+  );
 };
 
 export default Checkuser;
