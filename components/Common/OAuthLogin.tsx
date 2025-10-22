@@ -11,16 +11,15 @@ const OAuthLogin = (props: { setShowModal?: any; redirect?: string }) => {
 	const { setShowModal, redirect } = props;
 
 	const onSuccess = (response: { code: string; session_state: string }) => {
+		console.log(response);
 		const data = {
-			...response,
-			grant_type: "authorization_code",
-			// response_type: "code",
-			client_id: OAuthData?.oauth.clientId,
-			scope: "email profile openid",
-			redirect_uri: `${process.env.BASE_URL}/oauth-callback`,
+			"grant_type": "authorization_code",
+			"redirect_uri": "http://localhost:3000/oauth-callback",
+			"code": response.code,
+			"client_id": "ript-connect"
 		};
 		axios({
-			url: OAuthData?.oauth.tokenEndpoint,
+			url: "https://sso.ript.vn/realms/ript/protocol/openid-connect/token",
 			method: "POST",
 			headers: { "content-type": "application/x-www-form-urlencoded" },
 			data: QueryString.stringify(data),
@@ -52,16 +51,16 @@ const OAuthLogin = (props: { setShowModal?: any; redirect?: string }) => {
 		<>
 			{OAuthData ? (
 				<OAuth2Login
-					authorizationUrl={'https://sso.ript.vn/realms/ript'}
+					authorizationUrl='https://sso.ript.vn/realms/ript/protocol/openid-connect/auth'
 					responseType='code'
-					clientId={'ptit'}
-					redirectUri={`${process.env.BASE_URL}/oauth-callback`}
+					clientId='ript-connect'
+					redirectUri={`http://localhost:3000/oauth-callback`}
+					scope='openid profile email'
 					onSuccess={onSuccess}
 					onFailure={onFailure}
-					scope='email profile openid'
 					popupWidth={800}
-					buttonText={`Đăng nhập với ${OAuthData?.oauth?.name}`}
-					className='text-white bg-primary-500 border border-transparent hover:bg-primary-800  focus:ring-primary-300 disabled:hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 dark:disabled:hover:bg-primary-600 focus:!ring-2 w-full items-center justify-center p-0.5 text-center font-medium focus:z-10 rounded-lg uppercase text-sm py-2.5'
+					buttonText={`Đăng nhập`}
+					className='text-white bg-primary-500 border border-transparent hover:bg-primary-800 focus:ring-primary-300 disabled:hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 dark:disabled:hover:bg-primary-600 focus:!ring-2 w-full items-center justify-center text-center font-medium focus:z-10 rounded-lg uppercase text-sm py-2.5'
 				/>
 			) : null}
 		</>

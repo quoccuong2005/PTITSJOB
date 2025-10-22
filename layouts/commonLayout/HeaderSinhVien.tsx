@@ -11,6 +11,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { DataMenu } from "../../utils/interface";
 import SocialIcon from "./components/SocialIcon";
+import OAuthLogin from "../../components/Common/OAuthLogin";
+import { redirect } from "next/dist/server/api-utils";
 interface IProps {
     language?: string;
     handleChangeLanguage: (lang: string) => void;
@@ -335,21 +337,10 @@ const HeaderSinhVien = (props: IProps) => {
                                     localStorage.setItem("userRole", "recruiter");
                                 }
                                 router.push("/Doanhnghiep/Dashboard/dashboard");
-                            }} className="px-4 py-2 bg-[#F5F1ED] text-[#051A53] font-medium rounded-[8px]  transition-colors duration-200">
+                            }} className="px-4 py-2 bg-[#F5F1ED] text-[#051A53] font-medium rounded-[8px] transition-colors duration-200">
                                 Đăng tuyển & tìm hồ sơ
                             </button>
-                            <button className="px-4 py-2 border border-primary text-primary font-medium rounded-[8px] hover:bg-primary hover:text-white transition-colors duration-200">
-                                Đăng ký
-                            </button>
-                            <AISButton
-                                onClick={() => {
-                                    // Navigate to login page
-                                    router.push("/LoginPage");
-                                }}
-                                type="primary"
-                            >
-                                {common("login")}
-                            </AISButton>
+                            <OAuthLogin/>
                         </div>
                     </div>
                     <div
