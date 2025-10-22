@@ -25,7 +25,7 @@ const OAuthLogin = (props: { setShowModal?: any; redirect?: string }) => {
 			data: QueryString.stringify(data),
 		})
 			.then((res) => {
-				localStorage.setItem("id_token", res.data?.id_token);
+				localStorage.setItem("access_token", res.data?.access_token);
 				if (res.data.access_token && OAuthData?._id)
 					oauthLogin({ accessToken: res.data.access_token, clientId: OAuthData._id })
 						.then(() => {
