@@ -51,11 +51,11 @@ const Tintucvieclam = () => {
                     <div>
                       <div className="date-row">
                         <img src="/images/home/calendar.png" alt="calendar" />
-                        {/* <span>
-                {item.ngayDang
-                  ? new Date(item.ngayDang).toLocaleDateString("vi-VN")
-                  : "Không rõ ngày"}
-              </span> */}
+                        <span>
+                          {item.createdAt
+                            ? new Date(item.createdAt).toLocaleDateString("vi-VN")
+                            : "Không rõ ngày"}
+                        </span>
                       </div>
                       <h3 className="news-title">{item.tieuDe}</h3>
                     </div>
@@ -118,9 +118,8 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 15px;
 `;
 
 const SectionHeader = styled.div`

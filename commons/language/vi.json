@@ -29,22 +29,22 @@
 		"language_khmer": "Tiếng Khmer",
 		"language_chinese": "Tiếng Trung",
 		"popularCourses": {
-			"title": "Tích hợp việc làm từ TopCV",
+			"title": "Tích Hợp Việc Làm Từ TopCV",
 			"description": "Lắng nghe nhu cầu của bạn và gửi đến bạn những việc làm phù hợp đến từ TopCV",
 			"button": "Khám phá tất cả khoá học"
 		},
 		"latestCourses": {
-			"title": "Top ngành nổi bật",
+			"title": "Top Ngành Nổi Bật",
 			"description": "Khám phá các khóa học mới nhất của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
 			"button": "Khám phá tất cả khoá học"
 		},
 		"freeCourses": {
-			"title": "Tin tức việc làm",
+			"title": "Tin Tức Việc Làm",
 			"description": "Điểm danh các tin tức đáng chú ý",
 			"button": "Khám phá tất cả khoá học"
 		},
 		"advancedCourses": {
-			"title": "Khoá học nâng cao",
+			"title": "Khoá Học Nâng Cao",
 			"description": "Khám phá các khoá học nâng cao của chúng tôi, sẵn sàng phục vụ cho mọi nhu cầu",
 			"button": "Khám phá tất cả khoá học"
 		},
@@ -74,22 +74,22 @@
 			"subtitle": "tham gia giảng dạy"
 		},
 		"courses": {
-			"title": "Việc làm nổi bật",
+			"title": "Việc Làm Nổi Bật",
 			"description": "Biết giá trị của bạn và tìm công việc phù hợp với cuộc sống của bạn",
 			"button": "Khám phá tất cả chứng chỉ"
 		},
 		"vieclambanquantam": {
-			"title": "Việc làm bạn quan tâm",
+			"title": "Việc Làm Bạn Quan Tâm",
 			"description": "Biết giá trị của bạn và tìm công việc phù hợp với cuộc sống của bạn",
 			"button": "Xem tất cả việc làm"
 		},
 		"vieclamlienquan": {
-			"title": "Việc làm liên quan",
+			"title": "Việc Làm Liên Quan",
 			"description": "Biết giá trị của bạn và tìm công việc phù hợp với cuộc sống của bạn",
 			"button": "Xem tất cả việc làm"
 		},
 		"career": {
-			"title": "Mục tiêu nghề nghiệp",
+			"title": "Mục Tiêu Nghề Nghiệp",
 			"description": "Khám phá các chương trình đào tạo chuyên sâu giúp bạn đạt được mục tiêu nghề nghiệp",
 			"button": "Xem tất cả chương trình"
 		},

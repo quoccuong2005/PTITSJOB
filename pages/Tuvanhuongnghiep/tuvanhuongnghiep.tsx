@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { getBaiVietPage, getBaiVietList, getBaiVietSlug } from '../../api/baivietpublic';
 import { BaiViet } from '../../api/baivietpublic/type';
+import { formatDate } from '../../assets/formatDate';
 // Interface cho bài viết tư vấn
 interface CareerArticle {
     id: string;
@@ -214,25 +215,25 @@ const Tuvanhuongnghiep = () => {
                                 alt={article.tieuDe}
 
                             />
-                            <CategoryBadge >
+                            {/* <CategoryBadge >
                                 {article.tieuDe}
-                            </CategoryBadge>
-                            <NotificationIcon>
+                            </CategoryBadge> */}
+                            {/* <NotificationIcon>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                                     <path d="M12 22C13.1 22 14 21.1 14 20H10C10 21.1 10.89 22 12 22ZM18 16V11C18 7.93 16.36 5.36 13.5 4.68V4C13.5 3.17 12.83 2.5 12 2.5C11.17 2.5 10.5 3.17 10.5 4V4.68C7.63 5.36 6 7.92 6 11V16L4 18V19H20V18L18 16Z" fill="#FF6B35" />
                                 </svg>
-                            </NotificationIcon>
+                            </NotificationIcon> */}
                         </ArticleImageContainer>
 
                         <ArticleContent>
-                            {/* <ArticleDate>
+                            <ArticleDate>
                                 <DateIcon>
                                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                                         <path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19Z" fill="#666" />
                                     </svg>
                                 </DateIcon>
-                                {article.date}
-                            </ArticleDate> */}
+                                {formatDate(article.createdAt)}
+                            </ArticleDate>
 
                             <ArticleTitle>{article.tieuDe}</ArticleTitle>
 

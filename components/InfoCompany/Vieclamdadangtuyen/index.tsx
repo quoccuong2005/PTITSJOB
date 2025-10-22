@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { getTintuyendungByDoanhNghiep } from '../../../api/tintuyendungpublic';
 import { Tintuyendungpublic } from '../../../api/tintuyendungpublic/type';
+import { formatDate } from "../../../assets/formatDate";
 // Interface cho thông tin công ty
 interface CompanyInfo {
     id: string;
@@ -209,7 +210,7 @@ const JobListings = ({ }) => {
                                     alt={companyInfo.name}
                                 />
                                 <JobCompanyInfo>
-                                    <CompanyName>{job.doanhNghiep.ten}</CompanyName>
+                                    <CompanyName>{job.doanhNghiep?.ten}</CompanyName>
                                     <JobTitle>{job.tieuDe}</JobTitle>
                                 </JobCompanyInfo>
                             </JobHeaderTop>
@@ -219,14 +220,13 @@ const JobListings = ({ }) => {
                                     <LocationIcon>
                                         <img src="/images/home/mapicon.png" alt="Location" />
                                     </LocationIcon>
-                                    <span>{job.doanhNghiep.diaChi}</span>
+                                    <span>{job.doanhNghiep?.diaChi}</span>
                                 </JobMetaItem>
-
                                 <JobMetaItem>
                                     <TimeIcon>
                                         <img src="/images/home/calendar.png" alt="Time" />
                                     </TimeIcon>
-                                    <span>{job.ngayHetHan}</span>
+                                    <span>{formatDate(job.ngayHetHan)}</span>
                                 </JobMetaItem>
                                 <JobMetaItem>
                                     <SalaryIcon>
@@ -246,7 +246,7 @@ const JobListings = ({ }) => {
                                 ))}
                             </JobTags> */}
                             <JobActions>
-                                <ApplyButton href={`/viec-lam/${job._id}/ung-tuyen`}>
+                                <ApplyButton href={`/Detailcompany/${job._id}`}>
                                     Ứng tuyển ngay
                                 </ApplyButton>
                             </JobActions>

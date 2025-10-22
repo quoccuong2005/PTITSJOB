@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Link from "next/link";
 import { postUngtuyen } from "../../../api/tintuyendung";
 import { TinTuyenDungDangTin } from "../../../api/tintuyendung/type";
+import { toast } from "react-toastify";
 const Dangtuyen: React.FC = () => {
     const [step, setStep] = useState<number>(1);
 
@@ -497,39 +498,40 @@ const Dangtuyen: React.FC = () => {
                                     onClick={async () => {
                                         if (!step2Complete) return;
                                         const data: TinTuyenDungDangTin = {
-                                            tieuDe: title,
-                                            viTriChuyenMon: position,
-                                            kienThucNganhNghe: knowledge,
-                                            capBac: level,
-                                            kinhNghiem: "Không yêu cầu kinh nghiệm",
-                                            moTa: description,
-                                            yeuCauCongViec: requirements,
-                                            quyenLoi: benefits,
-                                            quyenLoiBoSung: extra,
-                                            hinhThucCongViec: jobType,
-                                            mucLuong: 0,
-                                            mucLuongToiDa: 0,
-                                            mucLuongToiThieu: 0,
-                                            diaDiemLamViec: address,
-                                            thuBatDauLamViec: trialStart,
-                                            thuKetThucLamViec: trialEnd,
-                                            khungGioBatDauLamViec: workStart,
-                                            khungGioKetThucLamViec: workEnd,
+                                            tieuDe: title || "Nhân viên kinh doanh phần mềm",
+                                            viTriChuyenMon: position || "Sales IT",
+                                            kienThucNganhNghe: knowledge || "Công nghệ thông tin, phần mềm",
+                                            capBac: level || "Nhân viên",
+                                            kinhNghiem: "Không yêu cầu kinh nghiệm",
+                                            moTa: description || "Tư vấn và chăm sóc khách hàng sử dụng sản phẩm phần mềm.",
+                                            yeuCauCongViec: requirements || "Có kỹ năng giao tiếp tốt, ưu tiên ứng viên yêu thích công nghệ.",
+                                            quyenLoi: benefits || "Thưởng KPI, bảo hiểm đầy đủ, du lịch hàng năm.",
+                                            quyenLoiBoSung: extra || "Môi trường làm việc thân thiện, hỗ trợ đào tạo.",
+                                            hinhThucCongViec: jobType || "Toàn thời gian",
+                                            mucLuong: 15000000,
+                                            mucLuongToiDa: 20000000,
+                                            mucLuongToiThieu: 12000000,
+                                            diaDiemLamViec: address || "Số 442 Nguyễn Thị Minh Khai, Phường 5, Quận 3, TP. Hồ Chí Minh",
+                                            thuBatDauLamViec: trialStart || "Thứ 2",
+                                            thuKetThucLamViec: trialEnd || "Thứ 6",
+                                            khungGioBatDauLamViec: workStart || "08:00",
+                                            khungGioKetThucLamViec: workEnd || "17:00",
                                             hanNhanHoSo: "2025-10-21T05:23:38.973Z",
-                                            soLuongTuyen: 0,
-                                            hoTenNguoiLienHe: receiverName,
-                                            emailNguoiLienHe: receiverEmail,
-                                            soDienThoaiNguoiLienHe: receiverPhone,
+                                            soLuongTuyen: 3,
+                                            hoTenNguoiLienHe: receiverName || "Nguyễn Văn A",
+                                            emailNguoiLienHe: receiverEmail || "nva@company.vn",
+                                            soDienThoaiNguoiLienHe: receiverPhone || "0909123456",
                                             lyDoTuChoiDuyet: "",
                                             ngayHetHan: "2025-10-21T05:23:38.973Z",
+                                            ssoId: "ede3764e-651c-412c-b11b-e3be1e5c6e39",
+                                            doanhNghiepId: "68f89fa2aa693e0f18487b3e",
                                         };
                                         try {
                                             const res = await postUngtuyen(data);
-                                            alert("Đăng tin thành công!");
+                                            toast.success("Đăng tin tuyển dụng thành công!");
                                             setStep(1);
-                                        } catch (err) {
-                                            alert("Đăng tin thất bại!");
-
+                                        } catch (err: any) {
+                                            toast.error("Đăng tin thất bại!");
                                         }
                                     }}
                                 >

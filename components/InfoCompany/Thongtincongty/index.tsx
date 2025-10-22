@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import Address from '../Diachi';
-import { getNhaTuyenDungList } from '../../../api/doanhnghieppublic';
+import { getNhaTuyenDungList, getNhaTuyenDungById } from '../../../api/doanhnghieppublic';
 import { NhaTuyenDung } from '../../../api/doanhnghieppublic/type';
 import { useRouter } from 'next/router';
 
@@ -114,14 +114,15 @@ const CompanyInfo = () => {
     const [detailCompany, setDetailCompany] = useState<NhaTuyenDung | null>(null);
     const router = useRouter();
     const id = router.query.id;
+    console.log("Company ID from router:", id);
     const handleFollowCompany = () => {
         // Logic theo dõi công ty
         console.log('Theo dõi công ty');
     };
     useEffect(() => {
         if (id) {
-            getNhaTuyenDungList().then((response: any) => {
-
+            getNhaTuyenDungById(id as string).then((response: any) => {
+                console.log("Dữ liệu công ty chi tiết:", response.data);
                 const company = response.data.data.find((c: NhaTuyenDung) => c._id === id);
                 setDetailCompany(company || null);
             }).catch(error => {
@@ -129,6 +130,7 @@ const CompanyInfo = () => {
             });
         }
     }, [])
+    console.log("Detail Company", detailCompany);
     return (<>
         <CompanyHeader>
             <CompanyHeaderLeft>
@@ -152,7 +154,7 @@ const CompanyInfo = () => {
                             </FollowersIcon>
                             <div className="flex flex-col">
                                 <span>Tổng số nhân viên</span>
-                                <span>{detailCompany?.quyMo.toLocaleString() || "Không có"}</span>
+                                <span>{detailCompany?.quyMo?.toLocaleString() || "Không có"}</span>
                             </div>
                         </MetaItem>
                         <MetaItem>

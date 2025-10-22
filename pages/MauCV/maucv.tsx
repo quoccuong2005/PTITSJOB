@@ -58,7 +58,7 @@ const MauCV: React.FC = () => {
                                     }}
                                 />
                                 <TemplateOverlay>
-                                    <PreviewButton href={`/mau-cv/preview/${template._id}`}>
+                                    <PreviewButton href={`/Maucvdetail/${template._id}`}>
                                         Xem trước
                                     </PreviewButton>
                                 </TemplateOverlay>

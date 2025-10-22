@@ -33,7 +33,7 @@ const FieldCard: React.FC<FieldCardProps> = ({ icon, title, jobCount, link }) =>
 };
 const SampleCVCard: React.FC<CVProps> = ({ title, desription, link, textbutton }) => {
   return (
-    <CardWrapperCV href={link} >
+    <CardWrapperCV href={"/MauCV/maucv"} >
       <div className="cv-content">
         <h3>{title}</h3>
         <p>{desription}</p>
@@ -198,9 +198,9 @@ const NganhNoiBatWrapper = styled.section`
   background-color: #FFF;
 
   .container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0 15px;
+    
   }
 
   .header {

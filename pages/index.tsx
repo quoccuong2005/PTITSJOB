@@ -15,7 +15,6 @@ const HomePage = () => {
 
 	return <HomePageWrapper>
 		<Banner />
-		{/* <DoiTac/> */}
 		<div className="pt-[40px]">
 			<KhoaHoc type="chungchi"
 				autoplay={false}
@@ -34,40 +33,18 @@ const HomePage = () => {
 				buttonText={common("popularCourses.button")}
 			/>
 		</div>
-		{/* <div className="py-[40px]">
-			<MucTieuNgheNghiep
-				title={common("career.title")}
-				description={common("career.description")}
-				buttonText={common("career.button")}
-			/>
-		</div> */}
-
 
 		<div className="pb-[40px]">
-			{/* <KhoaHoc type="moinhat"
-				title={common("latestCourses.title")}
-				description={common("latestCourses.description")}
-				buttonText={common("latestCourses.button")}
-			/> */}
+
 			<NganhNoiBat />
 		</div>
-		{/* <BannerThird /> */}
+
 		<TaisaonentimviecoJobsPTIT />
 		<div className="py-[40px]">
-			{/* <KhoaHoc type="mienphi"
-				title={common("freeCourses.title")}
-				description={common("freeCourses.description")}
-				buttonText={common("freeCourses.button")}
-			/> */}
+
 			<Tintucvieclam />
 		</div>
-		{/* <div className="py-[40px]">
-			<KhoaHoc type="nangcao"
-				title={common("advancedCourses.title")}
-				description={common("advancedCourses.description")}
-				buttonText={common("advancedCourses.button")}
-			/>
-		</div> */}
+
 	</HomePageWrapper>;
 }
 

@@ -1,5 +1,6 @@
 export interface BaiViet {
     _id: string,
+    createdAt: string,
     ssoId: string,
     tenTacGia: string,
     loai: "Tin tức" | "Tư vấn hướng nghiệp",

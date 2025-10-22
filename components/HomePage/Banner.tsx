@@ -107,7 +107,7 @@ const Banner = () => {
 
   return (
     <BannerWrappper>
-      <div className="bg-banner sm:h-[1000px] md:h-[500px] lg:h-[630px]">
+      <div className="bg-banner sm:h-[1000px] md:h-[auto] lg:h-[630px]">
         {/* <img src="/images/home/2.png" className="bg-2 w-[20%] h-[100%] object-cover scale-x-[-1]" /> */}
         <div className="items-center container mx-auto bg-[#fef1f0] md:bg-[unset]">
           <div className="container mx-auto px-4 pb-[32px] pt-[60px]">

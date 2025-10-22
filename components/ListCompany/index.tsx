@@ -33,7 +33,7 @@ const ListCompany: React.FC = () => {
       })
       .finally(() => setLoading(false));
   }, [currentPage, limit]);
-
+  console.log("Companies", companies);
   const totalPages = Math.ceil(total / limit);
 
   const handlePageChange = (page: number) => {
@@ -47,7 +47,7 @@ const ListCompany: React.FC = () => {
     <Container>
       <HeaderSection>
         <Title>Danh Sách Công Ty</Title>
-        <CompanyCount>Hơn 200+ doanh nghiệp</CompanyCount>
+        <CompanyCount>{companies.length} doanh nghiệp</CompanyCount>
       </HeaderSection>
 
       <CompanyGrid>
@@ -56,7 +56,7 @@ const ListCompany: React.FC = () => {
             <CompanyCard key={company._id}>
               <div className="flex gap-4">
                 <CompanyLogoSection>
-                  <CompanyLogo src={company.logo} alt={company.ten} />
+                  {company.logo ? (<CompanyLogo src={company.logo} alt={company.ten} />) : (<CompanyLogo src="/images/default/defaultimage.png" alt={company.ten} />)}
                 </CompanyLogoSection>
                 <div>
                   <CompanyName>{company.ten || "Không có"}</CompanyName>
@@ -65,13 +65,13 @@ const ListCompany: React.FC = () => {
                       <LocationIcon>
                         <img src="/images/home/mapicon.png" alt="Location" />
                       </LocationIcon>
-                      <span className='truncate w-20'>{company.diaChi || "Không có"}</span>
+                      <span className=''>{company.diaChi || "Không có"}</span>
                     </LocationInfo>
                     <FollowerInfo>
                       <FollowerIcon>
                         <img src="/images/home/nhom2.png" alt="Employees" />
                       </FollowerIcon>
-                      <span className='truncate w-20'>{company.quyMo || "Không có"} nhân viên</span>
+                      <span className=''>{company.quyMo || "Không có"} nhân viên</span>
                     </FollowerInfo>
                     <ReviewInfo>
                       <ReviewIcon>
@@ -174,7 +174,7 @@ const CompanyCard = styled.div`
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   padding: 16px;
   gap: 16px;
-  height: 287px;
+  height: 100%;
   
   @media (max-width: 768px) {
     flex-direction: column;
@@ -196,6 +196,7 @@ const CompanyLogo = styled.img`
   object-fit: contain;
   border-radius: 4px;
   border: 1px solid #E5E7EB;
+  object-fit: cover;
 `;
 
 const CompanyInfoSection = styled.div`
@@ -253,7 +254,7 @@ const CompanyDescription = styled.p`
   position: relative;
   
   &::before {
-    content: '"';
+    
     color: #666;
   }
 `;

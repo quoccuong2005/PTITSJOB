@@ -25,6 +25,7 @@ const CardCTDT = (props: IProps) => {
             <div className="name">{name}</div>
             <div className="field">{field}</div>
             <Link className="link" href={`/company/${props.id}`}>
+
               <span className="job-count">{jobsCount} việc làm</span>
             </Link>
           </div>
@@ -46,6 +47,7 @@ const CardCTDT = (props: IProps) => {
             </div>
           </div>
           <Link className="link" href={`/company/${props.id}`}>
+            <img className="icon-link" src="/images/home/industrydefault.png" />
             <span className="job-count">{jobsCount} việc làm</span>
           </Link>
         </div>
@@ -144,14 +146,21 @@ const CardCTDTWrapper = styled.div<{ $highlight?: boolean }>`
   .link {
     margin-top: auto;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .icon-link{
+      width: 16px;
+      height: 16px;
+    }
     
     .job-count {
-      font-weight: 500;
+      font-weight: 400;
       font-size: 16px;
       padding: ${({ $highlight }) => ($highlight ? "6px 12px" : "0")};
       border-radius: ${({ $highlight }) => ($highlight ? "8px" : "0")};
       background: ${({ $highlight }) => ($highlight ? "#fff" : "transparent")};
-      color: ${({ $highlight }) => ($highlight ? "#ff4d4f" : "#007aff")};
+      color: ${({ $highlight }) => ($highlight ? "#ff4d4f" : "#6F6F6F")};
       display: inline-block;
     }
   }

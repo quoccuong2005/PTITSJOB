@@ -1,6 +1,5 @@
 // Dữ liệu khi tạo mới CV (request body)
 export interface StudentCvCreateRequest {
-    trangThai?: string;        // Trạng thái CV (vd: "Kích hoạt")
     ssoId: string;             // ID người dùng (SSO)
     cvTemplateId: string;      // ID template CV mà sinh viên chọn
     ten: string;               // Tên CV

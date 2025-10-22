@@ -6,6 +6,7 @@ import { Ungtuyen } from "../../api/ungtuyen/type";
 import { postUngtuyen } from "../../api/ungtuyen";
 import { getTintuyendungById } from "../../api/tintuyendungpublic/index"
 import { Tintuyendungpublic } from "../../api/tintuyendungpublic/type"
+import { toast } from "react-toastify";
 
 const Formungtuyen: React.FC = () => {
   const router = useRouter();
@@ -69,15 +70,18 @@ const Formungtuyen: React.FC = () => {
       const response = await postUngtuyen(idParam || "", payload);
 
       if (response.data.success) {
-        alert("Ứng tuyển thành công!");
+        toast.success("Ứng tuyển thành công!");
         console.log("Kết quả:", response.data.data);
         // router.push("/ung-tuyen-thanh-cong");
       } else {
-        alert("Ứng tuyển thất bại. Vui lòng thử lại!");
+        toast.error("Ứng tuyển thất bại. Vui lòng thử lại!");
       }
-    } catch (error) {
-      console.error("Lỗi khi gửi hồ sơ:", error);
-      alert("Có lỗi xảy ra khi gửi hồ sơ!");
+    } catch (error: any) {
+      if (error.response?.status === 409) {
+        toast.warning("Bạn đã ứng tuyển công việc này trước đó!");
+      } else {
+        toast.error("Đã xảy ra lỗi khi gửi hồ sơ. Vui lòng thử lại!");
+      }
     } finally {
       setUploading(false);
     }

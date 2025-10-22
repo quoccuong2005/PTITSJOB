@@ -2,120 +2,120 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 type FormState = {
-    email: string;
-    password: string;
-    remember: boolean;
+  email: string;
+  password: string;
+  remember: boolean;
 };
 
 const initialState: FormState = {
-    email: "",
-    password: "",
-    remember: false,
+  email: "",
+  password: "",
+  remember: false,
 };
 
 const LoginDoanhnghiep: React.FC = () => {
-    const [form, setForm] = useState<FormState>(initialState);
-    const [errors, setErrors] = useState<Record<string, string>>({});
-    const [showPassword, setShowPassword] = useState(false);
+  const [form, setForm] = useState<FormState>(initialState);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [showPassword, setShowPassword] = useState(false);
 
-    // keep overlay behaviour if used as modal
-    useEffect(() => {
-        const prev = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
-        return () => {
-            document.body.style.overflow = prev;
-        };
-    }, []);
-
-    const handleChange =
-        (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement>) =>
-            setForm((s) => ({ ...s, [k]: k === "remember" ? (e.target as HTMLInputElement).checked : e.target.value }));
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        const next: Record<string, string> = {};
-        if (!form.email) next.email = "Bắt buộc";
-        if (!form.password) next.password = "Bắt buộc";
-        setErrors(next);
-        if (Object.keys(next).length === 0) {
-            // fake login
-            console.log("login", form);
-            alert("Đăng nhập (demo)");
-            setForm(initialState);
-        }
+  // keep overlay behaviour if used as modal
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
     };
+  }, []);
 
-    return (
-        <Wrapper>
-            <Container>
-                <Card>
-                    <Header>
-                        <img src="/images/about/LogoSchool.png" alt="logoschool" className="mx-[auto] mb-[20px]" />
-                        <Title>CHÀO MỪNG BẠN ĐÃ QUAY TRỞ LẠI</Title>
-                        <Sub>Hãy cùng chúng tôi trở thành một phần của Jobs PTIT</Sub>
-                    </Header>
+  const handleChange =
+    (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement>) =>
+      setForm((s) => ({ ...s, [k]: k === "remember" ? (e.target as HTMLInputElement).checked : e.target.value }));
 
-                    <Form onSubmit={handleSubmit} noValidate>
-                        <Field>
-                            <Label>Email đăng nhập <Required>*</Required></Label>
-                            <Input
-                                type="email"
-                                value={form.email}
-                                onChange={handleChange("email")}
-                                placeholder="Nhập thông tin"
-                                aria-label="email"
-                            />
-                            {errors.email && <Err>{errors.email}</Err>}
-                        </Field>
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const next: Record<string, string> = {};
+    if (!form.email) next.email = "Bắt buộc";
+    if (!form.password) next.password = "Bắt buộc";
+    setErrors(next);
+    if (Object.keys(next).length === 0) {
+      // fake login
+      console.log("login", form);
+      alert("Đăng nhập (demo)");
+      setForm(initialState);
+    }
+  };
 
-                        <Field style={{ marginTop: 18 }}>
-                            <Label>Mật khẩu <Required>*</Required></Label>
-                            <PasswordWrap>
-                                <Input
-                                    type={showPassword ? "text" : "password"}
-                                    value={form.password}
-                                    onChange={handleChange("password")}
-                                    placeholder="Nhập mật khẩu"
-                                    aria-label="password"
-                                />
-                                <Toggle type="button" onClick={() => setShowPassword((s) => !s)} aria-label="Toggle password">
-                                    {showPassword ? "👁️" : "🙈"}
-                                </Toggle>
-                            </PasswordWrap>
-                            {errors.password && <Err>{errors.password}</Err>}
-                        </Field>
+  return (
+    <Wrapper>
+      <Container>
+        <Card>
+          <Header>
+            <img src="/images/about/LogoSchool.png" alt="logoschool" className="mx-[auto] mb-[20px]" />
+            <Title>CHÀO MỪNG BẠN ĐÃ QUAY TRỞ LẠI</Title>
+            <Sub>Hãy cùng chúng tôi trở thành một phần của Jobs PTIT</Sub>
+          </Header>
 
-                        <Row>
-                            <CheckboxRow>
-                                <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                                    <input type="checkbox" checked={form.remember} onChange={handleChange("remember")} />
-                                    <span>Ghi nhớ đăng nhập</span>
-                                </label>
-                            </CheckboxRow>
+          <Form onSubmit={handleSubmit} noValidate>
+            <Field>
+              <Label>Email đăng nhập <Required>*</Required></Label>
+              <Input
+                type="email"
+                value={form.email}
+                onChange={handleChange("email")}
+                placeholder="Nhập thông tin"
+                aria-label="email"
+              />
+              {errors.email && <Err>{errors.email}</Err>}
+            </Field>
 
-                            <Forgot>
-                                <Link href="#" >Quên mật khẩu?</Link>
-                            </Forgot>
-                        </Row>
+            <Field style={{ marginTop: 18 }}>
+              <Label>Mật khẩu <Required>*</Required></Label>
+              <PasswordWrap>
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  value={form.password}
+                  onChange={handleChange("password")}
+                  placeholder="Nhập mật khẩu"
+                  aria-label="password"
+                />
+                <Toggle type="button" onClick={() => setShowPassword((s) => !s)} aria-label="Toggle password">
+                  {showPassword ? "👁️" : "🙈"}
+                </Toggle>
+              </PasswordWrap>
+              {errors.password && <Err>{errors.password}</Err>}
+            </Field>
 
-                        <Actions>
-                            <Submit type="submit">Đăng nhập</Submit>
-                        </Actions>
+            <Row>
+              <CheckboxRow>
+                <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <input type="checkbox" checked={form.remember} onChange={handleChange("remember")} />
+                  <span>Ghi nhớ đăng nhập</span>
+                </label>
+              </CheckboxRow>
 
-                        <CenterNote>
-                            Bạn chưa có tài khoản? <Link href="#" >Đăng ký ngay</Link>
-                        </CenterNote>
+              <Forgot>
+                <Link href="#" >Quên mật khẩu?</Link>
+              </Forgot>
+            </Row>
 
-                        <InfoBox>
-                            <strong>Nếu bạn là <span style={{ color: "#bf3b3b" }}>nhà tuyển dụng</span>,</strong> hãy vui lòng liên hệ chúng tôi ngay để được nhận tài khoản dành riêng cho doanh nghiệp của bạn. Vui lòng nhấn <Link href="#" >Liên hệ ngay</Link> để nhận tư vấn tuyển dụng (giờ hành chính).
-                        </InfoBox>
-                    </Form>
-                </Card>
+            <Actions>
+              <Submit type="submit">Đăng nhập</Submit>
+            </Actions>
 
-                <SideImage role="img" aria-label="Illustration" />
-            </Container>
-        </Wrapper>
-    );
+            <CenterNote>
+              Bạn chưa có tài khoản? <Link href="#" >Đăng ký ngay</Link>
+            </CenterNote>
+
+            <InfoBox>
+              <strong>Nếu bạn là <span style={{ color: "#bf3b3b" }}>nhà tuyển dụng</span>,</strong> hãy vui lòng liên hệ chúng tôi ngay để được nhận tài khoản dành riêng cho doanh nghiệp của bạn. Vui lòng nhấn <Link href="#" >Liên hệ ngay</Link> để nhận tư vấn tuyển dụng (giờ hành chính).
+            </InfoBox>
+          </Form>
+        </Card>
+
+        <SideImage role="img" aria-label="Illustration" />
+      </Container>
+    </Wrapper>
+  );
 };
 
 export default LoginDoanhnghiep;

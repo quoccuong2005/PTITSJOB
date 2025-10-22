@@ -7,6 +7,7 @@ import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 import { getTintuyendungById } from "../../api/tintuyendungpublic/index"
 import { Tintuyendungpublic } from "../../api/tintuyendungpublic/type"
 import { getUngtuyenById } from "../../api/ungtuyen/index"
+import { formatMoney } from "../../assets/formatmoney"
 const jobDetail = {
   id: "data-analyst",
   title: "Data Analyst (Risk Management)",
@@ -154,7 +155,7 @@ const JobDetailPage = () => {
                     <img src="/images/home/salary.png" alt="Mức lương" />
                     <div className="inline-grid">
                       <span>Mức lương </span>
-                      <span className="text-[#051A53] ">{Detailjob?.mucLuongToiThieu} - {Detailjob?.mucLuongToiDa}</span>
+                      <span className="text-[#051A53] ">{formatMoney(Detailjob?.mucLuongToiThieu ?? 0)} - {formatMoney(Detailjob?.mucLuongToiDa ?? 0)}</span>
                     </div>
                   </JobMetaItem>
                   <JobMetaItem>
@@ -473,7 +474,7 @@ const JobTitle = styled.h1`
 const JobMetaRow = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  gap: 77px;
+  gap: 11px;
   margin-bottom: 16px;
   @media (max-width: 1200px) {
     gap: 40px;

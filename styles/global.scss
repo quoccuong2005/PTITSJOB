@@ -7,9 +7,11 @@
 @import "react-datepicker/dist/react-datepicker.css";
 @import "react-dropdown/style.css";
 @import "~react-image-gallery/styles/scss/image-gallery.scss";
+
 :root {
 	--primary-color: #BC2826;
 }
+
 .top-progress {
 	animation: loading 2s ease-in-out;
 	width: 90%;
@@ -19,10 +21,12 @@
 	0% {
 		width: 0;
 	}
+
 	100% {
 		width: 90%;
 	}
 }
+
 @media (min-width: 1440px) {
 	.container {
 		max-width: 1240px;
@@ -30,12 +34,13 @@
 }
 
 @media (max-width: 1280px) {
-    .container {
-			padding-left: 20px;
-			padding-right: 20px;
-			max-width: 100%;
-    }
+	.container {
+		padding-left: 20px;
+		padding-right: 20px;
+		max-width: 100%;
+	}
 }
+
 .required-label {
 	&::after {
 		content: "*";
@@ -46,70 +51,86 @@
 		padding-left: 5px;
 	}
 }
+
 .error-text {
 	position: absolute;
 	color: red;
 	font-size: 12px;
 	text-align: left;
 }
+
 .react-datepicker__input-container {
 	height: 100%;
+
 	input {
 		width: 100%;
 		height: 100%;
 		background: #f1f3f5;
 		//border-radius: 8px 0px 0px 8px;
 		border: none;
+
 		&:focus {
 			outline: none;
 			box-shadow: none;
 		}
 	}
 }
+
 * {
 	&::selection {
 		background: #BC2826;
 		color: #ffffff;
 	}
+
 	&::-moz-selection {
 		background: #BC2826;
 		color: #ffffff;
 	}
+
 	//&::-webkit-selection {
 	//	background:#FA5252;
 	//	color:#FFFFFF;
 	//}
 }
+
 .slick-dots li.slick-active button:before {
 	color: #ff1818;
 	font-size: 12px;
 	opacity: 1;
 }
+
 .slick-dots li button:before {
 	color: #f2f3f3;
 	font-size: 12px;
 	opacity: 1;
 }
+
 .slick-dots {
 	bottom: -35px;
 }
- .image-gallery-right-nav {
+
+.image-gallery-right-nav {
 	background: #BC2826 !important;
 }
+
 .image-gallery-left-nav {
 	background: #BC2826 !important;
 }
-.bg-gradient-gray{
+
+.bg-gradient-gray {
 	background: linear-gradient(0deg, rgba(20, 33, 65, 0.06), rgba(20, 33, 65, 0.06)), #FFFFFF;
 
 }
-.bg-gray{
+
+.bg-gray {
 	background-color: #C3C7CC;
 }
-.text-primary{
+
+.text-primary {
 	color: #BC2826;
 }
-.text-normal{
+
+.text-normal {
 	font-family: 'Inter';
 	font-style: normal;
 	font-weight: 500;
@@ -117,11 +138,47 @@
 	line-height: 20px;
 	color: #18202A;
 }
-.text-white{
+
+.text-white {
 	color: #FFFFFF;
 }
-.link-download{
-	&:hover{
+
+.link-download {
+	&:hover {
 		color: #BC2826;
 	}
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/SFPRODISPLAYREGULAR.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/SFPRODISPLAYBOLD.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/SFPRODISPLAYMEDIUM.otf') format('opentype');
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/SFPRODISPLAYBLACKITALIC.otf') format('opentype');
+	font-weight: 900;
+	font-style: italic;
+}
+
+/* Thêm các font-face khác nếu cần */
+
+body {
+	font-family: 'SF Pro Display', Arial, sans-serif;
 }

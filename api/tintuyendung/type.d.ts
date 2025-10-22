@@ -24,6 +24,8 @@ export interface TinTuyenDungDangTin {
     soDienThoaiNguoiLienHe: string;
     lyDoTuChoiDuyet?: string; // optional - chỉ dùng khi bị từ chối
     ngayHetHan: string; // ISO date string
+    ssoId: string;
+    doanhNghiepId: string;
 }
 
 export interface DoanhNghiep {

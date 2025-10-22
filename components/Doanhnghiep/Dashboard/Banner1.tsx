@@ -20,6 +20,9 @@ const Banner1: React.FC = () => {
             </a>
           </Actions>
         </Left>
+        <Right>
+          <img className="hidden sm:block" src="/images/about/infoimage.png" alt="Banner" />
+        </Right>
       </Inner>
     </Wrapper>
   );
@@ -33,11 +36,10 @@ const Wrapper = styled.section`
   height: 600px;
   background: linear-gradient(90deg, #fff6f7 0%, #fff 30%);
   background-repeat: no-repeat;
-  background-image: url('/images/home/Banner1background.png');
+  background-image: url('/images/about/02.png');
   background-size: 100% 100%;
   border-radius: 12px;
   padding: 28px;
-  box-shadow: 0 6px 30px rgba(2, 6, 23, 0.06);
   overflow: hidden;
   position: relative;
   @media (max-width: 768px) {
@@ -71,6 +73,13 @@ const Left = styled.div`
   flex: 1;
   min-width: 0;
   padding-right: 16px;
+`;
+const Right = styled.div`
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Kicker = styled.div`

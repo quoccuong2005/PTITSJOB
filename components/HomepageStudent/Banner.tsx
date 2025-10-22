@@ -3,103 +3,91 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 const locationOptions = [
-    { value: "", label: "Địa điểm" },
-    { value: "hanoi", label: "Hà Nội" },
-    { value: "hcm", label: "Hồ Chí Minh" },
-    { value: "danang", label: "Đà Nẵng" },
-    { value: "other", label: "Khác" },
+  { value: "", label: "Địa điểm" },
+  { value: "hanoi", label: "Hà Nội" },
+  { value: "hcm", label: "Hồ Chí Minh" },
+  { value: "danang", label: "Đà Nẵng" },
+  { value: "other", label: "Khác" },
 ];
 
 const industryOptions = [
-    { value: "", label: "Ngành nghề" },
-    { value: "it", label: "Công nghệ thông tin" },
-    { value: "marketing", label: "Marketing" },
-    { value: "finance", label: "Tài chính" },
-    { value: "education", label: "Giáo dục" },
+  { value: "", label: "Ngành nghề" },
+  { value: "it", label: "Công nghệ thông tin" },
+  { value: "marketing", label: "Marketing" },
+  { value: "finance", label: "Tài chính" },
+  { value: "education", label: "Giáo dục" },
 ];
 
 const jobTypeOptions = [
-    { value: "", label: "Hình thức việc" },
-    { value: "fulltime", label: "Toàn thời gian" },
-    { value: "parttime", label: "Bán thời gian" },
-    { value: "intern", label: "Thực tập" },
+  { value: "", label: "Hình thức việc" },
+  { value: "fulltime", label: "Toàn thời gian" },
+  { value: "parttime", label: "Bán thời gian" },
+  { value: "intern", label: "Thực tập" },
 ];
 
 const Banner = () => {
-    const router = useRouter();
-    const [keyword, setKeyword] = useState('');
-    const [location, setLocation] = useState('');
-    const [industry, setIndustry] = useState('');
-    const [jobType, setJobType] = useState('');
+  const router = useRouter();
+  const [keyword, setKeyword] = useState('');
+  const [location, setLocation] = useState('');
+  const [industry, setIndustry] = useState('');
+  const [jobType, setJobType] = useState('');
 
-    const handleSearch = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Chuyển hướng đến trang kết quả tìm kiếm với các tham số đã chọn
-        router.push({
-            pathname: '/student/jobs',
-            query: {
-                keyword,
-                location,
-                industry,
-                jobType
-            }
-        });
-    };
 
-    return (
-        <BannerWrapper>
-            <SearchFormContainer>
-                <SearchForm onSubmit={handleSearch}>
-                    <div className="flex flex-col lg:flex-row justify-center items-stretch gap-3 ">
-                        <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
-                            <span className="text-gray-500 mr-2"><img src="/images/home/map1.png" alt="Location" /></span>
-                            <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer">
-                                {locationOptions.map((option) => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
 
-                        <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
-                            <span className="text-gray-500 mr-2"><img src="/images/home/industry.png" alt="Industry" /></span>
-                            <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer !pr-0 ">
-                                {industryOptions.map((option) => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+  return (
+    <BannerWrapper>
+      <SearchFormContainer>
+        <SearchForm >
+          <div className="flex flex-col lg:flex-row justify-center items-stretch gap-3 ">
+            <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
+              <span className="text-gray-500 mr-2"><img src="/images/home/map1.png" alt="Location" /></span>
+              <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer">
+                {locationOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-                        <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
-                            <span className="text-gray-500 mr-2"><img src="/images/home/job-type.png" alt="Job Type" /></span>
-                            <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer">
-                                {jobTypeOptions.map((option) => (
-                                    <option key={option.value} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="flex gap-3 w-full lg:w-auto">
-                            <div className="flex items-center bg-white rounded-lg px-4 py-3 flex-1 h-[56px] shadow-sm border">
-                                <input
-                                    type="text"
-                                    placeholder="Nhập thông tin cần tìm"
-                                    className="flex-1 text-gray-700 bg-transparent border-0 outline-none"
-                                />
-                            </div>
-                            <button className="bg-[#BC2826] hover:bg-[#a01f1e] text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 w-full lg:w-[120px] h-[56px] shadow-lg">
-                                Tìm kiếm
-                            </button>
-                        </div>
-                    </div>
-                </SearchForm>
-            </SearchFormContainer>
-        </BannerWrapper>
-    );
+            <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
+              <span className="text-gray-500 mr-2"><img src="/images/home/industry.png" alt="Industry" /></span>
+              <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer !pr-0 ">
+                {industryOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex items-center bg-white rounded-lg px-3 py-3 w-full lg:w-[280px] h-[56px] shadow-sm border">
+              <span className="text-gray-500 mr-2"><img src="/images/home/job-type.png" alt="Job Type" /></span>
+              <select className="flex-1 text-gray-700 bg-transparent border-0 outline-none cursor-pointer">
+                {jobTypeOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex gap-3 w-full lg:w-auto">
+              <div className="flex items-center bg-white rounded-lg px-4 py-3 flex-1 h-[56px] shadow-sm border">
+                <input
+                  type="text"
+                  placeholder="Nhập thông tin cần tìm"
+                  className="flex-1 text-gray-700 bg-transparent border-0 outline-none"
+                />
+              </div>
+              <button className="bg-[#BC2826] hover:bg-[#a01f1e] text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2 w-full lg:w-[120px] h-[56px] shadow-lg">
+                Tìm kiếm
+              </button>
+            </div>
+          </div>
+        </SearchForm>
+      </SearchFormContainer>
+    </BannerWrapper>
+  );
 };
 
 const BannerWrapper = styled.div`

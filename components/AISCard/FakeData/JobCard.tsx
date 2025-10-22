@@ -4,15 +4,15 @@ import { JobCardProps } from "./Fakedata";
 import Link from "next/link";
 import { Tintuyendungpublic } from "../../../api/tintuyendungpublic/type";
 import { formatDate } from "../../../assets/formatDate";
-
-const JobCard: React.FC<Tintuyendungpublic> = ({ mucLuongToiThieu, mucLuongToiDa, tieuDe, createdAt, _id, hinhAnh, diaDiemLamViec, doanhNghiep }) => {
+import { formatMoney } from "../../../assets/formatmoney"
+const JobCard: React.FC<Tintuyendungpublic> = ({ mucLuongToiThieu, mucLuongToiDa, tieuDe, createdAt, _id, diaDiemLamViec, doanhNghiep }) => {
 
   return (
 
     <Link href={`/Detailcompany/${_id}`}>
       <CardWrapper>
         <Header>
-          <Image src={hinhAnh} alt={tieuDe} />
+          <Image src={doanhNghiep?.logo || "Chưa có logo"} alt={tieuDe} />
           <div>
             <Company>{doanhNghiep?.ten || "Chưa có tên công ty"}</Company>
             <Title>{tieuDe || "Chưa có tiêu đề"}</Title>
@@ -24,7 +24,7 @@ const JobCard: React.FC<Tintuyendungpublic> = ({ mucLuongToiThieu, mucLuongToiDa
         </Meta>
         <div className="flex">
           <img className="mr-3" src="/images/home/Lương.png" />
-          <Salary>{mucLuongToiThieu} - {mucLuongToiDa}</Salary>
+          <Salary>{formatMoney(mucLuongToiThieu)} - {formatMoney(mucLuongToiDa)}</Salary>
         </div>
         {/* <Tags>
         {tags.map((tag, i) => (

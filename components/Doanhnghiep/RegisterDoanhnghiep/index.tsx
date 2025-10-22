@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { postNhaTuyenDungDangKy } from "../../../api/nhatuyendungdangkypublic";
 import { GioiTinh, NhaTuyenDungDangKyRequest } from "../../../api/nhatuyendungdangkypublic/type";
+import { toast } from "react-toastify";
 
 type FormState = {
   companyName: string;
@@ -93,14 +94,14 @@ const RegisterDoanhnghiep: React.FC = () => {
       setLoading(true);
       const res = await postNhaTuyenDungDangKy(payload);
       console.log("✅ Kết quả đăng ký:", res.data);
-      alert("Đăng ký thành công!");
+      toast.success("Đăng ký thành công! Vui lòng chờ phê duyệt từ quản trị viên.");
       setForm(initialState);
     } catch (err: any) {
       const msg =
         err?.response?.data?.message ||
         "Không thể đăng ký. Vui lòng thử lại.";
       console.error("❌ Lỗi đăng ký:", err.response?.data || err.message);
-      alert(`Đăng ký thất bại: ${msg}`);
+      toast.error(`Đăng ký thất bại: ${msg}`);
     } finally {
       setLoading(false);
     }
@@ -137,6 +138,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                   value={form.companyName}
                   onChange={handleChange("companyName")}
                   placeholder="Nhập thông tin"
+                  className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                 />
                 {errors.companyName && <Err>{errors.companyName}</Err>}
               </Field>
@@ -149,6 +151,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                   value={form.website}
                   onChange={handleChange("website")}
                   placeholder="Nhập thông tin"
+                  className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                 />
                 {errors.website && <Err>{errors.website}</Err>}
               </Field>
@@ -163,6 +166,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                   value={form.companyPhone}
                   onChange={handleChange("companyPhone")}
                   placeholder="Nhập thông tin"
+                  className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                 />
                 {errors.companyPhone && <Err>{errors.companyPhone}</Err>}
               </Field>
@@ -175,6 +179,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                   value={form.companyEmail}
                   onChange={handleChange("companyEmail")}
                   placeholder="Nhập thông tin"
+                  className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                 />
                 {errors.companyEmail && <Err>{errors.companyEmail}</Err>}
               </Field>
@@ -187,6 +192,7 @@ const RegisterDoanhnghiep: React.FC = () => {
               <Select
                 value={form.companyType}
                 onChange={handleChange("companyType")}
+                className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
               >
                 <option value="">Chọn</option>
                 <option value="TNHH">TNHH</option>
@@ -205,6 +211,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                 value={form.companyAddress}
                 onChange={handleChange("companyAddress")}
                 placeholder="Nhập thông tin"
+                className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
               />
               {errors.companyAddress && <Err>{errors.companyAddress}</Err>}
             </Field>
@@ -222,6 +229,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                   value={form.recruiterName}
                   onChange={handleChange("recruiterName")}
                   placeholder="Nhập thông tin"
+                  className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                 />
                 {errors.recruiterName && <Err>{errors.recruiterName}</Err>}
               </Field>
@@ -270,6 +278,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                   value={form.recruiterPhone}
                   onChange={handleChange("recruiterPhone")}
                   placeholder="Nhập thông tin"
+                  className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                 />
                 {errors.recruiterPhone && <Err>{errors.recruiterPhone}</Err>}
               </Field>
@@ -282,6 +291,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                   value={form.recruiterEmail}
                   onChange={handleChange("recruiterEmail")}
                   placeholder="Nhập thông tin"
+                  className="border border-gray-300 focus:border-red-500 focus:outline-none rounded-md px-3 py-2 w-full"
                 />
                 {errors.recruiterEmail && <Err>{errors.recruiterEmail}</Err>}
               </Field>
@@ -297,6 +307,7 @@ const RegisterDoanhnghiep: React.FC = () => {
                   value={form.password}
                   onChange={handleChange("password")}
                   placeholder="Nhập mật khẩu"
+                  className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                 />
                 {errors.password && <Err>{errors.password}</Err>}
               </Field>
@@ -307,9 +318,11 @@ const RegisterDoanhnghiep: React.FC = () => {
                 </Label>
                 <Input
                   type="password"
+                  className="border border-gray-300 focus:border-red-500 focus:ring-0 focus:outline-none rounded-md w-full p-2"
                   value={form.confirmPassword}
                   onChange={handleChange("confirmPassword")}
                   placeholder="Nhập lại mật khẩu"
+
                 />
                 {errors.confirmPassword && <Err>{errors.confirmPassword}</Err>}
               </Field>
@@ -323,7 +336,9 @@ const RegisterDoanhnghiep: React.FC = () => {
           </Form>
         </Card>
 
-        <SideImage role="img" aria-label="Illustration" />
+        <SideImage role="img" aria-label="Illustration" >
+          <img className="mt-[10rem] hidden sm:block" src="/images/about/infoimage.png" alt="Illustration" />
+        </SideImage>
       </Container>
     </Wrapper>
   );
@@ -364,7 +379,7 @@ const Card = styled.div`
 const SideImage = styled.div`
   flex: 1 1 40%;
   border-radius: 12px;
-  background-image: url("/images/about/imageLogin.png");
+  background-image: url("/images/about/02.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 100% 100%;

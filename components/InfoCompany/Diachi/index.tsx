@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { getNhaTuyenDungList } from '../../../api/doanhnghieppublic';
+import { getNhaTuyenDungList, getNhaTuyenDungById } from '../../../api/doanhnghieppublic';
 import { NhaTuyenDung } from '../../../api/doanhnghieppublic/type';
 import { useRouter } from 'next/router';
 
@@ -43,7 +43,7 @@ const Address = () => {
     const id = router.query.id;
     useEffect(() => {
         if (id) {
-            getNhaTuyenDungList().then((response: any) => {
+            getNhaTuyenDungById(id as string).then((response: any) => {
 
                 const company = response.data.data.find((c: NhaTuyenDung) => c._id === id);
                 setAddress(company || null);
