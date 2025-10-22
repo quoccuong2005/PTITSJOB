@@ -60,17 +60,27 @@ const CommonLayout = ({ children }: any) => {
   useEffect(() => {
     const updateRole = () => {
       const role = typeof window !== "undefined" ? localStorage.getItem("userRole") : null;
-      setUserRole(role);
-      if (!role && router.pathname !== "/Checkuser/checkuser") {
-        router.replace("/Checkuser/checkuser");
-      }
+      setUserRole(role || "candidate");
     };
     updateRole();
+
     window.addEventListener("storage", updateRole);
     router.events?.on("routeChangeComplete", updateRole);
+
+    // Lắng nghe sự kiện quay lại (popstate)
+    const handlePopState = () => {
+      const role = typeof window !== "undefined" ? localStorage.getItem("userRole") : null;
+      if (role === "recruiter") {
+        localStorage.setItem("userRole", "candidate");
+        setUserRole("candidate");
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+
     return () => {
       window.removeEventListener("storage", updateRole);
       router.events?.off("routeChangeComplete", updateRole);
+      window.removeEventListener("popstate", handlePopState);
     };
   }, [router]);
 
@@ -83,7 +93,6 @@ const CommonLayout = ({ children }: any) => {
         <title>Đại học số</title>
       </Head>
       <div className='flex flex-col min-h-screen bg-[#FFFFFF]'>
-        {/* Hiển thị header theo vai trò */}
         {userRole === "candidate" ? (
           <HeaderSinhVien language={language} handleChangeLanguage={handleChangeLanguage} />
         ) : userRole === "recruiter" ? (
