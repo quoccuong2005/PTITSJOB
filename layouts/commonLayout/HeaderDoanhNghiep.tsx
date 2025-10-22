@@ -8,9 +8,12 @@ import AISInput from "../../components/AISInput";
 import AISDivider from "../../components/AISDivider";
 import AISDropdown from "../../components/AISDropdown";
 import { useRouter } from "next/router";
+import OAuthLogin from "../../components/Common/OAuthLogin";
 import Link from "next/link";
 import { DataMenu } from "../../utils/interface";
 import SocialIcon from "./components/SocialIcon";
+import { getUserInfo } from "../../api/auth";
+
 interface IProps {
     language?: string;
     handleChangeLanguage: (lang: string) => void;
@@ -26,6 +29,8 @@ const HeaderDoanhNghiep = (props: IProps) => {
     const menuRef = useRef<HTMLDivElement>(null);
     const languageRef = useRef<HTMLDivElement>(null);
     const discoverRef = useRef<HTMLDivElement>(null);
+    const [userDoanhNghiep, setUserDoanhNghiep] = useState<any>(null);
+    const [userRoles, setUserRoles] = useState<string[]>([]);
     const router = useRouter();
     const allLanguages = [
         {
@@ -108,6 +113,35 @@ const HeaderDoanhNghiep = (props: IProps) => {
         }
     };
 
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await getUserInfo();
+                console.log("res user info", res.data);
+                setUserDoanhNghiep(res.data);
+                setUserRoles(res.data.realm_access.roles);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
+
+    console.log("userRoles", userRoles);
+    console.log("userDoanhNghiep", userDoanhNghiep);
+
+    useEffect(() => {
+        if (userRoles.includes("NHA_TUYEN_DUNG")) {
+            router.push("/Doanhnghiep/DashboardafterLogin/DashboardafterLogin");
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        router.push("/").then(() => {
+            window.location.reload();
+        });
+    };
+
     const dataMenu: DataMenu[] = [
         {
             id: 1,
@@ -138,7 +172,7 @@ const HeaderDoanhNghiep = (props: IProps) => {
             trangCon: []
         },
     ];
-
+    const accessToken = localStorage.getItem("access_token");
     return (
         <HeaderWrapper className="shadow-header">
             <div className="hidden lg:block bg-primary">
@@ -257,7 +291,52 @@ const HeaderDoanhNghiep = (props: IProps) => {
             >
                 <div className="lg:mx-auto px-[16px] lg:px-[40px] py-[16px]">
                     <div className={`hidden lg:flex justify-between items-center relative`}>
-                        <div className="flex items-center gap-[20px]">
+                        {userRoles.includes("NHA_TUYEN_DUNG") ? (<>
+                            <div className="flex items-center gap-[20px]">
+                                <Link href="/Doanhnghiep/Dashboard/dashboard" className="logo flex flex-row gap-[12px] items-center">
+                                    <img src="/images/logo-ptit.png" className="h-[40px]" alt={"image"} />
+                                    <div className="flex flex-col">
+                                        <h2 className="name-dv">{common("name_org") as string}</h2>
+                                        <h2 className="name-main">{common("name_site") as string}</h2>
+                                    </div>
+                                </Link>
+                                <AISDivider />
+                                <a href="/Doanhnghiep/DashboardafterLogin/DashboardafterLogin" className="flex items-center gap-1 px-2 py-1 font-semibold text-[#051A53] hover:text-[#d32f2f] bg-transparent border-none outline-none cursor-pointer">Trang chủ</a>
+                                <a href="/Doanhnghiep/Quanly/Tintuyendung/tintuyendung" className="flex items-center gap-1 px-2 py-1 font-semibold text-[#051A53] hover:text-[#d32f2f] bg-transparent border-none outline-none cursor-pointer">Tin tuyển dụng</a>
+                                <a href="/Doanhnghiep/Quanly/Hosoungvien/hosoungvien" className="flex items-center gap-1 px-2 py-1 font-semibold text-[#051A53] hover:text-[#d32f2f] bg-transparent border-none outline-none cursor-pointer">Hồ sơ ứng viên</a>
+                                <a href="/Doanhnghiep/Timkiem" className="flex items-center gap-1 px-2 py-1 font-semibold text-[#051A53] hover:text-[#d32f2f] bg-transparent border-none outline-none cursor-pointer">Tìm kiếm ứng viên</a>
+                            </div>
+
+                            <div className="flex items-center gap-[20px]">
+                                {accessToken ? (<a href="/Doanhnghiep/Dangtuyen/Dangtuyen" >
+                                    <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                                        ĐĂNG TUYỂN NGAY
+                                    </button>
+                                </a>) : (
+                                    <a href="/Doanhnghiep/Register/registerDoanhnghiep" >
+                                        <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                                            ĐĂNG TUYỂN NGAY
+                                        </button>
+                                    </a>
+                                )}
+                                <div className="flex items-center gap-3">
+
+                                    <img src="/images/about/chuong.png" alt="Chuông" />
+                                    <img src="/images/about/tinnhan.png" alt="Tin nhắn" />
+
+
+                                    <button className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-semibold text-lg">
+                                        {userDoanhNghiep?.given_name?.charAt(0).toUpperCase() || "?"}
+                                    </button>
+
+
+
+
+
+                                </div>
+
+                            </div>
+                        </>) : (<><div className="flex items-center gap-[20px]">
                             <Link href="/Doanhnghiep/Dashboard/dashboard" className="logo flex flex-row gap-[12px] items-center">
                                 <img src="/images/logo-ptit.png" className="h-[40px]" alt={"image"} />
                                 <div className="flex flex-col">
@@ -298,27 +377,27 @@ const HeaderDoanhNghiep = (props: IProps) => {
                             }} className="flex items-center gap-1 px-2 py-1 font-semibold text-[#051A53] hover:text-[#d32f2f] bg-transparent border-none outline-none cursor-pointer">Tin tức</a>
                         </div>
 
-                        <div className="flex items-center gap-[20px]">
-                            <a href="/Doanhnghiep/Dangtuyen/Dangtuyen" >
-                                <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
-                                    ĐĂNG TUYỂN NGAY
-                                </button>
-                            </a>
-                            <a href="/Doanhnghiep/Register/registerDoanhnghiep">
-                                <button className="px-4 py-2 border border-primary text-primary font-medium rounded-[8px] hover:bg-primary hover:text-white transition-colors duration-200">
-                                    Đăng ký
-                                </button>
-                            </a>
-                            <AISButton
-                                onClick={() => {
-                                    // Navigate to login page
-                                    router.push("/LoginPage");
-                                }}
-                                type="primary"
-                            >
-                                {common("login")}
-                            </AISButton>
-                        </div>
+                            <div className="flex items-center gap-[20px]">
+                                {accessToken ? (<a href="/Doanhnghiep/Dangtuyen/Dangtuyen" >
+                                    <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                                        ĐĂNG TUYỂN NGAY
+                                    </button>
+                                </a>) : (
+                                    <a href="/Doanhnghiep/Register/registerDoanhnghiep" >
+                                        <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                                            ĐĂNG TUYỂN NGAY
+                                        </button>
+                                    </a>
+                                )}
+
+                                <a href="/Doanhnghiep/Register/registerDoanhnghiep">
+                                    <button className="px-4 py-2 border border-primary text-primary font-medium rounded-[8px] hover:bg-primary hover:text-white transition-colors duration-200">
+                                        Đăng ký
+                                    </button>
+                                </a>
+                                <OAuthLogin />
+                            </div></>)}
+
                     </div>
                     <div
                         className={

@@ -162,9 +162,8 @@ const ViecLamWrapper = styled.section`
 `;
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 15px;
   position: relative;
   
   @media (max-width: 768px) {
@@ -264,7 +263,7 @@ const ViewAllMobileLink = styled(Link)`
 const NavigationButtons = styled.div`
   position: absolute;
   top: 0;
-  right: 15px;
+  right: -2px;
   display: flex;
   gap: 8px;
   

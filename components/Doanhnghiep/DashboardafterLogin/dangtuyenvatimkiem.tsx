@@ -111,7 +111,7 @@ const DangTuyenVaTimKiem: React.FC = () => {
           </Icon>
           <CardTitle>Đăng Tin Tuyển Dụng</CardTitle>
         </CardHeader>
-        <CardButton href="#">ĐĂNG TUYỂN NGAY</CardButton>
+        <CardButton href="/Doanhnghiep/Dangtuyen/Dangtuyen">ĐĂNG TUYỂN NGAY</CardButton>
       </Card>
 
       <Card>

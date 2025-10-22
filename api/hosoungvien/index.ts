@@ -1,5 +1,6 @@
 import axios from "axios";
 import { HosoungvienResponse } from "./type";
+import { authHeaders } from "../token";
 
 const API_URL = "https://ais.aisenote.com/ript/job-connect";
 
@@ -11,7 +12,7 @@ export const getHosoungvien = async () => {
 
         {
             headers: {
-                Authorization: `Bearer ${token}`,
+                ...authHeaders(),
             },
         }
     );

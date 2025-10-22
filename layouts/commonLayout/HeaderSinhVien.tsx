@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useCommonTranslation } from "../../hooks/useCommonTranslation";
 import TextIcon from "../../components/TextIcon";
@@ -14,6 +14,7 @@ import SocialIcon from "./components/SocialIcon";
 import OAuthLogin from "../../components/Common/OAuthLogin";
 import { redirect } from "next/dist/server/api-utils";
 import { getUserInfo } from "../../api/auth";
+
 interface IProps {
     language?: string;
     handleChangeLanguage: (lang: string) => void;
@@ -27,10 +28,13 @@ const HeaderSinhVien = (props: IProps) => {
     const [showDiscoverDropdown, setShowDiscoverDropdown] = useState<boolean>(false);
     const [showViecLamDropdown, setShowViecLamDropdown] = useState(false);
     const [showCVDropdown, setShowCVDropdown] = useState(false);
+    const [showUserDropdown, setShowUserDropdown] = useState(false);
     const [isScroll, setIsScroll] = useState<boolean>(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const languageRef = useRef<HTMLDivElement>(null);
     const discoverRef = useRef<HTMLDivElement>(null);
+    const [userStudent, setUserStudent] = useState<any>(null);
+    const [userRoles, setUserRoles] = useState<string[]>([]);
     const router = useRouter();
     const allLanguages = [
         {
@@ -112,17 +116,37 @@ const HeaderSinhVien = (props: IProps) => {
             setIsScroll(false);
         }
     };
-
     useEffect(() => {
         (async () => {
-        try {
-            const res = await getUserInfo();
-            console.log("res user info", res);
-        } catch (error) { 
-            console.log(error);
-        }
+            try {
+                const res = await getUserInfo();
+                console.log("res user info", res.data);
+                setUserStudent(res.data);
+                setUserRoles(res.data.realm_access.roles);
+            } catch (error) {
+                console.log(error);
+            }
         })();
     }, []);
+
+    console.log("userRoles", userRoles);
+    console.log("userStudent", userStudent);
+
+    useEffect(() => {
+        if (userRoles.includes("HOC_VIEN")) {
+            router.push("/student/dashboard");
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("accessToken");
+        router.push("/").then(() => {
+            window.location.reload();
+        });
+    };
+
+
+
 
     const dataMenu: DataMenu[] = [
         {
@@ -349,10 +373,44 @@ const HeaderSinhVien = (props: IProps) => {
                                     localStorage.setItem("userRole", "recruiter");
                                 }
                                 router.push("/Doanhnghiep/Dashboard/dashboard");
-                            }} className="px-4 py-2 bg-[#F5F1ED] text-[#051A53] font-medium rounded-[8px] transition-colors duration-200">
-                                Đăng tuyển & tìm hồ sơ
+                            }} className="px-4 py-2 bg-[#F5F1ED] text-[#051A53] font-medium rounded-[8px] transition-colors duration-200 w-[200px] h-[42px]">
+                                Đăng tuyển
                             </button>
-                            <OAuthLogin/>
+                            {userRoles.includes("HOC_VIEN") ? (<>
+                                <div className="flex items-center gap-3">
+
+                                    <img src="/images/about/chuong.png" alt="Chuông" />
+                                    <img src="/images/about/traitim.png" alt="Trái tim" />
+
+                                    <div className="relative"
+                                        onMouseEnter={() => setShowUserDropdown(true)}
+                                        onMouseLeave={() => setShowUserDropdown(false)}
+                                    >
+                                        <button className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-semibold text-lg">
+                                            {userStudent?.given_name?.charAt(0).toUpperCase() || "?"}
+                                        </button>
+                                        {showUserDropdown && (
+                                            <div tabIndex={2}
+                                                onMouseLeave={() => setShowUserDropdown(false)} className="absolute right-[0px] top-full  bg-white shadow-lg rounded-md z-50 min-w-[297px]">
+                                                <div className="flex items-center border-b px-4 py-2 border border-b-gray-200">
+                                                    <button className="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center font-semibold text-lg">
+                                                        {userStudent?.given_name?.charAt(0).toUpperCase() || "?"}
+                                                    </button>
+                                                    <div className="px-4 py-2">
+                                                        <p className="text-sm text-gray-700">{userStudent?.given_name || "Tên người dùng"}</p>
+                                                        <p className="text-sm text-gray-500">{userStudent?.email || "Email người dùng"}</p>
+                                                    </div>
+                                                </div>
+                                                <button onClick={() => handleLogout()} className="w-full text-center px-4 py-2 hover:bg-gray-100">Đăng xuất</button>
+                                            </div>
+                                        )}
+                                    </div>
+
+
+
+                                </div>
+
+                            </>) : <OAuthLogin />}
                         </div>
                     </div>
                     <div

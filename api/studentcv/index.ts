@@ -1,5 +1,6 @@
 import axios from "axios";
 import { StudentCvCreateRequest, StudentCvResponse } from "./type";
+import { authHeaders } from "../token";
 
 const API_URL = "https://ais.aisenote.com/ript/job-connect";
 
@@ -11,7 +12,7 @@ export const postLuumauCV = async (data: StudentCvCreateRequest) => {
         data,
         {
             headers: {
-                Authorization: `Bearer ${token}`,
+                ...authHeaders(),
             },
         }
     );

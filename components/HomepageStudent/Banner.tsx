@@ -97,9 +97,9 @@ const BannerWrapper = styled.div`
 `;
 
 const SearchFormContainer = styled.div`
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 16px;
+  
 `;
 
 const SearchForm = styled.form`

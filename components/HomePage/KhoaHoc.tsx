@@ -162,18 +162,6 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
               <h2 className="section-title">{title}</h2>
               <p className="section-description">{description}</p>
             </div>
-            {/* <div className="navigation-arrows">
-              <button className="nav-button" aria-label="Previous courses" onClick={() => sliderRef.current?.slickPrev()}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M12.5 15L7.5 10L12.5 5" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              <button className="nav-button" aria-label="Next courses" onClick={() => sliderRef.current?.slickNext()}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M7.5 5L12.5 10L7.5 15" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-            </div> */}
           </div>
         </div>
 
@@ -225,12 +213,6 @@ const KhoaHoc: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
             ))}
           </Slider>
         </div>
-
-        {/* <div className="button-container">
-          <AISButton type="default" onClick={() => router.push('/tat-ca-khoa-hoc')}>
-            {buttonText}
-          </AISButton>
-        </div> */}
         <div className="navigation-arrows" style={{ justifyContent: 'center', marginBottom: '40px' }}>
           <button className="nav-button" aria-label="Previous courses" onClick={() => sliderRef.current?.slickPrev()}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

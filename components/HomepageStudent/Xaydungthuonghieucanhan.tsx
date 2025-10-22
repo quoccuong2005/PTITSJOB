@@ -108,9 +108,9 @@ const NganhNoiBatWrapper = styled.section`
   background-color: #FFF;
 
   .container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0 15px;
+    
   }
 
   .header {

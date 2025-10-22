@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { getUngtuyenByUser } from "../../api/ungtuyen";
+import { getUserInfo } from "../../api/userinfo";
 
 const BaiVietPage: React.FC = () => {
     useEffect(() => {
-        getUngtuyenByUser()
+        getUserInfo()
             .then((response) => {
                 console.log("Dữ liệu bài viếtp[ad[a]spd]:", response.data);
             })
@@ -11,6 +12,7 @@ const BaiVietPage: React.FC = () => {
                 console.error("Lỗi khi gọi API:", error);
             });
     }, []);
+
 
 
 

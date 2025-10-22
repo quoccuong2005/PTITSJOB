@@ -11,7 +11,7 @@ import { getKhoaHocMienPhi, getKhoaHocMoiNhat, getKhoaHocNangCao, getKhoaHocPhoB
 import { useRouter } from "next/router";
 import { ELang, LangMap } from "../../utils/constant";
 import { useTranslation } from "react-i18next";
-import { getTintuyendungList } from "../../api/tintuyendungpublic";
+import { getTintuyendungPage } from "../../api/tintuyendungpublic";
 import { Tintuyendungpublic } from "../../api/tintuyendungpublic/type";
 
 
@@ -65,11 +65,10 @@ const Vieclambanquantam: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
     ],
   };
   useEffect(() => {
-    getTintuyendungList()
-      .then((response) => {
+    getTintuyendungPage()
+      .then((response: any) => {
         console.log("Dữ liệu bài viết tuyển dụng:", response.data);
-        // API might return either an array (response.data) or a wrapper { data: [...] }
-        const payload = response.data;
+        const payload = response.data.data.result;
         const list = Array.isArray(payload)
           ? payload
           : Array.isArray((payload && (payload as any).data))
@@ -163,18 +162,7 @@ const Vieclambanquantam: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
               <h2 className="section-title">{title}</h2>
               <p className="section-description">{description}</p>
             </div>
-            <div className="navigation-arrows">
-              <button className="nav-button" aria-label="Previous courses" onClick={() => sliderRef.current?.slickPrev()}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M12.5 15L7.5 10L12.5 5" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-              <button className="nav-button" aria-label="Next courses" onClick={() => sliderRef.current?.slickNext()}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M7.5 5L12.5 10L7.5 15" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-            </div>
+
           </div>
         </div>
 
@@ -227,18 +215,14 @@ const Vieclambanquantam: React.FC<KhoaHocProps> = (props: KhoaHocProps) => {
           </Slider>
         </div>
 
-        {/* <div className="button-container">
-          <AISButton type="default" onClick={() => router.push('/tat-ca-khoa-hoc')}>
-            {buttonText}
-          </AISButton>
-        </div> */}
+
         <div className="navigation-arrows" style={{ justifyContent: 'center', marginBottom: '40px' }}>
           <button className="nav-button" aria-label="Previous courses" onClick={() => sliderRef.current?.slickPrev()}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M12.5 15L7.5 10L12.5 5" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
-          <span>1/5</span>
+
           <button className="nav-button" aria-label="Next courses" onClick={() => sliderRef.current?.slickNext()}>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M7.5 5L12.5 10L7.5 15" stroke="#051A53" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
@@ -259,7 +243,7 @@ const KhoaHocWrapper = styled.div`
     padding-top: 10px;
     .slick-track {
       display: flex;
-      gap: 20px;
+      gap: 10px;
     }
   }
 
@@ -363,7 +347,7 @@ const KhoaHocWrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 12px;
+    padding: 12px 0;
     justify-content: space-between;
   }
 

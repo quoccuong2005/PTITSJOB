@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TinTuyenDungDangTin, TinTuyenDungResponse, Tintuyendungdoanhnghiep } from "./type";
+import { authHeaders } from "../token";
 
 const API_URL = "https://ais.aisenote.com/ript/job-connect";
 
@@ -11,7 +12,7 @@ export const postUngtuyen = async (data: TinTuyenDungDangTin) => {
         data,
         {
             headers: {
-                Authorization: `Bearer ${token}`,
+                ...authHeaders(),
             },
         }
     );
@@ -22,7 +23,7 @@ export const getTintuyendungPageDoanhnghiep = async (page = 1, limit = 6) => {
     return axios.get<Tintuyendungdoanhnghiep[]>(`${API_URL}/tin-tuyen-dung/page`, {
         params: { page, limit },
         headers: {
-            Authorization: `Bearer ${token}`,
+            ...authHeaders(),
         },
     });
 

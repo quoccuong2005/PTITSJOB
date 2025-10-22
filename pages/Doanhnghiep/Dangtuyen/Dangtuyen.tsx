@@ -41,8 +41,8 @@ const Dangtuyen: React.FC = () => {
     }, [title]);
 
     const step2Complete = useMemo(() => {
-        return jobType && salary && city;
-    }, [jobType, salary, city]);
+        return jobType
+    }, [jobType]);
 
     // preview always shows if at least step 1 filled
     const canPreview = step1Complete || step2Complete;
