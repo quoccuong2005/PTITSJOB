@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { DataMenu } from "../../utils/interface";
 import SocialIcon from "./components/SocialIcon";
+import { getUserInfo } from "../../api/auth";
 interface IProps {
   language?: string;
   handleChangeLanguage: (lang: string) => void;

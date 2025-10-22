@@ -36,6 +36,9 @@ function apiCall(
 	return new Promise<any>((resolve, reject) => {
 		axios({
 			url,
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem("access_token") || ""}`,
+			},
 			method,
 			data,
 			params: data && ["get", "GET"].includes(method) ? data : undefined,

@@ -8,3 +8,7 @@ export const getClientOAuth = (): Promise<IApiResponse<Auth.IClientOAuth[]>> => 
 export const userLoginOAuth = (data: { accessToken: string; clientId: string }) => {
 	return postRequest("auth/login/client/oauth", data);
 };
+
+export const getUserInfo = () => {
+	return getRequest("https://sso.ript.vn/realms/ript/protocol/openid-connect/userinfo");
+};

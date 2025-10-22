@@ -13,6 +13,7 @@ import { DataMenu } from "../../utils/interface";
 import SocialIcon from "./components/SocialIcon";
 import OAuthLogin from "../../components/Common/OAuthLogin";
 import { redirect } from "next/dist/server/api-utils";
+import { getUserInfo } from "../../api/auth";
 interface IProps {
     language?: string;
     handleChangeLanguage: (lang: string) => void;
@@ -111,6 +112,17 @@ const HeaderSinhVien = (props: IProps) => {
             setIsScroll(false);
         }
     };
+
+    useEffect(() => {
+        (async () => {
+        try {
+            const res = await getUserInfo();
+            console.log("res user info", res);
+        } catch (error) { 
+            console.log(error);
+        }
+        })();
+    }, []);
 
     const dataMenu: DataMenu[] = [
         {
