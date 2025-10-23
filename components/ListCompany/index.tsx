@@ -127,9 +127,9 @@ const ListCompany: React.FC = () => {
 
 // Styled components
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 0;
   background-color: #f5f5f5;
 `;
 

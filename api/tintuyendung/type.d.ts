@@ -121,6 +121,7 @@ export interface Tintuyendungdoanhnghiep {
     doanhNghiep: {
         _id: string,
         ssoId: string,
+        dataPartitionCode: string,
         ten: string,
         email: string,
         soDienThoai: string,

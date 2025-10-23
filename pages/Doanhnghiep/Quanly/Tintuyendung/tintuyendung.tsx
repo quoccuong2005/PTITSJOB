@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getTintuyendungPageDoanhnghiep } from "../../../../api/tintuyendung/index"
 import { Tintuyendungdoanhnghiep } from "../../../../api/tintuyendung/type"
-
+import { getUserInfo } from "../../../../api/auth";
+import { formatDate } from "../../../../assets/formatDate"
 const sampleData = [
     {
         id: 1,
@@ -37,19 +38,43 @@ const sampleData = [
 
 const TintuyendungTable = () => {
     const [data, setData] = useState<Tintuyendungdoanhnghiep[]>([]);
+    const [infoDoanhNghiep, setInfoDoanhNghiep] = useState<any>(null);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await getUserInfo();
+                console.log("res user info", res.data);
+
+                setInfoDoanhNghiep(res.data.sub);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await getTintuyendungPageDoanhnghiep(1, 6);
-                setData(response.data);
+                // Support different response shapes: array, { data }, or nested { data.data.result }
+                const SSODoanhnghiep = infoDoanhNghiep;
+                const result =
+                    Array.isArray(response)
+                        ? response
+                        : (response as any)?.data?.data?.result ||
+                        (response as any)?.data ||
+                        (response as any) ||
+                        [];
+                const filteredResult = result.filter((item: any) => item.doanhNghiep?.ssoId === SSODoanhnghiep);
+                setData(filteredResult);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
 
         fetchData();
-    }, []);
+    }, [infoDoanhNghiep]);
     console.log("Data:", data);
     // const TintuyendungTable = ({ currentDoanhNghiepId }) => {
     // const [data, setData] = useState<Tintuyendungdoanhnghiep[]>([]);
@@ -84,28 +109,28 @@ const TintuyendungTable = () => {
                         <tr className="bg-gray-50 text-gray-700">
                             <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">STT</th>
                             <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Tin tuyển dụng</th>
-                            <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Hồ sơ đã ứng tuyển</th>
+                            {/* <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Hồ sơ đã ứng tuyển</th> */}
                             <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Ngày hết hạn tin</th>
                             <th className="px-2 sm:px-4 py-2 font-semibold text-left whitespace-nowrap">Trạng thái</th>
                             <th className="px-2 sm:px-4 py-2 font-semibold text-left"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {sampleData.map((row, idx) => (
-                            <tr key={row.id} className="border-b last:border-none">
+                        {data.map((row, idx) => (
+                            <tr key={row._id} className="border-b last:border-none">
                                 <td className="px-2 sm:px-4 py-3 font-medium text-gray-700">{idx + 1}</td>
                                 <td className="px-2 sm:px-4 py-3">
                                     <div className="flex flex-col gap-1">
                                         <span className="text-blue-600 text-xs font-medium flex items-center gap-1">
-                                            {row.code}
+                                            {row.doanhNghiep?.dataPartitionCode || "N/A"}
                                             <button className="ml-1" title="Copy">
                                                 <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" className="text-gray-400"><rect x="9" y="9" width="13" height="13" rx="2" /><rect x="2" y="2" width="13" height="13" rx="2" /></svg>
                                             </button>
                                         </span>
-                                        <span className="font-semibold text-base text-gray-900">{row.title}</span>
+                                        <span className="font-semibold text-base text-gray-900">{row.tieuDe}</span>
                                     </div>
                                 </td>
-                                <td className="px-2 sm:px-4 py-3">
+                                {/* <td className="px-2 sm:px-4 py-3">
                                     {row.applied > 0 ? (
                                         <div className="flex flex-col gap-1">
                                             <span className="text-blue-700 font-medium">{row.applied} hồ sơ cần đánh giá</span>
@@ -114,10 +139,10 @@ const TintuyendungTable = () => {
                                     ) : (
                                         <span className="text-gray-500">Chưa có hồ sơ nào</span>
                                     )}
-                                </td>
-                                <td className="px-2 sm:px-4 py-3 text-gray-700">{row.expiredDate}</td>
+                                </td> */}
+                                <td className="px-2 sm:px-4 py-3 text-gray-700">{formatDate(row.hanNhanHoSo)}</td>
                                 <td className="px-2 sm:px-4 py-3">
-                                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${row.statusColor}`}>{row.status}</span>
+                                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${String(row.trangThaiDuyet) === "Đã duyệt" ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>{row.trangThaiDuyet}</span>
                                 </td>
                                 <td className="px-2 sm:px-4 py-3">
                                     <div className="flex gap-3 text-gray-400">

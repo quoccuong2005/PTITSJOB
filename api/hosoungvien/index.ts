@@ -4,8 +4,6 @@ import { authHeaders } from "../token";
 
 const API_URL = "https://ais.aisenote.com/ript/job-connect";
 
-const token = "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJpTHJUMWNscEViMUxtWFhWUEhyMlV2ZWE3Y2hUWTd3bU1MWEppSnBPcWFJIn0.eyJleHAiOjE3NjEwNDY4NzQsImlhdCI6MTc2MTA0NjYzNCwiYXV0aF90aW1lIjoxNzYxMDIzODM4LCJqdGkiOiJvbnJ0cnQ6MWQ3ZDc5OTgtZmZkYy1lM2E2LTk4ZmItYWNiMDVlZjJiZGI0IiwiaXNzIjoiaHR0cHM6Ly9zc28ucmlwdC52bi9yZWFsbXMvcmlwdCIsImF1ZCI6WyJyZWFsbS1tYW5hZ2VtZW50IiwiYWNjb3VudCJdLCJzdWIiOiI0YThlOTQxMS1iMTE4LTRjNDAtYTMyMy05NmVlNzg1YWFkZGYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJyaXB0LWNvbm5lY3QiLCJzaWQiOiJiNTI2YmRkMy02MWM5LTA1ZWMtY2E5ZS1lNDUzMzhmNjA3OTciLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIlFVQU5fVFJJX1ZJRU4iLCJDQU5fQk8iLCJvZmZsaW5lX2FjY2VzcyIsIkdVRVNUIiwidW1hX2F1dGhvcml6YXRpb24iLCJkZWZhdWx0LXJvbGVzLXJpcHQiXX0sInJlc291cmNlX2FjY2VzcyI6eyJyZWFsbS1tYW5hZ2VtZW50Ijp7InJvbGVzIjpbInZpZXctcmVhbG0iLCJ2aWV3LWlkZW50aXR5LXByb3ZpZGVycyIsIm1hbmFnZS1pZGVudGl0eS1wcm92aWRlcnMiLCJpbXBlcnNvbmF0aW9uIiwicmVhbG0tYWRtaW4iLCJjcmVhdGUtY2xpZW50IiwibWFuYWdlLXVzZXJzIiwicXVlcnktcmVhbG1zIiwidmlldy1hdXRob3JpemF0aW9uIiwicXVlcnktY2xpZW50cyIsInF1ZXJ5LXVzZXJzIiwibWFuYWdlLWV2ZW50cyIsIm1hbmFnZS1yZWFsbSIsInZpZXctZXZlbnRzIiwidmlldy11c2VycyIsInZpZXctY2xpZW50cyIsIm1hbmFnZS1hdXRob3JpemF0aW9uIiwibWFuYWdlLWNsaWVudHMiLCJxdWVyeS1ncm91cHMiXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IlThuqROIE5HVVnhu4ROIEjhu5JORyBBTkgiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJ0YW5uaGFAcHRpdC5lZHUudm4iLCJnaXZlbl9uYW1lIjoiVOG6pE4iLCJmYW1pbHlfbmFtZSI6Ik5HVVnhu4ROIEjhu5JORyBBTkgiLCJlbWFpbCI6InRyYW5nbG91MTAwM0BnbWFpbC5jb20ifQ.MKwmr3Yv_s1v1cIvpsOLyzuRcp83SB1H9uJ5plA2OOj1WMRZLRfdNs-L7ys7kMJDKMT322uatd47cSHwa9f7BRT1CdF3vhVaDkgeZFjfvI1eJZFi2-mtPBF9NWvbwQBU382fReO2UY45ztvEsi3goFCGS3aYOJdoKJpYP0ajYWfwkaK5pYDIU7A0Bp55oO_5lwJPPGmvN7LI0EINKriIEAFf9doYSJWhuElZdOQSr0-eaYsMQL-1mXqXDRCf9EKKRooFF6oozPCw6CXndJyxeGVBBP-vnz8LKN8uK6SSxfOKAXT7Ptl5aPoQK5pFl1ziSIhIPveRKBuHQ7PAyQ2L8g";
-
 export const getHosoungvien = async () => {
     return axios.get<HosoungvienResponse>(
         `${API_URL}/ung-tuyen/nha-tuyen-dung/page/me`,
@@ -17,5 +15,19 @@ export const getHosoungvien = async () => {
         }
     );
 };
+
+export const putTrangthaiungvien = async (id: string, data: { trangThaiUngTuyen: string }) => {
+    return axios.put(
+        `${API_URL}/ung-tuyen/nha-tuyen-dung/ung-tuyen/${id}`,
+        data,
+        {
+            headers: {
+                ...authHeaders(),
+            },
+        }
+    );
+}
+
+
 
 

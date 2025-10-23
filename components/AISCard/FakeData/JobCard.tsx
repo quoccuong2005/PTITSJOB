@@ -12,7 +12,7 @@ const JobCard: React.FC<Tintuyendungpublic> = ({ mucLuongToiThieu, mucLuongToiDa
     <Link href={`/Detailcompany/${_id}`}>
       <CardWrapper>
         <Header>
-          <Image src={doanhNghiep?.logo || "Chưa có logo"} alt={tieuDe} />
+          {doanhNghiep?.logo ? (<Image src={doanhNghiep.logo} alt={tieuDe} />) : (<Image src={"/images/default/defaultimage.png"} alt={tieuDe} />)}
           <div>
             <Company>{doanhNghiep?.ten || "Chưa có tên công ty"}</Company>
             <Title>{tieuDe || "Chưa có tiêu đề"}</Title>

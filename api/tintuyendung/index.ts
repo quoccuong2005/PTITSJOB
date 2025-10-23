@@ -20,7 +20,7 @@ export const postUngtuyen = async (data: TinTuyenDungDangTin) => {
 
 
 export const getTintuyendungPageDoanhnghiep = async (page = 1, limit = 6) => {
-    return axios.get<Tintuyendungdoanhnghiep[]>(`${API_URL}/tin-tuyen-dung/page`, {
+    return axios.get<Tintuyendungdoanhnghiep[]>(`${API_URL}/tin-tuyen-dung/page/me`, {
         params: { page, limit },
         headers: {
             ...authHeaders(),

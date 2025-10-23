@@ -96,7 +96,8 @@ const Vieclamdaungtuyen = () => {
             <JobCard key={job.id} href={`/student/jobs/${job.id}`}>
               <CompanyInfo>
                 <CompanyLogo>
-                  <img src={job.logo} alt={job.company} />
+                  {job.logo ? (<img src={job.logo} alt={job.company} />) : (<img src={"/images/default/defaultimage.png"} alt={job.company} />)}
+
                 </CompanyLogo>
                 <CompanyDetails>
                   <CompanyName>{job.company}</CompanyName>

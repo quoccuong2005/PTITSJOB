@@ -17,6 +17,7 @@ import { getUserInfo } from "../../api/auth";
 interface IProps {
     language?: string;
     handleChangeLanguage: (lang: string) => void;
+
 }
 
 const HeaderDoanhNghiep = (props: IProps) => {
@@ -31,6 +32,7 @@ const HeaderDoanhNghiep = (props: IProps) => {
     const discoverRef = useRef<HTMLDivElement>(null);
     const [userDoanhNghiep, setUserDoanhNghiep] = useState<any>(null);
     const [userRoles, setUserRoles] = useState<string[]>([]);
+    const [infoDoanhNghiep, setInfoDoanhNghiep] = useState<any>(null);
     const router = useRouter();
     const allLanguages = [
         {
@@ -120,6 +122,7 @@ const HeaderDoanhNghiep = (props: IProps) => {
                 console.log("res user info", res.data);
                 setUserDoanhNghiep(res.data);
                 setUserRoles(res.data.realm_access.roles);
+                setInfoDoanhNghiep(res.data.sub);
             } catch (error) {
                 console.log(error);
             }
@@ -128,17 +131,25 @@ const HeaderDoanhNghiep = (props: IProps) => {
 
     console.log("userRoles", userRoles);
     console.log("userDoanhNghiep", userDoanhNghiep);
+    console.log("infoDoanhNghiep", infoDoanhNghiep);
+    const [redirected, setRedirected] = useState(false);
 
     useEffect(() => {
-        if (userRoles.includes("NHA_TUYEN_DUNG")) {
+        // Chỉ redirect nếu đang ở trang chủ hoặc trang login
+        if (
+            !redirected &&
+            userRoles?.includes("NHA_TUYEN_DUNG") &&
+            (router.pathname === "/" || router.pathname === "/Doanhnghiep/Login")
+        ) {
             router.push("/Doanhnghiep/DashboardafterLogin/DashboardafterLogin");
+            setRedirected(true);
         }
-    }, []);
+    }, [userRoles, redirected, router]);
 
     const handleLogout = () => {
         localStorage.removeItem("accessToken");
         router.push("/").then(() => {
-            window.location.reload();
+
         });
     };
 
@@ -379,19 +390,19 @@ const HeaderDoanhNghiep = (props: IProps) => {
 
                             <div className="flex items-center gap-[20px]">
                                 {accessToken ? (<a href="/Doanhnghiep/Dangtuyen/Dangtuyen" >
-                                    <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                                    <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200 w-[190px]">
                                         ĐĂNG TUYỂN NGAY
                                     </button>
                                 </a>) : (
                                     <a href="/Doanhnghiep/Register/registerDoanhnghiep" >
-                                        <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200">
+                                        <button className="px-4 py-2 bg-[#DFEDFF] text-[#007AFF] font-medium rounded-[20px]  transition-colors duration-200 w-[190px]">
                                             ĐĂNG TUYỂN NGAY
                                         </button>
                                     </a>
                                 )}
 
                                 <a href="/Doanhnghiep/Register/registerDoanhnghiep">
-                                    <button className="px-4 py-2 border border-primary text-primary font-medium rounded-[8px] hover:bg-primary hover:text-white transition-colors duration-200">
+                                    <button className="px-4 py-2 border border-primary text-primary font-medium rounded-[8px] hover:bg-primary hover:text-white transition-colors duration-200 w-[130px]">
                                         Đăng ký
                                     </button>
                                 </a>

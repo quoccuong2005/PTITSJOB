@@ -132,16 +132,23 @@ const HeaderSinhVien = (props: IProps) => {
     console.log("userRoles", userRoles);
     console.log("userStudent", userStudent);
 
+    const [redirected, setRedirected] = useState(false);
+
     useEffect(() => {
-        if (userRoles.includes("HOC_VIEN")) {
+        if (
+            !redirected &&
+            userRoles?.includes("HOC_VIEN") &&
+            (router.pathname === "/" || router.pathname === "/Doanhnghiep/Login")
+        ) {
             router.push("/student/dashboard");
+            setRedirected(true);
         }
-    }, []);
+    }, [userRoles, redirected, router]);
 
     const handleLogout = () => {
         localStorage.removeItem("accessToken");
         router.push("/").then(() => {
-            window.location.reload();
+
         });
     };
 
@@ -401,7 +408,7 @@ const HeaderSinhVien = (props: IProps) => {
                                                         <p className="text-sm text-gray-500">{userStudent?.email || "Email người dùng"}</p>
                                                     </div>
                                                 </div>
-                                                <button onClick={() => handleLogout()} className="w-full text-center px-4 py-2 hover:bg-gray-100">Đăng xuất</button>
+                                                <button className="w-full text-center px-4 py-2 hover:bg-gray-100">Đăng xuất</button>
                                             </div>
                                         )}
                                     </div>

@@ -28,15 +28,23 @@ const OAuthLogin = (props: { setShowModal?: any; redirect?: string }) => {
 				localStorage.setItem("access_token", res.data?.access_token);
 				if (res.data.access_token && OAuthData?._id)
 					oauthLogin({ accessToken: res.data.access_token, clientId: OAuthData._id })
+						// ...existing code...
 						.then(() => {
 							toast.success("Đăng nhập thành công!");
 							setTypeLogin("keycloak");
 							localStorage.setItem("typeLogin", "keycloak");
-							if (!setShowModal) router.push((redirect as string) ?? "/");
-							else setShowModal("");
+							if (!setShowModal) {
+								router.push((redirect as string) ?? "/");
+								window.location.reload(); // Thêm dòng này để reload lại trang
+							} else {
+								setShowModal("");
+								window.location.reload(); // Nếu dùng modal cũng reload lại
+							}
 						})
+						// ...existing code...
 						.catch(() => {
 							toast.error("Đăng nhập thất bại");
+							window.location.reload();
 						});
 			})
 			.catch(() => {
@@ -59,7 +67,7 @@ const OAuthLogin = (props: { setShowModal?: any; redirect?: string }) => {
 					onFailure={onFailure}
 					popupWidth={800}
 					buttonText={`Đăng nhập`}
-					className='text-white bg-primary-500 border border-transparent hover:bg-primary-800 focus:ring-primary-300 disabled:hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 dark:disabled:hover:bg-primary-600 focus:!ring-2 w-full items-center justify-center text-center font-medium focus:z-10 rounded-lg uppercase text-sm py-2.5'
+					className='text-white bg-primary-500 border border-transparent hover:bg-primary-800 focus:ring-primary-300 disabled:hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 dark:disabled:hover:bg-primary-600 focus:!ring-2 w-full items-center justify-center text-center font-medium focus:z-10 rounded-lg uppercase text-sm py-2.5 p-[11px]'
 				/>
 			) : null}
 		</>

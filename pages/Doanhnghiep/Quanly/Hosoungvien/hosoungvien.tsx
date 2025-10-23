@@ -1,7 +1,9 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { getHosoungvien } from "../../../../api/hosoungvien/index";
-import { HosoungvienResponse } from "../../../../api/hosoungvien/type";
-
+import { HosoungvienResponse, Hosoungvien } from "../../../../api/hosoungvien/type";
+import { getUserInfo } from "../../../../api/auth";
+import { formatDate } from "../../../../assets/formatDate"
+import { putTrangthaiungvien } from "../../../../api/hosoungvien/index";
 type Candidate = {
     id: number;
     name: string;
@@ -14,6 +16,7 @@ type Candidate = {
     jobRef?: string;
 };
 
+
 const SAMPLE: Candidate[] = [
     { id: 1, name: 'Lê Văn Minh', email: 'Minhlv@gmail.com', phone: '0834567890', avatar: '/images/avatar2.jpg', status: 'Đã xem', seen: true, submittedAt: '11:40 05/07/2025', jobRef: '#A123B456' },
     { id: 2, name: 'Phạm Minh Tuấn', email: 'Tuanpm@gmail.com', phone: '0909876543', avatar: '/images/avatar3.jpg', status: 'Đã xem', seen: true, submittedAt: '11:40 05/07/2025', jobRef: '#D4E56789' },
@@ -21,10 +24,10 @@ const SAMPLE: Candidate[] = [
     { id: 4, name: 'Trần Ngọc Hân', email: 'Han.tn@gmail.com', phone: '0987654321', avatar: '/images/avatar4.jpg', status: 'Mời phỏng vấn', seen: false, submittedAt: '11:40 05/07/2025', jobRef: '#E1F2A3B4' },
 ];
 
-const STATUS_OPTIONS = ['Chưa xem', 'Đã xem', 'Đang xem xét', 'Từ chối', 'Mời phỏng vấn'] as const;
+const STATUS_OPTIONS = ["Đang chờ", "Nhà tuyển dụng đã chấp nhận", "Nhà tuyển dụng đã từ chối"] as const;
 
-function downloadCSV(rows: Candidate[]) {
-    if (!rows.length) return;
+function downloadCSV(rows?: Candidate[] | null) {
+    if (!rows || !rows.length) return;
     const headers = ['STT', 'Họ tên', 'Email', 'Số điện thoại', 'Trạng thái', 'Thời gian gửi', 'Tin tuyển dụng'];
     const lines = rows.map((r, i) => [i + 1, r.name, r.email, r.phone, r.status, r.submittedAt, r.jobRef || ''].map(v => `"${String(v).replace(/"/g, '""')}"`).join(','));
     const csv = [headers.join(','), ...lines].join('\n');
@@ -38,21 +41,59 @@ const HosoungvienPage: React.FC = () => {
     const [rows, setRows] = useState<Candidate[]>(SAMPLE);
     const [query, setQuery] = useState('');
     const [statusFilter, setStatusFilter] = useState<string>('Tất cả');
-    const [apiData, setApiData] = useState<HosoungvienResponse | null>(null);
+    const [apiData, setApiData] = useState<any[] | null>(null);
+    const [infoDoanhNghiep, setInfoDoanhNghiep] = useState<any>(null);
+
+    useEffect(() => {
+        (async () => {
+            try {
+                const res = await getUserInfo();
+                console.log("res user info", res.data);
+
+                setInfoDoanhNghiep(res.data.sub);
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }, []);
+
+
+    console.log("infoDoanhNghiep", infoDoanhNghiep);
+    const handleChangetrangthai = async (id: string, newTrangThai: string) => {
+        console.log("id", id, "newTrangThai", newTrangThai);
+        try {
+            const response = await putTrangthaiungvien(id, { trangThaiUngTuyen: newTrangThai });
+            setApiData(prev => {
+                if (!prev) return prev;
+                return prev.map(item => item._id === id ? { ...item, trangThaiUngTuyen: newTrangThai } : item);
+            });
+            console.log("Trạng thái ứng viên đã được cập nhật:", response.data);
+        } catch (error) {
+            console.error("Lỗi khi cập nhật trạng thái ứng viên:", error);
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await getHosoungvien();
-                setApiData(response.data);
-                // Map API data to Candidate type if needed
-                console.log("API Data:", response.data);
+                console.log("API Response get ho so:", response.data);
+                const result = response.data.data.result || [];
+                const SSODoanhnghiep = infoDoanhNghiep
+                const filteredResult = result.filter((item: any) => item.tinTuyenDung?.ssoId === SSODoanhnghiep);
+                setApiData(filteredResult);
+                console.log("API Data:", filteredResult);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
 
         fetchData();
-    }, []);
+    }, [infoDoanhNghiep]);
+
+
+
+
 
     const filtered = useMemo(() => rows.filter(r => {
         if (statusFilter !== 'Tất cả' && r.status !== statusFilter) return false;
@@ -104,8 +145,8 @@ const HosoungvienPage: React.FC = () => {
                     <div className="flex items-center justify-between mb-6">
                         <h1 className="text-3xl font-bold text-blue-900">Hồ Sơ Ứng Viên</h1>
                         <div className="flex items-center gap-4">
-                            <span className="text-sm text-blue-600">{filtered.length} hồ sơ ứng viên</span>
-                            <button onClick={() => downloadCSV(filtered)} className="px-4 py-2 border border-red-400 text-red-600 rounded">Xuất danh sách CV</button>
+                            <span className="text-sm text-blue-600">{apiData?.length} hồ sơ ứng viên</span>
+                            <button onClick={() => downloadCSV(apiData)} className="px-4 py-2 border border-red-400 text-red-600 rounded">Xuất danh sách CV</button>
                         </div>
                     </div>
 
@@ -124,39 +165,40 @@ const HosoungvienPage: React.FC = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {filtered.map((r, i) => (
+                                    {(apiData || []).map((r, i) => (
                                         <tr key={r.id} className="border-t last:border-b">
                                             <td className="px-4 py-4 align-top">{i + 1}</td>
                                             <td className="px-4 py-4">
                                                 <div className="flex items-center gap-3">
-                                                    <img src={r.avatar} alt="avatar" className="w-12 h-12 rounded-full object-cover" />
+                                                    {r.avatar ? (<img src={r.avatar} alt="avatar" className="w-12 h-12 rounded-full object-cover" />) : (<img src="/images/default/defaultimage.png" alt="avatar" className="w-12 h-12 rounded-full object-cover" />)}
+
                                                     <div>
-                                                        <div className="font-semibold text-gray-900">{r.name}</div>
+                                                        <div className="font-semibold text-gray-900">{r.tenUngVien}</div>
                                                         <div className="flex items-center gap-2 mt-1">
                                                             <span className={`text-xs ${r.seen ? 'text-green-600 bg-green-100' : 'text-gray-400 bg-gray-100'} px-2 py-0.5 rounded`}>{r.seen ? 'Đã xem' : 'Chưa xem'}</span>
-                                                            <span className="text-xs text-gray-500">{r.submittedAt}</span>
+                                                            <span className="text-xs text-gray-500">{formatDate(r.createdAt)}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td className="px-4 py-4 align-top">
                                                 <div className="text-sm text-gray-700">
-                                                    <div className="flex items-center gap-2">📧 <span>{r.email}</span></div>
-                                                    <div className="flex items-center gap-2 mt-2">📞 <span>{r.phone}</span></div>
+                                                    <div className="flex items-center gap-2"><img src="/images/about/emailicon.png" /> <span>{r.email}</span></div>
+                                                    <div className="flex items-center gap-2 mt-2"><img src="/images/about/phoneicon.png" /> <span>{r.soDienThoai}</span></div>
                                                 </div>
                                             </td>
                                             <td className="px-4 py-4 align-top text-sm text-gray-800">
-                                                <div className="font-semibold flex flex-col ">{r.jobRef} <span className=" text-gray-400 text-xs mt-2">Software Engineer (Frontend)</span></div>
+                                                <div className="font-semibold flex flex-col ">{r.jobRef} <span className=" text-gray-400 text-xs mt-2">{r.tinTuyenDung?.tieuDe || "Không có"}</span></div>
                                             </td>
                                             <td className="px-4 py-4 align-top">
-                                                <select value={r.status} onChange={e => changeStatus(r.id, e.target.value as Candidate['status'])} className="border rounded px-3 py-2 text-sm bg-white">
+                                                <select onChange={e => handleChangetrangthai(r._id, e.target.value)} value={r.trangThaiUngTuyen} className="border rounded px-3 py-2 text-sm bg-white">
                                                     {STATUS_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
                                                 </select>
                                             </td>
                                             <td className="px-4 py-4 align-top text-right">
                                                 <div className="flex justify-end gap-3 text-gray-400">
-                                                    <button title="Đánh dấu đã xem" onClick={() => markSeen(r.id)} className="focus:outline-none">👁️</button>
-                                                    <button title="Ghi chú">💬</button>
+                                                    <button title="Đánh dấu đã xem" onClick={() => markSeen(r.id)} className="focus:outline-none"><img src="/images/about/mat.png" /></button>
+                                                    <button title="Ghi chú"><img src="/images/about/Chat.png" /></button>
                                                 </div>
                                             </td>
                                         </tr>
