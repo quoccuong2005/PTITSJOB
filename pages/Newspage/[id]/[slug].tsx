@@ -191,7 +191,7 @@ const NewsPage = () => {
                 <img src="/images/home/calendarcolor.png" />
                 <div className="inline-grid">
                   <span>Ngày đăng:</span>
-                  <span className="font-bold text-[#051A53]">{formatDate(display?.data?.createdAt)}</span>
+                  <span className="font-bold text-[#051A53]">{formatDate(display?.data?.createdAt || '')}</span>
                 </div>
               </MetaItem>
               <MetaItem>
@@ -243,7 +243,7 @@ const NewsPage = () => {
                   <img src="/images/home/calendarcolor.png" alt="Calendar" />
                   <div className="inline-grid">
                     <span>Ngày đăng</span>
-                    <span className="font-bold text-[#051A53]">{formatDate(display?.data?.createdAt)}</span>
+                    <span className="font-bold text-[#051A53]">{formatDate(display?.data?.createdAt || '')}</span>
                   </div>
                 </StatsItem>
                 <StatsItem>

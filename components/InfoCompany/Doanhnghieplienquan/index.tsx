@@ -58,7 +58,7 @@ const RelatedCompanies = () => {
     const [relatedCompany, setAddress] = useState<NhaTuyenDung[]>([]);
 
     useEffect(() => {
-        getNhaTuyenDungList()
+        getNhaTuyenDungList('1')
             .then((response: any) => {
                 const company = response.data.data;
                 setAddress(company.slice(0, 4) || []);

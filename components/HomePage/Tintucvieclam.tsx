@@ -5,7 +5,7 @@ import { getBaiVietList } from "../../api/baivietpublic";
 import type { BaiViet } from "../../api/baivietpublic/type";
 
 const Tintucvieclam = () => {
-  const [posts, setPosts] = useState<BaiViet[]>([]);
+  const [posts, setPosts] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

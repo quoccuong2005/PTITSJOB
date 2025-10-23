@@ -112,7 +112,7 @@ const careerArticles: CareerArticle[] = [
 const Tuvanhuongnghiep = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [posts, setPosts] = useState<BaiViet[]>([]);
+    const [posts, setPosts] = useState<any[]>([]);
     const [page, setPage] = useState(1);
     // Filter articles based on search and category
     const filteredArticles = careerArticles.filter(article => {
